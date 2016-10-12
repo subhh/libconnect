@@ -1,0 +1,89 @@
+{namespace libconnect=Sub\Libconnect\ViewHelpers}
+<h1 class="ezb">
+    <f:if condition="{journals.subject}">
+        <f:then>
+            <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.list.headline.subject" />
+        </f:then>
+        <f:else>
+            <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.list.headline.alphabetical" />
+        </f:else>
+    </f:if>
+</h1>
+
+<f:if condition="{journals.subject}">
+    <h2 class="ezb"><f:format.htmlentitiesDecode>{journals.subject}</f:format.htmlentitiesDecode></h2>
+</f:if>
+
+<div class="ezb-list-legend">
+    <form name="ezbaccessinfoform" id="ezb-accessinfo-form" action="{listUrl}" method="get" onchange="document.ezbaccessinfoform.submit();">
+        <f:for each="{journals.selected_colors}" as="section" key="key">
+            <f:if condition="{section.colorkey} != 6">
+                <input id="ezb-accessinfo-access_{section.colorkey}" type="checkbox" name="libconnect[colors][{section.colorkey}]" class="accessinfo-element" value="{section.colorkey}" <f:if condition="{libconnect:array(inputArray: journals.colors, key: section.colorkey)}">checked="checked"</f:if>/>
+            </f:if>
+            <label class="ezb-accessinfo-access_{section.colorkey} accessinfo-element" for="ezb-accessinfo-access_{section.colorkey}">{section.value}</label>
+
+        </f:for>
+        
+        <f:for each="{formParameter}" as="parameter" key="key">
+            <f:form.hidden name="{key}" value="{parameter}" />
+        </f:for>
+        
+    </form>
+</div>
+
+<br/><br/>
+
+<div class="ezb-navigation">
+    <f:for each="{journals.navlist.pages}" as="item">
+        <f:if condition="{libconnect:IsArray(value: item)}">
+            <f:then>
+                <a href="<f:format.htmlentitiesDecode>{item.link}</f:format.htmlentitiesDecode>">
+                    <f:format.htmlentitiesDecode>{item.title}</f:format.htmlentitiesDecode>
+                </a>
+            </f:then>
+            <f:else>
+                <em>
+                    <f:format.htmlentitiesDecode>{item}</f:format.htmlentitiesDecode>
+                </em>
+            </f:else>
+        </f:if>
+    </f:for>
+</div>
+
+<br/><br/>
+
+<div class="ezb-list-output">
+    <f:for each="{journals.alphabetical_order.first_fifty}" as="section">
+        <h3>
+            <a href="{section.link}">
+                <libconnect:strreplace search=" & " replace=" &amp; ">
+                    <f:format.htmlentitiesDecode>{section.first_fifty_titles}</f:format.htmlentitiesDecode>
+                </libconnect:strreplace>...
+            </a>
+        </h3>
+    </f:for>
+
+    <h2><f:format.htmlentitiesDecode>{journals.navlist.current_title}</f:format.htmlentitiesDecode>...</h2>
+
+    <ul class="ezb-list">
+        <f:for each="{journals.alphabetical_order.journals}" as="journal">
+            <li class="ezb-list-accessinfo-access_{journal.color_code}">
+                <a href="<f:format.htmlentitiesDecode>{journal.detail_link}</f:format.htmlentitiesDecode>">
+                    <libconnect:strreplace search=" & " replace=" &amp; ">
+                        <f:format.htmlentitiesDecode>{journal.title}</f:format.htmlentitiesDecode>
+                    </libconnect:strreplace>
+                </a>
+            </li>
+        </f:for>
+    </ul>
+
+    <f:for each="{journals.alphabetical_order.next_fifty}" as="section">
+        <h3>
+            <a href="<f:format.htmlentitiesDecode>{section.link}</f:format.htmlentitiesDecode>">
+                <libconnect:strreplace search=" & " replace=" &amp; ">
+                    <f:format.htmlentitiesDecode>{section.next_fifty_titles}</f:format.htmlentitiesDecode>
+                </libconnect:strreplace>...
+            </a>
+        </h3>
+    </f:for>
+</div>

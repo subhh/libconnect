@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<T3DataStructure>
+    <meta>
+        <langDisable>1</langDisable>
+    </meta>
+<sheets>  
+    <sDEF>
+        <ROOT>
+            <TCEforms>
+                <sheetTitle>LLL:EXT:lang/locallang_general.xml:LGL.startingpoint</sheetTitle>
+            </TCEforms>
+            <type>array</type>
+                <el>
+                    <switchableControllerActions>
+                        <TCEforms>
+                            <label>Ausgabe</label>
+                            <onChange>reload</onChange>
+                            <config>
+                                <type>select</type>
+                                <items type="array">
+                                    <numIndex index="0">
+                                        <numIndex index="0">Top-Datenbanken</numIndex>
+                                        <numIndex index="1">Dbis->displayTop</numIndex>
+                                    </numIndex>
+                                    <numIndex index="1">
+                                        <numIndex index="0">Liste</numIndex>
+                                        <numIndex index="1">Dbis->displayList</numIndex>
+                                    </numIndex>
+                                    <numIndex index="2">
+                                        <numIndex index="0">Detailansicht</numIndex>
+                                        <numIndex index="1">Dbis->displayDetail</numIndex>
+                                    </numIndex>
+                                    <numIndex index="3">
+                                        <numIndex index="0">Sidebar-Suchformular</numIndex>
+                                        <numIndex index="1">Dbis->displayMiniForm</numIndex>
+                                    </numIndex>
+                                    <numIndex index="4">
+                                        <numIndex index="0">Suchformular</numIndex>
+                                        <numIndex index="1">Dbis->displayForm</numIndex>
+                                    </numIndex>
+                                    <numIndex index="5" type="array">
+                                        <numIndex index="0">Neu in DBIS</numIndex>
+                                        <numIndex index="1">Dbis->displayNew</numIndex>
+                                    </numIndex>
+                                </items>
+                            </config>
+                        </TCEforms>
+                    </switchableControllerActions>
+
+                    <settings.flexform.subject>
+                        <TCEforms>
+                            <exclude>1</exclude>
+                            <label>Fachgebiet</label>
+                            <displayCond><![CDATA[FIELD:switchableControllerActions:=:Dbis->displayTop]]></displayCond>
+                            <config>
+                                <type>select</type>
+                                <foreign_table>tx_libconnect_domain_model_subject</foreign_table>
+                                <foreign_table_where>AND tx_libconnect_domain_model_subject.deleted=0 AND tx_libconnect_domain_model_subject.hidden=0 ORDER BY tx_libconnect_domain_model_subject.title</foreign_table_where>
+                                <size>1</size>
+                                <minitems>1</minitems>
+                                <maxitems>1</maxitems>
+                            </config>
+                        </TCEforms>
+                    </settings.flexform.subject>
+		
+                    <settings.flexform.detailPid>
+                        <TCEforms>
+                            <exclude>1</exclude>
+                            <label>Detailseite</label>
+                            <displayCond><![CDATA[FIELD:switchableControllerActions:IN:Dbis->displayList,Dbis->displayTop,Dbis->displayNew]]></displayCond>
+                            <config>
+                                <type>group</type>
+                                <internal_type>db</internal_type>
+                                <allowed>pages</allowed>
+                                <size>1</size>
+                                <maxitems>1</maxitems>
+                                <minitems>1</minitems>
+                                <show_thumbs>1</show_thumbs>
+                            </config>
+                        </TCEforms>
+                    </settings.flexform.detailPid>
+
+                    <settings.flexform.listPid>
+                        <TCEforms>
+                            <exclude>1</exclude>
+                            <label>Listenausgabe</label>
+                            <displayCond><![CDATA[FIELD:switchableControllerActions:IN:Dbis->displayForm,Dbis->displayMiniForm]]></displayCond>
+                            <config>
+                                <type>group</type>
+                                <internal_type>db</internal_type>
+                                <allowed>pages</allowed>
+                                <size>1</size>
+                                <maxitems>1</maxitems>
+                                <minitems>0</minitems>
+                                <show_thumbs>1</show_thumbs>
+                            </config>
+                        </TCEforms>
+                    </settings.flexform.listPid>
+
+                    <settings.flexform.searchPid>
+                        <TCEforms>
+                            <exclude>1</exclude>
+                            <label>Seite mit Detailsuche</label>
+                            <displayCond><![CDATA[FIELD:switchableControllerActions:=:Dbis->displayMiniForm]]></displayCond>
+                            <config>
+                                <type>group</type>
+                                <internal_type>db</internal_type>
+                                <allowed>pages</allowed>
+                                <size>1</size>
+                                <maxitems>1</maxitems>
+                                <minitems>0</minitems>
+                                <show_thumbs>1</show_thumbs>
+                            </config>
+                        </TCEforms>
+                    </settings.flexform.searchPid>
+
+                    <settings.flexform.sortParameter>
+                        <TCEforms>
+                            <exclude>1</exclude>
+                            <label>Sortierung</label>
+                            <displayCond><![CDATA[FIELD:switchableControllerActions:=:Dbis->displayList,Dbis->displayNew]]></displayCond>
+                            <config>
+                                <type>select</type>
+                                <items type="array">
+                                    <numIndex index="0" type="array">
+                                        <numIndex index="0">Datenbanktyp</numIndex>
+                                        <numIndex index="1">type</numIndex>
+                                    </numIndex>
+                                    <numIndex index="1" type="array">
+                                        <numIndex index="0">Alphabetisch</numIndex>
+                                        <numIndex index="1">alph</numIndex>
+                                    </numIndex>
+                                    <numIndex index="2" type="array">
+                                        <numIndex index="0">Zugangsart</numIndex>
+                                        <numIndex index="1">access</numIndex>
+                                    </numIndex>
+                                </items>
+                            </config>
+                        </TCEforms>
+                    </settings.flexform.sortParameter>
+
+                    <settings.flexform.countDays>
+                        <TCEforms>
+                            <exclude>1</exclude>
+                            <label>Wieviel Tage gelten Einträge als neu? (Standard: 7)</label>
+                            <displayCond><![CDATA[FIELD:switchableControllerActions:=:Dbis->displayNew,Dbis->displayMiniForm]]></displayCond>
+                            <config>
+                                <type>input</type>
+                                <size>30</size>
+                                <max>500</max>
+                                <eval>trim</eval>
+                            </config>
+                        </TCEforms>
+                    </settings.flexform.countDays>
+		
+                    <settings.flexform.newPid>
+                        <TCEforms>
+                            <exclude>1</exclude>
+                            <label>Neu in DBIS</label>
+                            <displayCond><![CDATA[FIELD:switchableControllerActions:IN:Dbis->displayMiniForm]]></displayCond>
+                            <config>
+                                <type>group</type>
+                                <internal_type>db</internal_type>
+                                <allowed>pages</allowed>
+                                <size>1</size>
+                                <maxitems>1</maxitems>
+                                <minitems>0</minitems>
+                                <show_thumbs>1</show_thumbs>
+                            </config>
+                        </TCEforms>
+                    </settings.flexform.newPid>
+                </el>
+            </ROOT>
+        </sDEF>
+    </sheets>
+</T3DataStructure>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<T3DataStructure>
+    <meta>
+        <langDisable>1</langDisable>
+    </meta>
+    <sheets>
+        <sDEF>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>LLL:EXT:lang/locallang_general.xml:LGL.startingpoint</sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                    <switchableControllerActions>
+                        <TCEforms>
+                            <label>Ausgabe</label>
+                            <onChange>reload</onChange>
+                            <config>
+                                <type>select</type>
+                                <items type="array">
+                                    <numIndex index="0" type="array">
+                                        <numIndex index="0">Liste</numIndex>
+                                        <numIndex index="1">Ezb->displayList</numIndex>
+                                    </numIndex>
+                                    <numIndex index="1" type="array">
+                                        <numIndex index="0">Detailansicht</numIndex>
+                                        <numIndex index="1">Ezb->displayDetail</numIndex>
+                                    </numIndex>
+                                    <numIndex index="3" type="array">
+                                        <numIndex index="0">Sidebar-Suchformular</numIndex>
+                                        <numIndex index="1">Ezb->displayMiniForm</numIndex>
+                                    </numIndex>								
+                                    <numIndex index="4" type="array">
+                                        <numIndex index="0">Suchformular</numIndex>
+                                        <numIndex index="1">Ezb->displayForm</numIndex>
+                                    </numIndex>
+                                    <numIndex index="5" type="array">
+                                        <numIndex index="0">Neu in der EZB</numIndex>
+                                        <numIndex index="1">Ezb->displayNew</numIndex>
+                                    </numIndex>
+                                    <numIndex index="6" type="array">
+                                        <numIndex index="0">Auswahl Teilnehmer die Vollzugriff bieten</numIndex>
+                                        <numIndex index="1">Ezb->displayParticipantsForm</numIndex>
+                                    </numIndex>
+                                    <numIndex index="7" type="array">
+                                        <numIndex index="0">Kontakt</numIndex>
+                                        <numIndex index="1">Ezb->displayContact</numIndex>
+                                    </numIndex>
+                                </items>
+                            </config>
+                        </TCEforms>
+                    </switchableControllerActions>
+
+                    <settings.flexform.detailPid>
+                        <TCEforms>
+                            <exclude>1</exclude>
+                            <label>Detailseite</label>
+                            <displayCond><![CDATA[FIELD:switchableControllerActions:!IN:Ezb->displayDetail,Ezb->displayMiniForm,Ezb->displayForm,Ezb->displayParticipantsForm,Ezb->displayContact]]></displayCond>
+                            <config>
+                                <type>group</type>
+                                <internal_type>db</internal_type>
+                                <allowed>pages</allowed>
+                                <size>1</size>
+                                <maxitems>1</maxitems>
+                                <minitems>1</minitems>
+                                <show_thumbs>1</show_thumbs>
+                            </config>
+                        </TCEforms>
+                    </settings.flexform.detailPid>
+
+                    <settings.flexform.listPid>
+                        <TCEforms>
+                            <exclude>1</exclude>
+                            <label>Listenausgabe</label>
+                            <displayCond><![CDATA[FIELD:switchableControllerActions:IN:Ezb->displayForm,Ezb->displayMiniForm,Ezb->displayDetail]]></displayCond>
+                            <config>
+                                <type>group</type>
+                                <internal_type>db</internal_type>
+                                <allowed>pages</allowed>
+                                <size>1</size>
+                                <maxitems>1</maxitems>
+                                <minitems>0</minitems>
+                                <show_thumbs>1</show_thumbs>
+                            </config>
+                        </TCEforms>
+                    </settings.flexform.listPid>
+
+                    <settings.flexform.searchPid>
+                        <TCEforms>
+                            <exclude>1</exclude>
+                            <label>Seite mit Detailsuche</label>
+                            <displayCond><![CDATA[FIELD:switchableControllerActions:=:Ezb->displayMiniForm]]></displayCond>
+                            <config>
+                                <type>group</type>
+                                <internal_type>db</internal_type>
+                                <allowed>pages</allowed>
+                                <size>1</size>
+                                <maxitems>1</maxitems>
+                                <minitems>0</minitems>
+                                <show_thumbs>1</show_thumbs>
+                            </config>
+                        </TCEforms>
+                    </settings.flexform.searchPid>
+
+                    <settings.flexform.countDays>
+                        <TCEforms>
+                            <exclude>1</exclude>
+                            <label>Wieviel Tage gelten Einträge als neu? (Standard: 7)</label>
+                            <displayCond><![CDATA[FIELD:switchableControllerActions:=:Ezb->displayNew,Ezb->displayMiniForm]]></displayCond>
+                            <config>
+                                <type>input</type>
+                                <size>30</size>
+                                <max>500</max>
+                                <eval>trim</eval>
+                            </config>
+                        </TCEforms>
+                    </settings.flexform.countDays>		
+
+                    <settings.flexform.newPid>
+                        <TCEforms>
+                            <exclude>1</exclude>
+                            <label>Neu in der EZB</label>
+                            <displayCond><![CDATA[FIELD:switchableControllerActions:=:Ezb->displayMiniForm]]></displayCond>
+                            <config>
+                                <type>group</type>
+                                <internal_type>db</internal_type>
+                                <allowed>pages</allowed>
+                                <size>1</size>
+                                <maxitems>1</maxitems>
+                                <minitems>0</minitems>
+                                <show_thumbs>1</show_thumbs>
+                            </config>
+                        </TCEforms>
+                    </settings.flexform.newPid>
+                    
+                    <settings.flexform.participantsPid>
+                        <TCEforms>
+                            <exclude>1</exclude>
+                            <label>Seite mit Formular für Auswahl teilnehmender Institutionen, die Volltextzugriff bieten.</label>
+                            <displayCond><![CDATA[FIELD:switchableControllerActions:=:Ezb->displayDetail]]></displayCond>
+                            <config>
+                                <type>group</type>
+                                <internal_type>db</internal_type>
+                                <allowed>pages</allowed>
+                                <size>1</size>
+                                <maxitems>1</maxitems>
+                                <minitems>0</minitems>
+                                <show_thumbs>1</show_thumbs>
+                            </config>
+                        </TCEforms>
+                    </settings.flexform.participantsPid>
+                </el>
+            </ROOT>
+        </sDEF>
+    </sheets>
+</T3DataStructure>

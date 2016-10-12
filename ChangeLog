@@ -1,0 +1,353 @@
+/**
+* Developer
+* - TW: Torsten Witt torsten.witt@sub.uni-hamburg.de (Staats- und Universitätsbibliothek Hamburg)
+* - AL: Andre Lahmann andre.lahmann@uni-leipzig.de (Leipzig University Library)
+* - BH: Björn Heinermann hein@zhaw.ch (Zürcher Hochschule für Angewandte Wissenschaften)
+**/
+5.0.1
+    - DBIS: var_dump entfernt. (TW)
+
+5.0.0
+    - Kompatibilität zu TYPO3 7.6 (TW)
+        - !Achtung! bei Namespaces für Helperfunctions in eigenen Templates ändern in: {namespace libconnect=Sub\Libconnect\ViewHelpers}
+    - Gelöschte und unsichtbare Fächer werden jetzt ausgeblendet. (TW)
+    - jQuery jetzt per HTTPS geladen (TW)
+    - ZDB: Aufrufe jetzt über HTTPS (TW)
+    - generell aufgeräumt (TW)
+    - keine Kompatibilität zu TYPO3 4.x (TW)
+
+    Version getestet mit TYPO3 6.2.25, TYPO3 7.6.10
+
+4.1.3
+    - Aufgrund von Problemen Proxykonfiguration aus setup.txt entfernt (TW)
+    - Libconnect kann jetzt auch mit Redirects beim Abruf der Daten umgehen. (TW)
+    - DBIS:
+        - freie Zugänge werden jetzt angezeigt (TW)
+        - neue Detailsinformationen über HTTP für ZBMED (TW)
+    - weitere Kommentare übersetzt (TW)
+4.1.2
+    - EZB:
+        - Detailanzeige: Jetzt wird für die URL der Homepages die Eigenschaft "url" verwendet. Problem mit ungültigen URLs gelöst. (TW)
+    - weitere Kommentare übersetzt (TW)
+    - wesentliche Konfigurationen jetzt über Konstanten-Editor bearbeitbar (TW)
+4.1.1
+    - DBIS:
+        - Neu in DBIS: Falls dem PlugIn keine Detailseite zugeordnet wurde, wird eine entsprechende Fehlermeldung ausgegeben. (TW)
+        - Überall wird jetzt die Angabe der Detailseite zwingend vorausgesetzt. (TW)
+        - Korrektur des CSS auf Detailseite bezüglich "#dbis-detail p" (TW)
+        - linker Abstand für Suchbutton für MiniForm entfernt. Oft problematische Darstellung. (TW)
+    - EZB:
+        - Neu in EZB: Falls dem PlugIn keine Detailseite zugeordnet wurde, wird eine entsprechende Fehlermeldung ausgegeben. (TW)
+        - linker Abstand für Suchbutton für MiniForm entfernt. Oft problematische Darstellung. (TW)
+        - Beim Blättern durch Suchergebnisse sind Lizenzfilter verloren gegangen. (TW)
+4.1.0
+    - EZB:
+        - EZB kann jetzt auch in Englisch aufgerufen werden. Dabei wird die TYPO3-Spracheinstellung beachtet. Falls eine andere Sprache angefragt wird,
+          wird Englisch angezeigt. (TW)
+        - Detailanzeige:
+            - Moving Wall wurde nicht angezeigt. (TW)
+            - In Einträge in "Fachgruppe(n)" sind nun Links zu den Fächern, sofern PlugIn konfiguriert ist. (TW)
+        - Suche:
+            - Bei Suchergebnissen mit Präzisen Treffern fehlte Überschrift über den "normalen" Treffern. (TW)
+    - DBIS:
+        - DBIS kann jetzt auch teilweise in Englisch aufgerufen werden. Dabei wird die TYPO3-Spracheinstellung beachtet. Falls eine andere Sprache angefragt wird,
+          wird Englisch angezeigt. (TW)
+4.0.0
+    - Kompatibilität zu TYPO3 6.2 erhöht (TW)
+    - CSS-Pfade für Bilder sind nun relativ (TW)
+    - Code lesbarer gestaltet (TW)
+    - DBIS:
+        - Suche: Es wird jetzt die gleiche Meldung für die Anzahl der Treffer ausgegeben wie bei EZB, inklusive 0 Treffer. (TW)
+        - "Neu in DBIS" wurde bisher nicht in der alphabetischen Liste angeboten (TW)
+        - Neu in DBIS bzw. Sidebar überarbeitet: 
+            - Darstellung korrigiert (TW)
+            - Facheinzeige neu, die nur sichtbar ist, wenn es Einträge gibt (TW)
+        - kleine Codeverbesserungen (TW)
+        - Anzahl der Einträge nun auch für "Neu in DBIS" eingebaut (TW)
+        - Detailanzeige:
+            - Button "Recherche starten" ist jetzt auffälliger gestaltet (TW)
+    - DBIS+EZB
+        - Sidebar:
+            - Der Link "neu in DBIS/EZB" enthält jetzt die Anzahl der neuen Einträge für Alle Fächer und das gewählte Fach. (TW)
+            - Der Link "neu in DBIS/EZB" wird jetzt nur noch angezeigt, wenn es Einträge gibt. (TW)
+    - EZB
+        - "Neu in EZB": br-Tags entfernt (TW)
+        - Sidebar: nutzlose then/else-Anweisungen entfernt (TW)
+        - Suche:
+            - Suche nach Einträgen mit "nur ein Teil zugänglich", führte dazu, dass Zugänge nicht gefiltert wurden. (TW)
+            - HTML korrigiert (TW)
+            - span- durch label-Tags ersetzt -> Barrierefreiheit erhöht (TW)
+        - Sortierung der Zugänge korrigiert (TW)
+        - Filter für Ampel in Listenansicht und Suchergebnissen eingebaut (TW)
+        - Detailansicht: In PlugIn-Konfiguration den Text verständlicher formuliert. (TW)
+
+3.7.0
+    - DBIS:
+        - Eindbindung der dbis.css kann mittels TypoScript unterbunden werden. (TW)
+        - Sidebar: Link für alphabetische Sortierung eingefügt (TW)
+        - Sidebar: Link zur Fachübersicht eingefügt (TW)
+    - EZB:
+        - Eindbindung der ezb.css kann mittels TypoScript unterbunden werden. (TW)
+3.6.1
+    - DBIS: Neu in DBIS - fehlende switchableControllerActions in Flexform eingetragen (TW)
+    - EZB: Auswahl Teilnehmer - fehlerhafte Angabe der switchableControllerAction aus Flexform korrigiert (TW)
+
+3.6.0
+    - EZB:
+        - Suche: jetzt werden exakte Treffer angezeigt (TW)
+        - Detailansicht: Funktionalität "Liste der teilnehmenden Institutionen, die Volltextzugriff bieten" eingebaut (TW)
+        - Ansprechpartner können über PlugIn "Kontakt" angezeigt werden (TW)
+3.5.5
+    - EZB:
+        - Suchergebnisseite: HTML korrigiert (TW)
+        - Listenansicht:
+            - Es fehlte immer eine Ampel (TW)
+        - Detailansicht:
+            - mögliche Fehlermeldung bezüglich ReadMe-Link unterbunden (TW)
+            - "Bemerkung" wurde angezeigt, obwohl es keine gab (TW)
+            - Die Beschriftung: "P-ISSN(s)" fehlte (TW)
+            - ZDB: Beschriftung "Grundsignatur" war doppelt vergeben (TW)
+        - Suche:
+            - Suche mit allen Lizenzen einschränkbar (TW)
+    - UserFunctions Escaping in eine SQL-Query eingefügt (TW)
+    - ZDB:
+        - kleine Korrekturen bei der Darstellung der vorhandenen Drucke (TW)
+3.5.4
+    - DBIS: 
+        - Detailansicht:
+            - URl zum Login für registrierte Benutzer war relativ und somit ungültig. (TW)        
+            - Darstellungsanweisung für "Anleitung" in alten Templates war falsch. (TW)
+            - Anleitungen wurden nicht immer angezeigt. (TW)
+            - automatische Korrektur des HTML
+        - Suche: Suchstringvariabe ging verloren -> ' und " -Problematik (TW)
+        - leere Paramter in URls entfernt (TW)
+    - EZB:
+        - In den ezbshortaccessinfos fehlte die nur zum Teil zugänglichen (TW)
+    - Codeverbesserungen
+        - DoubleQuoteUsageNotRequired - verringert (TW)
+3.5.3
+    - DBIS: Bei Detailansicht gab es ein Problem mit der URl zum Login für registrierte Benutzer. Die URL war relativ und somit ungültig.
+3.5.2
+    - DBIS: Anleitungen werden jetzt auch angezeigt. (TW)
+    - Codeverbesserungen (TW)
+    - mehr Kommentare (TW)
+3.5.1
+    - Codeverbesserungen:
+        - DoubleQuoteUsageNotRequired - verringert (vorher 36) (TW)
+        - UpperCaseConstantFound - entfernt (vorher 28) (TW)
+    - EZB: 
+        - Detailansicht: 
+            - die Texte der Links für die Homepage bisher auf 70 Zeichen begrenzt (TW)
+            - URLs bezüglich Lizenzen waren fehlerhaft (TW)
+            - falsche CSS-Klassenbezeichnung korrigiert (TW)
+3.5.0
+    - Kompatibilität zu TYPO3 6.2 (TW)
+3.4.0
+    - DBIS+EZB:
+        - Ein mehrfaches Laden der CSS-Dateien wird nun unterbunden. (TW)
+        - mehr Kommentare hinzugefügt (TW)
+        - TYPO3 4.5-Kompatibilität entautomatisiert (TW)
+        - mehr CSS-Klassen hinzugefügt für bessere Gestaltung
+        - Neue Funktion: (TW)
+            - neue Einträge werden dort "beworben". Standardmäßig gilt alles als neu, das nicht älter als 7 Tage ist. Dies kann aber
+              entsprechend konfiguriert werden.
+            - Im PlugIn "Sidebar" kann auf das neue PlugIn verwiesen werden. Bei vorheriger Wahl eines Fachbereiches zeigt dann das neue PlugIn
+              Einträge entsprechend dieses Fachbereiches an.
+    - DBIS:
+        - Wenn es weitere Zugänge gibt, wurde bisher immer der gleiche Text ausgegeben: "Weitere lizenzierte Zugänge" - auch bei freien Zugängen. 
+          Jetzt wird auch entsprechend die Angabe "weitere freie Zugänge" gemacht.(TW)
+        - Umbau der Anzeige zur Sortierung der Einträge: (TW)
+             - Es funktioniert (wieder), dass der Nutzer selbst entscheiden kann, wie die Einträge sortiert sind
+             - Möglichkeit zur Sortierung erst dann anbieten, wenn es einen Effekt gibt, d.h. erst nach Wahl des Faches
+             - Links sind nach unten gesetzt worden
+             - Linktext geändert
+         - Die statischen Texte der DBIS-Templates stehen nun in der locallang.xml (TW)
+         - Sidebar: falsche bzw. irreführende Bezeichnung im label-Tag geändert (TW)
+         - kleine Codeverbesserungen (TW)
+         - Zusätzlich zu den Namen der Datenbanktypen werden nun weitere Informationen angegeben. (TW)
+    - EZB:
+        - Fehler in der Suchergebnisseite behoben: (TW)
+            - "Could not analyse class:TYPO3\CMS\Fluid\ViewHelpers" -> Hier war ein Aufruf für die alten Templates drin.
+        - Umbau der Anzeige zur Sortierung der Einträge: (TW)
+            - Es funktioniert (wieder) das der Nutzer selbst entscheiden kann, wie die Einträge sortiert sind
+            - Links sind nach unten gesetzt worden (TW)
+        - nun werden nach der Sidebarsuche und der erweiterten Suche die Suchbegriffe bzw. die Suchkriterien ähnlich wie bei DBIS aufgelistet (TW)
+3.3.5
+    - EZB: 
+        - Im Template für das Suchformular fehlte das Labeltag umd die Labelbezeichnung (TW)
+        - Wer sich von Regensburg bei einer Suche auf der originalen Seite auf die libconnect-Suchergebnisseite seiner eigenen Website weiterleiten lässt, hatte bisher eine eingeschränkte Ergebnismenge.
+          Nun sind alle Lizenzen in der Ergebnismenge sichtbar. (TW)
+
+3.3.4
+    - DBIS: Eigene Sammlungen wurden in Einstiegsseite nicht richtig verlinkt (TW)
+        - Name der Sammlung wird nicht aus der Datenbank, sondern über die Schnittstelle ermittelt.
+    - EZB: 
+        - Die Zugriffsinformationen waren bisher statisch. Diese werden nun über die Schnittstelle geladen. Grund dafür sind leider immer noch Fehler in der Schnittstelle.  (TW)
+          Nun können aber fehlende Texte durch statische ersetzt oder mittels "force" komplett ersetzt werden.
+            - Für das Suchformular werden die Texte in Kurzfassung über TypoScript überschrieben.
+        - Alle statische Texte nun aus locallang.xml. (TW)
+        - Template für erweiterte Suche - Fehler in CSS-Klassenbezeichnung behoben (TW)
+3.3.3
+    - jede Menge Bugfixes um vielerlei Warnings zu beheben. (AL)
+    - EZB+DBIS: Sollte die Website in "iso-8859-15" kodiert sein, führte das bisher zu fehlerhaften Such-URLs (TW)
+    - EZB: 
+        - Bei Angabe zur ersten bzw. letzten Volltextausgabe kam es teilweise dazu, dass ein einzelnes Komma voran stand. (TW)
+        - Abwärtskompatibilität zu PHP 5.2 erhöht (Workaround für SimpleXMLElement::count gefunden) (TW)
+
+3.3.2
+    - Als Abhängigkeit die TYPO3-Version mit angegeben, da im TER Extensions mit fehlender Angabe nicht mehr ausgeliefert werden.
+    - Korrektur in Dokumentation
+3.3.1
+    - DBIS: PHP-Warning behoben. (TW)
+    - Dokumentation als PDF hinzugefügt (TW)
+3.3.0
+    - DBIS:erweiterte Suche: 
+        - Feature: Lizenzen per TypoScript nun möglich zu entfernen (TW)
+        - Bugfix: 
+            - Es fehlten Lizenzen, da die Liste in der Klasse vorgegeben war. (TW)
+            - leere Einträge in Lizenzliste (TW)
+3.2.7
+    - EZB: 
+        - Link „Liste der teilnehmenden Institutionen, die Volltextzugriff bieten.“ zur EZB in EZB-Detailansicht hinzugefügt 
+          (where.phtml) (AL)
+        - Leere Select-Felder aus erweiterten Suche entfernt (TW)
+    - Readme wird nun auch bei ZS ohne Zeitraumangabe angezeigt (AL)
+    - ZDB auf CURL-Verbindung umgestellt (AL)
+    - Konfiguration des Miniform nun über Flexforms (keine Konfiguration in TS mit settings.EZBSearchResultsPageId und 
+      settings.DBISSearchResultsPageId mehr notwendig) (AL)
+    - Debugging für ZDB-Standortinformationen kann nun über Extension-Konfiguration ein/ausgeschaltet werden (AL)
+    - Prüfung auf Response-Code !=200 --> um folgendes zu umgehen:
+        "HTTP error, got response: HTTP/1.1 302 Found" (TW)
+    - Verbindungstimeout herunter gesetzt auf 10 Sekunden
+        --> Verhindert, dass Nutzer wegen zu langer Wartezeit neu laden und den Server dazu bringen immer mehr Verbindungen aufzubauen,
+            die noch nicht abgearbeitet wurden (TW)
+    - DBIS:
+        - PHP-Warning korrigiert: "DBIS::getDbDetails() [<a href='dbis.getdbdetails'>dbis.getdbdetails</a>]: Node no longer exists" (TW)
+        - Fehler bei Suche korrigiert: "Cannot cast object of type 'SimpleXMLElement' to string." (TW)
+3.2.6
+    - EZB+DBIS: erweiterte Suche mit 2 Suchbegriffen war fehlerhaft --> urlencode
+3.2.5
+    - Problem beim Auslesen der jeweiligen Konfiguration aus TypoScript behoben. (TW)
+    - DBIS: Umlautproblem in Template behoben (TW)
+3.2.4
+    - alte nicht mehr verwendete CSS-Styles gelöscht (BH)
+    - Umstellung der Templates auf locallang.xml (BH)
+    - zwecks Barrierefreiheit Darstellung der Grafiken wieder als img-Tag (BH)
+    - CURL-Verbindung in separater Klasse (BH)
+    - Code aufgeräumt (BH)
+    - CSS nun valide (TW)
+    - PHP-Warning in DBIS behoben (TW)
+    - HTML in Suche korrigiert (TW)
+    - neue UserFunc für CSS (noch nicht aktiv) (AL)
+3.2.3
+    - EZB & DBIS: Fehler in Proxykonfiguration entfernt
+3.2.2
+    - HTML für bessere CSS-Selektion optimiert (TW)
+    - EZB & DBIS:    - Verwendung von CURL in Verbindung mit simplexml_load_string statt simplexml_load_file (TW)
+                    - Proxykonfiguration mittels TypoScript (TW)
+                    
+                        Vielen Dank an Herrn Heinermann!
+    - EZB: 
+            -CSS     -> Selector für SELECT-Tags nun so gestaltet, dass anderer nicht zur Extension gehörige Inhalte nicht betroffen sind (TW)
+                    -> "#extSearchForm-fieldset-1 legend" nun sichtbar (TW)
+    - DBIS:
+            - fehlerhaftes HTML beseitigt (TW)
+            - CSS: mehr IDs hinzugefügt (TW)
+3.2.1
+    - DBIS: Im Suchformular werden nun die Umlaute für die Regionen richtig angezeigt (TW)
+    - Korrekturen in Dokumentation (AL)
+
+3.2.0
+    - DBIS: alphabetische Auflistung aller Datenbanken (AL)
+    - DBIS: Suche im MiniForm von jeder Seite aus möglich (über TS zu konfigurieren) (AL)
+    - EZB: alphabetische Auflistung aller Zeitschriften (AL)
+    - EZB: Suche im MiniForm von jeder Seite aus möglich (über TS zu konfigurieren) (AL)
+    - ZDB: Standortinformationen für Druckausgaben von Zeitschriften in der EZB-Detailansicht (mit/ohne Icondienst von Journals Online & Print) (AL)
+    - Fehlende Templates für TYPO3 4.5 ergänzt (TW)
+    - HTML - Bugfixes (TW)
+        - CSS-Dateien jetzt im Header
+        - Formular-Tag gefixt
+        - &-Zeichen, die nicht als HTML-Entitiy ausgeliefert werden, werden nun durch &amp; ersetzt
+3.1.5
+    - Kompatibilität zu TYPO3 4.5 hergestellt (getestet mit 4.5.12)
+3.1.4
+    - DBIS: Ergebnismenge in Auflistung der Fachgebiete war überall gleich
+    - EZB: Zugriffsfehler auf nicht gesetzte XML-Attribute behoben.
+3.1.3
+    - EZB: Such-URL korrigiert.
+        Vielen Dank an André Lahmann
+3.1.2
+    - Einträge "dependencies" in "ext_emconf.php" fehlten
+3.1.1
+    - DBIS: Umlaute in Topdatenbanken waren falsch dargestellt
+3.1.0
+    - EZB: In der Detailansicht ist nun der ReadMe-Link eingefügt
+    - <f:escape value="{<Wert>}" type="raw" /> - Ausdruck durch <f:format.htmlentitiesDecode> ersetzt. --> HTML-Entity-Problem gelöst
+    - DBIS: 1 ul-Tag war nicht geschlossen
+3.0.3
+    - EZB: Url für Emedien korrigiert
+3.0.2
+    - EZB: Fehler in der Statistik in Regensburg beeinflusst behoben. In den Links für "Volltext" und "lizensierter Zeitraum" fehlte der "http://rzblx1.uni-regensburg.de/ezeit/warpto.phtml.." -Aufruf
+    - EZB: Links zur Homepage war fehlerhaft. In Detail wurde die Variable "bibid" falsch gesetzt. Das war noch ein Überbleibsel aus der Entwicklungsphase von Version 3.0.0
+    - DBIS: "Recherche starten"-Link nur dann anzeigen, wenn Link vorhanden
+3.0.1
+    - Subject: start- und endtime wird aus TCA nicht verwendet
+
+3.0.0
+    - Umstellung auf Extbase und Fluid
+        - smarty und div sind nicht mehr notwendig
+    - kleine Bugfixes
+    - Views
+        - Doppeltes BR aus Views entfernt
+        - weniger inlinestyle-Attribute
+        - Umlaute ersetzt
+        - Grafiken für Zugriffe nun per CSS
+        - Aufzählungen werden in Listen dargestellt
+2.2.5
+    - kleine Bugfixes
+2.2.4
+    - Fehler in Funktion getBibid der Klasse EZB entfernt
+2.2.3
+    - kleines Bugfix
+2.2.2
+    - Formulare enthalten nun Labels
+2.2.01
+    TW:
+        - Die konfigurierte ID der Bibliothek konnte bei der Suche nicht gelesen werden.
+        - Einige andere Bugfixes
+            - falscher Zugriff auf Sortierung
+            - Zugriff auf nicht existenten Arrayindex
+            - Zugriff auf nicht existierende Nodes
+                - Core: Error handler (FE): PHP Warning: EZB::getJournalDetail() [<a href='ezb.getjournaldetail'>ezb.getjournaldetail</a>]: Node no longer exists 
+            - es werden nun Defaultwerte für die IDs zu EZB und DBIS geladen
+        - Optimierunge
+            - die ID der Bibliothek wird nun in externe Funktion ermittelt
+            - ID der Bibliothek wird nicht mehr innerhalb von Schleifen ermittelt
+2.1.00
+    TW:
+        - Feature:
+            - Für DBIS kann nun in der Listenansicht im Backend die Sortierung festglegt werden (Datenbanktyp (standard), Alphabetisch, Zugangsart)
+        - Bugfix:
+            - DBIS-Suche: ksort ohne 2. Argument --> durch uasort ersetzt
+            - EZB-Liste
+                - Zugriff auf nicht existenten Arrayindex
+                    - next_fifty
+                        Core: Error handler (FE): PHP Warning: array_keys() expects parameter 1 ...
+                    - first_fifty
+                        Core: Error handler (FE): PHP Warning: Invalid argument supplied for foreach() ...
+2.0.5
+    - Für DBIS und EZB wird nun eine eigen CSS-Datei mitgebracht zur Darstellung der Bilder in der Legende.
+2.0.4
+    - changelog.txt hinzugefügt
+    - Manual: Faqs zur Installation eingetragen
+2.0.3
+    - Falschen Bildpfad in DBIS-Suche entfernt.
+    - Fehlende Labels in dbis_miniform.tpl behoben.
+2.0.2
+    - Problem mit Umlauten in der Suche geloest
+    - kleine Bugfixes
+2.0.1
+    - kleine Bugfixes
+    - Dokumentation erstellt
+2.0.0
+    - Initial upload – docs pending

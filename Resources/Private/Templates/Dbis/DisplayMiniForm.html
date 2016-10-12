@@ -1,0 +1,110 @@
+{namespace libconnect=Sub\Libconnect\ViewHelpers}
+
+<div class="datenbank-suche-wrapper">
+
+    <h2 class="libconnect-h2"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.miniform.search_header" /></h2>
+
+    <form action="{listUrl}" method="get">
+        <input type="hidden" name="id" value="{listPid}" />
+        <label for="libconnect_dbis_minisuche" class="hiddendebis"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.miniform.search_term" /></label>
+        <input id="libconnect_dbis_minisuche" type="text" name="libconnect[search][sword]" size="20" value="{vars.sword}" />
+        <input type="submit" value="Suchen" />
+
+        <p><a href="{searchUrl}"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.miniform.search_link" /></a></p>
+
+    </form>
+
+</div>
+ <f:form action="{listUrl}" method="get">
+ 	<f:form.hidden name="id" value="{listPid}"/><br />
+ 	
+ 	<f:form.textfield type="text" id="libconnect_dbis_minisuche" name="sword" value="{vars.sword}" size="20"/><br />
+    
+ 	<f:form.submit name="submit" value="Suchen"/><br />
+</f:form>
+<f:if condition="{vars.sword}">
+    <f:then></f:then>
+    <f:else>
+        <div class="datenbank-suche-wrapper">
+            <h2 class="libconnect-h2"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.miniform.show_databases" /></h2>
+
+            <form action="{listUrl}" method="get">
+                <p>
+                    <input type="hidden" name="id" value="{listPid}" />
+                    <label for="libconnect_dbis_suche" class="hiddendebis"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.miniform.select_access" /></label>
+                    <select id="libconnect_dbis_suche" name="libconnect[search][zugaenge]">
+
+                        <f:for each="{form.zugaenge}" as="value" key="key">
+                            <f:if condition="{key} < 1000">
+                                <f:if condition="{libconnect:strlen(string: value)} > 0">
+                                    <option  <f:if condition="{vars.zugaenge}"><f:if condition="{vars.zugaenge} == {key}">selected="selected"</f:if></f:if> value="{key}" >{value}</option>
+                                </f:if>
+                            </f:if>
+                        </f:for>
+                    </select>
+                </p>
+                <input type="submit" value="Zugang ausw&auml;hlen" />
+            </form>
+            
+           
+
+        </div>
+    </f:else>
+</f:if>
+
+<div class="dbis-listings-wrapper">
+    <h2 class="ezb-sort"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.miniform.link.sort" /></h2>
+
+    <f:if condition="{listingsWrapper}">
+        <f:then>
+            <p>
+                <f:link.page pageUid="{listPid}" additionalParams="{libconnect: '{sort:\'type\'}'}" addQueryString="1">
+                    <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.miniform.listing_type" />
+                </f:link.page>
+            </p>
+
+            <p>
+                <f:link.page pageUid="{listPid}" additionalParams="{libconnect: '{sort:\'alph\'}'}" addQueryString="1">
+                    <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.miniform.listing_alph" />
+                </f:link.page>
+            </p>
+
+        </f:then>
+        <f:else>
+            <p>
+                <f:link.page pageUid="{listPid}" addQueryString="0">
+                    <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.miniform.listing_subject" />
+                </f:link.page>
+            </p>
+            
+            <p>
+                <f:link.page pageUid="{listPid}" additionalParams="{libconnect: {subject: 'all'}}" addQueryString="1">
+                    <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.miniform.listing_alph" />
+                </f:link.page>
+            </p>
+        </f:else>
+    </f:if>
+</div>
+
+<f:if condition="{newUrl}">
+    <div class="dbis-listings-wrapper">
+        <div class="dbis-new">
+            <p id="dbis-newmini">
+                <a href="{newUrl}">
+                    <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.miniform.new.all" /><span class="newcount"> ({newInSubjectCount})</span>
+                </a>
+            </p>
+        </div>
+    </div>
+</f:if>
+<f:if condition="{newUrlSub}">
+    <div class="dbis-listings-wrapper">
+        <div class="dbis-new">
+            <p id="dbis-newmini">
+                <a href="{newUrlSub}">
+                    <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.miniform.new.subject" /><span class="newcount"> ({newInSubjectCount})</span>
+                </a>
+            </p>
+        </div>
+    </div>
+</f:if>

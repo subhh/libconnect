@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+    <meta type="array">
+        <type>module</type>
+        <description>Language labels for the libconnect extension in the FRONTEND</description>
+    </meta>
+    <data type="array">
+        <languageKey index="default" type="array">
+
+            <!-- DBIS -->
+
+            <label index="tx_libconnect.dbis.detail.access.alic">More Licensed Access:</label>
+            <label index="tx_libconnect.dbis.detail.access.hints">Hints:</label>
+            <label index="tx_libconnect.dbis.detail.access.lic">More Free Access:</label>
+            <label index="tx_libconnect.dbis.detail.access.text">Availability:</label>
+            <label index="tx_libconnect.dbis.detail.appearence">Form Of Appearance:</label>
+            <label index="tx_libconnect.dbis.detail.content">Contents:</label>
+            <label index="tx_libconnect.dbis.detail.database">Database</label>
+            <label index="tx_libconnect.dbis.detail.dbtype">Database Type:</label>
+            <label index="tx_libconnect.dbis.detail.error.h1">Error</label>
+            <label index="tx_libconnect.dbis.detail.error.p1">An error occured while requesting the database.</label>
+            <label index="tx_libconnect.dbis.detail.error.p2">Maybe the selected database doesn´t exist. Please retry or ask the administrator.</label>
+            <label index="tx_libconnect.dbis.detail.instruction">Instruction:</label>
+            <label index="tx_libconnect.dbis.detail.keywords">Tags:</label>
+            <label index="tx_libconnect.dbis.detail.license">License:</label>            
+            <label index="tx_libconnect.dbis.detail.othertitle">Other Titels:</label>
+            <label index="tx_libconnect.dbis.detail.publisher">Publisher:</label>                        
+            <label index="tx_libconnect.dbis.detail.recherche">Start Search</label>
+            <label index="tx_libconnect.dbis.detail.remarks">More Remarks</label>
+            <label index="tx_libconnect.dbis.detail.report_periods">Report Periods:</label>
+            <label index="tx_libconnect.dbis.detail.subjects">Subjects:</label>
+            <label index="tx_libconnect.dbis.detail.update">Update:</label>
+
+            <label index="tx_libconnect.dbis.form.access_type">Access Type:</label>
+            <label index="tx_libconnect.dbis.form.datbase_types">Database Types:</label>
+            <label index="tx_libconnect.dbis.form.extended_search">Extended Search For Databases</label>
+            <label index="tx_libconnect.dbis.form.field">Field</label>
+            <label index="tx_libconnect.dbis.form.limit_search">Limit Search On:</label>
+            <label index="tx_libconnect.dbis.form.link">Link</label>
+            <label index="tx_libconnect.dbis.form.negator">Negator</label>
+            <label index="tx_libconnect.dbis.form.search_term">Search Term</label>
+            <label index="tx_libconnect.dbis.form.subject">Subject:</label>
+            <label index="tx_libconnect.dbis.form.regions">Regions:</label>
+            <label index="tx_libconnect.dbis.form.formal_type">Formal Type</label>
+
+            <label index="tx_libconnect.dbis.list.full_list">Complete List</label>
+            <label index="tx_libconnect.dbis.list.headline.dbis">DBIS</label>
+            <label index="tx_libconnect.dbis.list.headline.subject">List by Subject</label>
+            <label index="tx_libconnect.dbis.list.legend.headline">license:</label>
+            <label index="tx_libconnect.dbis.list.topdatabases">Top Databases</label>
+                                                                	
+            <label index="tx_libconnect.dbis.miniform.link.sort">Sort</label>
+            <label index="tx_libconnect.dbis.miniform.listing_alph">List by Title</label>
+            <label index="tx_libconnect.dbis.miniform.listing_subject">List by Subject</label>
+            <label index="tx_libconnect.dbis.miniform.listing_type">Database Type</label>
+            <label index="tx_libconnect.dbis.miniform.new.all">New in DBIS</label>
+            <label index="tx_libconnect.dbis.miniform.new.subject">New in your subject</label>
+            <label index="tx_libconnect.dbis.miniform.search_header">Search For Databases</label>
+            <label index="tx_libconnect.dbis.miniform.search_link">Extended Search</label>
+            <label index="tx_libconnect.dbis.miniform.search_term">Search Term</label>
+            <label index="tx_libconnect.dbis.miniform.select_access">Choose License</label>
+            <label index="tx_libconnect.dbis.miniform.show_databases">Show Databases</label>
+
+            <label index="tx_libconnect.dbis.new.headline">New in DBIS</label>
+            <label index="tx_libconnect.dbis.new.headline.subject">Subject</label>
+            <label index="tx_libconnect.dbis.new.hits">New entries:</label>
+            <label index="tx_libconnect.dbis.new.since">There are since </label>
+
+            <label index="tx_libconnect.dbis.overview.headline">Database information system</label>
+
+            <label index="tx_libconnect.dbis.search.criterion">You searched for:</label>
+            <label index="tx_libconnect.dbis.search.hits">Hit(s) %s:</label>
+            <label index="tx_libconnect.dbis.search.licence">License:</label>
+            <label index="tx_libconnect.dbis.search.results">Results of your search</label>
+            <label index="tx_libconnect.dbis.search.top_databases">Top Databases</label>
+            
+            <!-- EZB -->
+
+            <label index="tx_libconnect.ezb.articipants.categories">2. categories:</label>            
+            <label index="tx_libconnect.ezb.articipants.countries">1. countries:</label>
+            <label index="tx_libconnect.ezb.articipants.infotext">With the following form you can change your institution view for displaying the related holdings information.</label>
+            <label index="tx_libconnect.ezb.articipants.participants">3. Choose your institution:</label>
+            <label index="tx_libconnect.ezb.articipants.submit">Go to the choosed institution</label>
+
+            <label index="tx_libconnect.ezb.detail.appearence">Appearence</label>
+            <label index="tx_libconnect.ezb.detail.costs">Costs</label>
+            <label index="tx_libconnect.ezb.detail.eissns_join">E-ISSN(s)</label>
+            <label index="tx_libconnect.ezb.detail.error.h1">Error</label>
+            <label index="tx_libconnect.ezb.detail.error.p1">An error occured while requesting the journals.</label>
+            <label index="tx_libconnect.ezb.detail.error.p2">Maybe the selected journal doesn´t exist. Please retry or ask the administrator.</label>
+            <label index="tx_libconnect.ezb.detail.fulltext.th">Fulltext</label>
+            <label index="tx_libconnect.ezb.detail.issue.td">H.</label>
+            <label index="tx_libconnect.ezb.detail.homepages.th">Homepage(s)</label>
+            <label index="tx_libconnect.ezb.detail.license.th">Licensed Period</label>
+            <label index="tx_libconnect.ezb.detail.keywords_join">Tag(s)</label>
+            <label index="tx_libconnect.ezb.detail.movingwall">Moving Wall</label>
+            <label index="tx_libconnect.ezb.detail.movingwall.begin">available for</label>
+            <label index="tx_libconnect.ezb.detail.movingwall.end.i.more">issues</label>
+            <label index="tx_libconnect.ezb.detail.movingwall.end.i.one">issue</label>
+            <label index="tx_libconnect.ezb.detail.movingwall.end.d.more">days</label>
+            <label index="tx_libconnect.ezb.detail.movingwall.end.d.one">day</label>            
+            <label index="tx_libconnect.ezb.detail.movingwall.end.m.more">months</label>
+            <label index="tx_libconnect.ezb.detail.movingwall.end.m.one">month</label>
+            <label index="tx_libconnect.ezb.detail.movingwall.end.v.more">volumes</label>
+            <label index="tx_libconnect.ezb.detail.movingwall.end.v.one">volume</label>
+            <label index="tx_libconnect.ezb.detail.movingwall.end.y.more">volumes</label>
+            <label index="tx_libconnect.ezb.detail.movingwall.end.y.one">volume</label>
+            <label index="tx_libconnect.ezb.detail.movingwall.middle.one">the current</label>
+            <label index="tx_libconnect.ezb.detail.movingwall.middle.one.i">the current</label>
+            <label index="tx_libconnect.ezb.detail.movingwall.middle.one.v">the current</label>
+            <label index="tx_libconnect.ezb.detail.movingwall.middle.more">the current</label>
+            <label index="tx_libconnect.ezb.detail.movingwall.not">Not</label>
+            <label index="tx_libconnect.ezb.detail.movingwall.yes">Only</label>
+            <label index="tx_libconnect.ezb.detail.participants">List of participate instutions which offer full access.</label>
+            <label index="tx_libconnect.ezb.detail.period.a">Full Period</label>
+            <label index="tx_libconnect.ezb.detail.period.homepage">Homepage of the journal</label>
+            <label index="tx_libconnect.ezb.detail.period.readme">ReadMe</label>
+            <label index="tx_libconnect.ezb.detail.period.rest">Remaining Periods</label>
+            <label index="tx_libconnect.ezb.detail.pissns_join">P-ISSN(s)</label>
+            <label index="tx_libconnect.ezb.detail.print.info">Informations of availability</label>
+            <label index="tx_libconnect.ezb.detail.print.location">Location</label>
+            <label index="tx_libconnect.ezb.detail.print.period">Inventory</label>
+            <label index="tx_libconnect.ezb.detail.print.signature">Signature</label>
+            <label index="tx_libconnect.ezb.detail.print.source">Source</label>
+            <label index="tx_libconnect.ezb.detail.print.titel">Titel</label>
+            <label index="tx_libconnect.ezb.detail.print.yes">Print Available</label>
+            <label index="tx_libconnect.ezb.detail.publisher.th">Publisher</label>
+            <label index="tx_libconnect.ezb.detail.remarks">Comment</label>
+            <label index="tx_libconnect.ezb.detail.result.th">Availability</label>
+            <label index="tx_libconnect.ezb.detail.since.th">Fulltext available since</label>
+            <label index="tx_libconnect.ezb.detail.subjects_join">Subject(s)</label>
+            <label index="tx_libconnect.ezb.detail.untilthen.th">Fulltext available until</label>
+            <label index="tx_libconnect.ezb.detail.volume.td">Volume</label>
+            <label index="tx_libconnect.ezb.detail.zdb.th">ZDB-ID</label>
+
+            <label index="tx_libconnect.ezb.form.input.search">Search</label>
+            <label index="tx_libconnect.ezb.form.label.access">Fulltext article are</label>
+            <label index="tx_libconnect.ezb.form.label.extsearchform">Extended search of journals</label>
+            <label index="tx_libconnect.ezb.form.label.hits">Hits per page</label>
+            <label index="tx_libconnect.ezb.form.label.link">Link</label>
+            <label index="tx_libconnect.ezb.form.label.searchterm">Search tearm</label>
+            <label index="tx_libconnect.ezb.form.label.subject">Subject</label>
+            <label index="tx_libconnect.ezb.form.label.type">Type</label>
+            <label index="tx_libconnect.ezb.form.legend.limit">Restrict search</label>
+            <label index="tx_libconnect.ezb.form.option.hits">all</label>
+
+            <label index="tx_libconnect.ezb.legend.headline">Legend:</label>
+            <label index="tx_libconnect.ezb.legend.icon.green">Free available</label>
+            <label index="tx_libconnect.ezb.legend.icon.red">Free for your location. Partial only access to abstracts</label>
+            <label index="tx_libconnect.ezb.legend.icon.yellow">On campus network and member of the univeristy external accessible</label>
+            <label index="tx_libconnect.ezb.legend.icon.yellow.red">Only a part of the volumes is accessible</label>
+
+            <label index="tx_libconnect.ezb.list.headline.alphabetical">EZB - List by Title</label>
+            <label index="tx_libconnect.ezb.list.headline.subject">EZB - List by subject</label>
+            <label index="tx_libconnect.ezb.list.pages.article">Article list</label>
+            <label index="tx_libconnect.ezb.list.pages.closed">closed</label>
+            <label index="tx_libconnect.ezb.list.pages.opened">open</label>
+
+            <label index="tx_libconnect.ezb.miniform.link.allsubjects">Overview subjects</label>
+            <label index="tx_libconnect.ezb.miniform.link.alphabetical">List by Title</label>
+            <label index="tx_libconnect.ezb.miniform.link.extended_search">Extended search</label>
+            <label index="tx_libconnect.ezb.miniform.link.sort">Sort</label>
+            <label index="tx_libconnect.ezb.miniform.link.subject">List by subject</label>
+            <label index="tx_libconnect.ezb.miniform.new.all">New in EZB</label>
+            <label index="tx_libconnect.ezb.miniform.new.subject">New in your Subject</label>
+            <label index="tx_libconnect.ezb.miniform.searchform.headline">Search for journals</label>
+            <label index="tx_libconnect.ezb.miniform.searchform.label">Name of the journalt</label>
+
+            <label index="tx_libconnect.ezb.new.headline.alphabetical">New in EZB - alphabetical list</label>
+            <label index="tx_libconnect.ezb.new.headline.subject">New in EZB - list of all subject</label>
+            <label index="tx_libconnect.ezb.new.hits"> %s new entries:</label>
+            <label index="tx_libconnect.ezb.new.since">There are since</label>
+
+            <label index="tx_libconnect.ezb.overview.headline">Elektronische Zeitschriftenbibliothek (Electronic Journals Library)</label>
+
+            <label index="tx_libconnect.ezb.search.all.hits">Search results:</label>
+            <label index="tx_libconnect.ezb.search.criterion">You searched for:</label>
+            <label index="tx_libconnect.ezb.search.headline">Hit(s)</label>
+            <label index="tx_libconnect.ezb.search.error.headline">An error occured:</label>
+            <label index="tx_libconnect.ezb.search.error.text">You searched without search terms and subject.</label>
+            <label index="tx_libconnect.ezb.search.proper.hits">Exactly hits:</label>
+            <label index="tx_libconnect.ezb.search.text.hits">%s hit(s):</label>
+
+            <!-- Suject -->
+
+            <label index="tx_libconnect_domain_model_ezb">EZB</label>
+            <label index="tx_libconnect_domain_model_dbis">DBIS</label>
+            <label index="tx_libconnect_domain_model_subject">Subject</label>
+            <label index="tx_libconnect_domain_model_subject.dbisid">Notation in DBIS</label>
+            <label index="tx_libconnect_domain_model_subject.ezbnotation">Notation in EZB</label>
+            <label index="tx_libconnect_domain_model_subject.title">Name of subject</label>
+
+        </languageKey>
+        
+        <languageKey index="de" type="array">
+
+            <!-- DBIS -->
+
+            <label index="tx_libconnect.dbis.detail.access.alic">Weitere lizenzierte Zugänge:</label>
+            <label index="tx_libconnect.dbis.detail.access.hints">Hinweise:</label>
+            <label index="tx_libconnect.dbis.detail.access.lic">Weitere freie Zugänge:</label>
+            <label index="tx_libconnect.dbis.detail.access.text">Verfügbarkeit:</label>
+            <label index="tx_libconnect.dbis.detail.appearence">Erscheinungsform:</label>
+            <label index="tx_libconnect.dbis.detail.content">Inhalte:</label>
+            <label index="tx_libconnect.dbis.detail.database">Datenbank</label>
+            <label index="tx_libconnect.dbis.detail.dbtype">Datenbank-Typ:</label>
+            <label index="tx_libconnect.dbis.detail.error.h1">Fehler</label>
+            <label index="tx_libconnect.dbis.detail.error.p1">Es ist ein Fehler bei der Anfrage der Datenbank aufgetreten.</label>
+            <label index="tx_libconnect.dbis.detail.error.p2">Möglicherweise ist die angefragte Datenbank nicht vorhanden. Bitte versuchen Sie es erneut oder wenden Sie sich an das Web-Team der Bibliothek, das Ihnen beim Auffinden des Datensatzes gerne behilflich ist.</label>
+            <label index="tx_libconnect.dbis.detail.instruction">Anleitung:</label>
+            <label index="tx_libconnect.dbis.detail.keywords">Schlagwörter:</label>
+            <label index="tx_libconnect.dbis.detail.license">Lizenz:</label>            
+            <label index="tx_libconnect.dbis.detail.othertitle">Weitere Titel:</label>
+            <label index="tx_libconnect.dbis.detail.publisher">Verlag:</label>                        
+            <label index="tx_libconnect.dbis.detail.recherche">Recherche starten</label>
+            <label index="tx_libconnect.dbis.detail.remarks">Weitere Bemerkungen:</label>
+            <label index="tx_libconnect.dbis.detail.report_periods">Berichtszeitraum:</label>
+            <label index="tx_libconnect.dbis.detail.subjects">Fachgebiete:</label>
+            <label index="tx_libconnect.dbis.detail.update">Erscheinungsweise:</label>
+
+            <label index="tx_libconnect.dbis.form.access_type">Zugangsart:</label>
+            <label index="tx_libconnect.dbis.form.datbase_types">Datenbank-Typen:</label>
+            <label index="tx_libconnect.dbis.form.extended_search">Erweiterte Suche nach Datenbanken</label>
+            <label index="tx_libconnect.dbis.form.field">Feldangabe</label>
+            <label index="tx_libconnect.dbis.form.limit_search">Suche einschränken auf:</label>
+            <label index="tx_libconnect.dbis.form.link">Verknüpfung</label>
+            <label index="tx_libconnect.dbis.form.negator">Negator</label>
+            <label index="tx_libconnect.dbis.form.search_term">Suchbegriff</label>
+            <label index="tx_libconnect.dbis.form.subject">Fachgebiete:</label>
+
+
+            <label index="tx_libconnect.dbis.form.regions">Regionen:</label>
+            <label index="tx_libconnect.dbis.form.formal_type">Formaler Typ</label>
+
+            <label index="tx_libconnect.dbis.list.full_list">Gesamtangebot</label>
+            <label index="tx_libconnect.dbis.list.headline.dbis">DBIS</label>
+            <label index="tx_libconnect.dbis.list.headline.subject">Fachgebiet</label>
+            <label index="tx_libconnect.dbis.list.legend.headline">Zugriffe:</label>
+            <label index="tx_libconnect.dbis.list.topdatabases">Top Datenbanken</label>
+                                                                	
+            <label index="tx_libconnect.dbis.miniform.link.sort">Sortierung</label>
+            <label index="tx_libconnect.dbis.miniform.listing_alph">alphabetisch</label>
+            <label index="tx_libconnect.dbis.miniform.listing_subject">Fachübersicht</label>
+            <label index="tx_libconnect.dbis.miniform.listing_type">nach Datenbanktyp</label>
+            <label index="tx_libconnect.dbis.miniform.new.all">Neu in DBIS</label>
+            <label index="tx_libconnect.dbis.miniform.new.subject">Neu in Ihrem Fachgebiet</label>
+            <label index="tx_libconnect.dbis.miniform.search_header">Suche nach Datenbanken</label>
+            <label index="tx_libconnect.dbis.miniform.search_link">Erweiterte Suche</label>
+            <label index="tx_libconnect.dbis.miniform.search_term">Suchbegriff</label>
+            <label index="tx_libconnect.dbis.miniform.select_access">Zugang wählen</label>
+            <label index="tx_libconnect.dbis.miniform.show_databases">Datenbanken anzeigen</label>
+
+            <label index="tx_libconnect.dbis.new.headline">Neu in DBIS</label>
+            <label index="tx_libconnect.dbis.new.headline.subject">Fachgebiet</label>
+            <label index="tx_libconnect.dbis.new.hits">neue Einträge:</label>
+            <label index="tx_libconnect.dbis.new.since">Es gibt seit dem </label>
+
+            <label index="tx_libconnect.dbis.overview.headline">Datenbank-Infosystem</label>
+
+            <label index="tx_libconnect.dbis.search.criterion">Sie suchten nach folgenden Kriterien:</label>
+            <label index="tx_libconnect.dbis.search.hits">Die Suche ergab %s Treffer:</label>
+            <label index="tx_libconnect.dbis.search.licence">Zugriffe:</label>
+            <label index="tx_libconnect.dbis.search.results">Ergebnisse Ihrer Suche</label>
+            <label index="tx_libconnect.dbis.search.top_databases">Top Datenbanken</label>
+
+            
+            <!-- EZB -->
+
+            <label index="tx_libconnect.ezb.articipants.categories">2. Kategorien:</label>            
+            <label index="tx_libconnect.ezb.articipants.countries">1. Länder:</label>
+            <label index="tx_libconnect.ezb.articipants.infotext">Folgende an der Elektronischen Zeitschriftenbibliothek beteiligten Einrichtungen bieten ihren Benutzern Zugriff auf die Volltexte der Zeitschrift.</label>
+            <label index="tx_libconnect.ezb.articipants.participants">3. Wählen Sie die Einrichtung aus:</label>
+            <label index="tx_libconnect.ezb.articipants.submit">Zur gewählten Einrichtung wechseln</label>
+
+            <label index="tx_libconnect.ezb.detail.appearence">Form</label>
+            <label index="tx_libconnect.ezb.detail.costs">Kosten</label>
+            <label index="tx_libconnect.ezb.detail.eissns_join">E-ISSN(s)</label>
+            <label index="tx_libconnect.ezb.detail.error.h1">Fehler</label>
+            <label index="tx_libconnect.ezb.detail.error.p1">Es ist ein Fehler bei der Anfrage der elektronische Zeitschrift aufgetreten.</label>
+            <label index="tx_libconnect.ezb.detail.error.p2">Möglicherweise ist die angefragte Zeitschrift nicht vorhanden. Bitte versuchen Sie es erneut oder wenden Sie sich an das Web-Team der Bibliothek, das Ihnen beim Auffinden des Datensatzes gerne behilflich ist.</label>
+            <label index="tx_libconnect.ezb.detail.fulltext.th">Volltext</label>
+            <label index="tx_libconnect.ezb.detail.issue.td">H.</label>
+            <label index="tx_libconnect.ezb.detail.homepages.th">Homepage(s)</label>
+            <label index="tx_libconnect.ezb.detail.license.th">Lizenzierter Zeitraum</label>
+            <label index="tx_libconnect.ezb.detail.keywords_join">Schlagwort(e)</label>
+            <label index="tx_libconnect.ezb.detail.movingwall">Moving Wall</label>
+            <label index="tx_libconnect.ezb.detail.movingwall.begin">verfügbar für</label>
+            <label index="tx_libconnect.ezb.detail.movingwall.end.i.more">Ausgaben</label>
+            <label index="tx_libconnect.ezb.detail.movingwall.end.i.one">Ausgabe</label>
+            <label index="tx_libconnect.ezb.detail.movingwall.end.d.more">Tage</label>
+            <label index="tx_libconnect.ezb.detail.movingwall.end.d.one">Tag</label>            
+            <label index="tx_libconnect.ezb.detail.movingwall.end.m.more">Monate</label>
+            <label index="tx_libconnect.ezb.detail.movingwall.end.m.one">Monat</label>
+            <label index="tx_libconnect.ezb.detail.movingwall.end.v.more">Bände</label>
+            <label index="tx_libconnect.ezb.detail.movingwall.end.v.one">Band</label>
+            <label index="tx_libconnect.ezb.detail.movingwall.end.y.more">Jahrgänge</label>
+            <label index="tx_libconnect.ezb.detail.movingwall.end.y.one">Jahrgang</label>
+            <label index="tx_libconnect.ezb.detail.movingwall.middle.one">den aktuellen</label>
+            <label index="tx_libconnect.ezb.detail.movingwall.middle.one.i">die aktuelle</label>
+            <label index="tx_libconnect.ezb.detail.movingwall.middle.one.v">der aktuelle</label>
+            <label index="tx_libconnect.ezb.detail.movingwall.middle.more">die aktuellen</label>
+            <label index="tx_libconnect.ezb.detail.movingwall.not">Nicht</label>
+            <label index="tx_libconnect.ezb.detail.movingwall.yes">Nur</label>
+            <label index="tx_libconnect.ezb.detail.participants">Liste der teilnehmenden Institutionen, die Volltextzugriff bieten.</label>
+            <label index="tx_libconnect.ezb.detail.period.a">gesamter Zeitraum</label>
+            <label index="tx_libconnect.ezb.detail.period.homepage">Homepage der Zeitschrift</label>
+            <label index="tx_libconnect.ezb.detail.period.readme">ReadMe</label>
+            <label index="tx_libconnect.ezb.detail.period.rest">Restliche Zeiträume</label>
+            <label index="tx_libconnect.ezb.detail.pissns_join">P-ISSN(s)</label>
+            <label index="tx_libconnect.ezb.detail.print.info">Informationen zur Verfügbarkeit</label>
+            <label index="tx_libconnect.ezb.detail.print.location">Standort</label>
+            <label index="tx_libconnect.ezb.detail.print.period">Bestand</label>
+            <label index="tx_libconnect.ezb.detail.print.signature">Grundsignatur</label>
+            <label index="tx_libconnect.ezb.detail.print.source">Quelle</label>
+            <label index="tx_libconnect.ezb.detail.print.titel">Titel</label>
+            <label index="tx_libconnect.ezb.detail.print.yes">im Druck vorhanden</label>
+            <label index="tx_libconnect.ezb.detail.publisher.th">Verlag</label>
+            <label index="tx_libconnect.ezb.detail.remarks">Bemerkung</label>
+            <label index="tx_libconnect.ezb.detail.result.th">Verfügbarkeit</label>
+            <label index="tx_libconnect.ezb.detail.since.th">Volltext online seit</label>
+            <label index="tx_libconnect.ezb.detail.subjects_join">Fachgruppe(n)</label>
+            <label index="tx_libconnect.ezb.detail.untilthen.th">Volltext online bis</label>
+            <label index="tx_libconnect.ezb.detail.volume.td">Jg.</label>
+            <label index="tx_libconnect.ezb.detail.zdb.th">ZDB Nummer</label>
+
+            <label index="tx_libconnect.ezb.form.input.search">Suchen</label>
+            <label index="tx_libconnect.ezb.form.label.access">Volltextartikel sind</label>
+            <label index="tx_libconnect.ezb.form.label.extsearchform">Erweiterte Suche nach Zeitschriften</label>
+            <label index="tx_libconnect.ezb.form.label.hits">Treffer pro Seite</label>
+            <label index="tx_libconnect.ezb.form.label.link">Verknüpfung</label>
+            <label index="tx_libconnect.ezb.form.label.searchterm">Suchbegriff</label>
+            <label index="tx_libconnect.ezb.form.label.subject">Fachgebiete</label>
+            <label index="tx_libconnect.ezb.form.label.type">Feldangabe</label>
+            <label index="tx_libconnect.ezb.form.legend.limit">Suche einschränken</label>
+            <label index="tx_libconnect.ezb.form.option.hits">alle</label>
+
+            <label index="tx_libconnect.ezb.legend.headline">Legende:</label>
+            <label index="tx_libconnect.ezb.legend.icon.green">Frei zugänglich</label>
+            <label index="tx_libconnect.ezb.legend.icon.red">Für Ihren Standort nicht freigeschaltet. Zum Teil bekommen Sie Zugriff auf Abstracts</label>
+            <label index="tx_libconnect.ezb.legend.icon.yellow">Im Campus-Netz sowie für Angehörige der Universität auch extern zugänglich</label>
+            <label index="tx_libconnect.ezb.legend.icon.yellow.red">Nur für einen Teil der erschienenen Jahrgänge zugänglich</label>
+
+            <label index="tx_libconnect.ezb.list.headline.alphabetical">EZB - Alphabetische Auflistung</label>
+            <label index="tx_libconnect.ezb.list.headline.subject">EZB - Auflistung nach Fachgebieten</label>
+            <label index="tx_libconnect.ezb.list.pages.article">Artikelliste</label>
+            <label index="tx_libconnect.ezb.list.pages.closed">geschlossen</label>
+            <label index="tx_libconnect.ezb.list.pages.opened">offen</label>
+
+            <label index="tx_libconnect.ezb.miniform.link.allsubjects">Übersicht Fachgebiete</label>
+            <label index="tx_libconnect.ezb.miniform.link.alphabetical">alphabetisch</label>
+            <label index="tx_libconnect.ezb.miniform.link.extended_search">Erweiterte Suche</label>
+            <label index="tx_libconnect.ezb.miniform.link.sort">Sortierung</label>
+            <label index="tx_libconnect.ezb.miniform.link.subject">nach Fachgebieten</label>
+            <label index="tx_libconnect.ezb.miniform.new.all">Neu in der EZB</label>
+            <label index="tx_libconnect.ezb.miniform.new.subject">Neu in Ihrem Fach</label>
+            <label index="tx_libconnect.ezb.miniform.searchform.headline">Suche nach Zeitschriften</label>
+            <label index="tx_libconnect.ezb.miniform.searchform.label">Name der Zeitschrift</label>
+
+            <label index="tx_libconnect.ezb.new.headline.alphabetical">Neu in der EZB - Alphabetische Auflistung</label>
+            <label index="tx_libconnect.ezb.new.headline.subject">Neu in der EZB - Auflistung nach Fachgebieten</label>
+            <label index="tx_libconnect.ezb.new.hits"> %s neue Einträge:</label>
+            <label index="tx_libconnect.ezb.new.since">Es gibt seit dem </label>
+
+            <label index="tx_libconnect.ezb.overview.headline">Elektronische Zeitschriftenbibliothek</label>
+
+            <label index="tx_libconnect.ezb.search.all.hits">Alle Treffer:</label>
+            <label index="tx_libconnect.ezb.search.criterion">Sie suchten nach folgenden Kriterien:</label>
+            <label index="tx_libconnect.ezb.search.headline">Ergebnisse Ihrer Suche</label>
+            <label index="tx_libconnect.ezb.search.error.headline">Bei der Suche ist ein Fehler aufgetreten:</label>
+            <label index="tx_libconnect.ezb.search.error.text">Sie haben keine Suchbegriffe eingegeben und kein Fachgebiet ausgewählt.</label>
+            <label index="tx_libconnect.ezb.search.proper.hits">Exakte Treffer:</label>
+            <label index="tx_libconnect.ezb.search.text.hits">Die Suche ergab %s Treffer:</label>
+
+            <!-- Suject -->
+
+            <label index="tx_libconnect_domain_model_ezb">EZB</label>
+            <label index="tx_libconnect_domain_model_dbis">DBIS</label>
+            <label index="tx_libconnect_domain_model_subject">Subject</label>
+            <label index="tx_libconnect_domain_model_subject.dbisid">Notation im DBIS-System</label>
+            <label index="tx_libconnect_domain_model_subject.ezbnotation">Notation im EZB-System</label>
+            <label index="tx_libconnect_domain_model_subject.title">Name des Fachgebiets</label>
+
+        </languageKey>
+    </data>
+</T3locallang>

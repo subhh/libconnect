@@ -1,0 +1,399 @@
+<div id="ezb-detail">
+<f:if condition="{error}">
+    <f:then>
+        <h1><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.error.h1" /></h1>
+        <p>
+            <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.error.p1" />
+        </p>
+        <p>
+            <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.error.p2" />
+        </p>
+    </f:then>
+    <f:else>
+        {namespace libconnect=Sub\Libconnect\ViewHelpers}
+        <h1><f:format.htmlentitiesDecode>{journal.title}</f:format.htmlentitiesDecode></h1>
+
+        <table id="ezb-result-details">
+            <tbody>
+                <tr>
+                    <th>
+                        <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.result.th" />:</strong>
+                    </th>
+                    <td>
+                        <span class="ezb-list-accessinfo-access_{journal.color_code.color}">
+                            {journal.color_code.text}
+                        </span>
+                    </td>
+                </tr>
+
+                <f:if condition="<f:count subject='{journal.periods}' /> > 0">
+                    <f:for each="{journal.periods}" as="period">
+                        <tr>
+                            <f:if condition="{libconnect:strlen(string: period.label)} > 0">
+                                <f:then>
+                                    <th>
+                                        <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.license.th" />:</strong>
+                                    </th>
+                                    <td>
+                                        <f:if condition="{libconnect:trimedstrlen(string: period.label)} > 0">
+                                            <f:then>
+                                                <a class="ezb-license" href="{libconnect:urldecode(url: period.link)}" target="_blank">{period.label}</a>&nbsp;
+                                            </f:then>
+                                            <f:else>
+                                                <a class="ezb-license" href="{libconnect:urldecode(url: period.link)}" target="_blank"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.period.a" /></a>
+                                            </f:else>
+                                        </f:if>    
+                                        <f:if condition="{period.readme}">
+                                            <f:then>
+                                                <a class="ezb-readme" href="<f:format.htmlentitiesDecode>{period.readme}</f:format.htmlentitiesDecode>"><span class="ezb-list-accessinfo-access_{period.color_code}"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.period.readme" /></span></a>
+                                            </f:then>
+                                            <f:else>
+                                                <span class="ezb-list-accessinfo-access_{period.color_code}">&nbsp;</span></a>
+                                            </f:else>
+                                        </f:if>
+                                    </td>
+                                </f:then>
+                                <f:else>
+                                    <th>
+                                        <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.period.rest" />:</strong>
+                                    </th>
+                                    <td>
+                                        <span class="ezb-list-accessinfo-access_{period.color_code}"><a class="ezb-license" href="{libconnect:urldecode(url: period.link)}" target="_blank"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.period.homepage" /></a></span>
+                                    </td>
+                                </f:else>
+                            </f:if>
+                            </tr>
+                    </f:for>
+                </f:if>
+
+                <f:if condition="{libconnect:strlen(string: journal.fulltext)} > 0">
+                    <tr>
+                        <th>
+                            <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.fulltext.th" />:</strong>
+                        </th>
+                        <td>
+                            <a class="ezb-research" href="{libconnect:urldecode(url: journal.fulltext_link)}" target="_blank">{libconnect:truncate(string: journal.fulltext, length: 70)}</a>
+                        </td>
+                    </tr>
+                </f:if>
+
+                <f:if condition="<f:count subject='{journal.homepages}' /> > 0">
+                    <tr>
+                        <th>
+                            <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.homepages.th" />:</strong>
+                        </th>
+                        <td>
+                            <ul>
+                                <f:for each="{journal.homepages}" as="homepage">
+                                    <li>
+                                        <a class="ezb-research" href="http://ezb.uni-regensburg.de/warpto.phtml?bibid={bibid}&colors=7&lang=de&jour_id={journal.id}&url={homepage.url}" target="_blank">{homepage.linktext}</a>
+                                    </li>
+                                </f:for>
+                            </ul>
+                        </td>
+                    </tr>
+                </f:if>
+
+                <f:if condition="{journal.first_fulltext.date} > 0">
+                    <tr>
+                        <th>
+                            <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.since.th" />:</strong>
+                        </th>
+                        <td>
+                            <f:if condition="{journal.first_fulltext.volume}"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.volume.td" /> <f:format.htmlentitiesDecode>{journal.first_fulltext.volume}</f:format.htmlentitiesDecode></f:if>
+                            <f:if condition="{journal.first_fulltext.issue}"><f:if condition="{journal.first_fulltext.volume}">, </f:if><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.issue.td" /> <f:format.htmlentitiesDecode>{journal.first_fulltext.issue}</f:format.htmlentitiesDecode></f:if>
+                            ({journal.first_fulltext.date})
+                        </td>
+                    </tr>
+                </f:if>
+
+                <f:if condition="{journal.last_fulltext}">
+                    <tr>
+                        <th>
+                            <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.untilthen.th" />:</strong>
+                        </th>
+                        <td>
+                            <f:if condition="{journal.last_fulltext.volume}"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.volume.td" /> {journal.last_fulltext.volume}</f:if>
+                            <f:if condition="{journal.last_fulltext.issue}"><f:if condition="{journal.last_fulltext.volume}">, </f:if><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.issue.td" /> {journal.last_fulltext.issue}</f:if>
+                            ({journal.last_fulltext.date})
+                        </td>
+                    </tr>
+                </f:if>
+                
+                <f:if condition="{journal.moving_wall}">
+                    <tr>
+                        <th>
+                            <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.movingwall" />:</strong>
+                        </th>
+                        <td>
+                            <f:if condition="{journal.moving_wall.prefix.not}">
+                                <f:then>
+                                    <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.movingwall.not" /> 
+                                </f:then>
+                                <f:else>
+                                    <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.movingwall.yes" /> 
+                                </f:else>
+                            </f:if>
+
+                            <f:if condition="{journal.moving_wall.number} > 1">
+                                <f:then>
+                                    <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.movingwall.middle.more" /> {journal.moving_wall.number} 
+                                </f:then>
+                                <f:else>
+                                    <f:if condition="{journal.moving_wall.duration.i}">
+                                        <f:then>
+                                            <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.movingwall.middle.one.i" /> 
+                                        </f:then>
+                                        <f:else>
+                                            <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.movingwall.middle.one.v" /> 
+                                        </f:else>         
+                                    </f:if>
+                                </f:else>
+                            </f:if>
+
+                             <f:if condition="{journal.moving_wall.number} > 1">
+                                 <f:then>
+                                    <f:if condition="{journal.moving_wall.duration.y}">
+                                        <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.movingwall.end.y.more" />
+                                    </f:if>
+                                    <f:if condition="{journal.moving_wall.duration.m}">
+                                        <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.movingwall.end.m.more" />
+                                    </f:if>
+                                    <f:if condition="{journal.moving_wall.duration.d}">
+                                        <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.movingwall.end.d.more" />
+                                    </f:if>
+                                    <f:if condition="{journal.moving_wall.duration.i}">
+                                        <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.movingwall.end.i.more" />
+                                    </f:if>
+                                    <f:if condition="{journal.moving_wall.duration.v}">
+                                        <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.movingwall.end.v.more" />
+                                    </f:if>
+                                 </f:then>
+                                 <f:else>
+                                    <f:if condition="{journal.moving_wall.duration.y}">
+                                        <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.movingwall.end.y.one" />
+                                    </f:if>
+                                    <f:if condition="{journal.moving_wall.duration.m}">
+                                        <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.movingwall.end.m.one" />
+                                    </f:if>
+                                    <f:if condition="{journal.moving_wall.duration.d}">
+                                        <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.movingwall.end.d.one" />
+                                    </f:if>
+                                    <f:if condition="{journal.moving_wall.duration.i}">
+                                        <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.movingwall.end.i.one" />
+                                    </f:if>
+                                    <f:if condition="{journal.moving_wall.duration.v}">
+                                        <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.movingwall.end.v.one" />
+                                    </f:if>
+                                 </f:else>
+                             </f:if>
+
+                        </td>
+                    </tr>
+                </f:if>
+            
+                <f:if condition="{journal.publisher}">
+                    <tr>
+                        <th>
+                            <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.publisher.th" />:</strong>
+                        </th>
+                        <td>
+                            <f:format.htmlentitiesDecode>{journal.publisher}</f:format.htmlentitiesDecode>
+                        </td>
+                    </tr>
+                </f:if>
+
+                <f:if condition="{journal.ZDB_number}">
+                    <tr>
+                        <th>
+                            <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.zdb.th" />:</strong>
+                        </th>
+                        <td>
+                            <f:if condition="{journal.ZDB_number_link}"><a href="{journal.ZDB_number_link}" target="_blank"></f:if>
+                            {journal.ZDB_number}
+                            <f:if condition="{journal.ZDB_number_link}"></a></f:if>
+                        </td>
+                    </tr>
+                </f:if>
+	
+                <f:if condition="{libconnect:strlen(string: journal.subjects_join)} > 0">
+                    <tr>
+                        <th>
+                            <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.subjects_join" />:</strong>
+                        </th>
+                        <td>
+                            <f:if condition="{journal.subjects_join_link}">
+                                <f:then>
+                                    <ul>
+                                    <f:for each="{journal.subjects_join_link}" as="entry">
+                                        <li><a href="<f:format.htmlentitiesDecode>{entry.link}</f:format.htmlentitiesDecode>">
+                                            <f:format.htmlentitiesDecode>{entry.title}</f:format.htmlentitiesDecode>
+                                        </a></li>
+                                    </f:for>
+                                    </ul>
+                                </f:then>
+                                <f:else>
+                                    <f:format.htmlentitiesDecode>{journal.subjects_join}</f:format.htmlentitiesDecode>
+                                </f:else>
+                            </f:if>                            
+                        </td>
+                    </tr>
+                </f:if>
+
+                <f:if condition="{journal.keywords_join}">
+                    <tr>
+                        <th>
+                            <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.keywords_join" />:</strong>
+                        </th>
+                        <td>
+                            <f:format.htmlentitiesDecode>{journal.keywords_join}</f:format.htmlentitiesDecode>
+                        </td>
+                    <tr>
+                </f:if>
+
+                <f:if condition="{libconnect:strlen(string: journal.eissns_join)} > 0">
+                    <tr>
+                        <th>
+                            <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.eissns_join" />:</strong>
+                        </th>
+                        <td>
+                            <f:format.htmlentitiesDecode>{journal.eissns_join}</f:format.htmlentitiesDecode>
+                        </td>
+                    </tr>
+                </f:if>
+
+                <f:if condition="{libconnect:strlen(string: journal.pissns_join)} > 0">
+                    <tr>
+                        <th>
+                            <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.pissns_join" />:</strong>
+                        </th>
+
+                        <td>
+                            <f:format.htmlentitiesDecode>{journal.pissns_join}</f:format.htmlentitiesDecode>
+                        </td>
+                    </tr>
+                </f:if>
+
+                <f:if condition="{libconnect:strlen(string: journal.appearence)} > 0">
+                    <tr>
+                        <th>
+                            <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.appearence" />:</strong>
+                        </th>
+                        <td>
+                            <f:format.htmlentitiesDecode>{journal.appearence}</f:format.htmlentitiesDecode>
+                        </td>
+                    </tr>
+                </f:if>
+
+                <f:if condition="{libconnect:strlen(string: journal.costs)} > 0">
+                    <tr>
+                        <th>
+                            <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.costs" />:</strong>
+                        </th>
+                        <td>
+                            <f:format.htmlentitiesDecode>{journal.costs}</f:format.htmlentitiesDecode>
+                        </td>
+                    </tr>
+                </f:if>
+
+                <f:if condition="{libconnect:strlen(string: journal.remarks)} > 0">
+                    <tr>
+                        <th>
+                            <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.remarks" />:</strong>
+                        </th>
+                        <td>
+                            <f:format.htmlentitiesDecode>{journal.remarks}</f:format.htmlentitiesDecode>
+                        </td>
+                    </tr>
+                </f:if>
+
+                <!-- code for location data -->
+                <f:if condition="{settings.enableLocationData}">
+                    <f:if condition="<f:count subject='{journal.locationData}' /> > 0">
+                        <tr>
+                            <th>
+                                <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.print.yes" />:</strong><br />
+                                (<f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.print.source" />: <a href="http://www.zdb-opac.de" target="zdbfenster">ZDB</a>)
+                            </th>            
+                            <td>
+                                <table width="100%" class="zdb-location-info">
+                                    <tbody>
+                                        <f:for each="{journal.locationData.resultList}" as="result">                   
+                                            <tr>
+                                                <td class="zdb-location-info-result">
+                                                    <table class="zdb-location-detail">
+                                                        <tbody>
+                                                            <f:if condition="{libconnect:strlen(string: result.Title)} > 0">
+                                                                <tr>
+                                                                    <th><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.print.titel" />:</th>
+                                                                    <td><f:format.htmlentitiesDecode>{result.Title}</f:format.htmlentitiesDecode></td>
+                                                                </tr>
+                                                            </f:if>
+
+                                                            <f:if condition="{libconnect:strlen(string: result.Period)} > 0">
+                                                                <tr>
+                                                                    <th><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.print.period" />:</th>
+                                                                    <td><f:format.htmlentitiesDecode>{result.Period}</f:format.htmlentitiesDecode></td>
+                                                                </tr>
+                                                            </f:if>
+
+                                                            <f:if condition="{libconnect:strlen(string: result.Signature)} > 0">
+                                                                <tr>
+                                                                    <th><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.print.signature" />:</th>
+                                                                    <td><f:format.htmlentitiesDecode>{result.Signature}</f:format.htmlentitiesDecode></td>
+                                                                </tr>
+                                                            </f:if>
+
+                                                            <f:if condition="{libconnect:strlen(string: result.Location)} > 0">
+                                                                <tr>
+                                                                    <th><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.print.location" />:</th>
+                                                                    <td><f:format.htmlentitiesDecode>{result.Location}</f:format.htmlentitiesDecode></td>
+                                                                </tr>
+                                                            </f:if>
+                                                        </tbody>
+                                                    </table>                            
+                                                </td>
+                                                <td class="zdb-location-info-reference">
+                                                    <f:for each="{journal.locationData.references}" as="reference">
+                                                        <p>
+                                                            <f:if condition="{settings.useIconService}">
+                                                                <f:then>
+                                                                    <a href="<f:format.htmlentitiesDecode>{journal.locationData.iconInfoUrl}</f:format.htmlentitiesDecode>" target="jopinfo">
+                                                                    <img src="<f:format.htmlentitiesDecode>{journal.locationData.iconRequest}</f:format.htmlentitiesDecode>" alt="<f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.print.info" />" title="<f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.print.info" />"/>
+                                                                    </a>
+                                                                </f:then>
+                                                                <f:else>
+                                                                    <a href="<f:format.htmlentitiesDecode>{reference.URL}</f:format.htmlentitiesDecode>" target="zdbopac">                                    
+                                                                    <img src="{f:uri.resource(path:'Img/zdb-state_{result.state}.gif')}" class="zdb-state-{result.state}-icon" alt="<f:format.htmlentitiesDecode>{reference.Label}</f:format.htmlentitiesDecode>" title="<f:format.htmlentitiesDecode>{reference.Label}</f:format.htmlentitiesDecode>"/>
+                                                                    </a>
+                                                                </f:else>
+                                                            </f:if>
+                                                        </p>
+                                                    </f:for>
+                                                </td>
+                                            </tr>
+                                        </f:for>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </f:if>
+                </f:if>
+                <!-- ende code for location data -->
+
+                <f:if condition="{libconnect:strlen(string: journal.participants)} > 0">
+                    <tr>
+                        <th>
+                            <strong>&nbsp;</strong>
+                        </th>
+                        <td>
+                            <a href="<f:format.htmlentitiesDecode>{journal.participants}</f:format.htmlentitiesDecode>" target="zdbopac"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.participants" /></a>
+                        </td>
+                    </tr>
+                </f:if>
+
+            </tbody>
+        </table>
+    </f:else>
+</f:if>
+</div>

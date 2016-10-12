@@ -1,0 +1,47 @@
+<div id="participants-form-wrapper" class="clearfix">
+
+<h1><f:format.htmlentitiesDecode>{titel}</f:format.htmlentitiesDecode></h1>
+
+<p><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.articipants.infotext" /></p>
+
+<form id="participants-form" name="participants-form" action="{ParticipantsList.detailURL}&bibid=" method="get" class="participants-form" onsubmit="changeBib();">
+    <input id="bibinput" type="hidden" value="<f:format.htmlentitiesDecode>{ParticipantsList.BibID}</f:format.htmlentitiesDecode>" name="bibid"/>
+    <input type="hidden" value="7" name="colors"/>
+    <input type="hidden" value="de" name="lang"/>
+    <input type="hidden" value="<f:format.htmlentitiesDecode>{jourid}</f:format.htmlentitiesDecode>" name="jour_id"/>
+    
+    <fieldset name="participants">
+        <div>
+            <label class="filter" for="countries"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.articipants.countries" /></label>
+            <select id="countries" class="filter" name="countries" size="7" onchange="setCountries();">
+                <option value="all" class="all" selected="selected">alle</option>
+                <f:for each="{ParticipantsList.countries}" as="country" key="key">
+                    <option value="{key}" class="{key}"><f:format.htmlentitiesDecode>{country}</f:format.htmlentitiesDecode></option>
+                </f:for>
+            </select>
+        </div>
+        <div>
+            <label class="filter" for="categories"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.articipants.categories" /></label>
+            <select id="categories" class="filter" name="categories" size="8" onchange="setCategories();">
+                <option value="all" class="all" selected="selected">alle</option>
+                <f:for each="{ParticipantsList.categories}" as="category" key="key">
+                    <option value="{key}" class="{key} {category.countryrefs}"><f:format.htmlentitiesDecode>{category.category_name}</f:format.htmlentitiesDecode></option>
+                </f:for>
+            </select>
+        </div>
+        <div>
+            <label for="participants"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.articipants.participants" /></label>
+            <select id="participants" size="10" name="newbib">
+                <f:for each="{ParticipantsList.institutions}" as="institution" key="key">
+                    <option value="{key}"<f:if condition="{ParticipantsList.BibID} == {key}"> selected="selected"</f:if> class="{institution.catrefs} {institution.countryref}"><f:format.htmlentitiesDecode>{institution.name}</f:format.htmlentitiesDecode></option>
+                </f:for>
+            </select>
+        </div>
+        <div>
+            <input type="submit" value="<f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.articipants.submit" />" name="np_detail"/>
+        </div>
+    </fieldset> 
+
+</form>
+
+</div>

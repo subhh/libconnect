@@ -1,0 +1,337 @@
+@charset "UTF-8";
+.ezb-list-legend ul li.ezb-list-legend-one,
+.ezb-list-accessinfo-access_1,
+.ezb-accessinfo-access_1{
+    background-image: url("../Img/ezb-list_1.png");
+}
+.ezb-list-legend ul li.ezb-list-legend-two,
+.ezb-list-accessinfo-access_2,
+.ezb-accessinfo-access_2{
+    background-image: url("../Img/ezb-list_2.png");
+}
+
+.ezb-list-legend ul li.ezb-list-legend-four,
+.ezb-list-accessinfo-access_4,
+.ezb-accessinfo-access_4{
+    background-image: url("../Img/ezb-list_4.png");
+}
+
+.ezb-list-legend ul li.ezb-list-legend-six,
+.ezb-list-accessinfo-access_6,
+.ezb-accessinfo-access_6{
+    background-image: url("../Img/ezb-list_6.png");
+}
+
+.ezb-list-legend ul li.ezb-list-legend-one,
+.ezb-list-legend ul li.ezb-list-legend-two,
+.ezb-list-legend ul li.ezb-list-legend-six,
+.ezb-list-legend ul li.ezb-list-legend-four,
+.ezb-list-accessinfo-access_1,
+.ezb-list-accessinfo-access_2,
+.ezb-list-accessinfo-access_4,
+.ezb-list-accessinfo-access_6,
+.ezb-accessinfo-access_1,
+.ezb-accessinfo-access_2,
+.ezb-accessinfo-access_4,
+.ezb-accessinfo-access_6{
+    background-repeat: no-repeat;
+    background-position: 0 5px;
+    list-style-image: none !important;
+    margin: 0 !important;
+    padding: 0 0 0.2em 2.3em !important;
+}
+
+.ezb-list-legend label {
+    display: block;
+    float: none;
+    font-weight: normal;
+    margin-left: 2em !important;
+}
+
+.accessinfo-element {
+    float: left;
+}
+
+.ezb-readme {
+    float:right;   
+}
+
+.hiddenezb, #e-search .hiddenezb{
+    display:none;
+}
+
+ul.ezb-list li a {
+    display: block;
+    margin: 0 0 0 2.3em;
+}
+
+#ezb-result-details tr {
+    border-bottom: 1px dotted #CCCCCC;
+    vertical-align:top;
+    text-align:left;
+    line-height:1.5em;
+}
+#ezb-result-details th{
+    width:160px;
+}
+
+#ezb-result-details td {
+    line-height:1.5em;
+    width:510px;
+}
+
+#extSearchForm-fieldset-1 select, #extSearchForm-fieldset-2 select {
+    background-color: #FFFFFF;
+    border: 0.0625em solid #CCCCCC;
+    color: #222222;
+    margin: 0 0.75em 0.5em 0;
+}
+
+.ezb-list-output h3 a{
+    margin: 0;
+    padding: 0 0 0.35em 2.4em;
+    display: block;
+    background: url("../Img/ezb_plus.png") no-repeat scroll 10px 5px #FFFFFF;
+}
+
+.ezb-license {
+    font-weight: bold;
+}
+
+.ezb-navigation {
+    margin: 0 0 0 8px;
+    font-size: 0.9em;
+    text-decoration: none;
+}
+
+.ezb-navigation a {
+    border: 1px solid #CCCCCC;
+    line-height: 2em;
+    margin: 0;
+    padding: 0 0.4em;
+}
+
+.ezb-navigation em {
+    border:1px solid #990000;
+    font-style:normal;
+    font-weight:bold;
+    padding:0 0.2em;
+    text-decoration:none;
+    background: #990000;
+    color: #FFF;
+}
+
+/**
+ * begin - extended search styles 
+ */
+
+#extSearchForm-wrapper fieldset {
+    border: none;
+}
+ 
+#extSearchForm-wrapper input {
+    height:18px;
+    vertical-align:bottom;
+    margin: 0 0.75em 0.5em 0;
+}
+
+#extSearchForm-wrapper input[type="submit"] {
+    height:28px;
+    padding: 0 8px;
+    margin: 0 0 1.2em 1.2em;
+}
+
+#extSearchForm-wrapper input[type="checkbox"] {
+    height:18px;
+    vertical-align:top;
+    margin: 0 0.75em 0.5em 0;
+}
+
+#extSearchForm-wrapper legend {
+    font-weight: bold;
+    margin: 0 0 1em 0;
+}
+
+#extSearchForm-wrapper label {
+    vertical-align: top;
+    width: 200px;
+}
+
+#extSearchForm-fieldset-1 table td {
+    border: none;
+    text-align: left;
+    width: 50px;
+}
+
+#extSearchForm-fieldset-1 table tr:last-child td {
+    padding: 15px 0 5px 0;
+}
+
+#extSearchForm-fieldset-2 table td {
+    border: none;
+}
+
+#extSearchForm-fieldset-2 table td:first-child {
+    vertical-align: top;
+    width:120px;
+}
+
+#fachgebiete {
+    width:34em;
+}
+
+#zugangsinfos label{
+    margin-left: 2em !important;
+    font-weight: normal;
+}
+
+/**
+ * end - extended search styles
+ */
+
+/**
+ * begin - miniform search styles
+ */  
+ 
+.datenbank-suche-wrapper input[type="submit"] {
+    border: 1px solid #CCCCCC; 
+    vertical-align:middle;
+    margin: 5px 0 0 0;
+    width:70px;
+}
+
+.datenbank-suche-wrapper input[type="text"] {
+    height:18px; width:190px;
+}
+
+.ezb_erw_search {
+    vertical-align:bottom;
+}
+ 
+.ezb-listings-wrapper {
+    margin: 15px 0 5px 0;
+    padding-bottom:10px;
+    border-bottom: 2px solid #D0D0D0;
+}
+
+/**
+ * end - miniform search styles
+ */
+
+/**
+ * begin - ZDB styles
+ */
+
+.zdb-location-info th {
+    width: 100px !important;
+}
+
+.zdb-location-info-result {
+    width: 400px !important;
+}
+.zdb-location-info-reference {
+    width: 50px !important;
+}
+
+.zdb-location-detail td {
+    width: 100%;
+}
+
+.zdb-location-detail tr:last-child > td, .zdb-location-info tr:last-child > td {
+    border-bottom: none;
+}
+
+.zdb-location-detail tr:last-child th {
+    border-bottom: none !important;
+}
+
+.zdb-state-2-icon {
+    width: 60px;
+    border: 0px;
+    height: 14px;
+}
+
+#ezb-result-details .zdb-location-detail th,
+#ezb-result-details .zdb-location-detail td{
+    border-top: none;
+}
+
+#ezb-result-details .zdb-location-detail tr {
+    border-top: none;
+}
+
+#ezb-result-details .zdb-location-detail tr:last-child{
+   border-bottom: none;
+}
+
+/**
+ * end - ZDB styles
+ */
+
+/**
+ * begin - New in EZB
+ */
+
+.ezb-newdate {
+    font-weight: bold;
+}
+/**
+ * end - New in EZB
+ */
+
+/**
+ * begin - ParticipantsForm
+ */
+#participants-form-wrapper div{
+    margin-bottom: 1em;
+}
+
+#participants{
+    width: 500px;
+    margin-top: 1em;
+}
+
+#participants-form label.filter{
+    float: left;
+    width: 100px;
+}
+
+#participants-form select.filter{
+    margin-left: 100px;
+}
+
+.hide{
+    display: none;
+}
+/**
+ * end - ParticipantsForm
+ */
+
+/**
+ * begin - Contact
+ */
+#ezb-contact-bibid,
+#ezb-contact-www,
+#ezb-contact-email{
+    margin-bottom: 1em;
+}
+
+/**
+ * end - Contact
+ */
+
+/**
+* typo3-messages
+*/
+
+.typo3-messages {
+    padding-bottom: 1em;
+    padding-top: 1em;
+}
+.message-header {
+    color: #ff0000;
+    font-weight: bold;
+}
+/**
+* end - typo3-messages
+*/

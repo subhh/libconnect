@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+    <meta type="array">
+        <description>Context Sensitive Help (CSH) for table tx_libconnect_domain_model_subject</description>
+        <type>CSH</type>
+        <csh_table>tx_libconnect_domain_model_subject</csh_table>
+    </meta>
+    <data type="array">
+        <languageKey index="default" type="array">
+            <label index="title.description">Name des Fachgebiets</label>
+            <label index="dbisid.description">Notation im DBIS-System</label>
+            <label index="ezbnotation.description">Notation im EZB-System</label>
+        </languageKey>
+    </data>
+</T3locallang>

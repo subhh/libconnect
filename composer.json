@@ -1,0 +1,25 @@
+{
+    "name": "Sub/libconnect",
+    "type": "typo3-cms-extension",
+    "description": "Diese Extension ist von Avonis im Auftrag der Staats- und Universitaetsbibliothek Hamburg entwickelt worden. Mit ihr lassen sich Ergebnisse aus den Informationssystemen EZB und DBIS der Universitaet Regensburg direkt in das TYPO3-System einbinden.",
+    "homepage": "https://www.sub.uni-hamburg.de",
+    "license": ["GPL-2.0+"],
+    "keywords": ["TYPO3 CMS", "ezb dbis"],
+    "support": {
+        "issues": "https://forge.typo3.org/projects/libconnect"
+    },
+    "require": {
+        "typo3/cms-core": "^6.0.0 || ^7.6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sub\\Libconnect\\": "Classes/"
+        },
+        "psr-4": {
+            "Sub\\Libconnect\\": "Resources/Private/Lib/"
+        },
+        "psr-4": {
+            "Sub\\Libconnect\\": "Classes/UserFunctions/"
+        }
+    }
+}

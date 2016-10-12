@@ -1,0 +1,276 @@
+@charset "UTF-8";
+.dbis-list-legend ul li.dbis-list-legend-one,
+.dbis-list-accessinfo-access_0 {
+    background-image: url("../Img/dbis-list_0.png");
+}
+.dbis-list-legend ul li.dbis-list-legend-two,
+.dbis-list-accessinfo-access_1 {
+    background-image: url("../Img/dbis-list_1.png");
+}
+.dbis-list-legend ul li.dbis-list-legend-three,
+.dbis-list-accessinfo-access_2 {
+    background-image: url("../Img/dbis-list_2.png");
+}
+.dbis-list-legend ul li.dbis-list-legend-four,
+.dbis-list-accessinfo-access_500{
+    background-image: url("../Img/germany.png");
+}
+.dbis-list-legend ul li.dbis-list-legend-five,
+.dbis-list-accessinfo-access_300 {
+    background-image: url("../Img/euro.png");
+}
+.dbis-list-legend ul li.dbis-list-legend-six,
+.dbis-list-accessinfo-access_7 {
+    background-image: url("../Img/dbis-list_7.png");
+}
+.dbis-list-legend ul li.dbis-list-legend-seven,
+.dbis-list-accessinfo-access_5 {
+    background-image: url("../Img/dbis-list_5.png");
+}
+.dbis-list-legend ul li.dbis-list-legend-eight,
+.dbis-list-accessinfo-access_4{
+    background-image: url("../Img/dbis-list_4.png");
+}
+.dbis-list-legend ul li.dbis-list-legend-nine,
+.dbis-list-accessinfo-access_6 {
+    background-image:url("../Img/dbis-list_6.png");
+}
+.dbis-list-legend ul li.dbis-list-legend-five,
+.dbis-list-accessinfo-access_3 {
+    background-image:url("../Img/cdrom_dbis_list_3.png");
+}
+
+.dbis-list-legend ul li.dbis-list-legend-one,
+.dbis-list-legend ul li.dbis-list-legend-two,
+.dbis-list-legend ul li.dbis-list-legend-six,
+.dbis-list-legend ul li.dbis-list-legend-four,
+.dbis-list-accessinfo-access_0,
+.dbis-list-accessinfo-access_1,
+.dbis-list-accessinfo-access_2,
+.dbis-list-accessinfo-access_3,
+.dbis-list-accessinfo-access_4,
+.dbis-list-accessinfo-access_5,
+.dbis-list-accessinfo-access_6,
+.dbis-list-accessinfo-access_7,
+.dbis-list-accessinfo-access_300,
+.dbis-list-accessinfo-access_500 {
+    background-repeat: no-repeat;
+    background-position: 0 5px;
+    list-style-image: none !important;
+    margin: 0 !important;
+    padding: 0 0 0.2em 2.3em !important;
+}
+
+.hiddendebis, #extSearchForm-wrapper .hiddendebis{
+    display: none;
+}
+
+ .libconnect-h1{
+    font-size: 1em;
+    font-weight: bold;
+} 
+ .libconnect-h2{
+    font-size: 1.5em;
+    margin-bottom: 1em;
+}
+
+ ul.dbis-dblist li a {
+    display: block;
+    margin: 0 0 0 1em;
+}
+
+.dbis-list {
+    margin-top: 3em;
+}
+
+.dbis-result-details th {
+    vertical-align: top;
+    text-align: left;
+    line-height: 1.5em;
+    width: 160px;
+}
+
+.dbis-result-details td {
+    line-height: 1.5em;
+    width: 510px;
+}
+
+.dbis-result-details td, .dbis-result-details th {
+    border-top: 1px solid #CCCCCC;
+    padding: 0.5em 0 1.5em;
+}
+
+.alph-nav-list-wrapper {
+    margin: 1.8em 0 0.4em 0.4em;
+    font-size: 1em;
+    text-decoration: none;
+}
+
+.alph-nav-list-wrapper a {
+    border: 1px solid #CCCCCC;
+    line-height: 2em;
+    
+    padding: 0 0.4em;
+}
+
+.alph-nav-list-wrapper em {
+    background: none repeat scroll 0 0 #f09000;
+    border: 1px solid #f09000;
+    color: #FFFFFF;
+    font-style: normal;
+    font-weight: bold;
+    padding: 0 0.4em;
+    text-decoration: none;
+}
+
+.dbis-research span {
+    background-color: #808080;
+    border: medium none;
+    color: #ffffff;
+    padding: 6px 8px;
+    vertical-align: middle;
+    float:right;
+}
+
+a.dbis-research{
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+/**
+ * begin - extended search styles 
+ */
+
+#extSearchForm-wrapper fieldset {
+    border: none;
+}
+
+#extSearchForm-wrapper input {
+    height: 18px;
+    vertical-align: bottom;
+    margin: 0 0.75em 0.5em 0;
+}
+
+#extSearchForm-wrapper input[type="submit"] {
+    height: 28px;
+    padding: 0 8px;
+    margin: 0 0 1.2em 0;
+}
+
+#extSearchForm-wrapper input[type="checkbox"] {
+    height: 18px;
+    vertical-align: top;
+    margin: 0 0.75em 0.5em 0;
+}
+
+#extSearchForm-wrapper select {
+    background-color: #FFFFFF;
+    border: 0.0625em solid #CCCCCC;
+    color: #222222;
+    margin: 0 0.75em 0.5em 0;
+}
+
+#extSearchForm-wrapper legend {
+    font-weight: bold;
+    margin: 0 0 1em 0;
+}
+
+#extSearchForm-wrapper label {
+    vertical-align: top;
+    width: 200px;
+}
+
+#extSearchForm-fieldset-1 table td {
+    border: none;
+    text-align: left;
+    width: 50px;
+}
+
+#extSearchForm-fieldset-2 table td {
+    border: none;
+    width: 500px;
+}
+
+#extSearchForm-fieldset-2 table td:first-child {
+    vertical-align: top;
+    width: 120px;
+}
+
+#fachgebiete, #typen, #laender {
+    height: 6.6em;
+    width: 430px;
+}
+
+#zugaenge, #formal_type {
+    width: 430px;
+}
+
+/**
+ * end - extended search styles
+ */
+
+ 
+/**
+ * begin - miniform search styles
+ */ 
+#libconnect_dbis_minisuche {
+    height:18px;
+    width:190px;
+}
+ 
+.dbis-listings-wrapper {
+    margin: 15px 0 5px 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #D0D0D0;
+} 
+ 
+.datenbank-suche-wrapper input[type="submit"] {
+    border: 1px solid #CCCCCC;
+    vertical-align: middle;
+    margin: 5px 0 0 0;
+    min-width:70px;
+}
+
+.dbis_erw_search {
+    vertical-align:bottom;
+}
+
+.datenbank-suche-wrapper select {
+    background-color: #FFFFFF;
+    border: 0.0625em solid #CCCCCC;
+    color: #222222;
+    margin: 0;
+    width: 180px;
+    padding: 0.06em;
+} 
+ 
+/**
+ * end - miniform search styles
+ */
+
+/**
+ * begin - New in DBIS
+ */
+
+.dbis-newdate {
+    font-weight: bold;
+}
+/**
+ * end - New in DBIS
+ */
+
+/**
+* typo3-messages
+*/
+
+.typo3-messages {
+    padding-bottom: 1em;
+    padding-top: 1em;
+}
+.message-header {
+    color: #ff0000;
+    font-weight: bold;
+}
+/**
+* end - typo3-messages
+*/

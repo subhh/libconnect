@@ -1,0 +1,80 @@
+#
+# content here will be included after plugin activation automatically. No template inclusion necessary.
+#
+
+plugin.tx_libconnect {
+    # customsubcategory=settings=Settings
+
+    # cat=plugin.tx_libconnect/settings/0001; type=string; label=ezbbibid
+    ezbbibid = SUBHH
+    # cat=plugin.tx_libconnect/settings/0002; type=string; label=dbisbibid
+    dbisbibid = zbmed
+    # cat=plugin.tx_libconnect/settings/0003; type=string; label=zdbsid
+    zdbsid = vid:dbid
+    //zdbbibid = BIBID
+    //zdbsigel = SIGEL
+    //zdbisil = ISIL
+    //zdbbik = ISIL	
+
+    #proxy configuration for CURL
+    # cat=plugin.tx_libconnect/settings/0010; type=string; label=name or ip of proxy
+    proxy = 
+    # cat=plugin.tx_libconnect/settings/0011; type=string; label=port of proxy
+    proxy_port = 
+    
+    view {
+        # cat=plugin.tx_libconnect/file/0003; type=string; label=Path to template root (FE)
+        templateRootPath = EXT:libconnect/Resources/Private/Templates/
+        # cat=plugin.tx_libconnect/file/0004; type=string; label=Path to template partials (FE)
+        partialRootPath = EXT:libconnect/Resources/Private/Partials/
+        # cat=plugin.tx_libconnect/file/0005; type=string; label=Path to template layouts (FE)
+        layoutRootPath = EXT:libconnect/Resources/Private/Layouts/
+    }
+    persistence {
+        # cat=plugin.tx_libconnect/settings/0020; type=int+; label=Default storage PID
+        storagePid = 
+    }
+
+    settings {
+        file.path {
+            # cat=plugin.tx_libconnect/file/0001; type=string; label=Path to CSS for DBIS (FE)
+            dbisCSS = EXT:libconnect/Resources/Public/Styles/dbis.css
+            # cat=plugin.tx_libconnect/file/0002; type=string; label=Path to CSS for EZB (FE)
+            ezbCSS = EXT:libconnect/Resources/Public/Styles/ezb.css
+        }
+
+        ezblongaccessinfos{
+            force = false
+            de{
+                1 = frei zugänglich
+                2 = Im Campus-Netz sowie für Angehörige der Universität auch extern zugänglich.
+                4 = Für Ihren Standort nicht freigeschaltet. Zum Teil bekommen Sie Zugriff auf Abstracts.
+                6 = Nur für einen Teil der erschienenen Jahrgänge zugänglich.
+            }
+            en{
+                1 = free available
+                2 = On campus network and member of the univeristy external accessible
+                4 = Free for your location. Partial only access to abstracts.
+                6 = Only a part of the volumes is accessable.
+            }
+        }
+
+        ezbshortaccessinfos{
+            de{
+                1 = frei zugänglich
+                2 = im Campus-Netz zugänglich
+                4 = nicht frei zugänglich
+                6 = nur ein Teil zugänglich
+            }
+            en{
+                1 = free available
+                2 = only on the Campus-Netz accessable
+                4 = not free accessable
+                6 = only a part is accessable
+            }
+        }
+
+        ezbNoCSS = 0
+        dbisNoCSS = 0
+    }
+}
