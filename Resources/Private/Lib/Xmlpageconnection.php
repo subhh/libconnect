@@ -84,16 +84,24 @@ class Tx_Libconnect_Resources_Private_Lib_Xmlpageconnection {
         //curl_exec with CURLOPT_RETURNTRANSFER set 1 returns FALSE on error or
         //the result on success, so check for result.
         if ($result) {
-
+            //try to fix problem with &
+            $result = str_replace(" & ", " &amp; ", $result);
+        
             //simplexml_load_string will produce E_WARNING error messages for each error 
             //found in the XML data. Therefore suppress error messages in any mode and
             //handle errors for debug-mode differently.
-            libxml_use_internal_errors(TRUE);
-
             //parse the XML data.
             $xmlObj = simplexml_load_string($result);
-            
+//            $error_array = libxml_get_errors();
+            //var_dump($error_array);exit;
             //log url to devlog in debug-mode if XML data contained errors.
+            if (count($error_array) > 0) {
+                if ($this->debug) {
+                    t3lib_div::devLog('XML data contained errors: '.$url, 'libconnect', 1);
+                }
+            }
+            
+            
             if ($this->debug) {
                 $error_array = libxml_get_errors();
                 if (count($error_array) > 0) {

@@ -4,8 +4,8 @@
 * - AL: Andre Lahmann andre.lahmann@uni-leipzig.de (Leipzig University Library)
 * - BH: Björn Heinermann hein@zhaw.ch (Zürcher Hochschule für Angewandte Wissenschaften)
 **/
-5.0.1
-    - DBIS: var_dump entfernt. (TW)
+5.0.2
+    - Fehler durch nicht valides HTML behoben
 
 5.0.0
     - Kompatibilität zu TYPO3 7.6 (TW)
