@@ -6,6 +6,7 @@
 **/
 5.0.2
     - Fehler durch nicht valides HTML behoben
+    - Fehler korrigiert, bei dem IsfirstPlugInUserFunction statisch verwendet wurde obwohl es nur public war.
 
 5.0.0
     - Kompatibilität zu TYPO3 7.6 (TW)

@@ -17,7 +17,7 @@ class IsfirstPlugInUserFunction{
      * 
      * @return boolean        
      */
-    public function IsfirstPlugInUserFunction($type, $uid) {
+    static function IsfirstPlugInUserFunction($type, $uid) {
         $pid = $GLOBALS['TSFE']->id;
 
         $list_type = 'libconnect_'.$type;
