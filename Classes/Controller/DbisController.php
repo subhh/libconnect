@@ -65,7 +65,11 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
      * shows a list of databases (for general, search, choosed subject)
      */
     public function displayListAction() {
-        $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('libconnect');
+        if(!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GET('tx_libconnect_dbis'))){
+            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('tx_libconnect_dbis');
+        } else{
+            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('libconnect');
+        }
 
         //include CSS
         $this->decideIncludeCSS();
@@ -116,7 +120,11 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
      * shows deatail view
      */
     public function displayDetailAction() {
-        $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('libconnect');
+        if(!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GET('tx_libconnect_dbis'))){
+            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('tx_libconnect_dbis');
+        } else{
+            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('libconnect');
+        };
 
         //include CSS
         $this->decideIncludeCSS();
@@ -151,7 +159,11 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
      * shows sidebar
      */
     public function displayMiniFormAction() {
-        $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('libconnect');
+        if(!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GET('tx_libconnect_dbis'))){
+            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('tx_libconnect_dbis');
+        } else{
+            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('libconnect');
+        }
 
         //include CSS
         $this->decideIncludeCSS();
@@ -203,7 +215,11 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
      * shows the search
      */
     public function displayFormAction() {
-        $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('libconnect');
+        if(!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GET('tx_libconnect_dbis'))){
+            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('tx_libconnect_dbis');
+        } else{
+            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('libconnect');
+        }
 
         //include CSS
         $this->decideIncludeCSS();
@@ -222,7 +238,12 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
      * shows the new entries
      */
     public function displayNewAction() {
-        $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('libconnect');
+        if(!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GET('tx_libconnect_dbis'))){
+            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('tx_libconnect_dbis');
+        } else{
+            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('libconnect');
+        }
+        
         $params['jq_type1'] = 'LD';
         $params['sc'] = $params['search']['sc'];
 

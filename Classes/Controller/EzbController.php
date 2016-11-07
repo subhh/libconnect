@@ -49,7 +49,11 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
      * shows a list of journals (for general, search, choosed subject)
      */
     public function displayListAction() {
-        $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('libconnect');
+        if(!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GET('tx_libconnect_ezb'))){
+            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('tx_libconnect_ezb');
+        } else{
+            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('libconnect');
+        }
 
         //get PageID
         $Pid = intval($GLOBALS['TSFE']->id);
@@ -155,7 +159,11 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
      * shows details
      */
     public function displayDetailAction() {
-        $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('libconnect');
+        if(!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GET('tx_libconnect_ezb'))){
+            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('tx_libconnect_ezb');
+        } else{
+            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('libconnect');
+        }
         $config['participantsPid'] = $this->settings['flexform']['participantsPid'];
         $config['listPid'] = $this->settings['flexform']['listPid'];
 
@@ -194,7 +202,11 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
      * shows sidebar
      */
     public function displayMiniFormAction() {
-        $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('libconnect');
+        if(!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GET('tx_libconnect_ezb'))){
+            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('tx_libconnect_ezb');
+        } else{
+            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('libconnect');
+        }
 
         //include CSS
         $this->decideIncludeCSS();
@@ -243,7 +255,11 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
      * show the seach form
      */
     public function displayFormAction() {
-        $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('libconnect');
+        if(!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GET('tx_libconnect_ezb'))){
+            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('tx_libconnect_ezb');
+        } else{
+            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('libconnect');
+        }
 
         //include CSS
         $this->decideIncludeCSS();
@@ -262,7 +278,11 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
      * shows list of new entries
      */
     public function displayNewAction() {
-        $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('libconnect');
+        if(!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GET('tx_libconnect_ezb'))){
+            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('tx_libconnect_ezb');
+        } else{
+            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('libconnect');
+        }
         $params['jq_type1'] = 'ID';
         $params['sc'] = $params['search']['sc'];
         if(!empty($params['subject'])){
@@ -303,7 +323,11 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
      * count the new entries
      */
     public function getNewCount($subjectId = FALSE) {
-        $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('libconnect');
+        if(!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GET('tx_libconnect_ezb'))){
+            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('tx_libconnect_ezb');
+        } else{
+            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('libconnect');
+        }
         $params['jq_type1'] = 'ID';
         $params['sc'] = $params['search']['sc'];
 
@@ -329,7 +353,11 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
      * genrates Form for the participants
      */
     public function displayParticipantsFormAction() {
-        $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('libconnect');
+        if(!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GET('tx_libconnect_ezb'))){
+            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('tx_libconnect_ezb');
+        } else{
+            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('libconnect');
+        }
         //include CSS
         $this->decideIncludeCSS();
         //include js
