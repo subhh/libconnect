@@ -2,19 +2,21 @@
     <h2 class="ezb">
         <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.miniform.searchform.headline" />
     </h2>
-    <form action="{listUrl}" method="get">
-        <input type="hidden" name="id" value="{listPid}" />
+    <f:form action="{listUrl}" method="get" pageUid="{listPid}">
+        <f:form.hidden name="id" value="{listPid}"/>
+
         <label for="libconnect_ezb_minisuche" class="hiddenezb">
             <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.miniform.searchform.label" />
         </label>
-        <input id="libconnect_ezb_minisuche" type="text" name="libconnect[search][sword]" size="20" value="{vars.sword}" />
-        <input type="submit" value="Suchen" />
+        <f:form.textfield type="text" id="libconnect_ezb_minisuche" name="search[sword]" value="{vars.sword}" size="20"/>
+
+        <f:form.submit name="submit" value="Suchen"/>
         <p>
             <a href="{searchUrl}">
                 <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.miniform.link.extended_search" />
             </a>
         </p>
-    </form>
+    </f:form>    
 </div>
 
 <div class="ezb-listings-wrapper">

@@ -4,30 +4,25 @@
 
     <h2 class="libconnect-h2"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.miniform.search_header" /></h2>
 
-    <form action="{listUrl}" method="get">
-        <input type="hidden" name="id" value="{listPid}" />
+    <f:form action="{listUrl}" method="get" pageUid="{listPid}">
+        <f:form.hidden name="id" value="{listPid}"/>
+        
         <label for="libconnect_dbis_minisuche" class="hiddendebis"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.miniform.search_term" /></label>
-        <input id="libconnect_dbis_minisuche" type="text" name="libconnect[search][sword]" size="20" value="{vars.sword}" />
-        <input type="submit" value="Suchen" />
-
-        <p><a href="{searchUrl}"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.miniform.search_link" /></a></p>
-
-    </form>
+        <f:form.textfield type="text" id="libconnect_dbis_minisuche" name="search[sword]" value="{vars.sword}" size="20"/><br />
+        
+        <f:form.submit name="submit" value="Suchen"/>
+        
+        <p><a href="{searchUrl}"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.miniform.search_link" /></a></p>    
+    </f:form>
 
 </div>
- <f:form action="{listUrl}" method="get">
- 	<f:form.hidden name="id" value="{listPid}"/><br />
- 	
- 	<f:form.textfield type="text" id="libconnect_dbis_minisuche" name="sword" value="{vars.sword}" size="20"/><br />
-    
- 	<f:form.submit name="submit" value="Suchen"/><br />
-</f:form>
+
 <f:if condition="{vars.sword}">
     <f:then></f:then>
     <f:else>
         <div class="datenbank-suche-wrapper">
             <h2 class="libconnect-h2"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.miniform.show_databases" /></h2>
-
+            
             <form action="{listUrl}" method="get">
                 <p>
                     <input type="hidden" name="id" value="{listPid}" />
@@ -45,8 +40,6 @@
                 </p>
                 <input type="submit" value="Zugang ausw&auml;hlen" />
             </form>
-            
-           
 
         </div>
     </f:else>
