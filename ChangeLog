@@ -5,13 +5,15 @@
 * - BH: Björn Heinermann hein@zhaw.ch (Zürcher Hochschule für Angewandte Wissenschaften)
 **/
 5.0.2
-    - Fehler durch nicht valides HTML behoben
-    - Fehler korrigiert, bei dem IsfirstPlugInUserFunction statisch verwendet wurde obwohl es nur public war.
-    - in Templates können jetzt reine Fluidformulare verwendet werden
-    - fehlende Übersetzung einiger Texte in Templates nachgereicht
+    - Dokumentation von sxw auf odt umgestellt und überarbeitet (TW)
+    - Fehler durch nicht valides HTML behoben (TW)
+    - Fehler korrigiert, bei dem IsfirstPlugInUserFunction statisch verwendet wurde obwohl es nur public war. (TW)
+    - in Templates können jetzt reine Fluidformulare verwendet werden (TW)
+    - fehlende Übersetzung einiger Texte in Templates nachgereicht (TW)
+    - kleine Fehler in Templates behoben (TW)
     - DBIS:
-        - br-Tag in MiniForm entfernt
-        - doppeltes Formular in MiniForm entfernt
+        - br-Tag in MiniForm entfernt (TW)
+        - doppeltes Formular in MiniForm entfernt (TW)
 5.0.1
     - DBIS: var_dump entfernt. (TW)
 5.0.0
