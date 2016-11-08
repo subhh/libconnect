@@ -19,7 +19,6 @@
                         <input id="ezb-accessinfo-access_{section.colorkey}" type="checkbox" name="libconnect[search][selected_colors][{section.colorkey}]" class="accessinfo-element" value="{section.colorkey}" <f:if condition="{libconnect:array(inputArray: journals.selected_colors, key: section.colorkey)}">checked="checked"</f:if>/>
                     </f:if>
                     <label class="ezb-accessinfo-access_{section.colorkey} accessinfo-element" for="ezb-accessinfo-access_{section.colorkey}">{section.value}</label>
-
                 </f:for>
 
                 <f:for each="{formParameter}" as="parameter" key="key">
@@ -130,5 +129,5 @@
         <p>
             <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.search.error.text" />
         </p>
-        </f:else>
+    </f:else>
 </f:if>

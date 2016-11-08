@@ -1,14 +1,13 @@
 {namespace libconnect=Sub\Libconnect\ViewHelpers}
 
 <div class="datenbank-suche-wrapper">
-
     <h2 class="libconnect-h2"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.miniform.search_header" /></h2>
 
     <f:form action="{listUrl}" method="get" pageUid="{listPid}">
         <f:form.hidden name="id" value="{listPid}"/>
         
         <label for="libconnect_dbis_minisuche" class="hiddendebis"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.miniform.search_term" /></label>
-        <f:form.textfield type="text" id="libconnect_dbis_minisuche" name="search[sword]" value="{vars.sword}" size="20"/><br />
+        <f:form.textfield type="text" id="libconnect_dbis_minisuche" name="search[sword]" value="{vars.sword}" size="20"/><br/>
         
         <f:form.submit name="submit" value='<f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.miniform.search_term" />'/>
         
