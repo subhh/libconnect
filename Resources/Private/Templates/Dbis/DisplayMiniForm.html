@@ -10,7 +10,7 @@
         <label for="libconnect_dbis_minisuche" class="hiddendebis"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.miniform.search_term" /></label>
         <f:form.textfield type="text" id="libconnect_dbis_minisuche" name="search[sword]" value="{vars.sword}" size="20"/><br />
         
-        <f:form.submit name="submit" value="Suchen"/>
+        <f:form.submit name="submit" value='<f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.miniform.search_term" />'/>
         
         <p><a href="{searchUrl}"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.miniform.search_link" /></a></p>    
     </f:form>
@@ -38,7 +38,7 @@
                         </f:for>
                     </select>
                 </p>
-                <input type="submit" value="Zugang ausw&auml;hlen" />
+                <input type="submit" value="<f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.miniform.select_access" />" />
             </form>
 
         </div>

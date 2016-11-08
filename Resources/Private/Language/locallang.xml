@@ -6,7 +6,10 @@
     </meta>
     <data type="array">
         <languageKey index="default" type="array">
+            <!-- all -->
 
+            <label index="tx_libconnect.submit.search">Search</label>
+            
             <!-- DBIS -->
 
             <label index="tx_libconnect.dbis.detail.access.alic">More Licensed Access:</label>
@@ -60,6 +63,7 @@
             <label index="tx_libconnect.dbis.miniform.search_term">Search Term</label>
             <label index="tx_libconnect.dbis.miniform.select_access">Choose License</label>
             <label index="tx_libconnect.dbis.miniform.show_databases">Show Databases</label>
+            <label index="tx_libconnect.dbis.miniform.submit.search">Search</label>
 
             <label index="tx_libconnect.dbis.new.headline">New in DBIS</label>
             <label index="tx_libconnect.dbis.new.headline.subject">Subject</label>
@@ -193,7 +197,10 @@
         </languageKey>
         
         <languageKey index="de" type="array">
+            <!-- all -->
 
+            <label index="tx_libconnect.submit.search">Suchen</label>
+            
             <!-- DBIS -->
 
             <label index="tx_libconnect.dbis.detail.access.alic">Weitere lizenzierte Zugänge:</label>
@@ -228,7 +235,6 @@
             <label index="tx_libconnect.dbis.form.search_term">Suchbegriff</label>
             <label index="tx_libconnect.dbis.form.subject">Fachgebiete:</label>
 
-
             <label index="tx_libconnect.dbis.form.regions">Regionen:</label>
             <label index="tx_libconnect.dbis.form.formal_type">Formaler Typ</label>
 
@@ -249,6 +255,7 @@
             <label index="tx_libconnect.dbis.miniform.search_term">Suchbegriff</label>
             <label index="tx_libconnect.dbis.miniform.select_access">Zugang wählen</label>
             <label index="tx_libconnect.dbis.miniform.show_databases">Datenbanken anzeigen</label>
+            <label index="tx_libconnect.dbis.miniform.submit.search">Suchen</label>
 
             <label index="tx_libconnect.dbis.new.headline">Neu in DBIS</label>
             <label index="tx_libconnect.dbis.new.headline.subject">Fachgebiet</label>
@@ -263,7 +270,6 @@
             <label index="tx_libconnect.dbis.search.results">Ergebnisse Ihrer Suche</label>
             <label index="tx_libconnect.dbis.search.top_databases">Top Datenbanken</label>
 
-            
             <!-- EZB -->
 
             <label index="tx_libconnect.ezb.articipants.categories">2. Kategorien:</label>            
