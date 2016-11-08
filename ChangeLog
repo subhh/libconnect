@@ -7,7 +7,13 @@
 5.0.2
     - Fehler durch nicht valides HTML behoben
     - Fehler korrigiert, bei dem IsfirstPlugInUserFunction statisch verwendet wurde obwohl es nur public war.
-
+    - in Templates können jetzt reine Fluidformulare verwendet werden
+    - fehlende Übersetzung einiger Texte in Templates nachgereicht
+    - DBIS:
+        - br-Tag in MiniForm entfernt
+        - doppeltes Formular in MiniForm entfernt
+5.0.1
+    - DBIS: var_dump entfernt. (TW)
 5.0.0
     - Kompatibilität zu TYPO3 7.6 (TW)
         - !Achtung! bei Namespaces für Helperfunctions in eigenen Templates ändern in: {namespace libconnect=Sub\Libconnect\ViewHelpers}
