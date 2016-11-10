@@ -165,7 +165,7 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
         if ($fachgebiet == 'all') {
 
             $url .='lett=a';
-            $tmpParams = t3lib_div::_GP('libconnect');
+            $tmpParams = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('libconnect');
 
             if (!empty($tmpParams['lc'])) {
                 $url .= '&lc=' . $tmpParams['lc'];

@@ -87,7 +87,7 @@ class Tx_Libconnect_Resources_Private_Lib_Httppageconnection {
         if(($http_code['http_code'] != 200) || ($response == FALSE)){
         
             if ($this->debug){
-                t3lib_div::devLog('Got HTTP Code ' . $http_code['http_code'] . ' for request: ' . $url, 'libconnect', 1);
+                \TYPO3\CMS\Core\Utility\GeneralUtility::devLog('Got HTTP Code ' . $http_code['http_code'] . ' for request: ' . $url, 'libconnect', 1);
             }
 
             return $result;

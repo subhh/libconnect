@@ -93,19 +93,18 @@ class Tx_Libconnect_Resources_Private_Lib_Xmlpageconnection {
             //parse the XML data.
             $xmlObj = simplexml_load_string($result);
 //            $error_array = libxml_get_errors();
-            //var_dump($error_array);exit;
+
             //log url to devlog in debug-mode if XML data contained errors.
             if (count($error_array) > 0) {
                 if ($this->debug) {
-                    t3lib_div::devLog('XML data contained errors: '.$url, 'libconnect', 1);
+                    \TYPO3\CMS\Core\Utility\GeneralUtility::devLog('XML data contained errors: '.$url, 'libconnect', 1);
                 }
             }
-            
             
             if ($this->debug) {
                 $error_array = libxml_get_errors();
                 if (count($error_array) > 0) {
-                    t3lib_div::devLog('XML data contained errors: '.$url, 'libconnect', 1);
+                    \TYPO3\CMS\Core\Utility\GeneralUtility::devLog('XML data contained errors: '.$url, 'libconnect', 1);
                 }
             }
 
@@ -121,7 +120,7 @@ class Tx_Libconnect_Resources_Private_Lib_Xmlpageconnection {
             $xmlObj = FALSE;
 
             if ($this->debug){
-                t3lib_div::devLog('Got HTTP Code ' . $http_code['http_code'] . ' for request: ' . $url, 'libconnect', 1);
+                \TYPO3\CMS\Core\Utility\GeneralUtility::devLog('Got HTTP Code ' . $http_code['http_code'] . ' for request: ' . $url, 'libconnect', 1);
             }
 
             return $xmlObj;

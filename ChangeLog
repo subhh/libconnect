@@ -4,6 +4,8 @@
 * - AL: Andre Lahmann andre.lahmann@uni-leipzig.de (Leipzig University Library)
 * - BH: Björn Heinermann hein@zhaw.ch (Zürcher Hochschule für Angewandte Wissenschaften)
 **/
+5.0.3
+    - Fix zur Kompatibilität zu TYPO3 7.6
 5.0.2
     - Dokumentation von sxw auf odt umgestellt und überarbeitet (TW)
     - Fehler durch nicht valides HTML behoben (TW)

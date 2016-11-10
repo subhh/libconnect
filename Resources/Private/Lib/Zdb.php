@@ -106,7 +106,7 @@ class Tx_libconnect_Resources_Private_Lib_Zdb {
             //todo: Fehlermeldung ausgeben
             //error_log('typo3 extension libconnect - missing ZDB source-identifier: refer to documentation - chapter configuration.');
             if ($this->debug) {
-                t3lib_div::devLog('invalid SID given: ' . $this->sid, 'libconnect', 1);
+                \TYPO3\CMS\Core\Utility\GeneralUtility::devLog('invalid SID given: ' . $this->sid, 'libconnect', 1);
             }
 
             return FALSE;
@@ -189,7 +189,7 @@ class Tx_libconnect_Resources_Private_Lib_Zdb {
         // only Full-objects got all the info we want
         if (! is_object($xml_request->Full)) {
             if ($this->debug) {
-                t3lib_div::devLog('invalid XML-Object - URL: ' . $url, 'libconnect', 1);
+                \TYPO3\CMS\Core\Utility\GeneralUtility::devLog('invalid XML-Object - URL: ' . $url, 'libconnect', 1);
             }
 
             return FALSE;
@@ -205,7 +205,7 @@ class Tx_libconnect_Resources_Private_Lib_Zdb {
              *
              */
             if ($this->debug) {
-                t3lib_div::devLog('Error-Code: ' . $xml_request->Full->Error->attributes()->code . ' - URL: ' . $url, 'libconnect', 1);
+                \TYPO3\CMS\Core\Utility\GeneralUtility::devLog('Error-Code: ' . $xml_request->Full->Error->attributes()->code . ' - URL: ' . $url, 'libconnect', 1);
             }
 
             return FALSE;
@@ -219,7 +219,7 @@ class Tx_libconnect_Resources_Private_Lib_Zdb {
             $tmpResultList = $xml_request->Full->PrintData->ResultList->children();
         } else {
             if ($this->debug) {
-                t3lib_div::devLog('invalid ResultList - URL: ' . $url, 'libconnect', 1);
+                \TYPO3\CMS\Core\Utility\GeneralUtility::devLog('invalid ResultList - URL: ' . $url, 'libconnect', 1);
             }
 
             return FALSE;
@@ -260,7 +260,7 @@ class Tx_libconnect_Resources_Private_Lib_Zdb {
         //no valid state found -> exit
         if(!$validStateFlag) {
             if ($this->debug) {
-                t3lib_div::devLog('non valid state - URL: ' . $url, 'libconnect', 0);
+                \TYPO3\CMS\Core\Utility\GeneralUtility::devLog('non valid state - URL: ' . $url, 'libconnect', 0);
             }
 
             return FALSE;
@@ -322,7 +322,7 @@ class Tx_libconnect_Resources_Private_Lib_Zdb {
          $locationDetail['iconInfoUrl'] = $this->buildIconInfoUrl($journalIdentifier, $genre);
 
         if ($this->debug) {
-            t3lib_div::devLog('Request successful - URL: ' . $url, 'libconnect', 0);
+            \TYPO3\CMS\Core\Utility\GeneralUtility::devLog('Request successful - URL: ' . $url, 'libconnect', 0);
         }
 
         return $locationDetail;
