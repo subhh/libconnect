@@ -36,9 +36,9 @@ plugin.tx_libconnect {
             }
             en{
                 1 = free available
-                2 = On campus network and member of the univeristy external accessible
+                2 = On campus network and member of the university external accessible
                 4 = Free for your location. Partial only access to abstracts.
-                6 = Only a part of the volumes is accessable.
+                6 = Only a part of the volumes is accessible.
             }
         }
 
@@ -51,9 +51,9 @@ plugin.tx_libconnect {
             }
             en{
                 1 = free available
-                2 = only on the Campus-Netz accessable
-                4 = not free accessable
-                6 = only a part is accessable
+                2 = only on the Campus-Netz accessible
+                4 = not free accessible
+                6 = only a part is accessible
             }
         }
 

@@ -131,7 +131,7 @@
             - Anleitungen wurden nicht immer angezeigt. (TW)
             - automatische Korrektur des HTML
         - Suche: Suchstringvariabe ging verloren -> ' und " -Problematik (TW)
-        - leere Paramter in URls entfernt (TW)
+        - leere Parameter in URls entfernt (TW)
     - EZB:
         - In den ezbshortaccessinfos fehlte die nur zum Teil zugänglichen (TW)
     - Codeverbesserungen

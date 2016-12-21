@@ -63,7 +63,7 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
     private $HttpPageConnection;
 
     /**
-     * construtor
+     * constructor
      *
      */
     public function __construct() {

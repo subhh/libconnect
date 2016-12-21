@@ -139,7 +139,7 @@ class Tx_libconnect_Resources_Private_Lib_Zdb {
                                (!empty($this->isil) ? 'isil=' . $this->isil .'&' : '') .
                                (!empty($this->bik) ? 'bik=' . $this->bik : ''));
 
-        //remove last &(urlencode: %26) if existant (only if bik is empty but any other info above is given)
+        //remove last &(urlencode: %26) if existent (only if bik is empty but any other info above is given)
         if (strlen($this->pid) - 3 == strrpos($this->pid, '%26')) {
             $this->pid = substr($this->pid, 0, strlen($this->pid) - 3);
         }

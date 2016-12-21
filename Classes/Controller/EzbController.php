@@ -91,7 +91,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
             );
 
             // no readable URL?
-            // its different to seach results, because of different templates
+            // its different to search results, because of different templates
             /*if(!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GET('id'))){
                 $formParameter['id'] = $Pid;
             }*/
@@ -252,7 +252,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
     }
 
     /**
-     * show the seach form
+     * show the search form
      */
     public function displayFormAction() {
         if(!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GET('tx_libconnect_ezb'))){
