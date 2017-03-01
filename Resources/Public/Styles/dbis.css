@@ -137,6 +137,12 @@ a.dbis-research{
     font-weight: bold;
 }
 
+#dbis-detail-notavailable{
+    margin-bottom: 1em;
+    border: 1px solid;
+    padding: 0.3em;
+}
+
 /**
  * begin - extended search styles 
  */

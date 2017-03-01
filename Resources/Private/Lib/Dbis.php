@@ -344,10 +344,16 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
             return FALSE;
         }
 
+        //library
+        $details['library']['bib_id'] = (string) $xml_db_details->library->attributes()->bib_id;
+        $details['library']['name'] = (string) $xml_db_details->library;
+
+        //details
         if (count($xml_db_details->details->children()) > 0){
+            $details['titel_id'] = $db_id;
 
             foreach ($xml_db_details->details->children() as $key => $value) {
-
+                
                 if ($key == 'titles') {
                     $details['else_titles'] = array();
                     foreach ($value->children() as $key2 => $value2) {
@@ -362,6 +368,16 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
                     $details['access_icon'] = (string) $value->attributes()->access_icon;
                     $details['db_access'] = (string) $value->db_access;
                     $details['db_access_short_text'] = (string) $value->db_access_short_text;
+                } else if ($key == 'biblist') {
+
+                    //libraries with access to the title
+                    foreach ($value->children() as $key2 => $value2) {
+                        $details['biblist'] []= array(
+                                'bibname' => (string) $value2,
+                                'bib_id' => (string) $value2->attributes()->bib_id
+                            );
+                    }
+
                 } else if ($key == 'accesses') {
 
                     //Zugänge

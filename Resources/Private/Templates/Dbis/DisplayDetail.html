@@ -13,7 +13,23 @@
         {namespace libconnect=Sub\Libconnect\ViewHelpers}
         <h1 class="libconnect-h1"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.detail.database" /></h1>
         <h2 class="libconnect-h2"><f:format.htmlentitiesDecode>{db.title}</f:format.htmlentitiesDecode></h2>
-
+        
+        <f:if condition="<f:count subject='{db.biblist}' /> > 0">
+        <div id="dbis-detail-notavailable">
+            <p><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.detail.notavailable_start" /> <f:format.htmlentitiesDecode>{db.library.name}</f:format.htmlentitiesDecode> <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.detail.notavailable_end" /><br/>
+            <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.detail.library_with_title" /></p>
+            <form class="dbis-form" method="get" action="http://rzblx10.uni-regensburg.de/dbinfo/detail.php">
+                <input name="titel_id" value="{db.titel_id}" type="hidden"/>
+                <select id="choose_bib" name="bib_id">
+                    <f:for each="{db.biblist}" as="bib">
+                        <option value="{bib.bib_id}">{bib.bibname}</option>
+                    </f:for>
+                </select>
+                <input value="zum Anbieter" type="submit"/>
+            </form>
+        </div>
+        </f:if>
+        
         <f:if condition="{db.access_workaround}">
             <f:if condition="{db.access.href}">
                 <p>
