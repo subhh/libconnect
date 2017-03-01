@@ -80,8 +80,8 @@ class Tx_libconnect_Resources_Private_Lib_Zdb {
     * request URLs
     *
     */    
-    //private $briefformat_request_url = 'http://services.d-nb.de/fize-service/gvr/brief.xml?';
-    private $fullformat_request_url = 'https://services.d-nb.de/fize-service/gvr/full.xml?';
+    //private $briefformat_request_url = 'http://services.dnb.de/fize-service/gvr/brief.xml?';
+    private $fullformat_request_url = 'https://services.dnb.de/fize-service/gvr/full.xml?';
 
     // XML Data Object
     private $XMLPageConnection;    
