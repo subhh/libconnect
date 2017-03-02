@@ -15,6 +15,9 @@
             <label index="tx_libconnect.dbis.detail.access.alic">More Licensed Access:</label>
             <label index="tx_libconnect.dbis.detail.access.hints">Hints:</label>
             <label index="tx_libconnect.dbis.detail.access.lic">More Free Access:</label>
+            <label index="tx_libconnect.dbis.detail.access.free">More Free Access:</label>
+            <label index="tx_libconnect.dbis.detail.access.other">Addtion internet offer:</label>
+            <label index="tx_libconnect.dbis.detail.access.ppu">More Pay-per-Use Access:</label>
             <label index="tx_libconnect.dbis.detail.access.text">Availability:</label>
             <label index="tx_libconnect.dbis.detail.appearence">Form Of Appearance:</label>
             <label index="tx_libconnect.dbis.detail.content">Contents:</label>
@@ -33,6 +36,9 @@
             <label index="tx_libconnect.dbis.detail.report_periods">Report Periods:</label>
             <label index="tx_libconnect.dbis.detail.subjects">Subjects:</label>
             <label index="tx_libconnect.dbis.detail.update">Update:</label>
+            <label index="tx_libconnect.dbis.detail.notavailable_start">This title is for the</label>
+            <label index="tx_libconnect.dbis.detail.notavailable_end">not available.</label>
+            <label index="tx_libconnect.dbis.detail.library_with_title">Library/ies with proofed stock:</label>
 
             <label index="tx_libconnect.dbis.form.access_type">Access Type:</label>
             <label index="tx_libconnect.dbis.form.datbase_types">Database Types:</label>
@@ -205,7 +211,9 @@
 
             <label index="tx_libconnect.dbis.detail.access.alic">Weitere lizenzierte Zugänge:</label>
             <label index="tx_libconnect.dbis.detail.access.hints">Hinweise:</label>
-            <label index="tx_libconnect.dbis.detail.access.lic">Weitere freie Zugänge:</label>
+            <label index="tx_libconnect.dbis.detail.access.free">Weitere freie Zugänge:</label>
+            <label index="tx_libconnect.dbis.detail.access.other">Zusätzliches Internet-Angebot:</label>
+            <label index="tx_libconnect.dbis.detail.access.ppu">weitere Pay-per-Use Zugänge::</label>
             <label index="tx_libconnect.dbis.detail.access.text">Verfügbarkeit:</label>
             <label index="tx_libconnect.dbis.detail.appearence">Erscheinungsform:</label>
             <label index="tx_libconnect.dbis.detail.content">Inhalte:</label>
@@ -224,6 +232,9 @@
             <label index="tx_libconnect.dbis.detail.report_periods">Berichtszeitraum:</label>
             <label index="tx_libconnect.dbis.detail.subjects">Fachgebiete:</label>
             <label index="tx_libconnect.dbis.detail.update">Erscheinungsweise:</label>
+            <label index="tx_libconnect.dbis.detail.notavailable_start">Diese Datenbank ist für die</label>
+            <label index="tx_libconnect.dbis.detail.notavailable_end">nicht verfügbar.</label>
+            <label index="tx_libconnect.dbis.detail.library_with_title">Bibliothek(en) mit Bestandsnachweis:</label>
 
             <label index="tx_libconnect.dbis.form.access_type">Zugangsart:</label>
             <label index="tx_libconnect.dbis.form.datbase_types">Datenbank-Typen:</label>

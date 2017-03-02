@@ -386,12 +386,15 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
                         $main = (string) $access->attributes()->main;
                         $type = (string) $access->attributes()->type;
                         $href = (string) $access->attributes()->href;
+                        
                         if ($main == 'Y') {
+                            //main link to start the research
                             $details['access'] = array(
                                 'type' => $type,
                                 'href' => $href
                             );
                         } else {
+                            //other links to start resarch
                             $details['access_lic'][$type][] = array(
                                 'name' => (string) $access,
                                 'href' => $href

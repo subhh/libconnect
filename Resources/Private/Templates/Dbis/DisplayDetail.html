@@ -57,34 +57,81 @@
                     </tr>
                 </f:if>
 
-                <f:if condition="<f:count subject='{db.access_lic.lic}' /> > 0">
-                    <tr class="dbis-alic">
-                        <th>
-                            <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.detail.access.alic" /></strong>
-                        </th>
-                        <td>
-                            <ul>
-                                <f:for each="{db.access_lic.lic}" as="alic">
-                                    <li><a href="http://rzblx10.uni-regensburg.de/dbinfo/{alic.href}" target="_blank">{alic.name}</a></li>
-                                </f:for>
-                            </ul>
-                        </td>
-                    </tr>
-                </f:if>
+                <f:if condition="<f:count subject='{db.access_lic}' /> > 0">
+                    <f:for each="{db.access_lic}" as="a_lics" key="accesstype">
+                        <f:if condition="{libconnect:compare(a: accesstype, b: 'free')}">
+                            <tr class="dbis-free">
+                                <th>
+                                    <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.detail.access.free" /></strong>
+                                </th>
+                                <td>
+                                    <ul>
+                                        <f:for each="{db.access_lic.free}" as="free">
+                                            <li><a href="http://rzblx10.uni-regensburg.de/dbinfo/{free.href}" target="_blank">{free.name}</a></li>
+                                        </f:for>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </f:if>
+                        <f:if condition="{libconnect:compare(a: accesstype, b: 'other')}">
+                            <tr class="dbis-other">
+                                <th>
+                                    <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.detail.access.other" /></strong>
+                                </th>
+                                <td>
+                                    <ul>
+                                        <f:for each="{db.access_lic.other}" as="other">
+                                            <li><a href="http://rzblx10.uni-regensburg.de/dbinfo/{other.href}" target="_blank">{other.name}</a></li>
+                                        </f:for>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </f:if>
+                        <f:if condition="{libconnect:compare(a: accesstype, b: 'ppu')}">
+                            <tr class="dbis-ppu">
+                                <th>
+                                    <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.detail.access.ppu" /></strong>
+                                </th>
+                                <td>
+                                    <ul>
+                                        <f:for each="{db.access_lic.ppu}" as="ppu">
+                                            <li><a href="http://rzblx10.uni-regensburg.de/dbinfo/{ppu.href}" target="_blank">{ppu.name}</a></li>
+                                        </f:for>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </f:if>
+                        
+                        <f:if condition="{libconnect:compare(a: accesstype, b: 'lic')}">
+                            <tr class="dbis-alic">
+                                <th>
+                                    <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.detail.access.alic" /></strong>
+                                </th>
+                                <td>
+                                    <ul>
+                                        <f:for each="{db.access_lic.lic}" as="lic">
+                                            <li><a href="http://rzblx10.uni-regensburg.de/dbinfo/{lic.href}" target="_blank">{lic.name}</a></li>
+                                        </f:for>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </f:if>
 
-                <f:if condition="<f:count subject='{db.access_lic.other}' /> > 0">
-                    <tr class="dbis-lic">
-                        <th>
-                            <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.detail.access.lic" /></strong>
-                        </th>
-                        <td>
-                            <ul>
-                                <f:for each="{db.access_lic.other}" as="lic">
-                                    <li><a href="http://rzblx10.uni-regensburg.de/dbinfo/{lic.href}" target="_blank">{lic.name}</a></li>
-                                </f:for>
-                            </ul>
-                        </td>
-                    </tr>
+                        <f:if condition="{libconnect:compare(a: accesstype, b: 'natli')}">
+                            <tr class="dbis-alic">
+                                <th>
+                                    <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.detail.access.alic" /></strong>
+                                </th>
+                                <td>
+                                    <ul>
+                                        <f:for each="{db.access_lic.natli}" as="natli">
+                                            <li><a href="http://rzblx10.uni-regensburg.de/dbinfo/{natli.href}" target="_blank">{natli.name}</a></li>
+                                        </f:for>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </f:if>
+                    </f:for>
                 </f:if>
 
                 <f:if condition="{db.db_access_short_text}">
