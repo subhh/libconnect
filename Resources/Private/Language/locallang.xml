@@ -14,7 +14,7 @@
 
             <label index="tx_libconnect.dbis.detail.access.alic">More Licensed Access:</label>
             <label index="tx_libconnect.dbis.detail.access.hints">Hints:</label>
-            <label index="tx_libconnect.dbis.detail.access.lic">More Free Access:</label>
+            <label index="tx_libconnect.dbis.detail.access.lic">More Licensed Access:</label>
             <label index="tx_libconnect.dbis.detail.access.free">More Free Access:</label>
             <label index="tx_libconnect.dbis.detail.access.other">Addtion internet offer:</label>
             <label index="tx_libconnect.dbis.detail.access.ppu">More Pay-per-Use Access:</label>
@@ -212,6 +212,7 @@
             <label index="tx_libconnect.dbis.detail.access.alic">Weitere lizenzierte Zugänge:</label>
             <label index="tx_libconnect.dbis.detail.access.hints">Hinweise:</label>
             <label index="tx_libconnect.dbis.detail.access.free">Weitere freie Zugänge:</label>
+            <label index="tx_libconnect.dbis.detail.access.lic">Weitere lizenzierte Zugänge:</label>
             <label index="tx_libconnect.dbis.detail.access.other">Zusätzliches Internet-Angebot:</label>
             <label index="tx_libconnect.dbis.detail.access.ppu">weitere Pay-per-Use Zugänge::</label>
             <label index="tx_libconnect.dbis.detail.access.text">Verfügbarkeit:</label>
