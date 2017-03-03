@@ -387,18 +387,6 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
         return $journals;
     }
-
-    /**
-     * return sidebar
-     * 
-     * @return array
-     */
-    public function loadMiniForm() {
-        $ezb =  \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_libconnect_Resources_Private_Lib_Ezb');
-        $form = $ezb->detailSearchFormFields();
-        
-        return $form;
-    }
     
     /**
      * create search form
