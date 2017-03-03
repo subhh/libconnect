@@ -185,7 +185,6 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
         //check if locationData is enabled
         if($this->settings['enableLocationData'] == 1) {
             $locationData = $this->ezbRepository->loadLocationData($journal);
-
             if($locationData) {
                 $journal['locationData'] = $locationData;
             }
