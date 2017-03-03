@@ -286,7 +286,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
         //search of sidebar
         if (strlen($searchVars['sword'])) {
-            $searchVars['jq_type1'] = 'KT';
+            $searchVars['jq_type1'] = 'QS';
             $searchVars['jq_term1'] = $searchVars['sword'];
         }
         unset($searchVars['sword']);//in weiterer Verarbeitung nicht sinnvoll
