@@ -22,7 +22,7 @@ plugin.tx_libconnect {
 
     settings {
         allListingId = 44
-        enableLocationData = 0
+        enableLocationData = 1
         useIconService = 1
         validStatesList = 2,3
 

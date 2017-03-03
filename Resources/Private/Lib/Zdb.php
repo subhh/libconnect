@@ -81,7 +81,7 @@ class Tx_libconnect_Resources_Private_Lib_Zdb {
     *
     */    
     //private $briefformat_request_url = 'http://services.dnb.de/fize-service/gvr/brief.xml?';
-    private $fullformat_request_url = 'https://services.dnb.de/fize-service/gvr/full.xml?';
+    private $fullformat_request_url = 'http://services.dnb.de/fize-service/gvr/full.xml?';
 
     // XML Data Object
     private $XMLPageConnection;    
@@ -221,7 +221,7 @@ class Tx_libconnect_Resources_Private_Lib_Zdb {
             if ($this->debug) {
                 \TYPO3\CMS\Core\Utility\GeneralUtility::devLog('invalid ResultList - URL: ' . $url, 'libconnect', 1);
             }
-
+var_dump($xml_request);
             return FALSE;
         }
 
