@@ -9,7 +9,7 @@ namespace Sub\Libconnect\UserFunctions;
  */
 
 /**
- * Prüft welches PlugIn installiert wurde
+ * Checks which PlugIn is active
  * 
  * @param string    $type: Name des gewählten PlugIns
  * 

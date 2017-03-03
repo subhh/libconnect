@@ -60,18 +60,18 @@ class RepairHTMLUserFunction{
         return $return;
     }
 
-    private function filter($String){
+    private function filter($string){
         //line break
-        $String = preg_replace('/<br>/', '<br/>', $String);
+        $string = preg_replace('/<br>/', '<br/>', $string);
 
         //new lines
-        $String = preg_replace('/\n/', '', $String); 
-        $String = preg_replace('/\r/', '', $String); 
+        $string = preg_replace('/\n/', '', $string); 
+        $string = preg_replace('/\r/', '', $string); 
 
         //no spaces before and at end content
-        $String = trim($String);
+        $string = trim($string);
 
-        return $String;
+        return $string;
     }
 }
 ?>

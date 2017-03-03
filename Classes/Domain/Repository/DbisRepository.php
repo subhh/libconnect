@@ -40,7 +40,7 @@ require_once(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('libcon
 Class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
     private $dbis_to_t3_subjects = array();
     private $t3_to_dbis_subjects = array();
-    
+
     /**
 	 * subjectRepository
 	 *
@@ -48,7 +48,7 @@ Class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	 * @inject
 	 */
 	protected $subjectRepository;
-    
+
     /**
      * shows top databases
      * 
@@ -74,7 +74,7 @@ Class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
         return $result['list']['top'];
     }
-    
+
     /**
      * shows a list of databases(for start, search and list of chose subject)
      * 
@@ -85,19 +85,19 @@ Class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
         $this->loadSubjects();
 
         $dbis = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_Libconnect_Resources_Private_Lib_Dbis');
-        
+
         if(is_numeric($subject_id)){
             $subject = $this->t3_to_dbis_subjects[$subject_id];
 
             $dbis_id = $subject['dbisid'];
-    
+
             $result = $dbis->getDbliste($dbis_id, $config['sort']);
         }else{//for own collection
             $result = $dbis->getDbliste($subject_id, $config['sort']);
-            
+
             $subject['title'] = $result['headline'];
         }
-        
+
         foreach(array_keys($result['list']['top']) as $db) {
             $result['list']['top'][$db]['detail_link'] = $GLOBALS['TSFE']->cObj->getTypolink_URL(
                 intval($config['detailPid']),
@@ -106,7 +106,7 @@ Class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
                 )
             );
         }
-        
+
         foreach(array_keys($result['list']['groups']) as $group) {
             foreach(array_keys($result['list']['groups'][$group]['dbs']) as $db) {
                 $result['list']['groups'][$group]['dbs'][$db]['detail_link'] = $GLOBALS['TSFE']->cObj->getTypolink_URL(
@@ -125,10 +125,10 @@ Class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
         }
         ksort($alph_sort_groups, SORT_STRING); //added sort-flag SORT_STRING for correct sorting of alphabetical listings
         $result['list']['groups'] = $alph_sort_groups;
-        
+
         return array('subject' => $subject['title'], 'list' => $result['list']);
     }
-    
+
     /**
      * show start
      * 
@@ -142,11 +142,11 @@ Class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
         $list = $dbis->getFachliste();
 
         foreach($list as $el) {
-        
+
             if($el['lett'] != "c"){
-                //id aus Datenbank holen
+                //get id of subject from database
                 $subject = $this->dbis_to_t3_subjects[$el['id']];
-                
+
                 $el['link'] = $GLOBALS['TSFE']->cObj->getTypolink_URL($GLOBALS['TSFE']->id, array(
                     'libconnect[subject]' => $subject['uid'])
                 );
@@ -155,10 +155,10 @@ Class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
                     'libconnect[subject]' => $el['id'])
                 );
             }
-            
+
             $list[$el['id']] = $el;
         }
-        
+
         return $list;
     }
 
@@ -168,19 +168,19 @@ Class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
      */
     private function loadSubjects() {
         $res = $this->subjectRepository->findAll();
-        
+
         foreach($res as $row){        
 
             $this->dbis_to_t3_subjects[$row->getDbisId()]['dbisid'] = $row->getDbisId();
             $this->dbis_to_t3_subjects[$row->getDbisId()]['title'] = $row->getTitle();
             $this->dbis_to_t3_subjects[$row->getDbisId()]['uid'] = $row->getUid();
-            
+
             $this->t3_to_dbis_subjects[$row->getUid()]['uid'] = $row->getUid();
             $this->t3_to_dbis_subjects[$row->getUid()]['dbisid'] = $row->getDbisId();
             $this->t3_to_dbis_subjects[$row->getUid()]['title'] = $row->getTitle();
         }
     }
-    
+
     /**
      * show details
      * 
@@ -191,14 +191,14 @@ Class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
     public function loadDetail($title_id) {
         $dbis = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_Libconnect_Resources_Private_Lib_Dbis');
         $db = $dbis->getDbDetails($title_id);
-        
+
         if (! $db ){
             return FALSE;
         }
-        
+
         return $db;
     }
-    
+
     /**
      * execute search
      * 
@@ -210,13 +210,13 @@ Class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
     public function loadSearch($searchVars, $config) {
         $this->loadSubjects();
 
-        $term = $searchVars['sword'];//wird bei MiniForm verwendet
+        $term = $searchVars['sword'];//use by MiniForm
         unset($searchVars['sword']);
 
         //execute search
         $dbis = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_Libconnect_Resources_Private_Lib_Dbis');
         $result = $dbis->search($term, $searchVars);
-        
+
         foreach(array_keys($result['list']['top']) as $db) {
             $result['list']['top'][$db]['detail_link'] = $GLOBALS['TSFE']->cObj->getTypolink_URL(
                 intval($config['detailPid']),
@@ -237,7 +237,7 @@ Class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
         return $result['list'];
     }
-    
+
      /**
      * return miniform
      *

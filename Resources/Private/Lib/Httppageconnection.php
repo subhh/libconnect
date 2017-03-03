@@ -11,7 +11,7 @@
 class Tx_Libconnect_Resources_Private_Lib_Httppageconnection {
 
    /**
-    * Enable debug for logging errors to devLog
+    * enable debug for logging errors to devLog
     *
     */
     private $debug = FALSE;    
@@ -28,17 +28,18 @@ class Tx_Libconnect_Resources_Private_Lib_Httppageconnection {
     }
 
     /**
-     * Läd die im typoscript gesetzten Variablen.
+     * gets typoscript configuration
      */
     private function setExtPiVars() {
         $this->extPiVars = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.'];
     }
 
     /**
-     * Lädt die in der Extension Konfiguration gesetzten Variablen.
+     * get configuration of the extension
      */
     private function setExtConfVars() {
         $ext_conf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['libconnect']);
+
         if ($ext_conf['debug'] == TRUE){
             $this->debug = TRUE;
         }elseif ($ext_conf['debug'] == FALSE){
@@ -99,7 +100,7 @@ class Tx_Libconnect_Resources_Private_Lib_Httppageconnection {
             $stop = mb_stripos($response, "</td>", $start);
             $result = trim(mb_substr($response, $start, $stop-$start-5));
             $result = str_replace("</td>", "", $result);
-            $result = str_replace("_more_internet_accesses\">", "", $result);
+            $result = utf8_encode(str_replace("_more_internet_accesses\">", "", $result));
         }
 
         return $result;

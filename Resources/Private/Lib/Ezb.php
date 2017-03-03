@@ -50,6 +50,7 @@ class Tx_libconnect_Resources_Private_Lib_Ezb {
     private $overview_requst_url = 'http://ezb.uni-regensburg.de/ezeit/fl.phtml?xmloutput=1&';
     private $detailview_request_url = 'http://ezb.uni-regensburg.de/ezeit/detail.phtml?';
     private $search_url = 'http://ezb.uni-regensburg.de/ezeit/search.phtml?xmloutput=1&';
+    private $qsearch_url = 'http://ezb.uni-regensburg.de/ezeit/searchres.phtml?xmloutput=1&';
     //private $journal_link_url = 'http://rzblx1.uni-regensburg.de/ezeit/warpto.phtml?bibid=SUBHH&colors=7&lang=de&jour_id=';
     private $search_result_page = 'http://ezb.uni-regensburg.de/ezeit/searchres.phtml?&xmloutput=1&';
     //private $search_result_page = 'http://rzblx1.uni-regensburg.de/ezeit/searchres.phtml?&xmloutput=1&bibid=SUBHH&colors=7&lang=de&';
@@ -161,7 +162,7 @@ class Tx_libconnect_Resources_Private_Lib_Ezb {
             $this->sindex = (string) $xml_request->page_vars->sindex->attributes()->value;
         }
 
-        //Navigationsliste
+        //navigation list
         if ($xml_request->ezb_alphabetical_list) {
 
             $journals['subject'] = (string) $xml_request->ezb_alphabetical_list->subject;
@@ -179,7 +180,7 @@ class Tx_libconnect_Resources_Private_Lib_Ezb {
         $journals['navlist']['pages'][$journals['navlist']['current_page']] = $journals['navlist']['current_page'];
         ksort($journals['navlist']['pages']);
 
-        //Ergebnisse
+        //entries
         if (isset($xml_request->ezb_alphabetical_list->alphabetical_order->journals->journal)) {
             foreach ($xml_request->ezb_alphabetical_list->alphabetical_order->journals->journal AS $key => $value) {
                 $journals['alphabetical_order']['journals'][(int) $value->attributes()->jourid]['title'] = (string) $value->title;
@@ -314,8 +315,6 @@ class Tx_libconnect_Resources_Private_Lib_Ezb {
         //check institutions having access to this journal
         $journal['participants'] = $this->getParticipants($journalId);
 
-        // periods
-
         $color_map = array(
             'green' => 1,
             'yellow' => 2,
@@ -369,23 +368,20 @@ class Tx_libconnect_Resources_Private_Lib_Ezb {
             }
         }
 
-        // Schlagwort und issn tauschen...
-        //$form['jq_type'] = $this->jq_type;
-
         return $form;
     }
 
     /**
-     * Suchurl erzeugen
+     * creates search url
      *
      * @param term string
      * @param searchVars array
      *
      * @return string
      */
-    private function createSearchUrl($term, $searchVars/* , $lett = 'k' */) {
+    private function createSearchUrl($term, $searchVars) {
 
-        //Falls Suchweiterleitung aus der ursprünglichen EZB-Ansicht
+        //if search was redirected from original website of EZB
         if(isset($searchVars['jq_type1']) && $searchVars['jq_type1'] == 'ZD'){
             $searchUrl = $this->search_zd_id . $searchVars['jq_term1']. '&bibid=' . $this->bibID . '&lang=' . $this->lang . '&xmloutput=1';
 
@@ -395,12 +391,12 @@ class Tx_libconnect_Resources_Private_Lib_Ezb {
                             '&xmlv=3';
         }
 
-        //falls jemand kein utf-8 verwendet, sollte das nicht gemacht werden
+        //convert to UTF-8, only if own website is utf-8
         if((mb_strtolower($GLOBALS['TSFE']->metaCharset)) == 'utf-8'){
             $term = utf8_decode($term);
         }
 
-        // urlencode termi
+        // urlencode term
         $term = rawurlencode($term);
 
         if (!$searchVars['sc']) {
@@ -410,7 +406,7 @@ class Tx_libconnect_Resources_Private_Lib_Ezb {
         foreach ($searchVars as $var => $values) {
 
             if (!is_array($values)) {
-                //falls jemand kein utf-8 verwendet, sollte das nicht gemacht werden
+                //convert to UTF-8, only if own website is utf-8
                 if((mb_strtolower($GLOBALS['TSFE']->metaCharset)) == 'utf-8'){
                     $values = utf8_decode($values);
                 }
@@ -442,8 +438,7 @@ class Tx_libconnect_Resources_Private_Lib_Ezb {
         if (!$xml_request) {
             return FALSE;
         }
-        
-        $i = 0;
+
         $result = array('page_vars');
         foreach ($xml_request->page_vars->children() AS $key => $value) {
             $result = array('page_vars' => array($key => (string) $value->attributes()->value));
@@ -453,9 +448,9 @@ class Tx_libconnect_Resources_Private_Lib_Ezb {
             $result['page_vars'][$key] = (string) $value->attributes()->value;
         }
 
-        //Zur Bearbeitung einer Suchweiterleitung aus der ursprünglichen EZB-Ansicht
+        //to edit search redirect of original EZB-website
         if(isset($xml_request->ezb_alphabetical_list)){
-	
+
             if (isset($xml_request->ezb_alphabetical_list->alphabetical_order->journals->journal)) {
                 foreach ($xml_request->ezb_alphabetical_list->alphabetical_order->journals->journal AS $key => $value) {
                     $result['alphabetical_order']['journals'][(int) $value->attributes()->jourid]['title'] = (string) $value->title;
@@ -465,8 +460,8 @@ class Tx_libconnect_Resources_Private_Lib_Ezb {
                     $result['alphabetical_order']['journals'][(int) $value->attributes()->jourid]['detail_link'] = '';
                     $result['alphabetical_order']['journals'][(int) $value->attributes()->jourid]['warpto_link'] = $this->journal_link_url . $value->attributes()->jourid;
                 }
-	
-                //Anzahl Suchergebnisse
+
+                //count of search results
                 $result['page_vars']['search_count'] = count($xml_request->ezb_alphabetical_list->alphabetical_order->journals->journal);
             }
 
@@ -485,7 +480,7 @@ class Tx_libconnect_Resources_Private_Lib_Ezb {
             }
         }
 
-        //count Hits
+        //count hits
         $result['page_vars']['search_count'] = (int) $xml_request->ezb_alphabetical_list_searchresult->search_count;
 
         if (isset($xml_request->ezb_alphabetical_list_searchresult->navlist->other_pages)) {
@@ -521,6 +516,7 @@ class Tx_libconnect_Resources_Private_Lib_Ezb {
                 $result['alphabetical_order']['journals'][(int) $value->attributes()->jourid]['warpto_link'] = $this->journal_link_url . $value->attributes()->jourid;
             }
         }
+
         $i = 0;
         foreach ($xml_request->ezb_alphabetical_list_searchresult->next_fifty AS $key => $value) {
             $result['alphabetical_order']['next_fifty'][$i]['sc'] = (string) $value->attributes()->sc;
@@ -581,7 +577,7 @@ class Tx_libconnect_Resources_Private_Lib_Ezb {
     }
 
     /**
-     * returns List where Journal at Partners available
+     * returns list where journal at partners available
      * 
      * @param type $jour_id
      * @return array full list of Partner with Journal

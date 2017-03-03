@@ -11,7 +11,7 @@
 class Tx_Libconnect_Resources_Private_Lib_Xmlpageconnection {
 
    /**
-    * Enable debug for logging errors to devLog
+    * enable debug for logging errors to devLog
     *
     */
     private $debug = FALSE;    
@@ -28,14 +28,14 @@ class Tx_Libconnect_Resources_Private_Lib_Xmlpageconnection {
     }
 
     /**
-     * Läd die im typoscript gesetzten Variablen.
+     * gets typoscript configuration
      */
     private function setExtPiVars() {
         $this->extPiVars = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.'];
     }
 
     /**
-     * Lädt die in der Extension Konfiguration gesetzten Variablen.
+     * get configuration of the extension
      */
     private function setExtConfVars() {
         $ext_conf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['libconnect']);
@@ -126,10 +126,9 @@ class Tx_Libconnect_Resources_Private_Lib_Xmlpageconnection {
             return $xmlObj;
         }
 
-        /* HINWEIS FEHLERPRUEFUNG: 
-         * Die Funktion curl_error() wie auch curl_getinfo() haben keine brauchbaren Rückgabewerte
-         * zurückgegeben. Deswegen die Pruefung ob ein Object erzeugt wurde und es ein
-         * SimpleXMLElement ist. 
+        /* HINT FOR DEBUGGING:
+         * The functions curl_error() and curl_getinfo() doesn´t returned any usabel values.
+         * Because of this there is a check if is a SimpleXML object.
          */
         if ($xmlObj != FALSE) { //get_class produces E_WARNING for non-object arguments
             if (!is_object($xmlObj) && get_class($xmlObj) == 'SimpleXMLElement' ) {

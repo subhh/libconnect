@@ -18,7 +18,7 @@ class IntvalViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelp
      */
     public function render($wert) {
         $return = intval($wert);
-        
+
         return $return;
     }
 }

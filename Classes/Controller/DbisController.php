@@ -106,7 +106,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
         } else {//start point
             $list =  $this->dbisRepository->loadOverview();
 
-            //andere View verwenden
+            //use other view
             $controllerContext = $this->buildControllerContext();
             $controllerContext->getRequest()->setControllerActionName('displayOverview');
             $this->view->setControllerContext($controllerContext);
@@ -173,10 +173,10 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
         //variables for template
         $this->view->assign('vars', $params['search']);
         $this->view->assign('form', $form);
-        $this->view->assign('siteUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL($GLOBALS['TSFE']->id));//aktuelle URL
-        $this->view->assign('searchUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL($this->settings['flexform']['searchPid']));//Link zur Suchseite
-        $this->view->assign('listUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL($this->settings['flexform']['listPid']));//Link zur Suchseite
-        $this->view->assign('listPid', $this->settings['flexform']['listPid']);//ID der Listendarstellung
+        $this->view->assign('siteUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL($GLOBALS['TSFE']->id));//active URL
+        $this->view->assign('searchUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL($this->settings['flexform']['searchPid']));//link to search page
+        $this->view->assign('listUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL($this->settings['flexform']['listPid']));//link to list page
+        $this->view->assign('listPid', $this->settings['flexform']['listPid']);//id of page with list
 
         //possibility for sorting the entries of the subject for the choosed subject
         if(!empty($params['subject'])) {

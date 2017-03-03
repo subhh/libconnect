@@ -144,7 +144,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
         } else {//start point
             
             $liste =  $this->ezbRepository->loadOverview();
-            
+
             //change view
             $controllerContext = $this->buildControllerContext();
             $controllerContext->getRequest()->setControllerActionName('displayOverview');
