@@ -5,6 +5,9 @@
 * - BH: Björn Heinermann hein@zhaw.ch (Zürcher Hochschule für Angewandte Wissenschaften)
 * - CR: Christian Richter chri@portachtzig.com (Wirtschaftskolleg zu Berlin)
 **/
+5.1.1
+    - EZB:
+        - ReadMe-Link auf Detailseite öffnet jetzt im neuen Fenster
 5.1.0
     - ZDB: URLs von der DNB geändert.
     - DBIS:
