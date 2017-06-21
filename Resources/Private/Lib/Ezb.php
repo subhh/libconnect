@@ -90,7 +90,7 @@ class Tx_libconnect_Resources_Private_Lib_Ezb {
         'ZD' => 'ZDB-Nummer');
 
     /**
-     * construtor
+     * constructor
      *
      */
     public function __construct() {
@@ -425,7 +425,7 @@ class Tx_libconnect_Resources_Private_Lib_Ezb {
     }
 
     /**
-     * seach
+     * search
      *
      * @param string Suchstring
      *
