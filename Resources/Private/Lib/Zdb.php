@@ -221,7 +221,7 @@ class Tx_libconnect_Resources_Private_Lib_Zdb {
             if ($this->debug) {
                 \TYPO3\CMS\Core\Utility\GeneralUtility::devLog('invalid ResultList - URL: ' . $url, 'libconnect', 1);
             }
-var_dump($xml_request);
+
             return FALSE;
         }
 
@@ -336,7 +336,7 @@ var_dump($xml_request);
      */
     private function buildIconRequest($journalIdentifier, $genre){
 
-        return "https://services.d-nb.de/fize-service/gvr/icon?sid='.{$this->sid}" . (!empty($this->pid) ? "&pid={$this->pid}" : '' ) . $journalIdentifier . "&genre={$genre}";
+        return "https://services.dnb.de/fize-service/gvr/icon?sid='.{$this->sid}" . (!empty($this->pid) ? "&pid={$this->pid}" : '' ) . $journalIdentifier . "&genre={$genre}";
     }
 
     /**
@@ -347,7 +347,7 @@ var_dump($xml_request);
      */
     private function buildIconInfoUrl($journalIdentifier, $genre){
 
-        return "https://services.d-nb.de/fize-service/gvr/html-service.htm?sid={$this->sid}" . (!empty($this->pid) ? "&pid={$this->pid}" : '' ) . $journalIdentifier . "&genre={$genre}";
+        return "https://services.dnb.de/fize-service/gvr/html-service.htm?sid={$this->sid}" . (!empty($this->pid) ? "&pid={$this->pid}" : '' ) . $journalIdentifier . "&genre={$genre}";
     }
 
     /**
