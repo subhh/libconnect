@@ -336,7 +336,7 @@ var_dump($xml_request);
      */
     private function buildIconRequest($journalIdentifier, $genre){
 
-        return "https://services.d-nb.de/fize-service/gvr/icon?sid='.{$this->sid}" . (!empty($this->pid) ? "&pid={$this->pid}" : '' ) . $journalIdentifier . "&genre={$genre}";
+        return "https://services.dnb.de/fize-service/gvr/icon?sid='.{$this->sid}" . (!empty($this->pid) ? "&pid={$this->pid}" : '' ) . $journalIdentifier . "&genre={$genre}";
     }
 
     /**
@@ -347,7 +347,7 @@ var_dump($xml_request);
      */
     private function buildIconInfoUrl($journalIdentifier, $genre){
 
-        return "https://services.d-nb.de/fize-service/gvr/html-service.htm?sid={$this->sid}" . (!empty($this->pid) ? "&pid={$this->pid}" : '' ) . $journalIdentifier . "&genre={$genre}";
+        return "https://services.dnb.de/fize-service/gvr/html-service.htm?sid={$this->sid}" . (!empty($this->pid) ? "&pid={$this->pid}" : '' ) . $journalIdentifier . "&genre={$genre}";
     }
 
     /**
