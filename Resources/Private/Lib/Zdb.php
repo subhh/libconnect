@@ -221,7 +221,7 @@ class Tx_libconnect_Resources_Private_Lib_Zdb {
             if ($this->debug) {
                 \TYPO3\CMS\Core\Utility\GeneralUtility::devLog('invalid ResultList - URL: ' . $url, 'libconnect', 1);
             }
-var_dump($xml_request);
+
             return FALSE;
         }
 
