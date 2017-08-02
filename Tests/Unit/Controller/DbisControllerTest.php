@@ -3,7 +3,7 @@
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2012 Torsten Witt <witt@sub.uni-hamburg.de>, Stabi Hamburg
+ *  (c) 2012 Torsten Witt <torsten.witt@sub.uni-hamburg.de>, Stabi Hamburg
  *  
  *  All rights reserved
  *
@@ -34,7 +34,7 @@
  * @package TYPO3
  * @subpackage libconnect
  *
- * @author Torsten Witt <witt@sub.uni-hamburg.de>
+ * @author Torsten Witt <torsten.witt@sub.uni-hamburg.de>
  */
 class Tx_Libconnect_Controller_DbisControllerTest extends Tx_Extbase_Tests_Unit_BaseTestCase {
     /**

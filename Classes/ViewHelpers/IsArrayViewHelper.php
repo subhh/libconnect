@@ -3,7 +3,7 @@ namespace Sub\Libconnect\ViewHelpers;
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2012 Torsten Witt <witt@sub.uni-hamburg.de>, Stabi Hamburg
+ *  (c) 2012 Torsten Witt <torsten.witt@sub.uni-hamburg.de>, Stabi Hamburg
  *  
  *  All rights reserved
  *
