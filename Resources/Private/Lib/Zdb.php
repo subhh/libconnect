@@ -24,9 +24,9 @@
  ***************************************************************/
 
 /**
- * Doku: http://www.zeitschriftendatenbank.de/services/journals-online-print/
- * Doku: http://www.zeitschriftendatenbank.de/fileadmin/user_upload/ZDB/pdf/services/JOP_Spezifikation_XML-Dienst.pdf
- * Doku: http://www.zeitschriftendatenbank.de/fileadmin/user_upload/ZDB/pdf/services/JOP_Dokumentation_XML-Dienst.pdf
+ * documentation: http://www.zeitschriftendatenbank.de/services/journals-online-print/
+ * documentation: http://www.zeitschriftendatenbank.de/fileadmin/user_upload/ZDB/pdf/services/JOP_Spezifikation_XML-Dienst.pdf
+ * documentation: http://www.zeitschriftendatenbank.de/fileadmin/user_upload/ZDB/pdf/services/JOP_Dokumentation_XML-Dienst.pdf
  *
  */
 

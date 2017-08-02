@@ -53,22 +53,22 @@ if (typeof jQuery == 'undefined') {
 };
 
 function setCountries(){
-    //alles sichtbar machen
+    //make all visible
     $("#categories option").css("display", "block");
     $("#participants option").css("display", "block");
     var selectedCountries = $("#countries").val();
 
     if(selectedCountries == 'all'){
-        //Katgorien filtern
+        //filter categories
         $("#categories option").css("display", "block");
         setCategories();
     }else{
-        //Katgorien filtern
+        //filter categories
         $("#categories option").css("display", "none");
         $("#categories ."+selectedCountries).css("display", "block");
-        //Kategorie auf alle setzen
+        //set category to "all"
         $("#categories").val("all");
-        //Partner filtern
+        //filter participants
         $("#participants option").css("display", "none");
         $("#participants ."+selectedCountries).css("display", "block");
     }

@@ -32,7 +32,6 @@
  * @package libconnect
  * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
  *
- * Doku:
  * @author niklas guenther
  * @author Torsten Witt
  *
@@ -448,7 +447,7 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
         $url =  $this->db_detail_suche_url. $this->bibID .'&colors='. $this->colors .'&ocolors='.$this->ocolors;
         $xml_such_form = $this->XMLPageConnection->getDataFromXMLPage($url);
 
-        //Zugaenge werden ermittelt
+        //get access list
         if (isset($xml_such_form->dbis_search->option_list)) {
             foreach ($xml_such_form->dbis_search->option_list AS $key => $value) {
                 foreach ($value->option AS $key2 => $value2) {
@@ -457,7 +456,7 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
             }
         }
 
-        //zu sperrende Zugaenge auslesen und aus Gesamtmenge entfernen
+        //delete inadvertent accesses
         $this->setLicenceForbid();
         if((!empty($this->licenceForbid)) && ($this->licenceForbid!= FALSE)){
             foreach($this->licenceForbid as $key =>$licence){
