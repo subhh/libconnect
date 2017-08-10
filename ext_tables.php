@@ -49,7 +49,7 @@ $TCA['tx_libconnect_domain_model_subject'] = array(
             //'endtime' => 'endtime',
         ),
         'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/Subject.php',
-        'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_libconnect_domain_model_subject.gif'
+        'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Resources/Public/Icons/tx_libconnect_domain_model_subject.gif'
     )
 );
 
