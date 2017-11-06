@@ -3,16 +3,36 @@ if (!defined ('TYPO3_MODE')) {
     die ('Access denied.');
 }
 
-$TCA['tx_libconnect_domain_model_subject'] = array(
-    'ctrl' => $TCA['tx_libconnect_domain_model_subject']['ctrl'],
+return array(
+    'ctrl' => array(
+        'title'    => 'Fachgebiet',
+        'label' => 'title',
+        'tstamp' => 'tstamp',
+        'crdate' => 'crdate',
+        'cruser_id' => 'cruser_id',
+        'default_sortby' => 'title',
+        //'dividers2tabs' => TRUE,
+        //'versioningWS' => 2,
+        //'versioning_followPages' => TRUE,
+        //'origUid' => 't3_origuid',
+        //'languageField' => 'sys_language_uid',
+        //'transOrigPointerField' => 'l10n_parent',
+        //'transOrigDiffSourceField' => 'l10n_diffsource',
+//'type' => 'type',
+        'delete' => 'deleted',
+        'enablecolumns' => array(
+            'disabled' => 'hidden',
+            //'starttime' => 'starttime',
+            //'endtime' => 'endtime',
+
+        ),
+        'iconfile' => 'EXT:libconnect/Resources/Public/Icons/tx_libconnect_domain_model_subject.gif'
+    ),
     'interface' => array(
-        //'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, dbisid, ezbnotation',
         'showRecordFieldList' => 'hidden,title,dbisid,ezbnotation',
     ),
     'types' => array(
-        //'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, title, dbisid, ezbnotation,--div--;LLL:EXT:cms/locallang_ttc.xml:tabs.access,starttime, endtime'),
-        //'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, title, dbisid, ezbnotation,--div--;LLL:EXT:cms/locallang_ttc.xml:tabs.access,starttime, endtime'),
-        '0' => array('showitem' => 'hidden;;1;;1-1-1, title, dbisid, ezbnotation')
+        '0' => array('showitem' => 'hidden, title, dbisid, ezbnotation')
     ),
     'palettes' => array(
         '1' => array('showitem' => '')
@@ -58,38 +78,41 @@ $TCA['tx_libconnect_domain_model_subject'] = array(
             )
         ),*/
         'hidden' => array(
-            'exclude' => 1,
             'label' => 'LLL:EXT:lang/locallang_general.xml:LGL.hidden',
             'config' => array(
                 'type' => 'check',
-            )
+            ),
+	    'exclude' => 1
         ),
         'title' => array(
-            'exclude' => 0,
             'label' => 'LLL:EXT:libconnect/Resources/Private/Language/locallang_db.xml:tx_libconnect_domain_model_subject.title',
             'config' => array(
                 'type' => 'input',
                 'size' => 30,
+		'max' => 255,
                 'eval' => 'trim,required'
-            )
+            ),
+           'exclude' => 0
         ),
         'dbisid' => array(
-            'exclude' => 0,
             'label' => 'LLL:EXT:libconnect/Resources/Private/Language/locallang_db.xml:tx_libconnect_domain_model_subject.dbisid',
             'config' => array(
                 'type' => 'input',
                 'size' => 30,
+		'max' => 255,
                 'eval' => 'trim'
-            )
+            ),
+            'exclude' => 0
         ),
         'ezbnotation' => array(
-            'exclude' => 0,
             'label' => 'LLL:EXT:libconnect/Resources/Private/Language/locallang_db.xml:tx_libconnect_domain_model_subject.ezbnotation',
             'config' => array(
                 'type' => 'input',
                 'size' => 30,
+		'max' => 255,
                 'eval' => 'trim'
-            )
+            ),
+            'exclude' => 0
         )
     )
 );

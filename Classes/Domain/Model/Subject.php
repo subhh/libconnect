@@ -66,7 +66,7 @@ class Subject extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
     /**
      * __construct
      *
-     * @return void
+     * @return \Sub\Libconnect\Domain\Model\Subject;
      */
     public function __construct() {
 

@@ -38,13 +38,30 @@ namespace Sub\Libconnect\Controller;
 class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  {
 
     /**
-	 * creates instance of EzbRepository
-	 *
-	 * @var \Sub\Libconnect\Domain\Repository\EzbRepository
-	 * @inject
-	 */
-	protected $ezbRepository;
+     * creates instance of EzbRepository
+     *
+     * @var \Sub\Libconnect\Domain\Repository\EzbRepository
+     * @inject
+     */
+    protected $ezbRepository;
+
+    /**
+     * creates instance of SubjectRepository
+     *
+     * @var \Sub\Libconnect\Domain\Repository\SubjectRepository
+     * @inject
+     */
+    protected $subjectRepository;
     
+    /**
+     * Inject a subject repository
+     *
+     * @param \Sub\Libconnect\Domain\Repository\SubjectRepository $subjectRepository
+     */
+    public function injectSubjectRepository(\Sub\Libconnect\Domain\Repository\SubjectRepository $subjectRepository) {
+        $this->subjectRepository = $subjectRepository;
+    }
+
      /**
      * shows a list of journals (for general, search, choosed subject)
      */

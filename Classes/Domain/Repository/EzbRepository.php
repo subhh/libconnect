@@ -44,12 +44,12 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
     private $longAccessInfos = array();
 
     /**
-	 * ezbRepository
-	 *
-	 * @var \Sub\Libconnect\Domain\Repository\SubjectRepository
-	 * @inject
-	 */
-	protected $subjectRepository;
+     * subjectRepository
+     *
+     * @var \Sub\Libconnect\Domain\Repository\SubjectRepository
+     * @inject
+     */
+    protected $subjectRepository;
     
     /**
      * get list for start page
@@ -79,12 +79,12 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
      * fill variable $ezb_to_t3_subjects with list of subjects
      */
     private function loadSubjects() {
-        $objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
-        $repository = $objectManager->get('Sub\\Libconnect\\Domain\\Repository\\SubjectRepository');
-        $res =  $repository->findAll();
+        //$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
+	//$repository = $objectManager->get('Sub\\Libconnect\\Domain\\Repository\\SubjectRepository');
+
+        $res =  $this->subjectRepository->findAll();
 
         foreach($res as $row){
-            
             $this->ezb_to_t3_subjects[$row->getEzbnotation()]['ezbnotation'] = $row->getEzbnotation();
             $this->ezb_to_t3_subjects[$row->getEzbnotation()]['title'] = $row->getTitle();
             $this->ezb_to_t3_subjects[$row->getEzbnotation()]['uid'] = $row->getUid();
@@ -93,6 +93,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
             $this->t3_to_ezb_subjects[$row->getUid()]['ezbnotation'] = $row->getEzbnotation();
             $this->t3_to_ezb_subjects[$row->getUid()]['title'] = $row->getTitle();
         }
+
     }
     
     /**

@@ -27,6 +27,8 @@ $TCA['tt_content']['types']['list']['subtypes_addlist'][$_EXTKEY . '_ezb'] = 'pi
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_libconnect_domain_model_subject', 'EXT:libconnect/Resources/Private/Language/locallang_csh_tx_libconnect_domain_model_subject.xml');
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_libconnect_domain_model_subject');
+
+/*
 $TCA['tx_libconnect_domain_model_subject'] = array(
     'ctrl' => array(
         'title'    => 'Fachgebiet',
@@ -47,11 +49,12 @@ $TCA['tx_libconnect_domain_model_subject'] = array(
             'disabled' => 'hidden',
             //'starttime' => 'starttime',
             //'endtime' => 'endtime',
+
         ),
-        'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/Subject.php',
+        'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/tx_libconnect_domain_model_subject.php',
         'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Resources/Public/Icons/tx_libconnect_domain_model_subject.gif'
     )
-);
+);*/
 
 
 if (TYPO3_MODE == 'BE') {
