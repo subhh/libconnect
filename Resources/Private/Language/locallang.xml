@@ -127,6 +127,7 @@
             <label index="tx_libconnect.ezb.detail.period.readme">ReadMe</label>
             <label index="tx_libconnect.ezb.detail.period.rest">Remaining Periods</label>
             <label index="tx_libconnect.ezb.detail.pissns_join">P-ISSN(s)</label>
+            <label index="tx_libconnect.ezb.detail.price_type_annotation">Pricetype annotation</label>
             <label index="tx_libconnect.ezb.detail.print.info">Informations of availability</label>
             <label index="tx_libconnect.ezb.detail.print.location">Location</label>
             <label index="tx_libconnect.ezb.detail.print.period">Inventory</label>
@@ -325,6 +326,7 @@
             <label index="tx_libconnect.ezb.detail.period.readme">ReadMe</label>
             <label index="tx_libconnect.ezb.detail.period.rest">Restliche Zeiträume</label>
             <label index="tx_libconnect.ezb.detail.pissns_join">P-ISSN(s)</label>
+            <label index="tx_libconnect.ezb.detail.price_type_annotation">Preistyp Anmerkung</label>
             <label index="tx_libconnect.ezb.detail.print.info">Informationen zur Verfügbarkeit</label>
             <label index="tx_libconnect.ezb.detail.print.location">Standort</label>
             <label index="tx_libconnect.ezb.detail.print.period">Bestand</label>

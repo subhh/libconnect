@@ -93,17 +93,8 @@ class Tx_Libconnect_Resources_Private_Lib_Httppageconnection {
 
             return $result;
         }
-            
-        #special content
-        $start = mb_stripos($response, "detail_content_more_internet_accesses");
-        if($start){
-            $stop = mb_stripos($response, "</td>", $start);
-            $result = trim(mb_substr($response, $start, $stop-$start-5));
-            $result = str_replace("</td>", "", $result);
-            $result = utf8_encode(str_replace("_more_internet_accesses\">", "", $result));
-        }
 
-        return $result;
+        return $response;
     }
 }
 ?>

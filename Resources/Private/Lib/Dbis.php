@@ -433,6 +433,7 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
         //$url = 'http://rzblx10.uni-regensburg.de/dbinfo/detail.php?bib_id='.$this->bibID.'&colors=&ocolors=&lett=fs&tid=0&titel_id='. $db_id;
 
         //$details['more_internet_accesses'] = $this->HttpPageConnection->getDataFromHttpPage($url);
+        //$details['moreDetails'] = $this->getMoreDetails($db_id);
 
         return $details;
     }
@@ -654,6 +655,31 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
         $xml_request = $this->XMLPageConnection->getDataFromXMLPage($url);
 
         return $xml_request;
+    }
+    
+    /**
+     * get some inforemation from the HTML page
+     * @param integer
+     * @return array
+     */
+    private function getMoreDetails($db_id){
+        $HttpPageConnection = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('tx_libconnect_resources_private_lib_httppageconnection');
+        $url = 'http://rzblx10.uni-regensburg.de/dbinfo/detail.php?bib_id='.$this->bibID.'&colors=&ocolors=&lett=fs&tid=0&titel_id='. $db_id;
+        $HttpRequestData = $HttpPageConnection->getDataFromHttpPage($url);
+        
+        $moreDetails = array();
+
+        //detail_content_more_internet_accesses
+        $start = mb_stripos($HttpRequestData, "detail_content_more_internet_accesses");
+        if($start){
+            $stop = mb_stripos($HttpRequestData, "</td>", $start);
+            $detail_content_more_internet_accesses = trim(mb_substr($HttpRequestData, $start, $stop-$start-5));
+            $detail_content_more_internet_accesses = str_replace("</td>", "", $detail_content_more_internet_accesses);
+            $detail_content_more_internet_accesses = utf8_encode(str_replace("_more_internet_accesses\">", "", $detail_content_more_internet_accesses));
+        }
+        $moreDetails['more_internet_accesses'] = $detail_content_more_internet_accesses;
+        
+        return $moreDetails;
     }
 }
 ?>

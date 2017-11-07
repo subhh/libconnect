@@ -296,6 +296,17 @@
                     </tr>
                 </f:if>
 
+                <f:if condition="{libconnect:strlen(string: journal.moreDetails.price_type_annotation)} > 0">
+                    <tr>
+                        <th>
+                            <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.price_type_annotation" />:</strong>
+                        </th>
+                        <td>
+                            <f:format.htmlentitiesDecode>{journal.moreDetails.price_type_annotation}</f:format.htmlentitiesDecode>
+                        </td>
+                    </tr>
+                </f:if>
+                
                 <f:if condition="{libconnect:strlen(string: journal.remarks)} > 0">
                     <tr>
                         <th>
