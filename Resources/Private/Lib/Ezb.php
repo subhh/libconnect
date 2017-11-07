@@ -271,7 +271,7 @@ class Tx_libconnect_Resources_Private_Lib_Ezb {
                 $journal['keywords'][] = (string) $keyword;
             }
         }
-        $journal['keywords_join'] = join(', ', $journal['keywords']);
+
         $journal['fulltext'] = (string) $xml_request->ezb_detail_about_journal->journal->detail->fulltext;
 
         if (isset($xml_request->ezb_detail_about_journal->journal->detail->fulltext)) {

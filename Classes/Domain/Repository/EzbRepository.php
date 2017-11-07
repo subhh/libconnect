@@ -272,6 +272,20 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
             }
         }
 
+        //http://rzblx1.uni-regensburg.de/ezeit/searchres.phtml?bibid=SUBHH&colors=7&lang=de&jq_type1=KW&jq_term1=Radiologie
+        //creates links of keywords 
+        $tempKeywords = array();
+        foreach( $journal['keywords'] as $keyword ){
+            $temp[] = $GLOBALS['TSFE']->cObj->getTypoLink(
+                            $keyword, 
+                            10, 
+                            array(
+                                'libconnect[search][jq_term1]' =>  $keyword,
+                                'libconnect[search][jq_type1]' => 'KW'
+                            ));
+        }
+        $journal['keywords_join'] = join(', ', $tempKeywords);
+        
         return $journal;
     }
     
