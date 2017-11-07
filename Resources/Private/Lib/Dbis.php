@@ -664,7 +664,7 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
      */
     private function getMoreDetails($db_id){
         $HttpPageConnection = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('tx_libconnect_resources_private_lib_httppageconnection');
-        $url = 'http://rzblx10.uni-regensburg.de/dbinfo/detail.php?bib_id='.$this->bibID.'&colors=&ocolors=&lett=fs&tid=0&titel_id='. $db_id;
+        $url = 'https://rzblx10.uni-regensburg.de/dbinfo/detail.php?bib_id='.$this->bibID.'&colors=&ocolors=&lett=fs&tid=0&titel_id='. $db_id;
         $HttpRequestData = $HttpPageConnection->getDataFromHttpPage($url);
         
         $moreDetails = array();
