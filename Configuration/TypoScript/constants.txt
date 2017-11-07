@@ -32,7 +32,7 @@ plugin.tx_libconnect {
     }
     persistence {
         # cat=plugin.tx_libconnect/settings/0020; type=int+; label=Default storage PID
-        storagePid = 
+        storagePid = 1
     }
 
     settings {
