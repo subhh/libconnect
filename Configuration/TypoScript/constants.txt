@@ -8,7 +8,7 @@ plugin.tx_libconnect {
     # cat=plugin.tx_libconnect/settings/0001; type=string; label=ezbbibid
     ezbbibid = SUBHH
     # cat=plugin.tx_libconnect/settings/0002; type=string; label=dbisbibid
-    dbisbibid = zbmed
+    dbisbibid = sub_hh
     # cat=plugin.tx_libconnect/settings/0003; type=string; label=zdbsid
     zdbsid = vid:dbid
     //zdbbibid = BIBID
