@@ -282,6 +282,8 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
 
     /**
      * count the new entries
+     *
+     * @return array
      */
     private function getNewCount($subjectId = FALSE) {
         $params['jq_type1'] = 'LD';

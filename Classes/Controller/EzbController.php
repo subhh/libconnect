@@ -141,7 +141,8 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
             $journals =  $this->ezbRepository->loadSearch($params['search'], $journals['colors'], $config);           
 
             if(!empty($params['search']['selected_colors'])){
-                //damit selected_colors nicht in verstekten Formularfeldern auftauchen
+                //delete selected_colors in hidden form fields
+                //se
                 unset($params['search']['selected_colors']);
             }
 
@@ -364,7 +365,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
     }
 
     /**
-     * genrates Form for the participants
+     * generates form for the participants
      */
     public function displayParticipantsFormAction() {
         if(!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GET('tx_libconnect_ezb'))){

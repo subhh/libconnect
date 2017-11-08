@@ -102,6 +102,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
      * @param int $subject_id
      * @param array $options
      * @param array $config
+     *
      * @return array
      */
     public function loadList($subject_id, $options = array('index' =>0, 'sc' => 'A', 'lc' => ''), $config) {
@@ -203,6 +204,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
      * 
      * @param type $journalId
      * @param type $config
+     *
      * @return boolean
      */
     public function loadDetail($journalId, $config) {
@@ -294,6 +296,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
      * 
      * @param array $searchVars
      * @param array $config
+     *
      * @return array $journals
      */
     public function loadSearch($searchVars, $options, $config) {
@@ -538,6 +541,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
      * get data about the search
      * 
      * @param array $searchVars
+     *
      * @return array
      */
     private function getSearchDescription($searchVars){
@@ -635,6 +639,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
      * returns a value for parameter colors. 
      * 
      * @param array $colors
+     *
      * @return array $sum
      */
     private function getColors($colors){

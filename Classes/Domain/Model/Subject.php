@@ -65,8 +65,6 @@ class Subject extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 
     /**
      * __construct
-     *
-     * @return void
      */
     public function __construct() {
 
@@ -85,7 +83,6 @@ class Subject extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
      * Sets the title
      *
      * @param string $title
-     * @return void
      */
     public function setTitle($title) {
         $this->title = $title;
@@ -104,7 +101,6 @@ class Subject extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
      * Sets the dbisid
      *
      * @param string $dbisid
-     * @return void
      */
     public function setDbisId($dbisid) {
         $this->dbisId = $dbisid;
@@ -123,7 +119,6 @@ class Subject extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
      * Sets the ezbnotation
      *
      * @param string $ezbnotation
-     * @return void
      */
     public function setEzbnotation($ezbnotation) {
         $this->ezbnotation = $ezbnotation;

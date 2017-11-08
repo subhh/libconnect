@@ -92,7 +92,6 @@ class Tx_libconnect_Resources_Private_Lib_Ezb {
 
     /**
      * constructor
-     *
      */
     public function __construct() {
         $this->XMLPageConnection = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('tx_libconnect_resources_private_lib_xmlpageconnection');
@@ -104,7 +103,6 @@ class Tx_libconnect_Resources_Private_Lib_Ezb {
 
     /**
      * sets ID of the library
-     *
      */
     private function setBibID() {
 		$this->bibID = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.']['ezbbibid'];
@@ -583,6 +581,7 @@ class Tx_libconnect_Resources_Private_Lib_Ezb {
      * returns list where journal at partners available
      * 
      * @param type $jour_id
+     *
      * @return array full list of Partner with Journal
      */
     public function getParticipantsList($jour_id){
@@ -637,6 +636,7 @@ class Tx_libconnect_Resources_Private_Lib_Ezb {
      * checks institutions having access to this journal
      * 
      * @param type $jour_id
+     *
      * @return boolean
      */
     public function getParticipants($jour_id){
@@ -687,6 +687,7 @@ class Tx_libconnect_Resources_Private_Lib_Ezb {
      * sets the movin wall
      * 
      * @param string $value
+     *
      * @return array
      */
     private function getMovingwall($value){
@@ -731,6 +732,7 @@ class Tx_libconnect_Resources_Private_Lib_Ezb {
      * get some inforemation from the HTML page
      *
      * @param integer
+     *
      * @return array
      */
     private function getMoreDetails($journalId){

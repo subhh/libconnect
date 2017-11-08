@@ -53,6 +53,7 @@ Class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
      * shows top databases
      * 
      * @param array $config
+     *
      * @return array
      */
     public function loadTop($config) {
@@ -80,6 +81,8 @@ Class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
      * 
      * @param integer $subject_id
      * @param array array('subject'=>array(), 'list'=>array())
+     *
+     * @return array
      */
     public function loadList($subject_id, $config) {
         $this->loadSubjects();
@@ -164,7 +167,6 @@ Class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
     /**
      * load subjects from database
-     * 
      */
     private function loadSubjects() {
         $res = $this->subjectRepository->findAll();

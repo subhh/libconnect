@@ -63,7 +63,6 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
 
     /**
      * constructor
-     *
      */
     public function __construct() {
         $this->XMLPageConnection = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('tx_libconnect_resources_private_lib_xmlpageconnection');
@@ -73,7 +72,6 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
 
     /**
      * sets ID of the library
-     *
      */
     public function setBibID() {
         $this->bibID = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.']['dbisbibid'];
@@ -117,7 +115,6 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
 
     /**
      * Set the array with unused licences
-     *
      */
     public function setLicenceForbid() {
         $this->licenceForbid = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.']['settings.']['dbislicenceforbid.'];
@@ -366,6 +363,8 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
                     $details['access_icon'] = (string) $value->attributes()->access_icon;
                     $details['db_access'] = (string) $value->db_access;
                     $details['db_access_short_text'] = (string) $value->db_access_short_text;
+                    
+                //check has library access and who else
                 } else if ($key == 'biblist') {
 
                     //libraries with access to the title
@@ -634,6 +633,7 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
      * helper function get fachliste
      *
      * @param string $request
+     *
      * @return array
      */
     public function getRequestFachliste($request) {
@@ -660,6 +660,7 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
     /**
      * get some inforemation from the HTML page
      * @param integer
+     *
      * @return array
      */
     private function getMoreDetails($db_id){
