@@ -13,8 +13,10 @@
     - EZB:
         - new field "Preistyp Anmerkung"
         - Keywords are now links with search for keyword
+        - "New in EZB" Display access list legend and head only, if there are entries.
     - DBIS:
-        -  check has library access and list who else 
+        - check has library access and list who else 
+        - "New in EZB" fixed 2nd h1 to h2
 5.1.2
     - all
         - German comments translated
