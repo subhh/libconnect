@@ -179,7 +179,7 @@
 
             <label index="tx_libconnect.ezb.new.headline.alphabetical">New in EZB - alphabetical list</label>
             <label index="tx_libconnect.ezb.new.headline.subject">New in EZB - list of all subject</label>
-            <label index="tx_libconnect.ezb.new.hits"> %s new entries:</label>
+            <label index="tx_libconnect.ezb.new.hits">new entries:</label>
             <label index="tx_libconnect.ezb.new.since">There are since</label>
 
             <label index="tx_libconnect.ezb.overview.headline">Elektronische Zeitschriftenbibliothek (Electronic Journals Library)</label>

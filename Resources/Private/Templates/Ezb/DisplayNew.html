@@ -46,11 +46,9 @@
 <br/><br/>
 
 <p>
-    <libconnect:strreplace search="%s" replace=" {journals.page_vars.search_count} ">
-        <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.new.since" />
-        <span class="ezb-newdate">{new_date}</span>
-        <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.new.hits" />
-    </libconnect:strreplace>
+    <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.new.since" />
+    <span class="ezb-newdate">{new_date}</span> {journals.page_vars.search_count}
+    <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.new.hits" />
 </p>
 
 <br/>
