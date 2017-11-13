@@ -167,7 +167,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
 
         } else {//start point
             
-            $liste =  $this->ezbRepository->loadOverview();
+            $journals =  $this->ezbRepository->loadOverview();
 
             //change view
             $controllerContext = $this->buildControllerContext();
@@ -175,7 +175,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
             $this->view->setControllerContext($controllerContext);
 
             //variables for template
-            $this->view->assign('list', $liste);
+            $this->view->assign('list', $journals);
         }
     }
 
