@@ -258,6 +258,14 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
                         $this->view->assign('newUrlSub', $GLOBALS['TSFE']->cObj->getTypolink_URL( intval($this->settings['flexform']['newPid']), 
                             array('libconnect' => array('subject' => $params['subject'] )) ) );//URL of new list
                     }
+                }else{
+                    $count = (int) $this->getNewCount(FALSE);
+
+                    //show "new in EZB" only if there is something new
+                    if($count >0){
+                        $this->view->assign('newUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL( intval($this->settings['flexform']['newPid'])) );
+                        $this->view->assign('newInSubjectCount',  $count);
+                    }
                 }
             }
 
