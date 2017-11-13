@@ -154,7 +154,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
                     'libconnect[sc]' => $journals['navlist']['pages'][$page]['sc']? $journals['navlist']['pages'][$page]['sc'] : 'A',
                     'libconnect[lc]' => $journals['navlist']['pages'][$page]['lc'],
                     'libconnect[notation]' => $subject['ezbnotation'],
-                    'libconnect[colors]' => array_flip($journals['colors'])
+                    'libconnect[colors]' => $journals['colors']
                 ));
             }
         }
@@ -168,7 +168,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
                         'libconnect[sc]' => $journals['alphabetical_order']['first_fifty'][$section]['sc']? $journals['alphabetical_order']['first_fifty'][$section]['sc'] : 'A',
                         'libconnect[lc]' => $journals['alphabetical_order']['first_fifty'][$section]['lc'],
                         'libconnect[notation]' => $subject['ezbnotation'],
-                        'libconnect[colors]' => array_flip($journals['colors'])
+                        'libconnect[colors]' => $journals['colors']
                 ));
             }
         }
@@ -191,7 +191,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
                         'libconnect[sc]' => $journals['alphabetical_order']['next_fifty'][$section]['sc']? $journals['alphabetical_order']['next_fifty'][$section]['sc'] : 'A',
                         'libconnect[lc]' => $journals['alphabetical_order']['next_fifty'][$section]['lc'],
                         'libconnect[notation]' => $subject['ezbnotation'],
-                        'libconnect[colors]' => array_flip($journals['colors'])
+                        'libconnect[colors]' => $journals['colors']
                 ));
             }
         }
