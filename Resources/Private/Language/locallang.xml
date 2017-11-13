@@ -378,7 +378,7 @@
 
             <label index="tx_libconnect.ezb.new.headline.alphabetical">Neu in der EZB - Alphabetische Auflistung</label>
             <label index="tx_libconnect.ezb.new.headline.subject">Neu in der EZB - Auflistung nach Fachgebieten</label>
-            <label index="tx_libconnect.ezb.new.hits"> %s neue Einträge:</label>
+            <label index="tx_libconnect.ezb.new.hits"> neue Einträge:</label>
             <label index="tx_libconnect.ezb.new.since">Es gibt seit dem </label>
 
             <label index="tx_libconnect.ezb.overview.headline">Elektronische Zeitschriftenbibliothek</label>
