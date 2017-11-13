@@ -117,22 +117,8 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
             /*if(!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GET('id'))){
                 $formParameter['id'] = $Pid;
             }*/
-            //variables for template
-            
-            //var_dump($liste['selected_colors']);exit;
-            
-           /* if(
-                empty($liste['selected_colors'][1]) && 
-                empty($liste['selected_colors'][2]) && 
-                empty($liste['selected_colors'][4]) && 
-                empty($liste['selected_colors'][6])
-            ){
-                $liste['selected_colors'][1] = 1;
-                $liste['selected_colors'][2] = 2;
-                $liste['selected_colors'][4] = 4;
-                $liste['selected_colors'][6] = 6;
-            };*/
-            
+
+            //variables for template            
             $this->view->assign('journals', $liste);
             $this->view->assign('listUrl', $listURL);
             $this->view->assign('colors', $params['colors']);
