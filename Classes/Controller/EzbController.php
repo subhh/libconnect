@@ -66,20 +66,25 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
      * shows a list of journals (for general, search, choosed subject)
      */
     public function displayListAction() {
+        $params = array();
         if(!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GET('tx_libconnect_ezb'))){
-            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('tx_libconnect_ezb');
-        } else{
-            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('libconnect');
+            $params_temp = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('tx_libconnect_ezb');
+            $params = $params_temp['libconnect'];
+        } 
+        if(!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GET('libconnect'))){
+            $params_temp = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('libconnect');
+            $params = array_merge($params_temp, $params);
         }
 
         //get PageID
         $Pid = intval($GLOBALS['TSFE']->id);
+        $this->view->assign('pageUid', $Pid);
         
         //include CSS
         $this->decideIncludeCSS();
-
+ 
         if ((!empty($params['subject'])) || (!empty($params['notation']))) {//choosed subject after start point
-
+ 
             $config['detailPid'] = $this->settings['flexform']['detailPid'];
 
             $options['index'] = $params['index'];
@@ -113,6 +118,21 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
                 $formParameter['id'] = $Pid;
             }*/
             //variables for template
+            
+            //var_dump($liste['selected_colors']);exit;
+            
+           /* if(
+                empty($liste['selected_colors'][1]) && 
+                empty($liste['selected_colors'][2]) && 
+                empty($liste['selected_colors'][4]) && 
+                empty($liste['selected_colors'][6])
+            ){
+                $liste['selected_colors'][1] = 1;
+                $liste['selected_colors'][2] = 2;
+                $liste['selected_colors'][4] = 4;
+                $liste['selected_colors'][6] = 6;
+            };*/
+            
             $this->view->assign('journals', $liste);
             $this->view->assign('listUrl', $listURL);
             $this->view->assign('colors', $params['colors']);

@@ -15,10 +15,20 @@
 </f:if>
 
 <div class="ezb-list-legend">
-    <form name="ezbaccessinfoform" id="ezb-accessinfo-form" action="{listUrl}" method="get" onchange="document.ezbaccessinfoform.submit();">
+    <f:form action="displayListAction" controller="Ezb" method="get" pageUid="{pageUid}" name="ezbaccessinfoform" id="ezbaccessinfoform" additionalAttributes="{onChange : 'document.ezbaccessinfoform.submit();'}">
+    
         <f:for each="{journals.selected_colors}" as="section" key="key">
             <f:if condition="{section.colorkey} != 6">
-                <input id="ezb-accessinfo-access_{section.colorkey}" type="checkbox" name="libconnect[colors][{section.colorkey}]" class="accessinfo-element" value="{section.colorkey}" <f:if condition="{libconnect:array(inputArray: journals.colors, key: section.colorkey)}">checked="checked"</f:if>/>
+                
+                <f:if condition="{libconnect:array(inputArray: journals.colors, key: section.colorkey)}">
+                    <f:then>
+                        <f:form.checkbox  id="ezb-accessinfo-access_{section.colorkey}" name="libconnect[colors][{section.colorkey}]" class="accessinfo-element"  value="{section.colorkey}"  checked="1"/>
+                    </f:then>
+                    <f:else>
+                        <f:form.checkbox  id="ezb-accessinfo-access_{section.colorkey}" name="libconnect[colors][{section.colorkey}]" class="accessinfo-element"  value="{section.colorkey}"/>
+                    </f:else>
+                </f:if>
+                
             </f:if>
             <label class="ezb-accessinfo-access_{section.colorkey} accessinfo-element" for="ezb-accessinfo-access_{section.colorkey}">{section.value}</label>
 
@@ -28,7 +38,7 @@
             <f:form.hidden name="{key}" value="{parameter}" />
         </f:for>
         
-    </form>
+    </f:form>
 </div>
 
 <br/><br/>
