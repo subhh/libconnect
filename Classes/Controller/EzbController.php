@@ -97,7 +97,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
             if(!isset($params['subject'])){
                 $params['subject'] = "";
             }
-            $liste =  $this->ezbRepository->loadList(
+            $journals =  $this->ezbRepository->loadList(
                 $params['subject'], 
                 $options,
                 $config
@@ -119,7 +119,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
             }*/
 
             //variables for template            
-            $this->view->assign('journals', $liste);
+            $this->view->assign('journals', $journals);
             $this->view->assign('listUrl', $listURL);
             $this->view->assign('colors', $params['colors']);
             $this->view->assign('formParameter', $formParameter);
