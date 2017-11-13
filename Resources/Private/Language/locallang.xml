@@ -190,7 +190,7 @@
             <label index="tx_libconnect.ezb.search.error.headline">An error occurred:</label>
             <label index="tx_libconnect.ezb.search.error.text">You searched without search terms and subject.</label>
             <label index="tx_libconnect.ezb.search.proper.hits">Exactly hits:</label>
-            <label index="tx_libconnect.ezb.search.text.hits">%s hit(s):</label>
+            <label index="tx_libconnect.ezb.search.text.hits"> hit(s):</label>
 
             <!-- Suject -->
 
