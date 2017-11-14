@@ -13,30 +13,45 @@
 <f:if condition="{journals.page_vars.search_count} != -1">
     <f:then>
         <div class="ezb-list-legend">
-            <form name="ezbaccessinfoform" id="ezb-accessinfo-form" action="{listUrl}" method="get" onchange="document.ezbaccessinfoform.submit();">
-                <f:for each="{journals.AccessInfos}" as="section" key="key">
-                    <f:if condition="{section.colorkey} != 6">
-                        <input id="ezb-accessinfo-access_{section.colorkey}" type="checkbox" name="libconnect[search][selected_colors][{section.colorkey}]" class="accessinfo-element" value="{section.colorkey}" <f:if condition="{libconnect:array(inputArray: journals.selected_colors, key: section.colorkey)}">checked="checked"</f:if>/>
-                    </f:if>
-                    <label class="ezb-accessinfo-access_{section.colorkey} accessinfo-element" for="ezb-accessinfo-access_{section.colorkey}">{section.value}</label>
-                </f:for>
+<!--           <form name="ezbaccessinfoform" id="ezb-accessinfo-form" action="{listUrl}" method="post" additionalAttributes="{onChange : 'document.ezbaccessinfoform.submit();'}">-->
+
+<f:form enctype="multipart/form-data" controller="Ezb" method="post" pageUid="{listUrl}" name="ezbaccessinfoform" id="ezbaccessinfoform" additionalAttributes="{onChange : 'document.ezbaccessinfoform.submit();'}">
+
+
+
+<f:for each="{journals.AccessInfos}" as="section" key="key">
+            <f:if condition="{section.colorkey} != 6">
+                
+                <f:if condition="{libconnect:array(inputArray: colors, key: section.colorkey)}">
+                    <f:then>
+                        <f:form.checkbox  id="ezb-accessinfo-access_{section.colorkey}" name="libconnect[colors][{section.colorkey}]" class="accessinfo-element"  value="{section.colorkey}"  checked="1"/>
+                    </f:then>
+                    <f:else>
+                        <f:form.checkbox  id="ezb-accessinfo-access_{section.colorkey}" name="libconnect[colors][{section.colorkey}]" class="accessinfo-element"  value="{section.colorkey}"/>
+                    </f:else>
+                </f:if>
+                
+            </f:if>
+            <label class="ezb-accessinfo-access_{section.colorkey} accessinfo-element" for="ezb-accessinfo-access_{section.colorkey}">{section.value}</label>
+
+        </f:for>
 
                 <f:for each="{formParameter}" as="parameter" key="key">
                     <f:if condition="{libconnect:IsArray(value: parameter)}">
                         <f:then>
                             <f:for each="{parameter}" as="array" key="arraykey">
-                                <input type="hidden" value="{array}" name="libconnect[search][{key}][{arraykey}]"/>
+                                <f:form.hidden value="{array}" name="libconnect[search][{key}][{arraykey}]"/>
                             </f:for>
                         </f:then>
                         <f:else>
-                            <input type="hidden" value="{parameter}" name="libconnect[search][{key}]"/>
+                            <f:form.hidden value="{parameter}" name="libconnect[search][{key}]"/>
                         </f:else>
                     </f:if>
                 </f:for>
                 <f:if condition="{formParameterId}">
-                    <input type="hidden" value="{formParameterId}" name="id"/>
+                    <f:form.hidden value="{formParameterId}" name="id"/>
                 </f:if>
-            </form>
+            </f:form>
         </div>
 
         <br/><br/>

@@ -2,9 +2,7 @@
     <h2 class="ezb">
         <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.miniform.searchform.headline" />
     </h2>
-    <f:form action="{listUrl}" method="get" pageUid="{listPid}">
-        <f:form.hidden name="id" value="{listPid}"/>
-
+    <f:form name="ezb-mini-form" id="ezb-mini-form" controller="Ezb" method="post" pageUid="{listPid}">
         <label for="libconnect_ezb_minisuche" class="hiddenezb">
             <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.miniform.searchform.label" />
         </label>

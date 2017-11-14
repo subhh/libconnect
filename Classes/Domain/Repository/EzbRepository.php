@@ -299,7 +299,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
      *
      * @return array $journals
      */
-    public function loadSearch($searchVars, $options, $config) {
+    public function loadSearch($searchVars, $colors, $config) {
         $this->loadSubjects();
 
         //search of sidebar
@@ -317,8 +317,8 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
         $ezb =  \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_libconnect_Resources_Private_Lib_Ezb');
 
         //filter list by access list
-        $colors = $this->getColors($searchVars['selected_colors']);
-        $ezb->setColors($colors);
+        $ezbColors = $this->getColors($colors);
+        $ezb->setColors($ezbColors);
 
         $journals = $ezb->search($term, $searchVars);
 
@@ -327,7 +327,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
         }
 
         $journals['searchDescription'] = $this->getSearchDescription($searchVars);
-        $journals['selected_colors'] = $searchVars['selected_colors'];
+        $journals['selected_colors'] = $colors;
     
         /**
          * create links
@@ -340,8 +340,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
                     $journals['navlist']['pages'][$page]['link'] = $GLOBALS['TSFE']->cObj->getTypolink_URL($GLOBALS['TSFE']->id,
                         array_merge($linkParams, array(
                             'libconnect[search][sc]' => $journals['navlist']['pages'][$page]['id'],
-                            'libconnect[search][selected_colors]' => $journals['selected_colors'],
-                            'libconnect[search][colors]' => $colors
+                            'libconnect[search][selected_colors]' => $journals['selected_colors']
                         )));
                 }
             }
@@ -394,8 +393,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
                     array_merge($linkParams, array(
                         'libconnect[search][sindex]' => $journals['alphabetical_order']['next_fifty'][$section]['sindex'],
                         'libconnect[search][sc]' => $journals['alphabetical_order']['next_fifty'][$section]['sc'],
-                        'libconnect[search][selected_colors]' => $journals['selected_colors'],
-                        'libconnect[search][colors]' => $colors
+                        'libconnect[search][selected_colors]' => $journals['selected_colors']
                     )));
             }
         }

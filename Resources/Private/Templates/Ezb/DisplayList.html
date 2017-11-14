@@ -15,12 +15,12 @@
 </f:if>
 
 <div class="ezb-list-legend">
-    <f:form action="displayListAction" controller="Ezb" method="get" pageUid="{pageUid}" name="ezbaccessinfoform" id="ezbaccessinfoform" additionalAttributes="{onChange : 'document.ezbaccessinfoform.submit();'}">
+    <f:form enctype="multipart/form-data" controller="Ezb" method="post" pageUid="{pageUid}" name="ezbaccessinfoform" id="ezbaccessinfoform" additionalAttributes="{onChange : 'document.ezbaccessinfoform.submit();'}">
     
         <f:for each="{journals.selected_colors}" as="section" key="key">
             <f:if condition="{section.colorkey} != 6">
-                
-                <f:if condition="{libconnect:array(inputArray: journals.colors, key: section.colorkey)}">
+
+                <f:if condition="{libconnect:array(inputArray: colors, key: section.colorkey)}">
                     <f:then>
                         <f:form.checkbox  id="ezb-accessinfo-access_{section.colorkey}" name="libconnect[colors][{section.colorkey}]" class="accessinfo-element"  value="{section.colorkey}"  checked="1"/>
                     </f:then>
@@ -37,7 +37,7 @@
         <f:for each="{formParameter}" as="parameter" key="key">
             <f:form.hidden name="{key}" value="{parameter}" />
         </f:for>
-        
+        <input type="submit" value="submi"/>
     </f:form>
 </div>
 
