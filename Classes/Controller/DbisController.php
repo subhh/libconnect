@@ -65,10 +65,14 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
      * shows a list of databases (for general, search, choosed subject)
      */
     public function displayListAction() {
-        if(!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GET('tx_libconnect_dbis'))){
-            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('tx_libconnect_dbis');
-        } else{
-            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('libconnect');
+       $params = array();
+        if(!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_dbis'))){
+            $params_temp = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_dbis');
+            $params = $params_temp['libconnect'];
+        } 
+        if(!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect'))){
+            $params_temp = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect');
+            $params = array_merge($params_temp, $params);
         }
 
         //include CSS
@@ -120,10 +124,10 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
      * shows deatail view
      */
     public function displayDetailAction() {
-        if(!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GET('tx_libconnect_dbis'))){
-            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('tx_libconnect_dbis');
+        if(!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_dbis'))){
+            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_dbis');
         } else{
-            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('libconnect');
+            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect');
         };
 
         //include CSS
@@ -159,10 +163,14 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
      * shows sidebar
      */
     public function displayMiniFormAction() {
-        if(!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GET('tx_libconnect_dbis'))){
-            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('tx_libconnect_dbis');
-        } else{
-            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('libconnect');
+	$params = array();
+        if(!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_dbis'))){
+            $params_temp = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_dbis');
+            $params = $params_temp['libconnect'];
+        } 
+        if(!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect'))){
+            $params_temp = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect');
+            $params = array_merge($params_temp, $params);
         }
 
         //include CSS
@@ -215,10 +223,10 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
      * shows the search
      */
     public function displayFormAction() {
-        if(!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GET('tx_libconnect_dbis'))){
-            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('tx_libconnect_dbis');
+        if(!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_dbis'))){
+            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_dbis');
         } else{
-            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('libconnect');
+            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect');
         }
 
         //include CSS
@@ -238,10 +246,10 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
      * shows the new entries
      */
     public function displayNewAction() {
-        if(!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GET('tx_libconnect_dbis'))){
-            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('tx_libconnect_dbis');
+        if(!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_dbis'))){
+            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_dbis');
         } else{
-            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('libconnect');
+            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect');
         }
         
         $params['jq_type1'] = 'LD';

@@ -3,11 +3,10 @@
 <div class="datenbank-suche-wrapper">
     <h2 class="libconnect-h2"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.miniform.search_header" /></h2>
 
-    <f:form action="{listUrl}" method="get" pageUid="{listPid}">
-        <f:form.hidden name="id" value="{listPid}"/>
-        
+    <f:form name="dbis-mini-form-search" id="dbis-mini-form-search" controller="Dbis" method="post" pageUid="{listPid}">
+       
         <label for="libconnect_dbis_minisuche" class="hiddendebis"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.miniform.search_term" /></label>
-        <f:form.textfield type="text" id="libconnect_dbis_minisuche" name="search[sword]" value="{vars.sword}" size="20"/><br/>
+        <f:form.textfield id="libconnect_dbis_minisuche" name="libconnect[search][sword]" value="{vars.sword}" size="20"/><br/>
         
         <f:form.submit name="submit" value='<f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.miniform.search_term" />'/>
         
@@ -22,23 +21,15 @@
         <div class="datenbank-suche-wrapper">
             <h2 class="libconnect-h2"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.miniform.show_databases" /></h2>
             
-            <form action="{listUrl}" method="get">
+	    <f:form name="dbis-mini-form-choose-licence" id="dbis-mini-form-choose-licence" controller="Dbis" method="post" pageUid="{listPid}">
                 <p>
-                    <input type="hidden" name="id" value="{listPid}" />
                     <label for="libconnect_dbis_suche" class="hiddendebis"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.miniform.select_access" /></label>
-                    <select id="libconnect_dbis_suche" name="libconnect[search][zugaenge]">
-
-                        <f:for each="{form.zugaenge}" as="value" key="key">
-                            <f:if condition="{key} < 1000">
-                                <f:if condition="{libconnect:strlen(string: value)} > 0">
-                                    <option  <f:if condition="{vars.zugaenge}"><f:if condition="{vars.zugaenge} == {key}">selected="selected"</f:if></f:if> value="{key}" >{value}</option>
-                                </f:if>
-                            </f:if>
-                        </f:for>
-                    </select>
+		
+                    <f:form.select id="libconnect_dbis_suche" name="libconnect[search][zugaenge]" options="{form.zugaenge}" value="{vars.zugaenge}"/>
+                    
                 </p>
-                <input type="submit" value="<f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.miniform.select_access" />" />
-            </form>
+                <f:form.submit name="choose_licence" value='<f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.miniform.select_access" />' />
+            </f:form> 
 
         </div>
     </f:else>

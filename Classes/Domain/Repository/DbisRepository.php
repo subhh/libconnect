@@ -248,6 +248,8 @@ Class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
     public function loadMiniForm() {
         $dbis = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_Libconnect_Resources_Private_Lib_Dbis');
         $form = $dbis->detailSucheFormFelder();
+	
+	unset($form['zugaenge'][1000]);	
 
         return $form;
     }
