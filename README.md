@@ -16,3 +16,4 @@ Changes in new Version 5.2.0
     - DBIS:
         -  check has library access and list who else 
 
+    Tested with: TYPO3 6.2, 8.7
