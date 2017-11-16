@@ -65,7 +65,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
      * shows a list of databases (for general, search, choosed subject)
      */
     public function displayListAction() {
-       $params = array();
+        $params = array();
         if(!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_dbis'))){
             $params_temp = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_dbis');
             $params = $params_temp['libconnect'];
@@ -163,7 +163,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
      * shows sidebar
      */
     public function displayMiniFormAction() {
-	$params = array();
+        $params = array();
         if(!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_dbis'))){
             $params_temp = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_dbis');
             $params = $params_temp['libconnect'];
@@ -359,3 +359,4 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
     }
 }
 ?>
+

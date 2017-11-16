@@ -54,7 +54,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
     /**
      * get list for start page
      * 
-     * @return array
+     * @return array $list
      */
     public function loadOverview() {
         $this->loadSubjects();
@@ -80,7 +80,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
      */
     private function loadSubjects() {
         //$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
-	//$repository = $objectManager->get('Sub\\Libconnect\\Domain\\Repository\\SubjectRepository');
+        //$repository = $objectManager->get('Sub\\Libconnect\\Domain\\Repository\\SubjectRepository');
 
         $res =  $this->subjectRepository->findAll();
 

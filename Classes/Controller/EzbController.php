@@ -118,18 +118,16 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
                 $formParameter['id'] = $Pid;
             }*/
 
-
-
-	    if(empty($params['colors'][1]) &
-		empty($params['colors'][2]) &
-		empty($params['colors'][4])){
+            if( empty($params['colors'][1]) &
+                empty($params['colors'][2]) &
+                empty($params['colors'][4])){
 			
-		$params['colors'] = array(
-                    1 => 1,
-                    2 => 2,
-                    4 => 4,
-                    6 => 6
-                );
+                    $params['colors'] = array(
+                        1 => 1,
+                        2 => 2,
+                        4 => 4,
+                        6 => 6
+                    );
             }
 
             //variables for template            
@@ -148,16 +146,17 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
             if(!empty($params['search']['selected_colors'])){
                         $params['colors'] = 	$params['search']['selected_colors'];
             }
+            
             //params from color legend
-            if(empty($params['colors'][1]) &
-		empty($params['colors'][2]) &
-		empty($params['colors'][4])){
+            if( empty($params['colors'][1]) &
+                empty($params['colors'][2]) &
+                empty($params['colors'][4])){
 			
-		$params['colors'] = array(
-                    1 => 1,
-                    2 => 2,
-                    4 => 4
-                );
+                    $params['colors'] = array(
+                        1 => 1,
+                        2 => 2,
+                        4 => 4
+                    );
             }
 
             //no readable URL?
@@ -380,6 +379,8 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
 
     /**
      * count the new entries
+     * 
+     * @return array $journals
      */
     public function getNewCount($subjectId = FALSE) {
         $params = array();

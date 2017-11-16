@@ -54,7 +54,7 @@ Class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
      * 
      * @param array $config
      *
-     * @return array
+     * @return array $result
      */
     public function loadTop($config) {
         $this->loadSubjects();
@@ -243,13 +243,13 @@ Class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
      /**
      * return miniform
      *
-     * @return array
+     * @return array $form
      */
     public function loadMiniForm() {
         $dbis = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_Libconnect_Resources_Private_Lib_Dbis');
         $form = $dbis->detailSucheFormFelder();
 	
-	unset($form['zugaenge'][1000]);	
+        unset($form['zugaenge'][1000]);	
 
         return $form;
     }
@@ -257,7 +257,7 @@ Class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
     /**
      * return form for detail search
      *
-     * @return array
+     * @return array $form
      */
     public function loadForm() {
         $dbis = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_Libconnect_Resources_Private_Lib_Dbis');
