@@ -7,7 +7,8 @@
 **/
 - 
 5.2.1
-    - Compatibility information updated
+    - Compatibility information updated.
+    - Deprecated fields of ext_emconf removed.
 5.2.0
     - Compatibility to TYPO3 8.7
     - Depcated function ExtensionManagementUtility::extRelPath changed to ExtensionManagementUtility::extPath
