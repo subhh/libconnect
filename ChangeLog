@@ -6,6 +6,8 @@
 * - CR: Christian Richter chri@portachtzig.com (Wirtschaftskolleg zu Berlin)
 **/
 - 
+5.2.1
+    - Compatibility information updated
 5.2.0
     - Compatibility to TYPO3 8.7
     - Depcated function ExtensionManagementUtility::extRelPath changed to ExtensionManagementUtility::extPath
