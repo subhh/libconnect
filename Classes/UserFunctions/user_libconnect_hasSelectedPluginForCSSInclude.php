@@ -10,9 +10,9 @@ namespace Sub\Libconnect\UserFunctions;
 
 /**
  * Checks which PlugIn is active
- * 
+ *
  * @param string    $type: Name des gewählten PlugIns
- * 
+ *
  * @return boolean
  */
 function user_libconnect_hasSelectedPluginForCSSInclude($type) {

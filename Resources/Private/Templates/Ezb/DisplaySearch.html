@@ -18,7 +18,7 @@
 
             <f:for each="{journals.AccessInfos}" as="section" key="key">
                 <f:if condition="{section.colorkey} != 6">
-                    
+
                     <f:if condition="{libconnect:array(inputArray: colors, key: section.colorkey)}">
                         <f:then>
                             <f:form.checkbox  id="ezb-accessinfo-access_{section.colorkey}" name="libconnect[colors][{section.colorkey}]" class="accessinfo-element"  value="{section.colorkey}"  checked="1"/>
@@ -27,7 +27,7 @@
                             <f:form.checkbox  id="ezb-accessinfo-access_{section.colorkey}" name="libconnect[colors][{section.colorkey}]" class="accessinfo-element"  value="{section.colorkey}"/>
                         </f:else>
                     </f:if>
-                    
+
                 </f:if>
                 <label class="ezb-accessinfo-access_{section.colorkey} accessinfo-element" for="ezb-accessinfo-access_{section.colorkey}">{section.value}</label>
 
@@ -60,7 +60,7 @@
         </p>
 
         <br/><br/>
-        
+
         <f:if condition="{libconnect:IsArray(value: journals.precise_hits)}">
             <h2><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.search.proper.hits" /></h2>
             <ul class="ezb-list">

@@ -5,7 +5,7 @@
 * - BH: Björn Heinermann hein@zhaw.ch (Zürcher Hochschule für Angewandte Wissenschaften)
 * - CR: Christian Richter chri@portachtzig.com (Wirtschaftskolleg zu Berlin)
 **/
-- 
+-
 5.2.1
     - Compatibility information updated
 5.2.0
@@ -19,7 +19,7 @@
         - Added link to new entries in EZB for alphabetical order
         - Form and handling of parameters reworked.
     - DBIS:
-        - check has library access and list who else 
+        - check has library access and list who else
         - "New in EZB" fixed 2nd h1 to h2
 5.1.2
     - all
@@ -107,7 +107,7 @@
     - DBIS:
         - Suche: Es wird jetzt die gleiche Meldung für die Anzahl der Treffer ausgegeben wie bei EZB, inklusive 0 Treffer. (TW)
         - "Neu in DBIS" wurde bisher nicht in der alphabetischen Liste angeboten (TW)
-        - Neu in DBIS bzw. Sidebar überarbeitet: 
+        - Neu in DBIS bzw. Sidebar überarbeitet:
             - Darstellung korrigiert (TW)
             - Facheinzeige neu, die nur sichtbar ist, wenn es Einträge gibt (TW)
         - kleine Codeverbesserungen (TW)
@@ -161,9 +161,9 @@
     - ZDB:
         - kleine Korrekturen bei der Darstellung der vorhandenen Drucke (TW)
 3.5.4
-    - DBIS: 
+    - DBIS:
         - Detailansicht:
-            - URl zum Login für registrierte Benutzer war relativ und somit ungültig. (TW)        
+            - URl zum Login für registrierte Benutzer war relativ und somit ungültig. (TW)
             - Darstellungsanweisung für "Anleitung" in alten Templates war falsch. (TW)
             - Anleitungen wurden nicht immer angezeigt. (TW)
             - automatische Korrektur des HTML
@@ -183,8 +183,8 @@
     - Codeverbesserungen:
         - DoubleQuoteUsageNotRequired - verringert (vorher 36) (TW)
         - UpperCaseConstantFound - entfernt (vorher 28) (TW)
-    - EZB: 
-        - Detailansicht: 
+    - EZB:
+        - Detailansicht:
             - die Texte der Links für die Homepage bisher auf 70 Zeichen begrenzt (TW)
             - URLs bezüglich Lizenzen waren fehlerhaft (TW)
             - falsche CSS-Klassenbezeichnung korrigiert (TW)
@@ -202,7 +202,7 @@
             - Im PlugIn "Sidebar" kann auf das neue PlugIn verwiesen werden. Bei vorheriger Wahl eines Fachbereiches zeigt dann das neue PlugIn
               Einträge entsprechend dieses Fachbereiches an.
     - DBIS:
-        - Wenn es weitere Zugänge gibt, wurde bisher immer der gleiche Text ausgegeben: "Weitere lizenzierte Zugänge" - auch bei freien Zugängen. 
+        - Wenn es weitere Zugänge gibt, wurde bisher immer der gleiche Text ausgegeben: "Weitere lizenzierte Zugänge" - auch bei freien Zugängen.
           Jetzt wird auch entsprechend die Angabe "weitere freie Zugänge" gemacht.(TW)
         - Umbau der Anzeige zur Sortierung der Einträge: (TW)
              - Es funktioniert (wieder), dass der Nutzer selbst entscheiden kann, wie die Einträge sortiert sind
@@ -221,7 +221,7 @@
             - Links sind nach unten gesetzt worden (TW)
         - nun werden nach der Sidebarsuche und der erweiterten Suche die Suchbegriffe bzw. die Suchkriterien ähnlich wie bei DBIS aufgelistet (TW)
 3.3.5
-    - EZB: 
+    - EZB:
         - Im Template für das Suchformular fehlte das Labeltag umd die Labelbezeichnung (TW)
         - Wer sich von Regensburg bei einer Suche auf der originalen Seite auf die libconnect-Suchergebnisseite seiner eigenen Website weiterleiten lässt, hatte bisher eine eingeschränkte Ergebnismenge.
           Nun sind alle Lizenzen in der Ergebnismenge sichtbar. (TW)
@@ -229,7 +229,7 @@
 3.3.4
     - DBIS: Eigene Sammlungen wurden in Einstiegsseite nicht richtig verlinkt (TW)
         - Name der Sammlung wird nicht aus der Datenbank, sondern über die Schnittstelle ermittelt.
-    - EZB: 
+    - EZB:
         - Die Zugriffsinformationen waren bisher statisch. Diese werden nun über die Schnittstelle geladen. Grund dafür sind leider immer noch Fehler in der Schnittstelle.  (TW)
           Nun können aber fehlende Texte durch statische ersetzt oder mittels "force" komplett ersetzt werden.
             - Für das Suchformular werden die Texte in Kurzfassung über TypoScript überschrieben.
@@ -238,7 +238,7 @@
 3.3.3
     - jede Menge Bugfixes um vielerlei Warnings zu beheben. (AL)
     - EZB+DBIS: Sollte die Website in "iso-8859-15" kodiert sein, führte das bisher zu fehlerhaften Such-URLs (TW)
-    - EZB: 
+    - EZB:
         - Bei Angabe zur ersten bzw. letzten Volltextausgabe kam es teilweise dazu, dass ein einzelnes Komma voran stand. (TW)
         - Abwärtskompatibilität zu PHP 5.2 erhöht (Workaround für SimpleXMLElement::count gefunden) (TW)
 
@@ -249,19 +249,19 @@
     - DBIS: PHP-Warning behoben. (TW)
     - Dokumentation als PDF hinzugefügt (TW)
 3.3.0
-    - DBIS:erweiterte Suche: 
+    - DBIS:erweiterte Suche:
         - Feature: Lizenzen per TypoScript nun möglich zu entfernen (TW)
-        - Bugfix: 
+        - Bugfix:
             - Es fehlten Lizenzen, da die Liste in der Klasse vorgegeben war. (TW)
             - leere Einträge in Lizenzliste (TW)
 3.2.7
-    - EZB: 
-        - Link „Liste der teilnehmenden Institutionen, die Volltextzugriff bieten.“ zur EZB in EZB-Detailansicht hinzugefügt 
+    - EZB:
+        - Link „Liste der teilnehmenden Institutionen, die Volltextzugriff bieten.“ zur EZB in EZB-Detailansicht hinzugefügt
           (where.phtml) (AL)
         - Leere Select-Felder aus erweiterten Suche entfernt (TW)
     - Readme wird nun auch bei ZS ohne Zeitraumangabe angezeigt (AL)
     - ZDB auf CURL-Verbindung umgestellt (AL)
-    - Konfiguration des Miniform nun über Flexforms (keine Konfiguration in TS mit settings.EZBSearchResultsPageId und 
+    - Konfiguration des Miniform nun über Flexforms (keine Konfiguration in TS mit settings.EZBSearchResultsPageId und
       settings.DBISSearchResultsPageId mehr notwendig) (AL)
     - Debugging für ZDB-Standortinformationen kann nun über Extension-Konfiguration ein/ausgeschaltet werden (AL)
     - Prüfung auf Response-Code !=200 --> um folgendes zu umgehen:
@@ -293,9 +293,9 @@
     - HTML für bessere CSS-Selektion optimiert (TW)
     - EZB & DBIS:    - Verwendung von CURL in Verbindung mit simplexml_load_string statt simplexml_load_file (TW)
                     - Proxykonfiguration mittels TypoScript (TW)
-                    
+
                         Vielen Dank an Herrn Heinermann!
-    - EZB: 
+    - EZB:
             -CSS     -> Selector für SELECT-Tags nun so gestaltet, dass anderer nicht zur Extension gehörige Inhalte nicht betroffen sind (TW)
                     -> "#extSearchForm-fieldset-1 legend" nun sichtbar (TW)
     - DBIS:
@@ -366,7 +366,7 @@
             - falscher Zugriff auf Sortierung
             - Zugriff auf nicht existenten Arrayindex
             - Zugriff auf nicht existierende Nodes
-                - Core: Error handler (FE): PHP Warning: EZB::getJournalDetail() [<a href='ezb.getjournaldetail'>ezb.getjournaldetail</a>]: Node no longer exists 
+                - Core: Error handler (FE): PHP Warning: EZB::getJournalDetail() [<a href='ezb.getjournaldetail'>ezb.getjournaldetail</a>]: Node no longer exists
             - es werden nun Defaultwerte für die IDs zu EZB und DBIS geladen
         - Optimierunge
             - die ID der Bibliothek wird nun in externe Funktion ermittelt

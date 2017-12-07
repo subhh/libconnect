@@ -13,7 +13,7 @@ class Tx_Libconnect_Resources_Private_Lib_Xmlpageconnection {
    /**
     * enable debug for logging errors to devLog
     */
-    private $debug = FALSE;    
+    private $debug = FALSE;
 
     private $extPiVars;
     private $proxy;
@@ -68,7 +68,7 @@ class Tx_Libconnect_Resources_Private_Lib_Xmlpageconnection {
 
         $xmlObj = FALSE;
         $ch = curl_init();
- 
+
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_PORT, 80);
         if ($this->proxy && $this->proxyPort) {
@@ -85,8 +85,8 @@ class Tx_Libconnect_Resources_Private_Lib_Xmlpageconnection {
         if ($result) {
             //try to fix problem with &
             $result = str_replace(" & ", " &amp; ", $result);
-        
-            //simplexml_load_string will produce E_WARNING error messages for each error 
+
+            //simplexml_load_string will produce E_WARNING error messages for each error
             //found in the XML data. Therefore suppress error messages in any mode and
             //handle errors for debug-mode differently.
             //parse the XML data.
@@ -99,7 +99,7 @@ class Tx_Libconnect_Resources_Private_Lib_Xmlpageconnection {
                     \TYPO3\CMS\Core\Utility\GeneralUtility::devLog('XML data contained errors: '.$url, 'libconnect', 1);
                 }
             }
-            
+
             if ($this->debug) {
                 $error_array = libxml_get_errors();
                 if (count($error_array) > 0) {

@@ -68,7 +68,7 @@
  .libconnect-h1{
     font-size: 1em;
     font-weight: bold;
-} 
+}
  .libconnect-h2{
     font-size: 1.5em;
     margin-bottom: 1em;
@@ -109,7 +109,7 @@
 .alph-nav-list-wrapper a {
     border: 1px solid #CCCCCC;
     line-height: 2em;
-    
+
     padding: 0 0.4em;
 }
 
@@ -144,7 +144,7 @@ a.dbis-research{
 }
 
 /**
- * begin - extended search styles 
+ * begin - extended search styles
  */
 
 #extSearchForm-wrapper fieldset {
@@ -215,21 +215,21 @@ a.dbis-research{
  * end - extended search styles
  */
 
- 
+
 /**
  * begin - miniform search styles
- */ 
+ */
 #libconnect_dbis_minisuche {
     height:18px;
     width:190px;
 }
- 
+
 .dbis-listings-wrapper {
     margin: 15px 0 5px 0;
     padding-bottom: 10px;
     border-bottom: 2px solid #D0D0D0;
-} 
- 
+}
+
 .datenbank-suche-wrapper input[type="submit"] {
     border: 1px solid #CCCCCC;
     vertical-align: middle;
@@ -248,8 +248,8 @@ a.dbis-research{
     margin: 0;
     width: 180px;
     padding: 0.06em;
-} 
- 
+}
+
 /**
  * end - miniform search styles
  */

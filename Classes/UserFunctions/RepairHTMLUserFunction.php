@@ -28,12 +28,12 @@ class RepairHTMLUserFunction{
                         $pos2 = strpos($detail, "<ul>");
 
                         if($pos2 == FALSE){
-                            $string = preg_replace('/<li>/', '<ul><li>', $detail, 1); 
+                            $string = preg_replace('/<li>/', '<ul><li>', $detail, 1);
 
                             $search = '</li>';
-                            $replace = '</li></ul>'; 
+                            $replace = '</li></ul>';
 
-                            $detail=substr($string,0,strripos ($string,$search)).$replace.substr($string,strripos ($string,$search)+strlen($search));                        
+                            $detail=substr($string,0,strripos ($string,$search)).$replace.substr($string,strripos ($string,$search)+strlen($search));
                         }
                     }
 
@@ -65,8 +65,8 @@ class RepairHTMLUserFunction{
         $string = preg_replace('/<br>/', '<br/>', $string);
 
         //new lines
-        $string = preg_replace('/\n/', '', $string); 
-        $string = preg_replace('/\r/', '', $string); 
+        $string = preg_replace('/\n/', '', $string);
+        $string = preg_replace('/\r/', '', $string);
 
         //no spaces before and at end content
         $string = trim($string);

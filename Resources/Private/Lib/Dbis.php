@@ -76,7 +76,7 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
     public function setBibID() {
         $this->bibID = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.']['dbisbibid'];
     }
-    
+
     /**
      * Set id Fachgebiet
      *
@@ -133,9 +133,9 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
         if (isset($xml_categories->list_subjects_collections->list_subjects_collections_item)) {
             foreach ($xml_categories->list_subjects_collections->list_subjects_collections_item AS $key => $value) {
                 $categories[(string) $value['notation']] = array(
-                    'title' => (string) $value, 
-                    'id' => (string) $value['notation'], 
-                    'count' => (int) (string) $value['number'], 
+                    'title' => (string) $value,
+                    'id' => (string) $value['notation'],
+                    'count' => (int) (string) $value['number'],
                     'lett' => (string) $value['lett']);
             }
         }
@@ -241,7 +241,7 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
 
         if ($sort == 'access') {
             $list['groups'] = &$list['access_infos'];
-            //BOF workaround for alphabetical listing			
+            //BOF workaround for alphabetical listing
         } elseif ($fachgebiet == 'all') {
             if (isset($xml_fachgebiet_db->list_dbs->dbs)) {
                 foreach ($xml_fachgebiet_db->list_dbs->dbs as $value) {
@@ -286,7 +286,7 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
 
                     if ($db['top_db']) {
                         $list['top'][] = $db;
-                        //BOF workaround for alphabetical listing			
+                        //BOF workaround for alphabetical listing
                     } elseif ($fachgebiet == 'all') {
                         $list['groups'][(string) $dbs->attributes()->char]['dbs'][] = $db;
                         $sortlist[$db['access']] = $db['access_ref'];
@@ -348,7 +348,7 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
             $details['titel_id'] = $db_id;
 
             foreach ($xml_db_details->details->children() as $key => $value) {
-                
+
                 if ($key == 'titles') {
                     $details['else_titles'] = array();
                     foreach ($value->children() as $key2 => $value2) {
@@ -363,7 +363,7 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
                     $details['access_icon'] = (string) $value->attributes()->access_icon;
                     $details['db_access'] = (string) $value->db_access;
                     $details['db_access_short_text'] = (string) $value->db_access_short_text;
-                    
+
                 //check has library access and who else
                 } else if ($key == 'biblist') {
 
@@ -383,7 +383,7 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
                         $main = (string) $access->attributes()->main;
                         $type = (string) $access->attributes()->type;
                         $href = (string) $access->attributes()->href;
-                        
+
                         if ($main == 'Y') {
                             //main link to start the research
                             $details['access'] = array(
@@ -656,7 +656,7 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
 
         return $xml_request;
     }
-    
+
     /**
      * get some inforemation from the HTML page
      * @param integer
@@ -667,7 +667,7 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
         $HttpPageConnection = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('tx_libconnect_resources_private_lib_httppageconnection');
         $url = 'https://rzblx10.uni-regensburg.de/dbinfo/detail.php?bib_id='.$this->bibID.'&colors=&ocolors=&lett=fs&tid=0&titel_id='. $db_id;
         $HttpRequestData = $HttpPageConnection->getDataFromHttpPage($url);
-        
+
         $moreDetails = array();
 
         //detail_content_more_internet_accesses
@@ -679,7 +679,7 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
             $detail_content_more_internet_accesses = utf8_encode(str_replace("_more_internet_accesses\">", "", $detail_content_more_internet_accesses));
         }
         $moreDetails['more_internet_accesses'] = $detail_content_more_internet_accesses;
-        
+
         return $moreDetails;
     }
 }
