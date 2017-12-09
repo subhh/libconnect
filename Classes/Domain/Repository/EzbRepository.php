@@ -34,8 +34,10 @@ namespace Sub\Libconnect\Domain\Repository;
  * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
  *
  */
-require_once(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('libconnect') . 'Resources/Private/Lib/Ezb.php');
-require_once(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('libconnect') . 'Resources/Private/Lib/Zdb.php');
+if (!defined('TYPO3_COMPOSER_MODE') && defined('TYPO3_MODE')) {
+	require_once(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('libconnect') . 'Resources/Private/Lib/Ezb.php');
+	require_once(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('libconnect') . 'Resources/Private/Lib/Zdb.php');
+}
 
 Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
     private $ezb_to_t3_subjects = array();
