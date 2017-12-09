@@ -9,17 +9,23 @@
         "issues": "https://forge.typo3.org/projects/libconnect"
     },
     "require": {
-        "typo3/cms-core": "^6.0.0 || ^7.6.0"
+        "typo3/cms-core": "^6.0.0 || ^7.6.0 || ^8.7.0"
     },
     "autoload": {
         "psr-4": {
             "Sub\\Libconnect\\": "Classes/"
         },
-        "psr-4": {
-            "Sub\\Libconnect\\": "Resources/Private/Lib/"
-        },
-        "psr-4": {
-            "Sub\\Libconnect\\": "Classes/UserFunctions/"
-        }
+        "files": [
+            "Resources/Private/Lib/Dbis.php",
+            "Resources/Private/Lib/Ezb.php",
+            "Resources/Private/Lib/Zdb.php",
+            "Resources/Private/Lib/Xmlpageconnection.php",
+            "Resources/Private/Lib/Httppageconnection.php"
+        ]
+    },
+    "replace": {
+        "libconnect": "self.version",
+        "typo3-ter/libconnect": "self.version",
+        "Sub/libconnect": "self.version"
     }
 }
