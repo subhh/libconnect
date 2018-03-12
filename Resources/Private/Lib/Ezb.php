@@ -737,27 +737,32 @@ class Tx_libconnect_Resources_Private_Lib_Ezb {
      */
     private function getMoreDetails($journalId){
         $HttpPageConnection = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('tx_libconnect_resources_private_lib_httppageconnection');
-        $url = 'https://rzblx1.uni-regensburg.de/ezeit/detail.phtml?colors=' . '&jour_id=' . $journalId . '&bibid='. $this->bibID . '&lang=' . $this->lang;
+        $url = 'http://rzblx1.uni-regensburg.de/ezeit/detail.phtml?colors=' . '&jour_id=' . $journalId . '&bibid='. $this->bibID . '&lang=' . $this->lang;
         $HttpRequestData = $HttpPageConnection->getDataFromHttpPage($url);
         
         $moreDetails = array();
-
-        //"Preistyp Anmerkung"
-        $start = mb_stripos($HttpRequestData, "Preistyp Anmerkung:");
+        
+        //replace double white space in single
+        $HttpRequestData = trim(preg_replace('/\s\s+/', ' ', $HttpRequestData));
+        
+        //start "Preistyp Anmerkung"
+        $searchString = 'Preistyp Anmerkung';
+        
         if($this->lang == "en"){
-            $start = mb_stripos($HttpRequestData, "Pricetype annotation:");
+            $searchString = 'Pricetype annotation';
         }
-        if($start){
-            $stop = mb_stripos($HttpRequestData, "<br />", $start);
-            $price_type_annotation = trim(mb_substr($HttpRequestData, $start, $stop-$start-5));
-            $price_type_annotation = str_replace("</dt>", "", $price_type_annotation);
-            $price_type_annotation = str_replace("<br />", "", $price_type_annotation);
+        
+        preg_match('/Preistyp Anmerkung:\s*<\/dt>\s*<dd class="defListContentDefinition">(.*)<\/dd>/mU', $HttpRequestData, $matches);
+        
+        //preparing string
+        if($matches[1]){    
+            $price_type_annotation = str_replace("<br />", "", $matches[1]);
             $price_type_annotation = str_replace(":", "", $price_type_annotation);
-            $price_type_annotation = str_replace("<dd class=\"defListContentDefinition\">", "", $price_type_annotation);
+
             $price_type_annotation = utf8_encode(trim($price_type_annotation));
         }
         $moreDetails['price_type_annotation'] = $price_type_annotation;
-        
+
         return $moreDetails;
     }
 }
