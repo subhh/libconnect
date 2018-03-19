@@ -23,13 +23,11 @@ Here is the german [Manual](doc/manual.pdf "Ausführliches Manual").
 2. Set the db IDs. 
 
     plugin.tx_libconnect {
-
         ezbbibid = SUBHH
         dbisbibid = sub_hh
-
         zdbsid = vid:dbid
-
     }
+
 3. Set the plugins in your pages.
 
 ## Customize your design
