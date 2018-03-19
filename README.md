@@ -21,6 +21,7 @@ Here is the german [Manual](doc/manual.pdf "Ausführliches Manual").
 
 1. Include static template
 2. Set the db IDs. 
+
     plugin.tx_libconnect {
         ezbbibid = SUBHH
         dbisbibid = sub_hh
@@ -31,6 +32,7 @@ Here is the german [Manual](doc/manual.pdf "Ausführliches Manual").
 ## Customize your design
 
 1. Set paths to templates, partials and layouts
+
     plugin.tx_libconnect {
         view {
             templateRootPath = EXT:libconnect/Resources/Private/Templates/
@@ -39,6 +41,7 @@ Here is the german [Manual](doc/manual.pdf "Ausführliches Manual").
         }
     }
 2. Deactivate standard CSS
+
     plugin.tx_libconnect {
         settings {
             ezbNoCSS = 1
