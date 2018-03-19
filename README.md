@@ -37,15 +37,10 @@ Here is the german [Manual](doc/manual.pdf "Ausführliches Manual").
     plugin.tx_libconnect {
 
         view {
-
             templateRootPath = EXT:libconnect/Resources/Private/Templates/
-
             partialRootPath = EXT:libconnect/Resources/Private/Partials/
-
             layoutRootPath = EXT:libconnect/Resources/Private/Layouts/
-
         }
-
     }
 2. Deactivate standard CSS
 
