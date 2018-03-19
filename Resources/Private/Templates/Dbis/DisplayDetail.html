@@ -215,6 +215,17 @@
                         </td>
                     </tr>
                 </f:if>
+            
+                <f:if condition="{db.isbn}">
+                    <tr>
+                        <th>
+                            <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.detail.isbn" /></strong>
+                        </th>
+                        <td>
+                            {db.isbn}
+                        </td>
+                    </tr>
+                </f:if>
 
                 <f:if condition="{db.db_type_infos}">
                     <tr>

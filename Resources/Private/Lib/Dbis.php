@@ -421,7 +421,10 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
                     $details['hints'] =  $hint;
                 } else if ($key == 'instruction') {
                     $details['instruction'] = (string) $value;
+                } else if ($key == 'isbn') {
+                    $details['isbn'] = (string) $value;
                 }
+                
                 //copy all left values into array
                 else {
                     $details[(string)$key] = (string) $value;
