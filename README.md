@@ -23,9 +23,12 @@ Here is the german [Manual](doc/manual.pdf "Ausführliches Manual").
 2. Set the db IDs. 
 
     plugin.tx_libconnect {
+
         ezbbibid = SUBHH
         dbisbibid = sub_hh
+
         zdbsid = vid:dbid
+
     }
 3. Set the plugins in your pages.
 
@@ -34,17 +37,28 @@ Here is the german [Manual](doc/manual.pdf "Ausführliches Manual").
 1. Set paths to templates, partials and layouts
 
     plugin.tx_libconnect {
+
         view {
+
             templateRootPath = EXT:libconnect/Resources/Private/Templates/
+
             partialRootPath = EXT:libconnect/Resources/Private/Partials/
+
             layoutRootPath = EXT:libconnect/Resources/Private/Layouts/
+
         }
+
     }
 2. Deactivate standard CSS
 
     plugin.tx_libconnect {
+
         settings {
+
             ezbNoCSS = 1
+
             dbisNoCSS = 1
+
         }
+
     }
