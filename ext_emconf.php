@@ -21,7 +21,7 @@ $EM_CONF[$_EXTKEY] = array (
   'uploadfolder' => 0,
   'createDirs' => '',
   'clearCacheOnLoad' => 0,
-  'version' => '5.2.1',
+  'version' => '5.2.2',
   'constraints' => 
   array (
     'depends' => 
@@ -46,7 +46,7 @@ $EM_CONF[$_EXTKEY] = array (
     ),
   ),
   '_md5_values_when_last_written' => 'a:0:{}',
-  'comment' => 'Compatibility to TYPO3 8.7. EZB: New field "Preistyp Anmerkung".',
+  'comment' => 'EZB: Detail view: field "Preistyp Anmerkung" fixed. List view: current list fixed from h2 to h3 DBIS: ISBN/ISSN added.',
   'user' => 'subunihhdevteam',
 );
 

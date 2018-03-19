@@ -6,6 +6,12 @@
 * - CR: Christian Richter chri@portachtzig.com (Wirtschaftskolleg zu Berlin)
 **/
 - 
+5.2.2
+    - EZB:
+        - detail view: field "Preistyp Anmerkung" fixed
+        - list view: current list fixed from h2 to h3
+    - DBIS:
+        - ISBN/ISSN added in detail view
 5.2.1
     - Compatibility information updated.
     - Deprecated fields of ext_emconf removed.

@@ -11,7 +11,8 @@ Here is the german [Manual](doc/manual.pdf "Ausführliches Manual").
     - Depcated function ExtensionManagementUtility::extRelPath changed to ExtensionManagementUtility::extPath
     - Static data in crdate and tstamp changed to UNIX_TIMESTAMP();
     - EZB:
-        - field "Preistyp Anmerkung" fixed
+        - detail view: field "Preistyp Anmerkung" fixed
+        - list view: current list fixed from h2 to h3
     - DBIS:
         - ISBN/ISSN added in detail view 
 
