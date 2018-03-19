@@ -28,6 +28,7 @@ Here is the german [Manual](doc/manual.pdf "Ausführliches Manual").
         zdbsid = vid:dbid
     }
 
+
 3. Set the plugins in your pages.
 
 ## Customize your design
@@ -41,6 +42,7 @@ Here is the german [Manual](doc/manual.pdf "Ausführliches Manual").
             layoutRootPath = EXT:libconnect/Resources/Private/Layouts/
         }
     }
+
 
 2. Deactivate standard CSS
 
