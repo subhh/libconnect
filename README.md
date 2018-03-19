@@ -5,15 +5,43 @@ With libconnect it´s possible to display the information of EZB and DBIS of the
 
 Here is the german [Manual](doc/manual.pdf "Ausführliches Manual").
 
-Changes in new Version 5.2.0
+## Changes in new Version 5.2.2
 
     - Compatibility to TYPO3 8.7
     - Depcated function ExtensionManagementUtility::extRelPath changed to ExtensionManagementUtility::extPath
     - Static data in crdate and tstamp changed to UNIX_TIMESTAMP();
     - EZB:
-        - new field "Preistyp Anmerkung"
-        - Keywords are now links with search for keyword
+        - field "Preistyp Anmerkung" fixed
     - DBIS:
-        -  check has library access and list who else 
+        - ISBN/ISSN added in detail view 
 
     Tested with: TYPO3 6.2, 8.7
+
+## Configuration
+
+1. Include static template
+2. Set the db IDs. 
+    plugin.tx_libconnect {
+        ezbbibid = SUBHH
+        dbisbibid = sub_hh
+        zdbsid = vid:dbid
+    }
+3. Set the plugins in your pages.
+
+## Customize your design
+
+1. Set paths to templates, partials and layouts
+    plugin.tx_libconnect {
+        view {
+            templateRootPath = EXT:libconnect/Resources/Private/Templates/
+            partialRootPath = EXT:libconnect/Resources/Private/Partials/
+            layoutRootPath = EXT:libconnect/Resources/Private/Layouts/
+        }
+    }
+2. Deactivate standard CSS
+    plugin.tx_libconnect {
+        settings {
+            ezbNoCSS = 1
+            dbisNoCSS = 1
+        }
+    }
