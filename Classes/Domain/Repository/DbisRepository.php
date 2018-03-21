@@ -35,7 +35,9 @@ namespace Sub\Libconnect\Domain\Repository;
  *
  */
 
-require_once(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('libconnect') . 'Resources/Private/Lib/Dbis.php');
+if (!defined('TYPO3_COMPOSER_MODE') && defined('TYPO3_MODE')) {
+	require_once(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('libconnect') . 'Resources/Private/Lib/Dbis.php');
+}
 
 Class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
     private $dbis_to_t3_subjects = array();
