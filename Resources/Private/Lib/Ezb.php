@@ -754,7 +754,7 @@ class Tx_libconnect_Resources_Private_Lib_Ezb {
             $searchString = 'Pricetype annotation';
         }
         
-        preg_match('/Preistyp Anmerkung:\s*<\/dt>\s*<dd class="defListContentDefinition">(.*)<\/dd>/mU', $HttpRequestData, $matches);
+        preg_match('/'. $searchString .':\s*<\/dt>\s*<dd class="defListContentDefinition">(.*)<\/dd>/mU', $HttpRequestData, $matches);
         
         //preparing string
         if($matches[1]){    
