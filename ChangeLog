@@ -6,6 +6,11 @@
 * - CR: Christian Richter chri@portachtzig.com (Wirtschaftskolleg zu Berlin)
 **/
 
+5.2.3
+    - EZB: 
+        - detail view: field "Preistyp Anmerkung" fixed for language english
+    - line endings fixed
+    - white spaces removed
 5.2.2
     - EZB:
         - detail view: field "Preistyp Anmerkung" fixed
