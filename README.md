@@ -5,16 +5,9 @@ With libconnect it´s possible to display the information of EZB and DBIS of the
 
 Here is the german [Manual](doc/manual.pdf "Ausführliches Manual").
 
-## Changes in new Version 5.2.2
+## Changes in new Version 5.2.3
 
-    - Compatibility to TYPO3 8.7
-    - Depcated function ExtensionManagementUtility::extRelPath changed to ExtensionManagementUtility::extPath
-    - Static data in crdate and tstamp changed to UNIX_TIMESTAMP();
-    - EZB:
-        - detail view: field "Preistyp Anmerkung" fixed
-        - list view: current list fixed from h2 to h3
-    - DBIS:
-        - ISBN/ISSN added in detail view 
+    - EZB: detail view: field "Preistyp Anmerkung" fixed for language english
 
     Tested with: TYPO3 6.2, 8.7
 
