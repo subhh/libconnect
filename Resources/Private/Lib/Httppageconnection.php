@@ -13,7 +13,7 @@ class Tx_Libconnect_Resources_Private_Lib_Httppageconnection {
    /**
     * enable debug for logging errors to devLog
     */
-    private $debug = FALSE;    
+    private $debug = FALSE;
 
     private $extPiVars;
     private $proxy;
@@ -68,7 +68,7 @@ class Tx_Libconnect_Resources_Private_Lib_Httppageconnection {
     public function getDataFromHttpPage($url) {
         $result = FALSE;
         $ch = curl_init();
-        
+
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_PORT, 80);
         if ($this->proxy && $this->proxyPort) {
@@ -83,9 +83,9 @@ class Tx_Libconnect_Resources_Private_Lib_Httppageconnection {
         //check response code
         $http_code = curl_getinfo($ch);
         curl_close($ch);//close session
-        
+
         if(($http_code['http_code'] != 200) || ($response == FALSE)){
-        
+
             if ($this->debug){
                 \TYPO3\CMS\Core\Utility\GeneralUtility::devLog('Got HTTP Code ' . $http_code['http_code'] . ' for request: ' . $url, 'libconnect', 1);
             }

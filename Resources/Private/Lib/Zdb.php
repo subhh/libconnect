@@ -3,7 +3,7 @@
  *  Copyright notice
  *
  *  (c) 2012 André Lahmann (andre.lahmann@uni-leipzig.de) - Leipzig University Library (LUL)
- *  
+ *
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -69,22 +69,22 @@ class Tx_libconnect_Resources_Private_Lib_Zdb {
    /**
     * non-open-url conform pid arguments-string
     *
-    */ 
+    */
     private $pid = '';
-    private $onlyPrintFlag = true;    
+    private $onlyPrintFlag = true;
 
    /**
     * request URLs
-    */    
+    */
     //private $briefformat_request_url = 'http://services.dnb.de/fize-service/gvr/brief.xml?';
     private $fullformat_request_url = 'http://services.dnb.de/fize-service/gvr/full.xml?';
 
     // XML Data Object
-    private $XMLPageConnection;    
+    private $XMLPageConnection;
 
     /**
     * Class Constructor
-    */    
+    */
     function __construct() {
 
         $ext_conf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['libconnect']);
@@ -167,7 +167,7 @@ class Tx_libconnect_Resources_Private_Lib_Zdb {
             return FALSE;
         }else {
             if(!empty($ZDBID)) {
-                $this->pid .= (strlen($this->pid) > 0 ? urlencode("&zdbid={$ZDBID}") : urlencode("zdbid={$ZDBID}"));  
+                $this->pid .= (strlen($this->pid) > 0 ? urlencode("&zdbid={$ZDBID}") : urlencode("zdbid={$ZDBID}"));
             }
             if(!empty($journalIdentifier)) {
                 $journalIdentifier = "&{$journalIdentifier}";
@@ -208,9 +208,9 @@ class Tx_libconnect_Resources_Private_Lib_Zdb {
 
         $locationDetail['library'] = (string) $xml_request->Full->PrintData->Library;
 
-        //check if returned XML-Object provides ResultList (as only this contains location data, exit if no ResultList is provided) 
+        //check if returned XML-Object provides ResultList (as only this contains location data, exit if no ResultList is provided)
         if (is_object($xml_request->Full->PrintData->ResultList) && get_class($xml_request->Full->PrintData->ResultList) == 'SimpleXMLElement') {
-            $tmpStates = $xml_request->Full->PrintData->ResultList->children();	        
+            $tmpStates = $xml_request->Full->PrintData->ResultList->children();
             $tmpResultList = $xml_request->Full->PrintData->ResultList->children();
         } else {
             if ($this->debug) {
@@ -223,7 +223,7 @@ class Tx_libconnect_Resources_Private_Lib_Zdb {
         //as the script is stil running the XML-Object contains all the data necessary for the location information, so continue
        /**
         * two branches: <ElectronicData> : electronic availability
-        *               <PrintData> : print 
+        *               <PrintData> : print
         *
         * as only the location of the printed journal is of any concern, only the
         * branch PrintData is regarded
@@ -243,7 +243,7 @@ class Tx_libconnect_Resources_Private_Lib_Zdb {
                              explode(',', $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.']['validStatesList']) :
                              array(2,3)
                             );
-        array_walk($validStatesArray, create_function('&$val', '$val = trim($val);')); //remove all whitespaces from states	        
+        array_walk($validStatesArray, create_function('&$val', '$val = trim($val);')); //remove all whitespaces from states
         $validStateFlag = FALSE;
         if (count($tmpStates)) {
             foreach($tmpStates as $tmpState) {
@@ -311,7 +311,7 @@ class Tx_libconnect_Resources_Private_Lib_Zdb {
         /**
          * Icon-Service
          * ------------
-         *     
+         *
          */
          $locationDetail['iconRequest'] = $this->buildIconRequest($journalIdentifier, $genre);
          $locationDetail['iconInfoUrl'] = $this->buildIconInfoUrl($journalIdentifier, $genre);
@@ -353,7 +353,7 @@ class Tx_libconnect_Resources_Private_Lib_Zdb {
     private function getSid(){
         $this->sid = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.']['zdbsid'];
 
-        if(is_null($this->sid) or !$this->sid or empty($this->sid)){	
+        if(is_null($this->sid) or !$this->sid or empty($this->sid)){
 
             return FALSE;
         }

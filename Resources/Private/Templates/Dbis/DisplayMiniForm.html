@@ -4,13 +4,13 @@
     <h2 class="libconnect-h2"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.miniform.search_header" /></h2>
 
     <f:form name="dbis-mini-form-search" id="dbis-mini-form-search" controller="Dbis" method="post" pageUid="{listPid}">
-       
+
         <label for="libconnect_dbis_minisuche" class="hiddendebis"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.miniform.search_term" /></label>
         <f:form.textfield id="libconnect_dbis_minisuche" name="libconnect[search][sword]" value="{vars.sword}" size="20"/><br/>
-        
+
         <f:form.submit name="submit" value='<f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.miniform.search_term" />'/>
-        
-        <p><a href="{searchUrl}"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.miniform.search_link" /></a></p>    
+
+        <p><a href="{searchUrl}"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.miniform.search_link" /></a></p>
     </f:form>
 
 </div>
@@ -20,16 +20,16 @@
     <f:else>
         <div class="datenbank-suche-wrapper">
             <h2 class="libconnect-h2"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.miniform.show_databases" /></h2>
-            
+
 	    <f:form name="dbis-mini-form-choose-licence" id="dbis-mini-form-choose-licence" controller="Dbis" method="post" pageUid="{listPid}">
                 <p>
                     <label for="libconnect_dbis_suche" class="hiddendebis"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.miniform.select_access" /></label>
-		
+
                     <f:form.select id="libconnect_dbis_suche" name="libconnect[search][zugaenge]" options="{form.zugaenge}" value="{vars.zugaenge}"/>
-                    
+
                 </p>
                 <f:form.submit name="choose_licence" value='<f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.miniform.select_access" />' />
-            </f:form> 
+            </f:form>
 
         </div>
     </f:else>
@@ -59,7 +59,7 @@
                     <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.miniform.listing_subject" />
                 </f:link.page>
             </p>
-            
+
             <p>
                 <f:link.page pageUid="{listPid}" additionalParams="{libconnect: {subject: 'all'}}" addQueryString="1">
                     <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.miniform.listing_alph" />

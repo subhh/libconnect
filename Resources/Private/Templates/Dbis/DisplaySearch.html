@@ -10,7 +10,7 @@
 
 <f:if condition="{list.error}">
     <f:then>
-        <p class="hitcount">        
+        <p class="hitcount">
             <libconnect:strreplace search="%s" replace="{list.values -> f:count()}">
                 <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.search.hits" />
             </libconnect:strreplace>

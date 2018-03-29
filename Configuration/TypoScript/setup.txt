@@ -44,7 +44,7 @@ plugin.tx_libconnect {
 
         ezbshortaccessinfos{
             de{
-                1 = frei zugänglich 
+                1 = frei zugänglich
                 2 = im Campus-Netz zugänglich
                 4 = nicht frei zugänglich
                 6 = nur ein Teil zugänglich

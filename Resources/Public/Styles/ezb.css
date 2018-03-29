@@ -53,7 +53,7 @@
 }
 
 .ezb-readme {
-    float:right;   
+    float:right;
 }
 
 .hiddenezb, #e-search .hiddenezb{
@@ -122,13 +122,13 @@ ul.ezb-list li a {
 }
 
 /**
- * begin - extended search styles 
+ * begin - extended search styles
  */
 
 #extSearchForm-wrapper fieldset {
     border: none;
 }
- 
+
 #extSearchForm-wrapper input {
     height:18px;
     vertical-align:bottom;
@@ -191,10 +191,10 @@ ul.ezb-list li a {
 
 /**
  * begin - miniform search styles
- */  
- 
+ */
+
 .datenbank-suche-wrapper input[type="submit"] {
-    border: 1px solid #CCCCCC; 
+    border: 1px solid #CCCCCC;
     vertical-align:middle;
     margin: 5px 0 0 0;
     width:70px;
@@ -207,7 +207,7 @@ ul.ezb-list li a {
 .ezb_erw_search {
     vertical-align:bottom;
 }
- 
+
 .ezb-listings-wrapper {
     margin: 15px 0 5px 0;
     padding-bottom:10px;
