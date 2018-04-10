@@ -90,8 +90,11 @@ class Tx_Libconnect_Resources_Private_Lib_Xmlpageconnection {
             //found in the XML data. Therefore suppress error messages in any mode and
             //handle errors for debug-mode differently.
             //parse the XML data.
+            libxml_use_internal_errors(TRUE);
+
             $xmlObj = simplexml_load_string($result);
-//            $error_array = libxml_get_errors();
+            $error_array = libxml_get_errors();
+            libxml_clear_errors();
 
             //log url to devlog in debug-mode if XML data contained errors.
             if (count($error_array) > 0) {
