@@ -290,6 +290,11 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
         }
         $journal['keywords_join'] = join(', ', $tempKeywords);
         
+        //getTitleHistory
+        if(!empty($journal['ZDB_number'])){
+            $journal['title_history'] = $this->getTitleHistory($journal['ZDB_number']);
+        }
+
         return $journal;
     }
     
@@ -656,6 +661,24 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
         }
         
         return $sum;
+    }
+    
+    /**
+     * returns the title history
+     * 
+     * @param string $zdbId
+     * @return array
+     */
+    private function getTitleHistory($zdbId){
+        $zdb = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_Libconnect_Resources_Private_Lib_Zdb');
+
+        $precursor = $zdb->getPrecursor($zdbId, TRUE);
+        
+        rsort($precursor);
+        
+        $successor = $zdb->getSuccessor($zdbId);
+
+        return array('precursor' => $precursor, 'zdbData' => $zdb->getZdbData(), 'successor' => $successor);
     }
 }
 ?>
