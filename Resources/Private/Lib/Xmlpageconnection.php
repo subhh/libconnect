@@ -70,7 +70,8 @@ class Tx_Libconnect_Resources_Private_Lib_Xmlpageconnection {
         $ch = curl_init();
 
         curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_PORT, 80);
+        //curl_setopt($ch, CURLOPT_PORT, 80);
+        //curl_setopt($ch, CURLOPT_PORT, 443);
         if ($this->proxy && $this->proxyPort) {
             curl_setopt($ch, CURLOPT_PROXY, $this->proxy);
             curl_setopt($ch, CURLOPT_PROXYPORT, $this->proxyPort);
