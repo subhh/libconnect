@@ -678,6 +678,10 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
         
         $successor = $zdb->getSuccessor($zdbId);
 
+        if( (empty($precursor)) && (empty($successor)) ){
+            return FALSE;
+        }
+        
         return array('precursor' => $precursor, 'zdbData' => $zdb->getZdbData(), 'successor' => $successor);
     }
 }
