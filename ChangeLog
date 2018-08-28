@@ -10,7 +10,8 @@
     - Fixed XML-Error handling
     - Tx_Libconnect_Resources_Private_Lib_Httppageconnection: constant port removed, now depends on URL
     - Tx_Libconnect_Resources_Private_Lib_Xmlpageconnection: constant port removed, now depends on URL
-    - EZB: 
+    - JQuery is now local and in a new version
+    - EZB:
         - title history added
             - It shows the zbd-id, the name and the issue date
             - The values of the displayed journals as a css class named "ezb-detail-tithistory-active".
