@@ -218,7 +218,7 @@
             <label index="tx_libconnect.dbis.detail.access.free">Weitere freie Zugänge:</label>
             <label index="tx_libconnect.dbis.detail.access.lic">Weitere lizenzierte Zugänge:</label>
             <label index="tx_libconnect.dbis.detail.access.other">Zusätzliches Internet-Angebot:</label>
-            <label index="tx_libconnect.dbis.detail.access.ppu">weitere Pay-per-Use Zugänge::</label>
+            <label index="tx_libconnect.dbis.detail.access.ppu">weitere Pay-per-Use Zugänge:</label>
             <label index="tx_libconnect.dbis.detail.access.text">Verfügbarkeit:</label>
             <label index="tx_libconnect.dbis.detail.appearence">Erscheinungsform:</label>
             <label index="tx_libconnect.dbis.detail.content">Inhalte:</label>
