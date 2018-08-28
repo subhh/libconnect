@@ -9,7 +9,8 @@ if (typeof jQuery == 'undefined') {
     function getScript(url, success) {
 
         var script     = document.createElement('script');
-        script.src = url;
+        var domain =  window.location.host;
+        script.src = domain+url;
 
         var head = document.getElementsByTagName('head')[0],
         done = false;
@@ -32,7 +33,7 @@ if (typeof jQuery == 'undefined') {
             head.appendChild(script);
     };
 
-    getScript('https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js', function() {
+    getScript('/typo3conf/ext/libconnect/Resources/Public/Js/jquery-3.3.1.min.js', function() {
 
         if (typeof jQuery=='undefined') {
             // Super failsafe - still somehow failed...
