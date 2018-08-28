@@ -6,8 +6,16 @@
 * - CR: Christian Richter chri@portachtzig.com (Wirtschaftskolleg zu Berlin)
 **/
 
-5.2.4
+5.3.0
     - Fixed XML-Error handling
+    - Tx_Libconnect_Resources_Private_Lib_Httppageconnection: constant port removed, now depends on URL
+    - Tx_Libconnect_Resources_Private_Lib_Xmlpageconnection: constant port removed, now depends on URL
+    - EZB: 
+        - title history added
+            - It shows the zbd-id, the name and the issue date
+            - The values of the displayed journals as a css class named "ezb-detail-tithistory-active".
+        - getMoreDetails fixed
+    - DBIS: Fixed double double dot in locallang.xml
 
 5.2.3
     - EZB: 
