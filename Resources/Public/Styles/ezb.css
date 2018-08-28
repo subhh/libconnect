@@ -80,6 +80,10 @@ ul.ezb-list li a {
     width:510px;
 }
 
+#ezb-result-details .ezb-detail-titlehistory ul{
+    list-style: none;
+}
+
 #extSearchForm-fieldset-1 select, #extSearchForm-fieldset-2 select {
     background-color: #FFFFFF;
     border: 0.0625em solid #CCCCCC;

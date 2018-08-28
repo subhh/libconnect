@@ -100,6 +100,7 @@
             <label index="tx_libconnect.ezb.detail.error.p1">An error occurred while requesting the journals.</label>
             <label index="tx_libconnect.ezb.detail.error.p2">Maybe the selected journal doesn´t exist. Please retry or ask the administrator.</label>
             <label index="tx_libconnect.ezb.detail.fulltext.th">Fulltext</label>
+            <label index="tx_libconnect.ezb.detail.in_period">in the period</label>
             <label index="tx_libconnect.ezb.detail.issue.td">H.</label>
             <label index="tx_libconnect.ezb.detail.homepages.th">Homepage(s)</label>
             <label index="tx_libconnect.ezb.detail.license.th">Licensed Period</label>
@@ -141,6 +142,7 @@
             <label index="tx_libconnect.ezb.detail.result.th">Availability</label>
             <label index="tx_libconnect.ezb.detail.since.th">Fulltext available since</label>
             <label index="tx_libconnect.ezb.detail.subjects_join">Subject(s)</label>
+            <label index="tx_libconnect.ezb.detail.title_history">Title history</label>
             <label index="tx_libconnect.ezb.detail.untilthen.th">Fulltext available until</label>
             <label index="tx_libconnect.ezb.detail.volume.td">Volume</label>
             <label index="tx_libconnect.ezb.detail.zdb.th">ZDB-ID</label>
@@ -225,7 +227,7 @@
             <label index="tx_libconnect.dbis.detail.error.h1">Fehler</label>
             <label index="tx_libconnect.dbis.detail.error.p1">Es ist ein Fehler bei der Anfrage der Datenbank aufgetreten.</label>
             <label index="tx_libconnect.dbis.detail.error.p2">Möglicherweise ist die angefragte Datenbank nicht vorhanden. Bitte versuchen Sie es erneut oder wenden Sie sich an das Web-Team der Bibliothek, das Ihnen beim Auffinden des Datensatzes gerne behilflich ist.</label>
-            <label index="tx_libconnect.dbis.detail.isbn">ISBN/ISSN</label>
+            <label index="tx_libconnect.dbis.detail.isbn">im Zeitraum</label>
             <label index="tx_libconnect.dbis.detail.instruction">Anleitung:</label>
             <label index="tx_libconnect.dbis.detail.keywords">Schlagwörter:</label>
             <label index="tx_libconnect.dbis.detail.license">Lizenz:</label>            
@@ -300,6 +302,7 @@
             <label index="tx_libconnect.ezb.detail.error.p1">Es ist ein Fehler bei der Anfrage der elektronische Zeitschrift aufgetreten.</label>
             <label index="tx_libconnect.ezb.detail.error.p2">Möglicherweise ist die angefragte Zeitschrift nicht vorhanden. Bitte versuchen Sie es erneut oder wenden Sie sich an das Web-Team der Bibliothek, das Ihnen beim Auffinden des Datensatzes gerne behilflich ist.</label>
             <label index="tx_libconnect.ezb.detail.fulltext.th">Volltext</label>
+            <label index="tx_libconnect.ezb.detail.in_period">im Zeitraum</label>
             <label index="tx_libconnect.ezb.detail.issue.td">H.</label>
             <label index="tx_libconnect.ezb.detail.homepages.th">Homepage(s)</label>
             <label index="tx_libconnect.ezb.detail.license.th">Lizenzierter Zeitraum</label>
@@ -341,6 +344,7 @@
             <label index="tx_libconnect.ezb.detail.result.th">Verfügbarkeit</label>
             <label index="tx_libconnect.ezb.detail.since.th">Volltext online seit</label>
             <label index="tx_libconnect.ezb.detail.subjects_join">Fachgruppe(n)</label>
+            <label index="tx_libconnect.ezb.detail.title_history">Titelhistorie</label>
             <label index="tx_libconnect.ezb.detail.untilthen.th">Volltext online bis</label>
             <label index="tx_libconnect.ezb.detail.volume.td">Jg.</label>
             <label index="tx_libconnect.ezb.detail.zdb.th">ZDB Nummer</label>

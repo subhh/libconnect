@@ -215,7 +215,42 @@
                         </td>
                     </tr>
                 </f:if>
-	
+
+                <f:if condition="{journal.title_history}">
+                    <tr class="ezb-detail-titlehistory">
+                        <th><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.title_history" />:</th>
+                        <td>
+                        <f:if condition="{journal.title_history.precursor}">
+                            <f:for each="{journal.title_history.precursor}" as="row">
+                                <ul>
+                                    <li>{row.zdbid}</li>
+                                    <li><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.in_period" />: {row.date_issued}</li>
+                                    <li>{row.name}</li>
+                                </ul>
+                            </f:for>
+                        </f:if>
+
+                        <f:if condition="{journal.title_history.zdbData}">
+                            <ul class="ezb-detail-titlehistory-active">
+                                <li>{journal.ZDB_number}</li>
+                                <li><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.in_period" />: {journal.title_history.zdbData.date_issued}</li>
+                                <li>{journal.title_history.zdbData.name}</li>
+                            </ul>
+                        </f:if>
+
+                        <f:if condition="{journal.title_history.successor}">
+                            <f:for each="{journal.title_history.successor}" as="row">
+                                <ul>
+                                    <li>{row.zdbid}</li>
+                                    <li><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.in_period" />: {row.date_issued}</li>
+                                    <li>{row.name}</li>
+                                </ul>
+                            </f:for>
+                        </f:if>
+                        </td>
+                    </tr>
+                </f:if>
+
                 <f:if condition="{libconnect:strlen(string: journal.subjects_join)} > 0">
                     <tr>
                         <th>
@@ -329,7 +364,7 @@
                             <td>
                                 <table width="100%" class="zdb-location-info">
                                     <tbody>
-                                        <f:for each="{journal.locationData.resultList}" as="result">                   
+                                        <f:for each="{journal.locationData.resultList}" as="result">     
                                             <tr>
                                                 <td class="zdb-location-info-result">
                                                     <table class="zdb-location-detail">
