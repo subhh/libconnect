@@ -4,7 +4,7 @@
 <p><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.search.criterion" /></p>
 <ul>
     <f:for each="{list.searchDescription}" as="description">
-        <li><f:format.htmlentitiesDecode>{description}</f:format.htmlentitiesDecode></li>
+        <li><f:format.htmlentitiesDecode><f:format.htmlspecialchars>{description}</f:format.htmlspecialchars></f:format.htmlentitiesDecode></li>
     </f:for>
 </ul>
 
