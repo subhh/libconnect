@@ -7,6 +7,11 @@ Here is the german [Manual](doc/manual.pdf "Ausführliches Manual").
 
 Visit our git repository: https://github.com/subhh/libconnect
 
+## Changes in new Version 5.3.1
+    - Security fix: XSS in search results
+    - EZB: - fixed search URL
+    - ZDB-Titlehistory: Set curl timeout to 2 seconds for more stability
+
 ## Changes in new Version 5.3.0
 
     - Fixed XML-Error handling
@@ -48,6 +53,28 @@ Visit our git repository: https://github.com/subhh/libconnect
 ## Customize your design
 
 1. Set paths to templates, partials and layouts
+
+### TYPO3 7.6 and newer
+
+        plugin.tx_libconnect {
+            view {
+                templateRootPaths {
+                    0 = EXT:libconnect/Resources/Private/Templates/
+                    1 = <yourPath>
+                }
+                partialRootPaths {
+                    0 = EXT:libconnect/Resources/Private/Partials/
+                    1 = <yourPath>
+                }
+
+                layoutRootPaths {
+                    0 = EXT:libconnect/Resources/Private/Layouts/
+                    1 = <yourPath>
+                }
+            }
+        }
+
+### TYPO3 6.2
 
         plugin.tx_libconnect {
             view {
