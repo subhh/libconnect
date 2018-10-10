@@ -76,7 +76,7 @@ class Tx_Libconnect_Resources_Private_Lib_Httppageconnection {
             curl_setopt($ch, CURLOPT_PROXYPORT, $this->proxyPort);
         }
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 2);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
         $response = curl_exec($ch);
 
