@@ -230,7 +230,8 @@ class Tx_libconnect_Resources_Private_Lib_Ezb {
     public function getJournalDetail($journalId) {
 
         $journal = array();
-        $url = $this->getDetailviewRequestUrl() . '&xmloutput=1&colors=' . '&jour_id=' . $journalId . '&bibid='. $this->bibID . '&lang=' . $this->lang;
+        $url = $this->getDetailviewRequestUrl() . '&xmloutput=1&colors=' . '&jour_id=' . $journalId . '&bibid='. $this->bibID;
+        
         $xml_request = $this->XMLPageConnection->getDataFromXMLPage($url);
 
         if (!is_object($xml_request->ezb_detail_about_journal->journal)) {
