@@ -7,32 +7,8 @@ Here is the german [Manual](doc/manual.pdf "Ausführliches Manual").
 
 Visit our git repository: https://github.com/subhh/libconnect
 
-## Changes in new Version 5.3.1
+## Changes in new Version 5.3.2
     - Security fix: XSS in search results
-    - EZB: - fixed search URL
-    - ZDB-Titlehistory: Set curl timeout to 2 seconds for more stability
-
-## Changes in new Version 5.3.0
-
-    - Fixed XML-Error handling
-
-    - Tx_Libconnect_Resources_Private_Lib_Httppageconnection: constant port removed, now depends on URL
-
-    - Tx_Libconnect_Resources_Private_Lib_Xmlpageconnection: constant port removed, now depends on URL
-
-    - JQuery is now local and in a new version
-
-    - EZB:
-
-        - title history added
-
-            - It shows the zbd-id, the name and the issue date
-
-            - The values of the displayed journals as a css class named "ezb-detail-tithistory-active".
-
-        - getMoreDetails fixed
-
-    - DBIS: Fixed double double dot in locallang.xml
 
     Tested with: TYPO3 6.2, 8.7
 
