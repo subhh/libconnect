@@ -19,6 +19,14 @@ plugin.tx_libconnect {
     persistence {
         storagePid = {$plugin.tx_libconnect.persistence.storagePid}
     }
+    
+    view {
+		templateRootPaths.0 = {$plugin.tx_libconnect.view.templateRootPath}
+
+		partialRootPaths.0 = {$plugin.tx_libconnect.view.partialRootPath}
+
+		layoutRootPaths.0 = {$plugin.tx_libconnect.view.layoutRootPath}
+	}
 
     settings {
         allListingId = 44
