@@ -70,10 +70,18 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
         if(!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_ezb'))){
             $params_temp = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_ezb');
             $params = $params_temp['libconnect'];
-        } 
+        }
         if(!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect'))){
             $params_temp = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect');
             $params = array_merge($params_temp, $params);
+        }
+
+        //show overview on empty search
+        $isSearch = FALSE;
+        if (!empty($params['search'])){
+            if( ( count( $params['search'] ) > 1 ) || (!empty($params['search']['sword'] )) ){
+                $isSearch = TRUE;
+            }
         }
 
         //get PageID
@@ -136,7 +144,8 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
             $this->view->assign('colors', $params['colors']);
             $this->view->assign('formParameter', $formParameter);
 
-        } else if (!empty($params['search'])) {//search results
+        //} else if (!empty($params['search'])) {//search results
+        } else if ($isSearch !== FALSE) {//search results
 
             $config['detailPid'] = $this->settings['flexform']['detailPid'];
 
