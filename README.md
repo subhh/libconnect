@@ -7,10 +7,13 @@ Here is the german [Manual](doc/manual.pdf "Ausführliches Manual").
 
 Visit our git repository: https://github.com/subhh/libconnect
 
-## Changes in new Version 5.3.2
-    - Security fix: XSS in search results
+## Changes in new Version 5.4.0
+    - Fixed missed Wizicons
+    - Changed view pathes in TS
+    - End of support of TYPO3 6
+    - show overview on empty search
+    
 
-    Tested with: TYPO3 6.2, 8.7
 
 ## Configuration
 
