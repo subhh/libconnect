@@ -74,7 +74,15 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
             $params_temp = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect');
             $params = array_merge($params_temp, $params);
         }
-
+        
+        //show overview on empty search
+        $isSearch = FALSE;
+        if (!empty($params['search'])){
+            if( ( count( $params['search'] ) > 1 ) || (!empty($params['search']['sword'] )) ){
+                $isSearch = TRUE;
+            }
+        }
+        
         //include CSS
         $this->decideIncludeCSS();
 
@@ -94,7 +102,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
             $this->view->assign('subject', $params['subject']);
             $this->view->assign('list', $liste['list']);
 
-        } else if (!empty($params['search'])) {//search results
+        } else if ($isSearch !== FALSE) {//search results
             $config['detailPid'] = $this->settings['flexform']['detailPid'];
 
             $liste =  $this->dbisRepository->loadSearch($params['search'], $config);
