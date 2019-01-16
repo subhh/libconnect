@@ -6,7 +6,10 @@
 * - CR: Christian Richter chri@portachtzig.com (Wirtschaftskolleg zu Berlin)
 **/
 5.3.3
-    - Fixed missed Wizicon
+    - Fixed missed Wizicons
+    - Changed view pathes in TS
+    - End of support of TYPO3 6
+    
 5.3.2
     - Security fix: XSS in search results
 
