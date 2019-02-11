@@ -6,7 +6,7 @@ class tx_libconnect_ezb_wizicon {
         global $LANG;
 
         $wizardItems['plugins_tx_libconnect_ezb'] = array(
-            'icon'=>\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('libconnect').'wiz_icon.gif',
+            'icon'=>\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('libconnect').'wiz_icon.gif',
             'title'=> 'Plugin EZB',
             'description'=> 'Plugin zur Einbindung von EZB',
             'params'=>'&defVals[tt_content][CType]=list&defVals[tt_content][list_type]=libconnect_ezb'
