@@ -1,0 +1,11 @@
+<h1 class="ezb">
+    <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.overview.headline" />
+</h1>
+
+<ul class="ezb-list-overview">
+    <f:for each="{list}" as="item">
+        <li>
+            <a href="{item.link}">{item.title}</a> ({item.journalcount})
+        </li>
+    </f:for>
+</ul>

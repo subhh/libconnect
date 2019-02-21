@@ -1,0 +1,318 @@
+<div id="dbis-detail">
+<f:if condition="{error}">
+    <f:then>
+        <h1 class="libconnect-h1"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.detail.error.h1" /></h1>
+        <p>
+            <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.detail.error.p1" />
+        </p>
+        <p>
+            <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.detail.error.p2" />
+        </p>
+    </f:then>
+    <f:else>
+        {namespace libconnect=Sub\Libconnect\ViewHelpers}
+        <h1 class="libconnect-h1"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.detail.database" /></h1>
+        <h2 class="libconnect-h2"><f:format.htmlentitiesDecode>{db.title}</f:format.htmlentitiesDecode></h2>
+        
+        <f:if condition="<f:count subject='{db.biblist}' /> > 0">
+        <div id="dbis-detail-notavailable">
+            <p><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.detail.notavailable_start" /> <f:format.htmlentitiesDecode>{db.library.name}</f:format.htmlentitiesDecode> <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.detail.notavailable_end" /><br/>
+            <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.detail.library_with_title" /></p>
+            <form class="dbis-form" method="get" action="http://rzblx10.uni-regensburg.de/dbinfo/detail.php">
+                <input name="titel_id" value="{db.titel_id}" type="hidden"/>
+                <select id="choose_bib" name="bib_id">
+                    <f:for each="{db.biblist}" as="bib">
+                        <option value="{bib.bib_id}">{bib.bibname}</option>
+                    </f:for>
+                </select>
+                <input value="zum Anbieter" type="submit"/>
+            </form>
+        </div>
+        </f:if>
+        
+        <f:if condition="{db.access_workaround}">
+            <f:if condition="{db.access.href}">
+                <p>
+                    <a class="dbis-research" href="http://rzblx10.uni-regensburg.de/dbinfo/{db.access.href}" target="_blank"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.detail.recherche" /></a>
+                </p>
+            </f:if>
+        </f:if>
+
+        <table class="dbis-result-details">
+            <tbody>
+
+                <f:if condition="<f:count subject='{db.else_titles}' /> > 0">
+                    <tr>
+                        <th>
+                            <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.detail.othertitle" /></strong>
+                        </th>
+
+                        <td>
+                            <ul>
+                                <f:for each="{db.else_titles}" as="title">
+                                    <li><f:format.htmlentitiesDecode>{title}</f:format.htmlentitiesDecode></li>
+                                </f:for>
+                            </ul>
+                        </td>
+                    </tr>
+                </f:if>
+
+                <f:if condition="<f:count subject='{db.access_lic}' /> > 0">
+                    <f:for each="{db.access_lic}" as="a_lics" key="accesstype">
+                        <f:if condition="{libconnect:compare(a: accesstype, b: 'free')}">
+                            <tr class="dbis-free">
+                                <th>
+                                    <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.detail.access.free" /></strong>
+                                </th>
+                                <td>
+                                    <ul>
+                                        <f:for each="{db.access_lic.free}" as="free">
+                                            <li><a href="http://rzblx10.uni-regensburg.de/dbinfo/{free.href}" target="_blank">{free.name}</a></li>
+                                        </f:for>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </f:if>
+                        <f:if condition="{libconnect:compare(a: accesstype, b: 'other')}">
+                            <tr class="dbis-other">
+                                <th>
+                                    <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.detail.access.other" /></strong>
+                                </th>
+                                <td>
+                                    <ul>
+                                        <f:for each="{db.access_lic.other}" as="other">
+                                            <li><a href="http://rzblx10.uni-regensburg.de/dbinfo/{other.href}" target="_blank">{other.name}</a></li>
+                                        </f:for>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </f:if>
+                        <f:if condition="{libconnect:compare(a: accesstype, b: 'ppu')}">
+                            <tr class="dbis-ppu">
+                                <th>
+                                    <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.detail.access.ppu" /></strong>
+                                </th>
+                                <td>
+                                    <ul>
+                                        <f:for each="{db.access_lic.ppu}" as="ppu">
+                                            <li><a href="http://rzblx10.uni-regensburg.de/dbinfo/{ppu.href}" target="_blank">{ppu.name}</a></li>
+                                        </f:for>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </f:if>
+                        
+                        <f:if condition="{libconnect:compare(a: accesstype, b: 'lic')}">
+                            <tr class="dbis-alic">
+                                <th>
+                                    <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.detail.access.alic" /></strong>
+                                </th>
+                                <td>
+                                    <ul>
+                                        <f:for each="{db.access_lic.lic}" as="lic">
+                                            <li><a href="http://rzblx10.uni-regensburg.de/dbinfo/{lic.href}" target="_blank">{lic.name}</a></li>
+                                        </f:for>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </f:if>
+
+                        <f:if condition="{libconnect:compare(a: accesstype, b: 'natli')}">
+                            <tr class="dbis-alic">
+                                <th>
+                                    <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.detail.access.alic" /></strong>
+                                </th>
+                                <td>
+                                    <ul>
+                                        <f:for each="{db.access_lic.natli}" as="natli">
+                                            <li><a href="http://rzblx10.uni-regensburg.de/dbinfo/{natli.href}" target="_blank">{natli.name}</a></li>
+                                        </f:for>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </f:if>
+                    </f:for>
+                </f:if>
+
+                <f:if condition="{db.db_access_short_text}">
+                    <tr>
+                        <th>
+                            <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.detail.access.text" /></strong>
+                        </th>
+                        <td>
+                            <span class="dbis-list-accessinfo-{db.access_id}"><f:format.htmlentitiesDecode>{db.db_access_short_text}</f:format.htmlentitiesDecode></span>
+                        </td>
+                    </tr>
+                </f:if>
+
+                <f:if condition="{db.hints}">
+                    <tr>
+                        <th>
+                            <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.detail.access.hints" /></strong>
+                        </th>
+                        <td>
+                            <f:format.htmlentitiesDecode>{db.hints}</f:format.htmlentitiesDecode>
+                        </td>
+                    </tr>
+                </f:if>
+
+                <f:if condition="{db.content}">
+                    <tr>
+                        <th>
+                            <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.detail.content" /></strong>
+                        </th>
+                        <td>
+                            <f:format.htmlentitiesDecode>{db.content}</f:format.htmlentitiesDecode>
+                        </td>
+                    </tr>
+                </f:if>
+
+                <f:if condition="{db.instruction}">
+                    <tr>
+                        <th>
+                            <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.detail.instruction" /></strong>
+                        </th>
+                        <td>
+                            <f:format.htmlentitiesDecode>{db.instruction}</f:format.htmlentitiesDecode>
+                        </td>
+                    </tr>
+                </f:if>
+
+                <f:if condition="{db.subjects}">
+                    <tr>
+                        <th>
+                            <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.detail.subjects" /></strong>
+                        </th>
+                        <td>
+                            <ul>
+                                <f:for each="{db.subjects}" as="subject">
+                                    <li><f:format.htmlentitiesDecode>{subject}</f:format.htmlentitiesDecode></li>
+                                </f:for>
+                            </ul>
+                        </td>
+                    </tr>
+                </f:if>
+
+                <f:if condition="{db.keywords_join}">
+                    <tr>
+                        <th>
+                            <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.detail.keywords" /></strong>
+                        </th>
+
+                        <td>
+                            <f:format.htmlentitiesDecode>{db.keywords_join}</f:format.htmlentitiesDecode>
+                        </td>
+                    </tr>
+                </f:if>
+
+                <f:if condition="{db.appearence}">
+                    <tr>
+                        <th>
+                            <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.detail.appearence" /></strong>
+                        </th>
+                        <td>
+                            <f:format.htmlentitiesDecode>{db.appearence}</f:format.htmlentitiesDecode>
+                        </td>
+                    </tr>
+                </f:if>
+            
+                <f:if condition="{db.isbn}">
+                    <tr>
+                        <th>
+                            <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.detail.isbn" /></strong>
+                        </th>
+                        <td>
+                            {db.isbn}
+                        </td>
+                    </tr>
+                </f:if>
+
+                <f:if condition="{db.db_type_infos}">
+                    <tr>
+                        <th>
+                            <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.detail.dbtype" /></strong>
+                        </th>
+                        <td>
+                            <f:for each="{db.db_type_infos}" as="info" key="key">
+                                <div class="dbtype">
+                                    <f:format.htmlentitiesDecode>{info.type}</f:format.htmlentitiesDecode>
+                                    <ul>
+                                        <f:format.htmlentitiesDecode>{info.long_text}</f:format.htmlentitiesDecode>
+                                    </ul>
+                                </div>
+                            </f:for>
+                        </td>
+                    </tr>
+                </f:if>
+            
+                <f:if condition="{db.more_internet_accesses}">
+                    <tr>
+                        <th>
+                            Zus&auml;tzliches Internet-Angebot:
+                        </th>
+                        <td>
+                            <f:format.htmlentitiesDecode>{db.more_internet_accesses}</f:format.htmlentitiesDecode>
+                        </td>
+                    </tr>
+                </f:if>
+            
+                <f:if condition="{db.publisher}">
+                    <tr>
+                        <th>
+                            <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.detail.publisher" /></strong>
+                        </th>
+                        <td>
+                            <f:format.htmlentitiesDecode>{db.publisher}</f:format.htmlentitiesDecode>
+                        </td>
+                    </tr>
+                </f:if>
+
+                <f:if condition="{db.report_periods}">
+                    <tr>
+                        <th>
+                            <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.detail.report_periods" /></strong>
+                        </th>
+                        <td>
+                            <f:format.htmlentitiesDecode>{db.report_periods}</f:format.htmlentitiesDecode>
+                        </td>
+                    </tr>
+                </f:if>
+
+                <f:if condition="{db.update}">
+                    <tr>
+                        <th>
+                            <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.detail.update" /></strong>
+                        </th>
+                        <td>
+                            <f:format.htmlentitiesDecode>{db.update}</f:format.htmlentitiesDecode>
+                        </td>
+                    </tr>
+                </f:if>
+
+                <f:if condition="{db.license}">
+                    <tr>
+                        <th>
+                            <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.detail.license" /></strong>
+                        </th>
+                        <td>
+                            <f:format.htmlentitiesDecode>{db.license}</f:format.htmlentitiesDecode>
+                        </td>
+                    </tr>
+                </f:if>
+
+                <f:if condition="{db.remarks}">
+                    <tr>
+                        <th>
+                            <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.detail.remarks" /></strong>
+                        </th>
+                        <td>
+                            <f:format.htmlentitiesDecode>{db.remarks}</f:format.htmlentitiesDecode>
+                        </td>
+                    </tr>
+                </f:if>
+
+            </tbody>
+        </table>
+    </f:else>
+</f:if>
+</div>

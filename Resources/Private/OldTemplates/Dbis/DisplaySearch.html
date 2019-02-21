@@ -1,0 +1,61 @@
+{namespace libconnect=Sub\Libconnect\ViewHelpers}
+<h1 class="libconnect-h1"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.search.results" /></h1>
+
+<p><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.search.criterion" /></p>
+<ul>
+    <f:for each="{list.searchDescription}" as="description">
+        <li><f:format.htmlentitiesDecode><f:format.htmlspecialchars>{description}</f:format.htmlspecialchars></f:format.htmlentitiesDecode></li>
+    </f:for>
+</ul>
+
+<f:if condition="{list.error}">
+    <f:then>
+        <p class="hitcount">
+            <libconnect:strreplace search="%s" replace="{list.values -> f:count()}">
+                <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.search.hits" />
+            </libconnect:strreplace>
+        </p>
+    </f:then>
+    <f:else>
+        <h3 class="libconnect-h3"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.search.licence" /></h3>
+
+        <div class="dbis-list-legend">
+            <ul>
+                <f:for each="{list.access_infos}" as="info">
+                    <li class="dbis-list-accessinfo-{info.id}"><f:format.htmlentitiesDecode>{info.title}</f:format.htmlentitiesDecode> (<f:format.htmlentitiesDecode>{info.description}</f:format.htmlentitiesDecode>)</li>
+                </f:for>
+            </ul>
+        </div>
+
+        <f:if condition="<f:count subject='{list.top}' /> > 0">
+            <div class="top-database-wrapper">
+                <h2><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.search.top_databases" /></h2>
+                    <ul class="dbis-top-list">
+                        <f:for each="{list.top}" as="db">
+                            <li><a href="{db.detail_link}"><f:format.htmlentitiesDecode>{db.title}</f:format.htmlentitiesDecode></a> (<f:format.htmlentitiesDecode>{db.access}</f:format.htmlentitiesDecode>)</li>
+                        </f:for>
+                    </ul>
+            </div>
+        </f:if>
+
+        <p class="hitcount">
+            <libconnect:strreplace search="%s" replace="{list.values -> f:count()}">
+                <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.search.hits" />
+            </libconnect:strreplace>
+        </p>
+
+        <div class="dbis-list">
+            <f:if condition="<f:count subject='{list.values}' /> > 0">
+                <div class="accordion-content clearfix">
+                    <ul class="dbis-dblist">
+                        <f:for each="{list.values}" as="db" key="titleid">
+                            <li class="dbis-list-accessinfo-{db.access_ref}">
+                                <a href="{db.detail_link}"><f:format.htmlentitiesDecode>{db.title}</f:format.htmlentitiesDecode></a>
+                            </li>
+                        </f:for>
+                    </ul>
+                </div>
+            </f:if>
+        </div>
+    </f:else>
+</f:if>

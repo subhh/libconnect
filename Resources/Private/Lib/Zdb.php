@@ -248,7 +248,9 @@ class Tx_libconnect_Resources_Private_Lib_Zdb {
                              explode(',', $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.']['validStatesList']) :
                              array(2,3)
                             );
-        array_walk($validStatesArray, create_function('&$val', '$val = trim($val);')); //remove all whitespaces from states
+
+        array_walk($validStatesArray, function(&$val) {$val = trim($val);}); //remove all whitespaces from states
+        
         $validStateFlag = FALSE;
         if (count($tmpStates)) {
             foreach($tmpStates as $tmpState) {
