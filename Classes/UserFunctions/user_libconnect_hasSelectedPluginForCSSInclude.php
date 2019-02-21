@@ -3,10 +3,15 @@ namespace Sub\Libconnect\UserFunctions;
 /**
  * Class 'user_libconnect_hasSelectedPluginForCSSInclude' for the 'libconnect' extension.
  *
- * @author      Björn Heinermann <hein@zhaw.ch>
+ * @author Björn Heinermann <hein@zhaw.ch>
+ * @author Torsten Witt <torsten.witt@sub.uni-hamburg.de>
+
  * @package     TYPO3
  * @subpackage  tx_libconnect
  */
+
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Database\ConnectionPool;
 
 /**
  * Checks which PlugIn is active
@@ -20,15 +25,18 @@ function user_libconnect_hasSelectedPluginForCSSInclude($type) {
     $pid = $GLOBALS['TSFE']->id;
     $list_type = 'libconnect_'.$type;
 
-    $select = 'uid';
-    $from = 'tt_content';
-    $where = 'pid = "'.$pid.'" AND list_type = "'.$GLOBALS['TYPO3_DB']->quoteStr($list_type, 'tt_content').'" AND deleted = "0"';
-    $groupBy = '';
-    $orderBy = '';
-    $limit = '';
-    $res = $GLOBALS['TYPO3_DB']->exec_SELECTquery($select, $from, $where, $groupBy, $orderBy, $limit);
+    $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tt_content');
+    $statement = $queryBuilder
+        ->select('uid')
+        ->from('tt_content')
+        ->where(
+             $queryBuilder->expr()->eq('pid', $queryBuilder->createNamedParameter($pid)),
+             $queryBuilder->expr()->eq('list_type', $queryBuilder->createNamedParameter($list_type)),
+             $queryBuilder->expr()->isNotNull('deleted')
+        )
+        ->execute();
 
-    if ($GLOBALS['TYPO3_DB']->sql_num_rows($res)) {
+    while ($row = $statement->fetch()) {
         return TRUE;
     }
 
