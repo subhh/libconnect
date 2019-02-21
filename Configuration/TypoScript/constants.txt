@@ -22,14 +22,6 @@ plugin.tx_libconnect {
     # cat=plugin.tx_libconnect/settings/0011; type=string; label=port of proxy
     proxy_port = 
     
-    view {
-        # cat=plugin.tx_libconnect/file/0003; type=string; label=Path to template root (FE)
-        templateRootPath = EXT:libconnect/Resources/Private/Templates/
-        # cat=plugin.tx_libconnect/file/0004; type=string; label=Path to template partials (FE)
-        partialRootPath = EXT:libconnect/Resources/Private/Partials/
-        # cat=plugin.tx_libconnect/file/0005; type=string; label=Path to template layouts (FE)
-        layoutRootPath = EXT:libconnect/Resources/Private/Layouts/
-    }
     persistence {
         # cat=plugin.tx_libconnect/settings/0020; type=int+; label=Default storage PID
         storagePid = 1
@@ -78,3 +70,27 @@ plugin.tx_libconnect {
         dbisNoCSS = 0
     }
 }
+
+[compatVersion = 9]
+    plugin.tx_libconnect {
+        view {
+            # cat=plugin.tx_libconnect/file/0003; type=string; label=Path to template root (FE)
+            templateRootPath = EXT:libconnect/Resources/Private/Templates/
+            # cat=plugin.tx_libconnect/file/0004; type=string; label=Path to template partials (FE)
+            partialRootPath = EXT:libconnect/Resources/Private/Partials/
+            # cat=plugin.tx_libconnect/file/0005; type=string; label=Path to template layouts (FE)
+            layoutRootPath = EXT:libconnect/Resources/Private/Layouts/
+        }
+    }
+[ELSE]
+    plugin.tx_libconnect {
+        view {
+            # cat=plugin.tx_libconnect/file/0003; type=string; label=Path to template root (FE)
+            templateRootPath = EXT:libconnect/Resources/Private/OldTemplates/
+            # cat=plugin.tx_libconnect/file/0004; type=string; label=Path to template partials (FE)
+            partialRootPath = EXT:libconnect/Resources/Private/Partials/
+            # cat=plugin.tx_libconnect/file/0005; type=string; label=Path to template layouts (FE)
+            layoutRootPath = EXT:libconnect/Resources/Private/Layouts/
+        }
+    }
+[END]
