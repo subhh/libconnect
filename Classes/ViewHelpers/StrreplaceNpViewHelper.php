@@ -1,28 +1,10 @@
 <?php
 namespace Sub\Libconnect\ViewHelpers;
 
-/***************************************************************
-*  Copyright notice
-*
-*  (c) 2011 Paul Rohrbeck
-*  All rights reserved
-*
-*  This script is part of the TYPO3 project. The TYPO3 project is
-*  free software; you can redistribute it and/or modify
-*  it under the terms of the GNU General Public License as published by
-*  the Free Software Foundation; either version 2 of the License, or
-*  (at your option) any later version.
-*
-*  The GNU General Public License can be found at
-*  http://www.gnu.org/copyleft/gpl.html.
-*
-*  This script is distributed in the hope that it will be useful,
-*  but WITHOUT ANY WARRANTY; without even the implied warranty of
-*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-*  GNU General Public License for more details.
-*
-*  This copyright notice MUST APPEAR in all copies of the script!
-***************************************************************/
+use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
+use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
+use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
+
 /**
  * This class is a view helper that replace a string.
  *
@@ -30,20 +12,27 @@ namespace Sub\Libconnect\ViewHelpers;
  * @subpackage Fluid
  * @version
  */
+class StrreplaceNpViewHelper extends AbstractViewHelper {
 
-class StrreplaceViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
+    use CompileWithRenderStatic;
+  
+    public function initializeArguments() {
+        $this->registerArgument('search', 'string', 'The search string.', FALSE);
+        $this->registerArgument('replace', 'string', 'The replacement.', FALSE);
+        $this->registerArgument('subject', 'string', 'The string.', FALSE);
+    }
 
     /**
-     * replace all matches of the search string with an other
-     *
-     * @param string $search
-     * @param string $replace
-     * @return string
+     * Replace a string with a string
+     * 
+     * @param array $arguments
+     * @param \Closure $renderChildrenClosure
+     * @param RenderingContextInterface $renderingContext
+     * @return type
      */
-    public function render($search = '', $replace = '') {
+    public static function renderStatic ( array $arguments, \Closure $renderChildrenClosure, RenderingContextInterface $renderingContext ) {
 
-        $subject = $this->renderChildren();
-        $newString = str_replace($search, $replace, $subject);
+        $newString = str_replace($arguments['search'], $arguments['replace'], $arguments['subject']);
 
         return $newString;
     }

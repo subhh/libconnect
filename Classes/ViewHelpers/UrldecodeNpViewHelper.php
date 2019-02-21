@@ -1,6 +1,10 @@
 <?php
 namespace Sub\Libconnect\ViewHelpers;
 
+use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
+use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
+use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
+
 /**
  * This class is a view helper that returns a urldecoded string.
  *
@@ -8,17 +12,25 @@ namespace Sub\Libconnect\ViewHelpers;
  * @subpackage Fluid
  * @version
  */
+class UrldecodeNpViewHelper extends AbstractViewHelper {
 
-class UrldecodeViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
+    use CompileWithRenderStatic;
+
+    public function initializeArguments() {
+        $this->registerArgument('url', 'string', 'The to decode url.', FALSE);
+    }
 
     /**
      * Returns urldecoded string
-     *
-     * @param string $url
-     * @return string
+     * 
+     * @param array $arguments
+     * @param \Closure $renderChildrenClosure
+     * @param RenderingContextInterface $renderingContext
+     * @return int
      */
-    public function render($url) {
-        return urldecode($url);
+    public static function renderStatic ( array $arguments, \Closure $renderChildrenClosure, RenderingContextInterface $renderingContext ) {
+
+        return urldecode($arguments['url']);
     }
 }
 ?>
