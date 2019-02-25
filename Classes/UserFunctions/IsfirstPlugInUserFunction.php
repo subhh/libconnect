@@ -39,12 +39,14 @@ class IsfirstPlugInUserFunction{
 
         //if current UID of the is not on top of the page, CSS shouldn´t loaded
         while ($row = $statement->fetch()) {
-            if($row['uid'] != $uid){
-                return FALSE;
+
+            if($row['uid'] == $uid){
+
+                return TRUE;
             }
         }
 
-        return TRUE;
+        return FALSE;
     }
 }
 ?>
