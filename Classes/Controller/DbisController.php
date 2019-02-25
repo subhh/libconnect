@@ -329,6 +329,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
     private function decideIncludeCSS(){
         //if user don´t want to use our css
         $noCSS = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.']['settings.']['dbisNoCSS'];
+
         if($noCSS == 1){
             return;
         }
