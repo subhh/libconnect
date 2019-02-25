@@ -475,7 +475,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
         unset($this->contentObj);
 
         //only the first PlugIn needs to include the css
-        if(\Sub\Libconnect\UserFunctions\IsfirstPlugInUserFunction::IsfirstPlugInUserFunction('ezb', $uid)){         
+        if(\Sub\Libconnect\UserFunctions\IsfirstPlugInUserFunction::IsfirstPlugInUserFunction('ezb', $uid)){
             $this->response->addAdditionalHeaderData('<link rel="stylesheet" href="' . \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::siteRelPath('libconnect') . 'Resources/Public/Styles/ezb.css" />');    
         }
     }
