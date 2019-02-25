@@ -19,7 +19,6 @@ class StrreplaceNpViewHelper extends AbstractViewHelper {
     public function initializeArguments() {
         $this->registerArgument('search', 'string', 'The search string.', FALSE);
         $this->registerArgument('replace', 'string', 'The replacement.', FALSE);
-        $this->registerArgument('subject', 'string', 'The string.', FALSE);
     }
 
     /**
@@ -31,8 +30,9 @@ class StrreplaceNpViewHelper extends AbstractViewHelper {
      * @return type
      */
     public static function renderStatic ( array $arguments, \Closure $renderChildrenClosure, RenderingContextInterface $renderingContext ) {
+        $subject = $renderChildrenClosure();
 
-        $newString = str_replace($arguments['search'], $arguments['replace'], $arguments['subject']);
+        $newString = str_replace($arguments['search'], $arguments['replace'], $subject);
 
         return $newString;
     }
