@@ -16,11 +16,11 @@
 
 <div class="ezb-list-legend">
     <f:form enctype="multipart/form-data" controller="Ezb" method="post" pageUid="{pageUid}" name="ezbaccessinfoform" id="ezbaccessinfoform" additionalAttributes="{onChange : 'document.ezbaccessinfoform.submit();'}">
-    
+
         <f:for each="{journals.selected_colors}" as="section" key="key">
             <f:if condition="{section.colorkey} != 6">
 
-                <f:if condition="{libconnect:array(inputArray: colors, key: section.colorkey)}">
+                <f:if condition="{libconnect:arrayNp(inputArray: colors, key: section.colorkey)}">
                     <f:then>
                         <f:form.checkbox  id="ezb-accessinfo-access_{section.colorkey}" name="libconnect[colors][{section.colorkey}]" class="accessinfo-element"  value="{section.colorkey}"  checked="1"/>
                     </f:then>
@@ -28,16 +28,15 @@
                         <f:form.checkbox  id="ezb-accessinfo-access_{section.colorkey}" name="libconnect[colors][{section.colorkey}]" class="accessinfo-element"  value="{section.colorkey}"/>
                     </f:else>
                 </f:if>
-                
+
             </f:if>
             <label class="ezb-accessinfo-access_{section.colorkey} accessinfo-element" for="ezb-accessinfo-access_{section.colorkey}">{section.value}</label>
 
         </f:for>
-        
+
         <f:for each="{formParameter}" as="parameter" key="key">
             <f:form.hidden name="{key}" value="{parameter}" />
         </f:for>
-
     </f:form>
 </div>
 
@@ -45,7 +44,7 @@
 
 <div class="ezb-navigation">
     <f:for each="{journals.navlist.pages}" as="item">
-        <f:if condition="{libconnect:IsArray(value: item)}">
+        <f:if condition="{libconnect:IsArrayNp(value: item)}">
             <f:then>
                 <a href="<f:format.htmlentitiesDecode>{item.link}</f:format.htmlentitiesDecode>">
                     <f:format.htmlentitiesDecode>{item.title}</f:format.htmlentitiesDecode>
@@ -63,12 +62,15 @@
 <br/><br/>
 
 <div class="ezb-list-output">
+
     <f:for each="{journals.alphabetical_order.first_fifty}" as="section">
         <h3>
             <a href="{section.link}">
-                <libconnect:strreplace search=" & " replace=" &amp; ">
-                    <f:format.htmlentitiesDecode>{section.first_fifty_titles}</f:format.htmlentitiesDecode>
-                </libconnect:strreplace>...
+                <f:format.htmlentitiesDecode>
+                    <libconnect:strreplaceNp search="&" replace="&amp;">
+                        {section.first_fifty_titles}
+                    </libconnect:strreplaceNp>
+                </f:format.htmlentitiesDecode>...
             </a>
         </h3>
     </f:for>
@@ -79,9 +81,11 @@
         <f:for each="{journals.alphabetical_order.journals}" as="journal">
             <li class="ezb-list-accessinfo-access_{journal.color_code}">
                 <a href="<f:format.htmlentitiesDecode>{journal.detail_link}</f:format.htmlentitiesDecode>">
-                    <libconnect:strreplace search=" & " replace=" &amp; ">
-                        <f:format.htmlentitiesDecode>{journal.title}</f:format.htmlentitiesDecode>
-                    </libconnect:strreplace>
+                    <f:format.htmlentitiesDecode>
+                        <libconnect:strreplaceNp search="&" replace="&amp;">
+                            {journal.title}
+                        </libconnect:strreplaceNp>
+                    </f:format.htmlentitiesDecode>
                 </a>
             </li>
         </f:for>
@@ -90,10 +94,13 @@
     <f:for each="{journals.alphabetical_order.next_fifty}" as="section">
         <h3>
             <a href="<f:format.htmlentitiesDecode>{section.link}</f:format.htmlentitiesDecode>">
-                <libconnect:strreplace search=" & " replace=" &amp; ">
-                    <f:format.htmlentitiesDecode>{section.next_fifty_titles}</f:format.htmlentitiesDecode>
-                </libconnect:strreplace>...
+                <f:format.htmlentitiesDecode>
+                    <libconnect:strreplaceNp search="&" replace="&amp;">
+                        {section.next_fifty_titles}
+                    </libconnect:strreplaceNp>
+                </f:format.htmlentitiesDecode>...
             </a>
         </h3>
     </f:for>
+
 </div>

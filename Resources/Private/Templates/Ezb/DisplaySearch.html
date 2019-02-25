@@ -19,7 +19,7 @@
             <f:for each="{journals.AccessInfos}" as="section" key="key">
                 <f:if condition="{section.colorkey} != 6">
 
-                    <f:if condition="{libconnect:array(inputArray: colors, key: section.colorkey)}">
+                    <f:if condition="{libconnect:ArrayNp(inputArray: colors, key: section.colorkey)}">
                         <f:then>
                             <f:form.checkbox  id="ezb-accessinfo-access_{section.colorkey}" name="libconnect[colors][{section.colorkey}]" class="accessinfo-element"  value="{section.colorkey}"  checked="1"/>
                         </f:then>
@@ -34,7 +34,7 @@
             </f:for>
 
                 <f:for each="{formParameter}" as="parameter" key="key">
-                    <f:if condition="{libconnect:IsArray(value: parameter)}">
+                    <f:if condition="{libconnect:IsArrayNp(value: parameter)}">
                         <f:then>
                             <f:for each="{parameter}" as="array" key="arraykey">
                                 <f:form.hidden value="{array}" name="libconnect[search][{key}][{arraykey}]"/>
@@ -54,14 +54,14 @@
         <br/><br/>
 
         <p id="ezb-hits">
-            <libconnect:strreplace search="%s" replace="{journals.page_vars.search_count}">
+            <libconnect:StrreplaceNp search="%s" replace="{journals.page_vars.search_count}">
                 <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.search.text.hits" />
-            </libconnect:strreplace>
+            </libconnect:StrreplaceNp>
         </p>
 
         <br/><br/>
 
-        <f:if condition="{libconnect:IsArray(value: journals.precise_hits)}">
+        <f:if condition="{libconnect:IsArrayNp(value: journals.precise_hits)}">
             <h2><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.search.proper.hits" /></h2>
             <ul class="ezb-list">
                 <f:for each="{journals.precise_hits}" as="journal">
@@ -76,10 +76,10 @@
             <h2><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.search.all.hits" /></h2>
         </f:if>
 
-        <f:if condition="{libconnect:IsArray(value: journals.navlist.pages)}">
+        <f:if condition="{libconnect:IsArrayNp(value: journals.navlist.pages)}">
             <div class="ezb-navigation">
                 <f:for each="{journals.navlist.pages}" as="item">
-                    <f:if condition="{libconnect:IsArray(value: item)}">
+                    <f:if condition="{libconnect:IsArrayNp(value: item)}">
                         <f:then>
                             <a href="{item.link}">{item.title}</a>
                         </f:then>
@@ -113,13 +113,13 @@
             </f:for>
         </div>
 
-        <f:if condition="{libconnect:IsArray(value: journals.navlist.pages)}">
+        <f:if condition="{libconnect:IsArrayNp(value: journals.navlist.pages)}">
             <f:then>
                 <br/><br/>
 
                 <div class="ezb-navigation">
                     <f:for each="{journals.navlist.pages}" as="item">
-                        <f:if condition="{libconnect:IsArray(value: item)}">
+                        <f:if condition="{libconnect:IsArrayNp(value: item)}">
                             <f:then>
                                 <a href="{item.link}">{item.title}</a>
                             </f:then>
