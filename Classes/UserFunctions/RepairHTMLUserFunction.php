@@ -13,7 +13,7 @@ class RepairHTMLUserFunction{
     /**
      * repairs broken HTML
      *
-     * @param liste array
+     * @param list array
      */
     public function RepairHTMLUserFunction($list){
 
