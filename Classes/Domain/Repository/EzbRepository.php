@@ -327,7 +327,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
         $ezbColors = $this->getColors($colors);
         $ezb->setColors($ezbColors);
 
-        $journals = $ezb->search($term, $searchVars);
+        $journals = $ezb->search($searchVars);
 
         if (! $journals){
             return FALSE;

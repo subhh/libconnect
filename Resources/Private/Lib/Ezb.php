@@ -383,7 +383,7 @@ class Tx_libconnect_Resources_Private_Lib_Ezb {
      *
      * @return string
      */
-    private function createSearchUrl($term, $searchVars) {
+    private function createSearchUrl($searchVars) {
 
         //if search was redirected from original website of EZB
         if(isset($searchVars['jq_type1']) && $searchVars['jq_type1'] == 'ZD'){
@@ -394,14 +394,6 @@ class Tx_libconnect_Resources_Private_Lib_Ezb {
             $searchUrl = $this->search_result_page . 'bibid=' . $this->bibID . '&colors=' . $this->colors . '&lang=' . $this->lang .
                             '&xmlv=3';
         }
-
-        //convert to UTF-8, only if own website is utf-8
-        if((mb_strtolower($GLOBALS['TSFE']->metaCharset)) == 'utf-8'){
-            $term = utf8_decode($term);
-        }
-
-        // urlencode term
-        $term = rawurlencode($term);
 
         if (!$searchVars['sc']) {
             $searchVars['sc'] = 'A';
@@ -435,8 +427,8 @@ class Tx_libconnect_Resources_Private_Lib_Ezb {
      *
      * @return array
      */
-    public function search($term, $searchVars = array()) {
-        $searchUrl = str_replace(' ', '', $this->createSearchUrl($term, $searchVars));
+    public function search($searchVars = array()) {
+        $searchUrl = str_replace(' ', '', $this->createSearchUrl($searchVars));
         $xml_request = $this->XMLPageConnection->getDataFromXMLPage($searchUrl);
 
         if (!$xml_request) {
