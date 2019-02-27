@@ -187,7 +187,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
             
             //sets the link to the page with list plugin
             $listURL = $GLOBALS['TSFE']->cObj->getTypolink_URL( $Pid );
-            
+
             //variables for template
             $this->view->assign('journals', $journals);
             $this->view->assign('listUrl', $listURL);
@@ -377,9 +377,15 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
             $liste = FALSE;
         }else{
             //request
-            $journals =  $this->ezbRepository->loadSearch($params, false, $config);
+            $colors = array(
+                        1 => 1,
+                        2 => 2,
+                        4 => 4
+                    );
+ 
+            $journals =  $this->ezbRepository->loadSearch($params, $colors, $config);
         }
-        
+
         //variables for template
         $this->view->assign('journals', $journals);
         $this->view->assign('new_date', $params['jq_term1']);
@@ -417,8 +423,14 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
 
         $config['detailPid'] = $this->settings['flexform']['detailPid'];
 
+         $colors = array(
+                        1 => 1,
+                        2 => 2,
+                        4 => 4
+                    );
+        
         //request
-        $journals =  $this->ezbRepository->loadSearch($params, false, $config);
+        $journals =  $this->ezbRepository->loadSearch($params, $colors, $config);
 
         return $journals['page_vars']['search_count'];
     }

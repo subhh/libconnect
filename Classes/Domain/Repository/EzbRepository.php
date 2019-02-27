@@ -333,8 +333,10 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
             return FALSE;
         }
 
-        $journals['searchDescription'] = $this->getSearchDescription($searchVars);
-        $journals['selected_colors'] = $colors;
+        $journals['searchDescription'] = $this->getSearchDescription($searchVars);       
+
+        //get access information
+        $journals['selected_colors'] = $this->getAccessInfos();
     
         /**
          * create links
