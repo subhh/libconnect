@@ -52,7 +52,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
      * @inject
      */
     protected $subjectRepository;
-    
+
     /**
      * get list for start page
      * 
@@ -60,7 +60,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
      */
     public function loadOverview() {
         $this->loadSubjects();
-        
+
         $ezb =  \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_libconnect_Resources_Private_Lib_Ezb');
 
         $subjectsOnline = $ezb->getFachbereiche();
@@ -81,9 +81,6 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
      * fill variable $ezb_to_t3_subjects with list of subjects
      */
     private function loadSubjects() {
-        //$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
-        //$repository = $objectManager->get('Sub\\Libconnect\\Domain\\Repository\\SubjectRepository');
-
         $res =  $this->subjectRepository->findAll();
 
         foreach($res as $row){
@@ -97,7 +94,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
         }
 
     }
-    
+
     /**
      * get list of a subject or letter
      * 
@@ -122,7 +119,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
         if($options['notation'] == 'All'){
             $subject['ezbnotation'] = 'All';
         }
-        
+
         //filter list by access list
         if(!empty($options['colors'])){
             $colors = $this->getColors($options['colors']);
@@ -229,7 +226,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
                  $colortext[$key] = $text;
             }
         }
-        
+
         //get texts from the web
         $form = $ezb->detailSearchFormFields();
         $journal['selected_colors'] = $form['selected_colors'];
@@ -257,7 +254,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
                 );
             }
         }
-        
+
         //setSubjectLinks but only it is configured
         if(!empty($config['listPid'])){
             $this->loadSubjects();
@@ -289,7 +286,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
                             ));
         }
         $journal['keywords_join'] = join(', ', $tempKeywords);
-        
+
         //getTitleHistory
         if(!empty($journal['ZDB_number'])){
             $journal['title_history'] = $this->getTitleHistory($journal['ZDB_number']);
@@ -297,11 +294,12 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
         return $journal;
     }
-    
+
     /**
      * search
      * 
      * @param array $searchVars
+     * @param array $colors
      * @param mixed $config
      *
      * @return array $journals
@@ -333,7 +331,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
             return FALSE;
         }
 
-        $journals['searchDescription'] = $this->getSearchDescription($searchVars);       
+        $journals['searchDescription'] = $this->getSearchDescription($searchVars);
 
         //get access information
         $journals['selected_colors'] = $this->getAccessInfos();
@@ -369,10 +367,10 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
                 }
            }
         }
-        
+
         //precise hits
         if (is_array($journals['precise_hits'])) {
-            
+
             foreach(array_keys($journals['precise_hits']) as $precise_hit) {
                 if (is_array($journals['precise_hits'][$precise_hit])) {
                     $journals['precise_hits'][$precise_hit]['detail_link'] = $GLOBALS['TSFE']->cObj->getTypolink_URL(
@@ -384,7 +382,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
                 }
             }
         }
-        
+
         //results paging
         if (is_array($journals['alphabetical_order']['first_fifty'])) {
 
@@ -421,10 +419,10 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
                     )));
             }
         }
-        
+
         return $journals;
     }
-    
+
     /**
      * create search form
      * 
@@ -439,7 +437,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
         return $form;
     }
-    
+
     /**
      * get BibID
      * 
@@ -471,7 +469,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
         if (! $locationData ){
             return FALSE;
         }
-    
+
         return $locationData; 
     }
 //EOF ZDB LocationData
@@ -494,6 +492,12 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
         return $this->longAccessInfos;
     }
     
+    /**
+     * 
+     * @param boolean $short
+     * 
+     * @return array
+     */
     public function getAccessInfos($short = false){
         $ezb = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_libconnect_Resources_Private_Lib_Ezb');
 
@@ -537,7 +541,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
                 }
             }
         }
-        
+
         //reorginize array
         foreach($AccessInfos as $colorkey => $value){
             if ( $colorkey != 6 ){
@@ -550,12 +554,12 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
                             'value' => $value
                         );
         }
-        
+
         ksort($return);
 
         return $return;
     }
-    
+
     /**
      * get data about the search
      * 
@@ -593,7 +597,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
             }    
             
         }
-        
+
         //licence
         /*if(!empty($searchVars['selected_colors'])){
             $accessInfos = $this-> getAccessInfos();
@@ -609,10 +613,10 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
                 }
             }
         }*/
-        
+
         return $list;
     }
-    
+
     /**
      * returns a subject
      * 
@@ -623,7 +627,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
         
         return $this->t3_to_ezb_subjects[$subjectId];
     }
-    
+
     /**
      * get lit of participants
      * 
@@ -641,7 +645,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
         return $list;
     }
-    
+
     /**
      * get contact information
      * 
@@ -655,7 +659,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
     }
     
     /**
-     * returns a value for parameter colors. 
+     * returns a singel value for parameter colors. 
      * 
      * @param array $colors
      *
@@ -663,7 +667,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
      */
     private function getColors($colors){
         $sum = 0;
-        
+
         if(!empty($colors)){
             foreach($colors as $color){
                 $sum += (int) $color;
@@ -673,10 +677,10 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
         if($sum == 0){
             $sum = 7;
         }
-        
+
         return $sum;
     }
-    
+
     /**
      * returns the title history
      * 
@@ -687,7 +691,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
         $zdb = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_Libconnect_Resources_Private_Lib_Zdb');
 
         $precursor = $zdb->getPrecursor($zdbId, TRUE);
-        
+
         rsort($precursor);
         
         $successor = $zdb->getSuccessor($zdbId);
@@ -695,7 +699,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
         if( (empty($precursor)) && (empty($successor)) ){
             return FALSE;
         }
-        
+
         return array('precursor' => $precursor, 'zdbData' => $zdb->getZdbData(), 'successor' => $successor);
     }
 }

@@ -267,7 +267,7 @@ Class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
         
         return $form;
     }
-    
+
     /**
      * returns a subject
      * 
