@@ -74,7 +74,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
             $params_temp = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect');
             $params = array_merge($params_temp, $params);
         }
-        
+
         //show overview on empty search
         $isSearch = FALSE;
         if (!empty($params['search'])){
@@ -82,7 +82,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
                 $isSearch = TRUE;
             }
         }
-        
+
         //include CSS
         $this->decideIncludeCSS();
 
@@ -175,7 +175,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
         if(!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_dbis'))){
             $params_temp = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_dbis');
             $params = $params_temp['libconnect'];
-        } 
+        }
         if(!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect'))){
             $params_temp = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect');
             $params = array_merge($params_temp, $params);
@@ -368,4 +368,3 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
     }
 }
 ?>
-

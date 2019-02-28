@@ -90,7 +90,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
         
         //include CSS
         $this->decideIncludeCSS();
- 
+
         if ((!empty($params['subject'])) || (!empty($params['notation']))) {//choosed subject after start point
 
             $config['detailPid'] = $this->settings['flexform']['detailPid'];
@@ -144,18 +144,17 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
             $this->view->assign('colors', $params['colors']);
             $this->view->assign('formParameter', $formParameter);
 
-        //} else if (!empty($params['search'])) {//search results
         } else if ($isSearch !== FALSE) {//search results
 
             $config['detailPid'] = $this->settings['flexform']['detailPid'];
 
             $journals = array();
- 
+
             //params form link
             if(!empty($params['search']['selected_colors'])){
                         $params['colors'] = 	$params['search']['selected_colors'];
             }
-            
+
             //params from color legend
             if( empty($params['colors'][1]) &
                 empty($params['colors'][2]) &
@@ -172,8 +171,8 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
             /*if(!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GET('id'))){
                 $this->view->assign('formParameterId', $Pid);
             }*/
-            
-            $journals =  $this->ezbRepository->loadSearch($params['search'], $params['colors'], $config);           
+
+            $journals =  $this->ezbRepository->loadSearch($params['search'], $params['colors'], $config);
 
             if(!empty($params['search']['selected_colors'])){
                 //delete selected_colors in hidden form fields
@@ -223,7 +222,6 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
         //include CSS
         $this->decideIncludeCSS();
 
-        //$this->set('bibid', $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.']['ezbbibid']);
         if (!($params['jourid'])){
             $this->view->assign('error', 'Error');
             //return "<strong>Fehler: Es wurde keine Zeitschrift mit der angegeben URL gefunden.</strong>";
@@ -409,7 +407,6 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
         }
 
         $params['jq_type1'] = 'ID';
-        //$params['sc'] = $params['search']['sc'];
 
         if($subjectId != FALSE){
             $subject = $this->ezbRepository->getSubject($subjectId);
