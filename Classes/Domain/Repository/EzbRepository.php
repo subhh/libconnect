@@ -330,6 +330,11 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
         if (! $journals){
             return FALSE;
         }
+        
+        //only search for getNewCount of the controller
+        if(!$config){
+            return $journals;
+        }
 
         $journals['searchDescription'] = $this->getSearchDescription($searchVars);
 
