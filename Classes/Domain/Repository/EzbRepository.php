@@ -302,7 +302,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
      * search
      * 
      * @param array $searchVars
-     * @param array $config
+     * @param mixed $config
      *
      * @return array $journals
      */
@@ -326,7 +326,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
         //filter list by access list
         $ezbColors = $this->getColors($colors);
         $ezb->setColors($ezbColors);
-
+        
         $journals = $ezb->search($searchVars);
 
         if (! $journals){
@@ -337,10 +337,25 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
         //get access information
         $journals['selected_colors'] = $this->getAccessInfos();
+        $journals['AccessInfos'] = $journals['selected_colors'];
+        $journals['colors'] = $colors;
+        
+        //create links
+        $journals = $this->getLinks($journals, $config, $linkParams);
+        
+        return $journals;
+    }
     
-        /**
-         * create links
-         */
+    /**
+     * 
+     * @param array $journals
+     * @param array $config configuration
+     * @param array $linkParams parameter for links
+     * 
+     * @return array with navigation, precise hits, and paging, 
+     */
+    public function getLinks($journals, $config, $linkParams){
+        
         //navigation
         if (is_array($journals['navlist']['pages'])) {
 
@@ -349,10 +364,10 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
                     $journals['navlist']['pages'][$page]['link'] = $GLOBALS['TSFE']->cObj->getTypolink_URL($GLOBALS['TSFE']->id,
                         array_merge($linkParams, array(
                             'libconnect[search][sc]' => $journals['navlist']['pages'][$page]['id'],
-                            'libconnect[search][selected_colors]' => $journals['selected_colors']
+                            'libconnect[search][selected_colors]' => $journals['colors']
                         )));
                 }
-            }
+           }
         }
         
         //precise hits
@@ -370,7 +385,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
             }
         }
         
-        //results
+        //results paging
         if (is_array($journals['alphabetical_order']['first_fifty'])) {
 
             foreach(array_keys($journals['alphabetical_order']['first_fifty']) as $section) {
@@ -378,7 +393,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
                     array_merge($linkParams, array(
                         'libconnect[search][sindex]' => $journals['alphabetical_order']['first_fifty'][$section]['sindex'],
                         'libconnect[search][sc]' => $journals['alphabetical_order']['first_fifty'][$section]['sc'],
-                        'libconnect[search][selected_colors]' => $journals['selected_colors']
+                        'libconnect[search][selected_colors]' => $journals['colors']
                     )));
             }
         }
@@ -402,14 +417,11 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
                     array_merge($linkParams, array(
                         'libconnect[search][sindex]' => $journals['alphabetical_order']['next_fifty'][$section]['sindex'],
                         'libconnect[search][sc]' => $journals['alphabetical_order']['next_fifty'][$section]['sc'],
-                        'libconnect[search][selected_colors]' => $journals['selected_colors']
+                        'libconnect[search][selected_colors]' => $journals['colors']
                     )));
             }
         }
         
-        //get access information
-        $journals['AccessInfos'] = $this->getAccessInfos();
-
         return $journals;
     }
     

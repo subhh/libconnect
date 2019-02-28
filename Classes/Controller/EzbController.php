@@ -351,7 +351,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
         }
 
         $params['jq_type1'] = 'ID';
-        $params['sc'] = $params['search']['sc'];
+        $params['sc'] = $params['search']['sc'];//paging
         if(!empty($params['subject'])){
             $subject = $this->ezbRepository->getSubject($params['subject']);
             $params['Notations']=array($subject['ezbnotation']);
@@ -409,7 +409,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
         }
 
         $params['jq_type1'] = 'ID';
-        $params['sc'] = $params['search']['sc'];
+        //$params['sc'] = $params['search']['sc'];
 
         if($subjectId != FALSE){
             $subject = $this->ezbRepository->getSubject($subjectId);
@@ -430,7 +430,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
                     );
         
         //request
-        $journals =  $this->ezbRepository->loadSearch($params, $colors, $config);
+        $journals =  $this->ezbRepository->loadSearch($params, $colors, FALSE);
 
         return $journals['page_vars']['search_count'];
     }
