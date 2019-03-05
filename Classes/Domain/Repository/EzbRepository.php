@@ -365,7 +365,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
      */
     public function getLinks($journals, $config, $linkParams){
 
-        //navigation
+        //navigation - letters
         if (is_array($journals['navlist']['pages'])) {
 
             foreach(array_keys($journals['navlist']['pages']) as $page) {
@@ -394,7 +394,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
             }
         }
 
-        //results paging
+        //navigation - sections in letters
         if (is_array($journals['alphabetical_order']['first_fifty'])) {
 
             foreach(array_keys($journals['alphabetical_order']['first_fifty']) as $section) {
