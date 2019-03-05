@@ -94,7 +94,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
         if ((!empty($params['subject'])) || (!empty($params['notation']))) {//choosed subject after start point
 
             $config['detailPid'] = $this->settings['flexform']['detailPid'];
-
+            
             $options['index'] = $params['index'];
             $options['sc'] = $params['sc'];
             $options['lc'] = $params['lc'];
@@ -152,9 +152,11 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
 
             //params form link
             if(!empty($params['search']['selected_colors'])){
-                        $params['colors'] = 	$params['search']['selected_colors'];
+                $params['colors'] = $params['search']['selected_colors'];
             }
-
+            
+            unset($params['search']['selected_colors']);
+            
             //params from color legend
             if( empty($params['colors'][1]) &
                 empty($params['colors'][2]) &
@@ -172,7 +174,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
                 $this->view->assign('formParameterId', $Pid);
             }*/
 
-            $journals =  $this->ezbRepository->loadSearch($params['search'], $params['colors'], $config);
+            $journals =  $this->ezbRepository->loadSearch($params, $params['colors'], $config);
 
             if(!empty($params['search']['selected_colors'])){
                 //delete selected_colors in hidden form fields
@@ -266,7 +268,11 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
         $this->decideIncludeCSS();
 
         //variables for template
-        $this->view->assign('vars', $params['search']);
+        $newparams = array();
+        if(!empty($params['search']['sword'])){
+            $newparams['search']['sword'] = $params['search']['sword'];
+        }
+        $this->view->assign('vars', $newparams['search']);
 
         $this->view->assign('siteUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL($GLOBALS['TSFE']->id));//current URL
         $this->view->assign('searchUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL($this->settings['flexform']['searchPid']));//link to search
@@ -274,20 +280,20 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
         $this->view->assign('listPid', $this->settings['flexform']['listPid']);//ID of list
 
         //if subject is choosed link  to subject list is displayed
-        if ((!empty($params['subject'])) || (!empty($params['notation']))) {
+        if ( !empty($newparams['subject']) ) {
             $this->view->assign('showSubjectLink', true);
 
             //if new activated should here the new for subject be active
             if(!empty($this->settings['flexform']['newPid'])){
 
-                if(!empty($params['subject'])){
-                    $count = (int) $this->getNewCount($params['subject']);
+                if(!empty($newparams['subject'])){
+                    $count = (int) $this->getNewCount($newparams['subject']);
 
                     if($count >0){
                         $this->view->assign('newInSubjectCount',  $count);
 
                         $this->view->assign('newUrlSub', $GLOBALS['TSFE']->cObj->getTypolink_URL( intval($this->settings['flexform']['newPid']), 
-                            array('libconnect' => array('subject' => $params['subject'] )) ) );//URL of new list
+                            array('libconnect' => array('subject' => $newparams['subject'] )) ) );//URL of new list
                     }
                 }else{
                     $count = (int) $this->getNewCount(FALSE);
@@ -348,20 +354,30 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
             $params = array_merge($params_temp, $params);
         }
 
-        $params['jq_type1'] = 'ID';
-        $params['sc'] = $params['search']['sc'];//paging
+        $newParams = array();
+
+        $newParams['search']['jq_type1'] = 'ID';
+        $newParams['search']['sc'] = $params['search']['sc'];//paging
+
+        //subject
         if(!empty($params['subject'])){
             $subject = $this->ezbRepository->getSubject($params['subject']);
-            $params['Notations']=array($subject['ezbnotation']);
+            $newParams['search']['Notations']=array($subject['ezbnotation']);
+            $newParams['subject'] = $params['subject'];
         }
-        unset($params['subject']);
-        unset($params['search']);
+        
+        if(!empty($params['search']['sindex'])){
+            $newParams['search']['sindex'] = $params['serach']['sindex'];
+        }
+        
+        unset($params['search']['subject']);
+        unset($params['search']['search']);
 
         //include CSS
         $this->decideIncludeCSS();
 
         //date how long entry is new
-        $params['jq_term1'] = $this->getCalculatedDate();
+        $newParams['search']['jq_term1'] = $this->getCalculatedDate();
 
         $config['detailPid'] = $this->settings['flexform']['detailPid'];
 
@@ -375,19 +391,31 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
             $liste = FALSE;
         }else{
             //request
-            $colors = array(
+            //params from color legend
+            if( empty($params['search']['colors'][1]) &
+                empty($params['search']['colors'][2]) &
+                empty($params['search']['colors'][4])){
+
+                    $params['search']['colors'] = array(
                         1 => 1,
                         2 => 2,
                         4 => 4
                     );
- 
-            $journals =  $this->ezbRepository->loadSearch($params, $colors, $config);
+            }
+
+            $journals =  $this->ezbRepository->loadSearch($newParams, $params['search']['colors'], $config);
         }
+
+        //get PageID
+        $Pid = intval($GLOBALS['TSFE']->id);
+        $this->view->assign('pageUid', $Pid);
 
         //variables for template
         $this->view->assign('journals', $journals);
         $this->view->assign('new_date', $params['jq_term1']);
+        $this->view->assign('colors', $params['search']['colors']);
         $this->view->assign('subject', $subject['title']);
+        $this->view->assign('formParameter', $newParams);
     }
 
     /**
@@ -406,17 +434,17 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
             $params = array_merge($params_temp, $params);
         }
 
-        $params['jq_type1'] = 'ID';
+        $params['search']['jq_type1'] = 'ID';
 
         if($subjectId != FALSE){
             $subject = $this->ezbRepository->getSubject($subjectId);
-            $params['Notations']=array($subject['ezbnotation']);
+            $params['search']['Notations']=array($subject['ezbnotation']);
         }
         unset($params['subject']);
-        unset($params['search']);
+        //unset($params['search']);
 
         //date how long entry is new
-        $params['jq_term1'] = $this->getCalculatedDate();
+        $params['search']['jq_term1'] = $this->getCalculatedDate();
 
         $config['detailPid'] = $this->settings['flexform']['detailPid'];
 
