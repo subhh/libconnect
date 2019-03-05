@@ -365,11 +365,11 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
             $newParams['search']['Notations']=array($subject['ezbnotation']);
             $newParams['subject'] = $params['subject'];
         }
-        
+
         if(!empty($params['search']['sindex'])){
-            $newParams['search']['sindex'] = $params['serach']['sindex'];
+            $newParams['search']['sindex'] = $params['search']['sindex'];
         }
-        
+
         unset($params['search']['subject']);
         unset($params['search']['search']);
 
