@@ -14,33 +14,39 @@
 </f:if>
 
 <div class="ezb-list-legend">
-    <ul>
+    <f:form enctype="multipart/form-data" controller="Ezb" method="post" pageUid="{pageUid}" name="ezbaccessinfoform" id="ezbaccessinfoform" additionalAttributes="{onChange : 'document.ezbaccessinfoform.submit();'}">
+    
         <f:for each="{journals.selected_colors}" as="section" key="key">
-            <f:if condition="{section.colorkey} == 1">
-                <li class="ezb-list-legend-one">
-                    <f:format.htmlentitiesDecode>{section.value}</f:format.htmlentitiesDecode>
-                </li>
-            </f:if>
+            <f:if condition="{section.colorkey} != 6">
 
-            <f:if condition="{section.colorkey} == 2">
-                <li class="ezb-list-legend-two">
-                    <f:format.htmlentitiesDecode>{section.value}</f:format.htmlentitiesDecode>
-                </li>
+                <f:if condition="{libconnect:array(inputArray: colors, key: section.colorkey)}">
+                    <f:then>
+                        <f:form.checkbox  id="ezb-accessinfo-access_{section.colorkey}" name="libconnect[search][colors][{section.colorkey}]" class="accessinfo-element"  value="{section.colorkey}"  checked="1"/>
+                    </f:then>
+                    <f:else>
+                        <f:form.checkbox  id="ezb-accessinfo-access_{section.colorkey}" name="libconnect[search][colors][{section.colorkey}]" class="accessinfo-element"  value="{section.colorkey}"/>
+                    </f:else>
+                </f:if>
+                
             </f:if>
+            <label class="ezb-accessinfo-access_{section.colorkey} accessinfo-element" for="ezb-accessinfo-access_{section.colorkey}">{section.value}</label>
 
-            <f:if condition="{section.colorkey} == 6">
-                <li class="ezb-list-legend-six">
-                    <f:format.htmlentitiesDecode>{section.value}</f:format.htmlentitiesDecode>
-                </li>
-            </f:if>
-
-            <f:if condition="{section.colorkey} == 4">
-                <li class="ezb-list-legend-four">
-                    <f:format.htmlentitiesDecode>{section.value}</f:format.htmlentitiesDecode>
-                </li>
-            </f:if>
         </f:for>
-    </ul>
+        
+        <f:if condition="{formParameter.subject}">
+            <f:form.hidden name="libconnect[subject]" value="{formParameter.subject}" />
+        </f:if>
+        <f:if condition="{formParameter.search.Notations}">
+            <f:for each="{formParameter.search.Notations}" as="value" key="key">
+                <f:form.hidden name="libconnect[search][Notations][{key}]" value="{value}" />
+            </f:for>
+        </f:if>
+        <f:if condition="{formParameter.search}">
+            <f:form.hidden name="libconnect[search][jq_type1]" value="{formParameter.search.jq_type1}" />
+            <f:form.hidden name="libconnect[search][jq_term1]" value="{formParameter.search.jq_term1}" />
+            <f:form.hidden name="libconnect[search][sc]" value="{formParameter.search.sc}" />
+        </f:if>
+    </f:form>
 </div>
 
 <br/><br/>
@@ -84,6 +90,10 @@
             </a>
         </h3>
     </f:for>
+    
+    <f:if condition="{journals.alphabetical_order.current_title}">
+        <h2><f:format.htmlentitiesDecode>{journals.alphabetical_order.current_title}</f:format.htmlentitiesDecode>...</h2>
+    </f:if>
 
     <ul class="ezb-list">
         <f:for each="{journals.alphabetical_order.journals}" as="journal">
