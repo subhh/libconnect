@@ -93,25 +93,7 @@
             <br/><br/>
         </f:if>
 
-        <div class="ezb-list-output">
-            <f:for each="{journals.alphabetical_order.first_fifty}" as="section">
-                <h3><a href="{section.link}"><f:format.htmlentitiesDecode>{section.first_fifty_titles}</f:format.htmlentitiesDecode>...</a></h3>
-            </f:for>
-
-            <f:if condition="{journals.alphabetical_order.current_title}">
-                <h2><f:format.htmlentitiesDecode>{journals.alphabetical_order.current_title}</f:format.htmlentitiesDecode>...</h2>
-            </f:if>
-
-            <ul class="ezb-list">
-                <f:for each="{journals.alphabetical_order.journals}" as="journal">
-                    <li class="ezb-list-accessinfo-access_{journal.color_code}"><a href="{journal.detail_link}"><f:format.htmlentitiesDecode>{journal.title}</f:format.htmlentitiesDecode></a></li>
-                </f:for>
-            </ul>
-
-            <f:for each="{journals.alphabetical_order.next_fifty}" as="section">
-                <h3><a href="{section.link}">{section.next_fifty_titles}...</a></h3>
-            </f:for>
-        </div>
+        <f:render partial="Ezb/ListOutput" arguments="{journals:journals}" />
 
         <f:if condition="{libconnect:IsArrayNp(value: journals.navlist.pages)}">
             <f:then>
