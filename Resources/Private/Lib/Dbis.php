@@ -166,9 +166,17 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
             $tmpParams = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('libconnect');
 
             if (!empty($tmpParams['lc'])) {
+                if( !empty($tmpParams['lc'][0]) ){
+                    $tmpParams['lc'] = $tmpParams['lc'][0];
+                }
+                
                 $url .= '&lc=' . $tmpParams['lc'];
             }
             if (!empty($tmpParams['fc'])) {
+                if (!empty($tmpParams['fc'][0])) {
+                    $tmpParams['fc'] = $tmpParams['fc'][0];
+                }
+                
                 $url .= '&fc=' . $tmpParams['fc'];
             }
         } else {
