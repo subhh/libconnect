@@ -388,7 +388,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
                 $severity = \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR,
                 $storeInSession = TRUE
             );
-            $liste = FALSE;
+            $journals = FALSE;
         }else{
             //request
             //params from color legend
