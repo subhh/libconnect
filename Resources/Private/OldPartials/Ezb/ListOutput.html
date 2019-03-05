@@ -1,0 +1,35 @@
+<div class="ezb-list-output">
+    <f:for each="{journals.alphabetical_order.first_fifty}" as="section">
+        <h3>
+            <a href="{section.link}">
+                <libconnect:strreplace search=" & " replace=" &amp; ">
+                    <f:format.htmlentitiesDecode>{section.first_fifty_titles}</f:format.htmlentitiesDecode>
+                </libconnect:strreplace>...
+            </a>
+        </h3>
+    </f:for>
+
+    <h3 class="ezb-list-current"><f:format.htmlentitiesDecode>{journals.navlist.current_title}</f:format.htmlentitiesDecode>...</h3>
+
+    <ul class="ezb-list">
+        <f:for each="{journals.alphabetical_order.journals}" as="journal">
+            <li class="ezb-list-accessinfo-access_{journal.color_code}">
+                <a href="<f:format.htmlentitiesDecode>{journal.detail_link}</f:format.htmlentitiesDecode>">
+                    <libconnect:strreplace search=" & " replace=" &amp; ">
+                        <f:format.htmlentitiesDecode>{journal.title}</f:format.htmlentitiesDecode>
+                    </libconnect:strreplace>
+                </a>
+            </li>
+        </f:for>
+    </ul>
+
+    <f:for each="{journals.alphabetical_order.next_fifty}" as="section">
+        <h3>
+            <a href="<f:format.htmlentitiesDecode>{section.link}</f:format.htmlentitiesDecode>">
+                <libconnect:strreplace search=" & " replace=" &amp; ">
+                    <f:format.htmlentitiesDecode>{section.next_fifty_titles}</f:format.htmlentitiesDecode>
+                </libconnect:strreplace>...
+            </a>
+        </h3>
+    </f:for>
+</div>

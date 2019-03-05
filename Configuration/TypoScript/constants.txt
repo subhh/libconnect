@@ -88,7 +88,7 @@ plugin.tx_libconnect {
             # cat=plugin.tx_libconnect/file/0003; type=string; label=Path to template root (FE)
             templateRootPath = EXT:libconnect/Resources/Private/OldTemplates/
             # cat=plugin.tx_libconnect/file/0004; type=string; label=Path to template partials (FE)
-            partialRootPath = EXT:libconnect/Resources/Private/Partials/
+            partialRootPath = EXT:libconnect/Resources/Private/OldPartials/
             # cat=plugin.tx_libconnect/file/0005; type=string; label=Path to template layouts (FE)
             layoutRootPath = EXT:libconnect/Resources/Private/Layouts/
         }
