@@ -59,7 +59,7 @@
 
                 <f:if condition="<f:count subject='{db.access_lic}' /> > 0">
                     <f:for each="{db.access_lic}" as="a_lics" key="accesstype">
-                        <f:if condition="{libconnect:compare(a: accesstype, b: 'free')}">
+                        <f:if condition="{libconnect:compareNp(a: accesstype, b: 'free')}">
                             <tr class="dbis-free">
                                 <th>
                                     <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.detail.access.free" /></strong>
@@ -73,7 +73,7 @@
                                 </td>
                             </tr>
                         </f:if>
-                        <f:if condition="{libconnect:compare(a: accesstype, b: 'other')}">
+                        <f:if condition="{libconnect:compareNp(a: accesstype, b: 'other')}">
                             <tr class="dbis-other">
                                 <th>
                                     <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.detail.access.other" /></strong>
@@ -87,7 +87,7 @@
                                 </td>
                             </tr>
                         </f:if>
-                        <f:if condition="{libconnect:compare(a: accesstype, b: 'ppu')}">
+                        <f:if condition="{libconnect:compareNp(a: accesstype, b: 'ppu')}">
                             <tr class="dbis-ppu">
                                 <th>
                                     <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.detail.access.ppu" /></strong>
@@ -102,7 +102,7 @@
                             </tr>
                         </f:if>
                         
-                        <f:if condition="{libconnect:compare(a: accesstype, b: 'lic')}">
+                        <f:if condition="{libconnect:compareNp(a: accesstype, b: 'lic')}">
                             <tr class="dbis-alic">
                                 <th>
                                     <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.detail.access.alic" /></strong>
@@ -117,7 +117,7 @@
                             </tr>
                         </f:if>
 
-                        <f:if condition="{libconnect:compare(a: accesstype, b: 'natli')}">
+                        <f:if condition="{libconnect:compareNp(a: accesstype, b: 'natli')}">
                             <tr class="dbis-alic">
                                 <th>
                                     <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.detail.access.alic" /></strong>

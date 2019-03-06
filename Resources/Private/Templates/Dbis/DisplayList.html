@@ -1,5 +1,6 @@
 {namespace libconnect=Sub\Libconnect\ViewHelpers}
-<h1 class="libconnect-h1"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.list.headline.dbis" /> <f:if condition="{list.alphNavList}"><f:else><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.list.headline.subject" /></f:else></f:if></h1>
+<h1 class="libconnect-h1">
+    <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.list.headline.dbis" /> <f:if condition="{list.alphNavList}"><f:else><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.list.headline.subject" /></f:else></f:if></h1>
 
 <h2 class="libconnect-h2">{listhead}</h2>
 
@@ -18,7 +19,15 @@
         <h3 class="libconnect-h1"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.list.topdatabases" /></h3>
         <ul class="dbis-top-list">
             <f:for each="{list.top}" as="db">
-                <li class="dbis-list-accessinfo-{db.access_ref}"><a href="{db.detail_link}"><libconnect:strreplace search=" & " replace=" &amp; "><f:format.htmlentitiesDecode>{db.title}</f:format.htmlentitiesDecode></libconnect:strreplace></a> (<f:format.htmlentitiesDecode>{db.access}</f:format.htmlentitiesDecode>)</li>
+                <li class="dbis-list-accessinfo-{db.access_ref}">
+                    <a href="{db.detail_link}">
+                        <f:format.htmlentitiesDecode>
+                            <libconnect:StrreplaceNp search="&" replace="&amp;">
+                                {db.title}
+                            </libconnect:StrreplaceNp>
+                        </f:format.htmlentitiesDecode>
+                    </a> (<f:format.htmlentitiesDecode>{db.access}</f:format.htmlentitiesDecode>)
+                </li>
             </f:for>
         </ul>
     </div>
@@ -63,7 +72,15 @@
                     <div class="accordion-content clearfix">
                         <ul class="dbis-dblist">
                             <f:for each="{group.dbs}" as="db">
-                                <li class="dbis-list-accessinfo-{db.access_ref}"><a href="{db.detail_link}"><libconnect:strreplace search=" & " replace=" &amp; "><f:format.htmlentitiesDecode>{db.title}</f:format.htmlentitiesDecode></libconnect:strreplace></a></li>
+                                <li class="dbis-list-accessinfo-{db.access_ref}">
+                                    <a href="{db.detail_link}">
+                                        <f:format.htmlentitiesDecode>
+                                            <libconnect:StrreplaceNp search="&" replace="&amp;">
+                                                {db.title}
+                                            </libconnect:StrreplaceNp>
+                                        </f:format.htmlentitiesDecode>
+                                    </a>
+                                </li>
                             </f:for>
                         </ul>
                     </div>
