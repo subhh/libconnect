@@ -90,6 +90,10 @@ Class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
         $this->loadSubjects();
 
         $dbis = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_Libconnect_Resources_Private_Lib_Dbis');
+        
+        if(!empty($config['search']['zugaenge'])){
+            $dbis->setColors($config['search']['zugaenge']);
+        }
 
         if(is_numeric($subject_id)){
             $subject = $this->t3_to_dbis_subjects[$subject_id];

@@ -94,6 +94,10 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
             if(isset($params['sort']) && !empty($params['sort'])) {
                 $config['sort'] = $params['sort'];
             }
+            
+            if(!empty($params['search']['zugaenge'])){
+                $config['search']['zugaenge']=$params['search']['zugaenge'];
+            }
 
             $liste =  $this->dbisRepository->loadList($params['subject'], $config);
 
