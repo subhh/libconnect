@@ -9,6 +9,7 @@
             <!-- all -->
 
             <label index="tx_libconnect.submit.search">Search</label>
+            <label index="tx_libconnect.reset.search">Reset</label>
             
             <!-- DBIS -->
 
@@ -210,6 +211,7 @@
             <!-- all -->
 
             <label index="tx_libconnect.submit.search">Suchen</label>
+            <label index="tx_libconnect.reset.search">Eingaben zurücksetzen</label>
             
             <!-- DBIS -->
 
