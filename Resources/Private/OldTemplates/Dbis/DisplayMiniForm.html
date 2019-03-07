@@ -27,6 +27,11 @@
                     <f:form.select id="libconnect_dbis_suche" name="libconnect[search][zugaenge]" options="{form.zugaenge}" value="{vars.zugaenge}"/>
 
                 </p>
+
+                <f:if condition="{subject}">
+                    <f:form.hidden name="libconnect[subject]" value="{subject}" />
+                </f:if>
+
                 <f:form.submit name="choose_licence" value='<f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.miniform.select_access" />' />
             </f:form>
 
