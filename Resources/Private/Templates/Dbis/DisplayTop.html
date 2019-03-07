@@ -1,5 +1,1 @@
-<ul class="dbis-list">
-<f:for each="{top}" as="item">
-    <li><a href="{item.detail_link}"><f:format.htmlentitiesDecode>{item.title}</f:format.htmlentitiesDecode></a></li>
-</f:for>
-</ul>
+<f:render partial="Dbis/TopList" arguments="{top:top}" />
