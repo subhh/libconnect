@@ -452,11 +452,11 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
     }
 
     /**
-     * returns detail search form
+     * returns extended search form
      *
      * @return array
      */
-    public function detailSucheFormFelder() {
+    public function getExtendedForm() {
 
         $url =  $this->db_detail_suche_url. $this->bibID .'&colors='. $this->colors .'&ocolors='.$this->ocolors;
         $xml_such_form = $this->XMLPageConnection->getDataFromXMLPage($url);
