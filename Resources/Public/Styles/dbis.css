@@ -143,6 +143,10 @@ a.dbis-research{
     padding: 0.3em;
 }
 
+.dbis-flex{
+    display: flex;
+}
+
 /**
  * begin - extended search styles
  */
@@ -152,19 +156,20 @@ a.dbis-research{
 }
 
 #extSearchForm-wrapper input {
-    height: 18px;
+    height: 28px;
     vertical-align: bottom;
     margin: 0 0.75em 0.5em 0;
 }
 
-#extSearchForm-wrapper input[type="submit"] {
+#extSearchForm-wrapper input[type="rest"],
+#extSearchForm-wrapper input[type="submit"]{
     height: 28px;
     padding: 0 8px;
     margin: 0 0 1.2em 0;
 }
 
 #extSearchForm-wrapper input[type="checkbox"] {
-    height: 18px;
+    height: 28px;
     vertical-align: top;
     margin: 0 0.75em 0.5em 0;
 }
@@ -173,6 +178,7 @@ a.dbis-research{
     background-color: #FFFFFF;
     border: 0.0625em solid #CCCCCC;
     color: #222222;
+    height: 28px;
     margin: 0 0.75em 0.5em 0;
 }
 
@@ -220,7 +226,7 @@ a.dbis-research{
  * begin - miniform search styles
  */
 #libconnect_dbis_minisuche {
-    height:18px;
+    height:28px;
     width:190px;
 }
 
@@ -232,6 +238,7 @@ a.dbis-research{
 
 .datenbank-suche-wrapper input[type="submit"] {
     border: 1px solid #CCCCCC;
+    height: 28px;
     vertical-align: middle;
     margin: 5px 0 0 0;
     min-width:70px;
@@ -245,6 +252,7 @@ a.dbis-research{
     background-color: #FFFFFF;
     border: 0.0625em solid #CCCCCC;
     color: #222222;
+    height: 28px;
     margin: 0;
     width: 180px;
     padding: 0.06em;

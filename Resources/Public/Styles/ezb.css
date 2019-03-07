@@ -88,6 +88,7 @@ ul.ezb-list li a {
     background-color: #FFFFFF;
     border: 0.0625em solid #CCCCCC;
     color: #222222;
+    height: 28px;
     margin: 0 0.75em 0.5em 0;
 }
 
@@ -125,6 +126,10 @@ ul.ezb-list li a {
     color: #FFF;
 }
 
+.ezb-flex{
+    display: flex;
+}
+
 /**
  * begin - extended search styles
  */
@@ -134,7 +139,7 @@ ul.ezb-list li a {
 }
 
 #extSearchForm-wrapper input {
-    height:18px;
+    height:28px;
     vertical-align:bottom;
     margin: 0 0.75em 0.5em 0;
 }
@@ -146,7 +151,7 @@ ul.ezb-list li a {
 }
 
 #extSearchForm-wrapper input[type="checkbox"] {
-    height:18px;
+    height:28px;
     vertical-align:top;
     margin: 0 0.75em 0.5em 0;
 }
@@ -199,13 +204,15 @@ ul.ezb-list li a {
 
 .datenbank-suche-wrapper input[type="submit"] {
     border: 1px solid #CCCCCC;
+    height: 28px;
     vertical-align:middle;
     margin: 5px 0 0 0;
     width:70px;
 }
 
 .datenbank-suche-wrapper input[type="text"] {
-    height:18px; width:190px;
+    height:28px;
+    width:190px;
 }
 
 .ezb_erw_search {
