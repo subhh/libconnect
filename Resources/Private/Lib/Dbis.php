@@ -190,6 +190,7 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
             }
         }
         //EOF workaround for alphabetical listing
+
         $xml_fachgebiet_db = $this->XMLPageConnection->getDataFromXMLPage($url);
 
         $list = array(
