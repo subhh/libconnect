@@ -68,9 +68,9 @@ Class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
         $result = $dbis->getDbliste($dbis_id);
 
         //get top dbs
-        $result['list']['top'] = $this->getListTop($result['list']['top'], $config['detailPid']);
+        $result = $this->getListTop($result['list']['top'], $config['detailPid']);
 
-        return $result['list']['top'];
+        return $result;
     }
 
     /**
