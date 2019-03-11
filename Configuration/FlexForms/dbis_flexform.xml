@@ -118,7 +118,7 @@
                         <TCEforms>
                             <exclude>1</exclude>
                             <label>Sortierung</label>
-                            <displayCond><![CDATA[FIELD:switchableControllerActions:=:Dbis->displayList,Dbis->displayNew]]></displayCond>
+                            <displayCond><![CDATA[FIELD:switchableControllerActions:IN:Dbis->displayList,Dbis->displayNew]]></displayCond>
                             <config>
                                 <type>select</type>
                                 <items type="array">
