@@ -72,7 +72,11 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
         } 
         if(!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect'))){
             $params_temp = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect');
-            $params = array_merge($params_temp, $params);
+            if(!empty($params)){
+                $params = array_merge($params_temp, $params);
+            }else{
+                $params = $params_temp;
+            }
         }
 
         //show overview on empty search
@@ -94,8 +98,12 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
             if(isset($params['sort']) && !empty($params['sort'])) {
                 $config['sort'] = $params['sort'];
             }
+            
+            if(empty($config['sort'])){
+                $config['sort'] = 'type';
+            }
 
-            if(!empty($params['search']['zugaenge'])){
+            if(isset($params['search']['zugaenge'])){
                 $config['search']['zugaenge']=$params['search']['zugaenge'];
             }
 
@@ -182,7 +190,11 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
         }
         if(!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect'))){
             $params_temp = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect');
-            $params = array_merge($params_temp, $params);
+            if(!empty($params)){
+                $params = array_merge($params_temp, $params);
+            }else{
+                $params = $params_temp;
+            }
         }
 
         //include CSS
@@ -322,7 +334,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
         $params['jq_term1'] = $this->getCalculatedDate();
 
         $config['detailPid'] = $this->settings['flexform']['detailPid'];
-
+        $config['onlyNew'] = TRUE;
         //request
         $list = $this->dbisRepository->loadSearch($params, $config);
 

@@ -86,8 +86,10 @@ Class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
         $dbis = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_Libconnect_Resources_Private_Lib_Dbis');
         
-        if(!empty($config['search']['zugaenge'])){
-            $dbis->setColors($config['search']['zugaenge']);
+        $accessFilter = FALSE;
+        
+        if(isset($config['search']['zugaenge'])){
+            $accessFilter = $config['search']['zugaenge'];
         }
 
         if(is_numeric($subject_id)){
@@ -95,9 +97,9 @@ Class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
             $dbis_id = $subject['dbisid'];
 
-            $result = $dbis->getDbliste($dbis_id, $config['sort']);
+            $result = $dbis->getDbliste($dbis_id, $config['sort'], $accessFilter);
         }else{//for own collection
-            $result = $dbis->getDbliste($subject_id, $config['sort']);
+            $result = $dbis->getDbliste($subject_id, $config['sort'], $accessFilter);
 
             $subject['title'] = $result['headline'];
         }
@@ -214,6 +216,10 @@ Class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
         $dbis = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_Libconnect_Resources_Private_Lib_Dbis');
         $result = $dbis->search($term, $searchVars);
 
+        if(isset($config['onlyNew'])){
+            return $result['list'];
+        }
+        
         //get top dbs
         $result['list']['top'] = $this->getListTop($result['list']['top'], $config['detailPid']);
 
