@@ -31,6 +31,9 @@
                 <f:if condition="{subject}">
                     <f:form.hidden name="libconnect[subject]" value="{subject}" />
                 </f:if>
+                <f:if condition="{subject}">
+                    <f:form.hidden name="libconnect[sort]" value="{sort}" />
+                </f:if>
 
                 <f:form.submit name="choose_licence" value='<f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.miniform.select_access" />' />
             </f:form>

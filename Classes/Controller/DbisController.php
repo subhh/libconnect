@@ -209,6 +209,10 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
         $this->view->assign('searchUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL($this->settings['flexform']['searchPid']));//link to search page
         $this->view->assign('listUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL($this->settings['flexform']['listPid']));//link to list page
         $this->view->assign('listPid', $this->settings['flexform']['listPid']);//id of page with list
+        
+        if(!empty($params['sort'])) {
+            $this->view->assign('sort', $params['sort']);
+        }
 
         //possibility for sorting the entries of the subject for the choosed subject
         if(!empty($params['subject'])) {
