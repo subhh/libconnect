@@ -209,25 +209,25 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
         $this->view->assign('searchUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL($this->settings['flexform']['searchPid']));//link to search page
         $this->view->assign('listUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL($this->settings['flexform']['listPid']));//link to list page
         $this->view->assign('listPid', $this->settings['flexform']['listPid']);//id of page with list
-        
+        //Set stubject
+        if(!empty($params['subject'])) {
+            $this->view->assign('subject', $params['subject']);
+        }
+        //sort, if default was changed
         if(!empty($params['sort'])) {
             $this->view->assign('sort', $params['sort']);
         }
-
-        //possibility for sorting the entries of the subject for the choosed subject
+        //dbis-listings-wrapper
         if(!empty($params['subject'])) {
-            $this->view->assign('subject', $params['subject']);
-
             if($params['subject'] != 'all'){
                 $this->view->assign('listingsWrapper', true);
-
-            //new in DBIS in alphabetical list
-            }  else {
-                $this->view->assign('newUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL( intval($this->settings['flexform']['newPid'])) );
             }
-
-            //if new activated should here the new for subject be active
-            if(!empty($this->settings['flexform']['newPid'])){
+        }
+        
+        //links to the plugin "new in dbis"
+        if(!empty($this->settings['flexform']['newPid'])){
+            //new entries for a selected subject
+            if( !empty($params['subject']) && ($params['subject'] != 'all') ) {
                 $subject = $this->dbisRepository->getSubject($params['subject']);
                 $count = (int) $this->getNewCount($subject['dbisid']);
 
@@ -238,14 +238,14 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
                     $this->view->assign('newInSubjectCount',  $count);
                 }
             }
-        //new in all subjects
-        }elseif(!empty($this->settings['flexform']['newPid'])){
+
+            //new entries for all subjects
             $count = (int) $this->getNewCount(FALSE);
 
             if($count >0){
                 $this->view->assign('newUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL( intval($this->settings['flexform']['newPid'])) );
-                $this->view->assign('newInSubjectCount',  $count);
-            }
+                $this->view->assign('newCount',  $count);
+            }   
         }
     }
 
