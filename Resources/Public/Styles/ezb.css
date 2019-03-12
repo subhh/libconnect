@@ -185,7 +185,8 @@ ul.ezb-list li a {
     width:120px;
 }
 
-#fachgebiete {
+#extSearchForm-wrapper #fachgebiete {
+    height: auto;
     width:34em;
 }
 

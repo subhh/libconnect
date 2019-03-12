@@ -208,7 +208,7 @@ a.dbis-research{
     width: 120px;
 }
 
-#fachgebiete, #typen, #laender {
+#extSearchForm-wrapper #fachgebiete, #extSearchForm-wrapper #typen, #extSearchForm-wrapper #laender {
     height: 6.6em;
     width: 430px;
 }
