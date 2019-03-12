@@ -126,6 +126,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
             //variables for template
             $this->view->assign('listhead', $liste['subject']);
             $this->view->assign('subject', $params['subject']);
+            $this->view->assign('zugaenge', $params['search']['zugaenge']);
             $this->view->assign('list', $liste['list']);
 
         } else if ($isSearch !== FALSE) {//search results
@@ -217,12 +218,26 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
         $form = $this->dbisRepository->loadMiniForm();
 
         //variables for template
-        $this->view->assign('vars', $params['search']);
         $this->view->assign('form', $form);
         $this->view->assign('siteUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL($GLOBALS['TSFE']->id));//active URL
         $this->view->assign('searchUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL($this->settings['flexform']['searchPid']));//link to search page
         $this->view->assign('listUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL($this->settings['flexform']['listPid']));//link to list page
         $this->view->assign('listPid', $this->settings['flexform']['listPid']);//id of page with list
+        $this->view->assign('vars', $params['search']);
+        //hide selectbox for licence/access if search and sort alph
+        if(isset($params['search'])){
+            $this->view->assign('hideAccess', TRUE);
+        }
+        if ( isset($params['sort']) && isset($params['subject'])) {
+            if( ($params['sort'] == 'alph') && ($params['subject'] == 'all')){
+                $this->view->assign('hideAccess', TRUE);
+            }
+        }
+        if ( isset($params['subject'])) {
+            if( ($params['subject'] == 'all')){
+                $this->view->assign('hideAccess', TRUE);
+            }
+        }
         //Set stubject
         if(!empty($params['subject'])) {
             $this->view->assign('subject', $params['subject']);
@@ -261,6 +276,8 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
                 $this->view->assign('newCount',  $count);
             }   
         }
+        
+        
     }
 
     /**
