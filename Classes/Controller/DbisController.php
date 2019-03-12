@@ -103,7 +103,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
                 $config['sort'] = 'type';
             }
 
-            if(isset($params['search']['zugaenge'])){
+            if(isset($params['search']['zugaenge']) && ( $params['search']['zugaenge'] != '1000' ) ){
                 $config['search']['zugaenge']=$params['search']['zugaenge'];
             }
 
