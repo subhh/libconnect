@@ -98,7 +98,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
             if(isset($params['sort']) && !empty($params['sort'])) {
                 $config['sort'] = $params['sort'];
             }
-            
+            //set default sorting
             if(empty($config['sort'])){
                 $config['sort'] = 'type';
             }
