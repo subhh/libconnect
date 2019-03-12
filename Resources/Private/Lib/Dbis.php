@@ -153,8 +153,7 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
      *
      * @return array
      */
-    public function getDbliste($fachgebiet, $sort = 'type') {
-
+    public function getDbliste($fachgebiet, $sort = 'type', $accessFilter = FALSE) {
         $sortlist = array();
         $url =  $this->dbliste_url. $this->bibID .'&colors='. $this->colors .'&ocolors='. $this->ocolors .'&sort='. $sort . '&';
         $headline = '';
@@ -285,34 +284,73 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
 
                 foreach ($dbs->db as $value) {
 
-                    $db = array(
-                        'id' => (int) $value['title_id'],
-                        'title' => (string) $value,
-                        'access_ref' => (string) $value['access_ref'],
-                        'access' => $list['access_infos'][(string) $value['access_ref']]['title'],
-                        'db_type_refs' => (string) $value['db_type_refs'],
-                        'top_db' => (int) $value['top_db'],
-                        'link' => $this->db_detail_url . $this->bibID .'&lett='. $this->lett .'&titel_id='. $value['title_id'],
-                    );
+                    if( $accessFilter === FALSE ){
 
-                    if ($db['top_db']) {
-                        $list['top'][] = $db;
-                        //BOF workaround for alphabetical listing
-                    } elseif ($fachgebiet == 'all') {
-                        $list['groups'][(string) $dbs->attributes()->char]['dbs'][] = $db;
-                        $sortlist[$db['access']] = $db['access_ref'];
-                        //EOF workaround for alphabetical listing
-                    } else {
-                        if ($sort == 'alph') {
-                            $list['groups']['Treffer']['dbs'][] = $db;
-                            $sortlist['Treffer'] = $db['Treffer'];
-                        } elseif ($sort == 'access') {
-                            $list['access_infos'][$db['access_ref']]['dbs'][] = $db;
+                        $db = array(
+                            'id' => (int) $value['title_id'],
+                            'title' => (string) $value,
+                            'access_ref' => (string) $value['access_ref'],
+                            'access' => $list['access_infos'][(string) $value['access_ref']]['title'],
+                            'db_type_refs' => (string) $value['db_type_refs'],
+                            'top_db' => (int) $value['top_db'],
+                            'link' => $this->db_detail_url . $this->bibID .'&lett='. $this->lett .'&titel_id='. $value['title_id'],
+                        );
+
+                        if ($db['top_db']) {
+                            $list['top'][] = $db;
+                            //BOF workaround for alphabetical listing
+                        } elseif ($fachgebiet == 'all') {
+                            $list['groups'][(string) $dbs->attributes()->char]['dbs'][] = $db;
                             $sortlist[$db['access']] = $db['access_ref'];
+                            //EOF workaround for alphabetical listing
                         } else {
-                            foreach (explode(' ', $db['db_type_refs']) as $ref) {
-                                $list['groups'][$ref]['dbs'][] = $db;
+                            if ($sort == 'alph') {
+                                $list['groups']['Treffer']['dbs'][] = $db;
+                                $sortlist['Treffer'] = $db['Treffer'];
+                            } elseif ($sort == 'access') {
+                                $list['access_infos'][$db['access_ref']]['dbs'][] = $db;
                                 $sortlist[$db['access']] = $db['access_ref'];
+                            } else {
+                                foreach (explode(' ', $db['db_type_refs']) as $ref) {
+                                    $list['groups'][$ref]['dbs'][] = $db;
+                                    $sortlist[$db['access']] = $db['access_ref'];
+                                }
+                            }
+                        }
+                    }else{//filter dbs
+
+                        if( (string) $value['access_ref'] == 'access_'.$accessFilter){
+
+                            $db = array(
+                                'id' => (int) $value['title_id'],
+                                'title' => (string) $value,
+                                'access_ref' => (string) $value['access_ref'],
+                                'access' => $list['access_infos'][(string) $value['access_ref']]['title'],
+                                'db_type_refs' => (string) $value['db_type_refs'],
+                                'top_db' => (int) $value['top_db'],
+                                'link' => $this->db_detail_url . $this->bibID .'&lett='. $this->lett .'&titel_id='. $value['title_id'],
+                            );
+
+                            if ($db['top_db']) {
+                                $list['top'][] = $db;
+                                //BOF workaround for alphabetical listing
+                            } elseif ($fachgebiet == 'all') {
+                                $list['groups'][(string) $dbs->attributes()->char]['dbs'][] = $db;
+                                $sortlist[$db['access']] = $db['access_ref'];
+                                //EOF workaround for alphabetical listing
+                            } else {
+                                if ($sort == 'alph') {
+                                    $list['groups']['Treffer']['dbs'][] = $db;
+                                    $sortlist['Treffer'] = $db['Treffer'];
+                                } elseif ($sort == 'access') {
+                                    $list['access_infos'][$db['access_ref']]['dbs'][] = $db;
+                                    $sortlist[$db['access']] = $db['access_ref'];
+                                } else {
+                                    foreach (explode(' ', $db['db_type_refs']) as $ref) {
+                                        $list['groups'][$ref]['dbs'][] = $db;
+                                        $sortlist[$db['access']] = $db['access_ref'];
+                                    }
+                                }
                             }
                         }
                     }
@@ -508,6 +546,7 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
     private function createSearchUrl($searchVars, $lett = 'k') {
 
         $searchUrl = $this->dbliste_url . $this->bibID .'&colors='. $this->colors .'&ocolors='. $this->ocolors .'&lett='. $lett;
+        //'&sort='. $sort
 
         foreach ($searchVars as $var => $values) {
             if (!is_array($values)) {
