@@ -59,6 +59,7 @@
             <label index="tx_libconnect.dbis.list.headline.subject">List by Subject</label>
             <label index="tx_libconnect.dbis.list.legend.headline">license:</label>
             <label index="tx_libconnect.dbis.list.topdatabases">Top Databases</label>
+            <label index="tx_libconnect.dbis.list.emptyResults">No results found. Please change the licence.</label>
                                                                 	
             <label index="tx_libconnect.dbis.miniform.link.sort">Sort</label>
             <label index="tx_libconnect.dbis.miniform.listing_alph">List by Title</label>
@@ -262,6 +263,7 @@
             <label index="tx_libconnect.dbis.list.headline.subject">Fachgebiet</label>
             <label index="tx_libconnect.dbis.list.legend.headline">Zugriffe:</label>
             <label index="tx_libconnect.dbis.list.topdatabases">Top Datenbanken</label>
+            <label index="tx_libconnect.dbis.list.emptyResults">Keine Einträge gefunden. Ändern Sie bitte die Zugangsart.</label>
                                                                 	
             <label index="tx_libconnect.dbis.miniform.link.sort">Sortierung</label>
             <label index="tx_libconnect.dbis.miniform.listing_alph">alphabetisch</label>

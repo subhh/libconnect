@@ -109,6 +109,20 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
 
             $liste =  $this->dbisRepository->loadList($params['subject'], $config);
 
+            //check, if there are no results and inform user to change licence
+            $empty = TRUE;
+            if(!empty($liste['list']['alphNavList'])){
+                $empty = FALSE;
+            }
+            foreach($liste['list']['groups'] as $group){
+
+                if(!empty($group['dbs'])){
+                    $empty = FALSE;
+                    break;
+                }
+            }
+            $this->view->assign('empty', $empty);
+
             //variables for template
             $this->view->assign('listhead', $liste['subject']);
             $this->view->assign('subject', $params['subject']);

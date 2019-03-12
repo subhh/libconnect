@@ -21,6 +21,10 @@
     </div>
 </f:if>
 
+<f:if condition="{empty}">
+    <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.list.emptyResults" />
+</f:if>
+
 <!-- BOF workaround for alphabetical listing -->
 <f:if condition="{list.alphNavList}">
     <div class="alph-nav-list-wrapper">
