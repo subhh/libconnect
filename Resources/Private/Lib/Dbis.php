@@ -46,8 +46,8 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
 
     //such meta
     private $fachgebiet;
-    private $colors = 255;
-    private $ocolors = 40;
+    private $colors = '';
+    private $ocolors = '';
     private $lett = 'f';
     private $fachliste_url =  'http://dbis.uni-regensburg.de/dbinfo/fachliste.php?xmloutput=1&bib_id=';
     private $dbliste_url = 'http://dbis.uni-regensburg.de/dbinfo/dbliste.php?xmloutput=1&bib_id=';
