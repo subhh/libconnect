@@ -236,18 +236,9 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
         }
         $list['alphNavList'] = (isset($alphabeticalNavList) && count($alphabeticalNavList) ? $alphabeticalNavList : FALSE);
         //EOF workaround for alphabetical listing
-
-        if (isset($xml_fachgebiet_db->list_dbs->db_access_infos->db_access_info)) {
-            foreach ($xml_fachgebiet_db->list_dbs->db_access_infos->db_access_info as $value) {
-                $id = (string) $value->attributes()->access_id;
-                $list['access_infos'][$id] = array(
-                    'id' => $id,
-                    'title' => (string) $value->db_access,
-                    'description' => (string) $value->db_access_short_text,
-                    'dbs' => array()
-                );
-            }
-        }
+        
+        //get access infos for the legen
+        $list['access_infos'] = $this->getAccessInfos($request);
 
         if ($sort == 'access') {
             $list['groups'] = &$list['access_infos'];
@@ -613,16 +604,8 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
             $page_vars[$key] = (string) $value;
         }
 
-        if (isset($request->list_dbs->db_access_infos->db_access_info)) {
-            foreach ($request->list_dbs->db_access_infos->db_access_info as $value) {
-                $id = (string) $value->attributes()->access_id;
-                $list['access_infos'][$id] = array(
-                    'id' => $id,
-                    'title' => (string) $value->db_access,
-                    'description' => (string) $value->db_access_short_text,
-                );
-            }
-        }
+        //get access infos for the legen
+        $list['access_infos'] = $this->getAccessInfos($request);
 
         if (isset($request->list_dbs->db_type_infos->db_type_info)) {
             foreach ($request->list_dbs->db_type_infos->db_type_info as $value) {
@@ -734,6 +717,28 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
         $moreDetails['more_internet_accesses'] = $detail_content_more_internet_accesses;
 
         return $moreDetails;
+    }
+    
+    /**
+     * get information for the access legen
+     * @param type $request
+     */
+    private function getAccessInfos($request){
+        $accessInfos = array();
+        
+        if (isset($request->list_dbs->db_access_infos->db_access_info)) {
+            foreach ($request->list_dbs->db_access_infos->db_access_info as $value) {
+                $id = (string) $value->attributes()->access_id;
+
+                $accessInfos[$id] = array(
+                    'id' => $id,
+                    'title' => (string) $value->db_access,
+                    'description' => (string) $value->db_access_short_text,
+                );
+            }
+        }
+        
+        return $accessInfos;
     }
 }
 ?>
