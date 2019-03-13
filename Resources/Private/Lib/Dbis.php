@@ -238,7 +238,7 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
         //EOF workaround for alphabetical listing
         
         //get access infos for the legen
-        $list['access_infos'] = $this->getAccessInfos($request);
+        $list['access_infos'] = $this->getAccessInfos($xml_fachgebiet_db);
 
         if ($sort == 'access') {
             $list['groups'] = &$list['access_infos'];
