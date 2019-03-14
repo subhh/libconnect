@@ -110,7 +110,7 @@
                                 <td>
                                     <ul>
                                         <f:for each="{db.access_lic.lic}" as="lic">
-                                            <li><a href="http://rzblx10.uni-regensburg.de/dbinfo/{lic.href}" target="_blank">{lic.name}</a></li>
+                                            <li><a href="http://rzblx10.uni-regensburg.de/dbinfo/{lic.href}" target="_blank"><f:format.htmlentitiesDecode>{lic.name}</f:format.htmlentitiesDecode></a></li>
                                         </f:for>
                                     </ul>
                                 </td>
@@ -125,7 +125,7 @@
                                 <td>
                                     <ul>
                                         <f:for each="{db.access_lic.natli}" as="natli">
-                                            <li><a href="http://rzblx10.uni-regensburg.de/dbinfo/{natli.href}" target="_blank">{natli.name}</a></li>
+                                            <li><a href="http://rzblx10.uni-regensburg.de/dbinfo/{natli.href}" target="_blank"><f:format.htmlentitiesDecode>{natli.name}</f:format.htmlentitiesDecode></a></li>
                                         </f:for>
                                     </ul>
                                 </td>
