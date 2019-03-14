@@ -568,22 +568,30 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
      *
      * @return array
      */
-    public function search($term, $searchVars = FALSE, $lett = 'fs') {
-
-        if((mb_strtolower($GLOBALS['TSFE']->metaCharset)) == 'utf-8'){
-            $term = utf8_decode($term);
-        }
-
-        // encode term
-        $term = urlencode($term);
+    public function search($searchVars = FALSE, $lett = 'fs') {
 
         $searchUrl = '';
-        if (!$searchVars) {
-            $searchUrl = $this->dbliste_url . $this->bibID .'&colors='. $this->colors .'&ocolors='. $this->ocolors .'&lett='. $lett .'&Suchwort='. $term;
+
+        if (!$searchVars || isset($searchVars['sword'])) {
+            if((mb_strtolower($GLOBALS['TSFE']->metaCharset)) == 'utf-8'){
+                $term = utf8_decode($searchVars['sword']);
+            }else{
+                $term = $searchVars['sword'];
+            }
+
+            // encode term
+            $term = urlencode($term);
+            
+            $searchUrl = $this->dbliste_url . $this->bibID .'&colors='. $this->colors .'&ocolors='. $this->ocolors .'&lett='. $lett .'&Suchwort='. $searchVars['sword'].$zugaenge;
         } else {
             $searchUrl = $this->createSearchUrl($searchVars);
         }
 
+        $accessFilter = FALSE;
+        if(isset($searchVars['zugaenge'])){
+            $accessFilter = $searchVars['zugaenge'];
+        }
+        
         $request = $this->XMLPageConnection->getDataFromXMLPage($searchUrl);
 
         if (!$request) {
@@ -626,26 +634,54 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
                 }
 
                 foreach ($dbs->db as $value) {
+                    
+                    if( $accessFilter === FALSE ){
+                        $db = array(
+                            'id' => (int) $value['title_id'],
+                            'title' => (string) $value,
+                            'access_ref' => (string) $value['access_ref'],
+                            'access' => $list['access_infos'][(string) $value['access_ref']]['title'],
+                            'db_type_refs' => (string) $value['db_type_refs'],
+                            'top_db' => (int) $value['top_db'],
+                            'link' => $this->db_detail_url . $this->bibID .'&lett='. $this->lett .'&titel_id='. $value['title_id'],
+                        );
 
-                    $db = array(
-                        'id' => (int) $value['title_id'],
-                        'title' => (string) $value,
-                        'access_ref' => (string) $value['access_ref'],
-                        'access' => $list['access_infos'][(string) $value['access_ref']]['title'],
-                        'db_type_refs' => (string) $value['db_type_refs'],
-                        'top_db' => (int) $value['top_db'],
-                        'link' => $this->db_detail_url . $this->bibID .'&lett='. $this->lett .'&titel_id='. $value['title_id'],
-                    );
+                        if ($db['top_db']) {
+                            $list['top'][] = $db;
+                        }
+                        $list['values'][$db['title'] . '_' . $db['id']] = $db;
+                        $sort[$db['title'] . '_' . $db['id']] = (string) $db['title'];
 
-                    if ($db['top_db']) {
-                        $list['top'][] = $db;
+                        /* foreach(explode(' ', $db['db_type_refs']) as $ref) {
+                            $list['groups'][$ref]['dbs'][] = $db;
+                        } */
+                        
+                    }else{
+                        if( (string) $value['access_ref'] == 'access_'.$accessFilter){
+                            $db = array(
+                                'id' => (int) $value['title_id'],
+                                'title' => (string) $value,
+                                'access_ref' => (string) $value['access_ref'],
+                                'access' => $list['access_infos'][(string) $value['access_ref']]['title'],
+                                'db_type_refs' => (string) $value['db_type_refs'],
+                                'top_db' => (int) $value['top_db'],
+                                'link' => $this->db_detail_url . $this->bibID .'&lett='. $this->lett .'&titel_id='. $value['title_id'],
+                            );
+
+                            if ($db['top_db']) {
+                                $list['top'][] = $db;
+                            }
+                            $list['values'][$db['title'] . '_' . $db['id']] = $db;
+                            $sort[$db['title'] . '_' . $db['id']] = (string) $db['title'];
+
+                            /* foreach(explode(' ', $db['db_type_refs']) as $ref) {
+                                $list['groups'][$ref]['dbs'][] = $db;
+                            } */
+                        }
                     }
-                    $list['values'][$db['title'] . '_' . $db['id']] = $db;
-                    $sort[$db['title'] . '_' . $db['id']] = (string) $db['title'];
-
-                    /* foreach(explode(' ', $db['db_type_refs']) as $ref) {
-                        $list['groups'][$ref]['dbs'][] = $db;
-                    } */
+                    
+                    
+                    
                 }
             }
         }
