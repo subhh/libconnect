@@ -216,12 +216,9 @@ Class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
     public function loadSearch($searchVars, $config) {
         $this->loadSubjects();
 
-        $term = $searchVars['sword'];//use by MiniForm
-        unset($searchVars['sword']);
-
         //execute search
         $dbis = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_Libconnect_Resources_Private_Lib_Dbis');
-        $result = $dbis->search($term, $searchVars);
+        $result = $dbis->search($searchVars);
 
         if(isset($config['onlyNew'])){
             return $result['list'];
