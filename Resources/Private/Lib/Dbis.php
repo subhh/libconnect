@@ -507,22 +507,6 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
             }
         }
 
-        /*$zugaenge = array(
-            1000 => $form[zugaenge][1000],
-            0 => $form[zugaenge][0],
-            1 => $form[zugaenge][1],
-            7 => $form[zugaenge][7],
-            5 => $form[zugaenge][5],
-            6 => $form[zugaenge][6],
-            2 => $form[zugaenge][2],
-            3 => $form[zugaenge][3],
-            4 => $form[zugaenge][4],
-            500 => $form[zugaenge][500],
-            300 => $form[zugaenge][300],
-        );
-
-        $form[zugaenge] = $zugaenge;*/
-
         return $form;
     }
 
@@ -652,10 +636,6 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
                         $list['values'][$db['title'] . '_' . $db['id']] = $db;
                         $sort[$db['title'] . '_' . $db['id']] = (string) $db['title'];
 
-                        /* foreach(explode(' ', $db['db_type_refs']) as $ref) {
-                            $list['groups'][$ref]['dbs'][] = $db;
-                        } */
-                        
                     }else{
                         if( (string) $value['access_ref'] == 'access_'.$accessFilter){
                             $db = array(
@@ -674,9 +654,6 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
                             $list['values'][$db['title'] . '_' . $db['id']] = $db;
                             $sort[$db['title'] . '_' . $db['id']] = (string) $db['title'];
 
-                            /* foreach(explode(' ', $db['db_type_refs']) as $ref) {
-                                $list['groups'][$ref]['dbs'][] = $db;
-                            } */
                         }
                     }
                     
