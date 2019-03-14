@@ -230,9 +230,6 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
         $this->view->assign('listPid', $this->settings['flexform']['listPid']);//id of page with list
         $this->view->assign('vars', $params['search']);
         //hide selectbox for licence/access if search and sort alph
-        if(isset($params['search'])){
-            $this->view->assign('hideAccess', TRUE);
-        }
         if ( isset($params['sort']) && isset($params['subject'])) {
             if( ($params['sort'] == 'alph') && ($params['subject'] == 'all')){
                 $this->view->assign('hideAccess', TRUE);
