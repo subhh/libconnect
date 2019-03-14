@@ -1,3 +1,4 @@
+{namespace libconnect=Sub\Libconnect\ViewHelpers}
 <div class="datenbank-suche-wrapper">
     <h2 class="libconnect-h2"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.miniform.search_header" /></h2>
 
@@ -34,7 +35,25 @@
                 <f:if condition="{sort}">
                     <f:form.hidden name="libconnect[sort]" value="{sort}" />
                 </f:if>
-
+                <f:if condition="{vars}">
+                    <f:for each="{vars}" as="searchVar" key="searchKey">
+                        <f:if condition="{libconnect:compare(a: searchKey, b: 'zugaenge')}">
+                            <f:then></f:then>
+                            <f:else>
+                                <f:if condition="{libconnect:IsArray(value: searchVar)}">
+                                    <f:then>
+                                        <f:for each="{searchVar}" as="subSearchVar" key="subSearchKey">
+                                            <f:form.hidden name="libconnect[search][{searchKey}][{subSearchKey}]" value="{subSearchVar}" />
+                                        </f:for>
+                                    </f:then>
+                                    <f:else>
+                                        <f:form.hidden name="tx_libconnect_dbis[libconnect][search][{searchKey}]" value="{searchVar}" />
+                                    </f:else>
+                                </f:if>
+                            </f:else>
+                        </f:if>
+                    </f:for>
+                </f:if>
                 <f:form.submit name="choose_licence" value='<f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.miniform.select_access" />' />
             </f:form>
 
