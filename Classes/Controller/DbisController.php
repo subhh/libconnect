@@ -105,6 +105,11 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
 
             if(isset($params['search']['zugaenge']) && ( $params['search']['zugaenge'] != '1000' ) ){
                 $config['search']['zugaenge']=$params['search']['zugaenge'];
+                
+                //it is not possible to filter "zugaenge" if sort is set to access
+                if( $config['sort'] == 'access'){
+                    $config['sort'] = 'type';
+                }
             }
 
             $liste =  $this->dbisRepository->loadList($params['subject'], $config);
@@ -237,6 +242,10 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
             if( ($params['subject'] == 'all')){
                 $this->view->assign('hideAccess', TRUE);
             }
+        }
+        //if no databases are listed, no filter is displayed
+        if(empty($params)){
+            $this->view->assign('hideAccess', TRUE);
         }
         //Set stubject
         if(!empty($params['subject'])) {
