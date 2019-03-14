@@ -59,7 +59,7 @@
             <label index="tx_libconnect.dbis.list.headline.subject">List by Subject</label>
             <label index="tx_libconnect.dbis.list.legend.headline">license:</label>
             <label index="tx_libconnect.dbis.list.topdatabases">Top Databases</label>
-            <label index="tx_libconnect.dbis.list.emptyResults">No results found. Please change the licence.</label>
+            <label index="tx_libconnect.dbis.list.emptyResults">No results found. Please change the access.</label>
                                                                 	
             <label index="tx_libconnect.dbis.miniform.link.sort">Sort</label>
             <label index="tx_libconnect.dbis.miniform.listing_alph">List by Title</label>
