@@ -48,13 +48,13 @@
     <f:if condition="{listingsWrapper}">
         <f:then>
             <p>
-                <f:link.page pageUid="{listPid}" additionalParams="{libconnect: '{sort:\'type\'}'}" addQueryString="1">
+                <f:link.page pageUid="{listPid}" additionalParams="{libconnect: '{sort:\'type\', subject: subject}'}" addQueryString="1">
                     <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.miniform.listing_type" />
                 </f:link.page>
             </p>
 
             <p>
-                <f:link.page pageUid="{listPid}" additionalParams="{libconnect: '{sort:\'alph\'}'}" addQueryString="1">
+                <f:link.page pageUid="{listPid}" additionalParams="{libconnect: '{sort:\'alph\', subject: subject}'}" addQueryString="1">
                     <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.miniform.listing_alph" />
                 </f:link.page>
             </p>
