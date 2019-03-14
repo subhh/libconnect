@@ -609,22 +609,6 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
             
         }
 
-        //licence
-        /*if(!empty($searchVars['selected_colors'])){
-            $accessInfos = $this-> getAccessInfos();
-            
-            foreach($searchVars['selected_colors'] as $key=>$color){
-                if($accessInfos[$color]){
-                    $list[]=$accessInfos[$color]['value'];
-                    
-                    //if color is 2, 6 must be displayed too
-                    if($color == 2){
-                        $list[]=$accessInfos[3]['value'];
-                    }
-                }
-            }
-        }*/
-
         return $list;
     }
 
