@@ -509,7 +509,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
      * 
      * @return array
      */
-    public function getAccessInfos($short = false){
+    public function getAccessInfos($short = FALSE){
         $ezb = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_libconnect_Resources_Private_Lib_Ezb');
 
         //get default texts
