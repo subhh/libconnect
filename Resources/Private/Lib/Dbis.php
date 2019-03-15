@@ -521,7 +521,6 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
     private function createSearchUrl($searchVars, $lett = 'k') {
 
         $searchUrl = $this->dbliste_url . $this->bibID .'&colors='. $this->colors .'&ocolors='. $this->ocolors .'&lett='. $lett;
-        //'&sort='. $sort
 
         foreach ($searchVars as $var => $values) {
             if (!is_array($values)) {
