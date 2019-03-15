@@ -71,9 +71,9 @@
                     <td>
                         <span id="zugangsinfos">
 
-                            <f:for each="{form.selected_colors}" as="value" key="key">
+                            <f:for each="{form.colors}" as="value" key="key">
                                 <f:if condition="{value.colorkey} != 6">
-                                    <input id="selected_colors_{value.colorkey}" type="checkbox" name="libconnect[search][selected_colors][]" class="zugaenge" value="{value.colorkey}" checked="checked"/>
+                                    <input id="selected_colors_{value.colorkey}" type="checkbox" name="libconnect[search][colors][]" class="zugaenge" value="{value.colorkey}" checked="checked"/>
                                 </f:if>
                                 <label class="ezb-list-accessinfo-access_{value.colorkey}" for="selected_colors_{value.colorkey}">{value.value}</label><br/>
                             </f:for>

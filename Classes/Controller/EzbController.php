@@ -151,11 +151,11 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
             $journals = array();
 
             //params form link
-            if(!empty($params['search']['selected_colors'])){
-                $params['colors'] = $params['search']['selected_colors'];
+            if(!empty($params['search']['colors'])){
+                $params['colors'] = $params['search']['colors'];
             }
             
-            unset($params['search']['selected_colors']);
+            unset($params['search']['colors']);
             
             //params from color legend
             if( empty($params['colors'][1]) &
@@ -169,17 +169,15 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
                     );
             }
 
+            $colors = $params['colors'];
+            unset($params['colors']);
+            
             //no readable URL?
             /*if(!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GET('id'))){
                 $this->view->assign('formParameterId', $Pid);
             }*/
 
-            $journals =  $this->ezbRepository->loadSearch($params, $params['colors'], $config);
-
-            if(!empty($params['search']['selected_colors'])){
-                //delete selected_colors in hidden form fields
-                unset($params['search']['selected_colors']);
-            }
+            $journals =  $this->ezbRepository->loadSearch($params, $colors, $config);
 
             //change view
             $controllerContext = $this->buildControllerContext();
@@ -192,7 +190,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
             //variables for template
             $this->view->assign('journals', $journals);
             $this->view->assign('listUrl', $listURL);
-            $this->view->assign('colors', $params['colors']);
+            $this->view->assign('colors', $colors);
             $this->view->assign('formParameter', $params['search']);
 
         } else {//start point
