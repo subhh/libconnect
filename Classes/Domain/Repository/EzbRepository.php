@@ -327,10 +327,9 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
         $ezb =  \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_libconnect_Resources_Private_Lib_Ezb');
 
-        //filter list by access list
         $ezbColors = $this->getColors($colors);
-        $ezb->setColors($ezbColors);
-
+        $ezb->setColors($ezbColors);     
+        
         $journals = $ezb->search($searchVars['search']);
 
         if (! $journals){
@@ -445,7 +444,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
         $form = $ezb->detailSearchFormFields();
 
         //Zugriffsinformationen holen
-        $form['selected_colors'] = $this->getAccessInfos(true);
+        $form['colors'] = $this->getAccessInfos(true);
 
         return $form;
     }
