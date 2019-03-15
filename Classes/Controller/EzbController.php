@@ -278,20 +278,20 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
         $this->view->assign('listPid', $this->settings['flexform']['listPid']);//ID of list
 
         //if subject is choosed link  to subject list is displayed
-        if ( !empty($newparams['subject']) ) {
+        if ( !empty($params['subject']) ) {
             $this->view->assign('showSubjectLink', true);
 
             //if new activated should here the new for subject be active
             if(!empty($this->settings['flexform']['newPid'])){
 
-                if(!empty($newparams['subject'])){
-                    $count = (int) $this->getNewCount($newparams['subject']);
+                if(!empty($params['subject'])){
+                    $count = (int) $this->getNewCount($params['subject']);
 
                     if($count >0){
                         $this->view->assign('newInSubjectCount',  $count);
 
                         $this->view->assign('newUrlSub', $GLOBALS['TSFE']->cObj->getTypolink_URL( intval($this->settings['flexform']['newPid']), 
-                            array('libconnect' => array('subject' => $newparams['subject'] )) ) );//URL of new list
+                            array('libconnect' => array('subject' => $params['subject'] )) ) );//URL of new list
                     }
                 }else{
                     $count = (int) $this->getNewCount(FALSE);
