@@ -382,7 +382,7 @@ class Tx_libconnect_Resources_Private_Lib_Ezb {
      *
      * @return string
      */
-    private function createSearchUrl($searchVars) {        
+    private function createSearchUrl($searchVars) {
         //if search was redirected from original website of EZB
         if(isset($searchVars['jq_type1']) && $searchVars['jq_type1'] == 'ZD'){
             $searchUrl = $this->search_zd_id . $searchVars['jq_term1']. '&bibid=' . $this->bibID . '&lang=' . $this->lang . '&xmloutput=1';
