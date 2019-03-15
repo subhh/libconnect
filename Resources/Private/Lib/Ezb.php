@@ -167,7 +167,7 @@ class Tx_libconnect_Resources_Private_Lib_Ezb {
 
             $journals['subject'] = (string) $xml_request->ezb_alphabetical_list->subject;
             $journals['navlist']['current_page'] = (string) $xml_request->ezb_alphabetical_list->navlist->current_page;
-            $journals['navlist']['current_title'] = (string) $xml_request->ezb_alphabetical_list->current_title;
+            $journals['current_title'] = (string) $xml_request->ezb_alphabetical_list->current_title;
 
             foreach ($xml_request->ezb_alphabetical_list->navlist->other_pages AS $key2 => $value2) {
                 foreach ($value2->attributes() AS $key3 => $value3) {
@@ -500,7 +500,7 @@ class Tx_libconnect_Resources_Private_Lib_Ezb {
         }
 
         if ($xml_request->ezb_alphabetical_list_searchresult->current_title) {
-            $result['alphabetical_order']['current_title'] = (string) $xml_request->ezb_alphabetical_list_searchresult->current_title;
+            $result['current_title'] = (string) $xml_request->ezb_alphabetical_list_searchresult->current_title;
         }
 
         if (isset($xml_request->ezb_alphabetical_list_searchresult->alphabetical_order->journals->journal)) {
