@@ -43,15 +43,17 @@
             </p>
         </f:else>
     </f:if>
+</div>
 
-    <f:if condition="{newUrlSub}">
+<f:if condition="{newUrlSub}">
+    <div class="ezb-listings-wrapper">
         <p id="ezb-newminiSub">
             <a href="{newUrlSub}">
                 <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.miniform.new.subject" /><span class="newcount"> ({newInSubjectCount})</span>
             </a>
         </p>
-    </f:if>
-</div>
+    </div>
+</f:if>
 
 <f:if condition="{newUrl}">    
     <div class="ezb-listings-wrapper">
