@@ -277,34 +277,23 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
         $this->view->assign('listUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL($this->settings['flexform']['listPid']));//link to search results
         $this->view->assign('listPid', $this->settings['flexform']['listPid']);//ID of list
 
-        //if subject is choosed link  to subject list is displayed
-        if ( !empty($params['subject']) ) {
-            $this->view->assign('showSubjectLink', true);
+        //if new activated should here the new for subject be active
+        if(!empty($this->settings['flexform']['newPid'])){
+            //if subject is choosed link  to subject list is displayed
+            if ( !empty($params['subject']) ) {
+                $this->view->assign('showSubjectLink', true);
 
-            //if new activated should here the new for subject be active
-            if(!empty($this->settings['flexform']['newPid'])){
+                $count = (int) $this->getNewCount($params['subject']);
 
-                if(!empty($params['subject'])){
-                    $count = (int) $this->getNewCount($params['subject']);
+                if($count >0){
+                    $this->view->assign('newInSubjectCount',  $count);
 
-                    if($count >0){
-                        $this->view->assign('newInSubjectCount',  $count);
-
-                        $this->view->assign('newUrlSub', $GLOBALS['TSFE']->cObj->getTypolink_URL( intval($this->settings['flexform']['newPid']), 
-                            array('libconnect' => array('subject' => $params['subject'] )) ) );//URL of new list
-                    }
-                }else{
-                    $count = (int) $this->getNewCount(FALSE);
-
-                    //show "new in EZB" only if there is something new
-                    if($count >0){
-                        $this->view->assign('newUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL( intval($this->settings['flexform']['newPid'])) );
-                        $this->view->assign('newInSubjectCount',  $count);
-                    }
+                    $this->view->assign('newUrlSub', $GLOBALS['TSFE']->cObj->getTypolink_URL( intval($this->settings['flexform']['newPid']), 
+                        array('libconnect' => array('subject' => $params['subject'] )) ) );//URL of new list
                 }
             }
 
-        }elseif(!empty($this->settings['flexform']['newPid'])){
+            /*all new*/
             $count = (int) $this->getNewCount(FALSE);
 
             //show "new in EZB" only if there is something new
