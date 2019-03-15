@@ -9,7 +9,9 @@
         </h3>
     </f:for>
 
-    <h3 class="ezb-list-current"><f:format.htmlentitiesDecode>{journals.navlist.current_title}</f:format.htmlentitiesDecode>...</h3>
+    <f:if condition="{journals.current_title}">
+        <h2><f:format.htmlentitiesDecode>{journals.current_title}</f:format.htmlentitiesDecode>...</h2>
+    </f:if>
 
     <ul class="ezb-list">
         <f:for each="{journals.alphabetical_order.journals}" as="journal">
