@@ -356,6 +356,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
     }
 
     /**
+     * get links for navigation, precise hits and paging
      * 
      * @param array $journals
      * @param array $config configuration
