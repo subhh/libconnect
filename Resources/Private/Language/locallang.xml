@@ -76,7 +76,7 @@
 
             <label index="tx_libconnect.dbis.new.headline">New in DBIS</label>
             <label index="tx_libconnect.dbis.new.headline.subject">Subject</label>
-            <label index="tx_libconnect.dbis.new.hits">New entries:</label>
+            <label index="tx_libconnect.dbis.new.hits">new entries:</label>
             <label index="tx_libconnect.dbis.new.since">There are since </label>
 
             <label index="tx_libconnect.dbis.overview.headline">Database information system</label>
