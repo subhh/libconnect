@@ -19,13 +19,7 @@
     <f:else>
         <h3 class="libconnect-h3"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.search.licence" /></h3>
 
-        <div class="dbis-list-legend">
-            <ul>
-                <f:for each="{list.access_infos}" as="info">
-                    <li class="dbis-list-accessinfo-{info.id}"><f:format.htmlentitiesDecode>{info.title}</f:format.htmlentitiesDecode> (<f:format.htmlentitiesDecode>{info.description}</f:format.htmlentitiesDecode>)</li>
-                </f:for>
-            </ul>
-        </div>
+        <f:render partial="Dbis/ListLegend" arguments="{access_infos:list.access_infos}" />
 
         <f:if condition="<f:count subject='{list.top}' /> > 0">
             <div class="top-database-wrapper">
