@@ -435,7 +435,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
 
         $config['detailPid'] = $this->settings['flexform']['detailPid'];
 
-         $colors = array(
+        $colors = array(
                         1 => 1,
                         2 => 2,
                         4 => 4
