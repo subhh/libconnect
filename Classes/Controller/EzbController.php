@@ -399,7 +399,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
 
         //variables for template
         $this->view->assign('journals', $journals);
-        $this->view->assign('new_date', $params['jq_term1']);
+        $this->view->assign('new_date', $newParams['search']['jq_term1']);
         $this->view->assign('colors', $params['search']['colors']);
         $this->view->assign('subject', $subject['title']);
         $this->view->assign('formParameter', $newParams);
