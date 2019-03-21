@@ -662,12 +662,9 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
             }
         }
 
-        $list['searchDescription'] = array();
-        if (isset($request->search_desc->search_desc_item)) {
-            foreach ($request->search_desc->search_desc_item as $searchDesc) {
-                $list['searchDescription'][] = (string)$searchDesc;
-            }
-        }
+        //get search description
+        $list['searchDescription'] = $this->getSearchDescription($request, $accessFilter);
+        
 
         if (isset($request->error)) {
             $list['error'] = (string) $request->error;
@@ -675,7 +672,26 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
 
         return array('page_vars' => $page_vars, /* 'groups' => $access_infos, */ 'list' => $list);
     }
-
+    
+    /**
+     * returns search description
+     * 
+     * @param simpleXML $request
+     * 
+     * @return array
+     */
+    private function getSearchDescription($request){
+        $list = array();
+        
+        if (isset($request->search_desc->search_desc_item)) {
+            foreach ($request->search_desc->search_desc_item as $searchDesc) {
+                $list[] = (string)$searchDesc;
+            }
+        }
+        
+        return $list;
+    }
+    
     /**
      *
      * helper function get fachliste

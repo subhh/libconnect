@@ -176,7 +176,8 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
             /*if(!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GET('id'))){
                 $this->view->assign('formParameterId', $Pid);
             }*/
-
+            
+            //search
             $journals =  $this->ezbRepository->loadSearch($params, $colors, $config);
 
             //change view
