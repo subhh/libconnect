@@ -595,7 +595,7 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
             $page_vars[$key] = (string) $value;
         }
 
-        //get access infos for the legen
+        //get access infos for the legend
         $list['access_infos'] = $this->getAccessInfos($request);
 
         if (isset($request->list_dbs->db_type_infos->db_type_info)) {
@@ -663,8 +663,7 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
         }
 
         //get search description
-        $list['searchDescription'] = $this->getSearchDescription($request, $accessFilter);
-        
+        $list['searchDescription'] = $this->getSearchDescription($request);
 
         if (isset($request->error)) {
             $list['error'] = (string) $request->error;
