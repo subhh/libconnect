@@ -31,6 +31,10 @@
 .dbis-list-accessinfo-access_7 {
     background-image: url("../Img/dbis-list_7.png");
 }
+.dbis-list-legend ul li.dbis-list-legend-six,
+.dbis-list-accessinfo-access_8 {
+    background-image: url("../Img/dbis-list_8.png");
+}
 .dbis-list-legend ul li.dbis-list-legend-five,
 .dbis-list-accessinfo-access_300 {
     background-image: url("../Img/euro.png");
@@ -52,6 +56,7 @@
 .dbis-list-accessinfo-access_5,
 .dbis-list-accessinfo-access_6,
 .dbis-list-accessinfo-access_7,
+.dbis-list-accessinfo-access_8,
 .dbis-list-accessinfo-access_300,
 .dbis-list-accessinfo-access_500 {
     background-repeat: no-repeat;
