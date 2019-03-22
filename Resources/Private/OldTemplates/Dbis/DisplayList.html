@@ -27,7 +27,7 @@
                     <em><f:for each="{charBlock.chars}" as="char"><f:format.htmlentitiesDecode>{char}</f:format.htmlentitiesDecode></f:for></em>
                 </f:then>
                 <f:else>
-                    <f:link.page pageUid="{listPid}" additionalParams="{libconnect: '{search: '{zugange: zugaenge}', subject: subject, lc:charBlock.lc, fc:charBlock.fc}'}"><f:for each="{charBlock.chars}" as="char"><f:format.htmlentitiesDecode>{char}</f:format.htmlentitiesDecode></f:for></f:link.page>
+                    <f:link.page pageUid="{listPid}" additionalParams="{libconnect: '{search: {zugaenge: zugaenge}, subject: subject, lc:charBlock.lc, fc:charBlock.fc}'}"><f:for each="{charBlock.chars}" as="char"><f:format.htmlentitiesDecode>{char}</f:format.htmlentitiesDecode></f:for></f:link.page>
                 </f:else>
             </f:if>
         </f:for>
@@ -57,7 +57,8 @@
                     <div class="accordion-content clearfix">
                         <ul class="dbis-dblist">
                             <f:for each="{group.dbs}" as="db">
-                                <li class="dbis-list-accessinfo-{db.access_ref}"><a href="{db.detail_link}"><libconnect:strreplace search=" & " replace=" &amp; "><f:format.htmlentitiesDecode>{db.title}</f:format.htmlentitiesDecode></libconnect:strreplace></a></li>
+                                <li class="dbis-list-accessinfo-{db.access_ref}">
+                                    <a href="{db.detail_link}"><libconnect:strreplace search="&" replace="&amp;"><f:format.htmlentitiesDecode>{db.title}</f:format.htmlentitiesDecode></libconnect:strreplace></a></li>
                             </f:for>
                         </ul>
                     </div>
