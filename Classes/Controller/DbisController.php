@@ -112,14 +112,14 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
                 }
             }
 
-            $liste =  $this->dbisRepository->loadList($params['subject'], $config);
+            $list =  $this->dbisRepository->loadList($params['subject'], $config);
 
             //check, if there are no results and inform user to change licence
             $empty = TRUE;
-            if(!empty($liste['list']['alphNavList'])){
+            if(!empty($list['list']['alphNavList'])){
                 $empty = FALSE;
             }
-            foreach($liste['list']['groups'] as $group){
+            foreach($list['list']['groups'] as $group){
 
                 if(!empty($group['dbs'])){
                     $empty = FALSE;
@@ -129,15 +129,15 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
             $this->view->assign('empty', $empty);
 
             //variables for template
-            $this->view->assign('listhead', $liste['subject']);
+            $this->view->assign('listhead', $list['subject']);
             $this->view->assign('subject', $params['subject']);
             $this->view->assign('zugaenge', $params['search']['zugaenge']);
-            $this->view->assign('list', $liste['list']);
+            $this->view->assign('list', $list['list']);
 
         } else if ($isSearch !== FALSE) {//search results
             $config['detailPid'] = $this->settings['flexform']['detailPid'];
 
-            $liste =  $this->dbisRepository->loadSearch($params['search'], $config);
+            $list =  $this->dbisRepository->loadSearch($params['search'], $config);
 
             //change view
             $controllerContext = $this->buildControllerContext();
@@ -145,7 +145,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
             $this->view->setControllerContext($controllerContext);
 
             //variables for template
-            $this->view->assign('list', $liste);
+            $this->view->assign('list', $list);
 
         } else {//start point
             $list =  $this->dbisRepository->loadOverview();
@@ -179,23 +179,23 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
 
             return;
         }
-        $liste =  $this->dbisRepository->loadDetail($params['titleid']);
+        $list =  $this->dbisRepository->loadDetail($params['titleid']);
 
         //repair broken HTML
         $UserFunc = new \Sub\Libconnect\UserFunctions\RepairHTMLUserFunction();
-        $liste = $UserFunc->RepairHTMLUserFunction($liste);
+        $list = $UserFunc->RepairHTMLUserFunction($list);
 
-        if(!$liste){
+        if(!$list){
             //variables for template
             $this->view->assign('error', 'Error');
 
         }else{
             //BG> Hide start research link for internal access only items
-            if($liste['access_id']!='access_4'){
-                $liste['access_workaround']=$liste['access_id'];
+            if($list['access_id']!='access_4'){
+                $list['access_workaround']=$list['access_id'];
             }
             //variables for template
-            $this->view->assign('db', $liste);
+            $this->view->assign('db', $list);
         }        
     }
 
@@ -343,14 +343,14 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
                 $severity = \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR,
                 $storeInSession = TRUE
             );
-            $liste = FALSE;
+            $list = FALSE;
         }else{
             //request
-            $liste =  $this->dbisRepository->loadSearch($params, $config);
+            $list =  $this->dbisRepository->loadSearch($params, $config);
         }
 
         //variables for template
-        $this->view->assign('list', $liste);
+        $this->view->assign('list', $list);
         $this->view->assign('new_date', $params['jq_term1']);
         $this->view->assign('subject', $subject['title']);
     }
