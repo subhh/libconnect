@@ -2,7 +2,7 @@
 <h1 class="libconnect-h1"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.search.results" /></h1>
 
 <p><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.search.criterion" /></p>
-<f:render partial="Dbis/ListLegendLi" arguments="{list.searchDescription:searchDescription}" />
+<f:render partial="Dbis/SearchDescription" arguments="{searchDescription:list.searchDescription}" />
 
 <f:if condition="{list.error}">
     <f:then>
