@@ -11,33 +11,33 @@
 .dbis-list-accessinfo-access_2 {
     background-image: url("../Img/dbis-list_2.png");
 }
-.dbis-list-legend ul li.dbis-list-legend-four,
-.dbis-list-accessinfo-access_500{
-    background-image: url("../Img/germany.png");
-}
 .dbis-list-legend ul li.dbis-list-legend-five,
-.dbis-list-accessinfo-access_300 {
-    background-image: url("../Img/euro.png");
-}
-.dbis-list-legend ul li.dbis-list-legend-six,
-.dbis-list-accessinfo-access_7 {
-    background-image: url("../Img/dbis-list_7.png");
-}
-.dbis-list-legend ul li.dbis-list-legend-seven,
-.dbis-list-accessinfo-access_5 {
-    background-image: url("../Img/dbis-list_5.png");
+.dbis-list-accessinfo-access_3 {
+    background-image:url("../Img/cdrom_dbis_list_3.png");
 }
 .dbis-list-legend ul li.dbis-list-legend-eight,
 .dbis-list-accessinfo-access_4{
     background-image: url("../Img/dbis-list_4.png");
 }
+.dbis-list-legend ul li.dbis-list-legend-seven,
+.dbis-list-accessinfo-access_5 {
+    background-image: url("../Img/dbis-list_5.png");
+}
 .dbis-list-legend ul li.dbis-list-legend-nine,
 .dbis-list-accessinfo-access_6 {
     background-image:url("../Img/dbis-list_6.png");
 }
+.dbis-list-legend ul li.dbis-list-legend-six,
+.dbis-list-accessinfo-access_7 {
+    background-image: url("../Img/dbis-list_7.png");
+}
 .dbis-list-legend ul li.dbis-list-legend-five,
-.dbis-list-accessinfo-access_3 {
-    background-image:url("../Img/cdrom_dbis_list_3.png");
+.dbis-list-accessinfo-access_300 {
+    background-image: url("../Img/euro.png");
+}
+.dbis-list-legend ul li.dbis-list-legend-four,
+.dbis-list-accessinfo-access_500{
+    background-image: url("../Img/germany.png");
 }
 
 .dbis-list-legend ul li.dbis-list-legend-one,
