@@ -669,7 +669,7 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
             $list['error'] = (string) $request->error;
         }
 
-        return array('page_vars' => $page_vars, /* 'groups' => $access_infos, */ 'list' => $list);
+        return array('page_vars' => $page_vars, 'list' => $list);
     }
     
     /**
