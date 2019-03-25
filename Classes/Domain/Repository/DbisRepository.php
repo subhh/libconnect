@@ -87,10 +87,10 @@ Class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
         
         $accessFilter = FALSE;
         
-        if(isset($config['search']['zugaenge'])){
+        if(isset($config['search']['zugaenge']) && (strlen($config['search']['zugaenge']) > 0) ){
             $accessFilter = $config['search']['zugaenge'];
         }
-        
+
         //list a subject
         if(is_numeric($subject_id)){
             $subject = $this->t3_to_dbis_subjects[$subject_id];
