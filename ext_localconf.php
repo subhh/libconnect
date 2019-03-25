@@ -11,7 +11,7 @@ if (!defined('TYPO3_MODE')) {
     ),
     // non-cacheable actions
     array(
-        'Dbis' => 'displayDetail, displayList, displayMiniForm, displayForm, displayNew'
+        'Dbis' => ''
     )
 );
 
@@ -23,7 +23,7 @@ if (!defined('TYPO3_MODE')) {
     ),
     // non-cacheable actions
     array(
-        'Ezb' => 'displayDetail, displayList, displayMiniForm, displayForm, displayNew, displayParticipantsForm, displayContact'
+        'Ezb' => ''
     )
 );
 ?>
