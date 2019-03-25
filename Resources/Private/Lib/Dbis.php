@@ -168,7 +168,7 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
                 if( !empty($tmpParams['lc'][0]) ){
                     $tmpParams['lc'] = $tmpParams['lc'][0];
                 }
-                
+
                 $url .= '&lc=' . $tmpParams['lc'];
             }
             if (!empty($tmpParams['fc'])) {
@@ -214,11 +214,12 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
                     }
                     $alphabeticalNavList[] = array(
                         'chars' => $tmpCharArray,
-                        'fc' => $charBlock->attributes()->fc,
-                        'lc' => $charBlock->attributes()->lc,
+                        'fc' => (string)$charBlock->attributes()->fc,
+                        'lc' => (string)$charBlock->attributes()->lc,
                         //check current view for which char is shown
                         'current' => ($charBlock->attributes()->lc == $tmpParams['lc'] || $charBlock->attributes()->fc == $tmpParams['lc'] ? TRUE : FALSE)
                     );
+
                 }
             }
             //check if a current view got set
