@@ -7,7 +7,7 @@ Here is the german [Manual](doc/manual.pdf "Ausführliches Manual").
 
 Visit our git repository: https://github.com/subhh/libconnect
 
-## Changes in new Version 5.5.0
+## Changes in new Version 6.0.0
     - Compatibility to TYPO3 9
         - Viehelpers with "np" (9+) are for TYPO3 9 and higher
     - Fixed some errors for TYPO3 8.4+
@@ -60,9 +60,7 @@ Tested with
 
 ## Customize your design
 
-1. Set paths to templates, partials and layouts
-
-### TYPO3 7.6 and newer
+### Set paths to templates, partials and layouts
 
         plugin.tx_libconnect {
             view {
@@ -82,18 +80,7 @@ Tested with
             }
         }
 
-### TYPO3 6.2
-
-        plugin.tx_libconnect {
-            view {
-                templateRootPath = EXT:libconnect/Resources/Private/Templates/
-                partialRootPath = EXT:libconnect/Resources/Private/Partials/
-                layoutRootPath = EXT:libconnect/Resources/Private/Layouts/
-            }
-        }
-
-
-2. Deactivate standard CSS
+### Deactivate standard CSS
 
         plugin.tx_libconnect {
             settings {
