@@ -7,11 +7,11 @@ if (!defined('TYPO3_MODE')) {
     'Sub.'.$_EXTKEY,
     'Dbis',
     array(
-        'Dbis' => 'displayDetail, displayList, displayMiniForm, displayForm, displayNew'
+        'Dbis' => 'displayForm'
     ),
     // non-cacheable actions
     array(
-        'Dbis' => ''
+        'Dbis' => 'displayDetail, displayList, displayMiniForm, displayNew'
     )
 );
 
@@ -19,11 +19,11 @@ if (!defined('TYPO3_MODE')) {
     'Sub.'.$_EXTKEY,
     'Ezb',
     array(
-        'Ezb' => 'displayDetail, displayList, displayMiniForm, displayForm, displayNew, displayParticipantsForm, displayContact'
+        'Ezb' => 'displayForm, displayContact'
     ),
     // non-cacheable actions
     array(
-        'Ezb' => ''
+        'Ezb' => 'displayDetail, displayList, displayMiniForm, displayNew, displayParticipantsForm'
     )
 );
 ?>
