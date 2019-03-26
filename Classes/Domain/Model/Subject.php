@@ -31,7 +31,6 @@ namespace Sub\Libconnect\Domain\Model;
  * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
  *
  */
-
 class Subject extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 
     /**
