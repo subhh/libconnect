@@ -282,8 +282,6 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
                 $this->view->assign('newCount',  $count);
             }   
         }
-        
-        
     }
 
     /**
