@@ -23,6 +23,7 @@ Visit our git repository: https://github.com/subhh/libconnect
         - changed legend to form like list and search of "New in EZB"
         - new in ezb always displayed
     - DBIS:
+        - added Icon for new access type
         - Fixed Flexform for sorting of list
         - Miniform:
             - sends subject on changed access
