@@ -7,13 +7,42 @@ Here is the german [Manual](doc/manual.pdf "Ausführliches Manual").
 
 Visit our git repository: https://github.com/subhh/libconnect
 
-## Changes in new Version 5.4.0
-    - Fixed missed Wizicons
-    - Changed view pathes in TS
-    - End of support of TYPO3 6
-    - show overview on empty search
-    
+## Changes in new Version 5.5.0
+    - Compatibility to TYPO3 9
+        - Viehelpers with "np" (9+) are for TYPO3 9 and higher
+    - Fixed some errors for TYPO3 8.4+
+    - Fixed suppressed CSS file.
+    - Not used User function "user_libconnect_hasSelectedPluginForCSSInclude" deleted.
+    - Fixes in locallang
+    - CSS: height of form elements are now the same
+    - EZB:
+        - Reworked building of access legend and links in result lists.
+        - Performance optimizatoin.
+        - fixed paging in "New in EZB"
+        - fixed legend in "New in EZB"
+        - changed legend to form like list and search of "New in EZB"
+        - new in ezb always displayed
+    - DBIS:
+        - Fixed Flexform for sorting of list
+        - Miniform:
+            - sends subject on changed access
+            - option without a constraint added
+            - access change is fixed and works
+            - you can now filter search results by access type
+        - Search: default values of colors and ocolors removed
+        - Fixed missing access information on top plugin template
+        - Extended search: reset button added
+        - Reworked code
+        - Performance optimizatoin.
+        - Detail:
+            - fixed &auml; in access type
+    - Language:
+        - deprecated: tx_libconnect.dbis.search.licence
 
+Tested with 
+    - TYPO3 7.6.32
+    - TYPO3 8.7.24
+    - TYPO3 9.5.4
 
 ## Configuration
 
