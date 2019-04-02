@@ -575,7 +575,7 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
         if(isset($searchVars['zugaenge'])){
             $accessFilter = $searchVars['zugaenge'];
         }
-        
+
         $request = $this->XMLPageConnection->getDataFromXMLPage($searchUrl);
 
         if (!$request) {
@@ -618,8 +618,9 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
                 }
 
                 foreach ($dbs->db as $value) {
-                    
-                    if( $accessFilter === FALSE ){
+
+                    if( ($accessFilter === FALSE) || ($accessFilter == "1000") ){
+
                         $db = array(
                             'id' => (int) $value['title_id'],
                             'title' => (string) $value,
