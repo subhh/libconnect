@@ -661,6 +661,11 @@ class Tx_libconnect_Resources_Private_Lib_Ezb {
         return $url;
     }
 
+    /**
+     * return contact information
+     * 
+     * @return array
+     */
     public function getContact(){
         $contact = FALSE;
 
