@@ -30,7 +30,7 @@ class CompareNpViewHelper extends AbstractViewHelper {
      */
     public static function renderStatic ( array $arguments, \Closure $renderChildrenClosure, RenderingContextInterface $renderingContext ) {
 
-        return $arguments['a'] === $arguments['b'];
+        return $arguments['a'] == $arguments['b'];
    }
 }
 ?>

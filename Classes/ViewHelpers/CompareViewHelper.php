@@ -18,7 +18,7 @@ class CompareViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHel
      * @return boolean
      */
     public function render($a, $b) {
-        return $a === $b;
+        return $a == $b;
     }
 }
 ?>
