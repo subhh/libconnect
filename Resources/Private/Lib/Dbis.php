@@ -612,10 +612,12 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
 
         if (isset($request->list_dbs->dbs)) {
 
+            //get numer of results
+            if(isset($request->list_dbs->dbs->attributes()->db_count)){
+                $list['db_count'] = (int) $request->list_dbs->dbs->attributes()->db_count;
+            }
+            
             foreach ($request->list_dbs->dbs as $dbs) {
-                if(isset($dbs->attributes()->db_count)){
-                    $list['db_count'] = (int) $dbs->attributes()->db_count;
-                }
 
                 foreach ($dbs->db as $value) {
 
@@ -634,9 +636,8 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
                         if ($db['top_db']) {
                             $list['top'][] = $db;
                         }
-                        $list['values'][$db['title'] . '_' . $db['id']] = $db;
-                        $sort[$db['title'] . '_' . $db['id']] = (string) $db['title'];
 
+                        $list['values'][$db['title'] . '_' . $db['id']] = $db;
                     }else{
                         if( (string) $value['access_ref'] == 'access_'.$accessFilter){
                             $db = array(
@@ -652,14 +653,10 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
                             if ($db['top_db']) {
                                 $list['top'][] = $db;
                             }
-                            $list['values'][$db['title'] . '_' . $db['id']] = $db;
-                            $sort[$db['title'] . '_' . $db['id']] = (string) $db['title'];
 
+                            $list['values'][$db['title'] . '_' . $db['id']] = $db;
                         }
                     }
-                    
-                    
-                    
                 }
             }
         }
