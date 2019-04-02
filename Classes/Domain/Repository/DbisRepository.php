@@ -219,10 +219,11 @@ Class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
         $dbis = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_Libconnect_Resources_Private_Lib_Dbis');
         $result = $dbis->search($searchVars);
 
+        //stop if function called from "New" - controller
         if(isset($config['onlyNew'])){
             return $result['list'];
         }
-        
+
         //get top dbs
         $result['list']['top'] = $this->getListTop($result['list']['top'], $config['detailPid']);
 
