@@ -7,38 +7,13 @@ Here is the german [Manual](doc/manual.pdf "Ausführliches Manual").
 
 Visit our git repository: https://github.com/subhh/libconnect
 
-## Changes in new Version 6.0.0
-    - Compatibility to TYPO3 9
-        - Viehelpers with "np" (9+) are for TYPO3 9 and higher
-    - Fixed some errors for TYPO3 8.4+
-    - Fixed suppressed CSS file.
-    - Not used User function "user_libconnect_hasSelectedPluginForCSSInclude" deleted.
-    - Fixes in locallang
-    - CSS: height of form elements are now the same
-    - EZB:
-        - Reworked building of access legend and links in result lists.
-        - Performance optimizatoin.
-        - fixed paging in "New in EZB"
-        - fixed legend in "New in EZB"
-        - changed legend to form like list and search of "New in EZB"
-        - new in ezb always displayed
+## Changes in new Version 6.0.1
+    - Viehelper: compare, did not compare type; '0' is now equal to 0
     - DBIS:
-        - added Icon for new access type
-        - Fixed Flexform for sorting of list
-        - Miniform:
-            - sends subject on changed access
-            - option without a constraint added
-            - access change is fixed and works
-            - you can now filter search results by access type
-        - Search: default values of colors and ocolors removed
-        - Fixed missing access information on top plugin template
-        - Extended search: reset button added
-        - Reworked code
-        - Performance optimizatoin.
-        - Detail:
-            - fixed &auml; in access type
-    - Language:
-        - deprecated: tx_libconnect.dbis.search.licence
+        Miniform: 
+            - Fixed access filter on mini form, if list is not filtered (1000).
+            - Fixed access filter for searches of extended search for TYPO3 7-8
+        - small performance fix
 
 Tested with 
     - TYPO3 7.6.32
