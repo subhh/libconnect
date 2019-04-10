@@ -7,13 +7,8 @@ Here is the german [Manual](doc/manual.pdf "Ausführliches Manual").
 
 Visit our git repository: https://github.com/subhh/libconnect
 
-## Changes in new Version 6.0.1
-    - Viehelper: compare, did not compare type; '0' is now equal to 0
-    - DBIS:
-        Miniform: 
-            - Fixed access filter on mini form, if list is not filtered (1000).
-            - Fixed access filter for searches of extended search for TYPO3 7-8
-        - small performance fix
+## 6.0.2
+    - DBIS: Fixed search with multiple values
 
 Tested with 
     - TYPO3 7.6.32
