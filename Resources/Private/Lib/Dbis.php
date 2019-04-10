@@ -566,7 +566,7 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
             // encode term
             $term = urlencode($term);
             
-            $searchUrl = $this->dbliste_url . $this->bibID .'&colors='. $this->colors .'&ocolors='. $this->ocolors .'&lett='. $lett .'&Suchwort='. $searchVars['sword'].$zugaenge;
+            $searchUrl = $this->dbliste_url . $this->bibID .'&colors='. $this->colors .'&ocolors='. $this->ocolors .'&lett='. $lett .'&Suchwort='. $term.$zugaenge;
         } else {
             $searchUrl = $this->createSearchUrl($searchVars);
         }
