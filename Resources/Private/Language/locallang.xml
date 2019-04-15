@@ -76,8 +76,8 @@
 
             <label index="tx_libconnect.dbis.new.headline">New in DBIS</label>
             <label index="tx_libconnect.dbis.new.headline.subject">Subject</label>
-            <label index="tx_libconnect.dbis.new.hits">new entries:</label>
-            <label index="tx_libconnect.dbis.new.since">There are since </label>
+            <label index="tx_libconnect.dbis.new.hits">There are</label>
+            <label index="tx_libconnect.dbis.new.since">new entries since</label>
 
             <label index="tx_libconnect.dbis.overview.headline">Database information system</label>
 
@@ -281,8 +281,8 @@
 
             <label index="tx_libconnect.dbis.new.headline">Neu in DBIS</label>
             <label index="tx_libconnect.dbis.new.headline.subject">Fachgebiet</label>
-            <label index="tx_libconnect.dbis.new.hits">neue Einträge:</label>
-            <label index="tx_libconnect.dbis.new.since">Es gibt seit dem </label>
+            <label index="tx_libconnect.dbis.new.hits">Es gibt</label>
+            <label index="tx_libconnect.dbis.new.since">neue Einträge seit dem</label>
 
             <label index="tx_libconnect.dbis.overview.headline">Datenbank-Infosystem</label>
 
