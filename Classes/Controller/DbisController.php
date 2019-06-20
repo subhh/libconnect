@@ -49,9 +49,6 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
      * shows top databases
      */
     public function displayTopAction() {
-        //include CSS
-        $this->decideIncludeCSS();
-
         $config['subject'] = $this->settings['flexform']['subject'];
         $config['detailPid'] = $this->settings['flexform']['detailPid'];
 
@@ -86,9 +83,6 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
                 $isSearch = TRUE;
             }
         }
-
-        //include CSS
-        $this->decideIncludeCSS();
 
         if (!empty($params['subject'])) {//choosed subject after start point
             $config['sort'] = $this->settings['flexform']['sortParameter'];
@@ -170,9 +164,6 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
             $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect');
         };
 
-        //include CSS
-        $this->decideIncludeCSS();
-
         if (!($params['titleid'])){
             //Variable Template übergeben
             $this->view->assign('error', 'Error');
@@ -216,9 +207,6 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
                 $params = $params_temp;
             }
         }
-
-        //include CSS
-        $this->decideIncludeCSS();
 
         $form = $this->dbisRepository->loadMiniForm();
 
@@ -294,9 +282,6 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
             $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect');
         }
 
-        //include CSS
-        $this->decideIncludeCSS();
-
         $form = $this->dbisRepository->loadForm($params['search']);
 
         //variables for template
@@ -326,9 +311,6 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
         }
         unset($params['subject']);
         unset($params['search']);
-
-        //include CSS
-        $this->decideIncludeCSS();
 
         //date how long entry is new
         $params['jq_term1'] = $this->getCalculatedDate();
@@ -378,28 +360,6 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
         $list = $this->dbisRepository->loadSearch($params, $config);
 
         return $list['db_count'];
-    }
-
-    /**
-     * check if css file is need and includes it
-     */
-    private function decideIncludeCSS(){
-        //if user don´t want to use our css
-        $noCSS = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.']['settings.']['dbisNoCSS'];
-
-        if($noCSS == 1){
-            return;
-        }
-
-        //get UID of PlugIn
-        $this->contentObj = $this->configurationManager->getContentObject();
-        $uid = $this->contentObj->data['uid'];
-        unset($this->contentObj);
-
-        //only the first PlugIn needs to include the css
-        if(\Sub\Libconnect\UserFunctions\IsfirstPlugInUserFunction::IsfirstPlugInUserFunction('dbis', $uid)){
-            $this->response->addAdditionalHeaderData('<link rel="stylesheet" href="' . \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::siteRelPath('libconnect') . 'Resources/Public/Styles/dbis.css" />');    
-        }
     }
 
     /**

@@ -87,9 +87,6 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
         //get PageID
         $Pid = intval($GLOBALS['TSFE']->id);
         $this->view->assign('pageUid', $Pid);
-        
-        //include CSS
-        $this->decideIncludeCSS();
 
         if ((!empty($params['subject'])) || (!empty($params['notation']))) {//choosed subject after start point
 
@@ -220,9 +217,6 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
         $config['participantsPid'] = $this->settings['flexform']['participantsPid'];
         $config['listPid'] = $this->settings['flexform']['listPid'];
 
-        //include CSS
-        $this->decideIncludeCSS();
-
         if (!($params['jourid'])){
             $this->view->assign('error', 'Error');
             //return "<strong>Fehler: Es wurde keine Zeitschrift mit der angegeben URL gefunden.</strong>";
@@ -262,9 +256,6 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
             $params_temp = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect');
             $params = array_merge($params_temp, $params);
         }
-
-        //include CSS
-        $this->decideIncludeCSS();
 
         //variables for template
         $newparams = array();
@@ -315,11 +306,8 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
             $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect');
         }
 
-        //include CSS
-        $this->decideIncludeCSS();
-
         $form = $this->ezbRepository->loadForm();
-        
+
         //variables for template
         $this->view->assign('vars', $params['search']);
         $this->view->assign('form', $form);
@@ -360,9 +348,6 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
 
         unset($params['search']['subject']);
         unset($params['search']['search']);
-
-        //include CSS
-        $this->decideIncludeCSS();
 
         //date how long entry is new
         $newParams['search']['jq_term1'] = $this->getCalculatedDate();
@@ -457,8 +442,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
         } else{
             $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect');
         }
-        //include CSS
-        $this->decideIncludeCSS();
+
         //include js
         $this->response->addAdditionalHeaderData('<script type="text/javascript" src="' . \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::siteRelPath('libconnect') . 'Resources/Public/Js/ezb.js" ></script>');    
 
@@ -481,28 +465,6 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
     public function displayContactAction() {
         $contact =  $this->ezbRepository->getContact();
         $this->view->assign('contact', $contact);
-    }
-
-    /**
-     * check if css file is need and includes it
-     */
-    private function decideIncludeCSS(){
-        //if user don´t want to use our css
-        $noCSS = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.']['settings.']['ezbNoCSS'];
-
-        if($noCSS == 1){
-            return;
-        }
-
-        //get UID of PlugIn
-        $this->contentObj = $this->configurationManager->getContentObject();
-        $uid = $this->contentObj->data['uid'];
-        unset($this->contentObj);
-
-        //only the first PlugIn needs to include the css
-        if(\Sub\Libconnect\UserFunctions\IsfirstPlugInUserFunction::IsfirstPlugInUserFunction('ezb', $uid)){
-            $this->response->addAdditionalHeaderData('<link rel="stylesheet" href="' . \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::siteRelPath('libconnect') . 'Resources/Public/Styles/ezb.css" />');    
-        }
     }
 
     /**
