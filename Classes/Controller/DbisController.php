@@ -165,7 +165,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
         };
 
         if (!($params['titleid'])){
-            //Variable Template übergeben
+            //variables for template
             $this->view->assign('error', 'Error');
 
             return;
