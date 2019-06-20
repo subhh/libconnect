@@ -28,13 +28,6 @@ plugin.tx_libconnect {
     }
 
     settings {
-        file.path {
-            # cat=plugin.tx_libconnect/file/0001; type=string; label=Path to CSS for DBIS (FE)
-            dbisCSS = EXT:libconnect/Resources/Public/Styles/dbis.css
-            # cat=plugin.tx_libconnect/file/0002; type=string; label=Path to CSS for EZB (FE)
-            ezbCSS = EXT:libconnect/Resources/Public/Styles/ezb.css
-        }
-
         ezblongaccessinfos{
             force = false
             de{
@@ -65,9 +58,6 @@ plugin.tx_libconnect {
                 6 = only a part is accessible
             }
         }
-
-        ezbNoCSS = 0
-        dbisNoCSS = 0
     }
 }
 
