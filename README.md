@@ -7,7 +7,9 @@ Here is the german [Manual](doc/manual.pdf "Ausführliches Manual").
 
 Visit our git repository: https://github.com/subhh/libconnect
 
-## 6.0.4
+## 6.0.3
+    - Class decideIncludeCSS removed --> used deprecated funktions.
+    - Typoscript: ezbNoCSS and dbisNoCSS settings removed
     - DBIS: 
         - new in DBIS: Changed Text and date for better reading
 
