@@ -2,11 +2,13 @@
 # content here will be included after plugin activation automatically. No template inclusion necessary.
 #
 
-page.includeCSS.style = EXT:libconnect/Resources/Public/Styles/dbis.css
-page.includeCSS.style.media = screen
+page.includeCSS.dbis = EXT:libconnect/Resources/Public/Styles/dbis.css
+page.includeCSS.dbis.media = all
 
-page.includeCSS.style = EXT:libconnect/Resources/Public/Styles/ezb.css
-page.includeCSS.style.media = screen
+page.includeCSS.ezb = EXT:libconnect/Resources/Public/Styles/ezb.css
+page.includeCSS.ezb.media = all
+
+page.includeJSFooter.ezb = EXT:libconnect/Resources/Public/Js/ezb.js
 
 plugin.tx_libconnect {
 
