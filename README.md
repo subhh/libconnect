@@ -7,7 +7,7 @@ Here is the german [Manual](doc/manual.pdf "Ausführliches Manual").
 
 Visit our git repository: https://github.com/subhh/libconnect
 
-## 6.0.3
+## 6.0.4
     - DBIS: 
         - new in DBIS: Changed Text and date for better reading
 
@@ -54,9 +54,5 @@ Tested with
 
 ### Deactivate standard CSS
 
-        plugin.tx_libconnect {
-            settings {
-                ezbNoCSS = 1
-                dbisNoCSS = 1
-            }
-        }
+        page.includeCSS.dbis >
+        page.includeCSS.ezb >
