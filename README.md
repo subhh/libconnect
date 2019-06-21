@@ -7,8 +7,9 @@ Here is the german [Manual](doc/manual.pdf "Ausführliches Manual").
 
 Visit our git repository: https://github.com/subhh/libconnect
 
-## 6.0.2
-    - DBIS: Fixed search with multiple values
+## 6.0.3
+    - DBIS: 
+        - new in DBIS: Changed Text and date for better reading
 
 Tested with 
     - TYPO3 7.6.32
