@@ -1,9 +1,10 @@
 # libconnect
 
-Libconnect is an TYPO3 extension which was inital developed by Avonis for the Staats- und Universitätsbibliothek Hamburg Carl von Ossietzky (SUB). The SUB develop the continuously.
-With libconnect it´s possible to display the information of EZB and DBIS of the University Regensburg on an TYPO3 based website.
+Libconnect is an TYPO3 extension which was initially developed by Avonis for the Staats- und Universitätsbibliothek Hamburg Carl von Ossietzky (SUB).
+The SUB maintains it now.
+With libconnect it is possible to display the information of EZB and DBIS of the University Regensburg on an TYPO3 based website.
 
-Here is the german [Manual](doc/manual.pdf "Ausführliches Manual").
+Here is the German [Manual](doc/manual.pdf "Ausführliches Manual").
 
 Visit our git repository: https://github.com/subhh/libconnect
 
