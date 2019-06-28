@@ -7,11 +7,10 @@ Here is the german [Manual](doc/manual.pdf "Ausführliches Manual").
 
 Visit our git repository: https://github.com/subhh/libconnect
 
-## 6.0.3
-    - Class decideIncludeCSS removed --> used deprecated funktions.
-    - Typoscript: ezbNoCSS and dbisNoCSS settings removed
+## 6.1.0
     - DBIS: 
-        - new in DBIS: Changed Text and date for better reading
+        - list, new in DBIS: decide to show short or full licence information
+        - fixed double access information in lists
 
 Tested with 
     - TYPO3 7.6.32
