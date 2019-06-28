@@ -169,6 +169,27 @@
                             </config>
                         </TCEforms>
                     </settings.flexform.newPid>
+
+                    <settings.flexform.showAccess>
+                        <TCEforms>
+                            <exclude>1</exclude>
+                            <label>Zugangsinformationen</label>
+                            <displayCond><![CDATA[FIELD:switchableControllerActions:IN:Dbis->displayList,Dbis->displayNew]]></displayCond>
+                            <config>
+                                <type>select</type>
+                                <items type="array">
+                                    <numIndex index="0" type="array">
+                                        <numIndex index="0">Langform</numIndex>
+                                        <numIndex index="1">full</numIndex>
+                                    </numIndex>
+                                    <numIndex index="1" type="array">
+                                        <numIndex index="0">Kurzform</numIndex>
+                                        <numIndex index="1">short</numIndex>
+                                    </numIndex>
+                                </items>
+                            </config>
+                        </TCEforms>
+                    </settings.flexform.showAccess>
                 </el>
             </ROOT>
         </sDEF>

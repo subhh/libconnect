@@ -758,8 +758,8 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
 
                 $accessInfos[$id] = array(
                     'id' => $id,
-                    'title' => (string) $value->db_access,
-                    'description' => (string) $value->db_access_short_text,
+                    'description' => (string) $value->db_access,
+                    'description_short' => (string) $value->db_access_short_text,
                 );
             }
         }

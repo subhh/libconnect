@@ -122,6 +122,9 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
             }
             $this->view->assign('empty', $empty);
 
+            //decide full or short text
+            $list['list']['access_infos'] = $this->setAccessInformation($list['list']['access_infos']);
+
             //variables for template
             $this->view->assign('listhead', $list['subject']);
             $this->view->assign('subject', $params['subject']);
@@ -138,6 +141,9 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
             $controllerContext->getRequest()->setControllerActionName('displaySearch');
             $this->view->setControllerContext($controllerContext);
 
+            //decide full or short text
+            $list['access_infos'] = $this->setAccessInformation($list['access_infos']);
+            
             //variables for template
             $this->view->assign('list', $list);
 
@@ -329,6 +335,9 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
             $list =  $this->dbisRepository->loadSearch($params, $config);
         }
 
+        //decide full or short text
+        $list['access_infos'] = $this->setAccessInformation($list['access_infos']);
+        
         //variables for template
         $this->view->assign('list', $list);
         $this->view->assign('new_date', $params['jq_term1']);
@@ -382,6 +391,31 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
         $date = date("d.m.Y",$today-($numDays * $oneDay));
 
         return $date;
+    }
+    
+    /**
+     * decide full or short text
+     * 
+     * @return array
+     */
+    private function setAccessInformation($accessInforomation){
+        $showAccess = $this->settings['flexform']['showAccess'];
+
+        //full is default and variables are set right
+        if($showAccess == "full"){
+            return $accessInforomation;
+        }
+
+        $accessInformationShort = array();
+
+        foreach($accessInforomation as $information){
+            $accessInformationShort[$information['id']] = array(
+                'id' => $information['id'],
+                'description' => $information['description_short']
+            );
+        }
+
+        return $accessInformationShort;
     }
 }
 ?>
