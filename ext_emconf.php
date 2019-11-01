@@ -33,7 +33,7 @@ $EM_CONF[$_EXTKEY] = array (
   array (
     'psr-4' => 
     array (
-      'Sub\\Libconnect\\' => 'Classes/',
+      'Sub\\Libconnect\\' => 'Classes',
     ),
   ),
   '_md5_values_when_last_written' => 'a:0:{}',
