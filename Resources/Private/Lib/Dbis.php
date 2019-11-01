@@ -744,14 +744,14 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
 
         return $moreDetails;
     }
-    
+
     /**
      * get information for the access legen
-     * @param type $request
+     * @param SimpleXMLElement $request
      */
     private function getAccessInfos($request){
         $accessInfos = array();
-        
+
         if (isset($request->list_dbs->db_access_infos->db_access_info)) {
             foreach ($request->list_dbs->db_access_infos->db_access_info as $value) {
                 $id = (string) $value->attributes()->access_id;
@@ -763,7 +763,7 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
                 );
             }
         }
-        
+
         return $accessInfos;
     }
 }
