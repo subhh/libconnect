@@ -26,7 +26,7 @@ namespace Sub\Libconnect\Domain\Repository;
 * Project sponsored by:
 *  Avonis - New Media Agency - http://www.avonis.com/
 ***************************************************************/
-
+use TYPO3\CMS\Extbase\Annotation\Inject;
 /**
  *
  *
@@ -49,6 +49,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
      * subjectRepository
      *
      * @var \Sub\Libconnect\Domain\Repository\SubjectRepository
+     * @Inject
      * @inject
      */
     protected $subjectRepository;

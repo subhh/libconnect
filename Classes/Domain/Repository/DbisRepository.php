@@ -26,7 +26,7 @@ namespace Sub\Libconnect\Domain\Repository;
 * Project sponsored by:
 *  Avonis - New Media Agency - http://www.avonis.com/
 ***************************************************************/
-
+use TYPO3\CMS\Extbase\Annotation\Inject;
 /**
  *
  *
@@ -43,12 +43,13 @@ Class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
     private $t3_to_dbis_subjects = array();
 
     /**
-	 * subjectRepository
-	 *
-	 * @var \Sub\Libconnect\Domain\Repository\SubjectRepository
-	 * @inject
-	 */
-	protected $subjectRepository;
+     * subjectRepository
+     *
+     * @var \Sub\Libconnect\Domain\Repository\SubjectRepository
+     * @Inject
+     * @inject
+     */
+    protected $subjectRepository;
 
     /**
      * shows top databases

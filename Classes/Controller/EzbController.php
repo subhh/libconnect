@@ -26,7 +26,7 @@ namespace Sub\Libconnect\Controller;
 * Project sponsored by:
 *  Avonis - New Media Agency - http://www.avonis.com/
 ***************************************************************/
-
+use TYPO3\CMS\Extbase\Annotation\Inject;
 /**
  *
  *
@@ -41,6 +41,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
      * creates instance of EzbRepository
      *
      * @var \Sub\Libconnect\Domain\Repository\EzbRepository
+     * @Inject
      * @inject
      */
     protected $ezbRepository;
@@ -49,10 +50,11 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
      * creates instance of SubjectRepository
      *
      * @var \Sub\Libconnect\Domain\Repository\SubjectRepository
+     * @Inject
      * @inject
      */
     protected $subjectRepository;
-    
+
     /**
      * Inject a subject repository
      *
