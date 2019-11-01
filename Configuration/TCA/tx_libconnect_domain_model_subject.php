@@ -12,7 +12,7 @@ return array(
         'cruser_id' => 'cruser_id',
         'default_sortby' => 'title',
         //'dividers2tabs' => TRUE,
-        //'versioningWS' => 2,
+        //'versioningWS' => 0,
         //'versioning_followPages' => TRUE,
         //'origUid' => 't3_origuid',
         //'languageField' => 'sys_language_uid',
