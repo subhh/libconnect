@@ -11,6 +11,7 @@ Visit our git repository: https://github.com/subhh/libconnect
     - DBIS: 
         - list, new in DBIS: decide to show short or full licence information
         - fixed double access information in lists
+    - better comatibility to TYPO3 8 LTS
 
 Tested with 
     - TYPO3 7.6.32

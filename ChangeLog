@@ -6,9 +6,10 @@
 * - CR: Christian Richter chri@portachtzig.com (Wirtschaftskolleg zu Berlin)
 **/
 6.1.0
-   - DBIS: 
+    - DBIS: 
         - list, new in DBIS: decide to show short or full licence information
         - fixed double access information in lists
+    - better comatibility to TYPO3 8 LTS
 6.0.3
     - Class decideIncludeCSS removed --> used deprecated funktions.
     - Typoscript: ezbNoCSS and dbisNoCSS settings removed
