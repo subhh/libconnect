@@ -3,13 +3,13 @@
     <meta>
         <langDisable>1</langDisable>
     </meta>
-<sheets>  
-    <sDEF>
-        <ROOT>
-            <TCEforms>
-                <sheetTitle>LLL:EXT:lang/locallang_general.xml:LGL.startingpoint</sheetTitle>
-            </TCEforms>
-            <type>array</type>
+    <sheets>
+        <sDEF>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>LLL:EXT:lang/locallang_general.xml:LGL.startingpoint</sheetTitle>
+                </TCEforms>
+                <type>array</type>
                 <el>
                     <switchableControllerActions>
                         <TCEforms>

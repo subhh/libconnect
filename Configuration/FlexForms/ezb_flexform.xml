@@ -17,7 +17,7 @@
                             <onChange>reload</onChange>
                             <config>
                                 <type>select</type>
-				<renderType>selectSingle</renderType>
+                                <renderType>selectSingle</renderType>
                                 <items type="array">
                                     <numIndex index="0" type="array">
                                         <numIndex index="0">Liste</numIndex>
