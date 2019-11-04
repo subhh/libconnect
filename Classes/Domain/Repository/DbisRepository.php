@@ -101,7 +101,7 @@ Class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
             $result = $dbis->getDbliste($dbis_id, $config['sort'], $accessFilter);
         }else{//for own collection or all subject
             
-            //access sort for all entrys in all subjects is not possible
+            //access sort for all entries in all subjects is not possible
             if($config['sort'] == 'access'){
                 $config['sort'] = 'alph';
             }

@@ -487,7 +487,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 //EOF ZDB LocationData
 
     /**
-     * set detailed access informations
+     * set detailed access information
      * 
      * @param array $longAccessInfos
      */
@@ -496,7 +496,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
     }
     
     /**
-     * get detailed access informations
+     * get detailed access information
      * 
      * @return array
      */
@@ -545,7 +545,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
                     }
                 }
             }else{
-                //if licence informations are missing
+                //if licence information is missing
                 foreach($colortext['longAccessInfos'] as $key => $text){
                     if(empty($AccessInfos[$key])){
                         $AccessInfos[$key] = $colortext['longAccessInfos'][$key];

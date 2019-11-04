@@ -21,7 +21,7 @@ class TrimedstrlenNpViewHelper extends AbstractViewHelper {
     }
 
     /**
-     * Returns trimed string
+     * Returns trimmed string
      * 
      * @param array $arguments
      * @param \Closure $renderChildrenClosure

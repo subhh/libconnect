@@ -12,7 +12,7 @@ namespace Sub\Libconnect\ViewHelpers;
 class TrimedstrlenViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
 
     /**
-     * Returns trimed string
+     * Returns trimmed string
      *
      * @param string $string
      * @return string

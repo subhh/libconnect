@@ -60,7 +60,7 @@
     - Fixed WizIcon for TYPO3 8
 5.4.0
     - Fixed missed Wizicons
-    - Changed view pathes in TS
+    - Changed view paths in TS
     - End of support of TYPO3 6
     - show overview on empty search
     

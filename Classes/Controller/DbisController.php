@@ -60,7 +60,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
     }
 
     /**
-     * shows a list of databases (for general, search, choosed subject)
+     * shows a list of databases (for general, search, chosen subject)
      */
     public function displayListAction() {
         $params = array();
@@ -85,7 +85,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
             }
         }
 
-        if (!empty($params['subject'])) {//choosed subject after start point
+        if (!empty($params['subject'])) {//chosen subject after start point
             $config['sort'] = $this->settings['flexform']['sortParameter'];
             $config['detailPid'] = $this->settings['flexform']['detailPid'];
 

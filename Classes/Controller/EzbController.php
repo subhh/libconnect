@@ -65,7 +65,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
     }
 
      /**
-     * shows a list of journals (for general, search, choosed subject)
+     * shows a list of journals (for general, search, chosen subject)
      */
     public function displayListAction() {
         $params = array();
@@ -90,7 +90,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
         $Pid = intval($GLOBALS['TSFE']->id);
         $this->view->assign('pageUid', $Pid);
 
-        if ((!empty($params['subject'])) || (!empty($params['notation']))) {//choosed subject after start point
+        if ((!empty($params['subject'])) || (!empty($params['notation']))) {//chosen subject after start point
 
             $config['detailPid'] = $this->settings['flexform']['detailPid'];
             
@@ -273,7 +273,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
 
         //if new activated should here the new for subject be active
         if(!empty($this->settings['flexform']['newPid'])){
-            //if subject is choosed link  to subject list is displayed
+            //if subject is chosen link to subject list is displayed
             if ( !empty($params['subject']) ) {
                 $this->view->assign('showSubjectLink', true);
 
@@ -452,13 +452,13 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
 
         $config['partnerPid'] = 0;
         $journal =  $this->ezbRepository->loadDetail($params['jourid'], $config);
-        $titel = $journal['title'];
+        $title = $journal['title'];
         unset($journal);
 
         //variables for template
         $this->view->assign('ParticipantsList', $ParticipantsList);
         $this->view->assign('jourid', $params['jourid']);
-        $this->view->assign('titel', $titel);
+        $this->view->assign('titel', $title);
     }
 
     /**
