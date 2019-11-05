@@ -427,8 +427,8 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
                         1 => 1,
                         2 => 2,
                         4 => 4
-                    );
-        
+                );
+
         //request
         $journals =  $this->ezbRepository->loadSearch($params, $colors, FALSE);
 
