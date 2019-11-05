@@ -27,7 +27,7 @@ plugin.tx_libconnect {
     persistence {
         storagePid = {$plugin.tx_libconnect.persistence.storagePid}
     }
-    
+
     view {
 		templateRootPaths.0 = {$plugin.tx_libconnect.view.templateRootPath}
 
