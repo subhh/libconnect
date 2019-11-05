@@ -739,9 +739,9 @@ class Tx_libconnect_Resources_Private_Lib_Ezb {
         $HttpPageConnection = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('tx_libconnect_resources_private_lib_httppageconnection');
         $url = 'http://rzblx1.uni-regensburg.de/ezeit/detail.phtml?colors=' . '&jour_id=' . $journalId . '&bibid='. $this->bibID . '&lang=' . $this->lang;
         $HttpRequestData = $HttpPageConnection->getDataFromHttpPage($url);
-        
+
         $moreDetails = array();
-        
+
         //replace double white space in single
         $HttpRequestData = trim(preg_replace('/\s\s+/', ' ', $HttpRequestData));
         
