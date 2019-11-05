@@ -445,9 +445,6 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
             $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect');
         }
 
-        //include js
-        $this->response->addAdditionalHeaderData('<script type="text/javascript" src="' . \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::siteRelPath('libconnect') . 'Resources/Public/Js/ezb.js" ></script>');    
-
         $ParticipantsList =  $this->ezbRepository->getParticipantsList($params['jourid']);
 
         $config['partnerPid'] = 0;
