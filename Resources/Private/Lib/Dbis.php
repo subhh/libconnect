@@ -474,7 +474,7 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
                     //$details['db_type_infos_join'] = join(', ', $details['db_type_infos']);
                 } else if ($key == 'hints') {
                     //warpto link must be completet, because ist is relative
-                    $hint = preg_replace('/warpto/', 'http://rzblx10.uni-regensburg.de/dbinfo/warpto',  (string) $value);
+                    $hint = preg_replace('/warpto/', 'https://rzblx10.uni-regensburg.de/dbinfo/warpto',  (string) $value);
                     $details['hints'] =  $hint;
                 } else if ($key == 'instruction') {
                     $details['instruction'] = (string) $value;
