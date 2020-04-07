@@ -27,6 +27,8 @@
 *  Avonis - New Media Agency - http://www.avonis.com/
 ***************************************************************/
 
+use \Sub\Libconnect\Service\Request;
+
 /**
  *
  * @package libconnect
@@ -38,9 +40,10 @@
  */
 
 if (!defined('TYPO3_COMPOSER_MODE') && defined('TYPO3_MODE')) {
-	require_once(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('libconnect') . 'Resources/Private/Lib/Xmlpageconnection.php');
-	require_once(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('libconnect') . 'Resources/Private/Lib/Httppageconnection.php');
+    require_once(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('libconnect') . 'Resources/Private/Lib/Xmlpageconnection.php');
+    require_once(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('libconnect') . 'Resources/Private/Lib/Httppageconnection.php');
 }
+
 
 class Tx_Libconnect_Resources_Private_Lib_Dbis {
 
@@ -49,10 +52,10 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
     private $colors = '';
     private $ocolors = '';
     private $lett = 'f';
-    private $fachliste_url =  'http://dbis.uni-regensburg.de/dbinfo/fachliste.php?xmloutput=1&bib_id=';
-    private $dbliste_url = 'http://dbis.uni-regensburg.de/dbinfo/dbliste.php?xmloutput=1&bib_id=';
-    private $db_detail_url = 'http://dbis.uni-regensburg.de/dbinfo/detail.php?xmloutput=1&bib_id=';
-    private $db_detail_suche_url = 'http://dbis.uni-regensburg.de/dbinfo/suche.php?xmloutput=1&bib_id=';
+    private $fachliste_url =  'http://dbis.uni-regensburg.de/dbinfo/fachliste.php';
+    private $dbliste_url = 'http://dbis.uni-regensburg.de/dbinfo/dbliste.php';
+    private $db_detail_url = 'http://dbis.uni-regensburg.de/dbinfo/detail.php';
+    private $db_detail_suche_url = 'http://dbis.uni-regensburg.de/dbinfo/suche.php';
 
     public $all;
     public $top_five_dbs;
@@ -67,8 +70,8 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
      * constructor
      */
     public function __construct() {
-        $this->XMLPageConnection = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('tx_libconnect_resources_private_lib_xmlpageconnection');
-        $this->HttpPageConnection = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('tx_libconnect_resources_private_lib_httppageconnection');
+        //$this->HttpPageConnection = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('tx_libconnect_resources_private_lib_httppageconnection');
+        #$requestFactory = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Http\RequestFactory::class);
         $this->setBibID();
     }
 
@@ -155,42 +158,50 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
      */
     public function getDbliste($fachgebiet, $sort = 'type', $accessFilter = FALSE) {
         $sortlist = array();
-        $url =  $this->dbliste_url. $this->bibID .'&colors='. $this->colors .'&ocolors='. $this->ocolors .'&sort='. $sort . '&';
+        
+        $params = array(
+                    'colors' => $this->colors,
+                    'ocolors' => $this->ocolors,
+                    'sort' => $sort
+                );
+
         $headline = '';
 
         //BOF workaround for alphabetical listing
         if ($fachgebiet == 'all') {
 
-            $url .='lett=a';
+            $params['lett'] = 'a';
             $tmpParams = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('libconnect');
 
             if (!empty($tmpParams['lc'])) {
                 if( !empty($tmpParams['lc'][0]) ){
                     $tmpParams['lc'] = $tmpParams['lc'][0];
                 }
-
-                $url .= '&lc=' . $tmpParams['lc'];
+ 
+                 $params['lc'] = $tmpParams['lc'];
             }
             if (!empty($tmpParams['fc'])) {
                 if (!empty($tmpParams['fc'][0])) {
                     $tmpParams['fc'] = $tmpParams['fc'][0];
                 }
                 
-                $url .= '&fc=' . $tmpParams['fc'];
+                $params['fc'] = $tmpParams['fc'];
             }
         } else {
 
             if (is_numeric($fachgebiet)) {
                 //notation is an id => dbis collection
-                $url .= 'lett=f&gebiete=' . $fachgebiet;
+                $params['lett'] = 'f';
+                $params['gebiete'] = $fachgebiet;
             } else {
                 //notation is a character => own colelction
-                $url .= 'lett=c&collid=' . $fachgebiet;
+                $params['lett'] = 'c';
+                $params['collid'] = $fachgebiet;
             }
         }
         //EOF workaround for alphabetical listing
 
-        $xml_fachgebiet_db = $this->XMLPageConnection->getDataFromXMLPage($url);
+        $xml_fachgebiet_db = $this->setRequest($this->dbliste_url, $params);
 
         $list = array(
             'top' => array(),
@@ -372,9 +383,16 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
     public function getDbDetails($db_id) {
 
         $details = array();
-        $url =  $this->db_detail_url. $this->bibID .'&lett='. $this->lett .'&colors='. $this->colors .'&ocolors='. $this->ocolors .'&titel_id='. $db_id;
-        $xml_db_details = $this->XMLPageConnection->getDataFromXMLPage($url);
 
+        $params = array(
+                    'lett' => $this->lett, 
+                    'colors' => $this->colors,
+                    'ocolors' => $this->ocolors,
+                    'titel_id' => $db_id
+                );
+        
+        $xml_db_details = $this->setRequest($this->db_detail_url, $params);
+        
         //@todo error message
         if (!isset($xml_db_details->details)) {
             return FALSE;
@@ -487,13 +505,16 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
      * @return array
      */
     public function getExtendedForm() {
+        $params = array(
+                    'colors' => $this->colors,
+                    'ocolors' => $this->ocolors
+                );
 
-        $url =  $this->db_detail_suche_url. $this->bibID .'&colors='. $this->colors .'&ocolors='.$this->ocolors;
-        $xml_such_form = $this->XMLPageConnection->getDataFromXMLPage($url);
-
+        $xml_search_form = $this->setRequest($this->db_detail_suche_url, $params);
+        
         //get access list
-        if (isset($xml_such_form->dbis_search->option_list)) {
-            foreach ($xml_such_form->dbis_search->option_list AS $key => $value) {
+        if (isset($xml_search_form->dbis_search->option_list)) {
+            foreach ($xml_search_form->dbis_search->option_list AS $key => $value) {
                 foreach ($value->option AS $key2 => $value2) {
                     $form[(string) $value->attributes()->name][(string) $value2->attributes()->value] = (string) $value2;
                 }
@@ -517,11 +538,14 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
      * @param array $searchVars
      * @param string $lett
      *
-     * @retun string
+     * @retun array
      */
-    private function createSearchUrl($searchVars, $lett = 'k') {
-
-        $searchUrl = $this->dbliste_url . $this->bibID .'&colors='. $this->colors .'&ocolors='. $this->ocolors .'&lett='. $lett;
+    private function createSearchParams($searchVars) {
+        $params = array(
+                    'lett' => 'k',
+                    'ocolors' => $this->ocolors,
+                    'colors' => $this->colors
+                  );       
 
         foreach ($searchVars as $var => $values) {
             if (!is_array($values)) {
@@ -529,18 +553,19 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
                 if((mb_strtolower($GLOBALS['TSFE']->metaCharset)) == 'utf-8'){
                     $values = utf8_decode($values);
                 }
-                $searchUrl .= '&'.$var.'=' . urlencode($values);
+                $params[$var] = urlencode($values);
             } else {
                 foreach ($values as $value) {
                     if((mb_strtolower($GLOBALS['TSFE']->metaCharset)) == 'utf-8'){
                         $value = utf8_decode($value);
                     }
-                    $searchUrl .= '&' . $var . '[]=' . urlencode($value);
+                    //$searchUrl .= '&' . $var . '[]=' . urlencode($value);
+                    $params[$var][] = urlencode($value);
                 }
             }
         }
 
-        return $searchUrl;
+        return $params;
     }
 
     /**
@@ -554,8 +579,12 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
      */
     public function search($searchVars = FALSE, $lett = 'fs') {
 
-        $searchUrl = '';
-
+        $params = array(
+                    'lett' => $lett, 
+                    'colors' => $this->colors,
+                    'ocolors' => $this->ocolors
+                );
+        
         if (!$searchVars || isset($searchVars['sword'])) {
             if((mb_strtolower($GLOBALS['TSFE']->metaCharset)) == 'utf-8'){
                 $term = utf8_decode($searchVars['sword']);
@@ -566,19 +595,20 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
             // encode term
             $term = urlencode($term);
             
-            $searchUrl = $this->dbliste_url . $this->bibID .'&colors='. $this->colors .'&ocolors='. $this->ocolors .'&lett='. $lett .'&Suchwort='. $term.$zugaenge;
+            $params['Suchwort'] = $term;
         } else {
-            $searchUrl = $this->createSearchUrl($searchVars);
+            
+            $params = $this->createSearchParams($searchVars);
         }
 
         $accessFilter = FALSE;
         if(isset($searchVars['zugaenge'])){
             $accessFilter = $searchVars['zugaenge'];
         }
+        
+        $response = $this->setRequest($this->dbliste_url, $params);
 
-        $request = $this->XMLPageConnection->getDataFromXMLPage($searchUrl);
-
-        if (!$request) {
+        if (!$response) {
             return FALSE;
         }
 
@@ -592,15 +622,15 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
         );
         $dbsid = array();
 
-        foreach ($request->page_vars->children() AS $key => $value) {
+        foreach ($response->page_vars->children() AS $key => $value) {
             $page_vars[$key] = (string) $value;
         }
 
         //get access infos for the legend
-        $list['access_infos'] = $this->getAccessInfos($request);
+        $list['access_infos'] = $this->getAccessInfos($response);
 
-        if (isset($request->list_dbs->db_type_infos->db_type_info)) {
-            foreach ($request->list_dbs->db_type_infos->db_type_info as $value) {
+        if (isset($response->list_dbs->db_type_infos->db_type_info)) {
+            foreach ($response->list_dbs->db_type_infos->db_type_info as $value) {
                 $id = (string) $value->attributes()->db_type_id;
                 $list['groups'][$id] = array(
                     'id' => $id,
@@ -610,14 +640,14 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
             }
         }
 
-        if (isset($request->list_dbs->dbs)) {
+        if (isset($response->list_dbs->dbs)) {
 
             //get numer of results
-            if(isset($request->list_dbs->dbs->attributes()->db_count)){
-                $list['db_count'] = (int) $request->list_dbs->dbs->attributes()->db_count;
+            if(isset($response->list_dbs->dbs->attributes()->db_count)){
+                $list['db_count'] = (int) $response->list_dbs->dbs->attributes()->db_count;
             }
             
-            foreach ($request->list_dbs->dbs as $dbs) {
+            foreach ($response->list_dbs->dbs as $dbs) {
 
                 foreach ($dbs->db as $value) {
 
@@ -630,7 +660,7 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
                             'access' => $list['access_infos'][(string) $value['access_ref']]['title'],
                             'db_type_refs' => (string) $value['db_type_refs'],
                             'top_db' => (int) $value['top_db'],
-                            'link' => $this->db_detail_url . $this->bibID .'&lett='. $this->lett .'&titel_id='. $value['title_id'],
+                            'link' => $this->db_detail_url .'&xmloutput=1&'. $this->bibID .'&lett='. $this->lett .'&titel_id='. $value['title_id'],
                         );
 
                         if ($db['top_db']) {
@@ -647,7 +677,7 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
                                 'access' => $list['access_infos'][(string) $value['access_ref']]['title'],
                                 'db_type_refs' => (string) $value['db_type_refs'],
                                 'top_db' => (int) $value['top_db'],
-                                'link' => $this->db_detail_url . $this->bibID .'&lett='. $this->lett .'&titel_id='. $value['title_id'],
+                                'link' => $this->db_detail_url .'&xmloutput=1&'. $this->bibID .'&lett='. $this->lett .'&titel_id='. $value['title_id'],
                             );
 
                             if ($db['top_db']) {
@@ -662,10 +692,10 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
         }
 
         //get search description
-        $list['searchDescription'] = $this->getSearchDescription($request);
+        $list['searchDescription'] = $this->getSearchDescription($response);
 
-        if (isset($request->error)) {
-            $list['error'] = (string) $request->error;
+        if (isset($response->error)) {
+            $list['error'] = (string) $response->error;
         }
 
         return array('page_vars' => $page_vars, 'list' => $list);
@@ -699,10 +729,10 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
      * @return array
      */
     public function getRequestFachliste($request) {
-        $url = $this->fachliste_url . $this->bibID . '&' . $request;
-        $xml_request = $this->XMLPageConnection->getDataFromXMLPage($url);
-
-        return $xml_request;
+        
+        $xml_response = $this->setRequest($this->fachliste_url, $params = array());
+        
+        return $xml_response;
     }
 
     /**
@@ -765,6 +795,22 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
         }
 
         return $accessInfos;
+    }
+
+    private function setRequest($url, $params = array()){
+
+        $request = NEW \Sub\Libconnect\Service\Request;
+        
+        $request->setUrl($url);
+        $request->setQuery( array('bib_id' => $this->bibID ) );
+
+        if(!empty($params)){
+            $request->setQuery( $params );
+        }
+
+        $xml_response = $request->request();
+
+        return $xml_response;
     }
 }
 ?>
