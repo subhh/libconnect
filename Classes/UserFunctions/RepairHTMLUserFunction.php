@@ -18,6 +18,7 @@ class RepairHTMLUserFunction{
     public function RepairHTMLUserFunction($list){
 
         $return = array();
+
         foreach($list as $key => $detail){
             if(!empty($detail)){
 
