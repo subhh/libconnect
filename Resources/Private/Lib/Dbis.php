@@ -509,7 +509,7 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
                 );
 
         $xml_search_form = $this->setRequest($this->db_detail_suche_url, $params);
-        
+
         //get access list
         if (isset($xml_search_form->dbis_search->option_list)) {
             foreach ($xml_search_form->dbis_search->option_list AS $key => $value) {
