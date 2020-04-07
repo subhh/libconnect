@@ -52,7 +52,7 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
     private $colors = '';
     private $ocolors = '';
     private $lett = 'f';
-    private $fachliste_url =  'http://dbis.uni-regensburg.de/dbinfo/fachliste.php';
+    private $fachliste_url = 'http://dbis.uni-regensburg.de/dbinfo/fachliste.php';
     private $dbliste_url = 'http://dbis.uni-regensburg.de/dbinfo/dbliste.php';
     private $db_detail_url = 'http://dbis.uni-regensburg.de/dbinfo/detail.php';
     private $db_detail_suche_url = 'http://dbis.uni-regensburg.de/dbinfo/suche.php';
@@ -63,7 +63,6 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
     private $bibID;
     private $licenceForbid = array();
     // sources
-    private $XMLPageConnection;
     private $HttpPageConnection;
 
     /**
@@ -71,7 +70,6 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
      */
     public function __construct() {
         //$this->HttpPageConnection = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('tx_libconnect_resources_private_lib_httppageconnection');
-        #$requestFactory = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Http\RequestFactory::class);
         $this->setBibID();
     }
 
@@ -390,9 +388,9 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
                     'ocolors' => $this->ocolors,
                     'titel_id' => $db_id
                 );
-        
+
         $xml_db_details = $this->setRequest($this->db_detail_url, $params);
-        
+
         //@todo error message
         if (!isset($xml_db_details->details)) {
             return FALSE;
@@ -545,7 +543,7 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
                     'lett' => 'k',
                     'ocolors' => $this->ocolors,
                     'colors' => $this->colors
-                  );       
+                  );
 
         foreach ($searchVars as $var => $values) {
             if (!is_array($values)) {
@@ -797,6 +795,12 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
         return $accessInfos;
     }
 
+    /**
+     *
+     * @param type string
+     * @param type array
+     * @return SimpleXMLElement
+     */
     private function setRequest($url, $params = array()){
 
         $request = NEW \Sub\Libconnect\Service\Request;
