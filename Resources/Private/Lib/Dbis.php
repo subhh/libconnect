@@ -548,7 +548,7 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
 
         foreach ($searchVars as $var => $values) {
             if (!is_array($values)) {
-                //falls jemand kein utf-8 verwendet
+                //if someone doesn´t use utf-8
                 if((mb_strtolower($GLOBALS['TSFE']->metaCharset)) == 'utf-8'){
                     $values = utf8_decode($values);
                 }
