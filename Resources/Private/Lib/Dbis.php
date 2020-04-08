@@ -130,7 +130,8 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
      */
     public function getFachliste() {
 
-        $xml_categories = $this->getRequestFachliste('');
+        $xml_categories = $this->setRequest($this->fachliste_url, array());
+
         $categories = array();
 
         if (isset($xml_categories->list_subjects_collections->list_subjects_collections_item)) {
@@ -716,21 +717,6 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
         }
         
         return $list;
-    }
-    
-    /**
-     *
-     * helper function get fachliste
-     *
-     * @param string $request
-     *
-     * @return array
-     */
-    public function getRequestFachliste($request) {
-        
-        $xml_response = $this->setRequest($this->fachliste_url, $params = array());
-        
-        return $xml_response;
     }
 
     /**
