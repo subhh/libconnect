@@ -40,7 +40,6 @@ use \Sub\Libconnect\Service\Request;
  */
 
 if (!defined('TYPO3_COMPOSER_MODE') && defined('TYPO3_MODE')) {
-    require_once(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('libconnect') . 'Resources/Private/Lib/Xmlpageconnection.php');
     require_once(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('libconnect') . 'Resources/Private/Lib/Httppageconnection.php');
 }
 
