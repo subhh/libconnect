@@ -42,7 +42,6 @@
 use \Sub\Libconnect\Service\Request;
 
 if (!defined('TYPO3_COMPOSER_MODE') && defined('TYPO3_MODE')) {
-	require_once(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('libconnect') . 'Resources/Private/Lib/Xmlpageconnection.php');
 	require_once(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('libconnect') . 'Resources/Private/Lib/Httppageconnection.php');
 }
 
@@ -76,9 +75,6 @@ class Tx_libconnect_Resources_Private_Lib_Ezb {
     // typoscript config
     private $bibID;
 
-    // XML data
-    private $XMLPageConnection;
-
     // access info
     private $shortAccessInfos = Array();
     private $longAccessInfos = Array();
@@ -98,8 +94,6 @@ class Tx_libconnect_Resources_Private_Lib_Ezb {
      * constructor
      */
     public function __construct() {
-        $this->XMLPageConnection = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('tx_libconnect_resources_private_lib_xmlpageconnection');
-
         //set configurations
         $this->setBibID();
         $this->setLanguage();
