@@ -56,13 +56,16 @@ class Request {
         $response = $requestFactory->request($this->getUrl(), 'GET', $additionalOptions);
         
         $content = FALSE;
-        
+
         // Get the content as a string on a successful request
         if ($response->getStatusCode() === 200) {
 
             if (strpos($response->getHeaderLine('Content-Type'), 'text/xml; charset=utf-8') === 0) {
                 $content = $this->getXml($response);
+            }elseif (strpos($response->getHeaderLine('Content-Type'), 'text/xml; charset=ISO-8859-1') === 0) {//EZB
+                $content = $this->getXml($response);
             }
+            
 
         }else{
             if ($this->debug){
