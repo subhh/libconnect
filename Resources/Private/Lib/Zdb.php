@@ -44,6 +44,7 @@
  *      zdbbik = BIK
  *
  */
+use \Sub\Libconnect\Service\Request;
 
 class Tx_libconnect_Resources_Private_Lib_Zdb {
 
@@ -484,6 +485,28 @@ class Tx_libconnect_Resources_Private_Lib_Zdb {
     
     public function getZdbData(){
         return $this->zdbData;
+    }
+    
+    /**
+     *
+     * @param type string
+     * @param type array
+     * @return SimpleXMLElement
+     */
+    private function setRequest($url, $params = array()){
+
+        $request = NEW \Sub\Libconnect\Service\Request;
+        
+        $request->setUrl($url);
+        $request->setQuery( array('bib_id' => $this->bibID ) );
+
+        if(!empty($params)){
+            $request->setQuery( $params );
+        }
+
+        $response = $request->request();
+
+        return $response;
     }
 }
 ?>
