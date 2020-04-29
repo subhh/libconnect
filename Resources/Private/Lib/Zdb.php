@@ -97,9 +97,6 @@ class Tx_libconnect_Resources_Private_Lib_Zdb {
         if ($ext_conf['debug'] == TRUE) {
             $this->debug = TRUE;
         }
-        if ($ext_conf['debug'] == FALSE) {
-            $this->debug = FALSE;
-        }
 
         $this->XMLPageConnection = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('tx_libconnect_resources_private_lib_xmlpageconnection');
 
