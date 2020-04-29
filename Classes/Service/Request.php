@@ -1,15 +1,13 @@
 <?php
 namespace Sub\Libconnect\Service;
 
-#use TYPO3\CMS\Extbase\Annotation\Inject;
 /**
  *
- *
+ * @author Torsten Witt <torsten.witt@sub.uni-hamburg.de>
  * @package libconnect
- * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
+ * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License, version 3 or later
  *
  */
-
 
 class Request {
     
