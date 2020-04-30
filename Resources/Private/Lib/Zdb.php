@@ -172,9 +172,6 @@ class Tx_libconnect_Resources_Private_Lib_Zdb {
         $params['sid'] = $this->sid;
         $params['genre'] = $genre;
 
-        //needed by buildIconInfoUrl and buildIconRequest
-        $this->pid = urlencode($params['pid']);
-        
         $xml_response = $this->setRequest($this->fullformat_request_url, $params);
 
         $locationDetail = array();
@@ -314,8 +311,10 @@ class Tx_libconnect_Resources_Private_Lib_Zdb {
          * ------------
          *
          */
-         $locationDetail['iconRequest'] = $this->buildIconRequest($journalIdentifier, $genre);
-         $locationDetail['iconInfoUrl'] = $this->buildIconInfoUrl($journalIdentifier, $genre);
+        //needed by buildIconInfoUrl and buildIconRequest
+        $this->pid = urlencode($params['pid']);
+        $locationDetail['iconRequest'] = $this->buildIconRequest($journalIdentifier, $genre);
+        $locationDetail['iconInfoUrl'] = $this->buildIconInfoUrl($journalIdentifier, $genre);
 
         if ($this->debug) {
             \TYPO3\CMS\Core\Utility\GeneralUtility::devLog('Request successful - URL: ' . $url, 'libconnect', 0);
