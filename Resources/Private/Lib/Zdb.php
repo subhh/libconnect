@@ -172,6 +172,9 @@ class Tx_libconnect_Resources_Private_Lib_Zdb {
         $params['sid'] = $this->sid;
         $params['genre'] = $genre;
 
+        //needed by buildIconInfoUrl and buildIconRequest
+        $this->pid = urlencode($params['pid']);
+        
         $xml_response = $this->setRequest($this->fullformat_request_url, $params);
 
         $locationDetail = array();
@@ -329,7 +332,7 @@ class Tx_libconnect_Resources_Private_Lib_Zdb {
      */
     private function buildIconRequest($journalIdentifier, $genre){
 
-        return "https://services.dnb.de/fize-service/gvr/icon?sid='.{$this->sid}" . (!empty($this->pid) ? "&pid={$this->pid}" : '' ) . $journalIdentifier . "&genre={$genre}";
+        return "https://services.dnb.de/fize-service/gvr/icon?sid=" .$this->sid. (!empty($this->pid) ? "&pid={$this->pid}" : '' ) . $journalIdentifier . "&genre={$genre}";
     }
 
     /**
@@ -340,7 +343,7 @@ class Tx_libconnect_Resources_Private_Lib_Zdb {
      */
     private function buildIconInfoUrl($journalIdentifier, $genre){
 
-        return "https://services.dnb.de/fize-service/gvr/html-service.htm?sid={$this->sid}" . (!empty($this->pid) ? "&pid={$this->pid}" : '' ) . $journalIdentifier . "&genre={$genre}";
+        return "https://services.dnb.de/fize-service/gvr/html-service.htm?sid=" .$this->sid. (!empty($this->pid) ? "&pid={$this->pid}" : '' ) . $journalIdentifier . "&genre={$genre}";
     }
 
     /**
