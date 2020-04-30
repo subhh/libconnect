@@ -796,7 +796,7 @@ class Tx_libconnect_Resources_Private_Lib_Ezb {
         $request = NEW \Sub\Libconnect\Service\Request;
         
         $request->setUrl($url);
-        $request->setQuery( array('bib_id' => $this->bibID ) );
+        $request->setQuery( array('bib_id' => $this->bibID, 'xmloutput' => 1 ) );
 
         if(!empty($params)){
             $request->setQuery( $params );

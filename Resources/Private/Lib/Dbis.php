@@ -791,7 +791,7 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
         $request = NEW \Sub\Libconnect\Service\Request;
         
         $request->setUrl($url);
-        $request->setQuery( array('bib_id' => $this->bibID ) );
+        $request->setQuery( array('bib_id' => $this->bibID, 'xmloutput' => 1 ) );
 
         if(!empty($params)){
             $request->setQuery( $params );
