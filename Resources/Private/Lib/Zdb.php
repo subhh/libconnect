@@ -46,6 +46,10 @@
  */
 use \Sub\Libconnect\Service\Request;
 
+if (!defined('TYPO3_COMPOSER_MODE') && defined('TYPO3_MODE')) {
+	require_once(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('libconnect') . 'Resources/Private/Lib/Xmlpageconnection.php');
+}
+
 class Tx_libconnect_Resources_Private_Lib_Zdb {
 
    /**
@@ -60,25 +64,18 @@ class Tx_libconnect_Resources_Private_Lib_Zdb {
     private $sid = NULL;
 
    /**
-    * library authentication parameters to display correct availability
-    */
-    private $bibid = NULL;
-    private $sigel = NULL;
-    private $isil = NULL;
-    private $bik = NULL;
-
-   /**
     * non-open-url conform pid arguments-string
     *
     */
     private $pid = '';
     private $onlyPrintFlag = true;
+    private $params = array();
 
    /**
     * request URLs
     */
     //private $briefformat_request_url = 'http://services.dnb.de/fize-service/gvr/brief.xml?';
-    private $fullformat_request_url = 'http://services.dnb.de/fize-service/gvr/full.xml?';
+    private $fullformat_request_url = 'http://services.dnb.de/fize-service/gvr/full.xml';
 
     // XML Data Object
     private $XMLPageConnection;
@@ -110,41 +107,34 @@ class Tx_libconnect_Resources_Private_Lib_Zdb {
             return FALSE;
         }
 
+        /**
+         * library authentication parameters to display correct availability
+         */
         //get the bibid
         if (isset($GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.']['zdbbibid'])) {
-            $this->bibid = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.']['zdbbibid'];
+            $this->params['bibid'] = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.']['zdbbibid'];
         }
         //if no explicit bibid for zdb is set, try to find the bibid which needs to setup for libconnect without zdb-support
         elseif (isset($GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.']['ezbbibid'])) {
-            $this->bibid = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.']['ezbbibid'];
+            $this->params['bibid'] = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.']['ezbbibid'];
         }
 
         //get the library sigel
         if (isset($GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.']['zdbsigel'])) {
-            $this->sigel = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.']['zdbsigel'];
+            $this->params['sigel'] = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.']['zdbsigel'];
         }
         //get the isil
         if (isset($GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.']['zdbisil'])) {
-            $this->isil = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.']['zdbisil'];
+            $this->params['isil'] = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.']['zdbisil'];
         }
         //get the bik
         if (isset($GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.']['zdbbik'])) {
-            $this->bik = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.']['zdbbik'];
+            $pidArray['bik'] = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.']['zdbbik'];
         }
-
-        $this->pid = urlencode((!empty($this->bibid) ? 'bibid=' . $this->bibid .'&' : '') .
-                               (!empty($this->sigel) ? 'sigel=' . $this->sigel .'&' : '') .
-                               (!empty($this->isil) ? 'isil=' . $this->isil .'&' : '') .
-                               (!empty($this->bik) ? 'bik=' . $this->bik : ''));
-
-        //remove last &(urlencode: %26) if existent (only if bik is empty but any other info above is given)
-        if (strlen($this->pid) - 3 == strrpos($this->pid, '%26')) {
-            $this->pid = substr($this->pid, 0, strlen($this->pid) - 3);
-        }
-
+        
         //only print location data are requested (default is off, so online and print will be delivered)
         if ($this->onlyPrintFlag) {
-            $this->pid .= (strlen($this->pid) > 0 ? urlencode('&print=1') : urlencode('print=1'));
+            $this->params['print'] = 1;
         }
     }
 
@@ -170,28 +160,31 @@ class Tx_libconnect_Resources_Private_Lib_Zdb {
             return FALSE;
         }else {
             if(!empty($ZDBID)) {
-                $this->pid .= (strlen($this->pid) > 0 ? urlencode("&zdbid={$ZDBID}") : urlencode("zdbid={$ZDBID}"));
+                $this->params['zdbid'] = $ZDBID;
             }
             if(!empty($journalIdentifier)) {
-                $journalIdentifier = "&{$journalIdentifier}";
+                $this->params[$journalIdentifier] = $journalIdentifier;
             }
         }
+        
+        //build params
+        $params['pid'] = http_build_query($this->params);
+        $params['sid'] = $this->sid;
+        $params['genre'] = $genre;
 
-        $url = "{$this->fullformat_request_url}sid={$this->sid}" . (!empty($this->pid) ? "&pid={$this->pid}" : "" ) . $journalIdentifier . "&genre={$genre}";
-
-        $xml_request = $this->XMLPageConnection->getDataFromXMLPage($url);
+        $xml_response = $this->setRequest($this->fullformat_request_url, $params);
 
         $locationDetail = array();
 
         // root-element = OpenURLResponseXML->Full/Brief
         // only Full-objects got all the info we want
-        if (! is_object($xml_request->Full)) {
+        if (! is_object($xml_response->Full)) {
             if ($this->debug) {
                 \TYPO3\CMS\Core\Utility\GeneralUtility::devLog('invalid XML-Object - URL: ' . $url, 'libconnect', 1);
             }
 
             return FALSE;
-        } elseif (property_exists($xml_request->Full, 'Error')) {
+        } elseif (property_exists($xml_response->Full, 'Error')) {
             /**
              * possible Error-Codes:
              *     Code        Meaning
@@ -203,18 +196,18 @@ class Tx_libconnect_Resources_Private_Lib_Zdb {
              *
              */
             if ($this->debug) {
-                \TYPO3\CMS\Core\Utility\GeneralUtility::devLog('Error-Code: ' . $xml_request->Full->Error->attributes()->code . ' - URL: ' . $url, 'libconnect', 1);
+                \TYPO3\CMS\Core\Utility\GeneralUtility::devLog('Error-Code: ' . $xml_response->Full->Error->attributes()->code . ' - URL: ' . $url, 'libconnect', 1);
             }
 
             return FALSE;
         }
 
-        $locationDetail['library'] = (string) $xml_request->Full->PrintData->Library;
+        $locationDetail['library'] = (string) $xml_response->Full->PrintData->Library;
 
         //check if returned XML-Object provides ResultList (as only this contains location data, exit if no ResultList is provided)
-        if (is_object($xml_request->Full->PrintData->ResultList) && get_class($xml_request->Full->PrintData->ResultList) == 'SimpleXMLElement') {
-            $tmpStates = $xml_request->Full->PrintData->ResultList->children();
-            $tmpResultList = $xml_request->Full->PrintData->ResultList->children();
+        if (is_object($xml_response->Full->PrintData->ResultList) && get_class($xml_response->Full->PrintData->ResultList) == 'SimpleXMLElement') {
+            $tmpStates = $xml_response->Full->PrintData->ResultList->children();
+            $tmpResultList = $xml_response->Full->PrintData->ResultList->children();
         } else {
             if ($this->debug) {
                 \TYPO3\CMS\Core\Utility\GeneralUtility::devLog('invalid ResultList - URL: ' . $url, 'libconnect', 1);
@@ -300,8 +293,8 @@ class Tx_libconnect_Resources_Private_Lib_Zdb {
         *     Children:       (string)     URL
         *                     (string)     Label
         */
-        if (is_object($xml_request->Full->PrintData->References) && get_class($xml_request->Full->PrintData->References) == 'SimpleXMLElement') {
-            $tmpReferences = $xml_request->Full->PrintData->References->children();
+        if (is_object($xml_response->Full->PrintData->References) && get_class($xml_response->Full->PrintData->References) == 'SimpleXMLElement') {
+            $tmpReferences = $xml_response->Full->PrintData->References->children();
             $locationDetail['references'] = array();
             if(count($tmpReferences)) {
                 foreach($tmpReferences as $tmpReference) {
@@ -491,11 +484,9 @@ class Tx_libconnect_Resources_Private_Lib_Zdb {
      * @return SimpleXMLElement
      */
     private function setRequest($url, $params = array()){
-
         $request = NEW \Sub\Libconnect\Service\Request;
-        
+
         $request->setUrl($url);
-        $request->setQuery( array('bib_id' => $this->bibID ) );
 
         if(!empty($params)){
             $request->setQuery( $params );
