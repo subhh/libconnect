@@ -13,9 +13,7 @@ class Request {
     
     private $url = '';
     
-    private $query = array(
-                        'xmloutput' => 1
-                    );
+    private $query = array();
     
     public function getUrl(){
         return $this->url;
@@ -49,29 +47,31 @@ class Request {
             'query' => $this->getQuery(),
             'headers' => ['Accept' => 'text/xml; charset=UTF8']
         ];
-        
-        
+
         $response = $requestFactory->request($this->getUrl(), 'GET', $additionalOptions);
-        
+
         $content = FALSE;
 
         // Get the content as a string on a successful request
         if ($response->getStatusCode() === 200) {
+            $contentType = str_replace(" ", "", strtolower($response->getHeaderLine('Content-Type')));
 
-            if (strpos($response->getHeaderLine('Content-Type'), 'text/xml; charset=utf-8') === 0) {//DBIS
+            if (strpos($contentType, 'text/xml;charset=utf-8') === 0) {//DBIS, services.dnb.de
                 $content = $this->getXml($response);
-            }elseif (strpos($response->getHeaderLine('Content-Type'), 'text/xml; charset=ISO-8859-1') === 0) {//EZB
+            }elseif (strpos($contentType, 'text/xml;charset=iso-8859-1') === 0) {//EZB
                 $content = $this->getXml($response);
             }
-            
 
+            else {
+                echo "Fehler: Falsche Inhalt";
+            }
         }else{
             if ($this->debug){
-                \TYPO3\CMS\Core\Utility\GeneralUtility::devLog('Got HTTP Code ' . $http_code['http_code'] . ' for request: ' . $url, 'libconnect', 1);
+                \TYPO3\CMS\Core\Utility\GeneralUtility::devLog('Got HTTP Code ' . $response->getStatusCode() . ' for request: ' . $url, 'libconnect', 1);
             }
 
         }
-        
+
         return $content;
     }
     
