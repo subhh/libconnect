@@ -755,14 +755,13 @@ class Tx_libconnect_Resources_Private_Lib_Ezb {
      * @return array
      */
     private function getMoreDetails($journalId){
-        $HttpPageConnection = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('tx_libconnect_resources_private_lib_httppageconnection');
-        $url = 'http://rzblx1.uni-regensburg.de/ezeit/detail.phtml?colors=' . '&jour_id=' . $journalId . '&bibid='. $this->bibID . '&lang=' . $this->lang;
-        $HttpRequestData = $HttpPageConnection->getDataFromHttpPage($url);
+        $params = array('bibid' => $this->bibID, 'jour_id' =>$journalId, 'colors' => $this->colors, 'lang' => $this->lang);
+        $htmlResponse = $this->setRequest('http://rzblx1.uni-regensburg.de/ezeit/detail.phtml', $params);
 
         $moreDetails = array();
 
         //replace double white space in single
-        $HttpRequestData = trim(preg_replace('/\s\s+/', ' ', $HttpRequestData));
+        $htmlResponse = trim(preg_replace('/\s\s+/', ' ', $htmlResponse));
         
         //start "Preistyp Anmerkung"
         $searchString = 'Preistyp Anmerkung';
@@ -771,7 +770,7 @@ class Tx_libconnect_Resources_Private_Lib_Ezb {
             $searchString = 'Pricetype annotation';
         }
 
-        preg_match('/'. $searchString .':\s*<\/dt>\s*<dd class="defListContentDefinition">(.*)<\/dd>/mU', $HttpRequestData, $matches);
+        preg_match('/'. $searchString .':\s*<\/dt>\s*<dd class="defListContentDefinition">(.*)<\/dd>/mU', $htmlResponse, $matches);
 
         //preparing string
         if($matches[1]){    

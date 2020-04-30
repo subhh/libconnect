@@ -46,10 +46,6 @@
  */
 use \Sub\Libconnect\Service\Request;
 
-if (!defined('TYPO3_COMPOSER_MODE') && defined('TYPO3_MODE')) {
-	require_once(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('libconnect') . 'Resources/Private/Lib/Xmlpageconnection.php');
-}
-
 class Tx_libconnect_Resources_Private_Lib_Zdb {
 
    /**
@@ -94,8 +90,6 @@ class Tx_libconnect_Resources_Private_Lib_Zdb {
         if ($ext_conf['debug'] == TRUE) {
             $this->debug = TRUE;
         }
-
-        $this->XMLPageConnection = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('tx_libconnect_resources_private_lib_xmlpageconnection');
 
         if(!$this->getSid()) {
             //todo: error message
@@ -367,25 +361,22 @@ class Tx_libconnect_Resources_Private_Lib_Zdb {
      * @return array
      */
     public function getPrecursor($zdbId, $initial = FALSE){
-        $Httppageconnection = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_Libconnect_Resources_Private_Lib_Httppageconnection');
-        
         //example "https://ld.zdb-services.de/data/2890450-3.rdf";
         $url = "https://ld.zdb-services.de/data/".$zdbId.".rdf";
 
-        
-        $request = $Httppageconnection->getDataFromHttpPage($url);
-        
+        $request = $this->setRequest($url);
+
         //get data of selected journal
         if($initial === TRUE){
             /*get data*/
             //get name
             preg_match('/\<dc:title rdf:datatype="http:\/\/www.w3.org\/2001\/XMLSchema#string"\>(.*)\<\/dc:title\>/', $request, $matches, PREG_OFFSET_CAPTURE);
-            
+
             if(!empty($matches[1][0])){
                 $this->zdbData['name'] = $matches[1][0];
             }
             //var_dump($matches);exit;
-            
+
             //get date issued
             preg_match('/\<dcterms:issued rdf:datatype="http:\/\/www.w3.org\/2001\/XMLSchema#string">(.*)\<\/dcterms:issued\>/', $request, $matches, PREG_OFFSET_CAPTURE);
             if(!empty($matches[1][0])){
@@ -400,11 +391,11 @@ class Tx_libconnect_Resources_Private_Lib_Zdb {
 
             end($this->precursor);
             $key = key($this->precursor);
-            
+
             //set request for precursor
             $url = "https://ld.zdb-services.de/data/".$this->precursor[$key]['zdbid'].".rdf";
-        
-            $request = $Httppageconnection->getDataFromHttpPage($url);
+
+            $request = $this->setRequest($url);
             
             /*get data*/
             //get name
@@ -414,17 +405,17 @@ class Tx_libconnect_Resources_Private_Lib_Zdb {
                 $this->precursor[$key]['name'] = $matches[1][0];
             }
             //var_dump($matches);exit;
-            
+
             //get date issued
             preg_match('/\<dcterms:issued rdf:datatype="http:\/\/www.w3.org\/2001\/XMLSchema#string">(.*)\<\/dcterms:issued\>/', $request, $matches, PREG_OFFSET_CAPTURE);
             if(!empty($matches[1][0])){
                 $this->precursor[$key]['date_issued'] = $matches[1][0];
             }
-            
+
             //get next
             $this->getPrecursor($this->precursor[$key]['zdbid']);
         }
-        
+
         return $this->precursor;
     }
     
@@ -434,25 +425,23 @@ class Tx_libconnect_Resources_Private_Lib_Zdb {
      * @return array
      */
     public function getSuccessor($zdbId){
-        $Httppageconnection = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_Libconnect_Resources_Private_Lib_Httppageconnection');
-        
         $url = "https://ld.zdb-services.de/data/".$zdbId.".rdf";
-        
-        $request = $Httppageconnection->getDataFromHttpPage($url);
-        
+
+        $request = $this->setRequest($url);
+
         preg_match('/\<rdau:P60306 rdf:resource="http:\/\/ld.zdb-services.de\/resource\/(.*)"\/\>/', $request, $matches, PREG_OFFSET_CAPTURE);
-        
+
         if(!empty($matches[1][0])){
             $this->successor[]['zdbid'] = $matches[1][0];
 
             end($this->successor);
             $key = key($this->successor);
-            
+
             //set request for successor
             $url = "https://ld.zdb-services.de/data/".$this->successor[$key]['zdbid'].".rdf";
-        
-            $request = $Httppageconnection->getDataFromHttpPage($url);
-            
+
+            $request = $this->setRequest($url);
+
             /*get data*/
             //get name
             preg_match('/\<dc:title rdf:datatype="http:\/\/www.w3.org\/2001\/XMLSchema#string"\>(.*)\<\/dc:title\>/', $request, $matches, PREG_OFFSET_CAPTURE);
@@ -461,17 +450,17 @@ class Tx_libconnect_Resources_Private_Lib_Zdb {
                 $this->successor[$key]['name'] = $matches[1][0];
             }
             //var_dump($matches);exit;
-            
+
             //get date issued
             preg_match('/\<dcterms:issued rdf:datatype="http:\/\/www.w3.org\/2001\/XMLSchema#string">(.*)\<\/dcterms:issued\>/', $request, $matches, PREG_OFFSET_CAPTURE);
             if(!empty($matches[1][0])){
                 $this->successor[$key]['date_issued'] = $matches[1][0];
             }
-            
+
             //get next
             $this->getSuccessor($this->successor[$key]['zdbid']);
         }
-        
+
         return $this->successor;
     }
     

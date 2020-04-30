@@ -39,11 +39,6 @@ use \Sub\Libconnect\Service\Request;
  *
  */
 
-if (!defined('TYPO3_COMPOSER_MODE') && defined('TYPO3_MODE')) {
-    require_once(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('libconnect') . 'Resources/Private/Lib/Httppageconnection.php');
-}
-
-
 class Tx_Libconnect_Resources_Private_Lib_Dbis {
 
     //such meta
@@ -740,16 +735,17 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
      */
     private function getMoreDetails($db_id){
         $HttpPageConnection = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('tx_libconnect_resources_private_lib_httppageconnection');
-        $url = 'https://rzblx10.uni-regensburg.de/dbinfo/detail.php?bib_id='.$this->bibID.'&colors=&ocolors=&lett=fs&tid=0&titel_id='. $db_id;
-        $HttpRequestData = $HttpPageConnection->getDataFromHttpPage($url);
+        $params = array('bib_id' => $this->bibID, 'colors' =>'', 'ocolors' => '', 'lett' => 'fs', 'tid' => 0, 'titel_id' => $db_id);
+
+        $htmlResponse = $this->setRequest('https://rzblx10.uni-regensburg.de/dbinfo/detail.php', $params);
 
         $moreDetails = array();
 
         //detail_content_more_internet_accesses
-        $start = mb_stripos($HttpRequestData, "detail_content_more_internet_accesses");
+        $start = mb_stripos($htmlResponse, "detail_content_more_internet_accesses");
         if($start){
-            $stop = mb_stripos($HttpRequestData, "</td>", $start);
-            $detail_content_more_internet_accesses = trim(mb_substr($HttpRequestData, $start, $stop-$start-5));
+            $stop = mb_stripos($htmlResponse, "</td>", $start);
+            $detail_content_more_internet_accesses = trim(mb_substr($htmlResponse, $start, $stop-$start-5));
             $detail_content_more_internet_accesses = str_replace("</td>", "", $detail_content_more_internet_accesses);
             $detail_content_more_internet_accesses = utf8_encode(str_replace("_more_internet_accesses\">", "", $detail_content_more_internet_accesses));
         }
