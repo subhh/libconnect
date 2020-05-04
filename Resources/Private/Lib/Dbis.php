@@ -484,10 +484,7 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
             }
         }
 
-        //$url = 'http://rzblx10.uni-regensburg.de/dbinfo/detail.php?bib_id='.$this->bibID.'&colors=&ocolors=&lett=fs&tid=0&titel_id='. $db_id;
-
-        //$details['more_internet_accesses'] = $this->HttpPageConnection->getDataFromHttpPage($url);
-        //$details['moreDetails'] = $this->getMoreDetails($db_id);
+        $details['moreDetails'] = $this->getMoreDetails($db_id);
 
         return $details;
     }
@@ -734,8 +731,7 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
      * @return array
      */
     private function getMoreDetails($db_id){
-        $HttpPageConnection = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('tx_libconnect_resources_private_lib_httppageconnection');
-        $params = array('bib_id' => $this->bibID, 'colors' =>'', 'ocolors' => '', 'lett' => 'fs', 'tid' => 0, 'titel_id' => $db_id);
+        $params = array('bib_id' => $this->bibID, 'colors' =>'', 'ocolors' => '', 'lett' => 'fs', 'tid' => 0, 'titel_id' => $db_id, 'xmloutput' => 0);
 
         $htmlResponse = $this->setRequest('https://rzblx10.uni-regensburg.de/dbinfo/detail.php', $params);
 
