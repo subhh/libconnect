@@ -370,22 +370,21 @@ class Tx_libconnect_Resources_Private_Lib_Zdb {
         if($initial === TRUE){
             /*get data*/
             //get name
-            preg_match('/\<dc:title rdf:datatype="http:\/\/www.w3.org\/2001\/XMLSchema#string"\>(.*)\<\/dc:title\>/', $request, $matches, PREG_OFFSET_CAPTURE);
+            preg_match('/\<dc:title rdf:datatype="https?:\/\/www.w3.org\/2001\/XMLSchema#string"\>(.*)\<\/dc:title\>/', $request, $matches, PREG_OFFSET_CAPTURE);
 
             if(!empty($matches[1][0])){
                 $this->zdbData['name'] = $matches[1][0];
             }
-            //var_dump($matches);exit;
 
             //get date issued
-            preg_match('/\<dcterms:issued rdf:datatype="http:\/\/www.w3.org\/2001\/XMLSchema#string">(.*)\<\/dcterms:issued\>/', $request, $matches, PREG_OFFSET_CAPTURE);
+            preg_match('/\<dcterms:issued rdf:datatype="https?:\/\/www.w3.org\/2001\/XMLSchema#string">(.*)\<\/dcterms:issued\>/', $request, $matches, PREG_OFFSET_CAPTURE);
             if(!empty($matches[1][0])){
                 $this->zdbData['date_issued'] = $matches[1][0];
             }
         }
         
-        preg_match('/\<rdau:P60576 rdf:resource="http:\/\/ld.zdb-services.de\/resource\/(.*)"\/\>/', $request, $matches, PREG_OFFSET_CAPTURE);
-        
+        preg_match('/\<rdau:P60576 rdf:resource="https?:\/\/ld.zdb-services.de\/resource\/(.*)"\/\>/', $request, $matches, PREG_OFFSET_CAPTURE);
+
         if(!empty($matches[1][0])){
             $this->precursor[]['zdbid'] = $matches[1][0];
 
@@ -396,18 +395,17 @@ class Tx_libconnect_Resources_Private_Lib_Zdb {
             $url = "https://ld.zdb-services.de/data/".$this->precursor[$key]['zdbid'].".rdf";
 
             $request = $this->setRequest($url);
-            
+
             /*get data*/
             //get name
-            preg_match('/\<dc:title rdf:datatype="http:\/\/www.w3.org\/2001\/XMLSchema#string"\>(.*)\<\/dc:title\>/', $request, $matches, PREG_OFFSET_CAPTURE);
-            
+            preg_match('/\<dc:title rdf:datatype="https?:\/\/www.w3.org\/2001\/XMLSchema#string"\>(.*)\<\/dc:title\>/', $request, $matches, PREG_OFFSET_CAPTURE);
+
             if(!empty($matches[1][0])){
                 $this->precursor[$key]['name'] = $matches[1][0];
             }
-            //var_dump($matches);exit;
 
             //get date issued
-            preg_match('/\<dcterms:issued rdf:datatype="http:\/\/www.w3.org\/2001\/XMLSchema#string">(.*)\<\/dcterms:issued\>/', $request, $matches, PREG_OFFSET_CAPTURE);
+            preg_match('/\<dcterms:issued rdf:datatype="https?:\/\/www.w3.org\/2001\/XMLSchema#string">(.*)\<\/dcterms:issued\>/', $request, $matches, PREG_OFFSET_CAPTURE);
             if(!empty($matches[1][0])){
                 $this->precursor[$key]['date_issued'] = $matches[1][0];
             }
@@ -418,7 +416,7 @@ class Tx_libconnect_Resources_Private_Lib_Zdb {
 
         return $this->precursor;
     }
-    
+
     /**
      * 
      * @param string $zdbId
@@ -444,15 +442,14 @@ class Tx_libconnect_Resources_Private_Lib_Zdb {
 
             /*get data*/
             //get name
-            preg_match('/\<dc:title rdf:datatype="http:\/\/www.w3.org\/2001\/XMLSchema#string"\>(.*)\<\/dc:title\>/', $request, $matches, PREG_OFFSET_CAPTURE);
-            
+            preg_match('/\<dc:title rdf:datatype="https?:\/\/www.w3.org\/2001\/XMLSchema#string"\>(.*)\<\/dc:title\>/', $request, $matches, PREG_OFFSET_CAPTURE);
+
             if(!empty($matches[1][0])){
                 $this->successor[$key]['name'] = $matches[1][0];
             }
-            //var_dump($matches);exit;
 
             //get date issued
-            preg_match('/\<dcterms:issued rdf:datatype="http:\/\/www.w3.org\/2001\/XMLSchema#string">(.*)\<\/dcterms:issued\>/', $request, $matches, PREG_OFFSET_CAPTURE);
+            preg_match('/\<dcterms:issued rdf:datatype="https?:\/\/www.w3.org\/2001\/XMLSchema#string">(.*)\<\/dcterms:issued\>/', $request, $matches, PREG_OFFSET_CAPTURE);
             if(!empty($matches[1][0])){
                 $this->successor[$key]['date_issued'] = $matches[1][0];
             }
@@ -463,11 +460,11 @@ class Tx_libconnect_Resources_Private_Lib_Zdb {
 
         return $this->successor;
     }
-    
+
     public function getZdbData(){
         return $this->zdbData;
     }
-    
+
     /**
      *
      * @param type string
