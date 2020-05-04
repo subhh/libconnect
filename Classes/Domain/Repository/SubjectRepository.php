@@ -39,7 +39,7 @@ Class SubjectRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
      * 
      * @return object
      */
-    public function myFindAll() {
+    public function findAll() {
         $query = $this->createQuery();
         $query->statement('SELECT * FROM tx_libconnect_domain_model_subject WHERE deleted = 0 AND hidden = 0');
 
