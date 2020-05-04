@@ -60,10 +60,16 @@ class Request {
                 $content = $this->getXml($response);
             }elseif (strpos($contentType, 'text/xml;charset=iso-8859-1') === 0) {//EZB
                 $content = $this->getXml($response);
+            }elseif(strpos($contentType, 'application/rdf+xml;charset=utf-8') === 0){//title history
+                $content = $this->getText($response);
+
+            //moreDetails
+            }elseif(preg_match('/text\/html;charset=(iso-8859-1)?(utf-8)?/', $contentType, $matches)){
+                $content = $this->getText($response);
             }
 
             else {
-                echo "Fehler: Falsche Inhalt";
+                return FALSE;
             }
         }else{
             if ($this->debug){
@@ -76,9 +82,10 @@ class Request {
     }
     
     /**
+     * returns content of request as simplexml object
      * 
-     * @param type $response
-     * @return array
+     * @param obj $response
+     * @return simplexml
      */
     public function getXml($response){
         //simplexml_load_string will produce E_WARNING error messages for each error
@@ -112,4 +119,15 @@ class Request {
         return $content;
     }
 
+    /**
+     * returns content of response
+     *
+     * @param obj $response
+     * @return string
+     */
+    private function getText($response){
+        $content = $response->getBody()->getContents();
+
+        return $content;
+    }
 }
