@@ -41,10 +41,6 @@
 
 use \Sub\Libconnect\Service\Request;
 
-if (!defined('TYPO3_COMPOSER_MODE') && defined('TYPO3_MODE')) {
-	require_once(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('libconnect') . 'Resources/Private/Lib/Httppageconnection.php');
-}
-
 class Tx_libconnect_Resources_Private_Lib_Ezb {
 
     // document search meta infos
@@ -347,7 +343,7 @@ class Tx_libconnect_Resources_Private_Lib_Ezb {
             }
         }
 
-        $journal['moreDetails'] = $this->getMoreDetails($journalId);
+        //$journal['moreDetails'] = $this->getMoreDetails($journalId);
 
         return $journal;
     }
@@ -755,7 +751,7 @@ class Tx_libconnect_Resources_Private_Lib_Ezb {
      * @return array
      */
     private function getMoreDetails($journalId){
-        $params = array('bibid' => $this->bibID, 'jour_id' =>$journalId, 'colors' => $this->colors, 'lang' => $this->lang);
+        $params = array('bibid' => $this->bibID, 'jour_id' =>$journalId, 'colors' => $this->colors, 'lang' => $this->lang, 'xmloutput' => 0);
         $htmlResponse = $this->setRequest('http://rzblx1.uni-regensburg.de/ezeit/detail.phtml', $params);
 
         $moreDetails = array();
