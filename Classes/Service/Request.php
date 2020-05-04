@@ -87,7 +87,7 @@ class Request {
      * @param obj $response
      * @return simplexml
      */
-    public function getXml($response){
+    private function getXml($response){
         //simplexml_load_string will produce E_WARNING error messages for each error
         //found in the XML data. Therefore suppress error messages in any mode and
         //handle errors for debug-mode differently.
