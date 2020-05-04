@@ -73,9 +73,6 @@ class Tx_libconnect_Resources_Private_Lib_Zdb {
     //private $briefformat_request_url = 'http://services.dnb.de/fize-service/gvr/brief.xml?';
     private $fullformat_request_url = 'http://services.dnb.de/fize-service/gvr/full.xml';
 
-    // XML Data Object
-    private $XMLPageConnection;
-    
     // title history
     private $precursor = array();
     private $successor = array();
