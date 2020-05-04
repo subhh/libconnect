@@ -484,7 +484,7 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
             }
         }
 
-        $details['moreDetails'] = $this->getMoreDetails($db_id);
+        //$details['moreDetails'] = $this->getMoreDetails($db_id);
 
         return $details;
     }
