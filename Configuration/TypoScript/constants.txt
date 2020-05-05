@@ -16,12 +16,6 @@ plugin.tx_libconnect {
     //zdbisil = ISIL
     //zdbbik = ISIL	
 
-    #proxy configuration for CURL
-    # cat=plugin.tx_libconnect/settings/0010; type=string; label=name or ip of proxy
-    proxy = 
-    # cat=plugin.tx_libconnect/settings/0011; type=string; label=port of proxy
-    proxy_port = 
-    
     persistence {
         # cat=plugin.tx_libconnect/settings/0020; type=int+; label=Default storage PID
         storagePid = 1
