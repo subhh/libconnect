@@ -8,14 +8,13 @@ Here is the German [Manual](doc/manual.pdf "Ausführliches Manual").
 
 Visit our git repository: https://github.com/subhh/libconnect
 
-## 6.1.0
-    - DBIS: 
-        - list, new in DBIS: decide to show short or full licence information
-        - fixed double access information in lists
-    - better comatibility to TYPO3 8 LTS
+## 7.0.0
+    - DBIS: warpto link changed to https
+    - EZB: Title history fixed.
+    - Guzzle is now used to do http request.
+    - min Compatibility now 8.7
 
 Tested with 
-    - TYPO3 7.6.32
     - TYPO3 8.7.24
     - TYPO3 9.5.4
 
