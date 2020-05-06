@@ -34,8 +34,6 @@
  * Typoscript Settings
  *      settings.enableLocationData = 1
  *      settings.validStatesList = 2,3
- *      settings.EZBSearchResultsPageId = pageID
- *      settings.DBISSearchResultsPageId = pageID
  *      settings.useIconService = 1/0
  *      zdbsid = id:phrase
  *      zdbbibid = BIBID
