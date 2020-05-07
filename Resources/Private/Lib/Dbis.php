@@ -63,7 +63,6 @@ class Tx_Libconnect_Resources_Private_Lib_Dbis {
      * constructor
      */
     public function __construct() {
-        //$this->HttpPageConnection = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('tx_libconnect_resources_private_lib_httppageconnection');
         $this->setBibID();
     }
 
