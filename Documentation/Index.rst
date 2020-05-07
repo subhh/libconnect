@@ -1,4 +1,4 @@
-.. every .rst file should include Includes.txt
+﻿.. every .rst file should include Includes.txt
 .. use correct path!
 
 .. include:: Includes.txt

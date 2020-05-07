@@ -1,4 +1,4 @@
-:template: sitemap.html
+﻿:template: sitemap.html
 
 .. _sitemap:
 
