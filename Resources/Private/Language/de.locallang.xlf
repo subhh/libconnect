@@ -1,0 +1,732 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.0" xmlns:t3="http://typo3.org/schemas/xliff">
+    <file source-language="en" datatype="plaintext" original="messages" date="2020-05-07T11:08:51Z" product-name="libconnect">
+        <header/>
+            <body>
+                <!-- all -->
+                <trans-unit id="tx_libconnect.submit.search" xml:space="preserve">
+                    <source>Search</source>
+                     <target>Suchen</target>
+                 </trans-unit>
+                <trans-unit id="tx_libconnect.reset.search" xml:space="preserve">
+                    <source>Reset</source>
+                    <target>Eingaben zurücksetzen</target>
+                </trans-unit>
+
+                <!-- DBIS -->
+                <trans-unit id="tx_libconnect.dbis.detail.access.alic" xml:space="preserve">
+                    <source>More Licensed Access:</source>
+                    <target>Weitere lizenzierte Zugänge:</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.detail.access.hints" xml:space="preserve">
+                    <source>Hints:</source>
+                    <target>Hinweise:</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.detail.access.lic" xml:space="preserve">
+                    <source>More Licensed Access:</source>
+                    <target>Weitere lizenzierte Zugänge:</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.detail.access.free" xml:space="preserve">
+                    <source>More Free Access:</source>
+                    <target>Weitere freie Zugänge:</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.detail.access.other" xml:space="preserve">
+                    <source>Addtion internet offer:</source>
+                    <target>Zusätzliches Internet-Angebot:</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.detail.access.ppu" xml:space="preserve">
+                    <source>More Pay-per-Use Access:</source>
+                    <target>weitere Pay-per-Use Zugänge:</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.detail.access.text" xml:space="preserve">
+                    <source>Availability:</source>
+                    <target>Verfügbarkeit:</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.detail.appearence" xml:space="preserve">
+                    <source>Form Of Appearance:</source>
+                    <target>Erscheinungsform:</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.detail.content" xml:space="preserve">
+                    <source>Contents:</source>
+                    <target>Inhalte:</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.detail.database" xml:space="preserve">
+                    <source>Database</source>
+                    <target>Datenbank</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.detail.dbtype" xml:space="preserve">
+                    <source>Database Type:</source>
+                    <target>Datenbank-Typ:</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.detail.error.h1" xml:space="preserve">
+                    <source>Error</source>
+                    <target>Fehler</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.detail.error.p1" xml:space="preserve">
+                    <source>An error occurred while requesting the database.</source>
+                    <target>Es ist ein Fehler bei der Anfrage der Datenbank aufgetreten.</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.detail.error.p2" xml:space="preserve">
+                    <source>Maybe the selected database doesn´t exist. Please retry or ask the administrator.</source>
+                    <target>Möglicherweise ist die angefragte Datenbank nicht vorhanden. Bitte versuchen Sie es erneut oder wenden Sie sich an das Web-Team der Bibliothek, das Ihnen beim Auffinden des Datensatzes gerne behilflich ist.</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.detail.isbn" xml:space="preserve">
+                    <source>ISBN/ISSN</source>
+                    <target>im Zeitraum</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.detail.instruction" xml:space="preserve">
+                    <source>Instruction:</source>
+                    <target>Anleitung:</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.detail.keywords" xml:space="preserve">
+                    <source>Tags:</source>
+                    <target>Schlagwörter:</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.detail.license" xml:space="preserve">
+                    <source>License:</source>
+                    <target>Lizenz:</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.detail.othertitle" xml:space="preserve">
+                    <source>Other Titels:</source>
+                    <target>Weitere Titel:</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.detail.publisher" xml:space="preserve">
+                    <source>Publisher:</source>
+                    <target>Verlag:</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.detail.recherche" xml:space="preserve">
+                    <source>Start Search</source>
+                    <target>Recherche starten</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.detail.remarks" xml:space="preserve">
+                    <source>More Remarks</source>
+                    <target>Weitere Bemerkungen:</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.detail.report_periods" xml:space="preserve">
+                    <source>Report Periods:</source>
+                    <target>Berichtszeitraum:</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.detail.subjects" xml:space="preserve">
+                    <source>Subjects:</source>
+                    <target>Fachgebiete:</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.detail.update" xml:space="preserve">
+                    <source>Update:</source>
+                    <target>Erscheinungsweise:</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.detail.notavailable_start" xml:space="preserve">
+                    <source>This title is for the</source>
+                    <target>Diese Datenbank ist für die</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.detail.notavailable_end"" xml:space="preserve">
+                    <source>not available.</source>
+                    <target>nicht verfügbar.</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.detail.library_with_title" xml:space="preserve">
+                    <source>Library/ies with proofed stock:</source>
+                    <target>Bibliothek(en) mit Bestandsnachweis:</target>
+                </trans-unit>
+
+                <trans-unit id="tx_libconnect.dbis.form.access_type" xml:space="preserve">
+                    <source>Access Type:</source>
+                    <target>Zugangsart:</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.form.datbase_types" xml:space="preserve">
+                    <source>Database Types:</source>
+                    <target>Datenbank-Typen:</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.form.extended_search" xml:space="preserve">
+                    <source>Extended Search For Databases</source>
+                    <target>Erweiterte Suche nach Datenbanke</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.form.field" xml:space="preserve">
+                    <source>Field</source>
+                    <target>Feldangabe</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.form.limit_search" xml:space="preserve">
+                    <source>Limit Search On:</source>
+                    <target>Suche einschränken auf:</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.form.link" xml:space="preserve">
+                    <source>Link</source>
+                    <target>Verknüpfung</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.form.negator" xml:space="preserve">
+                    <source>Negator</source>
+                    <target>Negator</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.form.search_term" xml:space="preserve">
+                    <source>Search Term</source>
+                    <target>Suchbegriff</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.form.subject" xml:space="preserve">
+                    <source>Subject:</source>
+                    <target>Fachgebiete:</target>
+                </trans-unit>
+
+                <trans-unit id="tx_libconnect.dbis.form.regions" xml:space="preserve">
+                    <source>Regions:</source>
+                    <target>Regionen:</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.form.formal_type" xml:space="preserve">
+                    <source>Formal Type</source>
+                    <target>Formaler Typ</target>
+                </trans-unit>
+
+                <trans-unit id="tx_libconnect.dbis.list.full_list" xml:space="preserve">
+                    <source>Complete List</source>
+                    <target>Gesamtangebot</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.list.headline.dbis" xml:space="preserve">
+                    <source>DBIS</source>
+                    <target>DBIS</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.list.headline.subject" xml:space="preserve">
+                    <source>List by Subject</source>
+                    <target>Fachgebiet</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.list.legend.headline" xml:space="preserve">
+                    <source>license:</source>
+                    <target>Zugriffe:</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.list.topdatabases" xml:space="preserve">
+                    <source>Top Databases</source>
+                    <target>Top Datenbanken</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.list.emptyResults" xml:space="preserve">
+                    <source>No results found. Please change the access.</source>
+                    <target>Keine Einträge gefunden. Ändern Sie bitte die Zugangsart.</target>
+                </trans-unit>
+            
+                <trans-unit id="tx_libconnect.dbis.miniform.link.sort" xml:space="preserve">
+                    <source>Sort</source>
+                    <target>Sortierung</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.miniform.listing_alph" xml:space="preserve">
+                    <source>List by Title</source>
+                    <target>alphabetisch</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.miniform.listing_subject" xml:space="preserve">
+                    <source>List by Subject</source>
+                    <target>Fachübersicht</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.miniform.listing_type" xml:space="preserve">
+                    <source>Database Type</source>
+                    <target>nach Datenbanktyp</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.miniform.new.all" xml:space="preserve">
+                    <source>New in DBIS</source>
+                    <target>Neu in DBIS</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.miniform.new.subject" xml:space="preserve">
+                    <source>New in your subject</source>
+                    <target>Neu in Ihrem Fachgebiet</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.miniform.search_header" xml:space="preserve">
+                    <source>Search For Databases</source>
+                    <target>Suche nach Datenbanken</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.miniform.search_link" xml:space="preserve">
+                    <source>Extended Search</source>
+                    <target>Erweiterte Suche</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.miniform.search_term" xml:space="preserve">
+                    <source>Search Term</source>
+                    <target>Suchbegriff</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.miniform.select_access" xml:space="preserve">
+                    <source>Choose Accesstype</source>
+                    <target>Zugang wählen</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.miniform.show_databases" xml:space="preserve">
+                    <source>Show Databases</source>
+                    <target>Datenbanken anzeigen</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.miniform.submit.search" xml:space="preserve">
+                    <source>Search</source>
+                    <target>Suchen</target>
+                </trans-unit>
+
+                <trans-unit id="tx_libconnect.dbis.new.headline" xml:space="preserve">
+                    <source>New in DBIS</source>
+                    <target>Neu in DBIS</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.new.headline.subject" xml:space="preserve">
+                    <source>Subject</source>
+                    <target>Fachgebiet</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.new.hits" xml:space="preserve">
+                    <source>There are</source>
+                    <target>Es gibt</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.new.since" xml:space="preserve">
+                    <source>new entries since</source>
+                    <target>neue Einträge seit dem</target>
+                </trans-unit>
+
+                <trans-unit id="tx_libconnect.dbis.overview.headline" xml:space="preserve">
+                    <source>Database information system</source>
+                    <target>Datenbank-Infosystem</target>
+                </trans-unit>
+                
+                <trans-unit id="tx_libconnect.dbis.search.criterion" xml:space="preserve">
+                    <source>You searched for:</source>
+                    <target>Sie suchten nach folgenden Kriterien:</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.search.hits" xml:space="preserve">
+                    <source>Hit(s) %s:</source>
+                    <target>Die Suche ergab %s Treffer:</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.search.licence" xml:space="preserve">
+                    <source>Access:</source>
+                    <target>Zugriffe:</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.search.access" xml:space="preserve">
+                    <source>Access:</source>
+                    <target>Zugriffe:</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.search.results" xml:space="preserve">
+                    <source>Results of your search</source>
+                    <target>Ergebnisse Ihrer Suche</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.search.top_databases" xml:space="preserve">
+                    <source>Top Databases</source>
+                    <target>Top Datenbanken</target>
+                </trans-unit>
+            
+                <!-- EZB -->            
+            
+                <trans-unit id="tx_libconnect.ezb.articipants.categories" xml:space="preserve">
+                    <source>2. categories:</source>
+                    <target>2. Kategorien:</target>
+                </trans-unit>           
+                <trans-unit id="tx_libconnect.ezb.articipants.countries" xml:space="preserve">
+                    <source>1. countries:</source>
+                    <target>1. Länder:</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.articipants.infotext" xml:space="preserve">
+                    <source>With the following form you can change your institution view for displaying the related holdings information.</source>
+                    <target>Folgende an der Elektronischen Zeitschriftenbibliothek beteiligten Einrichtungen bieten ihren Benutzern Zugriff auf die Volltexte der Zeitschrift.</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.articipants.participants" xml:space="preserve">
+                    <source>3. Choose your institution:</source>
+                    <target>3. Wählen Sie die Einrichtung aus:</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.articipants.submit" xml:space="preserve">
+                    <source>Go to the choosed institution</source>
+                    <target>Zur gewählten Einrichtung wechseln</target>
+                </trans-unit>
+
+                <trans-unit id="tx_libconnect.ezb.detail.appearence" xml:space="preserve">
+                    <source>Appearance</source>
+                    <target>Form</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.costs" xml:space="preserve">
+                    <source>Costs</source>
+                    <target>Kosten</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.eissns_join" xml:space="preserve">
+                    <source>E-ISSN(s)</source>
+                    <target>E-ISSN(s)</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.error.h1" xml:space="preserve">
+                    <source>Error</source>
+                    <target>Fehler</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.error.p1" xml:space="preserve">
+                    <source>An error occurred while requesting the journals.</source>
+                    <target>Es ist ein Fehler bei der Anfrage der elektronische Zeitschrift aufgetreten.</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.error.p2" xml:space="preserve">
+                    <source>Maybe the selected journal doesn´t exist. Please retry or ask the administrator.</source>
+                    <target>Möglicherweise ist die angefragte Zeitschrift nicht vorhanden. Bitte versuchen Sie es erneut oder wenden Sie sich an das Web-Team der Bibliothek, das Ihnen beim Auffinden des Datensatzes gerne behilflich ist.</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.fulltext.th" xml:space="preserve">
+                    <source>Fulltext</source>
+                    <target>Volltext</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.in_period" xml:space="preserve">
+                    <source>in the period</source>
+                    <target>im Zeitraum</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.issue.td" xml:space="preserve">
+                    <source>H.</source>
+                    <target>H.</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.homepages.th" xml:space="preserve">
+                    <source>Homepage(s)</source>
+                    <target>Homepage(s)</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.license.th" xml:space="preserve">
+                    <source>Licensed Period</source>
+                    <target>Lizenzierter Zeitraum</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.keywords_join" xml:space="preserve">
+                    <source>Tag(s)</source>
+                    <target>Schlagwort(e)</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.movingwall" xml:space="preserve">
+                    <source>Moving Wall</source>
+                    <target>Moving Wall</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.movingwall.begin" xml:space="preserve">
+                    <source>available for</source>
+                    <target>verfügbar für</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.movingwall.end.i.more" xml:space="preserve">
+                    <source>issues</source>
+                    <target>Ausgaben</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.movingwall.end.i.one" xml:space="preserve">
+                    <source>issue</source>
+                    <target>Ausgabe</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.movingwall.end.d.more" xml:space="preserve">
+                    <source>days</source>
+                    <target>Tage</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.movingwall.end.d.one" xml:space="preserve">
+                    <source>day</source>
+                    <target>Tag</target>
+                    </trans-unit>           
+                <trans-unit id="tx_libconnect.ezb.detail.movingwall.end.m.more" xml:space="preserve">
+                    <source>months</source>
+                    <target>Monate</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.movingwall.end.m.one" xml:space="preserve">
+                    <source>month</source>
+                    <target>Monat</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.movingwall.end.v.more" xml:space="preserve">
+                    <source>volumes</source>
+                    <target>Bände</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.movingwall.end.v.one" xml:space="preserve">
+                    <source>volume</source>
+                    <target>Band</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.movingwall.end.y.more" xml:space="preserve">
+                    <source>volumes</source>
+                    <target>Jahrgänge</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.movingwall.end.y.one" xml:space="preserve">
+                    <source>volume</source>
+                    <target>Jahrgang</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.movingwall.middle.one" xml:space="preserve">
+                    <source>the current</source>
+                    <target>den aktuellen</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.movingwall.middle.one.i" xml:space="preserve">
+                    <source>the current</source>
+                    <target>die aktuelle</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.movingwall.middle.one.v" xml:space="preserve">
+                    <source>the current</source>
+                    <target>der aktuelle</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.movingwall.middle.more" xml:space="preserve">
+                    <source>the current</source>
+                    <target>die aktuellen</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.movingwall.not" xml:space="preserve">
+                    <source>Not</source>
+                    <target>Nicht</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.movingwall.yes" xml:space="preserve">
+                    <source>Only</source>
+                    <target>Nur</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.participants" xml:space="preserve">
+                    <source>List of participate institutions which offer full access.</source>
+                    <target>Liste der teilnehmenden Institutionen, die Volltextzugriff bieten.</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.period.a" xml:space="preserve">
+                    <source>Full Period</source>
+                    <target>gesamter Zeitraum</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.period.homepage" xml:space="preserve">
+                    <source>Homepage of the journal</source>
+                    <target>Homepage der Zeitschrift</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.period.readme" xml:space="preserve">
+                    <source>ReadMe</source>
+                    <target>ReadMe</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.period.rest" xml:space="preserve">
+                    <source>Remaining Periods</source>
+                    <target>Restliche Zeiträume</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.pissns_join" xml:space="preserve">
+                    <source>P-ISSN(s)</source>
+                    <target>P-ISSN(s)</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.price_type_annotation" xml:space="preserve">
+                    <source>Pricetype annotation</source>
+                    <target>Preistyp Anmerkung</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.print.info" xml:space="preserve">
+                    <source>Informations of availability</source>
+                    <target>Informationen zur Verfügbarkeit</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.print.location" xml:space="preserve">
+                    <source>Location</source>
+                    <target>Standort</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.print.period" xml:space="preserve">
+                    <source>Inventory</source>
+                    <target>Bestand</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.print.signature" xml:space="preserve">
+                    <source>Signature</source>
+                    <target>Grundsignatur</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.print.source" xml:space="preserve">
+                    <source>Source</source>
+                    <target>Quelle</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.print.titel" xml:space="preserve">
+                    <source>Titel</source>
+                    <target>Titel</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.print.yes" xml:space="preserve">
+                    <source>Print Available</source>
+                    <target>im Druck vorhanden</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.publisher.th" xml:space="preserve">
+                        <source>Publisher</source>
+                    <target>Verlag</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.remarks" xml:space="preserve">
+                    <source>Comment</source>
+                    <target>Bemerkung</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.result.th" xml:space="preserve">
+                    <source>Availability</source>
+                    <target>Verfügbarkeit</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.since.th" xml:space="preserve">
+                    <source>Fulltext available since</source>
+                    <target>Volltext online seit</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.subjects_join" xml:space="preserve">
+                    <source>Subject(s)</source>
+                    <target>Fachgruppe(n)</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.title_history" xml:space="preserve">
+                    <source>Title history</source>
+                    <target>Titelhistorie</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.untilthen.th" xml:space="preserve">
+                    <source>Fulltext available until</source>
+                    <target>Volltext online bis</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.volume.td" xml:space="preserve">
+                    <source>Volume</source>
+                    <target>Jg.</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.zdb.th" xml:space="preserve">
+                    <source>ZDB-ID</source>
+                    <target>ZDB Nummer</target>
+                </trans-unit>
+
+                <trans-unit id="tx_libconnect.ezb.form.input.search" xml:space="preserve">
+                    <source>Search</source>
+                    <target>Suchen</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.form.label.access" xml:space="preserve">
+                    <source>Fulltext article are</source>
+                    <target>Volltextartikel sind</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.form.label.extsearchform" xml:space="preserve">
+                    <source>Extended search of journals</source>
+                    <target>Erweiterte Suche nach Zeitschriften</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.form.label.hits" xml:space="preserve">
+                    <source>Hits per page</source>
+                    <target>Treffer pro Seite</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.form.label.link" xml:space="preserve">
+                    <source>Link</source>
+                    <target>Verknüpfung</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.form.label.searchterm" xml:space="preserve">
+                    <source>Search term</source>
+                    <target>Suchbegriff</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.form.label.subject" xml:space="preserve">
+                    <source>Subject</source>
+                    <target>Fachgebiete</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.form.label.type" xml:space="preserve">
+                    <source>Type</source>
+                    <target>Feldangabe</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.form.legend.limit" xml:space="preserve">
+                    <source>Restrict search</source>
+                    <target>Suche einschränken</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.form.option.hits" xml:space="preserve">
+                    <source>all</source>
+                    <target>alle</target>
+                </trans-unit>
+
+                <trans-unit id="tx_libconnect.ezb.legend.headline" xml:space="preserve">
+                    <source>Legend:</source>
+                    <target>Legende:</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.legend.icon.green" xml:space="preserve">
+                    <source>Free available</source>
+                    <target>Frei zugänglich</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.legend.icon.red" xml:space="preserve">
+                    <source>Free for your location. Partial only access to abstracts</source>
+                    <target>Für Ihren Standort nicht freigeschaltet. Zum Teil bekommen Sie Zugriff auf Abstracts</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.legend.icon.yellow" xml:space="preserve">
+                    <source>On campus network and member of the university external accessible</source>
+                    <target>Im Campus-Netz sowie für Angehörige der Universität auch extern zugänglich</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.legend.icon.yellow.red" xml:space="preserve">
+                    <source>Only a part of the volumes is accessible</source>
+                    <target>Nur für einen Teil der erschienenen Jahrgänge zugänglich</target>
+                </trans-unit>
+
+                <trans-unit id="tx_libconnect.ezb.list.headline.alphabetical" xml:space="preserve">
+                    <source>EZB - List by Title</source>
+                    <target>EZB - Alphabetische Auflistung</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.list.headline.subject" xml:space="preserve">
+                    <source>EZB - List by subject</source>
+                    <target>EZB - Auflistung nach Fachgebieten</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.list.pages.article" xml:space="preserve">
+                    <source>Article list</source>
+                    <target>Artikelliste</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.list.pages.closed" xml:space="preserve">
+                    <source>closed</source>
+                    <target>geschlossen</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.list.pages.opened" xml:space="preserve">
+                    <source>open</source>
+                    <target>offen</target>
+                </trans-unit>
+
+                <trans-unit id="tx_libconnect.ezb.miniform.link.allsubjects" xml:space="preserve">
+                    <source>Overview subjects</source>
+                    <target>Übersicht Fachgebiete</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.miniform.link.alphabetical" xml:space="preserve">
+                    <source>List by Title</source>
+                    <target>alphabetisch</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.miniform.link.extended_search" xml:space="preserve">
+                    <source>Extended search</source>
+                    <target>Erweiterte Suche</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.miniform.link.sort" xml:space="preserve">
+                    <source>Sort</source>
+                    <target>Sortierung</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.miniform.link.subject" xml:space="preserve">
+                    <source>List by subject</source>
+                    <target>nach Fachgebieten</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.miniform.new.all" xml:space="preserve">
+                    <source>New in EZB</source>
+                    <target>Neu in der EZB</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.miniform.new.subject" xml:space="preserve">
+                    <source>New in your Subject</source>
+                    <target>Neu in Ihrem Fach</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.miniform.searchform.headline" xml:space="preserve">
+                    <source>Search for journals</source>
+                    <target>Suche nach Zeitschriften</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.miniform.searchform.label" xml:space="preserve">
+                    <source>Name of the journalt</source>
+                    <target>Name der Zeitschrift</target>
+                </trans-unit>
+
+                <trans-unit id="tx_libconnect.ezb.new.headline.alphabetical" xml:space="preserve">
+                    <source>New in EZB - alphabetical list</source>
+                    <target>Neu in der EZB - Alphabetische Auflistung</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.new.headline.subject" xml:space="preserve">
+                    <source>New in EZB - list of all subject</source>
+                    <target>Neu in der EZB - Auflistung nach Fachgebieten</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.new.hits" xml:space="preserve">
+                    <source>new entries:</source>
+                    <target> neue Einträge:</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.new.since" xml:space="preserve">
+                    <source>There are since</source>
+                    <target>Es gibt seit dem </target>
+                </trans-unit>
+
+                <trans-unit id="tx_libconnect.ezb.overview.headline" xml:space="preserve">
+                    <source>Elektronische Zeitschriftenbibliothek (Electronic Journals Library)</source>
+                    <target>Elektronische Zeitschriftenbibliothek</target>
+                </trans-unit>
+
+                <trans-unit id="tx_libconnect.ezb.search.all.hits" xml:space="preserve">
+                    <source>Search results:</source>
+                    <target>Alle Treffer:</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.search.criterion" xml:space="preserve">
+                    <source>You searched for:</source>
+                    <target>Sie suchten nach folgenden Kriterien:</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.search.headline" xml:space="preserve">
+                    <source>Hit(s)</source>
+                    <target>Ergebnisse Ihrer Suche</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.search.error.headline" xml:space="preserve">
+                    <source>An error occurred:</source>
+                    <target>Bei der Suche ist ein Fehler aufgetreten:</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.search.error.text" xml:space="preserve">
+                    <source>You searched without search terms and subject.</source>
+                    <target>Sie haben keine Suchbegriffe eingegeben und kein Fachgebiet ausgewählt.</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.search.proper.hits" xml:space="preserve">
+                    <source>Exactly hits:</source>
+                    <target>Exakte Treffer:</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.search.text.hits" xml:space="preserve">
+                    <source>%s hit(s):</source>
+                    <target>Die Suche ergab %s Treffer:</target>
+                </trans-unit>
+
+                <!-- Suject -->
+
+                <trans-unit id="tx_libconnect_domain_model_ezb" xml:space="preserve">
+                    <source>EZB</source>
+                    <target>EZB</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect_domain_model_dbis" xml:space="preserve">
+                    <source>DBIS</source>
+                    <target>DBIS</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect_domain_model_subject" xml:space="preserve">
+                    <source>Subject</source>
+                    <target>Subject</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect_domain_model_subject.dbisid" xml:space="preserve">
+                    <source>Notation in DBIS</source>
+                    <target>Notation im DBIS-System</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect_domain_model_subject.ezbnotation" xml:space="preserve">
+                    <source>Notation in EZB</source>
+                    <target>Notation im EZB-System</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect_domain_model_subject.title" xml:space="preserve">
+                    <source>Name of subject</source>
+                    <target>Name des Fachgebiets</target>
+                </trans-unit>
+            </body>
+    </file>
+</xliff>
