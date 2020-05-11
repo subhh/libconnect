@@ -1,25 +1,25 @@
 {namespace libconnect=Sub\Libconnect\ViewHelpers}
-<h1 class="libconnect-h1"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.search.results" /></h1>
+<h1 class="libconnect-h1"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.dbis.search.results" /></h1>
 
-<p><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.search.criterion" /></p>
+<p><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.dbis.search.criterion" /></p>
 <f:render partial="Dbis/SearchDescription" arguments="{searchDescription:list.searchDescription}" />
 
 <f:if condition="{list.error}">
     <f:then>
         <p class="hitcount">
             <libconnect:strreplaceNp search="%s" replace="{list.values -> f:count()}">
-                <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.search.hits" />
+                <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.dbis.search.hits" />
             </libconnect:strreplaceNp>
         </p>
     </f:then>
     <f:else>
-        <h3 class="libconnect-h3"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.search.licence" /></h3>
+        <h3 class="libconnect-h3"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.dbis.search.licence" /></h3>
 
         <f:render partial="Dbis/ListLegend" arguments="{access_infos:list.access_infos}" />
 
         <f:if condition="<f:count subject='{list.top}' /> > 0">
             <div class="top-database-wrapper">
-                <h2><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.search.top_databases" /></h2>
+                <h2><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.dbis.search.top_databases" /></h2>
                     <ul class="dbis-top-list">
                         <f:for each="{list.top}" as="db">
                             <li><a href="{db.detail_link}"><f:format.htmlentitiesDecode>{db.title}</f:format.htmlentitiesDecode></a> (<f:format.htmlentitiesDecode>{db.access}</f:format.htmlentitiesDecode>)</li>
@@ -30,7 +30,7 @@
 
         <p class="hitcount">
             <libconnect:strreplaceNP search="%s" replace="{list.values -> f:count()}">
-                <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.dbis.search.hits" />
+                <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.dbis.search.hits" />
             </libconnect:strreplaceNP>
         </p>
 
