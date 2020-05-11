@@ -7,7 +7,7 @@
         <sDEF>
             <ROOT>
                 <TCEforms>
-                    <sheetTitle>LLL:EXT:lang/locallang_general.xml:LGL.startingpoint</sheetTitle>
+                    <sheetTitle>LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.general</sheetTitle>
                 </TCEforms>
                 <type>array</type>
                 <el>

@@ -7,7 +7,7 @@
         <sDEF>
             <ROOT>
                 <TCEforms>
-                    <sheetTitle>LLL:EXT:lang/locallang_general.xml:LGL.startingpoint</sheetTitle>
+                    <sheetTitle>LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.general</sheetTitle>
                 </TCEforms>
                 <type>array</type>
                 <el>
@@ -40,7 +40,7 @@
                                         <numIndex index="1">Ezb->displayNew</numIndex>
                                     </numIndex>
                                     <numIndex index="6" type="array">
-                                        <numIndex index="0">Auswahl Teilnehmer die Vollzugriff bieten</numIndex>
+                                        <numIndex index="0">Auswahl Teilnehmer die Vollzugriff bieten.</numIndex>
                                         <numIndex index="1">Ezb->displayParticipantsForm</numIndex>
                                     </numIndex>
                                     <numIndex index="7" type="array">
