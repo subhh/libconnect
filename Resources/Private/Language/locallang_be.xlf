@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.0" xmlns:t3="http://typo3.org/schemas/xliff">
+    <file source-language="en" datatype="plaintext" original="messages" date="2020-05-07T11:08:51Z" product-name="libconnect">
+        <header/>
+            <body>
+                <!-- all -->
+                <trans-unit id="tx_libconnect.flexform.general" xml:space="preserve">
+                    <source>General</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.flexform.output" xml:space="preserve">
+                    <source>Output</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.flexform.list" xml:space="preserve">
+                    <source>List</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.flexform.detailview" xml:space="preserve">
+                    <source>Detail view</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.flexform.sidebar" xml:space="preserve">
+                    <source>Sidebar - search form</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.flexform.sidebar" xml:space="preserve">
+                    <source>Sidebar - search form</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.flexform.search" xml:space="preserve">
+                    <source>Search form</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.flexform.detailpage" xml:space="preserve">
+                    <source>Detail page</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.flexform.listview" xml:space="preserve">
+                    <source>List view</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.flexform.detailedsearch" xml:space="preserve">
+                    <source>Page with detailed search</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.flexform.howlongnew" xml:space="preserve">
+                    <source>How How many days are entries marked as new? (default: 7)</source>
+                </trans-unit>
+
+                <!-- DBIS -->
+                <trans-unit id="tx_libconnect.flexform.dbis.new" xml:space="preserve">
+                    <source>New in DBIS</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.flexform.dbis.subject" xml:space="preserve">
+                    <source>Subject</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.flexform.dbis.sort" xml:space="preserve">
+                    <source>Sort</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.flexform.dbis.sort.databasetype" xml:space="preserve">
+                    <source>Database type</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.flexform.dbis.alphabetical" xml:space="preserve">
+                    <source>Alphabetical</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.flexform.dbis.sort.accesstype" xml:space="preserve">
+                    <source>Access type</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.flexform.dbis.access.information" xml:space="preserve">
+                    <source>Access information</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.flexform.dbis.access.full" xml:space="preserve">
+                    <source>full</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.flexform.dbis.access.short" xml:space="preserve">
+                    <source>short</source>
+                </trans-unit>
+
+
+                <!-- EZB -->
+                <trans-unit id="tx_libconnect.flexform.ezb.new" xml:space="preserve">
+                    <source>New in EZB</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.flexform.ezb.participantsformchoice" xml:space="preserve">
+                    <source>Selection of participate institutions, which offer full access.</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.flexform.ezb.participantsform" xml:space="preserve">
+                    <source>Page with form for selection of participate institutions, which offer full access.</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.flexform.ezb.contact" xml:space="preserve">
+                    <source>Contact</source>
+                </trans-unit>
+            </body>
+    </file>
+</xliff>
