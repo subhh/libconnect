@@ -78,7 +78,7 @@ return array(
             )
         ),*/
         'hidden' => array(
-            'label' => 'LLL:EXT:lang/locallang_general.xml:LGL.hidden',
+            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
             'config' => array(
                 'type' => 'check',
             ),
