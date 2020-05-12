@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2020-05-11T14:25:00Z" product-name="libconnect">
+		<header/>
+		<body>
+			<trans-unit id="title.description" xml:space="preserve">
+				<source>Name of subject</source>
+			</trans-unit>
+			<trans-unit id="dbisid.description" xml:space="preserve">
+				<source>Notation in the DBIS system</source>
+			</trans-unit>
+            <trans-unit id="ezbnotation.description" xml:space="preserve">
+				<source>Notation in the EZB system</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
