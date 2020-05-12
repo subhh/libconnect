@@ -82,14 +82,14 @@ return array(
             'config' => array(
                 'type' => 'check',
             ),
-	    'exclude' => 1
+            'exclude' => 1
         ),
         'title' => array(
             'label' => 'LLL:EXT:libconnect/Resources/Private/Language/locallang_db.xml:tx_libconnect_domain_model_subject.title',
             'config' => array(
                 'type' => 'input',
                 'size' => 30,
-		'max' => 255,
+                'max' => 255,
                 'eval' => 'trim,required'
             ),
            'exclude' => 0
@@ -99,7 +99,7 @@ return array(
             'config' => array(
                 'type' => 'input',
                 'size' => 30,
-		'max' => 255,
+                'max' => 255,
                 'eval' => 'trim'
             ),
             'exclude' => 0
@@ -109,7 +109,7 @@ return array(
             'config' => array(
                 'type' => 'input',
                 'size' => 30,
-		'max' => 255,
+                'max' => 255,
                 'eval' => 'trim'
             ),
             'exclude' => 0
