@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.0" xmlns:t3="http://typo3.org/schemas/xliff">
+    <file source-language="en" datatype="plaintext" original="messages" date="2020-05-12T10:30:51Z" product-name="libconnect">
+        <header/>
+            <body>
+                <trans-unit id="tx_libconnect_domain_model_subject" xml:space="preserve">
+                    <source>Subject</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect_domain_model_subject.title" xml:space="preserve">
+                    <source>Title</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect_domain_model_subject.dbisid" xml:space="preserve">
+                    <source>Dbisid</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect_domain_model_subject.ezbnotation" xml:space="preserve">
+                    <source>Ezbnotation</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect_domain_model_dbis" xml:space="preserve">
+                    <source>Dbis</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect_domain_model_ezb" xml:space="preserve">
+                    <source>Ezb</source>
+                </trans-unit>
+            </body>
+    </file>
+</xliff>
