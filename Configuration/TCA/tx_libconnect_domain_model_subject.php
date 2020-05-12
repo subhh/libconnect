@@ -85,7 +85,7 @@ return array(
             'exclude' => 1
         ),
         'title' => array(
-            'label' => 'LLL:EXT:libconnect/Resources/Private/Language/locallang_db.xml:tx_libconnect_domain_model_subject.title',
+            'label' => 'LLL:EXT:libconnect/Resources/Private/Language/locallang_db.xlf:tx_libconnect_domain_model_subject.title',
             'config' => array(
                 'type' => 'input',
                 'size' => 30,
@@ -95,7 +95,7 @@ return array(
            'exclude' => 0
         ),
         'dbisid' => array(
-            'label' => 'LLL:EXT:libconnect/Resources/Private/Language/locallang_db.xml:tx_libconnect_domain_model_subject.dbisid',
+            'label' => 'LLL:EXT:libconnect/Resources/Private/Language/locallang_db.xlf:tx_libconnect_domain_model_subject.dbisid',
             'config' => array(
                 'type' => 'input',
                 'size' => 30,
@@ -105,7 +105,7 @@ return array(
             'exclude' => 0
         ),
         'ezbnotation' => array(
-            'label' => 'LLL:EXT:libconnect/Resources/Private/Language/locallang_db.xml:tx_libconnect_domain_model_subject.ezbnotation',
+            'label' => 'LLL:EXT:libconnect/Resources/Private/Language/locallang_db.xlf:tx_libconnect_domain_model_subject.ezbnotation',
             'config' => array(
                 'type' => 'input',
                 'size' => 30,
