@@ -33,7 +33,7 @@ if (typeof jQuery == 'undefined') {
             head.appendChild(script);
     };
 
-    getScript('/typo3conf/ext/libconnect/Resources/Public/Js/jquery-3.3.1.min.js', function() {
+    getScript('/typo3conf/ext/libconnect/Resources/Public/JavaScript/jquery-3.3.1.min.js', function() {
 
         if (typeof jQuery=='undefined') {
             // Super failsafe - still somehow failed...
