@@ -13,33 +13,33 @@
                 <el>
                     <switchableControllerActions>
                         <TCEforms>
-                            <label>Ausgabe</label>
+                            <label>LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.general</label>
                             <onChange>reload</onChange>
                             <config>
                                 <type>select</type>
                                 <items type="array">
                                     <numIndex index="0">
-                                        <numIndex index="0">Top-Datenbanken</numIndex>
+                                        <numIndex index="0">LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.dbis.topdatabases</numIndex>
                                         <numIndex index="1">Dbis->displayTop</numIndex>
                                     </numIndex>
                                     <numIndex index="1">
-                                        <numIndex index="0">Liste</numIndex>
+                                        <numIndex index="0">LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.list</numIndex>
                                         <numIndex index="1">Dbis->displayList</numIndex>
                                     </numIndex>
                                     <numIndex index="2">
-                                        <numIndex index="0">Detailansicht</numIndex>
+                                        <numIndex index="0">LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.detailview</numIndex>
                                         <numIndex index="1">Dbis->displayDetail</numIndex>
                                     </numIndex>
                                     <numIndex index="3">
-                                        <numIndex index="0">Sidebar-Suchformular</numIndex>
+                                        <numIndex index="0">LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.sidebar</numIndex>
                                         <numIndex index="1">Dbis->displayMiniForm</numIndex>
                                     </numIndex>
                                     <numIndex index="4">
-                                        <numIndex index="0">Suchformular</numIndex>
+                                        <numIndex index="0">LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.search</numIndex>
                                         <numIndex index="1">Dbis->displayForm</numIndex>
                                     </numIndex>
                                     <numIndex index="5" type="array">
-                                        <numIndex index="0">Neu in DBIS</numIndex>
+                                        <numIndex index="0">LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.dbis.new</numIndex>
                                         <numIndex index="1">Dbis->displayNew</numIndex>
                                     </numIndex>
                                 </items>
@@ -50,7 +50,7 @@
                     <settings.flexform.subject>
                         <TCEforms>
                             <exclude>1</exclude>
-                            <label>Fachgebiet</label>
+                            <label>LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.dbis.subject</label>
                             <displayCond><![CDATA[FIELD:switchableControllerActions:=:Dbis->displayTop]]></displayCond>
                             <config>
                                 <type>select</type>
@@ -66,7 +66,7 @@
                     <settings.flexform.detailPid>
                         <TCEforms>
                             <exclude>1</exclude>
-                            <label>Detailseite</label>
+                            <label>LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.detailpage</label>
                             <displayCond><![CDATA[FIELD:switchableControllerActions:IN:Dbis->displayList,Dbis->displayTop,Dbis->displayNew]]></displayCond>
                             <config>
                                 <type>group</type>
@@ -83,7 +83,7 @@
                     <settings.flexform.listPid>
                         <TCEforms>
                             <exclude>1</exclude>
-                            <label>Listenausgabe</label>
+                            <label>LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.listview</label>
                             <displayCond><![CDATA[FIELD:switchableControllerActions:IN:Dbis->displayForm,Dbis->displayMiniForm]]></displayCond>
                             <config>
                                 <type>group</type>
@@ -100,7 +100,7 @@
                     <settings.flexform.searchPid>
                         <TCEforms>
                             <exclude>1</exclude>
-                            <label>Seite mit Detailsuche</label>
+                            <label>LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.detailedsearch</label>
                             <displayCond><![CDATA[FIELD:switchableControllerActions:=:Dbis->displayMiniForm]]></displayCond>
                             <config>
                                 <type>group</type>
@@ -117,21 +117,21 @@
                     <settings.flexform.sortParameter>
                         <TCEforms>
                             <exclude>1</exclude>
-                            <label>Sortierung</label>
+                            <label>LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.dbis.sort</label>
                             <displayCond><![CDATA[FIELD:switchableControllerActions:IN:Dbis->displayList,Dbis->displayNew]]></displayCond>
                             <config>
                                 <type>select</type>
                                 <items type="array">
                                     <numIndex index="0" type="array">
-                                        <numIndex index="0">Datenbanktyp</numIndex>
+                                        <numIndex index="0">LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.dbis.sort.databasetype</numIndex>
                                         <numIndex index="1">type</numIndex>
                                     </numIndex>
                                     <numIndex index="1" type="array">
-                                        <numIndex index="0">Alphabetisch</numIndex>
+                                        <numIndex index="0">LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.dbis.alphabetical</numIndex>
                                         <numIndex index="1">alph</numIndex>
                                     </numIndex>
                                     <numIndex index="2" type="array">
-                                        <numIndex index="0">Zugangsart</numIndex>
+                                        <numIndex index="0">LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.dbis.sort.accesstype</numIndex>
                                         <numIndex index="1">access</numIndex>
                                     </numIndex>
                                 </items>
@@ -142,7 +142,7 @@
                     <settings.flexform.countDays>
                         <TCEforms>
                             <exclude>1</exclude>
-                            <label>Wieviel Tage gelten Einträge als neu? (Standard: 7)</label>
+                            <label>LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.howlongnew</label>
                             <displayCond><![CDATA[FIELD:switchableControllerActions:IN:Dbis->displayNew,Dbis->displayMiniForm]]></displayCond>
                             <config>
                                 <type>input</type>
@@ -156,7 +156,7 @@
                     <settings.flexform.newPid>
                         <TCEforms>
                             <exclude>1</exclude>
-                            <label>Neu in DBIS</label>
+                            <label>LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xl:tx_libconnect.flexform.dbis.new</label>
                             <displayCond><![CDATA[FIELD:switchableControllerActions:IN:Dbis->displayMiniForm]]></displayCond>
                             <config>
                                 <type>group</type>
@@ -173,17 +173,17 @@
                     <settings.flexform.showAccess>
                         <TCEforms>
                             <exclude>1</exclude>
-                            <label>Zugangsinformationen</label>
+                            <label>LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.dbis.access.information</label>
                             <displayCond><![CDATA[FIELD:switchableControllerActions:IN:Dbis->displayList,Dbis->displayNew]]></displayCond>
                             <config>
                                 <type>select</type>
                                 <items type="array">
                                     <numIndex index="0" type="array">
-                                        <numIndex index="0">Langform</numIndex>
+                                        <numIndex index="0">LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.dbis.access.full</numIndex>
                                         <numIndex index="1">full</numIndex>
                                     </numIndex>
                                     <numIndex index="1" type="array">
-                                        <numIndex index="0">Kurzform</numIndex>
+                                        <numIndex index="0">LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.dbis.access.short</numIndex>
                                         <numIndex index="1">short</numIndex>
                                     </numIndex>
                                 </items>
