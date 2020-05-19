@@ -34,10 +34,6 @@ use TYPO3\CMS\Extbase\Annotation\Inject;
  * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
  *
  */
-if (!defined('TYPO3_COMPOSER_MODE') && defined('TYPO3_MODE')) {
-	require_once(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('libconnect') . 'Resources/Private/Lib/Ezb.php');
-	require_once(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('libconnect') . 'Resources/Private/Lib/Zdb.php');
-}
 
 Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
     private $ezb_to_t3_subjects = array();
@@ -62,7 +58,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
     public function loadOverview() {
         $this->loadSubjects();
 
-        $ezb =  \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_libconnect_Resources_Private_Lib_Ezb');
+        $ezb = NEW \Sub\Libconnect\Lib\Ezb;
 
         $subjectsOnline = $ezb->getFachbereiche();
 
@@ -115,7 +111,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
         //get notation for subject
         $subject = $this->t3_to_ezb_subjects[$subject_id];
 
-        $ezb =  \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_libconnect_Resources_Private_Lib_Ezb');
+        $ezb = NEW \Sub\Libconnect\Lib\Ezb;
 
         if($options['notation'] == 'All'){
             $subject['ezbnotation'] = 'All';
@@ -208,7 +204,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
      * @return boolean
      */
     public function loadDetail($journalId, $config) {
-        $ezb =  \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_libconnect_Resources_Private_Lib_Ezb');
+        $ezb = NEW \Sub\Libconnect\Lib\Ezb;
 
         $journal = $ezb->getJournalDetail($journalId);
 
@@ -326,7 +322,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
             $linkParams['libconnect[subject]'] = $searchVars['subject'];
         }
 
-        $ezb =  \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_libconnect_Resources_Private_Lib_Ezb');
+        $ezb = NEW \Sub\Libconnect\Lib\Ezb;
 
         $ezbColors = $this->getColors($colors);
         $ezb->setColors($ezbColors);     
@@ -441,7 +437,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
      * @return array
      */
     public function loadForm() {
-        $ezb = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_libconnect_Resources_Private_Lib_Ezb');
+        $ezb = NEW \Sub\Libconnect\Lib\Ezb;
         $form = $ezb->detailSearchFormFields();
 
         //Zugriffsinformationen holen
@@ -466,7 +462,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
      * @param array $journal
      */
     public function loadLocationData($journal) {
-        $zdb = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_Libconnect_Resources_Private_Lib_Zdb');
+        $zdb = NEW \Sub\Libconnect\Lib\Zdb;
 
         if(!empty($journal['ZDB_number'])){
             $locationData = $zdb->getJournalLocationDetails( NULL, $journal['ZDB_number']);
@@ -511,7 +507,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
      * @return array
      */
     public function getAccessInfos($short = FALSE){
-        $ezb = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_libconnect_Resources_Private_Lib_Ezb');
+        $ezb = NEW \Sub\Libconnect\Lib\Ezb;
 
         //get default texts
         $LongAccessInfos = $ezb->getLongAccessInfos();
@@ -581,7 +577,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
      */
     private function getSearchDescription($searchVars){
         $list = array();
-        $ezb = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_libconnect_Resources_Private_Lib_Ezb');
+        $ezb = NEW \Sub\Libconnect\Lib\Ezb;
         
         //search terms and theire categories
         $jq = "";
@@ -631,7 +627,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
      * @return array
      */
     public function getParticipantsList($journalId) {
-        $ezb = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_libconnect_Resources_Private_Lib_Ezb');
+        $ezb = NEW \Sub\Libconnect\Lib\Ezb;
         $list = $ezb->getParticipantsList($journalId);
 
         $bibID = $ezb->getBibID();
@@ -648,7 +644,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
      * @return array contact information: person, email
      */
     public function getContact(){
-        $ezb = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_libconnect_Resources_Private_Lib_Ezb');
+        $ezb = NEW \Sub\Libconnect\Lib\Ezb;
         $contact = $ezb->getContact();
         
         return $contact;
@@ -684,7 +680,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
      * @return array
      */
     private function getTitleHistory($zdbId){
-        $zdb = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_Libconnect_Resources_Private_Lib_Zdb');
+        $zdb = NEW \Sub\Libconnect\Lib\Zdb;
 
         $precursor = $zdb->getPrecursor($zdbId, TRUE);
 

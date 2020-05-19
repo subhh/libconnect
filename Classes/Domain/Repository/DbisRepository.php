@@ -27,6 +27,7 @@ namespace Sub\Libconnect\Domain\Repository;
 *  Avonis - New Media Agency - http://www.avonis.com/
 ***************************************************************/
 use TYPO3\CMS\Extbase\Annotation\Inject;
+
 /**
  *
  *
@@ -34,9 +35,6 @@ use TYPO3\CMS\Extbase\Annotation\Inject;
  * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
  *
  */
-if (!defined('TYPO3_COMPOSER_MODE') && defined('TYPO3_MODE')) {
-	require_once(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('libconnect') . 'Resources/Private/Lib/Dbis.php');
-}
 
 Class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
     private $dbis_to_t3_subjects = array();
@@ -64,7 +62,7 @@ Class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
         $subject = $this->t3_to_dbis_subjects[$config['subject']];
         $dbis_id = $subject['dbisid'];
 
-        $dbis = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_Libconnect_Resources_Private_Lib_Dbis');
+        $dbis = NEW \Sub\Libconnect\Lib\Dbis;
         $result = $dbis->getDbliste($dbis_id);
 
         //get top dbs
@@ -84,8 +82,8 @@ Class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
     public function loadList($subject_id, $config) {
         $this->loadSubjects();
 
-        $dbis = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_Libconnect_Resources_Private_Lib_Dbis');
-        
+        $dbis = NEW \Sub\Libconnect\Lib\Dbis;
+
         $accessFilter = FALSE;
         
         if(isset($config['search']['zugaenge']) && (strlen($config['search']['zugaenge']) > 0) ){
@@ -144,7 +142,7 @@ Class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
     public function loadOverview() {
         $this->loadSubjects();
 
-        $dbis = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_Libconnect_Resources_Private_Lib_Dbis');
+        $dbis = NEW \Sub\Libconnect\Lib\Dbis;
 
         $list = $dbis->getFachliste();
 
@@ -195,7 +193,7 @@ Class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
      * @return array $db
      */
     public function loadDetail($title_id) {
-        $dbis = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_Libconnect_Resources_Private_Lib_Dbis');
+        $dbis = NEW \Sub\Libconnect\Lib\Dbis;
         $db = $dbis->getDbDetails($title_id);
 
         if (! $db ){
@@ -217,7 +215,7 @@ Class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
         $this->loadSubjects();
 
         //execute search
-        $dbis = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_Libconnect_Resources_Private_Lib_Dbis');
+        $dbis = NEW \Sub\Libconnect\Lib\Dbis;
         $result = $dbis->search($searchVars);
 
         //stop if function called from "New" - controller
@@ -246,7 +244,7 @@ Class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
      * @return array $form
      */
     public function loadMiniForm() {
-        $dbis = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_Libconnect_Resources_Private_Lib_Dbis');
+        $dbis = NEW \Sub\Libconnect\Lib\Dbis;
         $form = $dbis->getExtendedForm();
 
         return $form;
@@ -258,7 +256,7 @@ Class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
      * @return array $form
      */
     public function loadForm() {
-        $dbis = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_Libconnect_Resources_Private_Lib_Dbis');
+        $dbis = NEW \Sub\Libconnect\Lib\Dbis;
         $form = $dbis->getExtendedForm();
         
         return $form;
