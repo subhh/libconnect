@@ -90,7 +90,7 @@
                 <trans-unit id="tx_libconnect.dbis.detail.notavailable_start" xml:space="preserve">
                     <source>This title is for the</source>
                 </trans-unit>
-                <trans-unit id="tx_libconnect.dbis.detail.notavailable_end"" xml:space="preserve">
+                <trans-unit id="tx_libconnect.dbis.detail.notavailable_end" xml:space="preserve">
                     <source>not available.</source>
                 </trans-unit>
                 <trans-unit id="tx_libconnect.dbis.detail.library_with_title" xml:space="preserve">
