@@ -743,6 +743,17 @@ class Ezb {
         $this->lang = $lang;
     }
 
+     /**
+     * returns detailview_request_url
+     *
+     * @return string
+     */
+    public function getDetailviewRequestUrl(){
+        $url = $this->detailview_request_url .'?colors='. $this->colors .'&lang='. $this->lang;
+
+        return $url;
+    }
+
     /**
      * get some inforemation from the HTML page
      *
