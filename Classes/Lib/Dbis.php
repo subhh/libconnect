@@ -1,5 +1,5 @@
 <?php
-
+namespace Sub\Libconnect\Lib;
 /***************************************************************
 * Copyright notice
 *
@@ -39,7 +39,7 @@ use \Sub\Libconnect\Service\Request;
  *
  */
 
-class Tx_Libconnect_Resources_Private_Lib_Dbis {
+class Dbis {
 
     //such meta
     private $fachgebiet;

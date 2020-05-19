@@ -1,5 +1,5 @@
 <?php
-
+namespace Sub\Libconnect\Lib;
 /***************************************************************
 * Copyright notice
 *
@@ -41,7 +41,7 @@
 
 use \Sub\Libconnect\Service\Request;
 
-class Tx_libconnect_Resources_Private_Lib_Ezb {
+class Ezb {
 
     // document search meta infos
     private $title;
