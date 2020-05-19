@@ -14,12 +14,7 @@
     "autoload": {
         "psr-4": {
             "Sub\\Libconnect\\": "Classes/"
-        },
-        "files": [
-            "Resources/Private/Lib/Dbis.php",
-            "Resources/Private/Lib/Ezb.php",
-            "Resources/Private/Lib/Zdb.php"
-        ]
+        }
     },
     "replace": {
         "libconnect": "self.version",
