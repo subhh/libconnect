@@ -14,24 +14,25 @@ Libconnect is easy to use.
 DBIS
 ====
 
-Add the plug-in DBIS. Now you can choose with "Ausgabe" the output with the following options:
+Add the plug-in DBIS. Now you can choose with "Output" the output with the following options:
 
-* Top-Datenbanken
-* Liste
-* Detailansicht
-* Sidebar-Suchformular
-* Neu in DBIS
+* Top databases
+* List
+* Detail view
+* Sidebar - search form
+* Search form
+* New in DBIS
 
 Every entry change the other available options.
 
-Top-Datenbanken - Top databases
--------------------------------
+Top databases
+-------------
 
 It generates a list with the top databases of a subject.
 
-Fachgebiet: Choose a subject.
+Subject: Choose a subject.
 
-Detailseite: Choose a detail page.
+Detail page: Choose a detail page.
 
 .. figure:: ../Images/Editor/DbisBackendTop.png
    :class: with-shadow
@@ -41,16 +42,16 @@ Detailseite: Choose a detail page.
    Configuringg the list for top databases.
 
 
-Liste - List
-------------
+List
+----
 
 Generates a list of datbases and links to the detail page. It is also used for search results.
 
-Detailseite: Choose a detail page.
+Detail page: Choose a detail page.
 
-Sortierung: Choose the sort by database type, name, access type. 
+Sort: Choose the sort by database type, name, access type. 
 
-Zugangsinformationen: Choose which access information texts are displayed, long or short form.
+Access information : Choose which access information texts are displayed, long or short form.
 
 
 .. figure:: ../Images/Editor/DbisBackendList.png
@@ -60,8 +61,8 @@ Zugangsinformationen: Choose which access information texts are displayed, long 
 
    Configuring the output as list.
 
-Detailansicht - Details
------------------------
+Detail view
+-----------
 
 Shows the details of a database. Here is nothig to set.
 
@@ -73,18 +74,18 @@ Shows the details of a database. Here is nothig to set.
    Set output for detail view.
 
 
-Sidebar-Suchformular - sidebar
-------------------------------
+Sidebar - search form
+---------------------
 
 This is a search bar to use on top or as sidebar.
 
-Listenausgabe: set page with dbis plug-in with output as list.
+List view: set page with dbis plug-in with output as list.
 
-Seite mit Detailsuche: set page with search.
+Page with detailed search : set page with search.
 
-Wieviel Tage gelten Einträge als neu? (Standard: 7): set the number of days for "New in dbis" how long entries marked as new.
+ How How many days are entries marked as new? (default: 7): set the number of days for "New in dbis" how long entries marked as new.
 
-Neu in DBIS: set page with the "Neu in DBIS". Generates a link to "New in DBIS" with number of new entries. If you choose a subject in list, you get new entries for this subject too. If you donn´t want to use this feature, let it empty.
+New in DBIS: set page with the "New in DBIS" output. Generates a link to "New in DBIS" with number of new entries. If you choose a subject in list, you get new entries for this subject too. If you donn´t want to use this feature, let it empty.
 
 .. figure:: ../Images/Editor/DbisBackendSidebar.png
    :class: with-shadow
@@ -93,18 +94,33 @@ Neu in DBIS: set page with the "Neu in DBIS". Generates a link to "New in DBIS" 
 
    Configuring the sidebar plug-in.
 
-Neu in DBIS - new entries
--------------------------
+Search form
+-----------
+
+This is an extended search form.
+
+List view: set page with dbis plug-in with output as list.
+
+.. figure:: ../Images/Editor/DbisBackendSearch.png
+   :class: with-shadow
+   :alt: output as sidebar
+   :width: 300px
+
+   Configuring the seach form.
+
+
+New in DBIS
+-----------
 
 It generats a list with all new databases. You decide how long is a database new.
 
-Detailseite: Choose a detail page.
+Detail page: Choose a detail page.
 
-Sortierung: Choose the sort by database type, name, access type.
+Sort: Choose the sort by database type, name, access type.
 
-Wieviel Tage gelten Einträge als neu? (Standard: 7): set the number of days for "Neu in DBIS" how long entries marked as new.'
+ How How many days are entries marked as new? (default: 7): set the number of days for "Neu in DBIS" how long entries marked as new.'
 
-Zugangsinformationen: Choose which access information texts are displayed, long or short form.
+ Access information: Choose which access information texts are displayed, long or short form.
 
 .. figure:: ../Images/Editor/DbisBackendNew.png
    :class: with-shadow
@@ -118,23 +134,24 @@ EZB
 
 Add the plug-in EZB. Now you can choose with "Ausgabe" the output with the following options:
 
-* Liste
-* Detailansicht
-* Sidebar-Suchformular
-* Neu in EZB
-* Auswahl Teilnehmer die Vollzugriff bieten
-* Kontakt
+* List
+* Detail view
+* Sidebar - search form
+* Search form
+* New in EZB
+* Selection of participate institutions, which offer full access.
+* Contakt
 
 
 
 Every entry change the other available options.
 
-Liste - List
-------------
+List
+----
 
 Generates a list of journals and links to the detail page. It is also used for search results.
 
-Detailseite: Choose a detail page.
+Detail page: Choose a detail page.
 
 
 .. figure:: ../Images/Editor/EzbBackendList.png
@@ -144,14 +161,13 @@ Detailseite: Choose a detail page.
 
    Configuring the output as list.
 
-Detailansicht - Details
------------------------
+Detail view
+-----------
 Shows the details of a journal.
 
-Listenausgabe: set page with ezb plug-in with output as list.
+ List view : set page with ezb plug-in with output as list.
 
-Seite mit Formular für Auswahl teilnehmender Institutionen, die Vollzugriff bieten: Set page with output of "Auswahl Teilnehmer die Vollzugriff bieten". On this page, the visitor get a form of libraries with full access to this yournal.
-If you don´t want a page with this output, let it empty and the detail page generates a link to the form of the website `https://ezb.uni-regensburg.de <https://ezb.uni-regensburg.de>`__.
+ Page with form for selection of participate institutions, which offer full access.: Set page with output of "Auswahl Teilnehmer die Vollzugriff bieten". On this page, the visitor get a form of libraries with full access to this yournal. If you don´t want a page with this output, let it empty and the detail page generates a link to the form of the website `https://ezb.uni-regensburg.de <https://ezb.uni-regensburg.de>`__.
 
 .. figure:: ../Images/Editor/EzbBackendDetails.png
    :class: with-shadow
@@ -160,18 +176,18 @@ If you don´t want a page with this output, let it empty and the detail page gen
 
    Set output for detail view.
 
-Sidebar-Suchformular - sidebar
-------------------------------
+Sidebar - search form
+---------------------
 
 This is a search bar to use on top or as sidebar.
 
-Listenausgabe: set page with ezb plug-in with output as list.
+ List view : set page with ezb plug-in with output as list.
 
-Seite mit Detailsuche: set page with search.
+ Page with detailed search : set page with search.
 
-Wieviel Tage gelten Einträge als neu? (Standard: 7): set the number of days for "New in ezb" how long entries marked as new.
+ How How many days are entries marked as new? (default: 7): set the number of days for "New in ezb" how long entries marked as new.
 
-Neu in EZB: set page with the "Neu in EZB". Generates a link to "Neu in EZB" with number of new entries. If you choose a subject in list, you get new entries for this subject too. If you donn´t want to use this feature, let it empty.
+New in EZB: set page with the "Neu in EZB". Generates a link to "Neu in EZB" with number of new entries. If you choose a subject in list, you get new entries for this subject too. If you donn´t want to use this feature, let it empty.
 
 .. figure:: ../Images/Editor/EzbBackendSidebar.png
    :class: with-shadow
@@ -180,16 +196,28 @@ Neu in EZB: set page with the "Neu in EZB". Generates a link to "Neu in EZB" wit
 
    Configuring the sidebar plug-in.
 
-Neu in EZB - new entries
--------------------------
+Search form
+-----------
+
+This is an extended search form.
+
+List view: set page with dbis plug-in with output as list.
+
+.. figure:: ../Images/Editor/EzbBackendSearch.png
+   :class: with-shadow
+   :alt: output as sidebar
+   :width: 300px
+
+   Configuring the seach form.
+
+New in EZB
+----------
 
 It generats a list with all new journals. You decide how long is a journal new.
 
-Listenausgabe: set page with ezb plug-in with output as list.
+Detail page: Choose a detail page.
 
-Detailseite: Choose a detail page.
-
-Wieviel Tage gelten Einträge als neu? (Standard: 7): set the number of days for "Neu in EZB" how long entries marked as new.'
+How How many days are entries marked as new? (default: 7): set the number of days for "Neu in EZB" how long entries marked as new.'
 
 
 .. figure:: ../Images/Editor/EzbBackendNew.png
@@ -199,8 +227,8 @@ Wieviel Tage gelten Einträge als neu? (Standard: 7): set the number of days for
 
    Configuring the list for new entries.
 
-Auswahl Teilnehmer die Vollzugriff bieten
------------------------------------------
+Selection of participate institutions, which offer full access.
+---------------------------------------------------------------
 
 Creates a for of libraries with full access to this yournal. The visitor choose the library and will be redirected to their page on https://ezb.uni-regensburg.de.
 
@@ -211,7 +239,7 @@ Creates a for of libraries with full access to this yournal. The visitor choose 
 
    Configuring the list for new entries.
 
-Kontakt
+Contakt
 -------
 
 Shows the contact information which are set on `https://ezb.uni-regensburg.de <https://ezb.uni-regensburg.de>`__. Here is nothig to set.
