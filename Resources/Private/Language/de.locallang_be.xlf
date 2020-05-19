@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.0" xmlns:t3="http://typo3.org/schemas/xliff">
-    <file source-language="en" datatype="plaintext" original="messages" date="2020-05-07T11:08:51Z" product-name="libconnect">
+    <file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2020-05-07T11:08:51Z" product-name="libconnect">
         <header/>
             <body>
                 <!-- all -->
@@ -47,6 +47,10 @@
 
 
                 <!-- DBIS -->
+                <trans-unit id="tx_libconnect.flexform.dbis.topdatabases" xml:space="preserve">
+                    <source>Top databases</source>
+                    <target>Top-Datenbanken</target>
+                </trans-unit>
                 <trans-unit id="tx_libconnect.flexform.dbis.new" xml:space="preserve">
                     <source>New in DBIS</source>
                     <target>Neu in DBIS</target>

@@ -39,6 +39,9 @@
                 </trans-unit>
 
                 <!-- DBIS -->
+                <trans-unit id="tx_libconnect.flexform.dbis.topdatabases" xml:space="preserve">
+                    <source>Top databases</source>
+                </trans-unit>
                 <trans-unit id="tx_libconnect.flexform.dbis.new" xml:space="preserve">
                     <source>New in DBIS</source>
                 </trans-unit>
