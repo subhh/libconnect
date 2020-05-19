@@ -13,7 +13,7 @@
                 <el>
                     <switchableControllerActions>
                         <TCEforms>
-                            <label>LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.general</label>
+                            <label>LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.output</label>
                             <onChange>reload</onChange>
                             <config>
                                 <type>select</type>
