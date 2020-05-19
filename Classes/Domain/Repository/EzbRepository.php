@@ -621,7 +621,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
     }
 
     /**
-     * get lit of participants
+     * get list of participants
      * 
      * @param int $journalId
      * @return array
