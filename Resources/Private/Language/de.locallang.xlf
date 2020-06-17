@@ -118,7 +118,7 @@
                     <source>This title is for the</source>
                     <target>Diese Datenbank ist für die</target>
                 </trans-unit>
-                <trans-unit id="tx_libconnect.dbis.detail.notavailable_end"" xml:space="preserve">
+                <trans-unit id="tx_libconnect.dbis.detail.notavailable_end" xml:space="preserve">
                     <source>not available.</source>
                     <target>nicht verfügbar.</target>
                 </trans-unit>
