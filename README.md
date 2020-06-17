@@ -8,17 +8,8 @@ Here is the German [Manual](doc/manual.pdf "Ausführliches Manual").
 
 Visit our git repository: https://github.com/subhh/libconnect
 
-## 7.0.0
-    - DBIS: warpto link changed to https
-    - EZB: Title history fixed.
-    - Guzzle is now used to do http request.
-    - Changed file endings of setup and constant to typoscript for better compatibility to TYPO3 8.7 and newer.
-    - Translation changed to XLIFF format.
-    - fixed deprecated translation path in flexforms
-    - fixed deprecated translation path for hidden in TCA
-    - flexforms sections are now translated
-    - JavaScript: fixed wrong path to JQuery
-    - min Compatibility now 8.7
+## 7.0.1
+    - Fixed de.locallang.xlf
 
 Tested with 
     - TYPO3 8.7.24
