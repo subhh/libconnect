@@ -9,7 +9,7 @@ Here is the German [Manual](doc/manual.pdf "Ausführliches Manual").
 Visit our git repository: https://github.com/subhh/libconnect
 
 ## 7.0.2
-    - Fixed de.locallang.xlf
+    - EZB: Fixed wrong bibid tag name
 
 Tested with 
     - TYPO3 8.7.24
