@@ -376,14 +376,14 @@ class Ezb {
     private function createSearchUrl($searchVars) {
 
         //if search was redirected from original website of EZB
-        if(isset($searchVars['jq_type1']) && $searchVars['jq_type1'] == 'ZD'){
+        /*if(isset($searchVars['jq_type1']) && $searchVars['jq_type1'] == 'ZD'){
             
             return array('url' => $this->search_zd_id, 'searchParams' => array('jq_term1' => $searchVars['jq_term1'], 'lang' => $this->lang));
-        }else{
+        }else{*/
             $searchParams['colors'] = $this->colors;
             $searchParams['lang'] = $this->lang;
             $searchParams['xmlv'] = 3;
-        }
+        //}
 
         if (!$searchVars['sc']) {
             $searchParams['sc'] = 'A';
@@ -458,6 +458,7 @@ class Ezb {
      */
     public function search($searchVars = array()) {
         $searchArray = $this->createSearchUrl($searchVars);
+
         $xml_response = $this->setRequest($searchArray['url'], $searchArray['searchParams']);
 
         if (!$xml_response) {
@@ -802,7 +803,7 @@ class Ezb {
         $request = NEW \Sub\Libconnect\Service\Request;
         
         $request->setUrl($url);
-        $request->setQuery( array('bib_id' => $this->bibID, 'xmloutput' => 1 ) );
+        $request->setQuery( array('bibid' => $this->bibID, 'xmloutput' => 1 ) );
 
         if(!empty($params)){
             $request->setQuery( $params );
