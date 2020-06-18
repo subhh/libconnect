@@ -10,11 +10,15 @@
 .. _start:
 
 =============================================================
-Extension Name
+libconnect
 =============================================================
+.. only:: html
+
+:Classification:
+    libconnect
 
 :Version:
-   7.0.1
+   |release|
 
 :Language:
    en
@@ -29,6 +33,9 @@ Extension Name
    This extension documentation is published under the
    `CC BY-NC-SA 4.0 <https://creativecommons.org/licenses/by-nc-sa/4.0/>`__ (Creative Commons)
    license
+
+:Rendered:
+    |today|
 
 {extension.description}
 
