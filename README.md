@@ -8,7 +8,7 @@ Here is the German [Manual](doc/manual.pdf "Ausführliches Manual").
 
 Visit our git repository: https://github.com/subhh/libconnect
 
-## 7.0.1
+## 7.0.2
     - Fixed de.locallang.xlf
 
 Tested with 
