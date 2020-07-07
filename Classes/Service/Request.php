@@ -44,7 +44,7 @@ class Request {
         $additionalOptions = [
             'headers' => ['Cache-Control' => 'no-cache'],
             'allow_redirects' => true,
-            'query' => $this->getQuery(),
+            'query' => http_build_query($this->getQuery(), null, '&'),
             'headers' => ['Accept' => 'text/xml; charset=UTF8']
         ];
 

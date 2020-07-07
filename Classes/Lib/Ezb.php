@@ -805,6 +805,14 @@ class Ezb {
         $request->setUrl($url);
         $request->setQuery( array('bibid' => $this->bibID, 'xmloutput' => 1 ) );
 
+        foreach ($params as $key => $value){
+            if(empty($value)){
+                $params[$key] = NULL;
+            }
+
+            $params[$key] = str_replace("+", " ", $value);
+        }
+
         if(!empty($params)){
             $request->setQuery( $params );
         }

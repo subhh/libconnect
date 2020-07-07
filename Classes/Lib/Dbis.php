@@ -784,6 +784,14 @@ class Dbis {
         $request->setUrl($url);
         $request->setQuery( array('bib_id' => $this->bibID, 'xmloutput' => 1 ) );
 
+        foreach ($params as $key => $value){
+            if(empty($value)){
+                $params[$key] = NULL;
+            }
+
+            $params[$key] = str_replace("+", " ", $value);
+        }
+
         if(!empty($params)){
             $request->setQuery( $params );
         }
