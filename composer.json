@@ -6,7 +6,9 @@
     "license": ["GPL-2.0+"],
     "keywords": ["TYPO3 CMS", "ezb", "dbis"],
     "support": {
-        "issues": "https://github.com/subhh/libconnect/issues"
+        "issues": "https://github.com/subhh/libconnect/issues",
+        "source": "https://github.com/subhh/libconnect/",
+        "docs": "https://docs.typo3.org/typo3cms/extensions/libconnect/"
     },
     "require": {
         "typo3/cms-core": "^8.7.0 || ^9.5.0"
