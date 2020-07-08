@@ -784,12 +784,11 @@ class Dbis {
         $request->setUrl($url);
         $request->setQuery( array('bib_id' => $this->bibID, 'xmloutput' => 1 ) );
 
+        //set empty valus as NULL for Guzzle
         foreach ($params as $key => $value){
             if(empty($value)){
                 $params[$key] = NULL;
             }
-
-            $params[$key] = str_replace("+", " ", $value);
         }
 
         if(!empty($params)){
