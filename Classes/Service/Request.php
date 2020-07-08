@@ -36,15 +36,21 @@ class Request {
     }
 
 
-    public function Request(){
+    public function Request($urldecode = TRUE){
         $requestFactory = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Http\RequestFactory::class);
         
         #$jar = new \GuzzleHttp\Cookie\CookieJar;
-        
+
+        if($urldecode){
+            $query = urldecode( http_build_query($this->getQuery(), null, '&') );
+        }else{
+            $query = $this->getQuery();
+        }
+
         $additionalOptions = [
             'headers' => ['Cache-Control' => 'no-cache'],
             'allow_redirects' => true,
-            'query' => http_build_query($this->getQuery(), null, '&'),
+            'query' => $query,
             'headers' => ['Accept' => 'text/xml; charset=UTF8']
         ];
 

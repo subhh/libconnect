@@ -476,7 +476,7 @@ class Zdb {
             $request->setQuery( $params );
         }
 
-        $response = $request->request();
+        $response = $request->request(FALSE);
 
         return $response;
     }
