@@ -14,72 +14,38 @@ libconnect
 =============================================================
 .. only:: html
 
-:Classification:
-    libconnect
+    :Classification:
+        libconnect
 
-:Version:
-   |release|
+    :Version:
+        |release|
 
-:Language:
-   en
+    :Language:
+        en
 
-:Authors:
-   Torsetn Witt
+    :Authors:
+        Torsetn Witt
 
-:Email:
-   torsten.witt@sub.uni-hamburg.de
+    :Email:
+        torsten.witt@sub.uni-hamburg.de
 
-:License:
-   This extension documentation is published under the
-   `CC BY-NC-SA 4.0 <https://creativecommons.org/licenses/by-nc-sa/4.0/>`__ (Creative Commons)
-   license
+    :License:
+        GPL-2.0+
 
-:Rendered:
-    |today|
+    :Rendered:
+        |today|
 
-{extension.description}
+    The content of this document is related to TYPO3,
+    a GNU/GPL CMS/Framework available from `www.typo3.org <http://www.typo3.org/>`_.
 
-**TYPO3**
-
-   The content of this document is related to TYPO3 CMS,
-   a GNU/GPL CMS/Framework available from `typo3.org
-   <https://typo3.org/>`_ .
-
-**Community Documentation:**
-
-   This documentation is community documentation for the TYPO3 extension (libconnect}
-
-   It is maintained as part of this third party extension.
-
-   If you find an error or something is missing, please:
-   `Report a Problem <https://github.com/subhh/libconnect/issues>`__
-
-**Extension Manual**
-
-   This documentation is for the TYPO3 extension libconnect.
-
-
-
-**For Contributors**
-
-   You are welcome to help improve this guide. Just click on "Edit me on GitHub"
-   on the top right to submit your change request.
-
-
-**Sitemap:**
-
-   :ref:`sitemap`
-
+    **Table of Contents**
 
 .. toctree::
-   :maxdepth: 3
-   :hidden:
+    :maxdepth: 3
+    :hidden:
 
-
-   Introduction/Index
-   Editor/Index
-   Installation/Index
-   Configuration/Index
-   KnownProblems/Index
-   Sitemap
-
+    Introduction/Index
+    Installation/Index
+    Configuration/Index
+    Editor/Index
+    KnownProblems/Index

@@ -1,12 +1,17 @@
 ﻿.. include:: ../Includes.txt
 
 
-
-.. _installation:
+.. _admin-manual:
 
 ============
 Installation
 ============
+
+.. contents::
+   :local:
+   :depth: 1
+
+
 
 The installation and initial configuration of the extension is as following:
 

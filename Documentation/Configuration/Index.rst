@@ -7,7 +7,14 @@
 Configuration
 =============
 
+.. contents::
+   :local:
+   :depth: 2
+
+
+
 Target group: **Developers, Integrators**
+
 
 Set zdb configuration
 =====================
@@ -48,6 +55,7 @@ code-block:: typoscript
         }
     }
 
+
 Deactivate standard CSS
 =======================
 
@@ -59,7 +67,7 @@ code-block:: typoscript
 
 
 EZB: Overwrite access information texts
-=========================================
+=======================================
 
 If the text of ezb is empty, it will be overwritten by configuration. If force = yes, all texts are overwritten.
 
@@ -99,8 +107,9 @@ code-block:: typoscript
         }
     }
 
+
 DBIS: Remove licences from extended search
-====================================
+==========================================
 If you want to remove a licence option in the extended search of dbis, use this option.
 
 Default: empty
@@ -110,6 +119,7 @@ code-block:: typoscript
         settings.dbislicenceforbid.3 = false
         settings.dbislicenceforbid.4 = false
     }
+
 
 ZDB: filter location information
 ================================

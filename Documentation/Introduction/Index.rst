@@ -7,6 +7,9 @@
 Introduction
 ============
 
+.. contents::
+   :local:
+   :depth: 2
 
 
 
@@ -24,65 +27,56 @@ Screenshots
 Here are some screenshots.
 
 .. figure:: ../Images/AddTemplate.png
-   :class: with-shadow
+   :width: 800px
    :alt: Adding the static template.
-   :width: 300px
 
    Adding the static template.
 
 .. figure:: ../Images/EzbSidebarBackend.png
-   :class: with-shadow
-   :alt: Sidebar plug-in of ezb
-   :width: 300px
+   :width: 800px   
+    :alt: Sidebar plug-in of ezb
 
    Configuring the sidebar or miniform plug-in.
 
 .. figure:: ../Images/AddTemplate.png
-   :class: with-shadow
-   :alt: Adding the static template.
-   :width: 300px
+   :width: 800px   
+    :alt: Adding the static template.
 
    Adding the static template.
 
 .. figure:: ../Images/EzbListAndMiniformFrontend.png
-   :class: with-shadow
-   :alt: ezb list plug-in 
-   :width: 300px
+   :width: 800px   
+    :alt: ezb list plug-in 
 
    Hers is the ezb sidebar, on top, and the list plug-in.
 
 .. figure:: ../Images/EzbListAndMiniformFrontendSubjectSelected.png
-   :class: with-shadow
-   :alt: ezb list plug-in 
-   :width: 300px
+   :width: 800px   
+    :alt: ezb list plug-in
 
    Now is a subject selected.
 
 .. figure:: ../Images/EzbDetails.png
-   :class: with-shadow
+   :width: 800px
    :alt: ezb details plug-in 
-   :width: 300px
 
    You can see the details of a journal.
 
 .. figure:: ../Images/DbisListAndMiniformFrontend.png
-   :class: with-shadow
+   :width: 800px
    :alt: Dbis sidebar on top and list plug-in.
-   :width: 300px
 
    You can see the sidebar ton top and the list plug-in.
 
 .. figure:: ../Images/DbisListFrontendSubjectSelected.png
-   :class: with-shadow
+   :width: 800px
    :alt: dbis list with selected subject
-   :width: 300px
 
    Now is a subject selected.
 
 .. figure:: ../Images/DbisDetails.png
-   :class: with-shadow
+   :width: 800px
    :alt: ezb details plug-in 
-   :width: 300px
 
    You can see the details of a database.
 

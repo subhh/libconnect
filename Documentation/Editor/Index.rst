@@ -7,9 +7,16 @@
 For Editors
 ===========
 
+.. contents::
+   :local:
+   :depth: 2
+
+
+
 Target group: **Editors**
 
 Libconnect is easy to use.
+
 
 DBIS
 ====
@@ -35,9 +42,8 @@ Subject: Choose a subject.
 Detail page: Choose a detail page.
 
 .. figure:: ../Images/Editor/DbisBackendTop.png
-   :class: with-shadow
+   :width: 800px
    :alt: output as list
-   :width: 300px
 
    Configuringg the list for top databases.
 
@@ -55,9 +61,8 @@ Access information : Choose which access information texts are displayed, long o
 
 
 .. figure:: ../Images/Editor/DbisBackendList.png
-   :class: with-shadow
-   :alt: output as list
-   :width: 300px
+    :width: 800px
+    :alt: output as list
 
    Configuring the output as list.
 
@@ -67,9 +72,8 @@ Detail view
 Shows the details of a database. Here is nothig to set.
 
 .. figure:: ../Images/Editor/DbisBackendDetails.png
-   :class: with-shadow
+   :width: 800px
    :alt: output as detail view
-   :width: 300px
 
    Set output for detail view.
 
@@ -88,9 +92,8 @@ Page with detailed search : set page with search.
 New in DBIS: set page with the "New in DBIS" output. Generates a link to "New in DBIS" with number of new entries. If you choose a subject in list, you get new entries for this subject too. If you donn´t want to use this feature, let it empty.
 
 .. figure:: ../Images/Editor/DbisBackendSidebar.png
-   :class: with-shadow
+   :width: 800px
    :alt: output as sidebar
-   :width: 300px
 
    Configuring the sidebar plug-in.
 
@@ -102,9 +105,8 @@ This is an extended search form.
 List view: set page with dbis plug-in with output as list.
 
 .. figure:: ../Images/Editor/DbisBackendSearch.png
-   :class: with-shadow
+   :width: 800px
    :alt: output as sidebar
-   :width: 300px
 
    Configuring the seach form.
 
@@ -123,9 +125,8 @@ Sort: Choose the sort by database type, name, access type.
  Access information: Choose which access information texts are displayed, long or short form.
 
 .. figure:: ../Images/Editor/DbisBackendNew.png
-   :class: with-shadow
+   :width: 800px
    :alt: output as list with new entries
-   :width: 300px
 
    Configuring the list for new entries.
 
@@ -155,9 +156,8 @@ Detail page: Choose a detail page.
 
 
 .. figure:: ../Images/Editor/EzbBackendList.png
-   :class: with-shadow
+   :width: 800px
    :alt: output as list
-   :width: 300px
 
    Configuring the output as list.
 
@@ -170,9 +170,8 @@ Shows the details of a journal.
  Page with form for selection of participate institutions, which offer full access.: Set page with output of "Auswahl Teilnehmer die Vollzugriff bieten". On this page, the visitor get a form of libraries with full access to this yournal. If you don´t want a page with this output, let it empty and the detail page generates a link to the form of the website `https://ezb.uni-regensburg.de <https://ezb.uni-regensburg.de>`__.
 
 .. figure:: ../Images/Editor/EzbBackendDetails.png
-   :class: with-shadow
+   :width: 800px
    :alt: output as detail view
-   :width: 300px
 
    Set output for detail view.
 
@@ -190,9 +189,8 @@ This is a search bar to use on top or as sidebar.
 New in EZB: set page with the "Neu in EZB". Generates a link to "Neu in EZB" with number of new entries. If you choose a subject in list, you get new entries for this subject too. If you donn´t want to use this feature, let it empty.
 
 .. figure:: ../Images/Editor/EzbBackendSidebar.png
-   :class: with-shadow
+   :width: 800px
    :alt: output as sidebar
-   :width: 300px
 
    Configuring the sidebar plug-in.
 
@@ -204,9 +202,8 @@ This is an extended search form.
 List view: set page with dbis plug-in with output as list.
 
 .. figure:: ../Images/Editor/EzbBackendSearch.png
-   :class: with-shadow
+   :width: 800px
    :alt: output as sidebar
-   :width: 300px
 
    Configuring the seach form.
 
@@ -221,9 +218,8 @@ How How many days are entries marked as new? (default: 7): set the number of day
 
 
 .. figure:: ../Images/Editor/EzbBackendNew.png
-   :class: with-shadow
-   :alt: output as list with new entries
-   :width: 300px
+   :width: 800px
+   :alt: output as list with new entri
 
    Configuring the list for new entries.
 
@@ -233,9 +229,8 @@ Selection of participate institutions, which offer full access.
 Creates a for of libraries with full access to this yournal. The visitor choose the library and will be redirected to their page on https://ezb.uni-regensburg.de.
 
 .. figure:: ../Images/Editor/EzbBackendParticipant.png
-   :class: with-shadow
+   :width: 800px
    :alt: output as list with new entries
-   :width: 300px
 
    Configuring the list for new entries.
 
