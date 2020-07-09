@@ -11,7 +11,7 @@ Visit our git repository: https://github.com/subhh/libconnect
 ## 7.0.3
       - EZB and DBIS: 
         - warpto links changed to https (Fixed not working redirect)
-        - Guzzle: Fixed Search with more than 1 word
+        - Guzzle: Fixed Search
 
 Tested with 
     - TYPO3 8.7.24

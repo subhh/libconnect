@@ -8,7 +8,7 @@
 7.0.3
     - EZB and DBIS: 
         - warpto links changed to https (Fixed not working redirect)
-        - Guzzle: Fixed Search with more than 1 word
+        - Guzzle: Fixed Search
 7.0.2
     - EZB: Fixed wrong bibid tag name
 7.0.1
