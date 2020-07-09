@@ -8,8 +8,10 @@ Here is the German [Manual](doc/manual.pdf "Ausführliches Manual").
 
 Visit our git repository: https://github.com/subhh/libconnect
 
-## 7.0.2
-    - EZB: Fixed wrong bibid tag name
+## 7.0.3
+      - EZB and DBIS: 
+        - warpto links changed to https (Fixed not working redirect)
+        - Guzzle: Fixed Search with more than 1 word
 
 Tested with 
     - TYPO3 8.7.24
