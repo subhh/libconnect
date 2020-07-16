@@ -6,7 +6,7 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
 use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
- * This class is a view helper that trim a string.
+ * This class is a view helper that count a trimed string.
  *
  * @package TYPO3
  * @subpackage Fluid
@@ -21,12 +21,12 @@ class TrimedstrlenNpViewHelper extends AbstractViewHelper {
     }
 
     /**
-     * Returns trimmed string
+     * Returns count of trimmed string
      * 
      * @param array $arguments
      * @param \Closure $renderChildrenClosure
      * @param RenderingContextInterface $renderingContext
-     * @return string
+     * @return integer
      */
     public static function renderStatic ( array $arguments, \Closure $renderChildrenClosure, RenderingContextInterface $renderingContext ) {
 
