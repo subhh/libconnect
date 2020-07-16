@@ -46,7 +46,7 @@ class Request {
         }else{
             $query = $this->getQuery();
         }
-
+     
         $additionalOptions = [
             'headers' => ['Cache-Control' => 'no-cache'],
             'allow_redirects' => true,
@@ -54,7 +54,21 @@ class Request {
             'headers' => ['Accept' => 'text/xml; charset=UTF8']
         ];
 
-        $response = $requestFactory->request($this->getUrl(), 'GET', $additionalOptions);
+        $response = FALSE;
+
+        try {
+            $response = $requestFactory->request($this->getUrl(), 'GET', $additionalOptions);
+
+        } catch (GuzzleHttp\Exception\ServerException $e) {
+            //echo Psr7\str($requestFactory->getRequest());
+            //echo Psr7\str($response->getResponse());exit;
+
+            if ($this->debug){
+                \TYPO3\CMS\Core\Utility\GeneralUtility::devLog('Got HTTP Code ' . $response->getStatusCode() . ' for request: '.  $this->url. http_build_query($this->getQuery(), null, '&'), 'libconnect', 1);
+            }
+
+            return FALSE;
+        }
 
         $content = FALSE;
 
@@ -77,9 +91,10 @@ class Request {
             else {
                 return FALSE;
             }
+
         }else{
             if ($this->debug){
-                \TYPO3\CMS\Core\Utility\GeneralUtility::devLog('Got HTTP Code ' . $response->getStatusCode() . ' for request: ' . $url, 'libconnect', 1);
+                \TYPO3\CMS\Core\Utility\GeneralUtility::devLog('Got HTTP Code ' . $response->getStatusCode() . ' for request: '.  $this->url. http_build_query($this->getQuery(), null, '&'), 'libconnect', 1);
             }
 
         }
