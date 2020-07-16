@@ -258,7 +258,14 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
         if(!empty($this->settings['flexform']['newPid'])){
             //new entries for a selected subject
             if( !empty($params['subject']) && ($params['subject'] != 'all') ) {
+
                 $subject = $this->dbisRepository->getSubject($params['subject']);
+
+                //maybe a collection or new subject
+                if(!$subject){
+                    $subject = $params['subject'];
+                }
+
                 $count = (int) $this->getNewCount($subject['dbisid']);
 
                 if($count >0){
