@@ -269,7 +269,7 @@ class Ezb {
         if (isset($xml_response->ezb_detail_about_journal->journal->detail->fulltext)) {
             $i = 1;
             $warpto = urlencode((string) $xml_response->ezb_detail_about_journal->journal->detail->fulltext->attributes()->url);
-            $journal['fulltext_link'] = 'http%3A%2F%2Frzblx1.uni-regensburg.de%2Fezeit%2Fwarpto.phtml?bibid=' . $this->bibID . '&colors=' . $this->colors . '&lang=' . $this->lang . '&jour_id=' . $journalId . '&url=' . $warpto;
+            $journal['fulltext_link'] = 'https%3A%2F%2Frzblx1.uni-regensburg.de%2Fezeit%2Fwarpto.phtml?bibid=' . $this->bibID . '&colors=' . $this->colors . '&lang=' . $this->lang . '&jour_id=' . $journalId . '&url=' . $warpto;
         }
 
         $journal['homepages'] = array();
@@ -329,7 +329,7 @@ class Ezb {
 
                 if(!empty($test)){
                     if(!preg_match('/^http/', $test)){
-                        $domain = 'http://rzblx1.uni-regensburg.de/ezeit/';
+                        $domain = 'https://rzblx1.uni-regensburg.de/ezeit/';
                     }
                 }
 
@@ -337,7 +337,7 @@ class Ezb {
                     'label' => (string) $period->label,
                     'color' => (string) @$period->journal_color->attributes()->color,
                     'color_code' => $color_map[(string) @$period->journal_color->attributes()->color],
-                    'link' => 'http%3A%2F%2Frzblx1.uni-regensburg.de%2Fezeit%2Fwarpto.phtml?bibid=' . $this->bibID . '%26colors=' . $this->colors . '%26lang=' . $this->lang . '%26jour_id=' . $journalId . '%26url=' . $warpto,
+                    'link' => 'https%3A%2F%2Frzblx1.uni-regensburg.de%2Fezeit%2Fwarpto.phtml?bibid=' . $this->bibID . '%26colors=' . $this->colors . '%26lang=' . $this->lang . '%26jour_id=' . $journalId . '%26url=' . $warpto,
                     'readme' => $domain. (string) @$period->readme_link->attributes()->url
                 );
             }
