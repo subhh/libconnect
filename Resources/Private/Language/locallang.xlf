@@ -215,9 +215,6 @@
                 <trans-unit id="tx_libconnect.dbis.search.licence" xml:space="preserve">
                     <source>Access:</source>
                 </trans-unit>
-                <trans-unit id="tx_libconnect.dbis.search.access" xml:space="preserve">
-                    <source>Access:</source>
-                </trans-unit>
                 <trans-unit id="tx_libconnect.dbis.search.results" xml:space="preserve">
                     <source>Results of your search</source>
                 </trans-unit>

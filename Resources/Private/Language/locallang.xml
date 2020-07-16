@@ -84,7 +84,6 @@
             <label index="tx_libconnect.dbis.search.criterion">You searched for:</label>
             <label index="tx_libconnect.dbis.search.hits">Hit(s) %s:</label>
             <label index="tx_libconnect.dbis.search.licence">Access:</label>
-            <label index="tx_libconnect.dbis.search.access">Access:</label>
             <label index="tx_libconnect.dbis.search.results">Results of your search</label>
             <label index="tx_libconnect.dbis.search.top_databases">Top Databases</label>
             
@@ -262,7 +261,7 @@
             <label index="tx_libconnect.dbis.list.full_list">Gesamtangebot</label>
             <label index="tx_libconnect.dbis.list.headline.dbis">DBIS</label>
             <label index="tx_libconnect.dbis.list.headline.subject">Fachgebiet</label>
-            <label index="tx_libconnect.dbis.list.legend.headline">Zugriffe:</label>
+            <label index="tx_libconnect.dbis.list.legend.headline">Die Datenbank ist ...</label>
             <label index="tx_libconnect.dbis.list.topdatabases">Top Datenbanken</label>
             <label index="tx_libconnect.dbis.list.emptyResults">Keine Einträge gefunden. Ändern Sie bitte die Zugangsart.</label>
                                                                 	
@@ -288,8 +287,7 @@
 
             <label index="tx_libconnect.dbis.search.criterion">Sie suchten nach folgenden Kriterien:</label>
             <label index="tx_libconnect.dbis.search.hits">Die Suche ergab %s Treffer:</label>
-            <label index="tx_libconnect.dbis.search.licence">Zugriffe:</label>
-            <label index="tx_libconnect.dbis.search.access">Zugriffe:</label>
+            <label index="tx_libconnect.dbis.search.licence">Die Datenbank ist ...</label>
             <label index="tx_libconnect.dbis.search.results">Ergebnisse Ihrer Suche</label>
             <label index="tx_libconnect.dbis.search.top_databases">Top Datenbanken</label>
 

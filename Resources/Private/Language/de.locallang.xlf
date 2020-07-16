@@ -187,7 +187,7 @@
                 </trans-unit>
                 <trans-unit id="tx_libconnect.dbis.list.legend.headline" xml:space="preserve">
                     <source>license:</source>
-                    <target>Zugriffe:</target>
+                    <target>Die Datenbank ist ...</target>
                 </trans-unit>
                 <trans-unit id="tx_libconnect.dbis.list.topdatabases" xml:space="preserve">
                     <source>Top Databases</source>
@@ -279,11 +279,7 @@
                 </trans-unit>
                 <trans-unit id="tx_libconnect.dbis.search.licence" xml:space="preserve">
                     <source>Access:</source>
-                    <target>Zugriffe:</target>
-                </trans-unit>
-                <trans-unit id="tx_libconnect.dbis.search.access" xml:space="preserve">
-                    <source>Access:</source>
-                    <target>Zugriffe:</target>
+                    <target>Die Datenbank ist ...</target>
                 </trans-unit>
                 <trans-unit id="tx_libconnect.dbis.search.results" xml:space="preserve">
                     <source>Results of your search</source>
