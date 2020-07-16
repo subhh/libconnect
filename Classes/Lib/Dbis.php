@@ -56,8 +56,6 @@ class Dbis {
     //variable of typoscript configuration
     private $bibID;
     private $licenceForbid = array();
-    // sources
-    private $HttpPageConnection;
 
     /**
      * constructor
