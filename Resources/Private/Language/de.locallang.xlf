@@ -71,8 +71,8 @@
                     <target>Möglicherweise ist die angefragte Datenbank nicht vorhanden. Bitte versuchen Sie es erneut oder wenden Sie sich an das Web-Team der Bibliothek, das Ihnen beim Auffinden des Datensatzes gerne behilflich ist.</target>
                 </trans-unit>
                 <trans-unit id="tx_libconnect.dbis.detail.isbn" xml:space="preserve">
-                    <source>ISBN/ISSN</source>
-                    <target>im Zeitraum</target>
+                    <source>ISBN</source>
+                    <target>ISBN</target>
                 </trans-unit>
                 <trans-unit id="tx_libconnect.dbis.detail.instruction" xml:space="preserve">
                     <source>Instruction:</source>

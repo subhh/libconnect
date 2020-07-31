@@ -55,7 +55,7 @@
                     <source>Maybe the selected database doesn´t exist. Please retry or ask the administrator.</source>
                 </trans-unit>
                 <trans-unit id="tx_libconnect.dbis.detail.isbn" xml:space="preserve">
-                    <source>ISBN/ISSN</source>
+                    <source>ISBN</source>
                 </trans-unit>
                 <trans-unit id="tx_libconnect.dbis.detail.instruction" xml:space="preserve">
                     <source>Instruction:</source>
