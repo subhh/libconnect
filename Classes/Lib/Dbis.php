@@ -748,7 +748,7 @@ class Dbis {
     }
 
     /**
-     * get information for the access legen
+     * get information for the access
      * @param SimpleXMLElement $request
      */
     private function getAccessInfos($request){
