@@ -59,7 +59,7 @@ class Request {
         try {
             $response = $requestFactory->request($this->getUrl(), 'GET', $additionalOptions);
 
-        } catch (GuzzleHttp\Exception\ServerException $e) {
+        } catch (\Exception $e) {
             //echo Psr7\str($requestFactory->getRequest());
             //echo Psr7\str($response->getResponse());exit;
 
