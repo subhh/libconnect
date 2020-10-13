@@ -26,6 +26,8 @@ namespace Sub\Libconnect\Domain\Model;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Extbase\Annotation as Extbase;
+
 /**
  * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
  */
@@ -36,7 +38,7 @@ class Subject extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * name of subject
      *
      * @var string
-     * @validate NotEmpty
+     * @Extbase\Validate(validator="NotEmpty")
      */
     protected $title;
 
