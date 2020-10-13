@@ -8,7 +8,7 @@ if (!defined('TYPO3_MODE')) {
 }
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-    'Sub.' . $_EXTKEY,
+    'Libconnect',
     'Dbis',
     [
         'Dbis' => 'displayForm'
@@ -20,7 +20,7 @@ if (!defined('TYPO3_MODE')) {
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-    'Sub.' . $_EXTKEY,
+    'Libconnect',
     'Ezb',
     [
         'Ezb' => 'displayForm, displayContact'
