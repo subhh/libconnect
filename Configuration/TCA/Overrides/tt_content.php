@@ -3,7 +3,7 @@
 /* DBIS */
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-    'Sub.libconnect',
+    'Libconnect',
     'Dbis',
     'libconnect: dbis',
     'EXT:libconnect/Resources/Public/Icons/Wizard.gif'
@@ -16,7 +16,7 @@ $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['libconnect_d
 /* EZB */
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-    'Sub.libconnect',
+    'Libconnect',
     'Ezb',
     'libconnect: ezb',
     'EXT:libconnect/Resources/Public/Icons/Wizard.gif'
