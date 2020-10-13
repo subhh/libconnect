@@ -5,7 +5,8 @@
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
     'Sub.libconnect',
     'Dbis',
-    'libconnect: dbis'
+    'libconnect: dbis',
+    'EXT:libconnect/Resources/Public/Icons/Wizard.gif'
 );
 
 // Add flexform for DBIS
@@ -17,7 +18,8 @@ $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['libconnect_d
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
     'Sub.libconnect',
     'Ezb',
-    'libconnect: ezb'
+    'libconnect: ezb',
+    'EXT:libconnect/Resources/Public/Icons/Wizard.gif'
 );
 
 // Add flexform for EZB
