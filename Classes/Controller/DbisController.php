@@ -41,7 +41,6 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      *
      * @var \Sub\Libconnect\Domain\Repository\DbisRepository
      * @Inject
-     * @inject
      */
     protected $dbisRepository;
 

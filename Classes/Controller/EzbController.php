@@ -41,7 +41,6 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      *
      * @var \Sub\Libconnect\Domain\Repository\EzbRepository
      * @Inject
-     * @inject
      */
     protected $ezbRepository;
 
@@ -50,7 +49,6 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      *
      * @var \Sub\Libconnect\Domain\Repository\SubjectRepository
      * @Inject
-     * @inject
      */
     protected $subjectRepository;
 

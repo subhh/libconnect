@@ -45,7 +45,6 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      *
      * @var \Sub\Libconnect\Domain\Repository\SubjectRepository
      * @Inject
-     * @inject
      */
     protected $subjectRepository;
 
