@@ -2,6 +2,9 @@
 
 namespace Sub\Libconnect\Service;
 
+use TYPO3\CMS\Core\Log\LogManager;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+
 /**
  * @author Torsten Witt <torsten.witt@sub.uni-hamburg.de>
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License, version 3 or later
@@ -11,6 +14,16 @@ class Request
     private $url = '';
 
     private $query = [];
+
+    /**
+     * @var \TYPO3\CMS\Core\Log\Logger
+     */
+    protected $logger;
+
+    public function __construct()
+    {
+        $this->logger = GeneralUtility::makeInstance(LogManager::class)->getLogger(__CLASS__);
+    }
 
     public function getUrl()
     {
@@ -59,13 +72,13 @@ class Request
 
         try {
             $response = $requestFactory->request($this->getUrl(), 'GET', $additionalOptions);
-        } catch (GuzzleHttp\Exception\ServerException $e) {
+        } catch (\GuzzleHttp\Exception\ServerException $e) {
             //echo Psr7\str($requestFactory->getRequest());
             //echo Psr7\str($response->getResponse());exit;
 
-            if ($this->debug) {
-                \TYPO3\CMS\Core\Utility\GeneralUtility::devLog('Got HTTP Code ' . $response->getStatusCode() . ' for request: ' . $this->url . http_build_query($this->getQuery(), null, '&'), 'libconnect', 1);
-            }
+            $this->logger->debug(
+                'Got HTTP Code ' . $response->getStatusCode() . ' for request: ' . $this->url .
+                http_build_query($this->getQuery(),null, '&'));
 
             return false;
         }
@@ -83,16 +96,16 @@ class Request
             } elseif (strpos($contentType, 'application/rdf+xml;charset=utf-8') === 0) {//title history
                 $content = $this->getText($response);
 
-            //moreDetails
+                //moreDetails
             } elseif (preg_match('/text\/html;charset=(iso-8859-1)?(utf-8)?/', $contentType, $matches)) {
                 $content = $this->getText($response);
             } else {
                 return false;
             }
         } else {
-            if ($this->debug) {
-                \TYPO3\CMS\Core\Utility\GeneralUtility::devLog('Got HTTP Code ' . $response->getStatusCode() . ' for request: ' . $this->url . http_build_query($this->getQuery(), null, '&'), 'libconnect', 1);
-            }
+            $this->logger->debug(
+                'Got HTTP Code ' . $response->getStatusCode() . ' for request: ' . $this->url .
+                http_build_query($this->getQuery(),null, '&'));
         }
 
         return $content;
@@ -119,16 +132,7 @@ class Request
 
         //log url to devlog in debug-mode if XML data contained errors.
         if (count($error_array) > 0) {
-            if ($this->debug) {
-                \TYPO3\CMS\Core\Utility\GeneralUtility::devLog('XML data contained errors: ' . $url, 'libconnect', 1);
-            }
-        }
-
-        if ($this->debug) {
-            $error_array = libxml_get_errors();
-            if (count($error_array) > 0) {
-                \TYPO3\CMS\Core\Utility\GeneralUtility::devLog('XML data contained errors: ' . $url, 'libconnect', 1);
-            }
+            $this->logger->debug('XML data contained errors: ' . $this->url, $error_array);
         }
 
         //reset libxml error buffering and clear any existing libxml errors

@@ -45,6 +45,7 @@ namespace Sub\Libconnect\Lib;
  */
 use Sub\Libconnect\Service\Request;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
+use TYPO3\CMS\Core\Log\LogManager;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class Zdb
@@ -80,21 +81,21 @@ class Zdb
     private $zdbData = [];
 
     /**
+     * @var \TYPO3\CMS\Core\Log\Logger
+     */
+    protected $logger;
+
+    /**
     * Class Constructor
     */
     public function __construct()
     {
-        $ext_conf = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('libconnect');
-        if ($ext_conf['debug'] == true) {
-            $this->debug = true;
-        }
+        $this->logger = GeneralUtility::makeInstance(LogManager::class)->getLogger(__CLASS__);
 
         if (!$this->getSid()) {
             //todo: error message
             //error_log('typo3 extension libconnect - missing ZDB source-identifier: refer to documentation - chapter configuration.');
-            if ($this->debug) {
-                \TYPO3\CMS\Core\Utility\GeneralUtility::devLog('invalid SID given: ' . $this->sid, 'libconnect', 1);
-            }
+            $this->logger->debug('invalid SID given: ' . $this->sid);
 
             return false;
         }
@@ -133,10 +134,10 @@ class Zdb
     /**
     * returns detail information of the position of a journal
     *
-    * @param JournalIdentifier string
-    * @param ZDBID string
+    * @param string $journalIdentifier
+    * @param string $ZDBID
     *
-    * @return string
+    * @return array|bool
     */
     public function getJournalLocationDetails($journalIdentifier, $ZDBID, $genre = 'journal')
     {
@@ -171,12 +172,10 @@ class Zdb
         // root-element = OpenURLResponseXML->Full/Brief
         // only Full-objects got all the info we want
         if (! is_object($xml_response->Full)) {
-            if ($this->debug) {
-                \TYPO3\CMS\Core\Utility\GeneralUtility::devLog('invalid XML-Object - URL: ' . $url, 'libconnect', 1);
-            }
-
+            $this->logger->debug('invalid XML-Object - URL: ' . $this->fullformat_request_url);
             return false;
         }
+
         if (property_exists($xml_response->Full, 'Error')) {
             /**
              * possible Error-Codes:
@@ -187,10 +186,7 @@ class Zdb
              *     f-issn      ISSN mit falschen Format!
              *     unknown     Unbekannter Fehler
              */
-            if ($this->debug) {
-                \TYPO3\CMS\Core\Utility\GeneralUtility::devLog('Error-Code: ' . $xml_response->Full->Error->attributes()->code . ' - URL: ' . $url, 'libconnect', 1);
-            }
-
+            $this->logger->debug('Error-Code: ' . $xml_response->Full->Error->attributes()->code . ' - URL: ' . $this->fullformat_request_url);
             return false;
         }
 
@@ -201,10 +197,7 @@ class Zdb
             $tmpStates = $xml_response->Full->PrintData->ResultList->children();
             $tmpResultList = $xml_response->Full->PrintData->ResultList->children();
         } else {
-            if ($this->debug) {
-                \TYPO3\CMS\Core\Utility\GeneralUtility::devLog('invalid ResultList - URL: ' . $url, 'libconnect', 1);
-            }
-
+            $this->logger->debug('invalid ResultList - URL: ' . $this->fullformat_request_url);
             return false;
         }
 
@@ -245,10 +238,7 @@ class Zdb
         }
         //no valid state found -> exit
         if (!$validStateFlag) {
-            if ($this->debug) {
-                \TYPO3\CMS\Core\Utility\GeneralUtility::devLog('non valid state - URL: ' . $url, 'libconnect', 0);
-            }
-
+            $this->logger->debug('non valid state  - URL: ' . $this->fullformat_request_url);
             return false;
         }
 
@@ -308,9 +298,7 @@ class Zdb
         $locationDetail['iconRequest'] = $this->buildIconRequest($journalIdentifier, $genre);
         $locationDetail['iconInfoUrl'] = $this->buildIconInfoUrl($journalIdentifier, $genre);
 
-        if ($this->debug) {
-            \TYPO3\CMS\Core\Utility\GeneralUtility::devLog('Request successful - URL: ' . $url, 'libconnect', 0);
-        }
+        $this->logger->debug('Request successful - URL: ' . $this->fullformat_request_url);
 
         return $locationDetail;
     }
