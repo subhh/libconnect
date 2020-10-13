@@ -1,8 +1,5 @@
 <?php
 
-use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-
 if (!defined('TYPO3_MODE')) {
     die('Access denied.');
 }
@@ -11,11 +8,11 @@ if (!defined('TYPO3_MODE')) {
     'Libconnect',
     'Dbis',
     [
-        'Dbis' => 'displayForm'
+        \Sub\Libconnect\Controller\DbisController::class => 'displayForm'
     ],
     // non-cacheable actions
     [
-        'Dbis' => 'displayDetail, displayList, displayMiniForm, displayNew'
+        \Sub\Libconnect\Controller\DbisController::class => 'displayDetail, displayList, displayMiniForm, displayNew'
     ]
 );
 
@@ -23,11 +20,11 @@ if (!defined('TYPO3_MODE')) {
     'Libconnect',
     'Ezb',
     [
-        'Ezb' => 'displayForm, displayContact'
+        \Sub\Libconnect\Controller\EzbController::class => 'displayForm, displayContact'
     ],
     // non-cacheable actions
     [
-        'Ezb' => 'displayDetail, displayList, displayMiniForm, displayNew, displayParticipantsForm'
+        \Sub\Libconnect\Controller\EzbController::class => 'displayDetail, displayList, displayMiniForm, displayNew, displayParticipantsForm'
     ]
 );
 
