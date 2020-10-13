@@ -44,6 +44,8 @@ namespace Sub\Libconnect\Lib;
  *      zdbbik = BIK
  */
 use Sub\Libconnect\Service\Request;
+use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class Zdb
 {
@@ -82,7 +84,7 @@ class Zdb
     */
     public function __construct()
     {
-        $ext_conf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['libconnect']);
+        $ext_conf = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('libconnect');
         if ($ext_conf['debug'] == true) {
             $this->debug = true;
         }
