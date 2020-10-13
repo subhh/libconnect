@@ -1,5 +1,7 @@
 <?php
+
 namespace Sub\Libconnect\Lib;
+
 /***************************************************************
 * Copyright notice
 *
@@ -28,20 +30,18 @@ namespace Sub\Libconnect\Lib;
 ***************************************************************/
 
 /**
- *
- * @package libconnect
  * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
  *
  * documentation: http://www.bibliothek.uni-regensburg.de/ezeit/vascoda/vifa/doku_xml_ezb.html
  * documentation: http://rzblx1.uni-regensburg.de/ezeit/vascoda/vifa/doku_xml_ezb.html
  * @author niklas guenther
  * @author Torsten Witt
- *
  */
 
-use \Sub\Libconnect\Service\Request;
+use Sub\Libconnect\Service\Request;
 
-class Ezb {
+class Ezb
+{
 
     // document search meta infos
     private $title;
@@ -72,11 +72,11 @@ class Ezb {
     private $bibID;
 
     // access info
-    private $shortAccessInfos = Array();
-    private $longAccessInfos = Array();
+    private $shortAccessInfos = [];
+    private $longAccessInfos = [];
 
     // search types
-    public $jq_type = 	array(
+    public $jq_type = 	[
         'KT' => 'Titelwort(e)',
         'KS' => 'Titelanfang',
         'IS' => 'ISSN',
@@ -84,12 +84,13 @@ class Ezb {
         'KW' => 'Schlagwort(e)',
         'ID' => 'Eingabedatum',
         'LC' => 'Letzte Änderung',
-        'ZD' => 'ZDB-Nummer');
+        'ZD' => 'ZDB-Nummer'];
 
     /**
      * constructor
      */
-    public function __construct() {
+    public function __construct()
+    {
         //set configurations
         $this->setBibID();
         $this->setLanguage();
@@ -98,8 +99,9 @@ class Ezb {
     /**
      * sets ID of the library
      */
-    private function setBibID() {
-		$this->bibID = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.']['ezbbibid'];
+    private function setBibID()
+    {
+        $this->bibID = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.']['ezbbibid'];
     }
 
     /**
@@ -107,8 +109,9 @@ class Ezb {
      *
      * @return string
      */
-    public function getBibID() {
-		return $this->bibID;
+    public function getBibID()
+    {
+        return $this->bibID;
     }
 
     /**
@@ -116,15 +119,15 @@ class Ezb {
      *
      * @return array()
      */
-    public function getFachbereiche() {
+    public function getFachbereiche()
+    {
+        $fachbereiche = [];
 
-        $fachbereiche = array();
-
-        $xml_response = $this->setRequest($this->overview_requst_url, array('colors' => $this->colors, 'lang' => $this->lang));
+        $xml_response = $this->setRequest($this->overview_requst_url, ['colors' => $this->colors, 'lang' => $this->lang]);
 
         if (isset($xml_response->ezb_subject_list->subject)) {
-            foreach ($xml_response->ezb_subject_list->subject AS $key => $value) {
-                $fachbereiche[(string) $value['notation'][0]] = array('title' => (string) $value[0], 'journalcount' => (int) $value['journalcount'], 'id' => (string) $value['notation'][0], 'notation' => (string) $value['notation'][0]);
+            foreach ($xml_response->ezb_subject_list->subject as $key => $value) {
+                $fachbereiche[(string)$value['notation'][0]] = ['title' => (string)$value[0], 'journalcount' => (int)$value['journalcount'], 'id' => (string)$value['notation'][0], 'notation' => (string)$value['notation'][0]];
             }
         }
 
@@ -141,32 +144,31 @@ class Ezb {
      *
      * @return array()
      */
-    public function getFachbereichJournals($jounal, $sindex = 0, $sc = 'A', $lc = '') {
+    public function getFachbereichJournals($jounal, $sindex = 0, $sc = 'A', $lc = '')
+    {
+        $journals = [];
 
-        $journals = array();
-
-        $xml_response = $this->setRequest($this->overview_requst_url, array('colors' => $this->colors, 'lang' => $this->lang, 'sc' => $sc, 'sindex' => $sindex, 'notation' => $jounal));
+        $xml_response = $this->setRequest($this->overview_requst_url, ['colors' => $this->colors, 'lang' => $this->lang, 'sc' => $sc, 'sindex' => $sindex, 'notation' => $jounal]);
 
         if ($xml_response->page_vars) {
-            $this->notation = (string) $xml_response->page_vars->notation->attributes()->value;
-            $this->sc = (string) $xml_response->page_vars->sc->attributes()->value;
-            $this->lc = (string) $xml_response->page_vars->lc->attributes()->value;
-            $this->sindex = (string) $xml_response->page_vars->sindex->attributes()->value;
+            $this->notation = (string)$xml_response->page_vars->notation->attributes()->value;
+            $this->sc = (string)$xml_response->page_vars->sc->attributes()->value;
+            $this->lc = (string)$xml_response->page_vars->lc->attributes()->value;
+            $this->sindex = (string)$xml_response->page_vars->sindex->attributes()->value;
         }
 
         //navigation list
         if ($xml_response->ezb_alphabetical_list) {
+            $journals['subject'] = (string)$xml_response->ezb_alphabetical_list->subject;
+            $journals['navlist']['current_page'] = (string)$xml_response->ezb_alphabetical_list->navlist->current_page;
+            $journals['current_title'] = (string)$xml_response->ezb_alphabetical_list->current_title;
 
-            $journals['subject'] = (string) $xml_response->ezb_alphabetical_list->subject;
-            $journals['navlist']['current_page'] = (string) $xml_response->ezb_alphabetical_list->navlist->current_page;
-            $journals['current_title'] = (string) $xml_response->ezb_alphabetical_list->current_title;
-
-            foreach ($xml_response->ezb_alphabetical_list->navlist->other_pages AS $key2 => $value2) {
-                foreach ($value2->attributes() AS $key3 => $value3) {
-                    $journals['navlist']['pages'][(string) $value2[0]][(string) $key3] = (string) $value3;
+            foreach ($xml_response->ezb_alphabetical_list->navlist->other_pages as $key2 => $value2) {
+                foreach ($value2->attributes() as $key3 => $value3) {
+                    $journals['navlist']['pages'][(string)$value2[0]][(string)$key3] = (string)$value3;
                 }
                 // set title
-                $journals['navlist']['pages'][(string) $value2[0]]['title'] = (string) $value2[0];
+                $journals['navlist']['pages'][(string)$value2[0]]['title'] = (string)$value2[0];
             }
         }
         $journals['navlist']['pages'][$journals['navlist']['current_page']] = $journals['navlist']['current_page'];
@@ -174,24 +176,24 @@ class Ezb {
 
         //entries
         if (isset($xml_response->ezb_alphabetical_list->alphabetical_order->journals->journal)) {
-            foreach ($xml_response->ezb_alphabetical_list->alphabetical_order->journals->journal AS $key => $value) {
-                $journals['alphabetical_order']['journals'][(int) $value->attributes()->jourid]['title'] = (string) $value->title;
-                $journals['alphabetical_order']['journals'][(int) $value->attributes()->jourid]['jourid'] = (int) $value->attributes()->jourid;
-                $journals['alphabetical_order']['journals'][(int) $value->attributes()->jourid]['color_code'] = (int) $value->journal_color->attributes()->color_code;
-                $journals['alphabetical_order']['journals'][(int) $value->attributes()->jourid]['color'] = (string) $value->journal_color->attributes()->color;
-                $journals['alphabetical_order']['journals'][(int) $value->attributes()->jourid]['detail_link'] = '';
-                $journals['alphabetical_order']['journals'][(int) $value->attributes()->jourid]['warpto_link'] = $this->journal_link_url . $value->attributes()->jourid;
+            foreach ($xml_response->ezb_alphabetical_list->alphabetical_order->journals->journal as $key => $value) {
+                $journals['alphabetical_order']['journals'][(int)$value->attributes()->jourid]['title'] = (string)$value->title;
+                $journals['alphabetical_order']['journals'][(int)$value->attributes()->jourid]['jourid'] = (int)$value->attributes()->jourid;
+                $journals['alphabetical_order']['journals'][(int)$value->attributes()->jourid]['color_code'] = (int)$value->journal_color->attributes()->color_code;
+                $journals['alphabetical_order']['journals'][(int)$value->attributes()->jourid]['color'] = (string)$value->journal_color->attributes()->color;
+                $journals['alphabetical_order']['journals'][(int)$value->attributes()->jourid]['detail_link'] = '';
+                $journals['alphabetical_order']['journals'][(int)$value->attributes()->jourid]['warpto_link'] = $this->journal_link_url . $value->attributes()->jourid;
             }
         }
 
         $i = 0;
 
         if (isset($xml_response->ezb_alphabetical_list->next_fifty)) {
-            foreach ($xml_response->ezb_alphabetical_list->next_fifty AS $key => $value) {
-                $journals['alphabetical_order']['next_fifty'][$i]['sc'] = (string) $value->attributes()->sc;
-                $journals['alphabetical_order']['next_fifty'][$i]['lc'] = (string) $value->attributes()->lc;
-                $journals['alphabetical_order']['next_fifty'][$i]['sindex'] = (string) $value->attributes()->sindex;
-                $journals['alphabetical_order']['next_fifty'][$i]['next_fifty_titles'] = (string) $value->next_fifty_titles;
+            foreach ($xml_response->ezb_alphabetical_list->next_fifty as $key => $value) {
+                $journals['alphabetical_order']['next_fifty'][$i]['sc'] = (string)$value->attributes()->sc;
+                $journals['alphabetical_order']['next_fifty'][$i]['lc'] = (string)$value->attributes()->lc;
+                $journals['alphabetical_order']['next_fifty'][$i]['sindex'] = (string)$value->attributes()->sindex;
+                $journals['alphabetical_order']['next_fifty'][$i]['next_fifty_titles'] = (string)$value->next_fifty_titles;
                 $i++;
             }
         }
@@ -199,11 +201,11 @@ class Ezb {
         $i = 0;
 
         if (isset($xml_response->ezb_alphabetical_list->first_fifty)) {
-            foreach ($xml_response->ezb_alphabetical_list->first_fifty AS $key => $value) {
-                $journals['alphabetical_order']['first_fifty'][$i]['sc'] = (string) $value->attributes()->sc;
-                $journals['alphabetical_order']['first_fifty'][$i]['lc'] = (string) $value->attributes()->lc;
-                $journals['alphabetical_order']['first_fifty'][$i]['sindex'] = (string) $value->attributes()->sindex;
-                $journals['alphabetical_order']['first_fifty'][$i]['first_fifty_titles'] = (string) $value->first_fifty_titles;
+            foreach ($xml_response->ezb_alphabetical_list->first_fifty as $key => $value) {
+                $journals['alphabetical_order']['first_fifty'][$i]['sc'] = (string)$value->attributes()->sc;
+                $journals['alphabetical_order']['first_fifty'][$i]['lc'] = (string)$value->attributes()->lc;
+                $journals['alphabetical_order']['first_fifty'][$i]['sindex'] = (string)$value->attributes()->sindex;
+                $journals['alphabetical_order']['first_fifty'][$i]['first_fifty_titles'] = (string)$value->first_fifty_titles;
                 $i++;
             }
         }
@@ -218,103 +220,103 @@ class Ezb {
      *
      * @return string
      */
-    public function getJournalDetail($journalId) {
+    public function getJournalDetail($journalId)
+    {
+        $journal = [];
+        $xml_response = $this->setRequest($this->detailview_request_url, ['jour_id' => $journalId, 'colors' => $this->colors, 'lang' => $this->lang]);
 
-        $journal = array();
-        $xml_response = $this->setRequest($this->detailview_request_url, array('jour_id' => $journalId, 'colors' => $this->colors, 'lang' => $this->lang));
-        
         //$xml_request = $this->XMLPageConnection->getDataFromXMLPage($url);
 
         if (!is_object($xml_response->ezb_detail_about_journal->journal)) {
-            return FALSE;
+            return false;
         }
 
-        $journal['id'] = (int) $xml_response->ezb_detail_about_journal->journal->attributes()->jourid;
-        $journal['title'] = (string) $xml_response->ezb_detail_about_journal->journal->title;
-        $journal['color'] = (string) $xml_response->ezb_detail_about_journal->journal->journal_color->attributes()->color;
-        $journal['color_code'] = (int) $xml_response->ezb_detail_about_journal->journal->journal_color->attributes()->color_code;
-        $journal['publisher'] = (string) $xml_response->ezb_detail_about_journal->journal->detail->publisher;
-        $journal['ZDB_number'] = (string) @$xml_response->ezb_detail_about_journal->journal->detail->ZDB_number;
-        $journal['ZDB_number_link'] = (string) @$xml_response->ezb_detail_about_journal->journal->detail->ZDB_number->attributes()->url;
-        $journal['subjects'] = array();
+        $journal['id'] = (int)$xml_response->ezb_detail_about_journal->journal->attributes()->jourid;
+        $journal['title'] = (string)$xml_response->ezb_detail_about_journal->journal->title;
+        $journal['color'] = (string)$xml_response->ezb_detail_about_journal->journal->journal_color->attributes()->color;
+        $journal['color_code'] = (int)$xml_response->ezb_detail_about_journal->journal->journal_color->attributes()->color_code;
+        $journal['publisher'] = (string)$xml_response->ezb_detail_about_journal->journal->detail->publisher;
+        $journal['ZDB_number'] = (string)@$xml_response->ezb_detail_about_journal->journal->detail->ZDB_number;
+        $journal['ZDB_number_link'] = (string)@$xml_response->ezb_detail_about_journal->journal->detail->ZDB_number->attributes()->url;
+        $journal['subjects'] = [];
         if (isset($xml_response->ezb_detail_about_journal->journal->detail->subjects->subject)) {
             foreach ($xml_response->ezb_detail_about_journal->journal->detail->subjects->subject as $subject) {
-                $journal['subjects'][] = (string) $subject;
+                $journal['subjects'][] = (string)$subject;
             }
         }
-        $journal['subjects_join'] = join(', ', $journal['subjects']);
-        $journal['pissns'] = array();
+        $journal['subjects_join'] = implode(', ', $journal['subjects']);
+        $journal['pissns'] = [];
         if (isset($xml_response->ezb_detail_about_journal->journal->detail->P_ISSNs->P_ISSN)) {
             foreach ($xml_response->ezb_detail_about_journal->journal->detail->P_ISSNs->P_ISSN as $pissn) {
-                $journal['pissns'][] = (string) $pissn;
+                $journal['pissns'][] = (string)$pissn;
             }
         }
-        $journal['pissns_join'] = join(', ', $journal['pissns']);
-        $journal['eissns'] = array();
+        $journal['pissns_join'] = implode(', ', $journal['pissns']);
+        $journal['eissns'] = [];
         if (isset($xml_response->ezb_detail_about_journal->journal->detail->E_ISSNs->E_ISSN)) {
             foreach ($xml_response->ezb_detail_about_journal->journal->detail->E_ISSNs->E_ISSN as $eissn) {
-                $journal['eissns'][] = (string) $eissn;
+                $journal['eissns'][] = (string)$eissn;
             }
         }
-        $journal['eissns_join'] = join(', ', $journal['eissns']);
-        $journal['keywords'] = array();
+        $journal['eissns_join'] = implode(', ', $journal['eissns']);
+        $journal['keywords'] = [];
         if (isset($xml_response->ezb_detail_about_journal->journal->detail->keywords->keyword)) {
             foreach ($xml_response->ezb_detail_about_journal->journal->detail->keywords->keyword as $keyword) {
-                $journal['keywords'][] = (string) $keyword;
+                $journal['keywords'][] = (string)$keyword;
             }
         }
 
-        $journal['fulltext'] = (string) $xml_response->ezb_detail_about_journal->journal->detail->fulltext;
+        $journal['fulltext'] = (string)$xml_response->ezb_detail_about_journal->journal->detail->fulltext;
 
         if (isset($xml_response->ezb_detail_about_journal->journal->detail->fulltext)) {
             $i = 1;
-            $warpto = urlencode((string) $xml_response->ezb_detail_about_journal->journal->detail->fulltext->attributes()->url);
+            $warpto = urlencode((string)$xml_response->ezb_detail_about_journal->journal->detail->fulltext->attributes()->url);
             $journal['fulltext_link'] = 'https%3A%2F%2Frzblx1.uni-regensburg.de%2Fezeit%2Fwarpto.phtml?bibid=' . $this->bibID . '&colors=' . $this->colors . '&lang=' . $this->lang . '&jour_id=' . $journalId . '&url=' . $warpto;
         }
 
-        $journal['homepages'] = array();
+        $journal['homepages'] = [];
         if (isset($xml_response->ezb_detail_about_journal->journal->detail->homepages->homepage)) {
             foreach ($xml_response->ezb_detail_about_journal->journal->detail->homepages->homepage as $homepage) {
-                $journal['homepages'][] = array(
-                    'linktext' => (string) $homepage,
-                    'url' => (string) $homepage->attributes()->url
-                );
+                $journal['homepages'][] = [
+                    'linktext' => (string)$homepage,
+                    'url' => (string)$homepage->attributes()->url
+                ];
             }
         }
-        $journal['first_fulltext'] = array(
-            'volume' => (int) $xml_response->ezb_detail_about_journal->journal->detail->first_fulltext_issue->first_volume,
-            'issue' => (int) $xml_response->ezb_detail_about_journal->journal->detail->first_fulltext_issue->first_issue,
-            'date' => (int) $xml_response->ezb_detail_about_journal->journal->detail->first_fulltext_issue->first_date
-        );
+        $journal['first_fulltext'] = [
+            'volume' => (int)$xml_response->ezb_detail_about_journal->journal->detail->first_fulltext_issue->first_volume,
+            'issue' => (int)$xml_response->ezb_detail_about_journal->journal->detail->first_fulltext_issue->first_issue,
+            'date' => (int)$xml_response->ezb_detail_about_journal->journal->detail->first_fulltext_issue->first_date
+        ];
         if ($xml_response->ezb_detail_about_journal->journal->detail->last_fulltext_issue) {
-            $journal['last_fulltext'] = array(
-                'volume' => (int) $xml_response->ezb_detail_about_journal->journal->detail->last_fulltext_issue->last_volume,
-                'issue' => (int) $xml_response->ezb_detail_about_journal->journal->detail->last_fulltext_issue->last_issue,
-                'date' => (int) $xml_response->ezb_detail_about_journal->journal->detail->last_fulltext_issue->last_date
-            );
+            $journal['last_fulltext'] = [
+                'volume' => (int)$xml_response->ezb_detail_about_journal->journal->detail->last_fulltext_issue->last_volume,
+                'issue' => (int)$xml_response->ezb_detail_about_journal->journal->detail->last_fulltext_issue->last_issue,
+                'date' => (int)$xml_response->ezb_detail_about_journal->journal->detail->last_fulltext_issue->last_date
+            ];
         }
-        if(isset($xml_response->ezb_detail_about_journal->journal->detail->moving_wall)){
-            $temp = (string) $xml_response->ezb_detail_about_journal->journal->detail->moving_wall;
+        if (isset($xml_response->ezb_detail_about_journal->journal->detail->moving_wall)) {
+            $temp = (string)$xml_response->ezb_detail_about_journal->journal->detail->moving_wall;
             $journal['moving_wall'] = $this->getMovingwall($temp);
         }
-        $journal['appearence'] = (string) $xml_response->ezb_detail_about_journal->journal->detail->appearence;
-        $journal['costs'] = (string) $xml_response->ezb_detail_about_journal->journal->detail->costs;
-        $journal['remarks'] = trim((string) $xml_response->ezb_detail_about_journal->journal->detail->remarks);
+        $journal['appearence'] = (string)$xml_response->ezb_detail_about_journal->journal->detail->appearence;
+        $journal['costs'] = (string)$xml_response->ezb_detail_about_journal->journal->detail->costs;
+        $journal['remarks'] = trim((string)$xml_response->ezb_detail_about_journal->journal->detail->remarks);
 
-        if(empty($journal['remarks'])){
+        if (empty($journal['remarks'])) {
             unset($journal['remarks']);
         }
 
         //check institutions having access to this journal
         $journal['participants'] = $this->getParticipants($journalId);
 
-        $color_map = array(
+        $color_map = [
             'green' => 1,
             'yellow' => 2,
             'red' => 4,
             'yellow_red' => 6
-        );
-        $journal['periods'] = array();
+        ];
+        $journal['periods'] = [];
         if (isset($xml_response->ezb_detail_about_journal->journal->periods->period)) {
             foreach ($xml_response->ezb_detail_about_journal->journal->periods->period as $period) {
                 $i = 1;
@@ -322,24 +324,24 @@ class Ezb {
                 $domain = '';
 
                 if (@$period->warpto_link->attributes()->url) {
-                    $warpto = urlencode((string) $period->warpto_link->attributes()->url);
+                    $warpto = urlencode((string)$period->warpto_link->attributes()->url);
                 }
 
-                $test = (string) @$period->readme_link->attributes()->url;
+                $test = (string)@$period->readme_link->attributes()->url;
 
-                if(!empty($test)){
-                    if(!preg_match('/^http/', $test)){
+                if (!empty($test)) {
+                    if (!preg_match('/^http/', $test)) {
                         $domain = 'https://rzblx1.uni-regensburg.de/ezeit/';
                     }
                 }
 
-                $journal['periods'][] = array(
-                    'label' => (string) $period->label,
-                    'color' => (string) @$period->journal_color->attributes()->color,
-                    'color_code' => $color_map[(string) @$period->journal_color->attributes()->color],
+                $journal['periods'][] = [
+                    'label' => (string)$period->label,
+                    'color' => (string)@$period->journal_color->attributes()->color,
+                    'color_code' => $color_map[(string)@$period->journal_color->attributes()->color],
                     'link' => 'https%3A%2F%2Frzblx1.uni-regensburg.de%2Fezeit%2Fwarpto.phtml?bibid=' . $this->bibID . '%26colors=' . $this->colors . '%26lang=' . $this->lang . '%26jour_id=' . $journalId . '%26url=' . $warpto,
-                    'readme' => $domain. (string) @$period->readme_link->attributes()->url
-                );
+                    'readme' => $domain . (string)@$period->readme_link->attributes()->url
+                ];
             }
         }
 
@@ -353,12 +355,13 @@ class Ezb {
      *
      * @return array
      */
-    public function detailSearchFormFields() {
-        $xml_response = $this->setRequest($this->search_url, array('colors' => $this->colors, 'lang' => $this->lang));
+    public function detailSearchFormFields()
+    {
+        $xml_response = $this->setRequest($this->search_url, ['colors' => $this->colors, 'lang' => $this->lang]);
 
-        foreach ($xml_response->ezb_search->option_list AS $key => $value) {
-            foreach ($value->option AS $key2 => $value2) {
-                $form[(string) $value->attributes()->name][(string) $value2->attributes()->value] = (string) $value2;
+        foreach ($xml_response->ezb_search->option_list as $key => $value) {
+            foreach ($value->option as $key2 => $value2) {
+                $form[(string)$value->attributes()->name][(string)$value2->attributes()->value] = (string)$value2;
             }
         }
 
@@ -373,16 +376,17 @@ class Ezb {
      *
      * @return array
      */
-    private function createSearchUrl($searchVars) {
+    private function createSearchUrl($searchVars)
+    {
 
         //if search was redirected from original website of EZB
         /*if(isset($searchVars['jq_type1']) && $searchVars['jq_type1'] == 'ZD'){
-            
+
             return array('url' => $this->search_zd_id, 'searchParams' => array('jq_term1' => $searchVars['jq_term1'], 'lang' => $this->lang));
         }else{*/
-            $searchParams['colors'] = $this->colors;
-            $searchParams['lang'] = $this->lang;
-            $searchParams['xmlv'] = 3;
+        $searchParams['colors'] = $this->colors;
+        $searchParams['lang'] = $this->lang;
+        $searchParams['xmlv'] = 3;
         //}
 
         if (!$searchVars['sc']) {
@@ -390,65 +394,64 @@ class Ezb {
         }
 
         foreach ($searchVars as $var => $values) {
-
             if (!is_array($values)) {
                 //convert to UTF-8, only if own website is utf-8
-                if((mb_strtolower($GLOBALS['TSFE']->metaCharset)) == 'utf-8'){
+                if ((mb_strtolower($GLOBALS['TSFE']->metaCharset)) == 'utf-8') {
                     $values = utf8_decode($values);
                 }
                 $searchParams[$var] = urlencode($values);
             } else {
                 //convert to UTF-8, only if own website is utf-8
-                if((mb_strtolower($GLOBALS['TSFE']->metaCharset)) == 'utf-8'){
-                    $utf8Values = array();
+                if ((mb_strtolower($GLOBALS['TSFE']->metaCharset)) == 'utf-8') {
+                    $utf8Values = [];
 
                     foreach ($values as $value) {
-                        if(is_string($value)){
+                        if (is_string($value)) {
                             $utf8Values[] = @utf8_decode($value);
-                        }                        
+                        }
                     }
                     $values = $utf8Values;
                 }
 
                 foreach ($values as $value) {
-                    if(is_string($value)){
+                    if (is_string($value)) {
                         $searchParams[$var] = $values;
                     }
                 }
             }
-        }        
+        }
 
-        if(isset($searchParams['colors'])){
+        if (isset($searchParams['colors'])) {
             $searchParams['colors'] = $this->getColorSum($searchParams['colors']);
         }
 
-        return array('url' => $this->search_result_page, 'searchParams' => $searchParams);
+        return ['url' => $this->search_result_page, 'searchParams' => $searchParams];
     }
 
     /**
      * Caclulate the sum of all colors
-     * 
+     *
      * @param mixed $colors
      * @return intger sum
      */
-    private function getColorSum($colors){
+    private function getColorSum($colors)
+    {
         $sum = 0;
 
         if (!is_array($colors)) {
             return $colors;
-        }else{
-            foreach ($colors as $value) {
-                $sum += $value;
-            }
+        }
+        foreach ($colors as $value) {
+            $sum += $value;
         }
 
-        if($sum == 0){
+        if ($sum == 0) {
             $sum = 7;
         }
 
         return $sum;
     }
-    
+
     /**
      * search
      *
@@ -456,35 +459,35 @@ class Ezb {
      *
      * @return array
      */
-    public function search($searchVars = array()) {
+    public function search($searchVars = [])
+    {
         $searchArray = $this->createSearchUrl($searchVars);
 
         $xml_response = $this->setRequest($searchArray['url'], $searchArray['searchParams']);
 
         if (!$xml_response) {
-            return FALSE;
+            return false;
         }
 
-        $result = array('page_vars');
-        foreach ($xml_response->page_vars->children() AS $key => $value) {
-            $result = array('page_vars' => array($key => (string) $value->attributes()->value));
+        $result = ['page_vars'];
+        foreach ($xml_response->page_vars->children() as $key => $value) {
+            $result = ['page_vars' => [$key => (string)$value->attributes()->value]];
         }
 
-        foreach ($xml_response->page_vars->children() AS $key => $value) {
-            $result['page_vars'][$key] = (string) $value->attributes()->value;
+        foreach ($xml_response->page_vars->children() as $key => $value) {
+            $result['page_vars'][$key] = (string)$value->attributes()->value;
         }
 
         //to edit search redirect of original EZB-website
-        if(isset($xml_response->ezb_alphabetical_list)){
-
+        if (isset($xml_response->ezb_alphabetical_list)) {
             if (isset($xml_response->ezb_alphabetical_list->alphabetical_order->journals->journal)) {
-                foreach ($xml_response->ezb_alphabetical_list->alphabetical_order->journals->journal AS $key => $value) {
-                    $result['alphabetical_order']['journals'][(int) $value->attributes()->jourid]['title'] = (string) $value->title;
-                    $result['alphabetical_order']['journals'][(int) $value->attributes()->jourid]['jourid'] = (int) $value->attributes()->jourid;
-                    $result['alphabetical_order']['journals'][(int) $value->attributes()->jourid]['color_code'] = (int) $value->journal_color->attributes()->color_code;
-                    $result['alphabetical_order']['journals'][(int) $value->attributes()->jourid]['color'] = (string) $value->journal_color->attributes()->color;
-                    $result['alphabetical_order']['journals'][(int) $value->attributes()->jourid]['detail_link'] = '';
-                    $result['alphabetical_order']['journals'][(int) $value->attributes()->jourid]['warpto_link'] = $this->journal_link_url . $value->attributes()->jourid;
+                foreach ($xml_response->ezb_alphabetical_list->alphabetical_order->journals->journal as $key => $value) {
+                    $result['alphabetical_order']['journals'][(int)$value->attributes()->jourid]['title'] = (string)$value->title;
+                    $result['alphabetical_order']['journals'][(int)$value->attributes()->jourid]['jourid'] = (int)$value->attributes()->jourid;
+                    $result['alphabetical_order']['journals'][(int)$value->attributes()->jourid]['color_code'] = (int)$value->journal_color->attributes()->color_code;
+                    $result['alphabetical_order']['journals'][(int)$value->attributes()->jourid]['color'] = (string)$value->journal_color->attributes()->color;
+                    $result['alphabetical_order']['journals'][(int)$value->attributes()->jourid]['detail_link'] = '';
+                    $result['alphabetical_order']['journals'][(int)$value->attributes()->jourid]['warpto_link'] = $this->journal_link_url . $value->attributes()->jourid;
                 }
 
                 //count of search results
@@ -496,30 +499,30 @@ class Ezb {
 
         //precise hits
         if (isset($xml_response->ezb_alphabetical_list_searchresult->precise_hits->journals->journal)) {
-            foreach ($xml_response->ezb_alphabetical_list_searchresult->precise_hits->journals->journal AS $key => $precise_hit) {
-                $result['precise_hits'][] = array(
-                    'jourid' => (string) $precise_hit->attributes()->jourid,
-                    'title' => (string) $precise_hit->title,
-                    'color_code' => (int) $precise_hit->journal_color->attributes()->color_code,
-                    'color' => (int) $precise_hit->journal_color->attributes()->color
-                );
+            foreach ($xml_response->ezb_alphabetical_list_searchresult->precise_hits->journals->journal as $key => $precise_hit) {
+                $result['precise_hits'][] = [
+                    'jourid' => (string)$precise_hit->attributes()->jourid,
+                    'title' => (string)$precise_hit->title,
+                    'color_code' => (int)$precise_hit->journal_color->attributes()->color_code,
+                    'color' => (int)$precise_hit->journal_color->attributes()->color
+                ];
             }
         }
 
         //count hits
-        $result['page_vars']['search_count'] = (int) $xml_response->ezb_alphabetical_list_searchresult->search_count;
+        $result['page_vars']['search_count'] = (int)$xml_response->ezb_alphabetical_list_searchresult->search_count;
 
         if (isset($xml_response->ezb_alphabetical_list_searchresult->navlist->other_pages)) {
-            foreach ($xml_response->ezb_alphabetical_list_searchresult->navlist->other_pages AS $key2 => $value2) {
-                foreach ($value2->attributes() AS $key3 => $value3) {
-                    $result['navlist']['pages'][(string) $value3] = array(
-                        'id' => (string) $value3,
-                        'title' => (string) $value2
-                    );
+            foreach ($xml_response->ezb_alphabetical_list_searchresult->navlist->other_pages as $key2 => $value2) {
+                foreach ($value2->attributes() as $key3 => $value3) {
+                    $result['navlist']['pages'][(string)$value3] = [
+                        'id' => (string)$value3,
+                        'title' => (string)$value2
+                    ];
                 }
             }
         }
-        $current_page = (string) $xml_response->ezb_alphabetical_list_searchresult->navlist->current_page;
+        $current_page = (string)$xml_response->ezb_alphabetical_list_searchresult->navlist->current_page;
 
         if ($current_page) {
             $result['navlist']['pages'][$current_page] = $current_page;
@@ -529,33 +532,33 @@ class Ezb {
         }
 
         if ($xml_response->ezb_alphabetical_list_searchresult->current_title) {
-            $result['current_title'] = (string) $xml_response->ezb_alphabetical_list_searchresult->current_title;
+            $result['current_title'] = (string)$xml_response->ezb_alphabetical_list_searchresult->current_title;
         }
 
         if (isset($xml_response->ezb_alphabetical_list_searchresult->alphabetical_order->journals->journal)) {
-            foreach ($xml_response->ezb_alphabetical_list_searchresult->alphabetical_order->journals->journal AS $key => $value) {
-                $result['alphabetical_order']['journals'][(int) $value->attributes()->jourid]['title'] = (string) $value->title;
-                $result['alphabetical_order']['journals'][(int) $value->attributes()->jourid]['jourid'] = (int) $value->attributes()->jourid;
-                $result['alphabetical_order']['journals'][(int) $value->attributes()->jourid]['color_code'] = (int) $value->journal_color->attributes()->color_code;
-                $result['alphabetical_order']['journals'][(int) $value->attributes()->jourid]['color'] = (string) $value->journal_color->attributes()->color;
-                $result['alphabetical_order']['journals'][(int) $value->attributes()->jourid]['detail_link'] = '';
-                $result['alphabetical_order']['journals'][(int) $value->attributes()->jourid]['warpto_link'] = $this->journal_link_url . $value->attributes()->jourid;
+            foreach ($xml_response->ezb_alphabetical_list_searchresult->alphabetical_order->journals->journal as $key => $value) {
+                $result['alphabetical_order']['journals'][(int)$value->attributes()->jourid]['title'] = (string)$value->title;
+                $result['alphabetical_order']['journals'][(int)$value->attributes()->jourid]['jourid'] = (int)$value->attributes()->jourid;
+                $result['alphabetical_order']['journals'][(int)$value->attributes()->jourid]['color_code'] = (int)$value->journal_color->attributes()->color_code;
+                $result['alphabetical_order']['journals'][(int)$value->attributes()->jourid]['color'] = (string)$value->journal_color->attributes()->color;
+                $result['alphabetical_order']['journals'][(int)$value->attributes()->jourid]['detail_link'] = '';
+                $result['alphabetical_order']['journals'][(int)$value->attributes()->jourid]['warpto_link'] = $this->journal_link_url . $value->attributes()->jourid;
             }
         }
 
         $i = 0;
-        foreach ($xml_response->ezb_alphabetical_list_searchresult->next_fifty AS $key => $value) {
-            $result['alphabetical_order']['next_fifty'][$i]['sc'] = (string) $value->attributes()->sc;
-            $result['alphabetical_order']['next_fifty'][$i]['sindex'] = (string) $value->attributes()->sindex;
-            $result['alphabetical_order']['next_fifty'][$i]['next_fifty_titles'] = (string) $value->next_fifty_titles;
+        foreach ($xml_response->ezb_alphabetical_list_searchresult->next_fifty as $key => $value) {
+            $result['alphabetical_order']['next_fifty'][$i]['sc'] = (string)$value->attributes()->sc;
+            $result['alphabetical_order']['next_fifty'][$i]['sindex'] = (string)$value->attributes()->sindex;
+            $result['alphabetical_order']['next_fifty'][$i]['next_fifty_titles'] = (string)$value->next_fifty_titles;
             $i++;
         }
 
         $i = 0;
-        foreach ($xml_response->ezb_alphabetical_list_searchresult->first_fifty AS $key => $value) {
-            $result['alphabetical_order']['first_fifty'][$i]['sc'] = (string) $value->attributes()->sc;
-            $result['alphabetical_order']['first_fifty'][$i]['sindex'] = (string) $value->attributes()->sindex;
-            $result['alphabetical_order']['first_fifty'][$i]['first_fifty_titles'] = (string) $value->first_fifty_titles;
+        foreach ($xml_response->ezb_alphabetical_list_searchresult->first_fifty as $key => $value) {
+            $result['alphabetical_order']['first_fifty'][$i]['sc'] = (string)$value->attributes()->sc;
+            $result['alphabetical_order']['first_fifty'][$i]['sindex'] = (string)$value->attributes()->sindex;
+            $result['alphabetical_order']['first_fifty'][$i]['first_fifty_titles'] = (string)$value->first_fifty_titles;
             $i++;
         }
 
@@ -565,8 +568,9 @@ class Ezb {
     /**
      * sets access information
      */
-    public function setShortAccessInfos() {
-        $this->shortAccessInfos = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.']['settings.']['ezbshortaccessinfos.'][$this->lang.'.'];
+    public function setShortAccessInfos()
+    {
+        $this->shortAccessInfos = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.']['settings.']['ezbshortaccessinfos.'][$this->lang . '.'];
     }
 
     /**
@@ -574,10 +578,11 @@ class Ezb {
      *
      * @return array $return
      */
-    public function getShortAccessInfos(){
+    public function getShortAccessInfos()
+    {
         $this->setShortAccessInfos();
 
-        $return = array('shortAccessInfos' => $this->shortAccessInfos);
+        $return = ['shortAccessInfos' => $this->shortAccessInfos];
 
         return $return;
     }
@@ -585,8 +590,9 @@ class Ezb {
     /**
      * sets more access information
      */
-    public function setLongAccessInfos() {
-        $this->longAccessInfos = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.']['settings.']['ezblongaccessinfos.'][$this->lang.'.'];
+    public function setLongAccessInfos()
+    {
+        $this->longAccessInfos = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.']['settings.']['ezblongaccessinfos.'][$this->lang . '.'];
     }
 
     /**
@@ -594,10 +600,11 @@ class Ezb {
      *
      * @return array $return
      */
-    public function getLongAccessInfos(){
+    public function getLongAccessInfos()
+    {
         $this->setLongAccessInfos();
 
-        $return = array('longAccessInfos' => $this->longAccessInfos, 'force' => $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.']['settings.']['ezblongaccessinfos.']['force']);
+        $return = ['longAccessInfos' => $this->longAccessInfos, 'force' => $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.']['settings.']['ezblongaccessinfos.']['force']];
 
         return $return;
     }
@@ -609,30 +616,31 @@ class Ezb {
      *
      * @return array full list of Partner with Journal
      */
-    public function getParticipantsList($jour_id){
-        $xml_response = $this->setRequest($this->participants_xml_url, array('jour_id' => $jour_id));
+    public function getParticipantsList($jour_id)
+    {
+        $xml_response = $this->setRequest($this->participants_xml_url, ['jour_id' => $jour_id]);
 
-        $participantsList = array();
+        $participantsList = [];
 
         if (!$xml_response) {
-            return FALSE;
+            return false;
         }
 
-        if ($xml_response->ezb_where_journal_at_partners->partner_selection->countries->country){
-            foreach ($xml_response->ezb_where_journal_at_partners->partner_selection->countries->country as $country){
-                $participantsList['countries'][(string) $country->attributes()->ID] = (string) $country[0];
+        if ($xml_response->ezb_where_journal_at_partners->partner_selection->countries->country) {
+            foreach ($xml_response->ezb_where_journal_at_partners->partner_selection->countries->country as $country) {
+                $participantsList['countries'][(string)$country->attributes()->ID] = (string)$country[0];
             }
 
-            foreach ($xml_response->ezb_where_journal_at_partners->partner_selection->categories->category as $category){
-                $participantsList['categories'][(string) $category->attributes()->ID]['countryrefs'] = (string)$category->attributes()->countryrefs;
-                $participantsList['categories'][(string) $category->attributes()->ID]['category_name'] = (string)$category->category_name;
+            foreach ($xml_response->ezb_where_journal_at_partners->partner_selection->categories->category as $category) {
+                $participantsList['categories'][(string)$category->attributes()->ID]['countryrefs'] = (string)$category->attributes()->countryrefs;
+                $participantsList['categories'][(string)$category->attributes()->ID]['category_name'] = (string)$category->category_name;
             }
 
-            foreach ($xml_response->ezb_where_journal_at_partners->partner_selection->institutions->institution  as $institution ){
-                $participantsList['institutions'][(string) $institution->attributes()->ID]['catrefs'] = (string)$institution->attributes()->catrefs;
-                $participantsList['institutions'][(string) $institution->attributes()->ID]['countryref'] = (string)$institution->attributes()->countryref;
-                $participantsList['institutions'][(string) $institution->attributes()->ID]['name'] = (string) $institution->name;
-                $participantsList['institutions'][(string) $institution->attributes()->ID]['city'] = (string) $institution->city;
+            foreach ($xml_response->ezb_where_journal_at_partners->partner_selection->institutions->institution  as $institution) {
+                $participantsList['institutions'][(string)$institution->attributes()->ID]['catrefs'] = (string)$institution->attributes()->catrefs;
+                $participantsList['institutions'][(string)$institution->attributes()->ID]['countryref'] = (string)$institution->attributes()->countryref;
+                $participantsList['institutions'][(string)$institution->attributes()->ID]['name'] = (string)$institution->name;
+                $participantsList['institutions'][(string)$institution->attributes()->ID]['city'] = (string)$institution->city;
             }
         }
 
@@ -644,7 +652,8 @@ class Ezb {
      *
      * @param int $colors sum of colors
      */
-    public function setColors($colors){
+    public function setColors($colors)
+    {
         $this->colors = $colors;
     }
 
@@ -653,23 +662,25 @@ class Ezb {
      *
      * @param int $colors sum of colors
      */
-    public function getColors(){
+    public function getColors()
+    {
         return $this->colors;
     }
 
     /**
      * checks institutions having access to this journal
      *
-     * @param integer $jour_id
+     * @param int $jour_id
      *
-     * @return boolean
+     * @return bool
      */
-    public function getParticipants($jour_id){
-        $participants = FALSE;
-        $xml_response = $this->setRequest($this->participants_xml_url, array('colors' => $this->colors, 'lang' => $this->lang, 'jour_id' => $jour_id));
+    public function getParticipants($jour_id)
+    {
+        $participants = false;
+        $xml_response = $this->setRequest($this->participants_xml_url, ['colors' => $this->colors, 'lang' => $this->lang, 'jour_id' => $jour_id]);
 
-        if ($xml_response->ezb_where_journal_at_partners->partner_selection->institutions->institution){
-            foreach ($xml_response->ezb_where_journal_at_partners->partner_selection->institutions->institution->children() as $childs)  {
+        if ($xml_response->ezb_where_journal_at_partners->partner_selection->institutions->institution) {
+            foreach ($xml_response->ezb_where_journal_at_partners->partner_selection->institutions->institution->children() as $childs) {
                 $participants = "{$this->participants_url}bibid={$this->bibID}&colors={$this->colors}&lang={$this->lang}&jour_id={$jour_id}";
                 break;
             }
@@ -680,19 +691,20 @@ class Ezb {
 
     /**
      * return contact information
-     * 
+     *
      * @return array
      */
-    public function getContact(){
-        $contact = FALSE;
-        $xml_response = $this->setRequest($this->contact_url, array('colors' => $this->colors, 'lang' => $this->lang));
+    public function getContact()
+    {
+        $contact = false;
+        $xml_response = $this->setRequest($this->contact_url, ['colors' => $this->colors, 'lang' => $this->lang]);
 
-        if ($xml_response->library ){
+        if ($xml_response->library) {
             $contact['library']['library'] = (string)$xml_response->library;
             $contact['library']['www'] = (string)$xml_response->library ->attributes()->href;
         }
 
-        if ($xml_response->ezb_contact){
+        if ($xml_response->ezb_contact) {
             $contact['email'] = (string)$xml_response->ezb_contact->attributes()->href;
             $contact['person'] = (string)$xml_response->ezb_contact;
         }
@@ -707,24 +719,25 @@ class Ezb {
      *
      * @return array
      */
-    private function getMovingwall($value){
+    private function getMovingwall($value)
+    {
         $value = trim($value);
 
         //prefix
-        $prefixTemp = rtrim(rtrim($value, "YMDIV"), "0123456789");
-        if($prefixTemp == "-"){
-            $prefix = "not";
-        }  else {
-            $prefix = "yes";
+        $prefixTemp = rtrim(rtrim($value, 'YMDIV'), '0123456789');
+        if ($prefixTemp == '-') {
+            $prefix = 'not';
+        } else {
+            $prefix = 'yes';
         }
 
         //number
-        $number = (int)rtrim(ltrim($value, "+-"), "YMDIV");
+        $number = (int)rtrim(ltrim($value, '+-'), 'YMDIV');
 
         //duration
-        $duration = strtolower (ltrim(ltrim($value, "+-"), "0123456789"));
+        $duration = strtolower(ltrim(ltrim($value, '+-'), '0123456789'));
 
-        $moving_wall = array('prefix' => array($prefix => TRUE), 'number' => $number, 'duration' => array($duration => TRUE));
+        $moving_wall = ['prefix' => [$prefix => true], 'number' => $number, 'duration' => [$duration => true]];
 
         return $moving_wall;
     }
@@ -732,25 +745,27 @@ class Ezb {
     /**
      * sets language
      */
-    private function setLanguage(){
+    private function setLanguage()
+    {
         //get current language
         $lang = $GLOBALS['TSFE']->config['config']['language'];
 
         //only de and en is allowed
-        if(($lang != 'de') && ($lang != 'en')){
+        if (($lang != 'de') && ($lang != 'en')) {
             $lang = 'de';
         }
 
         $this->lang = $lang;
     }
 
-     /**
-     * returns detailview_request_url
-     *
-     * @return string
-     */
-    public function getDetailviewRequestUrl(){
-        $url = $this->detailview_request_url .'?colors='. $this->colors .'&lang='. $this->lang;
+    /**
+    * returns detailview_request_url
+    *
+    * @return string
+    */
+    public function getDetailviewRequestUrl()
+    {
+        $url = $this->detailview_request_url . '?colors=' . $this->colors . '&lang=' . $this->lang;
 
         return $url;
     }
@@ -758,32 +773,33 @@ class Ezb {
     /**
      * get some inforemation from the HTML page
      *
-     * @param integer
+     * @param int
      *
      * @return array
      */
-    private function getMoreDetails($journalId){
-        $params = array('bibid' => $this->bibID, 'jour_id' =>$journalId, 'colors' => $this->colors, 'lang' => $this->lang, 'xmloutput' => 0);
+    private function getMoreDetails($journalId)
+    {
+        $params = ['bibid' => $this->bibID, 'jour_id' =>$journalId, 'colors' => $this->colors, 'lang' => $this->lang, 'xmloutput' => 0];
         $htmlResponse = $this->setRequest('http://rzblx1.uni-regensburg.de/ezeit/detail.phtml', $params);
 
-        $moreDetails = array();
+        $moreDetails = [];
 
         //replace double white space in single
         $htmlResponse = trim(preg_replace('/\s\s+/', ' ', $htmlResponse));
-        
+
         //start "Preistyp Anmerkung"
         $searchString = 'Preistyp Anmerkung';
-        
-        if($this->lang == "en"){
+
+        if ($this->lang == 'en') {
             $searchString = 'Pricetype annotation';
         }
 
-        preg_match('/'. $searchString .':\s*<\/dt>\s*<dd class="defListContentDefinition">(.*)<\/dd>/mU', $htmlResponse, $matches);
+        preg_match('/' . $searchString . ':\s*<\/dt>\s*<dd class="defListContentDefinition">(.*)<\/dd>/mU', $htmlResponse, $matches);
 
         //preparing string
-        if($matches[1]){    
-            $price_type_annotation = str_replace("<br />", "", $matches[1]);
-            $price_type_annotation = str_replace(":", "", $price_type_annotation);
+        if ($matches[1]) {
+            $price_type_annotation = str_replace('<br />', '', $matches[1]);
+            $price_type_annotation = str_replace(':', '', $price_type_annotation);
 
             $price_type_annotation = utf8_encode(trim($price_type_annotation));
         }
@@ -791,29 +807,28 @@ class Ezb {
 
         return $moreDetails;
     }
-    
+
     /**
-     *
      * @param type string
      * @param type array
      * @return SimpleXMLElement
      */
-    private function setRequest($url, $params = array()){
+    private function setRequest($url, $params = [])
+    {
+        $request = new \Sub\Libconnect\Service\Request();
 
-        $request = NEW \Sub\Libconnect\Service\Request;
-        
         $request->setUrl($url);
-        $request->setQuery( array('bibid' => $this->bibID, 'xmloutput' => 1 ) );
+        $request->setQuery(['bibid' => $this->bibID, 'xmloutput' => 1 ]);
 
         //set empty valus as NULL for Guzzle
-        foreach ($params as $key => $value){
-            if(empty($value)){
-                $params[$key] = NULL;
+        foreach ($params as $key => $value) {
+            if (empty($value)) {
+                $params[$key] = null;
             }
         }
 
-        if(!empty($params)){
-            $request->setQuery( $params );
+        if (!empty($params)) {
+            $request->setQuery($params);
         }
 
         $xml_response = $request->request();
@@ -821,4 +836,3 @@ class Ezb {
         return $xml_response;
     }
 }
-?>

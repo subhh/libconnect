@@ -1,11 +1,12 @@
 <?php
+
 namespace Sub\Libconnect\ViewHelpers;
 
 /***************************************************************
  *  Copyright notice
  *
  *  (c) 2012 Torsten Witt <torsten.witt@sub.uni-hamburg.de>, Stabi Hamburg
- *  
+ *
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -27,12 +28,10 @@ namespace Sub\Libconnect\ViewHelpers;
 /**
  * This class is a view helper that returns the length of a string.
  *
- * @package TYPO3
- * @subpackage Fluid
  * @version
  */
-
-class StrlenViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
+class StrlenViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper
+{
 
     /**
      * Returns length of string
@@ -40,8 +39,8 @@ class StrlenViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelp
      * @param string $string
      * @return int
      */
-    public function render($string) {
+    public function render($string)
+    {
         return strlen($string);
     }
 }
-?>

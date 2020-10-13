@@ -1,10 +1,11 @@
 <?php
-if (!defined ('TYPO3_MODE')) {
-    die ('Access denied.');
+
+if (!defined('TYPO3_MODE')) {
+    die('Access denied.');
 }
 
-return array(
-    'ctrl' => array(
+return [
+    'ctrl' => [
         'title'    => 'Fachgebiet',
         'label' => 'title',
         'tstamp' => 'tstamp',
@@ -20,24 +21,24 @@ return array(
         //'transOrigDiffSourceField' => 'l10n_diffsource',
 //'type' => 'type',
         'delete' => 'deleted',
-        'enablecolumns' => array(
+        'enablecolumns' => [
             'disabled' => 'hidden',
             //'starttime' => 'starttime',
             //'endtime' => 'endtime',
 
-        ),
+        ],
         'iconfile' => 'EXT:libconnect/Resources/Public/Icons/tx_libconnect_domain_model_subject.gif'
-    ),
-    'interface' => array(
+    ],
+    'interface' => [
         'showRecordFieldList' => 'hidden,title,dbisid,ezbnotation',
-    ),
-    'types' => array(
-        '0' => array('showitem' => 'hidden, title, dbisid, ezbnotation')
-    ),
-    'palettes' => array(
-        '1' => array('showitem' => '')
-    ),
-    'columns' => array(
+    ],
+    'types' => [
+        '0' => ['showitem' => 'hidden, title, dbisid, ezbnotation']
+    ],
+    'palettes' => [
+        '1' => ['showitem' => '']
+    ],
+    'columns' => [
         /*'sys_language_uid' => array(
             'exclude' => 1,
             'label' => 'LLL:EXT:lang/locallang_general.xml:LGL.language',
@@ -77,43 +78,42 @@ return array(
                 'max' => 255,
             )
         ),*/
-        'hidden' => array(
+        'hidden' => [
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
-            'config' => array(
+            'config' => [
                 'type' => 'check',
-            ),
+            ],
             'exclude' => 1
-        ),
-        'title' => array(
+        ],
+        'title' => [
             'label' => 'LLL:EXT:libconnect/Resources/Private/Language/locallang_db.xlf:tx_libconnect_domain_model_subject.title',
-            'config' => array(
+            'config' => [
                 'type' => 'input',
                 'size' => 30,
                 'max' => 255,
                 'eval' => 'trim,required'
-            ),
+            ],
            'exclude' => 0
-        ),
-        'dbisid' => array(
+        ],
+        'dbisid' => [
             'label' => 'LLL:EXT:libconnect/Resources/Private/Language/locallang_db.xlf:tx_libconnect_domain_model_subject.dbisid',
-            'config' => array(
+            'config' => [
                 'type' => 'input',
                 'size' => 30,
                 'max' => 255,
                 'eval' => 'trim'
-            ),
+            ],
             'exclude' => 0
-        ),
-        'ezbnotation' => array(
+        ],
+        'ezbnotation' => [
             'label' => 'LLL:EXT:libconnect/Resources/Private/Language/locallang_db.xlf:tx_libconnect_domain_model_subject.ezbnotation',
-            'config' => array(
+            'config' => [
                 'type' => 'input',
                 'size' => 30,
                 'max' => 255,
                 'eval' => 'trim'
-            ),
+            ],
             'exclude' => 0
-        )
-    )
-);
-?>
+        ]
+    ]
+];

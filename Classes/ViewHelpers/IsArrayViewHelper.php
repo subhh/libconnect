@@ -1,10 +1,12 @@
 <?php
+
 namespace Sub\Libconnect\ViewHelpers;
+
 /***************************************************************
  *  Copyright notice
  *
  *  (c) 2012 Torsten Witt <torsten.witt@sub.uni-hamburg.de>, Stabi Hamburg
- *  
+ *
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -26,21 +28,19 @@ namespace Sub\Libconnect\ViewHelpers;
 /**
  * This class is a view helper that finds whether a variable is an array.
  *
- * @package TYPO3
- * @subpackage Fluid
  * @version
  */
-
-class IsArrayViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
+class IsArrayViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper
+{
 
     /**
      * Returns true if $value is array, false otherwise.
      *
      * @param mixed $value
-     * @return boolean
+     * @return bool
      */
-    public function render($value) {
+    public function render($value)
+    {
         return is_array($value);
     }
 }
-?>

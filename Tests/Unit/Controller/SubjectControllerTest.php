@@ -4,7 +4,7 @@
  *  Copyright notice
  *
  *  (c) 2012 Torsten Witt <torsten.witt@sub.uni-hamburg.de>, Stabi Hamburg
- *  
+ *
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -31,31 +31,31 @@
  * @copyright Copyright belongs to the respective authors
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
- * @package TYPO3
- * @subpackage libconnect
  *
  * @author Torsten Witt <torsten.witt@sub.uni-hamburg.de>
  */
-class Tx_Libconnect_Controller_SubjectControllerTest extends Tx_Extbase_Tests_Unit_BaseTestCase {
+class Tx_Libconnect_Controller_SubjectControllerTest extends Tx_Extbase_Tests_Unit_BaseTestCase
+{
     /**
      * @var Tx_Libconnect_Domain_Model_Subject
      */
     protected $fixture;
 
-    public function setUp() {
+    public function setUp()
+    {
         $this->fixture = new Tx_Libconnect_Domain_Model_Subject();
     }
 
-    public function tearDown() {
+    public function tearDown()
+    {
         unset($this->fixture);
     }
 
     /**
      * @test
      */
-    public function dummyMethod() {
-        $this->markTestIncomplete();
+    public function dummyMethod()
+    {
+        self::markTestIncomplete();
     }
-
 }
-?>

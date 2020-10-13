@@ -1,4 +1,5 @@
 <?php
+
 namespace Sub\Libconnect\ViewHelpers;
 
 /***************************************************************
@@ -26,12 +27,10 @@ namespace Sub\Libconnect\ViewHelpers;
 /**
  * This class is a view helper that replace a string.
  *
- * @package TYPO3
- * @subpackage Fluid
  * @version
  */
-
-class StrreplaceViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
+class StrreplaceViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper
+{
 
     /**
      * replace all matches of the search string with an other
@@ -40,12 +39,11 @@ class StrreplaceViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractView
      * @param string $replace
      * @return string
      */
-    public function render($search = '', $replace = '') {
-
+    public function render($search = '', $replace = '')
+    {
         $subject = $this->renderChildren();
         $newString = str_replace($search, $replace, $subject);
 
         return $newString;
     }
 }
-?>

@@ -1,11 +1,12 @@
 <?php
+
 namespace Sub\Libconnect\Controller;
 
 /***************************************************************
  *  Copyright notice
  *
  *  (c) 2012 Torsten Witt <torsten.witt@sub.uni-hamburg.de>, Stabi Hamburg
- *  
+ *
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -26,13 +27,8 @@ namespace Sub\Libconnect\Controller;
  ***************************************************************/
 
 /**
- *
- *
- * @package libconnect
  * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
- *
  */
-class SubjectController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
-
+class SubjectController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+{
 }
-?>

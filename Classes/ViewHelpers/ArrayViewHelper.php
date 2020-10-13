@@ -1,15 +1,14 @@
 <?php
+
 namespace Sub\Libconnect\ViewHelpers;
 
 /**
  * This class is a view helper that returns an value of an sub array
  *
- * @package TYPO3
- * @subpackage Fluid
  * @version
  */
-
-class ArrayViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
+class ArrayViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper
+{
 
     /**
     * Get the array value from given key
@@ -18,14 +17,14 @@ class ArrayViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelpe
     * @param string $key
     * @return string
     */
-    public function render($inputArray = array(), $key = '0') {
+    public function render($inputArray = [], $key = '0')
+    {
         if (is_array($inputArray)) {
             foreach ($inputArray as $value) {
-                if($value == $key){
+                if ($value == $key) {
                     return $value;
                 }
             }
         }
     }
 }
-?>

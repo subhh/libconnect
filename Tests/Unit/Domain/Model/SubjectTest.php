@@ -4,7 +4,7 @@
  *  Copyright notice
  *
  *  (c) 2012 Torsten Witt <torsten.witt@sub.uni-hamburg.de>, Stabi Hamburg
- *              
+ *
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -31,75 +31,83 @@
  * @copyright Copyright belongs to the respective authors
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
- * @package TYPO3
- * @subpackage libconnect
  *
  * @author Torsten Witt <torsten.witt@sub.uni-hamburg.de>
  */
-class Tx_Libconnect_Domain_Model_SubjectTest extends Tx_Extbase_Tests_Unit_BaseTestCase {
+class Tx_Libconnect_Domain_Model_SubjectTest extends Tx_Extbase_Tests_Unit_BaseTestCase
+{
     /**
      * @var Tx_Libconnect_Domain_Model_Subject
      */
     protected $fixture;
 
-    public function setUp() {
+    public function setUp()
+    {
         $this->fixture = new Tx_Libconnect_Domain_Model_Subject();
     }
 
-    public function tearDown() {
+    public function tearDown()
+    {
         unset($this->fixture);
     }
-    
-    /**
-     * @test
-     */
-    public function getTitleReturnsInitialValueForString() { }
 
     /**
      * @test
      */
-    public function setTitleForStringSetsTitle() { 
+    public function getTitleReturnsInitialValueForString()
+    {
+    }
+
+    /**
+     * @test
+     */
+    public function setTitleForStringSetsTitle()
+    {
         $this->fixture->setTitle('Conceived at T3CON10');
 
-        $this->assertSame(
+        self::assertSame(
             'Conceived at T3CON10',
             $this->fixture->getTitle()
         );
     }
-    
-    /**
-     * @test
-     */
-    public function getDbisidReturnsInitialValueForString() { }
 
     /**
      * @test
      */
-    public function setDbisidForStringSetsDbisid() { 
+    public function getDbisidReturnsInitialValueForString()
+    {
+    }
+
+    /**
+     * @test
+     */
+    public function setDbisidForStringSetsDbisid()
+    {
         $this->fixture->setDbisid('Conceived at T3CON10');
 
-        $this->assertSame(
+        self::assertSame(
             'Conceived at T3CON10',
             $this->fixture->getDbisid()
         );
     }
-    
-    /**
-     * @test
-     */
-    public function getezbnotationReturnsInitialValueForString() { }
 
     /**
      * @test
      */
-    public function setezbnotationForStringSetsezbnotation() { 
+    public function getezbnotationReturnsInitialValueForString()
+    {
+    }
+
+    /**
+     * @test
+     */
+    public function setezbnotationForStringSetsezbnotation()
+    {
         $this->fixture->setezbnotation('Conceived at T3CON10');
 
-        $this->assertSame(
+        self::assertSame(
             'Conceived at T3CON10',
             $this->fixture->getezbnotation()
         );
     }
-
 }
-?>
