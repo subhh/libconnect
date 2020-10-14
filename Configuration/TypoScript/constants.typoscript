@@ -3,6 +3,20 @@
 #
 
 plugin.tx_libconnect {
+    view {
+        # cat=plugin.tx_libconnect/file/0003; type=string; label=Path to template root (FE)
+        templateRootPath = EXT:libconnect/Resources/Private/Templates/
+        # cat=plugin.tx_libconnect/file/0004; type=string; label=Path to template partials (FE)
+        partialRootPath = EXT:libconnect/Resources/Private/Partials/
+        # cat=plugin.tx_libconnect/file/0005; type=string; label=Path to template layouts (FE)
+        layoutRootPath = EXT:libconnect/Resources/Private/Layouts/
+    }
+
+    persistence {
+        # cat=plugin.tx_libconnect/settings/0020; type=int+; label=Default storage PID
+        storagePid = 1
+    }
+
     # customsubcategory=settings=Settings
 
     # cat=plugin.tx_libconnect/settings/0001; type=string; label=ezbbibid
@@ -14,12 +28,7 @@ plugin.tx_libconnect {
     //zdbbibid = BIBID
     //zdbsigel = SIGEL
     //zdbisil = ISIL
-    //zdbbik = ISIL	
-
-    persistence {
-        # cat=plugin.tx_libconnect/settings/0020; type=int+; label=Default storage PID
-        storagePid = 1
-    }
+    //zdbbik = ISIL
 
     settings {
         ezblongaccessinfos{
@@ -54,27 +63,3 @@ plugin.tx_libconnect {
         }
     }
 }
-
-[compatVersion = 9]
-    plugin.tx_libconnect {
-        view {
-            # cat=plugin.tx_libconnect/file/0003; type=string; label=Path to template root (FE)
-            templateRootPath = EXT:libconnect/Resources/Private/Templates/
-            # cat=plugin.tx_libconnect/file/0004; type=string; label=Path to template partials (FE)
-            partialRootPath = EXT:libconnect/Resources/Private/Partials/
-            # cat=plugin.tx_libconnect/file/0005; type=string; label=Path to template layouts (FE)
-            layoutRootPath = EXT:libconnect/Resources/Private/Layouts/
-        }
-    }
-[ELSE]
-    plugin.tx_libconnect {
-        view {
-            # cat=plugin.tx_libconnect/file/0003; type=string; label=Path to template root (FE)
-            templateRootPath = EXT:libconnect/Resources/Private/OldTemplates/
-            # cat=plugin.tx_libconnect/file/0004; type=string; label=Path to template partials (FE)
-            partialRootPath = EXT:libconnect/Resources/Private/OldPartials/
-            # cat=plugin.tx_libconnect/file/0005; type=string; label=Path to template layouts (FE)
-            layoutRootPath = EXT:libconnect/Resources/Private/Layouts/
-        }
-    }
-[END]
