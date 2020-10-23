@@ -430,7 +430,7 @@ class Zdb {
 
         $request = $this->setRequest($url);
 
-        preg_match('/\<rdau:P60306 rdf:resource="http:\/\/ld.zdb-services.de\/resource\/(.*)"\/\>/', $request, $matches, PREG_OFFSET_CAPTURE);
+        preg_match('/\<rdau:P60306 rdf:resource="https?:\/\/ld.zdb-services.de\/resource\/(.*)"\/\>/', $request, $matches, PREG_OFFSET_CAPTURE);
 
         if(!empty($matches[1][0])){
             $this->successor[]['zdbid'] = $matches[1][0];
