@@ -38,8 +38,6 @@ class Request {
 
     public function Request($urldecode = TRUE){
         $requestFactory = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Http\RequestFactory::class);
-        
-        #$jar = new \GuzzleHttp\Cookie\CookieJar;
 
         if($urldecode){
             $query = urldecode( http_build_query($this->getQuery(), null, '&') );
@@ -60,8 +58,6 @@ class Request {
             $response = $requestFactory->request($this->getUrl(), 'GET', $additionalOptions);
 
         } catch (\Exception $e) {
-            //echo Psr7\str($requestFactory->getRequest());
-            //echo Psr7\str($response->getResponse());exit;
 
             if ($this->debug){
                 \TYPO3\CMS\Core\Utility\GeneralUtility::devLog('Got HTTP Code ' . $response->getStatusCode() . ' for request: '.  $this->url. http_build_query($this->getQuery(), null, '&'), 'libconnect', 1);
