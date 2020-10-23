@@ -287,7 +287,6 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
         //getTitleHistory
         if(!empty($journal['ZDB_number'])){
             $journal['title_history'] = $this->getTitleHistory($journal['ZDB_number']);
-            \TYPO3\CMS\Core\Utility\DebugUtility::debug($journal['title_history'], 'title_history');
         }
 
         return $journal;
