@@ -287,6 +287,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
         //getTitleHistory
         if(!empty($journal['ZDB_number'])){
             $journal['title_history'] = $this->getTitleHistory($journal['ZDB_number']);
+            \TYPO3\CMS\Core\Utility\DebugUtility::debug($journal['title_history'], 'title_history');
         }
 
         return $journal;
@@ -455,7 +456,6 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
         return $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.']['ezbbibid'];
     }
     
-//BOF ZDB LocationData
     /**
      * get information about the location for the print version
      * 
@@ -464,14 +464,14 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
     public function loadLocationData($journal) {
         $zdb = NEW \Sub\Libconnect\Lib\Zdb;
 
-        if(!empty($journal['ZDB_number'])){
-            $locationData = $zdb->getJournalLocationDetails( NULL, $journal['ZDB_number']);
-        } else {
-            if(count($journal['pissns'])){
-                $locationData = $zdb->getJournalLocationDetails( "issn=" . reset($journal['pissns']), NULL );
-            } elseif(count($journal['eissns'])){
-                $locationData = $zdb->getJournalLocationDetails( "eissn=" . reset($journal['eissns']), NULL );
-            }
+        if(empty($journal['ZDB_number'])){
+            $journal['ZDB_number'] = NULL;
+        }
+
+        if(count($journal['pissns'])){
+            $locationData = $zdb->getJournalLocationDetails( array('issn' => reset($journal['pissns']) ), $journal['ZDB_number'] );
+        } elseif(count($journal['eissns'])){
+            $locationData = $zdb->getJournalLocationDetails( array('eissn' => reset($journal['eissns']) ), $journal['ZDB_number'] );
         }
 
         if (! $locationData ){
@@ -480,7 +480,6 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
         return $locationData; 
     }
-//EOF ZDB LocationData
 
     /**
      * set detailed access information

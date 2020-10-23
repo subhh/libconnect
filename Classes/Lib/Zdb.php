@@ -72,6 +72,7 @@ class Zdb {
     //private $briefformat_request_url = 'https://services.dnb.de/fize-service/gvr/brief.xml?';
     private $fullformat_request_url = 'https://services.dnb.de/fize-service/gvr/full.xml';
 
+
     // title history
     private $precursor = array();
     private $successor = array();
@@ -119,7 +120,7 @@ class Zdb {
         }
         //get the bik
         if (isset($GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.']['zdbbik'])) {
-            $pidArray['bik'] = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.']['zdbbik'];
+            $this->params['bik'] = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.']['zdbbik'];
         }
 
         //only print location data are requested (default is off, so online and print will be delivered)
@@ -148,17 +149,21 @@ class Zdb {
         if(empty($journalIdentifier) && empty($ZDBID)){
 
             return FALSE;
-        }else {
-            if(!empty($ZDBID)) {
-                $this->params['zdbid'] = $ZDBID;
-            }
-            if(!empty($journalIdentifier)) {
-                $this->params[$journalIdentifier] = $journalIdentifier;
+        }
+
+        if(!empty($ZDBID)) {
+            $this->params['zdbid'] = $ZDBID;
+        }
+
+        if(!empty($journalIdentifier)) {
+
+            foreach ($journalIdentifier as $key => $value) {
+                $params[$key] = $value;
             }
         }
 
         //build params
-        if(!empty($this->pid)){
+        if(!empty($this->params['bibid'])){
             $params['pid'] = http_build_query($this->params);
         }
         $params['sid'] = $this->sid;
