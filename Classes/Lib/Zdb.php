@@ -379,8 +379,16 @@ class Zdb {
                 $this->zdbData['name'] = $matches[1][0];
             }
 
+            //period
+            preg_match('/\<rdau:P60128 rdf:datatype="https?:\/\/www.w3.org\/2001\/XMLSchema#string">(.*)\<\/rdau:P60128\>/', $request, $matches, PREG_OFFSET_CAPTURE);
+
+            if(!empty($matches[1][0])){
+                $this->zdbData['period'] = $matches[1][0];
+            }
+
             //get date issued
             preg_match('/\<dcterms:issued rdf:datatype="https?:\/\/www.w3.org\/2001\/XMLSchema#string">(.*)\<\/dcterms:issued\>/', $request, $matches, PREG_OFFSET_CAPTURE);
+
             if(!empty($matches[1][0])){
                 $this->zdbData['date_issued'] = $matches[1][0];
             }
@@ -407,8 +415,16 @@ class Zdb {
                 $this->precursor[$key]['name'] = $matches[1][0];
             }
 
+            //period
+            preg_match('/\<rdau:P60128 rdf:datatype="https?:\/\/www.w3.org\/2001\/XMLSchema#string">(.*)\<\/rdau:P60128\>/', $request, $matches, PREG_OFFSET_CAPTURE);
+
+            if(!empty($matches[1][0])){
+                $this->precursor[$key]['period'] = $matches[1][0];
+            }
+
             //get date issued
             preg_match('/\<dcterms:issued rdf:datatype="https?:\/\/www.w3.org\/2001\/XMLSchema#string">(.*)\<\/dcterms:issued\>/', $request, $matches, PREG_OFFSET_CAPTURE);
+
             if(!empty($matches[1][0])){
                 $this->precursor[$key]['date_issued'] = $matches[1][0];
             }
@@ -449,6 +465,13 @@ class Zdb {
 
             if(!empty($matches[1][0])){
                 $this->successor[$key]['name'] = $matches[1][0];
+            }
+
+            //period
+            preg_match('/\<rdau:P60128 rdf:datatype="https?:\/\/www.w3.org\/2001\/XMLSchema#string">(.*)\<\/rdau:P60128\>/', $request, $matches, PREG_OFFSET_CAPTURE);
+
+            if(!empty($matches[1][0])){
+                $this->successor[$key]['period'] = $matches[1][0];
             }
 
             //get date issued
