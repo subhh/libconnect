@@ -7,6 +7,12 @@
 **/
 7.0.5
     - DBIS: fixed translation for isbn
+    - Added extension to packagist.org.
+    - Guzzle: Changed Exception handling. Thanks to Christoph Lehmann
+    - ZDB:
+        - Fixed failed ZDB print information
+        - Fixed period in title history and moved issued as new field
+    - Fixed replace section in composer.json
 7.0.4
     - Capture GuzzleHttp\Exception\ServerException for more stability
     - DBIS:
