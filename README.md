@@ -8,21 +8,17 @@ Here is the German [Manual](doc/manual.pdf "Ausführliches Manual").
 
 Visit our git repository: https://github.com/subhh/libconnect
 
-## 7.0.4
-    - Capture GuzzleHttp\Exception\ServerException for more stability
-    - DBIS:
-        - New in DBIS: fixed entries of collections, there were listed new entries of all subjects
-        - Changed licence legend text to default texts of dbis
-        - Changed all rzblx10.uni-regensburg.de links to https
-        - removed not used translations
-    - EZB: 
-        - stabilit fix, if zdb service not working
-        - Changed link to zdb from http://www.zdb-opac.de to https://zdb-katalog.de
-        - Changed some more warpto links and a link to rzbl1x1.uni-regensburg.de to https.
-    - ZDB: Changed urls for full format request to https
+## 7.0.5
+    - DBIS: fixed translation for isbn
+    - Added extension to packagist.org.
+    - Guzzle: Changed Exception handling. Thanks to Christoph Lehmann
+    - ZDB:
+        - Fixed failed ZDB print information
+        - Fixed period in title history and moved issued as new field
+    - Fixed replace section in composer.json
 
 Tested with 
-    - TYPO3 8.7.24
+    - TYPO3 8.7.25
     - TYPO3 9.5.4
 
 ## Configuration

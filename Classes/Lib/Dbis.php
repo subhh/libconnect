@@ -459,9 +459,10 @@ class Dbis
                         $i++;
                     }
                     //$details['db_type_infos_join'] = join(', ', $details['db_type_infos']);
-                } elseif ($key == 'hints') {
-                    //warpto link must be completet, because ist is relative
-                    $hint = preg_replace('/warpto/', 'https://rzblx10.uni-regensburg.de/dbinfo/warpto', (string)$value);
+                } else if ($key == 'hints') {
+                    //warpto link must be completed, because it is relative
+                    $hint = preg_replace('/warpto/', 'https://rzblx10.uni-regensburg.de/dbinfo/warpto', (string) $value);
+
                     $details['hints'] =  $hint;
                 } elseif ($key == 'instruction') {
                     $details['instruction'] = (string)$value;
@@ -744,7 +745,7 @@ class Dbis
     }
 
     /**
-     * get information for the access legen
+     * get information for the access
      * @param SimpleXMLElement $request
      */
     private function getAccessInfos($request)

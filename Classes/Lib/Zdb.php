@@ -50,12 +50,6 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class Zdb
 {
-
-   /**
-    * enable debug for logging errors to devLog
-    */
-    private $debug = false;
-
     /**
      * Source-Identifier (sid – Vendor-ID:Database-ID) needs to be arranged with
      * the ZDB (contact: Mr. Rolschewski, mailto: johann.rolschewski@sbb.spk-berlin.de)
@@ -122,7 +116,7 @@ class Zdb
         }
         //get the bik
         if (isset($GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.']['zdbbik'])) {
-            $pidArray['bik'] = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.']['zdbbik'];
+            $this->params['bik'] = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.']['zdbbik'];
         }
 
         //only print location data are requested (default is off, so online and print will be delivered)
@@ -148,18 +142,20 @@ class Zdb
         *    e.g. "issn=1234567-4"
         * - ZDBID is a string of a ZDB-ID
         */
-        if (empty($journalIdentifier) && empty($ZDBID)) {
+        if(empty($journalIdentifier) && empty($ZDBID)){
             return false;
         }
-        if (!empty($ZDBID)) {
+
+        if(!empty($ZDBID)) {
             $this->params['zdbid'] = $ZDBID;
         }
-        if (!empty($journalIdentifier)) {
-            $this->params[$journalIdentifier] = $journalIdentifier;
+
+        foreach ($journalIdentifier ?? [] as $key => $value) {
+            $params[$key] = $value;
         }
 
         //build params
-        if (!empty($this->pid)) {
+        if(!empty($this->params['bibid'])){
             $params['pid'] = http_build_query($this->params);
         }
         $params['sid'] = $this->sid;
@@ -362,6 +358,13 @@ class Zdb
                 $this->zdbData['name'] = $matches[1][0];
             }
 
+            //period
+            preg_match('/\<rdau:P60128 rdf:datatype="https?:\/\/www.w3.org\/2001\/XMLSchema#string">(.*)\<\/rdau:P60128\>/', $request, $matches, PREG_OFFSET_CAPTURE);
+
+            if(!empty($matches[1][0])){
+                $this->zdbData['period'] = $matches[1][0];
+            }
+
             //get date issued
             preg_match('/\<dcterms:issued rdf:datatype="https?:\/\/www.w3.org\/2001\/XMLSchema#string">(.*)\<\/dcterms:issued\>/', $request, $matches, PREG_OFFSET_CAPTURE);
             if (!empty($matches[1][0])) {
@@ -390,6 +393,13 @@ class Zdb
                 $this->precursor[$key]['name'] = $matches[1][0];
             }
 
+            //period
+            preg_match('/\<rdau:P60128 rdf:datatype="https?:\/\/www.w3.org\/2001\/XMLSchema#string">(.*)\<\/rdau:P60128\>/', $request, $matches, PREG_OFFSET_CAPTURE);
+
+            if(!empty($matches[1][0])){
+                $this->precursor[$key]['period'] = $matches[1][0];
+            }
+
             //get date issued
             preg_match('/\<dcterms:issued rdf:datatype="https?:\/\/www.w3.org\/2001\/XMLSchema#string">(.*)\<\/dcterms:issued\>/', $request, $matches, PREG_OFFSET_CAPTURE);
             if (!empty($matches[1][0])) {
@@ -413,7 +423,7 @@ class Zdb
 
         $request = $this->setRequest($url);
 
-        preg_match('/\<rdau:P60306 rdf:resource="http:\/\/ld.zdb-services.de\/resource\/(.*)"\/\>/', $request, $matches, PREG_OFFSET_CAPTURE);
+        preg_match('/\<rdau:P60306 rdf:resource="https?:\/\/ld.zdb-services.de\/resource\/(.*)"\/\>/', $request, $matches, PREG_OFFSET_CAPTURE);
 
         if (!empty($matches[1][0])) {
             $this->successor[]['zdbid'] = $matches[1][0];
@@ -432,6 +442,13 @@ class Zdb
 
             if (!empty($matches[1][0])) {
                 $this->successor[$key]['name'] = $matches[1][0];
+            }
+
+            //period
+            preg_match('/\<rdau:P60128 rdf:datatype="https?:\/\/www.w3.org\/2001\/XMLSchema#string">(.*)\<\/rdau:P60128\>/', $request, $matches, PREG_OFFSET_CAPTURE);
+
+            if(!empty($matches[1][0])){
+                $this->successor[$key]['period'] = $matches[1][0];
             }
 
             //get date issued
@@ -453,9 +470,9 @@ class Zdb
     }
 
     /**
-     * @param type string
-     * @param type array
-     * @return SimpleXMLElement
+     * @param string $url
+     * @param array $params
+     * @return \SimpleXMLElement
      */
     private function setRequest($url, $params = [])
     {

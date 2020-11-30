@@ -72,14 +72,10 @@ class Request
 
         try {
             $response = $requestFactory->request($this->getUrl(), 'GET', $additionalOptions);
-        } catch (\GuzzleHttp\Exception\ServerException $e) {
-            //echo Psr7\str($requestFactory->getRequest());
-            //echo Psr7\str($response->getResponse());exit;
-
+        } catch (\Exception $e) {
             $this->logger->debug(
                 'Got HTTP Code ' . $response->getStatusCode() . ' for request: ' . $this->url .
                 http_build_query($this->getQuery(),null, '&'));
-
             return false;
         }
 

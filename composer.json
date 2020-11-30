@@ -19,8 +19,7 @@
         }
     },
     "replace": {
-        "libconnect": "self.version",
         "typo3-ter/libconnect": "self.version",
-        "Sub/libconnect": "self.version"
+        "sub/libconnect": "self.version"
     }
 }

@@ -462,8 +462,9 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         return $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.']['ezbbibid'];
     }
 
-    //BOF ZDB LocationData
     /**
+     * BOF ZDB LocationData
+     *
      * get information about the location for the print version
      *
      * @param array $journal
@@ -472,14 +473,14 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     {
         $zdb = new \Sub\Libconnect\Lib\Zdb();
 
-        if (!empty($journal['ZDB_number'])) {
-            $locationData = $zdb->getJournalLocationDetails(null, $journal['ZDB_number']);
-        } else {
-            if (count($journal['pissns'])) {
-                $locationData = $zdb->getJournalLocationDetails('issn=' . reset($journal['pissns']), null);
-            } elseif (count($journal['eissns'])) {
-                $locationData = $zdb->getJournalLocationDetails('eissn=' . reset($journal['eissns']), null);
-            }
+        if(empty($journal['ZDB_number'])){
+            $journal['ZDB_number'] = NULL;
+        }
+
+        if(count($journal['pissns'])){
+            $locationData = $zdb->getJournalLocationDetails( array('issn' => reset($journal['pissns']) ), $journal['ZDB_number'] );
+        } elseif(count($journal['eissns'])){
+            $locationData = $zdb->getJournalLocationDetails( array('eissn' => reset($journal['eissns']) ), $journal['ZDB_number'] );
         }
 
         if (! $locationData) {
@@ -488,7 +489,6 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 
         return $locationData;
     }
-    //EOF ZDB LocationData
 
     /**
      * set detailed access information
