@@ -1,2 +1,2 @@
-# cat=advanced; type=boolean; label=Enable Debugging:If enable debug messages will be logged (log extension i.e. devlog required to view debug logs)
+# cat=advanced; type=boolean; label=Enable Debugging:If enable debug messages will be logged to a logfile in /var/logs/libconnect.log
 debug = FALSE

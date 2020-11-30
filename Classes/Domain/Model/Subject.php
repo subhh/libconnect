@@ -1,10 +1,12 @@
 <?php
+
 namespace Sub\Libconnect\Domain\Model;
+
 /***************************************************************
  *  Copyright notice
  *
  *  (c) 2012 Torsten Witt <torsten.witt@sub.uni-hamburg.de>, Stabi Hamburg
- *  
+ *
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -24,20 +26,19 @@ namespace Sub\Libconnect\Domain\Model;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Extbase\Annotation as Extbase;
+
 /**
- *
- *
- * @package libconnect
  * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
- *
  */
-class Subject extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
+class Subject extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
+{
 
     /**
      * name of subject
      *
      * @var string
-     * @validate NotEmpty
+     * @Extbase\Validate(validator="NotEmpty")
      */
     protected $title;
 
@@ -54,7 +55,7 @@ class Subject extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
      * @var string
      */
     protected $ezbnotation;
-    
+
     /**
      * uid
      *
@@ -65,8 +66,8 @@ class Subject extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
     /**
      * __construct
      */
-    public function __construct() {
-
+    public function __construct()
+    {
     }
 
     /**
@@ -74,7 +75,8 @@ class Subject extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
      *
      * @return string $title
      */
-    public function getTitle() {
+    public function getTitle()
+    {
         return $this->title;
     }
 
@@ -83,7 +85,8 @@ class Subject extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
      *
      * @param string $title
      */
-    public function setTitle($title) {
+    public function setTitle($title)
+    {
         $this->title = $title;
     }
 
@@ -92,7 +95,8 @@ class Subject extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
      *
      * @return string $dbisid
      */
-    public function getDbisid() {
+    public function getDbisid()
+    {
         return $this->dbisid;
     }
 
@@ -101,7 +105,8 @@ class Subject extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
      *
      * @param string $dbisid
      */
-    public function setDbisId($dbisid) {
+    public function setDbisId($dbisid)
+    {
         $this->dbisId = $dbisid;
     }
 
@@ -110,7 +115,8 @@ class Subject extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
      *
      * @return string $ezbnotation
      */
-    public function getEzbnotation() {
+    public function getEzbnotation()
+    {
         return $this->ezbnotation;
     }
 
@@ -119,8 +125,8 @@ class Subject extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
      *
      * @param string $ezbnotation
      */
-    public function setEzbnotation($ezbnotation) {
+    public function setEzbnotation($ezbnotation)
+    {
         $this->ezbnotation = $ezbnotation;
     }
 }
-?>

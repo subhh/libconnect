@@ -1,5 +1,7 @@
 <?php
+
 namespace Sub\Libconnect\Domain\Repository;
+
 /***************************************************************
 * Copyright notice
 *
@@ -29,40 +31,36 @@ namespace Sub\Libconnect\Domain\Repository;
 use TYPO3\CMS\Extbase\Annotation\Inject;
 
 /**
- *
- *
- * @package libconnect
  * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
- *
  */
-
-Class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
-    private $dbis_to_t3_subjects = array();
-    private $t3_to_dbis_subjects = array();
+class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
+{
+    private $dbis_to_t3_subjects = [];
+    private $t3_to_dbis_subjects = [];
 
     /**
      * subjectRepository
      *
      * @var \Sub\Libconnect\Domain\Repository\SubjectRepository
      * @Inject
-     * @inject
      */
     protected $subjectRepository;
 
     /**
      * shows top databases
-     * 
+     *
      * @param array $config
      *
      * @return array $result
      */
-    public function loadTop($config) {
+    public function loadTop($config)
+    {
         $this->loadSubjects();
 
         $subject = $this->t3_to_dbis_subjects[$config['subject']];
         $dbis_id = $subject['dbisid'];
 
-        $dbis = NEW \Sub\Libconnect\Lib\Dbis;
+        $dbis = new \Sub\Libconnect\Lib\Dbis();
         $result = $dbis->getDbliste($dbis_id);
 
         //get top dbs
@@ -73,37 +71,38 @@ Class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
     /**
      * shows a list of databases(for start, search and list of chose subject)
-     * 
-     * @param integer $subject_id
+     *
+     * @param int $subject_id
      * @param array array('subject'=>array(), 'list'=>array())
      *
      * @return array
      */
-    public function loadList($subject_id, $config) {
+    public function loadList($subject_id, $config)
+    {
         $this->loadSubjects();
 
-        $dbis = NEW \Sub\Libconnect\Lib\Dbis;
+        $dbis = new \Sub\Libconnect\Lib\Dbis();
 
-        $accessFilter = FALSE;
-        
-        if(isset($config['search']['zugaenge']) && (strlen($config['search']['zugaenge']) > 0) ){
+        $accessFilter = false;
+
+        if (isset($config['search']['zugaenge']) && (strlen($config['search']['zugaenge']) > 0)) {
             $accessFilter = $config['search']['zugaenge'];
         }
 
         //list a subject
-        if(is_numeric($subject_id)){
+        if (is_numeric($subject_id)) {
             $subject = $this->t3_to_dbis_subjects[$subject_id];
 
             $dbis_id = $subject['dbisid'];
 
             $result = $dbis->getDbliste($dbis_id, $config['sort'], $accessFilter);
-        }else{//for own collection or all subject
-            
+        } else {//for own collection or all subject
+
             //access sort for all entries in all subjects is not possible
-            if($config['sort'] == 'access'){
+            if ($config['sort'] == 'access') {
                 $config['sort'] = 'alph';
             }
-            
+
             $result = $dbis->getDbliste($subject_id, $config['sort'], $accessFilter);
 
             $subject['title'] = $result['headline'];
@@ -112,52 +111,56 @@ Class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
         //get top dbs
         $result['list']['top'] = $this->getListTop($result['list']['top'], $config['detailPid']);
 
-        foreach(array_keys($result['list']['groups']) as $group) {
-            foreach(array_keys($result['list']['groups'][$group]['dbs']) as $db) {
+        foreach (array_keys($result['list']['groups']) as $group) {
+            foreach (array_keys($result['list']['groups'][$group]['dbs']) as $db) {
                 $result['list']['groups'][$group]['dbs'][$db]['detail_link'] = $GLOBALS['TSFE']->cObj->getTypolink_URL(
-                    intval($config['detailPid']),
-                    array(
+                    (int)($config['detailPid']),
+                    [
                         'libconnect[titleid]' => $result['list']['groups'][$group]['dbs'][$db]['id'],
-                    )
+                    ]
                 );
             }
         }
 
         // sort groups by name
-        $alph_sort_groups = array();
+        $alph_sort_groups = [];
         foreach ($result['list']['groups'] as $group) {
             $alph_sort_groups[$group['title']] = $group;
         }
         ksort($alph_sort_groups, SORT_STRING); //added sort-flag SORT_STRING for correct sorting of alphabetical listings
         $result['list']['groups'] = $alph_sort_groups;
 
-        return array('subject' => $subject['title'], 'list' => $result['list']);
+        return ['subject' => $subject['title'], 'list' => $result['list']];
     }
 
     /**
      * show start
-     * 
+     *
      * @return array $list
      */
-    public function loadOverview() {
+    public function loadOverview()
+    {
         $this->loadSubjects();
 
-        $dbis = NEW \Sub\Libconnect\Lib\Dbis;
+        $dbis = new \Sub\Libconnect\Lib\Dbis();
 
         $list = $dbis->getFachliste();
 
-        foreach($list as $el) {
-
-            if($el['lett'] != "c"){
+        foreach ($list as $el) {
+            if ($el['lett'] != 'c') {
                 //get id of subject from database
                 $subject = $this->dbis_to_t3_subjects[$el['id']];
 
-                $el['link'] = $GLOBALS['TSFE']->cObj->getTypolink_URL($GLOBALS['TSFE']->id, array(
-                    'libconnect[subject]' => $subject['uid'])
+                $el['link'] = $GLOBALS['TSFE']->cObj->getTypolink_URL(
+                    $GLOBALS['TSFE']->id,
+                    [
+                    'libconnect[subject]' => $subject['uid']]
                 );
-            }else{
-                $el['link'] = $GLOBALS['TSFE']->cObj->getTypolink_URL($GLOBALS['TSFE']->id, array(
-                    'libconnect[subject]' => $el['id'])
+            } else {
+                $el['link'] = $GLOBALS['TSFE']->cObj->getTypolink_URL(
+                    $GLOBALS['TSFE']->id,
+                    [
+                    'libconnect[subject]' => $el['id']]
                 );
             }
 
@@ -170,11 +173,11 @@ Class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
     /**
      * load subjects from database
      */
-    private function loadSubjects() {
+    private function loadSubjects()
+    {
         $res = $this->subjectRepository->findAll();
 
-        foreach($res as $row){        
-
+        foreach ($res as $row) {
             $this->dbis_to_t3_subjects[$row->getDbisId()]['dbisid'] = $row->getDbisId();
             $this->dbis_to_t3_subjects[$row->getDbisId()]['title'] = $row->getTitle();
             $this->dbis_to_t3_subjects[$row->getDbisId()]['uid'] = $row->getUid();
@@ -187,17 +190,18 @@ Class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
     /**
      * show details
-     * 
-     * @param integer $title_id
-     * 
+     *
+     * @param int $title_id
+     *
      * @return array $db
      */
-    public function loadDetail($title_id) {
-        $dbis = NEW \Sub\Libconnect\Lib\Dbis;
+    public function loadDetail($title_id)
+    {
+        $dbis = new \Sub\Libconnect\Lib\Dbis();
         $db = $dbis->getDbDetails($title_id);
 
-        if (! $db ){
-            return FALSE;
+        if (! $db) {
+            return false;
         }
 
         return $db;
@@ -205,46 +209,48 @@ Class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
     /**
      * execute search
-     * 
+     *
      * @param array $searchVars
      * @param array $config
-     * 
+     *
      * @return array $result
      */
-    public function loadSearch($searchVars, $config) {
+    public function loadSearch($searchVars, $config)
+    {
         $this->loadSubjects();
 
         //execute search
-        $dbis = NEW \Sub\Libconnect\Lib\Dbis;
+        $dbis = new \Sub\Libconnect\Lib\Dbis();
         $result = $dbis->search($searchVars);
 
         //stop if function called from "New" - controller
-        if(isset($config['onlyNew'])){
+        if (isset($config['onlyNew'])) {
             return $result['list'];
         }
 
         //get top dbs
         $result['list']['top'] = $this->getListTop($result['list']['top'], $config['detailPid']);
 
-        foreach(array_keys($result['list']['values']) as $value) {
+        foreach (array_keys($result['list']['values']) as $value) {
             $result['list']['values'][$value]['detail_link'] = $GLOBALS['TSFE']->cObj->getTypolink_URL(
-                intval($config['detailPid']),
-                array(
+                (int)($config['detailPid']),
+                [
                     'libconnect[titleid]' => $result['list']['values'][$value]['id'],
-                )
+                ]
             );
         }
 
         return $result['list'];
     }
 
-     /**
-     * return miniform
-     *
-     * @return array $form
-     */
-    public function loadMiniForm() {
-        $dbis = NEW \Sub\Libconnect\Lib\Dbis;
+    /**
+    * return miniform
+    *
+    * @return array $form
+    */
+    public function loadMiniForm()
+    {
+        $dbis = new \Sub\Libconnect\Lib\Dbis();
         $form = $dbis->getExtendedForm();
 
         return $form;
@@ -255,42 +261,42 @@ Class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
      *
      * @return array $form
      */
-    public function loadForm() {
-        $dbis = NEW \Sub\Libconnect\Lib\Dbis;
+    public function loadForm()
+    {
+        $dbis = new \Sub\Libconnect\Lib\Dbis();
         $form = $dbis->getExtendedForm();
-        
+
         return $form;
     }
 
     /**
      * returns a subject
-     * 
-     * @param integer $subjectId Id of subject
+     *
+     * @param int $subjectId Id of subject
      */
-    public function getSubject($subjectId){
+    public function getSubject($subjectId)
+    {
         $this->loadSubjects();
-        
+
         return $this->t3_to_dbis_subjects[$subjectId];
     }
-    
+
     /**
-     * 
      * @param array $list
-     * @param integer $detailPid id of the detail page
+     * @param int $detailPid id of the detail page
      * @return array Description
      */
-    private function getListTop($list, $detailPid){
-
-        foreach(array_keys($list) as $db) {
+    private function getListTop($list, $detailPid)
+    {
+        foreach (array_keys($list) as $db) {
             $list[$db]['detail_link'] = $GLOBALS['TSFE']->cObj->getTypolink_URL(
-                intval($detailPid),
-                array(
+                (int)$detailPid,
+                [
                     'libconnect[titleid]' => $list[$db]['id'],
-                )
+                ]
             );
         }
 
         return $list;
     }
 }
-?>

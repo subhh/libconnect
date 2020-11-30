@@ -1,5 +1,7 @@
 <?php
+
 namespace Sub\Libconnect\Controller;
+
 /***************************************************************
 * Copyright notice
 *
@@ -27,29 +29,26 @@ namespace Sub\Libconnect\Controller;
 *  Avonis - New Media Agency - http://www.avonis.com/
 ***************************************************************/
 use TYPO3\CMS\Extbase\Annotation\Inject;
-/**
- *
- *
- * @package libconnect
- * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
- *
- */
 
-class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
+/**
+ * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
+ */
+class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+{
 
     /**
      * creates instance of DbisRepository
      *
      * @var \Sub\Libconnect\Domain\Repository\DbisRepository
      * @Inject
-     * @inject
-	 */
-	protected $dbisRepository;
+     */
+    protected $dbisRepository;
 
     /**
      * shows top databases
      */
-    public function displayTopAction() {
+    public function displayTopAction()
+    {
         $config['subject'] = $this->settings['flexform']['subject'];
         $config['detailPid'] = $this->settings['flexform']['detailPid'];
 
@@ -62,26 +61,27 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
     /**
      * shows a list of databases (for general, search, chosen subject)
      */
-    public function displayListAction() {
-        $params = array();
-        if(!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_dbis'))){
+    public function displayListAction()
+    {
+        $params = [];
+        if (!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_dbis'))) {
             $params_temp = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_dbis');
             $params = $params_temp['libconnect'];
-        } 
-        if(!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect'))){
+        }
+        if (!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect'))) {
             $params_temp = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect');
-            if(!empty($params)){
+            if (!empty($params)) {
                 $params = array_merge($params_temp, $params);
-            }else{
+            } else {
                 $params = $params_temp;
             }
         }
 
         //show overview on empty search
-        $isSearch = FALSE;
-        if (!empty($params['search'])){
-            if( ( count( $params['search'] ) > 1 ) || (!empty($params['search']['sword'] )) ){
-                $isSearch = TRUE;
+        $isSearch = false;
+        if (!empty($params['search'])) {
+            if ((count($params['search']) > 1) || (!empty($params['search']['sword']))) {
+                $isSearch = true;
             }
         }
 
@@ -90,19 +90,19 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
             $config['detailPid'] = $this->settings['flexform']['detailPid'];
 
             //user sorted list
-            if(isset($params['sort']) && !empty($params['sort'])) {
+            if (isset($params['sort']) && !empty($params['sort'])) {
                 $config['sort'] = $params['sort'];
             }
             //set default sorting
-            if(empty($config['sort'])){
+            if (empty($config['sort'])) {
                 $config['sort'] = 'type';
             }
 
-            if(isset($params['search']['zugaenge']) && ( $params['search']['zugaenge'] != '1000' ) ){
+            if (isset($params['search']['zugaenge']) && ($params['search']['zugaenge'] != '1000')) {
                 $config['search']['zugaenge']=$params['search']['zugaenge'];
-                
+
                 //it is not possible to filter "zugaenge" if sort is set to access
-                if( $config['sort'] == 'access'){
+                if ($config['sort'] == 'access') {
                     $config['sort'] = 'type';
                 }
             }
@@ -110,14 +110,13 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
             $list =  $this->dbisRepository->loadList($params['subject'], $config);
 
             //check, if there are no results and inform user to change licence
-            $empty = TRUE;
-            if(!empty($list['list']['alphNavList'])){
-                $empty = FALSE;
+            $empty = true;
+            if (!empty($list['list']['alphNavList'])) {
+                $empty = false;
             }
-            foreach($list['list']['groups'] as $group){
-
-                if(!empty($group['dbs'])){
-                    $empty = FALSE;
+            foreach ($list['list']['groups'] as $group) {
+                if (!empty($group['dbs'])) {
+                    $empty = false;
                     break;
                 }
             }
@@ -131,8 +130,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
             $this->view->assign('subject', $params['subject']);
             $this->view->assign('zugaenge', $params['search']['zugaenge']);
             $this->view->assign('list', $list['list']);
-
-        } else if ($isSearch !== FALSE) {//search results
+        } elseif ($isSearch !== false) {//search results
             $config['detailPid'] = $this->settings['flexform']['detailPid'];
 
             $list =  $this->dbisRepository->loadSearch($params['search'], $config);
@@ -144,10 +142,9 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
 
             //decide full or short text
             $list['access_infos'] = $this->setAccessInformation($list['access_infos']);
-            
+
             //variables for template
             $this->view->assign('list', $list);
-
         } else {//start point
             $list =  $this->dbisRepository->loadOverview();
 
@@ -164,14 +161,15 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
     /**
      * shows deatail view
      */
-    public function displayDetailAction() {
-        if(!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_dbis'))){
+    public function displayDetailAction()
+    {
+        if (!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_dbis'))) {
             $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_dbis');
-        } else{
+        } else {
             $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect');
-        };
+        }
 
-        if (!($params['titleid'])){
+        if (!($params['titleid'])) {
             //variables for template
             $this->view->assign('error', 'Error');
 
@@ -183,34 +181,34 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
         $UserFunc = new \Sub\Libconnect\UserFunctions\RepairHTMLUserFunction();
         $list = $UserFunc->RepairHTMLUserFunction($list);
 
-        if(!$list){
+        if (!$list) {
             //variables for template
             $this->view->assign('error', 'Error');
-
-        }else{
+        } else {
             //BG> Hide start research link for internal access only items
-            if($list['access_id']!='access_4'){
+            if ($list['access_id']!='access_4') {
                 $list['access_workaround']=$list['access_id'];
             }
             //variables for template
             $this->view->assign('db', $list);
-        }        
+        }
     }
 
     /**
      * shows sidebar
      */
-    public function displayMiniFormAction() {
-        $params = array();
-        if(!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_dbis'))){
+    public function displayMiniFormAction()
+    {
+        $params = [];
+        if (!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_dbis'))) {
             $params_temp = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_dbis');
             $params = $params_temp['libconnect'];
         }
-        if(!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect'))){
+        if (!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect'))) {
             $params_temp = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect');
-            if(!empty($params)){
+            if (!empty($params)) {
                 $params = array_merge($params_temp, $params);
-            }else{
+            } else {
                 $params = $params_temp;
             }
         }
@@ -225,74 +223,76 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
         $this->view->assign('listPid', $this->settings['flexform']['listPid']);//id of page with list
         $this->view->assign('vars', $params['search']);
         //hide selectbox for licence/access if search and sort alph
-        if ( isset($params['sort']) && isset($params['subject'])) {
-            if( ($params['sort'] == 'alph') && ($params['subject'] == 'all')){
-                $this->view->assign('hideAccess', TRUE);
+        if (isset($params['sort']) && isset($params['subject'])) {
+            if (($params['sort'] == 'alph') && ($params['subject'] == 'all')) {
+                $this->view->assign('hideAccess', true);
             }
         }
-        if ( isset($params['subject'])) {
-            if( ($params['subject'] == 'all')){
-                $this->view->assign('hideAccess', TRUE);
+        if (isset($params['subject'])) {
+            if (($params['subject'] == 'all')) {
+                $this->view->assign('hideAccess', true);
             }
         }
         //if no databases are listed, no filter is displayed
-        if(empty($params)){
-            $this->view->assign('hideAccess', TRUE);
+        if (empty($params)) {
+            $this->view->assign('hideAccess', true);
         }
         //Set stubject
-        if(!empty($params['subject'])) {
+        if (!empty($params['subject'])) {
             $this->view->assign('subject', $params['subject']);
         }
         //sort, if default was changed
-        if(!empty($params['sort'])) {
+        if (!empty($params['sort'])) {
             $this->view->assign('sort', $params['sort']);
         }
         //dbis-listings-wrapper
-        if(!empty($params['subject'])) {
-            if($params['subject'] != 'all'){
+        if (!empty($params['subject'])) {
+            if ($params['subject'] != 'all') {
                 $this->view->assign('listingsWrapper', true);
             }
         }
-        
-        //links to the plugin "new in dbis"
-        if(!empty($this->settings['flexform']['newPid'])){
-            //new entries for a selected subject
-            if( !empty($params['subject']) && ($params['subject'] != 'all') ) {
 
+        //links to the plugin "new in dbis"
+        if (!empty($this->settings['flexform']['newPid'])) {
+            //new entries for a selected subject
+            if (!empty($params['subject']) && ($params['subject'] != 'all')) {
                 $subject = $this->dbisRepository->getSubject($params['subject']);
 
                 //maybe a collection or new subject
-                if(!$subject){
+                if (!$subject) {
                     $subject = $params['subject'];
                 }
 
-                $count = (int) $this->getNewCount($subject['dbisid']);
+                $count = (int)$this->getNewCount($subject['dbisid']);
 
-                if($count >0){
-                    $this->view->assign('newUrlSub', $GLOBALS['TSFE']->cObj->getTypolink_URL( intval($this->settings['flexform']['newPid']), 
-                        array('libconnect' => array('subject' => $params['subject'] )) ) );//URL der New-Darstellung
+                if ($count >0) {
+                    $this->view->assign('newUrlSub', $GLOBALS['TSFE']->cObj->getTypolink_URL(
+                        (int)($this->settings['flexform']['newPid']),
+                        ['libconnect' => ['subject' => $params['subject'] ]]
+                    ));//URL der New-Darstellung
 
-                    $this->view->assign('newInSubjectCount',  $count);
+                    $this->view->assign('newInSubjectCount', $count);
                 }
             }
 
             //new entries for all subjects
-            $count = (int) $this->getNewCount(FALSE);
+            $count = (int)$this->getNewCount(false);
 
-            if($count >0){
-                $this->view->assign('newUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL( intval($this->settings['flexform']['newPid'])) );
-                $this->view->assign('newCount',  $count);
-            }   
+            if ($count >0) {
+                $this->view->assign('newUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL((int)($this->settings['flexform']['newPid'])));
+                $this->view->assign('newCount', $count);
+            }
         }
     }
 
     /**
      * shows the search
      */
-    public function displayFormAction() {
-        if(!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_dbis'))){
+    public function displayFormAction()
+    {
+        if (!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_dbis'))) {
             $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_dbis');
-        } else{
+        } else {
             $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect');
         }
 
@@ -309,17 +309,18 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
     /**
      * shows the new entries
      */
-    public function displayNewAction() {
-        if(!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_dbis'))){
+    public function displayNewAction()
+    {
+        if (!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_dbis'))) {
             $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_dbis');
-        } else{
+        } else {
             $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect');
         }
-        
+
         $params['jq_type1'] = 'LD';
         $params['sc'] = $params['search']['sc'];
 
-        if(!empty($params['subject'])){
+        if (!empty($params['subject'])) {
             $subject = $this->dbisRepository->getSubject($params['subject']);
             $params['gebiete'][]=$subject['dbisid'];
         }
@@ -330,22 +331,22 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
         $params['jq_term1'] = $this->getCalculatedDate();
 
         $config['detailPid'] = $this->settings['flexform']['detailPid'];
-        if(empty($config['detailPid'])){
+        if (empty($config['detailPid'])) {
             $this->addFlashMessage(
-                "Bitte konfigurieren Sie ein Ziel für die Detailseite.",
+                'Bitte konfigurieren Sie ein Ziel für die Detailseite.',
                 $messageTitle = 'Fehler',
                 $severity = \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR,
-                $storeInSession = TRUE
+                $storeInSession = true
             );
-            $list = FALSE;
-        }else{
+            $list = false;
+        } else {
             //request
             $list =  $this->dbisRepository->loadSearch($params, $config);
         }
 
         //decide full or short text
         $list['access_infos'] = $this->setAccessInformation($list['access_infos']);
-        
+
         //variables for template
         $this->view->assign('list', $list);
         $this->view->assign('new_date', $params['jq_term1']);
@@ -357,11 +358,12 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
      *
      * @return array
      */
-    private function getNewCount($subjectId = FALSE) {
+    private function getNewCount($subjectId = false)
+    {
         $params['jq_type1'] = 'LD';
         $params['sc'] = $params['search']['sc'];
 
-        if($subjectId != FALSE){
+        if ($subjectId != false) {
             $params['gebiete'][]=$subjectId;
         }
 
@@ -372,7 +374,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
         $params['jq_term1'] = $this->getCalculatedDate();
 
         $config['detailPid'] = $this->settings['flexform']['detailPid'];
-        $config['onlyNew'] = TRUE;
+        $config['onlyNew'] = true;
         //request
         $list = $this->dbisRepository->loadSearch($params, $config);
 
@@ -381,49 +383,50 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
 
     /**
      * calculates the date for a search of new entries
-     * 
+     *
      * @return string $date
      */
-    private function getCalculatedDate(){
+    private function getCalculatedDate()
+    {
         date_default_timezone_set('GMT+1');//@todo get the information from system
 
         $oneDay = 86400;//seconds
         $numDays = 7; //default are 7 days
         $today = strtotime('now');
 
-        if(!empty($this->settings['flexform']['countDays'])){
+        if (!empty($this->settings['flexform']['countDays'])) {
             $numDays = $this->settings['flexform']['countDays'];
         }
 
         //calcaulate date
-        $date = date("d.m.Y",$today-($numDays * $oneDay));
+        $date = date('d.m.Y', $today-($numDays * $oneDay));
 
         return $date;
     }
-    
+
     /**
      * decide full or short text
-     * 
+     *
      * @return array
      */
-    private function setAccessInformation($accessInforomation){
+    private function setAccessInformation($accessInforomation)
+    {
         $showAccess = $this->settings['flexform']['showAccess'];
 
         //full is default and variables are set right
-        if($showAccess == "full"){
+        if ($showAccess == 'full') {
             return $accessInforomation;
         }
 
-        $accessInformationShort = array();
+        $accessInformationShort = [];
 
-        foreach($accessInforomation as $information){
-            $accessInformationShort[$information['id']] = array(
+        foreach ($accessInforomation as $information) {
+            $accessInformationShort[$information['id']] = [
                 'id' => $information['id'],
                 'description' => $information['description_short']
-            );
+            ];
         }
 
         return $accessInformationShort;
     }
 }
-?>

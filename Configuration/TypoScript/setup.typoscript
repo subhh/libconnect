@@ -25,12 +25,21 @@ plugin.tx_libconnect {
     }
 
     view {
-		templateRootPaths.0 = {$plugin.tx_libconnect.view.templateRootPath}
+        templateRootPaths {
+            0 = EXT:libconnect/Resources/Private/Templates/
+            1 = {$plugin.tx_libconnect.view.templateRootPath}
+        }
 
-		partialRootPaths.0 = {$plugin.tx_libconnect.view.partialRootPath}
+        partialRootPaths {
+            0 = EXT:libconnect/Resources/Private/Partials/
+            1 = {$plugin.tx_libconnect.view.partialRootPath}
+        }
 
-		layoutRootPaths.0 = {$plugin.tx_libconnect.view.layoutRootPath}
-	}
+        layoutRootPaths {
+            0 = EXT:libconnect/Resources/Private/Layouts/
+            1 = {$plugin.tx_libconnect.view.layoutRootPath}
+        }
+    }
 
     settings {
         enableLocationData = 1

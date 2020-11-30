@@ -1,115 +1,115 @@
 <?php
+
 namespace Sub\Libconnect\Service;
 
-/**
- *
- * @author Torsten Witt <torsten.witt@sub.uni-hamburg.de>
- * @package libconnect
- * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License, version 3 or later
- *
- */
+use TYPO3\CMS\Core\Http\RequestFactory;
+use TYPO3\CMS\Core\Log\LogManager;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-class Request {
-    
+/**
+ * @author Torsten Witt <torsten.witt@sub.uni-hamburg.de>
+ * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License, version 3 or later
+ */
+class Request
+{
     private $url = '';
-    
-    private $query = array();
-    
-    public function getUrl(){
+
+    private $query = [];
+
+    /**
+     * @var \TYPO3\CMS\Core\Log\Logger
+     */
+    protected $logger;
+
+    public function __construct()
+    {
+        $this->logger = GeneralUtility::makeInstance(LogManager::class)->getLogger(__CLASS__);
+    }
+
+    public function getUrl()
+    {
         return $this->url;
     }
-    
-    public function setUrl($url){
+
+    public function setUrl($url)
+    {
         $this->url = $url;
     }
-    
-    public function getQuery(){
+
+    public function getQuery()
+    {
         return $this->query;
     }
-    
-    public function setQuery($addtitionalQuery){
+
+    public function setQuery($addtitionalQuery)
+    {
         $query = $this->getQuery();
-        
+
         $query = array_merge($query, $addtitionalQuery);
-        
+
         $this->query = $query;
     }
 
+    public function Request($urldecode = true)
+    {
+        $requestFactory = GeneralUtility::makeInstance(RequestFactory::class);
 
-    public function Request($urldecode = TRUE){
-        $requestFactory = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Http\RequestFactory::class);
-
-        if($urldecode){
-            $query = urldecode( http_build_query($this->getQuery(), null, '&') );
-        }else{
+        if ($urldecode) {
+            $query = urldecode(http_build_query($this->getQuery(), null, '&'));
+        } else {
             $query = $this->getQuery();
         }
-     
+
         $additionalOptions = [
-            'headers' => ['Cache-Control' => 'no-cache'],
+            'headers' => [
+                'Cache-Control' => 'no-cache',
+                'Accept' => 'text/xml; charset=UTF8'
+            ],
             'allow_redirects' => true,
-            'query' => $query,
-            'headers' => ['Accept' => 'text/xml; charset=UTF8']
+            'http_errors' => false,
+            'query' => $query
         ];
 
-        $response = FALSE;
-
-        try {
-            $response = $requestFactory->request($this->getUrl(), 'GET', $additionalOptions);
-
-        } catch (\Exception $e) {
-
-            if ($this->debug){
-                \TYPO3\CMS\Core\Utility\GeneralUtility::devLog('Got HTTP Code ' . $response->getStatusCode() . ' for request: '.  $this->url. http_build_query($this->getQuery(), null, '&'), 'libconnect', 1);
-            }
-
-            return FALSE;
+        $response = $requestFactory->request($this->getUrl(), 'GET', $additionalOptions);
+        if ($response->getStatusCode() !== 200) {
+            $this->logger->debug(
+                'Got HTTP Code ' . $response->getStatusCode() . ' for request: ' . $this->url .
+                http_build_query($this->getQuery(),null, '&'));
+            return false;
         }
 
-        $content = FALSE;
+        $contentType = str_replace(' ', '', strtolower($response->getHeaderLine('Content-Type')));
 
-        // Get the content as a string on a successful request
-        if ($response->getStatusCode() === 200) {
-            $contentType = str_replace(" ", "", strtolower($response->getHeaderLine('Content-Type')));
-
-            if (strpos($contentType, 'text/xml;charset=utf-8') === 0) {//DBIS, services.dnb.de
-                $content = $this->getXml($response);
-            }elseif (strpos($contentType, 'text/xml;charset=iso-8859-1') === 0) {//EZB
-                $content = $this->getXml($response);
-            }elseif(strpos($contentType, 'application/rdf+xml;charset=utf-8') === 0){//title history
-                $content = $this->getText($response);
+        if (strpos($contentType, 'text/xml;charset=utf-8') === 0) {//DBIS, services.dnb.de
+            $content = $this->getXml($response);
+        } elseif (strpos($contentType, 'text/xml;charset=iso-8859-1') === 0) {//EZB
+            $content = $this->getXml($response);
+        } elseif (strpos($contentType, 'application/rdf+xml;charset=utf-8') === 0) {//title history
+            $content = $this->getText($response);
 
             //moreDetails
-            }elseif(preg_match('/text\/html;charset=(iso-8859-1)?(utf-8)?/', $contentType, $matches)){
-                $content = $this->getText($response);
-            }
-
-            else {
-                return FALSE;
-            }
-
-        }else{
-            if ($this->debug){
-                \TYPO3\CMS\Core\Utility\GeneralUtility::devLog('Got HTTP Code ' . $response->getStatusCode() . ' for request: '.  $this->url. http_build_query($this->getQuery(), null, '&'), 'libconnect', 1);
-            }
-
+        } elseif (preg_match('/text\/html;charset=(iso-8859-1)?(utf-8)?/', $contentType, $matches)) {
+            $content = $this->getText($response);
+        } else {
+            return false;
         }
 
         return $content;
     }
-    
+
     /**
      * returns content of request as simplexml object
-     * 
+     *
      * @param obj $response
      * @return simplexml
      */
-    private function getXml($response){
+    private function getXml($response)
+    {
         //simplexml_load_string will produce E_WARNING error messages for each error
         //found in the XML data. Therefore suppress error messages in any mode and
         //handle errors for debug-mode differently.
         //parse the XML data.
-        libxml_use_internal_errors(TRUE);
+        libxml_use_internal_errors(true);
 
         $content = simplexml_load_string($response->getBody()->getContents());
 
@@ -118,21 +118,12 @@ class Request {
 
         //log url to devlog in debug-mode if XML data contained errors.
         if (count($error_array) > 0) {
-            if ($this->debug) {
-                \TYPO3\CMS\Core\Utility\GeneralUtility::devLog('XML data contained errors: '.$url, 'libconnect', 1);
-            }
-        }
-
-        if ($this->debug) {
-            $error_array = libxml_get_errors();
-            if (count($error_array) > 0) {
-                \TYPO3\CMS\Core\Utility\GeneralUtility::devLog('XML data contained errors: '.$url, 'libconnect', 1);
-            }
+            $this->logger->debug('XML data contained errors: ' . $this->url, $error_array);
         }
 
         //reset libxml error buffering and clear any existing libxml errors
-        libxml_use_internal_errors(FALSE);
-        
+        libxml_use_internal_errors(false);
+
         return $content;
     }
 
@@ -142,7 +133,8 @@ class Request {
      * @param obj $response
      * @return string
      */
-    private function getText($response){
+    private function getText($response)
+    {
         $content = $response->getBody()->getContents();
 
         return $content;

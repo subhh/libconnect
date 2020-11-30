@@ -17,6 +17,7 @@
                             <onChange>reload</onChange>
                             <config>
                                 <type>select</type>
+                                <renderType>selectSingle</renderType>
                                 <items type="array">
                                     <numIndex index="0">
                                         <numIndex index="0">LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.dbis.topdatabases</numIndex>
@@ -54,6 +55,7 @@
                             <displayCond><![CDATA[FIELD:switchableControllerActions:=:Dbis->displayTop]]></displayCond>
                             <config>
                                 <type>select</type>
+                                <renderType>selectSingle</renderType>
                                 <foreign_table>tx_libconnect_domain_model_subject</foreign_table>
                                 <foreign_table_where>AND tx_libconnect_domain_model_subject.deleted=0 AND tx_libconnect_domain_model_subject.hidden=0 ORDER BY tx_libconnect_domain_model_subject.title</foreign_table_where>
                                 <size>1</size>
@@ -177,6 +179,7 @@
                             <displayCond><![CDATA[FIELD:switchableControllerActions:IN:Dbis->displayList,Dbis->displayNew]]></displayCond>
                             <config>
                                 <type>select</type>
+                                <renderType>selectSingle</renderType>
                                 <items type="array">
                                     <numIndex index="0" type="array">
                                         <numIndex index="0">LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.dbis.access.full</numIndex>
