@@ -2,6 +2,7 @@
 
 namespace Sub\Libconnect\Service;
 
+use TYPO3\CMS\Core\Http\RequestFactory;
 use TYPO3\CMS\Core\Log\LogManager;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
@@ -51,9 +52,7 @@ class Request
 
     public function Request($urldecode = true)
     {
-        $requestFactory = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Http\RequestFactory::class);
-
-        //$jar = new \GuzzleHttp\Cookie\CookieJar;
+        $requestFactory = GeneralUtility::makeInstance(RequestFactory::class);
 
         if ($urldecode) {
             $query = urldecode(http_build_query($this->getQuery(), null, '&'));
@@ -62,46 +61,37 @@ class Request
         }
 
         $additionalOptions = [
-            'headers' => ['Cache-Control' => 'no-cache'],
+            'headers' => [
+                'Cache-Control' => 'no-cache',
+                'Accept' => 'text/xml; charset=UTF8'
+            ],
             'allow_redirects' => true,
-            'query' => $query,
-            'headers' => ['Accept' => 'text/xml; charset=UTF8']
+            'http_errors' => false,
+            'query' => $query
         ];
 
-        $response = false;
-
-        try {
-            $response = $requestFactory->request($this->getUrl(), 'GET', $additionalOptions);
-        } catch (\Exception $e) {
+        $response = $requestFactory->request($this->getUrl(), 'GET', $additionalOptions);
+        if ($response->getStatusCode() !== 200) {
             $this->logger->debug(
                 'Got HTTP Code ' . $response->getStatusCode() . ' for request: ' . $this->url .
                 http_build_query($this->getQuery(),null, '&'));
             return false;
         }
 
-        $content = false;
+        $contentType = str_replace(' ', '', strtolower($response->getHeaderLine('Content-Type')));
 
-        // Get the content as a string on a successful request
-        if ($response->getStatusCode() === 200) {
-            $contentType = str_replace(' ', '', strtolower($response->getHeaderLine('Content-Type')));
+        if (strpos($contentType, 'text/xml;charset=utf-8') === 0) {//DBIS, services.dnb.de
+            $content = $this->getXml($response);
+        } elseif (strpos($contentType, 'text/xml;charset=iso-8859-1') === 0) {//EZB
+            $content = $this->getXml($response);
+        } elseif (strpos($contentType, 'application/rdf+xml;charset=utf-8') === 0) {//title history
+            $content = $this->getText($response);
 
-            if (strpos($contentType, 'text/xml;charset=utf-8') === 0) {//DBIS, services.dnb.de
-                $content = $this->getXml($response);
-            } elseif (strpos($contentType, 'text/xml;charset=iso-8859-1') === 0) {//EZB
-                $content = $this->getXml($response);
-            } elseif (strpos($contentType, 'application/rdf+xml;charset=utf-8') === 0) {//title history
-                $content = $this->getText($response);
-
-                //moreDetails
-            } elseif (preg_match('/text\/html;charset=(iso-8859-1)?(utf-8)?/', $contentType, $matches)) {
-                $content = $this->getText($response);
-            } else {
-                return false;
-            }
+            //moreDetails
+        } elseif (preg_match('/text\/html;charset=(iso-8859-1)?(utf-8)?/', $contentType, $matches)) {
+            $content = $this->getText($response);
         } else {
-            $this->logger->debug(
-                'Got HTTP Code ' . $response->getStatusCode() . ' for request: ' . $this->url .
-                http_build_query($this->getQuery(),null, '&'));
+            return false;
         }
 
         return $content;
