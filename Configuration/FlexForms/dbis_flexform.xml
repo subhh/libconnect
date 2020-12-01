@@ -64,7 +64,7 @@
                             </config>
                         </TCEforms>
                     </settings.flexform.subject>
-		
+
                     <settings.flexform.detailPid>
                         <TCEforms>
                             <exclude>1</exclude>
@@ -123,6 +123,7 @@
                             <displayCond><![CDATA[FIELD:switchableControllerActions:IN:Dbis->displayList,Dbis->displayNew]]></displayCond>
                             <config>
                                 <type>select</type>
+                                <renderType>selectSingle</renderType>
                                 <items type="array">
                                     <numIndex index="0" type="array">
                                         <numIndex index="0">LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.dbis.sort.databasetype</numIndex>
@@ -154,7 +155,7 @@
                             </config>
                         </TCEforms>
                     </settings.flexform.countDays>
-		
+
                     <settings.flexform.newPid>
                         <TCEforms>
                             <exclude>1</exclude>
