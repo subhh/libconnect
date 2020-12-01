@@ -20,6 +20,6 @@
     },
     "replace": {
         "typo3-ter/libconnect": "self.version",
-        "sub/libconnect": "self.version"
+        "subhh/libconnect": "self.version"
     }
 }
