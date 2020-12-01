@@ -28,7 +28,6 @@ namespace Sub\Libconnect\Domain\Repository;
 * Project sponsored by:
 *  Avonis - New Media Agency - http://www.avonis.com/
 ***************************************************************/
-use TYPO3\CMS\Extbase\Annotation\Inject;
 
 /**
  * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
@@ -41,10 +40,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     private $longAccessInfos = [];
 
     /**
-     * subjectRepository
-     *
-     * @var \Sub\Libconnect\Domain\Repository\SubjectRepository
-     * @Inject
+     * @var SubjectRepository
      */
     protected $subjectRepository;
 
@@ -707,5 +703,13 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         }
 
         return ['precursor' => $precursor, 'zdbData' => $zdb->getZdbData(), 'successor' => $successor];
+    }
+
+    /**
+     * @param \Sub\Libconnect\Domain\Repository\SubjectRepository $subjectRepository
+     */
+    public function injectSubjectRepository(SubjectRepository $subjectRepository)
+    {
+        $this->subjectRepository = $subjectRepository;
     }
 }

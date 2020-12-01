@@ -28,19 +28,16 @@ namespace Sub\Libconnect\Controller;
 * Project sponsored by:
 *  Avonis - New Media Agency - http://www.avonis.com/
 ***************************************************************/
-use TYPO3\CMS\Extbase\Annotation\Inject;
+
+use Sub\Libconnect\Domain\Repository\DbisRepository;
 
 /**
  * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
  */
 class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
-
     /**
-     * creates instance of DbisRepository
-     *
-     * @var \Sub\Libconnect\Domain\Repository\DbisRepository
-     * @Inject
+     * @var DbisRepository
      */
     protected $dbisRepository;
 
@@ -428,5 +425,12 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         }
 
         return $accessInformationShort;
+    }
+
+    /**
+     * @param \Sub\Libconnect\Domain\Repository\DbisRepository $dbisRepository
+     */
+    public function injectDbisRepository(DbisRepository $dbisRepository) {
+        $this->dbisRepository = $dbisRepository;
     }
 }

@@ -28,7 +28,9 @@ namespace Sub\Libconnect\Controller;
 * Project sponsored by:
 *  Avonis - New Media Agency - http://www.avonis.com/
 ***************************************************************/
-use TYPO3\CMS\Extbase\Annotation\Inject;
+
+use Sub\Libconnect\Domain\Repository\EzbRepository;
+use Sub\Libconnect\Domain\Repository\SubjectRepository;
 
 /**
  * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
@@ -37,30 +39,16 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
 
     /**
-     * creates instance of EzbRepository
-     *
-     * @var \Sub\Libconnect\Domain\Repository\EzbRepository
-     * @Inject
+     * @var EzbRepository
      */
     protected $ezbRepository;
 
     /**
      * creates instance of SubjectRepository
      *
-     * @var \Sub\Libconnect\Domain\Repository\SubjectRepository
-     * @Inject
+     * @var SubjectRepository
      */
     protected $subjectRepository;
-
-    /**
-     * Inject a subject repository
-     *
-     * @param \Sub\Libconnect\Domain\Repository\SubjectRepository $subjectRepository
-     */
-    public function injectSubjectRepository(\Sub\Libconnect\Domain\Repository\SubjectRepository $subjectRepository)
-    {
-        $this->subjectRepository = $subjectRepository;
-    }
 
     /**
     * shows a list of journals (for general, search, chosen subject)
@@ -489,5 +477,19 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $date = date('d.m.Y', $today-($numDays * $oneDay));
 
         return $date;
+    }
+
+    /**
+     * @param \Sub\Libconnect\Domain\Repository\EzbRepository $ezbRepository
+     */
+    public function injectEzbRepository(EzbRepository $ezbRepository) {
+        $this->ezbRepository = $ezbRepository;
+    }
+
+    /**
+     * @param \Sub\Libconnect\Domain\Repository\SubjectRepository $subjectRepository
+     */
+    public function injectSubjectRepository(SubjectRepository $subjectRepository) {
+        $this->subjectRepository = $subjectRepository;
     }
 }
