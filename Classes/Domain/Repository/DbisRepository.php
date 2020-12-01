@@ -2,6 +2,8 @@
 
 namespace Sub\Libconnect\Domain\Repository;
 
+use Sub\Libconnect\Lib\Dbis;
+
 /***************************************************************
 * Copyright notice
 *
@@ -28,7 +30,6 @@ namespace Sub\Libconnect\Domain\Repository;
 * Project sponsored by:
 *  Avonis - New Media Agency - http://www.avonis.com/
 ***************************************************************/
-use TYPO3\CMS\Extbase\Annotation\Inject;
 
 /**
  * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
@@ -39,12 +40,14 @@ class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     private $t3_to_dbis_subjects = [];
 
     /**
-     * subjectRepository
-     *
-     * @var \Sub\Libconnect\Domain\Repository\SubjectRepository
-     * @Inject
+     * @var SubjectRepository
      */
     protected $subjectRepository;
+
+    /**
+     * @var Dbis
+     */
+    protected $dbis;
 
     /**
      * shows top databases
@@ -60,8 +63,7 @@ class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $subject = $this->t3_to_dbis_subjects[$config['subject']];
         $dbis_id = $subject['dbisid'];
 
-        $dbis = new \Sub\Libconnect\Lib\Dbis();
-        $result = $dbis->getDbliste($dbis_id);
+        $result = $this->dbis->getDbliste($dbis_id);
 
         //get top dbs
         $result = $this->getListTop($result['list']['top'], $config['detailPid']);
@@ -80,9 +82,6 @@ class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     public function loadList($subject_id, $config)
     {
         $this->loadSubjects();
-
-        $dbis = new \Sub\Libconnect\Lib\Dbis();
-
         $accessFilter = false;
 
         if (isset($config['search']['zugaenge']) && (strlen($config['search']['zugaenge']) > 0)) {
@@ -95,7 +94,7 @@ class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 
             $dbis_id = $subject['dbisid'];
 
-            $result = $dbis->getDbliste($dbis_id, $config['sort'], $accessFilter);
+            $result = $this->dbis->getDbliste($dbis_id, $config['sort'], $accessFilter);
         } else {//for own collection or all subject
 
             //access sort for all entries in all subjects is not possible
@@ -103,7 +102,7 @@ class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                 $config['sort'] = 'alph';
             }
 
-            $result = $dbis->getDbliste($subject_id, $config['sort'], $accessFilter);
+            $result = $this->dbis->getDbliste($subject_id, $config['sort'], $accessFilter);
 
             $subject['title'] = $result['headline'];
         }
@@ -141,10 +140,7 @@ class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     public function loadOverview()
     {
         $this->loadSubjects();
-
-        $dbis = new \Sub\Libconnect\Lib\Dbis();
-
-        $list = $dbis->getFachliste();
+        $list = $this->dbis->getFachliste();
 
         foreach ($list as $el) {
             if ($el['lett'] != 'c') {
@@ -192,15 +188,13 @@ class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * show details
      *
      * @param int $title_id
-     *
-     * @return array $db
+     * @return mixed
      */
     public function loadDetail($title_id)
     {
-        $dbis = new \Sub\Libconnect\Lib\Dbis();
-        $db = $dbis->getDbDetails($title_id);
+        $db = $this->dbis->getDbDetails($title_id);
 
-        if (! $db) {
+        if (!$db) {
             return false;
         }
 
@@ -220,8 +214,7 @@ class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $this->loadSubjects();
 
         //execute search
-        $dbis = new \Sub\Libconnect\Lib\Dbis();
-        $result = $dbis->search($searchVars);
+        $result = $this->dbis->search($searchVars);
 
         //stop if function called from "New" - controller
         if (isset($config['onlyNew'])) {
@@ -250,8 +243,7 @@ class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     */
     public function loadMiniForm()
     {
-        $dbis = new \Sub\Libconnect\Lib\Dbis();
-        $form = $dbis->getExtendedForm();
+        $form = $this->dbis->getExtendedForm();
 
         return $form;
     }
@@ -263,8 +255,7 @@ class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      */
     public function loadForm()
     {
-        $dbis = new \Sub\Libconnect\Lib\Dbis();
-        $form = $dbis->getExtendedForm();
+        $form = $this->dbis->getExtendedForm();
 
         return $form;
     }
@@ -298,5 +289,20 @@ class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         }
 
         return $list;
+    }
+
+    /**
+     * @param \Sub\Libconnect\Domain\Repository\SubjectRepository $subjectRepository
+     */
+    public function injectSubjectRepository(SubjectRepository $subjectRepository)
+    {
+        $this->subjectRepository = $subjectRepository;
+    }
+
+    /**
+     * @param \Sub\Libconnect\Lib\Dbis $dbis
+     */
+    public function injectDbis(Dbis $dbis) {
+        $this->dbis = $dbis;
     }
 }

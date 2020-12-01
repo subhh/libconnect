@@ -29,6 +29,9 @@ namespace Sub\Libconnect\Domain\Repository;
 *  Avonis - New Media Agency - http://www.avonis.com/
 ***************************************************************/
 
+use Sub\Libconnect\Lib\Ezb;
+use Sub\Libconnect\Lib\Zdb;
+
 /**
  * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
  */
@@ -45,6 +48,16 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     protected $subjectRepository;
 
     /**
+     * @var Ezb
+     */
+    protected $ezb;
+
+    /**
+     * @var Zdb
+     */
+    protected $zdb;
+
+    /**
      * get list for start page
      *
      * @return array $list
@@ -53,9 +66,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     {
         $this->loadSubjects();
 
-        $ezb = new \Sub\Libconnect\Lib\Ezb();
-
-        $subjectsOnline = $ezb->getFachbereiche();
+        $subjectsOnline = $this->ezb->getFachbereiche();
 
         foreach ($subjectsOnline as $el) {
             $subject = $this->ezb_to_t3_subjects[$el['id']];
@@ -107,8 +118,6 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         //get notation for subject
         $subject = $this->t3_to_ezb_subjects[$subject_id];
 
-        $ezb = new \Sub\Libconnect\Lib\Ezb();
-
         if ($options['notation'] == 'All') {
             $subject['ezbnotation'] = 'All';
         }
@@ -116,7 +125,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         //filter list by access list
         if (!empty($options['colors'])) {
             $colors = $this->getColors($options['colors']);
-            $ezb->setColors($colors);
+            $this->ezb->setColors($colors);
 
             $colorList = $options['colors'];
         } else {
@@ -128,7 +137,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             ];
         }
 
-        $journals = $ezb->getFachbereichJournals($subject['ezbnotation'], $index, $sc, $lc);
+        $journals = $this->ezb->getFachbereichJournals($subject['ezbnotation'], $index, $sc, $lc);
 
         //get access information
         $journals['selected_colors'] = $this->getAccessInfos();
@@ -201,9 +210,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      */
     public function loadDetail($journalId, $config)
     {
-        $ezb = new \Sub\Libconnect\Lib\Ezb();
-
-        $journal = $ezb->getJournalDetail($journalId);
+        $journal = $this->ezb->getJournalDetail($journalId);
 
         if (! $journal) {
             return false;
@@ -212,7 +219,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         /*BEGIN get access information*/
 
         //get default texts
-        $LongAccessInfos = $ezb->getLongAccessInfos();
+        $LongAccessInfos =  $this->ezb->getLongAccessInfos();
 
         $colortext = [];
         if ((!empty($LongAccessInfos['longAccessInfos'])) && ($LongAccessInfos['longAccessInfos']!= false)) {
@@ -222,7 +229,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         }
 
         //get texts from the web
-        $form = $ezb->detailSearchFormFields();
+        $form =  $this->ezb->detailSearchFormFields();
         $journal['selected_colors'] = $form['selected_colors'];
 
         $color = $journal['color_code'];//Farbangabe
@@ -321,12 +328,10 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             $linkParams['libconnect[subject]'] = $searchVars['subject'];
         }
 
-        $ezb = new \Sub\Libconnect\Lib\Ezb();
-
         $ezbColors = $this->getColors($colors);
-        $ezb->setColors($ezbColors);
+        $this->ezb->setColors($ezbColors);
 
-        $journals = $ezb->search($searchVars['search']);
+        $journals =  $this->ezb->search($searchVars['search']);
 
         if (! $journals) {
             return false;
@@ -439,8 +444,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      */
     public function loadForm()
     {
-        $ezb = new \Sub\Libconnect\Lib\Ezb();
-        $form = $ezb->detailSearchFormFields();
+        $form =  $this->ezb->detailSearchFormFields();
 
         //Zugriffsinformationen holen
         $form['colors'] = $this->getAccessInfos(true);
@@ -467,16 +471,14 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      */
     public function loadLocationData($journal)
     {
-        $zdb = new \Sub\Libconnect\Lib\Zdb();
-
         if(empty($journal['ZDB_number'])){
             $journal['ZDB_number'] = NULL;
         }
 
         if(count($journal['pissns'])){
-            $locationData = $zdb->getJournalLocationDetails( array('issn' => reset($journal['pissns']) ), $journal['ZDB_number'] );
+            $locationData = $this->zdb->getJournalLocationDetails( array('issn' => reset($journal['pissns']) ), $journal['ZDB_number'] );
         } elseif(count($journal['eissns'])){
-            $locationData = $zdb->getJournalLocationDetails( array('eissn' => reset($journal['eissns']) ), $journal['ZDB_number'] );
+            $locationData = $this->zdb->getJournalLocationDetails( array('eissn' => reset($journal['eissns']) ), $journal['ZDB_number'] );
         }
 
         if (! $locationData) {
@@ -513,10 +515,8 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      */
     public function getAccessInfos($short = false)
     {
-        $ezb = new \Sub\Libconnect\Lib\Ezb();
-
         //get default texts
-        $LongAccessInfos = $ezb->getLongAccessInfos();
+        $LongAccessInfos = $this->ezb->getLongAccessInfos();
 
         $colortext = [];
         if ((!empty($LongAccessInfos['longAccessInfos'])) && ($LongAccessInfos['longAccessInfos']!= false)) {
@@ -526,7 +526,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         }
 
         //get text from web
-        $form = $ezb->detailSearchFormFields();
+        $form = $this->ezb->detailSearchFormFields();
         $AccessInfos = [];
 
         //own texts or from web
@@ -537,7 +537,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 
             if ($short) {
                 //if shorter form is will
-                $ShortAccessInfos = $ezb->getShortAccessInfos();
+                $ShortAccessInfos = $this->ezb->getShortAccessInfos();
 
                 if ((!empty($ShortAccessInfos)) && ($ShortAccessInfos!= false)) {
                     foreach ($ShortAccessInfos['shortAccessInfos'] as $key => $text) {
@@ -584,14 +584,13 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     private function getSearchDescription($searchVars)
     {
         $list = [];
-        $ezb = new \Sub\Libconnect\Lib\Ezb();
 
         //search terms and theire categories
         $jq = '';
 
         for ($i=1;$i<=4;$i++) {
             if ((!empty($searchVars['jq_type' . $i])) && (!empty($searchVars['jq_term' . $i]))) {
-                $jq.=$ezb->jq_type[$searchVars['jq_type' . $i]] . ' "' . $searchVars['jq_term' . $i] . '" ';
+                $jq .= $this->ezb->jq_type[$searchVars['jq_type' . $i]] . ' "' . $searchVars['jq_term' . $i] . '" ';
 
                 if (!empty($searchVars['jq_type2'])) {
                     $jq.= ' ' . $searchVars['jq_bool' . $i] . ' ';
@@ -634,13 +633,12 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      */
     public function getParticipantsList($journalId)
     {
-        $ezb = new \Sub\Libconnect\Lib\Ezb();
-        $list = $ezb->getParticipantsList($journalId);
+        $list = $this->ezb->getParticipantsList($journalId);
 
-        $bibID = $ezb->getBibID();
+        $bibID = $this->ezb->getBibID();
         $list['BibID'] = $bibID;
 
-        $list['detailURL'] = $ezb->getDetailviewRequestUrl() . '&jour_id=' . $journalId;
+        $list['detailURL'] = $this->ezb->getDetailviewRequestUrl() . '&jour_id=' . $journalId;
 
         return $list;
     }
@@ -652,8 +650,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      */
     public function getContact()
     {
-        $ezb = new \Sub\Libconnect\Lib\Ezb();
-        $contact = $ezb->getContact();
+        $contact = $this->ezb->getContact();
 
         return $contact;
     }
@@ -686,23 +683,21 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * returns the title history
      *
      * @param string $zdbId
-     * @return array
+     * @return mixed
      */
     private function getTitleHistory($zdbId)
     {
-        $zdb = new \Sub\Libconnect\Lib\Zdb();
-
-        $precursor = $zdb->getPrecursor($zdbId, true);
+        $precursor = $this->zdb->getPrecursor($zdbId, true);
 
         rsort($precursor);
 
-        $successor = $zdb->getSuccessor($zdbId);
+        $successor = $this->zdb->getSuccessor($zdbId);
 
         if ((empty($precursor)) && (empty($successor))) {
             return false;
         }
 
-        return ['precursor' => $precursor, 'zdbData' => $zdb->getZdbData(), 'successor' => $successor];
+        return ['precursor' => $precursor, 'zdbData' => $this->zdb->getZdbData(), 'successor' => $successor];
     }
 
     /**
@@ -711,5 +706,19 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     public function injectSubjectRepository(SubjectRepository $subjectRepository)
     {
         $this->subjectRepository = $subjectRepository;
+    }
+
+    /**
+     * @param \Sub\Libconnect\Lib\Ezb $ezb
+     */
+    public function injectEzb(Ezb $ezb) {
+        $this->ezb = $ezb;
+    }
+
+    /**
+     * @param \Sub\Libconnect\Lib\Zdb $zdb
+     */
+    public function injectZdb(Ezb $zdb) {
+        $this->zdb = $zdb;
     }
 }
