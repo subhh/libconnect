@@ -8,11 +8,11 @@ if (!defined('TYPO3_MODE')) {
     'Libconnect',
     'Dbis',
     [
-        \Sub\Libconnect\Controller\DbisController::class => 'displayForm'
+        \Sub\Libconnect\Controller\DbisController::class => 'displayForm, displayDetail'
     ],
     // non-cacheable actions
     [
-        \Sub\Libconnect\Controller\DbisController::class => 'displayDetail, displayList, displayMiniForm, displayNew'
+        \Sub\Libconnect\Controller\DbisController::class => 'displayList, displayMiniForm, displayNew'
     ]
 );
 
@@ -20,11 +20,11 @@ if (!defined('TYPO3_MODE')) {
     'Libconnect',
     'Ezb',
     [
-        \Sub\Libconnect\Controller\EzbController::class => 'displayForm, displayContact'
+        \Sub\Libconnect\Controller\EzbController::class => 'displayForm, displayContact, displayDetail'
     ],
     // non-cacheable actions
     [
-        \Sub\Libconnect\Controller\EzbController::class => 'displayDetail, displayList, displayMiniForm, displayNew, displayParticipantsForm'
+        \Sub\Libconnect\Controller\EzbController::class => 'displayList, displayMiniForm, displayNew, displayParticipantsForm'
     ]
 );
 
