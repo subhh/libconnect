@@ -718,7 +718,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     /**
      * @param \Sub\Libconnect\Lib\Zdb $zdb
      */
-    public function injectZdb(Ezb $zdb) {
+    public function injectZdb(Zdb $zdb) {
         $this->zdb = $zdb;
     }
 }
