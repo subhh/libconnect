@@ -520,9 +520,8 @@ class Dbis
      * returns search url
      *
      * @param array $searchVars
-     * @param string $lett
      *
-     * @retun array
+     * @return array
      */
     private function createSearchParams($searchVars)
     {
