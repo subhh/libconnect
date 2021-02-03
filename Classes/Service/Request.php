@@ -55,26 +55,34 @@ class Request
         $requestFactory = GeneralUtility::makeInstance(RequestFactory::class);
 
         if ($urldecode) {
-            $query = urldecode(http_build_query($this->getQuery(), null, '&'));
+            $query = urldecode(http_build_query($this->getQuery()));
         } else {
             $query = $this->getQuery();
         }
 
+        $url = sprintf('%s?%s', $this->getUrl(), $query);
         $additionalOptions = [
             'headers' => [
                 'Cache-Control' => 'no-cache',
                 'Accept' => 'text/xml; charset=UTF8'
             ],
-            'allow_redirects' => true,
-            'http_errors' => false,
-            'query' => $query
+            'allow_redirects' => true
         ];
 
-        $response = $requestFactory->request($this->getUrl(), 'GET', $additionalOptions);
-        if ($response->getStatusCode() !== 200) {
-            $this->logger->debug(
-                'Got HTTP Code ' . $response->getStatusCode() . ' for request: ' . $this->url .
-                http_build_query($this->getQuery(),null, '&'));
+        try {
+            $response = $requestFactory->request($url, 'GET', $additionalOptions);
+
+            if ($response->getStatusCode() !== 200) {
+                $this->logger->debug('Request failed', [
+                    'code' => $response->getStatusCode(),
+                    'url' => $url
+                ]);
+
+                return false;
+            }
+        } catch (\Throwable $e) {
+            $this->logger->debug('Request failed: ' . $e->getMessage(), ['url' => $url]);
+
             return false;
         }
 
