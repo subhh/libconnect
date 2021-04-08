@@ -15,4 +15,4 @@ Known Problems
 
 The libconnect extension use the xml interface of regensburg. Some functions of the html website are not included in the xml interface.
 
-EZB: title history is to slow.
+EZB: title history is too slow.
