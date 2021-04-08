@@ -12,8 +12,7 @@ Visit our git repository: https://github.com/subhh/libconnect
     - New version for TYPO3 10 LTS. Thanks to Christoph Lehmann.
 
 Tested with 
-    - TYPO3 8.7.25
-    - TYPO3 9.5.4
+    - TYPO3 10.4.14
 
 ## Configuration
 
