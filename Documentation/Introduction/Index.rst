@@ -1,4 +1,4 @@
-﻿.. include:: ../Includes.txt
+.. include:: ../Includes.txt
 
 
 .. _introduction:
@@ -11,7 +11,7 @@ Introduction
    :local:
    :depth: 2
 
-
+.. _what-it-does:
 
 What does it do?
 ================
@@ -79,8 +79,6 @@ Here are some screenshots.
    :alt: ezb details plug-in 
 
    You can see the details of a database.
-
-
 
 
 

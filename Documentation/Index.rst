@@ -1,17 +1,11 @@
-﻿.. every .rst file should include Includes.txt
-.. use correct path!
-
 .. include:: Includes.txt
-
-
-.. Every manual should have a start label for cross-referencing to
-.. start page. Do not remove this!
 
 .. _start:
 
-=============================================================
+##########
 libconnect
-=============================================================
+##########
+
 .. only:: html
 
     :Classification:
@@ -23,7 +17,13 @@ libconnect
     :Language:
         en
 
-    :Authors:
+    :Description:
+        Diese Extension ist von Avonis im Auftrag der Staats- und Universitaetsbibliothek Hamburg entwickelt worden. Mit ihr lassen sich Ergebnisse aus den Informationssystemen EZB und DBIS der Universitaet Regensburg direkt in das TYPO3-System einbinden.
+
+    :Keywords:
+        dbis,ezb,zdb,library,bibliothek
+
+    :Author:
         Torsetn Witt
 
     :Email:
@@ -38,11 +38,14 @@ libconnect
     The content of this document is related to TYPO3,
     a GNU/GPL CMS/Framework available from `www.typo3.org <http://www.typo3.org/>`_.
 
-    **Table of Contents**
+*****************
+Table of Contents
+*****************
 
 .. toctree::
     :maxdepth: 3
-    :hidden:
+    :titlesonly:
+    :glob:
 
     Introduction/Index
     Installation/Index
