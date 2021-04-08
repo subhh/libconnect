@@ -321,17 +321,18 @@ class Ezb
             foreach ($xml_response->ezb_detail_about_journal->journal->periods->period as $period) {
                 $i = 1;
                 $warpto = '';
-                $domain = '';
+                $url = '';
 
                 if (@$period->warpto_link->attributes()->url) {
                     $warpto = urlencode((string)$period->warpto_link->attributes()->url);
                 }
 
-                $test = (string)@$period->readme_link->attributes()->url;
+                //check for uncomplete link
+                $readme_link = (string)@$period->readme_link->attributes()->url;
 
-                if (!empty($test)) {
-                    if (!preg_match('/^http/', $test)) {
-                        $domain = 'https://rzblx1.uni-regensburg.de/ezeit/';
+                if (!empty($readme_link)) {
+                    if (!preg_match('/^http/', $readme_link)) {
+                        $url = 'https://rzblx1.uni-regensburg.de/ezeit/';
                     }
                 }
 
@@ -340,7 +341,7 @@ class Ezb
                     'color' => (string)@$period->journal_color->attributes()->color,
                     'color_code' => $color_map[(string)@$period->journal_color->attributes()->color],
                     'link' => 'https%3A%2F%2Frzblx1.uni-regensburg.de%2Fezeit%2Fwarpto.phtml?bibid=' . $this->bibID . '%26colors=' . $this->colors . '%26lang=' . $this->lang . '%26jour_id=' . $journalId . '%26url=' . $warpto,
-                    'readme' => $domain . (string)@$period->readme_link->attributes()->url
+                    'readme' => $url . (string)@$period->readme_link->attributes()->url
                 ];
             }
         }
