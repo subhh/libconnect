@@ -61,9 +61,6 @@ class RepairHTMLUserFunction
 
     private function filter($string)
     {
-        //line break
-        $string = preg_replace('/<br>/', '<br/>', $string);
-
         //new lines
         $string = preg_replace('/\n/', '', $string);
         $string = preg_replace('/\r/', '', $string);
