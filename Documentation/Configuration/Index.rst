@@ -1,4 +1,4 @@
-﻿.. include:: ../Includes.txt
+.. include:: ../Includes.txt
 
 
 .. _configuration:
@@ -21,21 +21,23 @@ Set zdb configuration
 
 You see the default values.
 
-code-block:: typoscript
+.. code-block:: typoscript
+    :linenos:
 
     plugin.tx_libconnect {
         zdbsid = vid:dbid
-        zdbbibid = 
+        zdbbibid =
         zdbsigel = 
-        zdbisil = 
-        zdbbik = 
+        zdbisil =
+        zdbbik =
     }
 
 
 Set paths to your own templates, partials and layouts
 =====================================================
 
-code-block:: typoscript
+.. code-block:: typoscript
+    :linenos:
 
     plugin.tx_libconnect {
         view {
@@ -61,7 +63,9 @@ Deactivate standard CSS
 
 If you don´t want to use the original css, deactivate it.
 
-code-block:: typoscript
+.. code-block:: typoscript
+    :linenos:
+
     page.includeCSS.dbis >
     page.includeCSS.ezb >
 
@@ -71,7 +75,9 @@ EZB: Overwrite access information texts
 
 If the text of ezb is empty, it will be overwritten by configuration. If force = yes, all texts are overwritten.
 
-code-block:: typoscript
+.. code-block:: typoscript
+    :linenos:
+
     plugin.tx_libconnect {
         settings {
             ezblongaccessinfos{
@@ -114,7 +120,9 @@ If you want to remove a licence option in the extended search of dbis, use this 
 
 Default: empty
 
-code-block:: typoscript
+.. code-block:: typoscript
+    :linenos:
+
     plugin.tx_libconnect {
         settings.dbislicenceforbid.3 = false
         settings.dbislicenceforbid.4 = false
@@ -128,7 +136,9 @@ Comma seperated list of integer. The values are location states which are dispay
 
 2 = available, 3 = limited availability (moving wall, etc.), 4 = journal not available
 
-code-block:: typoscript
+.. code-block:: typoscript
+    :linenos:
+
     plugin.tx_libconnect {
         settings.validStatesList = 1,2
     }
