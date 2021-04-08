@@ -11,7 +11,7 @@ Introduction
    :local:
    :depth: 2
 
-
+.. _what-it-does:
 
 What does it do?
 ================
