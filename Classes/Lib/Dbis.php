@@ -47,6 +47,7 @@ class Dbis
     private $dbliste_url = 'http://dbis.uni-regensburg.de/dbinfo/dbliste.php';
     private $db_detail_url = 'http://dbis.uni-regensburg.de/dbinfo/detail.php';
     private $db_detail_suche_url = 'http://dbis.uni-regensburg.de/dbinfo/suche.php';
+    private $dbis_domain = 'dbis.uni-regensburg.de';
 
     public $all;
     public $top_five_dbs;
@@ -461,7 +462,7 @@ class Dbis
                     //$details['db_type_infos_join'] = join(', ', $details['db_type_infos']);
                 } else if ($key == 'hints') {
                     //warpto link must be completed, because it is relative
-                    $hint = preg_replace('/warpto/', 'https://rzblx10.uni-regensburg.de/dbinfo/warpto', (string) $value);
+                    $hint = preg_replace('/warpto/', 'https://'.$this->dbis_domain.'/dbinfo/warpto', (string) $value);
 
                     $details['hints'] =  $hint;
                 } elseif ($key == 'instruction') {
@@ -726,7 +727,7 @@ class Dbis
     {
         $params = ['bib_id' => $this->bibID, 'colors' =>'', 'ocolors' => '', 'lett' => 'fs', 'tid' => 0, 'titel_id' => $db_id, 'xmloutput' => 0];
 
-        $htmlResponse = $this->setRequest('https://rzblx10.uni-regensburg.de/dbinfo/detail.php', $params);
+        $htmlResponse = $this->setRequest('https://'.$this->dbis_domain.'/dbinfo/detail.php', $params);
 
         $moreDetails = [];
 
