@@ -5,6 +5,9 @@
 * - BH: Björn Heinermann hein@zhaw.ch (Zürcher Hochschule für Angewandte Wissenschaften)
 * - CR: Christian Richter chri@portachtzig.com (Wirtschaftskolleg zu Berlin)
 **/
+8.0.0
+    - New version for TYPO3 10 LTS. Thanks to Christoph Lehmann.
+
 7.0.5
     - DBIS: fixed translation for isbn
     - Added extension to packagist.org.

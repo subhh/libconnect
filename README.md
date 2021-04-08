@@ -8,14 +8,8 @@ Here is the German [Manual](doc/manual.pdf "Ausführliches Manual").
 
 Visit our git repository: https://github.com/subhh/libconnect
 
-## 7.0.5
-    - DBIS: fixed translation for isbn
-    - Added extension to packagist.org.
-    - Guzzle: Changed Exception handling. Thanks to Christoph Lehmann
-    - ZDB:
-        - Fixed failed ZDB print information
-        - Fixed period in title history and moved issued as new field
-    - Fixed replace section in composer.json
+## 8.0.0
+    - New version for TYPO3 10 LTS. Thanks to Christoph Lehmann.
 
 Tested with 
     - TYPO3 8.7.25
