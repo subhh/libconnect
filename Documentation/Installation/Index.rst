@@ -1,4 +1,4 @@
-﻿.. include:: ../Includes.txt
+.. include:: ../Includes.txt
 
 
 .. _admin-manual:
@@ -21,11 +21,12 @@ The installation and initial configuration of the extension is as following:
 
 #. Now you can change in the Constant Editor the values for “ezbid” and “dbisaid” The default values are from the Staats- und Universitätsbibliothek Hamburg. Or you can do it as typoscript in the setup, like this:
 
-TypoScript::
 
-    plugin.tx_libconnect {
-        ezbbibid = yourId
-        dbisbibid = yourId
-    }
+    .. code-block:: typoscript
+        :linenos:
 
-
+        plugin.tx_libconnect {
+            ezbbibid = yourId
+          dbisbibid = yourId
+        }
+ 
