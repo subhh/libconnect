@@ -18,7 +18,7 @@
         <div id="dbis-detail-notavailable">
             <p><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.dbis.detail.notavailable_start" /> <f:format.htmlentitiesDecode>{db.library.name}</f:format.htmlentitiesDecode> <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.dbis.detail.notavailable_end" /><br/>
             <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.dbis.detail.library_with_title" /></p>
-            <form class="dbis-form" method="get" action="https://rzblx10.uni-regensburg.de/dbinfo/detail.php">
+            <form class="dbis-form" method="get" action="https://dbis.uni-regensburg.de/dbinfo/detail.php">
                 <input name="titel_id" value="{db.titel_id}" type="hidden"/>
                 <select id="choose_bib" name="bib_id">
                     <f:for each="{db.biblist}" as="bib">
@@ -33,7 +33,7 @@
         <f:if condition="{db.access_workaround}">
             <f:if condition="{db.access.href}">
                 <p>
-                    <a class="dbis-research" href="https://rzblx10.uni-regensburg.de/dbinfo/{db.access.href}" target="_blank"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.dbis.detail.recherche" /></a>
+                    <a class="dbis-research" href="https://dbis.uni-regensburg.de/dbinfo/{db.access.href}" target="_blank"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.dbis.detail.recherche" /></a>
                 </p>
             </f:if>
         </f:if>
@@ -67,7 +67,7 @@
                                 <td>
                                     <ul>
                                         <f:for each="{db.access_lic.free}" as="free">
-                                            <li><a href="http://rzblx10.uni-regensburg.de/dbinfo/{free.href}" target="_blank">{free.name}</a></li>
+                                            <li><a href="http://dbid.uni-regensburg.de/dbinfo/{free.href}" target="_blank">{free.name}</a></li>
                                         </f:for>
                                     </ul>
                                 </td>
@@ -81,7 +81,7 @@
                                 <td>
                                     <ul>
                                         <f:for each="{db.access_lic.other}" as="other">
-                                            <li><a href="http://rzblx10.uni-regensburg.de/dbinfo/{other.href}" target="_blank">{other.name}</a></li>
+                                            <li><a href="http://dbis.uni-regensburg.de/dbinfo/{other.href}" target="_blank">{other.name}</a></li>
                                         </f:for>
                                     </ul>
                                 </td>
@@ -95,7 +95,7 @@
                                 <td>
                                     <ul>
                                         <f:for each="{db.access_lic.ppu}" as="ppu">
-                                            <li><a href="http://rzblx10.uni-regensburg.de/dbinfo/{ppu.href}" target="_blank">{ppu.name}</a></li>
+                                            <li><a href="http://dbis.uni-regensburg.de/dbinfo/{ppu.href}" target="_blank">{ppu.name}</a></li>
                                         </f:for>
                                     </ul>
                                 </td>
@@ -110,7 +110,7 @@
                                 <td>
                                     <ul>
                                         <f:for each="{db.access_lic.lic}" as="lic">
-                                            <li><a href="http://rzblx10.uni-regensburg.de/dbinfo/{lic.href}" target="_blank"><f:format.htmlentitiesDecode>{lic.name}</f:format.htmlentitiesDecode></a></li>
+                                            <li><a href="http://dbis.uni-regensburg.de/dbinfo/{lic.href}" target="_blank"><f:format.htmlentitiesDecode>{lic.name}</f:format.htmlentitiesDecode></a></li>
                                         </f:for>
                                     </ul>
                                 </td>
@@ -125,7 +125,7 @@
                                 <td>
                                     <ul>
                                         <f:for each="{db.access_lic.natli}" as="natli">
-                                            <li><a href="http://rzblx10.uni-regensburg.de/dbinfo/{natli.href}" target="_blank"><f:format.htmlentitiesDecode>{natli.name}</f:format.htmlentitiesDecode></a></li>
+                                            <li><a href="http://dbis.uni-regensburg.de/dbinfo/{natli.href}" target="_blank"><f:format.htmlentitiesDecode>{natli.name}</f:format.htmlentitiesDecode></a></li>
                                         </f:for>
                                     </ul>
                                 </td>
