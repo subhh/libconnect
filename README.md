@@ -8,14 +8,9 @@ Here is the German [Manual](doc/manual.pdf "Ausführliches Manual").
 
 Visit our git repository: https://github.com/subhh/libconnect
 
-## 7.0.5
-    - DBIS: fixed translation for isbn
-    - Added extension to packagist.org.
-    - Guzzle: Changed Exception handling. Thanks to Christoph Lehmann
-    - ZDB:
-        - Fixed failed ZDB print information
-        - Fixed period in title history and moved issued as new field
-    - Fixed replace section in composer.json
+## 7.0.6
+    - DBIS: fixed Unknown Namespace in top datases
+    - DBIS+EZB: changed servernames rcblx1 and rcblx10 to ezb and dbis.
 
 Tested with 
     - TYPO3 8.7.25
