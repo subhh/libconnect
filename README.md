@@ -8,8 +8,8 @@ Here is the German [Manual](doc/manual.pdf "Ausführliches Manual").
 
 Visit our git repository: https://github.com/subhh/libconnect
 
-## 8.0.0
-    - New version for TYPO3 10 LTS. Thanks to Christoph Lehmann.
+## 8.0.1
+    - Fixed Unknown Namespace in top datases
 
 Tested with 
     - TYPO3 10.4.14

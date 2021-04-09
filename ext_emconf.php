@@ -13,7 +13,7 @@ $EM_CONF['libconnect'] = [
     'uploadfolder' => 0,
     'createDirs' => '',
     'clearCacheOnLoad' => 0,
-    'version' => '8.0.0',
+    'version' => '8.0.1',
     'constraints' => [
         'depends' => [
             'typo3' => '10.4.0-10.4.99',
@@ -33,6 +33,6 @@ $EM_CONF['libconnect'] = [
                 ],
         ],
     '_md5_values_when_last_written' => 'a:0:{}',
-    'comment' => 'New version for TYPO3 10 LTS. Thanks to Christoph Lehmann.',
+    'comment' => 'Fixed Unknown Namespace in top datases',
     'user' => 'subunihhdevteam',
 ];
