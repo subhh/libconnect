@@ -9,7 +9,7 @@ Here is the German [Manual](doc/manual.pdf "Ausführliches Manual").
 Visit our git repository: https://github.com/subhh/libconnect
 
 ## 8.0.1
-    - Fixed Unknown Namespace in top datases
+    - DBIS: Fixed Unknown Namespace in top databases
 
 Tested with 
     - TYPO3 10.4.14

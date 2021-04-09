@@ -6,7 +6,7 @@
 * - CR: Christian Richter chri@portachtzig.com (Wirtschaftskolleg zu Berlin)
 **/
 8.0.1
-    - Fixed Unknown Namespace in top datases
+    - DBIS: Fixed Unknown Namespace in top databases
 8.0.0
     - New version for TYPO3 10 LTS. Thanks to Christoph Lehmann.
 

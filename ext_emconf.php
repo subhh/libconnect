@@ -33,6 +33,6 @@ $EM_CONF['libconnect'] = [
                 ],
         ],
     '_md5_values_when_last_written' => 'a:0:{}',
-    'comment' => 'Fixed Unknown Namespace in top datases',
+    'comment' => 'DBIS: Fixed Unknown Namespace in top databases',
     'user' => 'subunihhdevteam',
 ];
