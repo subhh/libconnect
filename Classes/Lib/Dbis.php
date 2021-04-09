@@ -731,7 +731,7 @@ class Dbis {
     private function getMoreDetails($db_id){
         $params = array('bib_id' => $this->bibID, 'colors' =>'', 'ocolors' => '', 'lett' => 'fs', 'tid' => 0, 'titel_id' => $db_id, 'xmloutput' => 0);
 
-        $htmlResponse = $this->setRequest('https://'.$this->dbis_domain.'.uni-regensburg.de/dbinfo/detail.php', $params);
+        $htmlResponse = $this->setRequest('https://'.$this->dbis_domain.'/dbinfo/detail.php', $params);
 
         $moreDetails = array();
 
