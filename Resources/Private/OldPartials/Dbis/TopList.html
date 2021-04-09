@@ -1,3 +1,4 @@
+{namespace libconnect=Sub\Libconnect\ViewHelpers}
 <ul class="dbis-top-list">
     <f:for each="{top}" as="db">
         <li class="dbis-list-accessinfo-{db.access_ref}"><a href="{db.detail_link}"><libconnect:strreplace search=" & " replace=" &amp; "><f:format.htmlentitiesDecode>{db.title}</f:format.htmlentitiesDecode></libconnect:strreplace></a></li>
