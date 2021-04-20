@@ -21,5 +21,10 @@
     "replace": {
         "typo3-ter/libconnect": "self.version",
         "subhh/libconnect": "self.version"
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "libconnect"
+        }
     }
 }
