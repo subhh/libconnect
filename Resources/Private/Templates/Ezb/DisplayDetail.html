@@ -225,7 +225,7 @@
                                 <ul>
                                     <li><u>{row.zdbid} <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.ezb.detail.in_period" />: {row.period}</u></li>
                                     <li>{row.date_issued}</li>
-                                    <li>{row.name}</li>
+                                    <li>{row.name} / {row.publisher}</li>
                                 </ul>
                             </f:for>
                         </f:if>
@@ -234,7 +234,7 @@
                             <ul class="ezb-detail-titlehistory-active">
                                 <li><u>{journal.ZDB_number} <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.ezb.detail.in_period" />: {journal.title_history.zdbData.period}</u></li>
                                 <li>{journal.title_history.zdbData.date_issued}</li>
-                                <li>{journal.title_history.zdbData.name}</li>
+                                <li>{journal.title_history.zdbData.name} / {journal.journal.title_history.zdbData.publisher}</li>
                             </ul>
                         </f:if>
 
@@ -243,7 +243,7 @@
                                 <ul>
                                     <li><u>{row.zdbid} <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.ezb.detail.in_period" />: {row.period}</u></li>
                                     <li>{row.date_issued}</li>
-                                    <li>{row.name}</li>
+                                    <li>{row.name} / {row.publisher}</li>
                                 </ul>
                             </f:for>
                         </f:if>

@@ -370,6 +370,12 @@ class Zdb
             if (!empty($matches[1][0])) {
                 $this->zdbData['date_issued'] = $matches[1][0];
             }
+
+            //get publisher
+            preg_match('/\<rdau:P60327 rdf:datatype="https?:\/\/www.w3.org\/2001\/XMLSchema#string">(.*)\<\/rdau:P60327\>/', $request, $matches, PREG_OFFSET_CAPTURE);
+            if (!empty($matches[1][0])) {
+                $this->zdbData['publisher'] = $matches[1][0];
+            }
         }
 
         preg_match('/\<rdau:P60576 rdf:resource="https?:\/\/ld.zdb-services.de\/resource\/(.*)"\/\>/', $request, $matches, PREG_OFFSET_CAPTURE);
@@ -404,6 +410,12 @@ class Zdb
             preg_match('/\<dcterms:issued rdf:datatype="https?:\/\/www.w3.org\/2001\/XMLSchema#string">(.*)\<\/dcterms:issued\>/', $request, $matches, PREG_OFFSET_CAPTURE);
             if (!empty($matches[1][0])) {
                 $this->precursor[$key]['date_issued'] = $matches[1][0];
+            }
+
+            //get publisher
+            preg_match('/\<rdau:P60327 rdf:datatype="https?:\/\/www.w3.org\/2001\/XMLSchema#string">(.*)\<\/rdau:P60327\>/', $request, $matches, PREG_OFFSET_CAPTURE);
+            if (!empty($matches[1][0])) {
+                $this->precursor[$key]['publisher'] = $matches[1][0];
             }
 
             //get next
@@ -455,6 +467,12 @@ class Zdb
             preg_match('/\<dcterms:issued rdf:datatype="https?:\/\/www.w3.org\/2001\/XMLSchema#string">(.*)\<\/dcterms:issued\>/', $request, $matches, PREG_OFFSET_CAPTURE);
             if (!empty($matches[1][0])) {
                 $this->successor[$key]['date_issued'] = $matches[1][0];
+            }
+
+            //get publisher
+            preg_match('/\<rdau:P60327 rdf:datatype="https?:\/\/www.w3.org\/2001\/XMLSchema#string">(.*)\<\/rdau:P60327\>/', $request, $matches, PREG_OFFSET_CAPTURE);
+            if (!empty($matches[1][0])) {
+                $this->successor[$key]['publisher'] = $matches[1][0];
             }
 
             //get next
