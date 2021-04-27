@@ -61,8 +61,8 @@ Access information : Choose which access information texts are displayed, long o
 
 
 .. figure:: ../Images/Editor/DbisBackendList.png
-    :width: 800px
-    :alt: output as list
+   :width: 800px
+   :alt: output as list
 
    Configuring the output as list.
 
