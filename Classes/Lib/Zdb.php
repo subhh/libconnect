@@ -380,6 +380,11 @@ class Zdb
 
         preg_match('/\<rdau:P60576 rdf:resource="https?:\/\/ld.zdb-services.de\/resource\/(.*)"\/\>/', $request, $matches, PREG_OFFSET_CAPTURE);
 
+        //try other field
+        if (empty($matches[1][0])) {
+            preg_match('/\<rdau:P60261 rdf:resource="https?:\/\/ld.zdb-services.de\/resource\/(.*)"\/\>/', $request, $matches, PREG_OFFSET_CAPTURE);
+        }
+
         if (!empty($matches[1][0])) {
             $this->precursor[]['zdbid'] = $matches[1][0];
 
@@ -436,6 +441,11 @@ class Zdb
         $request = $this->setRequest($url);
 
         preg_match('/\<rdau:P60306 rdf:resource="https?:\/\/ld.zdb-services.de\/resource\/(.*)"\/\>/', $request, $matches, PREG_OFFSET_CAPTURE);
+        
+        //try other field
+        if (empty($matches[1][0])) {
+            preg_match('/\<rdau:P60278 rdf:resource="https?:\/\/ld.zdb-services.de\/resource\/(.*)"\/\>/', $request, $matches, PREG_OFFSET_CAPTURE);
+        }
 
         if (!empty($matches[1][0])) {
             $this->successor[]['zdbid'] = $matches[1][0];
