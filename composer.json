@@ -3,7 +3,7 @@
     "type": "typo3-cms-extension",
     "description": "Diese Extension ist von Avonis im Auftrag der Staats- und Universitaetsbibliothek Hamburg entwickelt worden. Mit ihr lassen sich Ergebnisse aus den Informationssystemen EZB und DBIS der Universitaet Regensburg direkt in das TYPO3-System einbinden.",
     "homepage": "https://www.sub.uni-hamburg.de",
-    "license": ["GPL-2.0+"],
+    "license": ["GPL-2.0-or-later"],
     "keywords": ["TYPO3 CMS", "ezb", "dbis"],
     "support": {
         "issues": "https://github.com/subhh/libconnect/issues",
