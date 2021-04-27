@@ -525,6 +525,10 @@
                     <source>ZDB-ID</source>
                     <target>ZDB Nummer</target>
                 </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.oapolicy" xml:space="preserve">
+                    <source>Search publishers open access policy in SHERPA/RoMEO</source>
+                    <target>Open Access Policy des Verlages in SHERPA/RoMEO suchen</target>
+                </trans-unit>
 
                 <trans-unit id="tx_libconnect.ezb.form.input.search" xml:space="preserve">
                     <source>Search</source>
