@@ -198,7 +198,8 @@
                             <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.ezb.detail.publisher.th" />:</strong>
                         </th>
                         <td>
-                            <f:format.htmlentitiesDecode>{journal.publisher}</f:format.htmlentitiesDecode>
+                            <f:format.htmlentitiesDecode>{journal.publisher}</f:format.htmlentitiesDecode><br>
+                            <a href="https://ezb.uni-regensburg.de/sherpa/romeo.php?issn=<f:if condition="{journal.publisher}">{journal.eissns_join}</f:if>" target="_blank"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.ezb.detail.oapolicy" /></a>
                         </td>
                     </tr>
                 </f:if>
