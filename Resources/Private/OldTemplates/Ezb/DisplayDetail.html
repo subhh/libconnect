@@ -223,30 +223,27 @@
                         <f:if condition="{journal.title_history.precursor}">
                             <f:for each="{journal.title_history.precursor}" as="row">
                                 <ul>
-                                    <li>{row.zdbid}</li>
-                                    <li><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.ezb.detail.in_period" />: {row.period}</li>
+                                    <li><u>{row.zdbid} <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.in_period" />: {row.period}</u></li>
                                     <li>{row.date_issued}</li>
-                                    <li>{row.name}</li>
+                                    <li>{row.name} / {row.publisher}</li>
                                 </ul>
                             </f:for>
                         </f:if>
-
+                        
                         <f:if condition="{journal.title_history.zdbData}">
                             <ul class="ezb-detail-titlehistory-active">
-                                <li>{journal.ZDB_number}</li>
-                                <li><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.ezb.detail.in_period" />: {journal.title_history.zdbData.period}</li>
+                                <li><u>{journal.ZDB_number} <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.in_period" />: {journal.title_history.zdbData.period}</u></li>
                                 <li>{journal.title_history.zdbData.date_issued}</li>
-                                <li>{journal.title_history.zdbData.name}</li>
+                                <li>{journal.title_history.zdbData.name} / {journal.title_history.zdbData.publisher}</li>
                             </ul>
                         </f:if>
 
                         <f:if condition="{journal.title_history.successor}">
                             <f:for each="{journal.title_history.successor}" as="row">
                                 <ul>
-                                    <li>{row.zdbid}</li>
-                                    <li><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.ezb.detail.in_period" />: {row.period}</li>
+                                    <li><u>{row.zdbid} <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xml:tx_libconnect.ezb.detail.in_period" />: {row.period}</u></li>
                                     <li>{row.date_issued}</li>
-                                    <li>{row.name}</li>
+                                    <li>{row.name} / {row.publisher}</li>
                                 </ul>
                             </f:for>
                         </f:if>

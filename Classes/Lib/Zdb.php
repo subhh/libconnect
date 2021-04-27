@@ -392,9 +392,20 @@ class Zdb {
             if(!empty($matches[1][0])){
                 $this->zdbData['date_issued'] = $matches[1][0];
             }
+
+            //get publisher
+            preg_match('/\<rdau:P60327 rdf:datatype="https?:\/\/www.w3.org\/2001\/XMLSchema#string">(.*)\<\/rdau:P60327\>/', $request, $matches, PREG_OFFSET_CAPTURE);
+            if (!empty($matches[1][0])) {
+                $this->zdbData['publisher'] = $matches[1][0];
+            }
         }
         
         preg_match('/\<rdau:P60576 rdf:resource="https?:\/\/ld.zdb-services.de\/resource\/(.*)"\/\>/', $request, $matches, PREG_OFFSET_CAPTURE);
+
+        //try other field
+        if (empty($matches[1][0])) {
+            preg_match('/\<rdau:P60261 rdf:resource="https?:\/\/ld.zdb-services.de\/resource\/(.*)"\/\>/', $request, $matches, PREG_OFFSET_CAPTURE);
+        }
 
         if(!empty($matches[1][0])){
             $this->precursor[]['zdbid'] = $matches[1][0];
@@ -429,6 +440,12 @@ class Zdb {
                 $this->precursor[$key]['date_issued'] = $matches[1][0];
             }
 
+            //get publisher
+            preg_match('/\<rdau:P60327 rdf:datatype="https?:\/\/www.w3.org\/2001\/XMLSchema#string">(.*)\<\/rdau:P60327\>/', $request, $matches, PREG_OFFSET_CAPTURE);
+            if (!empty($matches[1][0])) {
+                $this->precursor[$key]['publisher'] = $matches[1][0];
+            }
+
             //get next
             $this->getPrecursor($this->precursor[$key]['zdbid']);
         }
@@ -447,6 +464,11 @@ class Zdb {
         $request = $this->setRequest($url);
 
         preg_match('/\<rdau:P60306 rdf:resource="https?:\/\/ld.zdb-services.de\/resource\/(.*)"\/\>/', $request, $matches, PREG_OFFSET_CAPTURE);
+
+        //try other field
+        if (empty($matches[1][0])) {
+            preg_match('/\<rdau:P60278 rdf:resource="https?:\/\/ld.zdb-services.de\/resource\/(.*)"\/\>/', $request, $matches, PREG_OFFSET_CAPTURE);
+        }
 
         if(!empty($matches[1][0])){
             $this->successor[]['zdbid'] = $matches[1][0];
@@ -478,6 +500,12 @@ class Zdb {
             preg_match('/\<dcterms:issued rdf:datatype="https?:\/\/www.w3.org\/2001\/XMLSchema#string">(.*)\<\/dcterms:issued\>/', $request, $matches, PREG_OFFSET_CAPTURE);
             if(!empty($matches[1][0])){
                 $this->successor[$key]['date_issued'] = $matches[1][0];
+            }
+
+            //get publisher
+            preg_match('/\<rdau:P60327 rdf:datatype="https?:\/\/www.w3.org\/2001\/XMLSchema#string">(.*)\<\/rdau:P60327\>/', $request, $matches, PREG_OFFSET_CAPTURE);
+            if (!empty($matches[1][0])) {
+                $this->successor[$key]['publisher'] = $matches[1][0];
             }
 
             //get next

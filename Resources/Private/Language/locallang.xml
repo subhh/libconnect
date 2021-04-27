@@ -148,6 +148,7 @@
             <label index="tx_libconnect.ezb.detail.untilthen.th">Fulltext available until</label>
             <label index="tx_libconnect.ezb.detail.volume.td">Volume</label>
             <label index="tx_libconnect.ezb.detail.zdb.th">ZDB-ID</label>
+            <label index="tx_libconnect.ezb.detail.oapolicy">Search publishers open access policy in SHERPA/RoMEO</label>
 
             <label index="tx_libconnect.ezb.form.input.search">Search</label>
             <label index="tx_libconnect.ezb.form.label.access">Fulltext article are</label>
@@ -352,6 +353,7 @@
             <label index="tx_libconnect.ezb.detail.untilthen.th">Volltext online bis</label>
             <label index="tx_libconnect.ezb.detail.volume.td">Jg.</label>
             <label index="tx_libconnect.ezb.detail.zdb.th">ZDB Nummer</label>
+            <label index="tx_libconnect.ezb.detail.oapolicy">Open Access Policy des Verlages in SHERPA/RoMEO suchen</label>
 
             <label index="tx_libconnect.ezb.form.input.search">Suchen</label>
             <label index="tx_libconnect.ezb.form.label.access">Volltextartikel sind</label>
