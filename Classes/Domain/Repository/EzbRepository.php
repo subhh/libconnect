@@ -682,7 +682,7 @@ Class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
         $precursor = $zdb->getPrecursor($zdbId, TRUE);
 
-        rsort($precursor);
+        krsort($precursor);
         
         $successor = $zdb->getSuccessor($zdbId);
 
