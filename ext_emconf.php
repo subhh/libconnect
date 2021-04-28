@@ -9,8 +9,6 @@ $EM_CONF['libconnect'] = [
     'author_company' => '',
     'module' => '',
     'state' => 'stable',
-    'internal' => '',
-    'uploadfolder' => 0,
     'createDirs' => '',
     'clearCacheOnLoad' => 0,
     'version' => '8.0.2',
@@ -25,14 +23,9 @@ $EM_CONF['libconnect'] = [
         'suggests' => [
         ],
     ],
-    'autoload' =>
-        [
-            'psr-4' =>
-                [
-                    'Sub\\Libconnect\\' => 'Classes',
-                ],
+    'autoload' => [
+        'psr-4' => [
+            'Sub\\Libconnect\\' => 'Classes',
         ],
-    '_md5_values_when_last_written' => 'a:0:{}',
-    'comment' => 'DBIS: Fixed Unknown Namespace in top databases',
-    'user' => 'subunihhdevteam',
+    ],
 ];
