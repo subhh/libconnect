@@ -35,10 +35,7 @@ $EM_CONF[$_EXTKEY] = array (
     array (
       'Sub\\Libconnect\\' => 'Classes',
     ),
-  ),
-  '_md5_values_when_last_written' => 'a:0:{}',
-  'comment' => 'DBIS: fixed Unknown Namespace in top datases; DBIS+EZB: changed servernames rcblx1 and rcblx10 to ezb and dbis.',
-  'user' => 'subunihhdevteam',
+  )
 );
 
 ?>
