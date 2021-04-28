@@ -274,20 +274,12 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             }
         }
 
-        //http://rzblx1.uni-regensburg.de/ezeit/searchres.phtml?bibid=SUBHH&colors=7&lang=de&jq_type1=KW&jq_term1=Radiologie
-        //creates links of keywords
-        $tempKeywords = [];
-        foreach ($journal['keywords'] as $keyword) {
-            $temp[] = $GLOBALS['TSFE']->cObj->getTypoLink(
-                $keyword,
-                10,
-                [
-                                'libconnect[search][jq_term1]' =>  $keyword,
-                                'libconnect[search][jq_type1]' => 'KW'
-                            ]
-            );
+        //get links with keywords
+        if (!empty($config['listPid'])) {
+            $journal['keywords_join'] = $this->getKeywordLinks($journal['keywords'], $config['listPid']);
+        }else{
+            $journal['keywords_join'] = implode(', ', $journal['keywords']);
         }
-        $journal['keywords_join'] = implode(', ', $tempKeywords);
 
         //getTitleHistory
         if (!empty($journal['ZDB_number'])) {
@@ -295,6 +287,35 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         }
 
         return $journal;
+    }
+
+    /**
+     * creates links of keywords
+     *
+     * @param array $keywods list of keywods
+     * @param integer $pid
+     *
+     * @return string
+     */
+    public function getKeywordLinks($keywods, $pid)
+    {
+        //example http://rzblx1.uni-regensburg.de/ezeit/searchres.phtml?bibid=SUBHH&colors=7&lang=de&jq_type1=KW&jq_term1=Radiologie
+
+        $tempKeywords = [];
+        foreach ($keywods as $keyword) {
+            $tempKeywords[] = $GLOBALS['TSFE']->cObj->getTypoLink(
+                $keyword,
+                (int)$pid,
+                [
+                    'libconnect[search][colors]' => '7',
+                    'libconnect[search][jq_term1]' =>  $keyword,
+                    'libconnect[search][jq_type1]' => 'KW'
+                ]
+            );
+        }
+        $tempKeywords = implode(', ', $tempKeywords);
+
+        return $$tempKeywords;
     }
 
     /**
