@@ -297,12 +297,12 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      *
      * @return string
      */
-    public function getKeywordLinks($keywods, $pid)
+    public function getKeywordLinks($keywords, $pid)
     {
         //example http://rzblx1.uni-regensburg.de/ezeit/searchres.phtml?bibid=SUBHH&colors=7&lang=de&jq_type1=KW&jq_term1=Radiologie
 
         $tempKeywords = [];
-        foreach ($keywods as $keyword) {
+        foreach ($keywords as $keyword) {
             $tempKeywords[] = $GLOBALS['TSFE']->cObj->getTypoLink(
                 $keyword,
                 (int)$pid,
@@ -315,7 +315,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         }
         $tempKeywords = implode(', ', $tempKeywords);
 
-        return $$tempKeywords;
+        return $tempKeywords;
     }
 
     /**
