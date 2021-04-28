@@ -8,9 +8,13 @@ Here is the German [Manual](doc/manual.pdf "Ausführliches Manual").
 
 Visit our git repository: https://github.com/subhh/libconnect
 
-## 7.0.6
-    - DBIS: fixed Unknown Namespace in top datases
-    - DBIS+EZB: changed servernames rcblx1 and rcblx10 to ezb and dbis.
+## 7.0.7
+     - EZB: Title history.
+            - ZDBID and period now in same underlined line like original EZB view.
+            - Fixed sorting of precursor vom oldes to newest.
+            - Fixed incomplete list
+    - EZB: added open access policy search link to SHERPA/RoMEO
+    - Fixed composer.json
 
 Tested with 
     - TYPO3 8.7.25
