@@ -8,8 +8,15 @@ Here is the German [Manual](doc/manual.pdf "Ausführliches Manual").
 
 Visit our git repository: https://github.com/subhh/libconnect
 
-## 8.0.1
-    - DBIS: Fixed Unknown Namespace in top databases
+## 8.0.2
+    - EZB- Details:
+        - Title history.
+            - ZDBID and period now in same underlined line like original EZB view.
+            - Fixed sorting of precursor vom oldes to newest.
+            - Fixed incomplete list
+        - added open access policy search link to SHERPA/RoMEO
+        - fixed keywords
+    - Fixed composer.json
 
 Tested with 
     - TYPO3 10.4.14
