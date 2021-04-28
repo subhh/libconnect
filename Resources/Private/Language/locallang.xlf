@@ -399,6 +399,9 @@
                 <trans-unit id="tx_libconnect.ezb.detail.zdb.th" xml:space="preserve">
                         <source>ZDB-ID</source>
                 </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.oapolicy" xml:space="preserve">
+                    <source>Search publishers open access policy in SHERPA/RoMEO</source>
+                </trans-unit>
 
                 <trans-unit id="tx_libconnect.ezb.form.input.search" xml:space="preserve">
                         <source>Search</source>
