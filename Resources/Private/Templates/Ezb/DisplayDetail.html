@@ -29,7 +29,7 @@
                 <f:if condition="<f:count subject='{journal.periods}' /> > 0">
                     <f:for each="{journal.periods}" as="period">
                         <tr>
-                            <f:if condition="{libconnect:StrlenNp(string: period.label)} > 0">
+                            <f:if condition="{period.label}">
                                 <f:then>
                                     <th>
                                         <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.ezb.detail.license.th" />:</strong>
@@ -66,7 +66,7 @@
                     </f:for>
                 </f:if>
             
-                <f:if condition="{libconnect:StrlenNp(string: journal.fulltext)} > 0">
+                <f:if condition="{journal.fulltext}">
                     <tr>
                         <th>
                             <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.ezb.detail.fulltext.th" />:</strong>
@@ -252,7 +252,7 @@
                     </tr>
                 </f:if>
             
-                <f:if condition="{libconnect:StrlenNp(string: journal.subjects_join)} > 0">
+                <f:if condition="{journal.subjects_join}">
                     <tr>
                         <th>
                             <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.ezb.detail.subjects_join" />:</strong>
@@ -287,7 +287,7 @@
                     <tr>
                 </f:if>
 
-                <f:if condition="{libconnect:StrlenNp(string: journal.eissns_join)} > 0">
+                <f:if condition="{journal.eissns_join}">
                     <tr>
                         <th>
                             <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.ezb.detail.eissns_join" />:</strong>
@@ -298,7 +298,7 @@
                     </tr>
                 </f:if>
             
-                <f:if condition="{libconnect:StrlenNp(string: journal.pissns_join)} > 0">
+                <f:if condition="{journal.pissns_join}">
                     <tr>
                         <th>
                             <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.ezb.detail.pissns_join" />:</strong>
@@ -310,7 +310,7 @@
                     </tr>
                 </f:if>
             
-                <f:if condition="{libconnect:StrlenNp(string: journal.appearence)} > 0">
+                <f:if condition="{journal.appearence}">
                     <tr>
                         <th>
                             <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.ezb.detail.appearence" />:</strong>
@@ -321,7 +321,7 @@
                     </tr>
                 </f:if>
 
-                <f:if condition="{libconnect:StrlenNp(string: journal.costs)} > 0">
+                <f:if condition="{journal.costs}">
                     <tr>
                         <th>
                             <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.ezb.detail.costs" />:</strong>
@@ -332,7 +332,7 @@
                     </tr>
                 </f:if>
             
-                <f:if condition="{libconnect:StrlenNp(string: journal.moreDetails.price_type_annotation)} > 0">
+                <f:if condition="{journal.moreDetails.price_type_annotation}">
                     <tr>
                         <th>
                             <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.ezb.detail.price_type_annotation" />:</strong>
@@ -343,7 +343,7 @@
                     </tr>
                 </f:if>
             
-                <f:if condition="{libconnect:StrlenNp(string: journal.remarks)} > 0">
+                <f:if condition="{journal.remarks}">
                     <tr>
                         <th>
                             <strong><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.ezb.detail.remarks" />:</strong>
@@ -370,28 +370,28 @@
                                                 <td class="zdb-location-info-result">
                                                     <table class="zdb-location-detail">
                                                         <tbody>
-                                                            <f:if condition="{libconnect:StrlenNp(string: result.Title)} > 0">
+                                                            <f:if condition="{result.Title}">
                                                                 <tr>
                                                                     <th><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.ezb.detail.print.titel" />:</th>
                                                                     <td><f:format.htmlentitiesDecode>{result.Title}</f:format.htmlentitiesDecode></td>
                                                                 </tr>
                                                             </f:if>
 
-                                                            <f:if condition="{libconnect:StrlenNp(string: result.Period)} > 0">
+                                                            <f:if condition="{result.Period}">
                                                                 <tr>
                                                                     <th><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.ezb.detail.print.period" />:</th>
                                                                     <td><f:format.htmlentitiesDecode>{result.Period}</f:format.htmlentitiesDecode></td>
                                                                 </tr>
                                                             </f:if>
 
-                                                            <f:if condition="{libconnect:StrlenNp(string: result.Signature)} > 0">
+                                                            <f:if condition="{result.Signature}">
                                                                 <tr>
                                                                     <th><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.ezb.detail.print.signature" />:</th>
                                                                     <td><f:format.htmlentitiesDecode>{result.Signature}</f:format.htmlentitiesDecode></td>
                                                                 </tr>
                                                             </f:if>
 
-                                                            <f:if condition="{libconnect:StrlenNp(string: result.Location)} > 0">
+                                                            <f:if condition="{result.Location}">
                                                                 <tr>
                                                                     <th><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.ezb.detail.print.location" />:</th>
                                                                     <td><f:format.htmlentitiesDecode>{result.Location}</f:format.htmlentitiesDecode></td>
@@ -428,7 +428,7 @@
                 </f:if>
                 <!-- ende code for location data -->
             
-                <f:if condition="{libconnect:StrlenNp(string: journal.participants)} > 0">
+                <f:if condition="{journal.participants}">
                     <tr>
                         <th>
                             <strong>&nbsp;</strong>
