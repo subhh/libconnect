@@ -3,13 +3,13 @@
     <form id="e-search" name="extSearchForm" action="{listUrl}" method="get" class="e-search">
         <input type="hidden" name="id" value="{listPid}" />
         <fieldset id="extSearchForm-fieldset-1">
-            <legend><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.ezb.form.label.extsearchform" /></legend> 
+            <legend><f:translate key="tx_libconnect.ezb.form.label.extsearchform" /></legend> 
             <table>
 
                 <f:for each="{1:1, 2:2, 3:3, 4:4}" as="jq_type">
                     <tr>
                         <td>
-                            <label for="jq_type{jq_type}" class="hiddenezb"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.ezb.form.label.type" /></label>
+                            <label for="jq_type{jq_type}" class="hiddenezb"><f:translate key="tx_libconnect.ezb.form.label.type" /></label>
                             <select name="libconnect[search][jq_type{jq_type}]" id="jq_type{jq_type}">
 
                                 <f:for each="{form.jq_type}" as="value" key="key" iteration="foriteration">
@@ -19,11 +19,11 @@
                             </select>
                         </td>
                         <td>
-                            <label for="jq_term{jq_type}" class="hiddenezb"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.ezb.form.label.searchterm" /></label> 
+                            <label for="jq_term{jq_type}" class="hiddenezb"><f:translate key="tx_libconnect.ezb.form.label.searchterm" /></label> 
                             <input type="text" size="30" class="ezb-input" name="libconnect[search][jq_term{jq_type}]" id="jq_term{jq_type}" value="" />
                         </td>
                         <td>
-                            <label for="jq_bool{jq_type}" class="hiddenezb"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.ezb.form.label.link" /></label> 
+                            <label for="jq_bool{jq_type}" class="hiddenezb"><f:translate key="tx_libconnect.ezb.form.label.link" /></label> 
                             <select name="libconnect[search][jq_bool{jq_type}]" id="jq_bool{jq_type}">
                                 
                                 <f:for each="{form.jq_bool}" as="value" key="key">
@@ -36,7 +36,7 @@
 
                 <tr>
                     <td colspan="3">
-                        <label id="label_hits_per_page" for="hits_per_page"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.ezb.form.label.hits" />:</label>
+                        <label id="label_hits_per_page" for="hits_per_page"><f:translate key="tx_libconnect.ezb.form.label.hits" />:</label>
                         <select size="1" name="libconnect[search][hits_per_page]" id="hits_per_page">
                             <option value="10">10</option>
                             <option value="25">25</option>
@@ -44,7 +44,7 @@
                             <option value="100">100</option>
                             <option value="250">250</option>
                             <option value="500">500</option>
-                            <option value="100000"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.ezb.form.option.hits" /></option>
+                            <option value="100000"><f:translate key="tx_libconnect.ezb.form.option.hits" /></option>
                         </select>
                     </td>
                 </tr>
@@ -52,11 +52,11 @@
         </fieldset>
 
         <fieldset id="extSearchForm-fieldset-2">
-            <legend><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.ezb.form.legend.limit" />:</legend>
+            <legend><f:translate key="tx_libconnect.ezb.form.legend.limit" />:</legend>
 
             <table>
                 <tr>
-                    <td><label id="label_fachgebiete" for="fachgebiete"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.ezb.form.label.subject" />:</label></td>
+                    <td><label id="label_fachgebiete" for="fachgebiete"><f:translate key="tx_libconnect.ezb.form.label.subject" />:</label></td>
                     <td>
                         <select multiple="multiple" size="5" name="libconnect[search][Notations][]" id="fachgebiete">
 
@@ -67,7 +67,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><label id="label_zugaenge" for="zugaenge"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.ezb.form.label.access" />:</label></td>
+                    <td><label id="label_zugaenge" for="zugaenge"><f:translate key="tx_libconnect.ezb.form.label.access" />:</label></td>
                     <td>
                         <span id="zugangsinfos">
 
@@ -85,8 +85,8 @@
 
             <br/>
             <div>
-                <input type="reset" class="button reset" value="<f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.reset.search" />"/>
-                <input type="submit" class="button submit" value="<f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.ezb.form.input.search" />" />
+                <input type="reset" class="button reset" value="<f:translate key="tx_libconnect.reset.search" />"/>
+                <input type="submit" class="button submit" value="<f:translate key="tx_libconnect.ezb.form.input.search" />" />
             </div>
         </fieldset>
     </form>
