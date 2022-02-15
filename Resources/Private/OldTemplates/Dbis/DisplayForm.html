@@ -3,13 +3,13 @@
     <form name="extSearchForm" action="{listUrl}" method="get" class="e-search">
         <input type="hidden" name="id" value="{listPid}" />
         <fieldset id="extSearchForm-fieldset-1">
-            <legend><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.dbis.form.extended_search" /></legend>
+            <legend><f:translate key="tx_libconnect.dbis.form.extended_search" /></legend>
             <table>
 
                 <f:for each="{1:1, 2:2, 3:3, 4:4}" as="jq_type">
                     <tr>
                         <td>
-                            <label for="jq_type{jq_type}" class="hiddendebis"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.dbis.form.field" /></label>
+                            <label for="jq_type{jq_type}" class="hiddendebis"><f:translate key="tx_libconnect.dbis.form.field" /></label>
 
                             <select name="libconnect[search][jq_type{jq_type}]" id="jq_type{jq_type}">
 
@@ -20,11 +20,11 @@
                             </select>
                         </td>
                         <td>
-                            <label for="jq_term{jq_type}" class="hiddendebis"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.dbis.form.search_term" /></label>
+                            <label for="jq_term{jq_type}" class="hiddendebis"><f:translate key="tx_libconnect.dbis.form.search_term" /></label>
                             <input type="text" size="35" class="dbis-input" name="libconnect[search][jq_term{jq_type}]" id="jq_term{jq_type}" value="" />
                         </td>
                         <td>
-                            <label for="jq_bool{jq_type}" class="hiddendebis"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.dbis.form.link" /></label>
+                            <label for="jq_bool{jq_type}" class="hiddendebis"><f:translate key="tx_libconnect.dbis.form.link" /></label>
                             <select name="libconnect[search][jq_bool{jq_type}]" id="jq_bool{jq_type}">
 
                                 <f:for each="{form.jq_bool}" as="value" key="key">
@@ -34,7 +34,7 @@
                             </select>
                         </td>
                         <td>
-                            <label for="jq_not{jq_type}" class="hiddendebis"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.dbis.form.negator" /></label>
+                            <label for="jq_not{jq_type}" class="hiddendebis"><f:translate key="tx_libconnect.dbis.form.negator" /></label>
                             <select name="libconnect[search][jq_not{jq_type}]" id="jq_not{jq_type}">
 
                                 <f:for each="{form.jq_not}" as="value" key="key">
@@ -49,12 +49,12 @@
         </fieldset>
 
         <fieldset id="extSearchForm-fieldset-2">
-            <legend><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.dbis.form.limit_search" /></legend>
+            <legend><f:translate key="tx_libconnect.dbis.form.limit_search" /></legend>
 
             <div id="dbis-extended-wrapper">
                 <table>
                     <tr>
-                        <td><label for="fachgebiete"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.dbis.form.subject" /></label></td>
+                        <td><label for="fachgebiete"><f:translate key="tx_libconnect.dbis.form.subject" /></label></td>
                         <td>
                             <select multiple="multiple" size="5" name="libconnect[search][gebiete][]" id="fachgebiete">
 
@@ -66,7 +66,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td><label for="typen"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.dbis.form.datbase_types" /></label></td>
+                        <td><label for="typen"><f:translate key="tx_libconnect.dbis.form.datbase_types" /></label></td>
                         <td>
                             <select multiple="multiple" size="5" name="libconnect[search][db_type][]" id="typen">
 
@@ -78,7 +78,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td><label for="zugaenge"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.dbis.form.access_type" /></label></td>
+                        <td><label for="zugaenge"><f:translate key="tx_libconnect.dbis.form.access_type" /></label></td>
                         <td>
                             <select name="libconnect[search][zugaenge]" id="zugaenge">
 
@@ -90,7 +90,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td><label for="laender"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.dbis.form.regions" /></label></td>
+                        <td><label for="laender"><f:translate key="tx_libconnect.dbis.form.regions" /></label></td>
                         <td>
                             <select multiple="multiple" size="5" name="libconnect[search][lcode][]" id="laender">
 
@@ -102,7 +102,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td><label for="formal_type"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.dbis.form.formal_type" /></label></td>
+                        <td><label for="formal_type"><f:translate key="tx_libconnect.dbis.form.formal_type" /></label></td>
                         <td>
                             <select name="libconnect[search][formal_type]" id="formal_type" >
 
@@ -115,8 +115,8 @@
                     </tr>
                 </table>
                 <div class="dbis-flex">
-                    <input type="reset" class="button reset" value="<f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.reset.search" />"/>
-                    <input type="submit" class="button submit" value="<f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.submit.search" />"/>
+                    <input type="reset" class="button reset" value="<f:translate key="tx_libconnect.reset.search" />"/>
+                    <input type="submit" class="button submit" value="<f:translate key="tx_libconnect.submit.search" />"/>
                 </div>
             </div>
         </fieldset>
