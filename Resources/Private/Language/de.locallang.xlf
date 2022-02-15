@@ -137,7 +137,7 @@
                 </trans-unit>
                 <trans-unit id="tx_libconnect.dbis.form.extended_search" xml:space="preserve">
                     <source>Extended Search For Databases</source>
-                    <target>Erweiterte Suche nach Datenbanke</target>
+                    <target>Erweiterte Suche nach Datenbanken</target>
                 </trans-unit>
                 <trans-unit id="tx_libconnect.dbis.form.field" xml:space="preserve">
                     <source>Field</source>
