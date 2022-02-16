@@ -14,7 +14,7 @@
     <f:else>
         <h1 class="libconnect-h1"><f:translate key="tx_libconnect.dbis.detail.database" /></h1>
         <h2 class="libconnect-h2"><f:format.htmlentitiesDecode>{db.title}</f:format.htmlentitiesDecode></h2>
-        
+
         <f:if condition="<f:count subject='{db.biblist}' /> > 0">
         <div id="dbis-detail-notavailable">
             <p><f:translate key="tx_libconnect.dbis.detail.notavailable_start" /> <f:format.htmlentitiesDecode>{db.library.name}</f:format.htmlentitiesDecode> <f:translate key="tx_libconnect.dbis.detail.notavailable_end" /><br/>
@@ -58,79 +58,13 @@
                     </tr>
                 </f:if>
 
+                <!-- other licenced access -->
                 <f:if condition="<f:count subject='{db.access_lic}' /> > 0">
+
                     <f:for each="{db.access_lic}" as="a_lics" key="accesstype">
-                        <f:if condition="{accesstype} == 'free'">
-                            <tr class="dbis-free">
-                                <th>
-                                    <strong><f:translate key="tx_libconnect.dbis.detail.access.free" /></strong>
-                                </th>
-                                <td>
-                                    <ul>
-                                        <f:for each="{db.access_lic.free}" as="free">
-                                            <li><a href="https://dbis.uni-regensburg.de/dbinfo/{free.href}" target="_blank">{free.name}</a></li>
-                                        </f:for>
-                                    </ul>
-                                </td>
-                            </tr>
-                        </f:if>
-                        <f:if condition="{accesstype} == 'other'">
-                            <tr class="dbis-other">
-                                <th>
-                                    <strong><f:translate key="tx_libconnect.dbis.detail.access.other" /></strong>
-                                </th>
-                                <td>
-                                    <ul>
-                                        <f:for each="{db.access_lic.other}" as="other">
-                                            <li><a href="https://dbis.uni-regensburg.de/dbinfo/{other.href}" target="_blank">{other.name}</a></li>
-                                        </f:for>
-                                    </ul>
-                                </td>
-                            </tr>
-                        </f:if>
-                        <f:if condition="{accesstype} == 'ppu'">
-                            <tr class="dbis-ppu">
-                                <th>
-                                    <strong><f:translate key="tx_libconnect.dbis.detail.access.ppu" /></strong>
-                                </th>
-                                <td>
-                                    <ul>
-                                        <f:for each="{db.access_lic.ppu}" as="ppu">
-                                            <li><a href="https://dbis.uni-regensburg.de/dbinfo/{ppu.href}" target="_blank">{ppu.name}</a></li>
-                                        </f:for>
-                                    </ul>
-                                </td>
-                            </tr>
-                        </f:if>
-                        <f:if condition="{accesstype} == 'lic'">
-                            <tr class="dbis-alic">
-                                <th>
-                                    <strong><f:translate key="tx_libconnect.dbis.detail.access.alic" /></strong>
-                                </th>
-                                <td>
-                                    <ul>
-                                        <f:for each="{db.access_lic.lic}" as="lic">
-                                            <li><a href="https://dbis.uni-regensburg.de/dbinfo/{lic.href}" target="_blank"><f:format.htmlentitiesDecode>{lic.name}</f:format.htmlentitiesDecode></a></li>
-                                        </f:for>
-                                    </ul>
-                                </td>
-                            </tr>
-                        </f:if>
-                        <f:if condition="{accesstype} == 'natli'"></f:if>
-                            <tr class="dbis-alic">
-                                <th>
-                                    <strong><f:translate key="tx_libconnect.dbis.detail.access.alic" /></strong>
-                                </th>
-                                <td>
-                                    <ul>
-                                        <f:for each="{db.access_lic.natli}" as="natli">
-                                            <li><a href="https://dbis.uni-regensburg.de/dbinfo/{natli.href}" target="_blank"><f:format.htmlentitiesDecode>{natli.name}</f:format.htmlentitiesDecode></a></li>
-                                        </f:for>
-                                    </ul>
-                                </td>
-                            </tr>
-                        </f:if>
+                        <f:render partial="Dbis/AccesstypeDetails" arguments="{a_lics:a_lics, accesstype:accesstype}" />
                     </f:for>
+
                 </f:if>
 
                 <f:if condition="{db.db_access_short_text}">

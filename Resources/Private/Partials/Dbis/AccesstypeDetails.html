@@ -1,0 +1,14 @@
+<tr class="dbis-{accesstype}">
+    <th>
+        <strong><f:translate key="tx_libconnect.dbis.detail.access.{accesstype}" /></strong>
+    </th>
+    <td>
+       <f:debug>{a_lics}</f:debug>
+        <ul>
+            <f:for each="{a_lics}" as="lic" key="itemkey">
+                 
+                <li><a href="https://dbis.uni-regensburg.de/dbinfo/{lic.href}" target="_blank"><f:format.htmlentitiesDecode>{lic.name}</f:format.htmlentitiesDecode></a></li>
+            </f:for>
+        </ul>
+    </td>
+</tr>
