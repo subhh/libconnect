@@ -6,9 +6,13 @@
 * - CR: Christian Richter chri@portachtzig.com (Wirtschaftskolleg zu Berlin)
 **/
 7.0.8
-    - Fixed issue 20
-    - Fixed issue 21
-    - DBIS: Fixed translation in extended search
+    - Fixed issue 19 - Remove strlen ViewHelper
+    - Fixed issue 20 - Cleanup keys in f:translate ViewHelpers
+    - Fixed issue 21 - Remove compare ViewHelper
+    - Fixed issue 23 - Can't use Fluid layouts
+    - DBIS:
+        - Fixed translation in extended search
+        - Moved other licenced access to partial AccesstypeDetails.
 7.0.7
     - EZB- Details:
         - Title history.

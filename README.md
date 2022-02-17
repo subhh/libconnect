@@ -8,15 +8,14 @@ Here is the German [Manual](doc/manual.pdf "Ausführliches Manual").
 
 Visit our git repository: https://github.com/subhh/libconnect
 
-## 7.0.7
-    - EZB- Details:
-        - Title history.
-            - ZDBID and period now in same underlined line like original EZB view.
-            - Fixed sorting of precursor vom oldes to newest.
-            - Fixed incomplete list
-        - added open access policy search link to SHERPA/RoMEO
-        - fixed keywords
-    - Fixed composer.json
+## 7.0.8
+    - Fixed issue 19 - Remove strlen ViewHelper
+    - Fixed issue 20 - Cleanup keys in f:translate ViewHelpers
+    - Fixed issue 21 - Remove compare ViewHelper
+    - Fixed issue 23 - Can't use Fluid layouts
+    - DBIS:
+        - Fixed translation in extended search
+        - Moved other licenced access to partial AccesstypeDetails.
 
 Tested with 
     - TYPO3 8.7.25
