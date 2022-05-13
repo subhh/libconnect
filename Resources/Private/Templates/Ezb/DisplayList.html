@@ -1,3 +1,6 @@
+<f:layout name="Default" />
+
+<f:section name="main">
 {namespace libconnect=Sub\Libconnect\ViewHelpers}
 <h1 class="ezb">
     <f:if condition="{journals.subject}">
@@ -62,3 +65,4 @@
 <br/><br/>
 
 <f:render partial="Ezb/ListOutput" arguments="{journals:journals}" />
+</f:section>
