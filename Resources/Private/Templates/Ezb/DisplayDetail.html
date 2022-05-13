@@ -75,7 +75,7 @@
                             <strong><f:translate key="tx_libconnect.ezb.detail.fulltext.th" />:</strong>
                         </th>
                         <td>
-                            <a class="ezb-research" href="<libconnect:UrldecodeNp url="{journal.fulltext_link}"/>" target="_blank">{libconnect:TruncateNp(string: journal.fulltext, length: 70)}</a>
+                            <a class="ezb-research" href="<libconnect:UrldecodeNp url="{journal.fulltext_link}"/>" target="_blank">{journal.fulltext -> f:format.crop(maxCharacters: 70)}</a>
                         </td>
                     </tr>
                 </f:if>
