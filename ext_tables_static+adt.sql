@@ -48,7 +48,7 @@ INSERT INTO `tx_libconnect_domain_model_subject` (`uid`, `pid`, `tstamp`, `crdat
 (25, 1, UNIX_TIMESTAMP(), UNIX_TIMESTAMP(), 0, 0, 0, 'Naturwissenschaft allgemein', '50', 'TA-TD'),
 (26, 1, UNIX_TIMESTAMP(), UNIX_TIMESTAMP(), 0, 0, 0, 'Pädagogik', '23', 'D'),
 (27, 1, UNIX_TIMESTAMP(), UNIX_TIMESTAMP(), 0, 0, 0, 'Pharmazie', '4', '-'),
-(28, 1, UNIX_TIMESTAMP(), UNIX_TIMESTAMP(), 0, 0, 0, 'Philosophie', '21', 'CA-CI'),
+(28, 1, UNIX_TIMESTAMP(), UNIX_TIMESTAMP(), 0, 0, 0, 'Philosophie', '21', 'CA-CK'),
 (29, 1, UNIX_TIMESTAMP(), UNIX_TIMESTAMP(), 0, 0, 0, 'Physik', '1', 'U'),
 (30, 1, UNIX_TIMESTAMP(), UNIX_TIMESTAMP(), 0, 0, 0, 'Politologie', '17', 'MA-MM'),
 (31, 1, UNIX_TIMESTAMP(), UNIX_TIMESTAMP(), 0, 0, 0, 'Psychologie', '22', 'CL-CZ'),
@@ -64,4 +64,7 @@ INSERT INTO `tx_libconnect_domain_model_subject` (`uid`, `pid`, `tstamp`, `crdat
 (41, 1, UNIX_TIMESTAMP(), UNIX_TIMESTAMP(), 0, 0, 0, 'Wissenschaftskunde, Forschungs-, Hochschul-, Museumswesen', '55', 'AK-AL'),
 (42, 1, UNIX_TIMESTAMP(), UNIX_TIMESTAMP(), 0, 0, 0, 'Bildungsgeschichte', '0', 'DD'),
 (43, 1, UNIX_TIMESTAMP(), UNIX_TIMESTAMP(), 0, 0, 0, 'Asien-Afrika-Wissenschaften', 'AA', ''),
-(44, 1, UNIX_TIMESTAMP(), UNIX_TIMESTAMP(), 0, 0, 0, 'Alphabetische Auflistung', 'all', 'ALL');
+(44, 1, UNIX_TIMESTAMP(), UNIX_TIMESTAMP(), 0, 0, 0, 'Alphabetische Auflistung', 'all', 'ALL'),
+(45, 1, UNIX_TIMESTAMP(), UNIX_TIMESTAMP(), 0, 0, 0, 'Natur- und Umweltschutz', '', 'AR'),
+(46, 1, UNIX_TIMESTAMP(), UNIX_TIMESTAMP(), 0, 0, 0, 'Gesundheitswissenschaften', '', 'MT'),
+(47, 1, UNIX_TIMESTAMP(), UNIX_TIMESTAMP(), 0, 0, 0, 'Militärwissenschaft ', '', 'MX-MZ');
