@@ -2,12 +2,6 @@
 # content here will be included after plugin activation automatically. No template inclusion necessary.
 #
 
-page.includeCSS.dbis = EXT:libconnect/Resources/Public/Css/dbis.css
-page.includeCSS.dbis.media = all
-
-page.includeCSS.ezb = EXT:libconnect/Resources/Public/Css/ezb.css
-page.includeCSS.ezb.media = all
-
 plugin.tx_libconnect {
 
     ezbbibid = {$plugin.tx_libconnect.ezbbibid}
