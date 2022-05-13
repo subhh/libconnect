@@ -1,18 +1,18 @@
 <div class="datenbank-suche-wrapper">
     <h2 class="ezb">
-        <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.ezb.miniform.searchform.headline" />
+        <f:translate key="tx_libconnect.ezb.miniform.searchform.headline" />
     </h2>
     <f:form name="ezb-mini-form" id="ezb-mini-form" controller="Ezb" method="post" pageUid="{listPid}">
         <label for="libconnect_ezb_minisuche" class="hiddenezb">
-            <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.ezb.miniform.searchform.label" />
+            <f:translate key="tx_libconnect.ezb.miniform.searchform.label" />
         </label>
         <f:form.textfield type="text" id="libconnect_ezb_minisuche" name="libconnect[search][sword]" value="{vars.sword}" size="20"/>
 
-        <f:form.submit name="submit" value='<f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.submit.search" />'/>
+        <f:form.submit name="submit" value='<f:translate key="tx_libconnect.submit.search" />'/>
         <f:if condition="{searchUrl}">
         <p>
             <a href="{searchUrl}">
-                <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.ezb.miniform.link.extended_search" />
+                <f:translate key="tx_libconnect.ezb.miniform.link.extended_search" />
             </a>
         </p>
         </f:if>
@@ -24,21 +24,21 @@
         <f:then>
             <p>
                 <f:link.page pageUid="{listPid}" addQueryString="0">
-                    <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.ezb.miniform.link.allsubjects" />
+                    <f:translate key="tx_libconnect.ezb.miniform.link.allsubjects" />
                 </f:link.page>	
             </p>
         </f:then>
         <f:else>
-            <h2 class="ezb-sort"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.ezb.miniform.link.sort" /></h2>
+            <h2 class="ezb-sort"><f:translate key="tx_libconnect.ezb.miniform.link.sort" /></h2>
             <p>
                 <f:link.page pageUid="{listPid}" addQueryString="0">
-                    <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.ezb.miniform.link.subject" />
+                    <f:translate key="tx_libconnect.ezb.miniform.link.subject" />
                 </f:link.page>	
             </p>
 
             <p>
                 <f:link.page pageUid="{listPid}" additionalParams="{libconnect: '{notation:\'All\'}'}" addQueryString="0">
-                    <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.ezb.miniform.link.alphabetical" />
+                    <f:translate key="tx_libconnect.ezb.miniform.link.alphabetical" />
                 </f:link.page>
             </p>
         </f:else>
@@ -49,7 +49,7 @@
     <div class="ezb-listings-wrapper">
         <p id="ezb-newminiSub">
             <a href="{newUrlSub}">
-                <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.ezb.miniform.new.subject" /><span class="newcount"> ({newInSubjectCount})</span>
+                <f:translate key="tx_libconnect.ezb.miniform.new.subject" /><span class="newcount"> ({newInSubjectCount})</span>
             </a>
         </p>
     </div>
@@ -59,7 +59,7 @@
     <div class="ezb-listings-wrapper">
         <p id="ezb-newmini">
             <a href="{newUrl}">
-                <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.ezb.miniform.new.all" /><span class="newcount"> ({newCount})</span>
+                <f:translate key="tx_libconnect.ezb.miniform.new.all" /><span class="newcount"> ({newCount})</span>
             </a>
         </p>
     </div>

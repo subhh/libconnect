@@ -1,14 +1,14 @@
 {namespace libconnect=Sub\Libconnect\ViewHelpers}
-<h1 class="libconnect-h1"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.dbis.new.headline" /></h1>
+<h1 class="libconnect-h1"><f:translate key="tx_libconnect.dbis.new.headline" /></h1>
 
 <f:if condition="{subject}">
     <h2 class="libconnect-h2">
-        <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.dbis.list.headline.subject" /> {subject}
+        <f:translate key="tx_libconnect.dbis.list.headline.subject" /> {subject}
     </h2>
 </f:if>
 
 <f:if condition="{list.access_infos.0}">
-<h3 class="libconnect-h3"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.dbis.list.legend.headline" /></h3>
+<h3 class="libconnect-h3"><f:translate key="tx_libconnect.dbis.list.legend.headline" /></h3>
 
 <f:render partial="Dbis/ListLegend" arguments="{access_infos:list.access_infos}" />
 </f:if>
@@ -16,8 +16,8 @@
 <br/><br/>
 
 <p>
-    <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.dbis.new.hits" /> <f:count subject='{list.values}' /> 
-    <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.dbis.new.since" /> <span class="dbis-newdate">{new_date}</span>
+    <f:translate key="tx_libconnect.dbis.new.hits" /> <f:count subject='{list.values}' /> 
+    <f:translate key="tx_libconnect.dbis.new.since" /> <span class="dbis-newdate">{new_date}</span>
 </p>
 
 <!-- BOF workaround for alphabetical listing -->

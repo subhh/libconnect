@@ -1,21 +1,21 @@
 {namespace libconnect=Sub\Libconnect\ViewHelpers}
-<h1 class="libconnect-h1"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.dbis.list.headline.dbis" /> <f:if condition="{list.alphNavList}"><f:else><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.dbis.list.headline.subject" /></f:else></f:if></h1>
+<h1 class="libconnect-h1"><f:translate key="tx_libconnect.dbis.list.headline.dbis" /> <f:if condition="{list.alphNavList}"><f:else><f:translate key="tx_libconnect.dbis.list.headline.subject" /></f:else></f:if></h1>
 
 <h2 class="libconnect-h2">{listhead}</h2>
 
-<h3 class="libconnect-h3"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.dbis.list.legend.headline" /></h3>
+<h3 class="libconnect-h3"><f:translate key="tx_libconnect.dbis.list.legend.headline" /></h3>
 
 <f:render partial="Dbis/ListLegend" arguments="{access_infos:list.access_infos}" />
 
 <f:if condition="{list.top}">
     <div class="top-database-wrapper">
-        <h3 class="libconnect-h1"><f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.dbis.list.topdatabases" /></h3>
+        <h3 class="libconnect-h1"><f:translate key="tx_libconnect.dbis.list.topdatabases" /></h3>
         <f:render partial="Dbis/TopList" arguments="{top:list.top}" />
     </div>
 </f:if>
 
 <f:if condition="{empty}">
-    <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.dbis.list.emptyResults" />
+    <f:translate key="tx_libconnect.dbis.list.emptyResults" />
 </f:if>
 
 <!-- BOF workaround for alphabetical listing -->
@@ -49,7 +49,7 @@
                                 <f:format.htmlentitiesDecode>{group.title}</f:format.htmlentitiesDecode>
                             </f:then>
                             <f:else>
-                                <f:translate key="LLL:EXT:libconnect/Resources/Private/Language/locallang.xlf:tx_libconnect.dbis.list.full_list" />
+                                <f:translate key="tx_libconnect.dbis.list.full_list" />
                             </f:else>
                         </f:if>
                     (<f:count subject="{group.dbs}" />)</h2>
