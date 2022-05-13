@@ -8,8 +8,6 @@ page.includeCSS.dbis.media = all
 page.includeCSS.ezb = EXT:libconnect/Resources/Public/Css/ezb.css
 page.includeCSS.ezb.media = all
 
-page.includeJSFooter.ezb = EXT:libconnect/Resources/Public/JavaScript/ezb.js
-
 plugin.tx_libconnect {
 
     ezbbibid = {$plugin.tx_libconnect.ezbbibid}
