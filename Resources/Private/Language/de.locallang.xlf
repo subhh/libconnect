@@ -67,8 +67,8 @@
                     <target>Es ist ein Fehler bei der Anfrage der Datenbank aufgetreten.</target>
                 </trans-unit>
                 <trans-unit id="tx_libconnect.dbis.detail.error.p2" xml:space="preserve">
-                    <source>Maybe the selected database doesn´t exist. Please retry or ask the administrator.</source>
-                    <target>Möglicherweise ist die angefragte Datenbank nicht vorhanden. Bitte versuchen Sie es erneut oder wenden Sie sich an das Web-Team der Bibliothek, das Ihnen beim Auffinden des Datensatzes gerne behilflich ist.</target>
+                    <source>Maybe the selected database doesn´t exist.</source>
+                    <target>Möglicherweise ist die angefragte Datenbank nicht vorhanden.</target>
                 </trans-unit>
                 <trans-unit id="tx_libconnect.dbis.detail.isbn" xml:space="preserve">
                     <source>ISBN</source>
@@ -334,8 +334,8 @@
                     <target>Es ist ein Fehler bei der Anfrage der elektronische Zeitschrift aufgetreten.</target>
                 </trans-unit>
                 <trans-unit id="tx_libconnect.ezb.detail.error.p2" xml:space="preserve">
-                    <source>Maybe the selected journal doesn´t exist. Please retry or ask the administrator.</source>
-                    <target>Möglicherweise ist die angefragte Zeitschrift nicht vorhanden. Bitte versuchen Sie es erneut oder wenden Sie sich an das Web-Team der Bibliothek, das Ihnen beim Auffinden des Datensatzes gerne behilflich ist.</target>
+                    <source>Maybe the selected journal doesn´t exist.</source>
+                    <target>Möglicherweise ist die angefragte Zeitschrift nicht vorhanden.</target>
                 </trans-unit>
                 <trans-unit id="tx_libconnect.ezb.detail.fulltext.th" xml:space="preserve">
                     <source>Fulltext</source>

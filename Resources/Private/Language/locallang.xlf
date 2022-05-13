@@ -52,7 +52,7 @@
                     <source>An error occurred while requesting the database.</source>
                 </trans-unit>
                 <trans-unit id="tx_libconnect.dbis.detail.error.p2" xml:space="preserve">
-                    <source>Maybe the selected database doesn´t exist. Please retry or ask the administrator.</source>
+                    <source>Maybe the selected database doesn´t exist.</source>
                 </trans-unit>
                 <trans-unit id="tx_libconnect.dbis.detail.isbn" xml:space="preserve">
                     <source>ISBN</source>
@@ -256,7 +256,7 @@
                         <source>An error occurred while requesting the journals.</source>
                 </trans-unit>
                 <trans-unit id="tx_libconnect.ezb.detail.error.p2" xml:space="preserve">
-                        <source>Maybe the selected journal doesn´t exist. Please retry or ask the administrator.</source>
+                        <source>Maybe the selected journal doesn´t exist.</source>
                 </trans-unit>
                 <trans-unit id="tx_libconnect.ezb.detail.fulltext.th" xml:space="preserve">
                         <source>Fulltext</source>
