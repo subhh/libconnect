@@ -37,7 +37,7 @@
                 </f:if>
                 <f:if condition="{vars}">
                     <f:for each="{vars}" as="searchVar" key="searchKey">
-                        <f:if condition="{libconnect:compareNp(a: searchKey, b: 'zugaenge')}">
+                        <f:if condition="{searchKey} == 'zugaenge'">
                             <f:then></f:then>
                             <f:else>
                                 <f:if condition="{libconnect:IsArrayNp(value: searchVar)}">
