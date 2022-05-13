@@ -210,8 +210,6 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $controllerContext->getRequest()->setControllerActionName('displayError');
             $this->view->setControllerContext($controllerContext);
 
-            $this->view->assign('error', 'Es wurde keine gültige Journal-ID übergeben.');
-
             return;
         }
 
@@ -446,8 +444,6 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $controllerContext = $this->buildControllerContext();
             $controllerContext->getRequest()->setControllerActionName('displayError');
             $this->view->setControllerContext($controllerContext);
-
-            $this->view->assign('error', 'Es wurde keine gültige Journal-ID übergeben.');
 
             return;
         }
