@@ -1,3 +1,4 @@
+//this script is using for the participations form of the ezp plugin
 // Only do anything if jQuery isn't defined
 if (typeof jQuery == 'undefined') {
 
