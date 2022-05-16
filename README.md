@@ -8,18 +8,18 @@ Here is the German [Manual](doc/manual.pdf "Ausführliches Manual").
 
 Visit our git repository: https://github.com/subhh/libconnect
 
-## 8.0.2
-    - EZB- Details:
-        - Title history.
-            - ZDBID and period now in same underlined line like original EZB view.
-            - Fixed sorting of precursor vom oldes to newest.
-            - Fixed incomplete list
-        - added open access policy search link to SHERPA/RoMEO
-        - fixed keywords
-    - Fixed composer.json
+## 8.1.0
+    - EZB: plug-in use now only the xml interface and not the database
+    - Fixed unsecure url schemes
+    - using of standard view helper
+        - Removed StrlenNp helper function
+        - removed compare view helper
+        - removed strlen view helper
+        - truncate view helper removed
+    - Include assets only where needed
 
 Tested with 
-    - TYPO3 10.4.14
+    - TYPO3 10.4.
 
 ## Configuration
 
@@ -57,7 +57,3 @@ Tested with
             }
         }
 
-### Deactivate standard CSS
-
-        page.includeCSS.dbis >
-        page.includeCSS.ezb >
