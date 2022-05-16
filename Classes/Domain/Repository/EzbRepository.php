@@ -64,17 +64,11 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      */
     public function loadOverview()
     {
-        $this->loadSubjects();
-
         $subjectsOnline = $this->ezb->getFachbereiche();
 
         foreach ($subjectsOnline as $el) {
-            $subject = $this->ezb_to_t3_subjects[$el['id']];
-
-            if (!empty($subject['uid'])) {
-                $el['link'] = $GLOBALS['TSFE']->cObj->getTypolink_URL($GLOBALS['TSFE']->id, [ 'libconnect[subject]' => $subject['uid']]);
-                $list[$el['id']] = $el;
-            }
+            $el['link'] = $GLOBALS['TSFE']->cObj->getTypolink_URL($GLOBALS['TSFE']->id, [ 'libconnect[subject]' => $subject['notation']]);
+            $list[$el['id']] = $el;
         }
 
         return $list;
@@ -113,14 +107,9 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $sc = $options['sc'];
         $lc = $options['lc'];
 
-        $this->loadSubjects();
-
-        //get notation for subject
-        $subject = $this->t3_to_ezb_subjects[$subject_id];
-
-        if ($options['notation'] == 'All') {
-            $subject['ezbnotation'] = 'All';
-        }
+        //get subject
+        $subject = $this->loadOverview();
+        $subject = $subject[$subject_id];
 
         //filter list by access list
         if (!empty($options['colors'])) {
@@ -137,7 +126,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             ];
         }
 
-        $journals = $this->ezb->getFachbereichJournals($subject['ezbnotation'], $index, $sc, $lc);
+        $journals = $this->ezb->getFachbereichJournals($subject['notation'], $index, $sc, $lc);
 
         //get access information
         $journals['selected_colors'] = $this->getAccessInfos();
@@ -150,11 +139,11 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         foreach (array_keys($journals['navlist']['pages']) as $page) {
             if (is_array($journals['navlist']['pages'][$page])) {
                 $journals['navlist']['pages'][$page]['link'] = $GLOBALS['TSFE']->cObj->getTypolink_URL($GLOBALS['TSFE']->id, [
-                    'libconnect[subject]' => $subject['uid'],
+                    'libconnect[subject]' => $subject['notation'],
                     'libconnect[index]' => 0,
                     'libconnect[sc]' => $journals['navlist']['pages'][$page]['sc']? $journals['navlist']['pages'][$page]['sc'] : 'A',
                     'libconnect[lc]' => $journals['navlist']['pages'][$page]['lc'],
-                    'libconnect[notation]' => $subject['ezbnotation'],
+                    'libconnect[notation]' => $subject['notation'],
                     'libconnect[colors]' => $journals['colors']
                 ]);
             }
@@ -164,11 +153,11 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         if (isset($journals['alphabetical_order']['first_fifty'])) {
             foreach (array_keys($journals['alphabetical_order']['first_fifty']) as $section) {
                 $journals['alphabetical_order']['first_fifty'][$section]['link'] = $GLOBALS['TSFE']->cObj->getTypolink_URL($GLOBALS['TSFE']->id, [
-                        'libconnect[subject]' => $subject['uid'],
+                        'libconnect[subject]' => $subject['notation'],
                         'libconnect[index]' => $journals['alphabetical_order']['first_fifty'][$section]['sindex'],
                         'libconnect[sc]' => $journals['alphabetical_order']['first_fifty'][$section]['sc']? $journals['alphabetical_order']['first_fifty'][$section]['sc'] : 'A',
                         'libconnect[lc]' => $journals['alphabetical_order']['first_fifty'][$section]['lc'],
-                        'libconnect[notation]' => $subject['ezbnotation'],
+                        'libconnect[notation]' => $subject['notation'],
                         'libconnect[colors]' => $journals['colors']
                 ]);
             }
@@ -187,11 +176,11 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         if (isset($journals['alphabetical_order']['next_fifty'])) {
             foreach (array_keys($journals['alphabetical_order']['next_fifty']) as $section) {
                 $journals['alphabetical_order']['next_fifty'][$section]['link'] = $GLOBALS['TSFE']->cObj->getTypolink_URL($GLOBALS['TSFE']->id, [
-                        'libconnect[subject]' => $subject['uid'],
+                        'libconnect[subject]' => $subject['notation'],
                         'libconnect[index]' => $journals['alphabetical_order']['next_fifty'][$section]['sindex'],
                         'libconnect[sc]' => $journals['alphabetical_order']['next_fifty'][$section]['sc']? $journals['alphabetical_order']['next_fifty'][$section]['sc'] : 'A',
                         'libconnect[lc]' => $journals['alphabetical_order']['next_fifty'][$section]['lc'],
-                        'libconnect[notation]' => $subject['ezbnotation'],
+                        'libconnect[notation]' => $subject['notation'],
                         'libconnect[colors]' => $journals['colors']
                 ]);
             }
@@ -258,14 +247,15 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 
         //setSubjectLinks but only it is configured
         if (!empty($config['listPid'])) {
-            $this->loadSubjects();
-            foreach ($this->t3_to_ezb_subjects as $subject) {
+            $subjects = $this->loadOverview();
+            
+            foreach ($subjects as $subject) {
                 if ($subject['title'] == $journal['subjects_join']) {
                     $journal['subjects_join_link'][] = [
                         'link' => $GLOBALS['TSFE']->cObj->getTypolink_URL(
                             (int)($config['listPid']),
                             [
-                                'libconnect[subject]' => $subject['uid']
+                                'libconnect[subject]' => $subject['notation']
                             ]
                         ),
                         'title' => $subject['title']
@@ -329,8 +319,6 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      */
     public function loadSearch($searchVars, $colors, $config)
     {
-        $this->loadSubjects();
-
         unset($searchVars['colors']);
 
         //search of sidebar
@@ -624,10 +612,11 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 
         //subjects
         if (!empty($searchVars['Notations'])) {
+
+            $subjects = loadOverview();
+
             foreach ($searchVars['Notations'] as $notation) {
-                if ((!empty($this->ezb_to_t3_subjects[$notation])) && ($notation != '-')) {
-                    $list[] = $this->ezb_to_t3_subjects[$notation]['title'];
-                }
+                $list[] = $subjects[$notation]['title'];
             }
         }
 
@@ -637,13 +626,14 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     /**
      * returns a subject
      *
-     * @param int $subjectId Id des Faches
+     * @param int $notation id of subject
+     * @return Array subject
      */
-    public function getSubject($subjectId)
+    public function getSubject($notation)
     {
-        $this->loadSubjects();
-
-        return $this->t3_to_ezb_subjects[$subjectId];
+        $subject = $this->loadOverview();
+        
+        return $subject[$notation];
     }
 
     /**

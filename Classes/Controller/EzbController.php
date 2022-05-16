@@ -332,7 +332,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         //subject
         if (!empty($params['subject'])) {
             $subject = $this->ezbRepository->getSubject($params['subject']);
-            $newParams['search']['Notations']=[$subject['ezbnotation']];
+            $newParams['search']['Notations']=[$subject['notation']];
             $newParams['subject'] = $params['subject'];
         }
 
@@ -405,7 +405,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
         if ($subjectId != false) {
             $subject = $this->ezbRepository->getSubject($subjectId);
-            $params['search']['Notations']=[$subject['ezbnotation']];
+            $params['search']['Notations']=[$subject['notation']];
         }
         unset($params['subject']);
         //unset($params['search']);
