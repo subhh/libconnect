@@ -58,18 +58,6 @@ Set paths to your own templates, partials and layouts
     }
 
 
-Deactivate standard CSS
-=======================
-
-If you don´t want to use the original css, deactivate it.
-
-.. code-block:: typoscript
-    :linenos:
-
-    page.includeCSS.dbis >
-    page.includeCSS.ezb >
-
-
 EZB: Overwrite access information texts
 =======================================
 
