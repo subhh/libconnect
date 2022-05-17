@@ -67,7 +67,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $subjectsOnline = $this->ezb->getFachbereiche();
 
         foreach ($subjectsOnline as $el) {
-            $el['link'] = $GLOBALS['TSFE']->cObj->getTypolink_URL($GLOBALS['TSFE']->id, [ 'libconnect[subject]' => $subject['notation']]);
+            $el['link'] = $GLOBALS['TSFE']->cObj->getTypolink_URL($GLOBALS['TSFE']->id, [ 'libconnect[subject]' => $el['notation']]);
             $list[$el['id']] = $el;
         }
 
