@@ -445,6 +445,16 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
             $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect');
         }
 
+        //error - wrong jourid
+        if(!is_numeric($params['jourid']) || is_empty($params['jourid'])){
+            //change view
+            $controllerContext = $this->buildControllerContext();
+            $controllerContext->getRequest()->setControllerActionName('displayError');
+            $this->view->setControllerContext($controllerContext);
+
+            return;
+        }
+
         $ParticipantsList =  $this->ezbRepository->getParticipantsList($params['jourid']);
 
         $config['partnerPid'] = 0;
