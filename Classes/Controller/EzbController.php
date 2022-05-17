@@ -204,7 +204,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $config['listPid'] = $this->settings['flexform']['listPid'];
 
         //error - wrong jourid
-        if(!is_numeric($params['jourid']) || is_empty($params['jourid'])){
+        if(!is_numeric($params['jourid']) || empty($params['jourid'])){
             //change view
             $controllerContext = $this->buildControllerContext();
             $controllerContext->getRequest()->setControllerActionName('displayError');
@@ -439,7 +439,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         }
 
         //error - wrong jourid
-        if(!is_numeric($params['jourid']) || is_empty($params['jourid'])){
+        if(!is_numeric($params['jourid']) || empty($params['jourid'])){
             //change view
             $controllerContext = $this->buildControllerContext();
             $controllerContext->getRequest()->setControllerActionName('displayError');
