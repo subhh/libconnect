@@ -219,9 +219,13 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
         $config['participantsPid'] = $this->settings['flexform']['participantsPid'];
         $config['listPid'] = $this->settings['flexform']['listPid'];
 
-        if (!($params['jourid'])){
-            $this->view->assign('error', 'Error');
-            //return "<strong>Fehler: Es wurde keine Zeitschrift mit der angegeben URL gefunden.</strong>";
+        //error - wrong jourid
+        if(!is_numeric($params['jourid']) || empty($params['jourid'])){
+            //change view
+            $controllerContext = $this->buildControllerContext();
+            $controllerContext->getRequest()->setControllerActionName('displayError');
+            $this->view->setControllerContext($controllerContext);
+
             return;
         }
         
@@ -446,7 +450,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  
         }
 
         //error - wrong jourid
-        if(!is_numeric($params['jourid']) || is_empty($params['jourid'])){
+        if(!is_numeric($params['jourid']) || empty($params['jourid'])){
             //change view
             $controllerContext = $this->buildControllerContext();
             $controllerContext->getRequest()->setControllerActionName('displayError');
