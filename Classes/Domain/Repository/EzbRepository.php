@@ -613,7 +613,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         //subjects
         if (!empty($searchVars['Notations'])) {
 
-            $subjects = loadOverview();
+            $subjects = $this->loadOverview();
 
             foreach ($searchVars['Notations'] as $notation) {
                 $list[] = $subjects[$notation]['title'];
