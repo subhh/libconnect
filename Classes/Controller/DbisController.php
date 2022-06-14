@@ -133,9 +133,11 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $list =  $this->dbisRepository->loadSearch($params['search'], $config);
 
             //change view
-            $controllerContext = $this->buildControllerContext();
-            $controllerContext->getRequest()->setControllerActionName('displaySearch');
-            $this->view->setControllerContext($controllerContext);
+            $this->view->setTemplatePathAndFilename(
+                'typo3conf/ext/' .
+                $this->request->getControllerExtensionKey() .
+                '/Resources/Private/Templates/Dbis/DisplaySearch.html'
+            );
 
             //decide full or short text
             $list['access_infos'] = $this->setAccessInformation($list['access_infos']);
@@ -146,9 +148,11 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $list =  $this->dbisRepository->loadOverview();
 
             //use other view
-            $controllerContext = $this->buildControllerContext();
-            $controllerContext->getRequest()->setControllerActionName('displayOverview');
-            $this->view->setControllerContext($controllerContext);
+            $this->view->setTemplatePathAndFilename(
+                'typo3conf/ext/' .
+                $this->request->getControllerExtensionKey() .
+                '/Resources/Private/Templates/Dbis/DisplayOverview.html'
+            );
 
             //variables for template
             $this->view->assign('list', $list);

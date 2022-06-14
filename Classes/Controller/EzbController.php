@@ -164,9 +164,12 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $journals =  $this->ezbRepository->loadSearch($params, $colors, $config);
 
             //change view
-            $controllerContext = $this->buildControllerContext();
-            $controllerContext->getRequest()->setControllerActionName('displaySearch');
-            $this->view->setControllerContext($controllerContext);
+            $this->view->setTemplatePathAndFilename(
+                'typo3conf/ext/' .
+                $this->request->getControllerExtensionKey() .
+                '/Resources/Private/Templates/Ezb/DisplaySearch.html'
+            );
+
 
             //sets the link to the page with list plugin
             $listURL = $GLOBALS['TSFE']->cObj->getTypolink_URL($Pid);
@@ -181,9 +184,11 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $journals =  $this->ezbRepository->loadOverview();
 
             //change view
-            $controllerContext = $this->buildControllerContext();
-            $controllerContext->getRequest()->setControllerActionName('displayOverview');
-            $this->view->setControllerContext($controllerContext);
+            $this->view->setTemplatePathAndFilename(
+                'typo3conf/ext/' .
+                $this->request->getControllerExtensionKey() .
+                '/Resources/Private/Templates/Ezb/DisplayOverview.html'
+            );
 
             //variables for template
             $this->view->assign('list', $journals);
@@ -206,9 +211,11 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         //error - wrong jourid
         if(!is_numeric($params['jourid']) || empty($params['jourid'])){
             //change view
-            $controllerContext = $this->buildControllerContext();
-            $controllerContext->getRequest()->setControllerActionName('displayError');
-            $this->view->setControllerContext($controllerContext);
+            $this->view->setTemplatePathAndFilename(
+                'typo3conf/ext/' .
+                $this->request->getControllerExtensionKey() .
+                '/Resources/Private/Templates/Ezb/DisplayError.html'
+            );
 
             return;
         }
@@ -441,9 +448,11 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         //error - wrong jourid
         if(!is_numeric($params['jourid']) || empty($params['jourid'])){
             //change view
-            $controllerContext = $this->buildControllerContext();
-            $controllerContext->getRequest()->setControllerActionName('displayError');
-            $this->view->setControllerContext($controllerContext);
+            $this->view->setTemplatePathAndFilename(
+                'typo3conf/ext/' .
+                $this->request->getControllerExtensionKey() .
+                '/Resources/Private/Templates/Ezb/DisplayError.html'
+            );
 
             return;
         }
