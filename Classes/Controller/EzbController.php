@@ -74,7 +74,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         }
 
         //get PageID
-        $Pid = (int)($GLOBALS['TSFE']->id);
+        $Pid = (int)($GLOBALS['TSFE']->page['uid']);
         $this->view->assign('pageUid', $Pid);
 
         if ((!empty($params['subject'])) || (!empty($params['notation']))) {//chosen subject after start point
@@ -261,7 +261,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         }
         $this->view->assign('vars', $newparams['search']);
 
-        $this->view->assign('siteUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL($GLOBALS['TSFE']->id));//current URL
+        $this->view->assign('siteUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL($GLOBALS['TSFE']->page['uid']));//current URL
         $this->view->assign('searchUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL($this->settings['flexform']['searchPid']));//link to search
         $this->view->assign('listUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL($this->settings['flexform']['listPid']));//link to search results
         $this->view->assign('listPid', $this->settings['flexform']['listPid']);//ID of list
@@ -311,7 +311,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         //variables for template
         $this->view->assign('vars', $params['search']);
         $this->view->assign('form', $form);
-        $this->view->assign('siteUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL($GLOBALS['TSFE']->id));//current URL
+        $this->view->assign('siteUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL($GLOBALS['TSFE']->page['uid']));//current URL
         $this->view->assign('listUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL($this->settings['flexform']['listPid']));//url to search
         $this->view->assign('listPid', $this->settings['flexform']['listPid']);//ID of list view
     }
@@ -380,7 +380,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         }
 
         //get PageID
-        $Pid = (int)($GLOBALS['TSFE']->id);
+        $Pid = (int)($GLOBALS['TSFE']->page['uid']);
         $this->view->assign('pageUid', $Pid);
 
         //variables for template

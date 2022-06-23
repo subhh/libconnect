@@ -148,13 +148,13 @@ class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                 $subject = $this->dbis_to_t3_subjects[$el['id']];
 
                 $el['link'] = $GLOBALS['TSFE']->cObj->getTypolink_URL(
-                    $GLOBALS['TSFE']->id,
+                    $GLOBALS['TSFE']->page['uid'],
                     [
                     'libconnect[subject]' => $subject['uid']]
                 );
             } else {
                 $el['link'] = $GLOBALS['TSFE']->cObj->getTypolink_URL(
-                    $GLOBALS['TSFE']->id,
+                    $GLOBALS['TSFE']->page['uid'],
                     [
                     'libconnect[subject]' => $el['id']]
                 );
