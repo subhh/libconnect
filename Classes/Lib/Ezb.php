@@ -682,7 +682,7 @@ class Ezb
 
         if ($xml_response->ezb_where_journal_at_partners->partner_selection->institutions->institution) {
             foreach ($xml_response->ezb_where_journal_at_partners->partner_selection->institutions->institution->children() as $childs) {
-                $participants = "{$this->participants_url}bibid={$this->bibID}&colors={$this->colors}&lang={$this->lang}&jour_id={$jour_id}";
+                $participants = "{$this->participants_url}?bibid={$this->bibID}&colors={$this->colors}&lang={$this->lang}&jour_id={$jour_id}";
                 break;
             }
         }
