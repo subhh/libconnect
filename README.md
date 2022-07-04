@@ -8,11 +8,12 @@ Here is the German [Manual](doc/manual.pdf "Ausführliches Manual").
 
 Visit our git repository: https://github.com/subhh/libconnect
 
-## 8.1.1
-    - Fixed broken code
+## 9.0.0
+    - Compatibility to TYPO3 11.5
+    - Fixed ezb URL for partipations list if plugin is not configured
 
 Tested with 
-    - TYPO3 10.4.
+    - TYPO3 11.15.12
 
 ## Configuration
 
