@@ -67,7 +67,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $subjectsOnline = $this->ezb->getFachbereiche();
 
         foreach ($subjectsOnline as $el) {
-            $el['link'] = $GLOBALS['TSFE']->cObj->getTypolink_URL($GLOBALS['TSFE']->id, [ 'libconnect[subject]' => $el['notation']]);
+            $el['link'] = $GLOBALS['TSFE']->cObj->getTypolink_URL($GLOBALS['TSFE']->page['uid'], [ 'libconnect[subject]' => $el['notation']]);
             $list[$el['id']] = $el;
         }
 
@@ -144,7 +144,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         //navigation - letters
         foreach (array_keys($journals['navlist']['pages']) as $page) {
             if (is_array($journals['navlist']['pages'][$page])) {
-                $journals['navlist']['pages'][$page]['link'] = $GLOBALS['TSFE']->cObj->getTypolink_URL($GLOBALS['TSFE']->id, [
+                $journals['navlist']['pages'][$page]['link'] = $GLOBALS['TSFE']->cObj->getTypolink_URL($GLOBALS['TSFE']->page['uid'], [
                     'libconnect[subject]' => $subject['notation'],
                     'libconnect[index]' => 0,
                     'libconnect[sc]' => $journals['navlist']['pages'][$page]['sc']? $journals['navlist']['pages'][$page]['sc'] : 'A',
@@ -158,7 +158,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         //navigation - sections in letters
         if (isset($journals['alphabetical_order']['first_fifty'])) {
             foreach (array_keys($journals['alphabetical_order']['first_fifty']) as $section) {
-                $journals['alphabetical_order']['first_fifty'][$section]['link'] = $GLOBALS['TSFE']->cObj->getTypolink_URL($GLOBALS['TSFE']->id, [
+                $journals['alphabetical_order']['first_fifty'][$section]['link'] = $GLOBALS['TSFE']->cObj->getTypolink_URL($GLOBALS['TSFE']->page['uid'], [
                         'libconnect[subject]' => $subject['notation'],
                         'libconnect[index]' => $journals['alphabetical_order']['first_fifty'][$section]['sindex'],
                         'libconnect[sc]' => $journals['alphabetical_order']['first_fifty'][$section]['sc']? $journals['alphabetical_order']['first_fifty'][$section]['sc'] : 'A',
@@ -181,7 +181,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         //navigation - sections in letters
         if (isset($journals['alphabetical_order']['next_fifty'])) {
             foreach (array_keys($journals['alphabetical_order']['next_fifty']) as $section) {
-                $journals['alphabetical_order']['next_fifty'][$section]['link'] = $GLOBALS['TSFE']->cObj->getTypolink_URL($GLOBALS['TSFE']->id, [
+                $journals['alphabetical_order']['next_fifty'][$section]['link'] = $GLOBALS['TSFE']->cObj->getTypolink_URL($GLOBALS['TSFE']->page['uid'], [
                         'libconnect[subject]' => $subject['notation'],
                         'libconnect[index]' => $journals['alphabetical_order']['next_fifty'][$section]['sindex'],
                         'libconnect[sc]' => $journals['alphabetical_order']['next_fifty'][$section]['sc']? $journals['alphabetical_order']['next_fifty'][$section]['sc'] : 'A',
@@ -387,7 +387,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             foreach (array_keys($journals['navlist']['pages']) as $page) {
                 if (is_array($journals['navlist']['pages'][$page])) {
                     $journals['navlist']['pages'][$page]['link'] = $GLOBALS['TSFE']->cObj->getTypolink_URL(
-                        $GLOBALS['TSFE']->id,
+                        $GLOBALS['TSFE']->page['uid'],
                         array_merge($linkParams, [
                             'libconnect[search][sc]' => $journals['navlist']['pages'][$page]['id'],
                             'libconnect[search][colors]' => $journals['colors']
@@ -415,7 +415,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         if (is_array($journals['alphabetical_order']['first_fifty'])) {
             foreach (array_keys($journals['alphabetical_order']['first_fifty']) as $section) {
                 $journals['alphabetical_order']['first_fifty'][$section]['link'] = $GLOBALS['TSFE']->cObj->getTypolink_URL(
-                    $GLOBALS['TSFE']->id,
+                    $GLOBALS['TSFE']->page['uid'],
                     array_merge($linkParams, [
                         'libconnect[search][sindex]' => $journals['alphabetical_order']['first_fifty'][$section]['sindex'],
                         'libconnect[search][sc]' => $journals['alphabetical_order']['first_fifty'][$section]['sc'],
@@ -439,7 +439,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         if (is_array($journals['alphabetical_order']['next_fifty'])) {
             foreach (array_keys($journals['alphabetical_order']['next_fifty']) as $section) {
                 $journals['alphabetical_order']['next_fifty'][$section]['link'] = $GLOBALS['TSFE']->cObj->getTypolink_URL(
-                    $GLOBALS['TSFE']->id,
+                    $GLOBALS['TSFE']->page['uid'],
                     array_merge($linkParams, [
                         'libconnect[search][sindex]' => $journals['alphabetical_order']['next_fifty'][$section]['sindex'],
                         'libconnect[search][sc]' => $journals['alphabetical_order']['next_fifty'][$section]['sc'],

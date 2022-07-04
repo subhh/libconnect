@@ -74,7 +74,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         }
 
         //get PageID
-        $Pid = (int)($GLOBALS['TSFE']->id);
+        $Pid = (int)($GLOBALS['TSFE']->page['uid']);
         $this->view->assign('pageUid', $Pid);
 
         if ((!empty($params['subject'])) || (!empty($params['notation']))) {//chosen subject after start point
@@ -164,9 +164,12 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $journals =  $this->ezbRepository->loadSearch($params, $colors, $config);
 
             //change view
-            $controllerContext = $this->buildControllerContext();
-            $controllerContext->getRequest()->setControllerActionName('displaySearch');
-            $this->view->setControllerContext($controllerContext);
+            $this->view->setTemplatePathAndFilename(
+                'typo3conf/ext/' .
+                $this->request->getControllerExtensionKey() .
+                '/Resources/Private/Templates/Ezb/DisplaySearch.html'
+            );
+
 
             //sets the link to the page with list plugin
             $listURL = $GLOBALS['TSFE']->cObj->getTypolink_URL($Pid);
@@ -181,9 +184,11 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $journals =  $this->ezbRepository->loadOverview();
 
             //change view
-            $controllerContext = $this->buildControllerContext();
-            $controllerContext->getRequest()->setControllerActionName('displayOverview');
-            $this->view->setControllerContext($controllerContext);
+            $this->view->setTemplatePathAndFilename(
+                'typo3conf/ext/' .
+                $this->request->getControllerExtensionKey() .
+                '/Resources/Private/Templates/Ezb/DisplayOverview.html'
+            );
 
             //variables for template
             $this->view->assign('list', $journals);
@@ -206,9 +211,11 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         //error - wrong jourid
         if(!is_numeric($params['jourid']) || empty($params['jourid'])){
             //change view
-            $controllerContext = $this->buildControllerContext();
-            $controllerContext->getRequest()->setControllerActionName('displayError');
-            $this->view->setControllerContext($controllerContext);
+            $this->view->setTemplatePathAndFilename(
+                'typo3conf/ext/' .
+                $this->request->getControllerExtensionKey() .
+                '/Resources/Private/Templates/Ezb/DisplayError.html'
+            );
 
             return;
         }
@@ -254,7 +261,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         }
         $this->view->assign('vars', $newparams['search']);
 
-        $this->view->assign('siteUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL($GLOBALS['TSFE']->id));//current URL
+        $this->view->assign('siteUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL($GLOBALS['TSFE']->page['uid']));//current URL
         $this->view->assign('searchUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL($this->settings['flexform']['searchPid']));//link to search
         $this->view->assign('listUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL($this->settings['flexform']['listPid']));//link to search results
         $this->view->assign('listPid', $this->settings['flexform']['listPid']);//ID of list
@@ -304,7 +311,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         //variables for template
         $this->view->assign('vars', $params['search']);
         $this->view->assign('form', $form);
-        $this->view->assign('siteUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL($GLOBALS['TSFE']->id));//current URL
+        $this->view->assign('siteUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL($GLOBALS['TSFE']->page['uid']));//current URL
         $this->view->assign('listUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL($this->settings['flexform']['listPid']));//url to search
         $this->view->assign('listPid', $this->settings['flexform']['listPid']);//ID of list view
     }
@@ -373,7 +380,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         }
 
         //get PageID
-        $Pid = (int)($GLOBALS['TSFE']->id);
+        $Pid = (int)($GLOBALS['TSFE']->page['uid']);
         $this->view->assign('pageUid', $Pid);
 
         //variables for template
@@ -441,9 +448,11 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         //error - wrong jourid
         if(!is_numeric($params['jourid']) || empty($params['jourid'])){
             //change view
-            $controllerContext = $this->buildControllerContext();
-            $controllerContext->getRequest()->setControllerActionName('displayError');
-            $this->view->setControllerContext($controllerContext);
+            $this->view->setTemplatePathAndFilename(
+                'typo3conf/ext/' .
+                $this->request->getControllerExtensionKey() .
+                '/Resources/Private/Templates/Ezb/DisplayError.html'
+            );
 
             return;
         }

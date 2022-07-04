@@ -19,7 +19,6 @@ return [
         'iconfile' => 'EXT:libconnect/Resources/Public/Icons/tx_libconnect_domain_model_subject.gif'
     ],
     'interface' => [
-        'showRecordFieldList' => 'hidden,title,dbisid,ezbnotation',
     ],
     'types' => [
         '0' => ['showitem' => 'hidden, title, dbisid, ezbnotation']
