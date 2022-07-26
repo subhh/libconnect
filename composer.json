@@ -17,9 +17,5 @@
         "psr-4": {
             "Sub\\Libconnect\\": "Classes/"
         }
-    },
-    "replace": {
-        "typo3-ter/libconnect": "self.version",
-        "Sub/libconnect": "self.version"
     }
 }
