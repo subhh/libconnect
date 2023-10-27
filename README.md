@@ -8,8 +8,10 @@ Here is the German [Manual](doc/manual.pdf "Ausführliches Manual").
 
 Visit our git repository: https://github.com/subhh/libconnect
 
-## 8.1.1
-    - Fixed broken code
+## 8.1.2
+    - fix misspelling in de.locallang.xlf --> fzuerker
+    - DBIS:
+       - Changed domain in URL from dbis.uni-regensburg.de to dbis.ur.de
 
 Tested with 
     - TYPO3 10.4.
