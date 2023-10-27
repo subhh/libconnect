@@ -43,11 +43,11 @@ class Dbis
     private $colors = '';
     private $ocolors = '';
     private $lett = 'f';
-    private $fachliste_url = 'https://dbis.uni-regensburg.de/dbinfo/fachliste.php';
-    private $dbliste_url = 'https://dbis.uni-regensburg.de/dbinfo/dbliste.php';
-    private $db_detail_url = 'https://dbis.uni-regensburg.de/dbinfo/detail.php';
-    private $db_detail_suche_url = 'https://dbis.uni-regensburg.de/dbinfo/suche.php';
-    private $dbis_domain = 'dbis.uni-regensburg.de';
+    private $fachliste_url = 'https://dbis.ur.de/dbinfo/fachliste.php';
+    private $dbliste_url = 'https://dbis.ur.de/dbinfo/dbliste.php';
+    private $db_detail_url = 'https://dbis.ur.de/dbinfo/detail.php';
+    private $db_detail_suche_url = 'https://dbis.ur.de/dbinfo/suche.php';
+    private $dbis_domain = 'dbis.ur.de';
 
     public $all;
     public $top_five_dbs;
