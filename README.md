@@ -8,15 +8,10 @@ Here is the German [Manual](doc/manual.pdf "Ausführliches Manual").
 
 Visit our git repository: https://github.com/subhh/libconnect
 
-## 7.0.8
-    - EZB: Security fix: XSS in form for the participants
-    - Fixed issue 19 - Remove strlen ViewHelper
-    - Fixed issue 20 - Cleanup keys in f:translate ViewHelpers
-    - Fixed issue 21 - Remove compare ViewHelper
-    - Fixed issue 23 - Can't use Fluid layouts
+## 7.0.9
     - DBIS:
-        - Fixed translation in extended search
-        - Moved other licenced access to partial AccesstypeDetails.
+       - Changed domain in URL from dbis.uni-regensburg.de in dbis.ur.de
+       - Changed URLs for XML from http to https
 
 Tested with 
     - TYPO3 8.7.25
