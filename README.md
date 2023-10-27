@@ -8,9 +8,10 @@ Here is the German [Manual](doc/manual.pdf "Ausführliches Manual").
 
 Visit our git repository: https://github.com/subhh/libconnect
 
-## 9.0.0
-    - Compatibility to TYPO3 11.5
-    - Fixed ezb URL for partipations list if plugin is not configured
+## 9.0.1
+    - fix misspelling in de.locallang.xlf --> fzuerker
+    - DBIS:
+        - Changed domain in URL from dbis.uni-regensburg.de to dbis.ur.de
 
 Tested with 
     - TYPO3 11.15.12
