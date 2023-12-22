@@ -780,11 +780,11 @@ class Dbis
         $request->setQuery(['bib_id' => $this->bibID, 'xmloutput' => 1 ]);
 
         //set empty valus as NULL for Guzzle
-        foreach ($params as $key => $value) {
-            if (empty($value)) {
-                $params[$key] = null;
-            }
-        }
+        //foreach ($params as $key => $value) {
+        //    if (empty($value)) {
+        //        $params[$key] = null;
+        //    }
+        //}
 
         if (!empty($params)) {
             $request->setQuery($params);
