@@ -47,18 +47,18 @@ class Ezb
     private $title;
 
     // general config
-    private $overview_requst_url = 'https://ezb.uni-regensburg.de/ezeit/fl.phtml';
-    private $detailview_request_url = 'https://ezb.uni-regensburg.de/ezeit/detail.phtml';
-    private $search_url = 'https://ezb.uni-regensburg.de/ezeit/search.phtml';
-    //private $qsearch_url = 'https://ezb.uni-regensburg.de/ezeit/searchres.phtml?xmloutput=1&';
-    //private $journal_link_url = 'http://rzblx1.uni-regensburg.de/ezeit/warpto.phtml?bibid=SUBHH&colors=7&lang=de&jour_id=';
-    private $search_result_page = 'https://ezb.uni-regensburg.de/ezeit/searchres.phtml';
-    //private $search_result_page = 'http://rzblx1.uni-regensburg.de/ezeit/searchres.phtml?&xmloutput=1&bibid=SUBHH&colors=7&lang=de&';
-    //private $search_result_page = 'https://ezb.uni-regensburg.de/searchres.phtml?xmloutput=1&bibid=SUBHH&colors=7&lang=de';
-    private $participants_url = 'https://ezb.uni-regensburg.de/ezeit/where.phtml';
-    private $participants_xml_url = 'https://ezb.uni-regensburg.de/ezeit/where.phtml';
-    private $contact_url = 'https://ezb.uni-regensburg.de/ezeit/kontakt.phtml';
-    private $ezb_domain = 'ezb.uni-regensburg.de';
+    private $overview_requst_url = 'https://ezb.ur.de/ezeit/fl.phtml';
+    private $detailview_request_url = 'https://ezb.ur.de/ezeit/detail.phtml';
+    private $search_url = 'https://ezb.ur.de/ezeit/search.phtml';
+    //private $qsearch_url = 'https://ezb.ur.de/ezeit/searchres.phtml?xmloutput=1&';
+    //private $journal_link_url = 'https://ezb.ur.de/ezeit/warpto.phtml?bibid=SUBHH&colors=7&lang=de&jour_id=';
+    private $search_result_page = 'https://ezb.ur.de/ezeit/searchres.phtml';
+    //private $search_result_page = 'https://ezb.ur.de/ezeit/searchres.phtml?&xmloutput=1&bibid=SUBHH&colors=7&lang=de&';
+    //private $search_result_page = 'https://ezb.ur.de/searchres.phtml?xmloutput=1&bibid=SUBHH&colors=7&lang=de';
+    private $participants_url = 'https://ezb.ur.de/ezeit/where.phtml';
+    private $participants_xml_url = 'https://ezb.ur.de/ezeit/where.phtml';
+    private $contact_url = 'https://ezb.ur.de/ezeit/kontakt.phtml';
+    private $ezb_domain = 'ezb.uni-ur.de';
 
     private $lang = 'de';
     private $colors = 7;

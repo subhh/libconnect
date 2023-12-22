@@ -167,7 +167,7 @@ Shows the details of a journal.
 
  List view : set page with ezb plug-in with output as list.
 
- Page with form for selection of participate institutions, which offer full access.: Set page with output of "Auswahl Teilnehmer die Vollzugriff bieten". On this page, the visitor get a form of libraries with full access to this yournal. If you don´t want a page with this output, let it empty and the detail page generates a link to the form of the website `https://ezb.uni-regensburg.de <https://ezb.uni-regensburg.de>`__.
+ Page with form for selection of participate institutions, which offer full access.: Set page with output of "Auswahl Teilnehmer die Vollzugriff bieten". On this page, the visitor get a form of libraries with full access to this yournal. If you don´t want a page with this output, let it empty and the detail page generates a link to the form of the website `https://ezb.ur.de <https://ezb.ur.de>`__.
 
 .. figure:: ../Images/Editor/EzbBackendDetails.png
    :width: 800px
@@ -226,7 +226,7 @@ How How many days are entries marked as new? (default: 7): set the number of day
 Selection of participate institutions, which offer full access.
 ---------------------------------------------------------------
 
-Creates a for of libraries with full access to this yournal. The visitor choose the library and will be redirected to their page on https://ezb.uni-regensburg.de.
+Creates a for of libraries with full access to this yournal. The visitor choose the library and will be redirected to their page on https://ezb.ur.de.
 
 .. figure:: ../Images/Editor/EzbBackendParticipant.png
    :width: 800px
@@ -237,6 +237,6 @@ Creates a for of libraries with full access to this yournal. The visitor choose 
 Contakt
 -------
 
-Shows the contact information which are set on `https://ezb.uni-regensburg.de <https://ezb.uni-regensburg.de>`__. Here is nothig to set.
+Shows the contact information which are set on `https://ezb.ur.de <https://ezb.ur.de>`__. Here is nothig to set.
 
 
