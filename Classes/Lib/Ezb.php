@@ -837,3 +837,4 @@ class Ezb
         return $xml_response;
     }
 }
+
