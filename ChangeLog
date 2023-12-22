@@ -5,6 +5,11 @@
 * - BH: Björn Heinermann hein@zhaw.ch (Zürcher Hochschule für Angewandte Wissenschaften)
 * - CR: Christian Richter chri@portachtzig.com (Wirtschaftskolleg zu Berlin)
 **/
+8.1.3
+   - EZB:
+      - Fixed error: no search results, if someone uses in extended search only jq_term2 or higher. Http_built_query removed elements with null values and the API do not accept the other parameters.
+      - Changed domain in URL from ezb.uni-regensburg.de to ezb.ur.de
+      - Changed URLs for XML from http to https
 8.1.2
     - fix misspelling in de.locallang.xlf --> Thanks to: fzuerker
     - DBIS:
