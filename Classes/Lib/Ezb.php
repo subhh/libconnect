@@ -807,11 +807,11 @@ class Ezb {
         $request->setQuery( array('bibid' => $this->bibID, 'xmloutput' => 1 ) );
 
         //set empty valus as NULL for Guzzle
-        foreach ($params as $key => $value){
-            if(empty($value)){
-                $params[$key] = NULL;
-            }
-        }
+        //foreach ($params as $key => $value){
+        //    if(empty($value)){
+        //        $params[$key] = NULL;
+        //    }
+        //}
 
         if(!empty($params)){
             $request->setQuery( $params );
