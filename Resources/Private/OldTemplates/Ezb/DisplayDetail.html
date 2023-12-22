@@ -88,7 +88,7 @@
                             <ul>
                                 <f:for each="{journal.homepages}" as="homepage">
                                     <li>
-                                        <a class="ezb-research" href="https://ezb.uni-regensburg.de/warpto.phtml?bibid={bibid}&colors=7&lang=de&jour_id={journal.id}&url={homepage.url}" target="_blank">{homepage.linktext}</a>
+                                        <a class="ezb-research" href="https://ezb.ur.de/warpto.phtml?bibid={bibid}&colors=7&lang=de&jour_id={journal.id}&url={homepage.url}" target="_blank">{homepage.linktext}</a>
                                     </li>
                                 </f:for>
                             </ul>
@@ -201,7 +201,7 @@
                         </th>
                         <td>
                             <f:format.htmlentitiesDecode>{journal.publisher}</f:format.htmlentitiesDecode><br>
-                            <a href="https://ezb.uni-regensburg.de/sherpa/romeo.php?issn=<f:if condition="{journal.publisher}">{journal.eissns_join}</f:if>" target="_blank"><f:translate key="tx_libconnect.ezb.detail.oapolicy" /></a>
+                            <a href="https://ezb.ur.de/sherpa/romeo.php?issn=<f:if condition="{journal.publisher}">{journal.eissns_join}</f:if>" target="_blank"><f:translate key="tx_libconnect.ezb.detail.oapolicy" /></a>
                         </td>
                     </tr>
                 </f:if>
