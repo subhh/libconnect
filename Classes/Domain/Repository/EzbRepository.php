@@ -524,55 +524,25 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     }
 
     /**
-     * @param bool $short
+     * get licence information
      *
      * @return array
      */
-    public function getAccessInfos($short = false)
+    public function getAccessInfos()
     {
         //get default texts
-        $LongAccessInfos = $this->ezb->getLongAccessInfos();
+        $AccessInfos = $this->ezb->getLongAccessInfos();
 
         $colortext = [];
-        if ((!empty($LongAccessInfos['longAccessInfos'])) && ($LongAccessInfos['longAccessInfos']!= false)) {
-            foreach ($LongAccessInfos as $key =>$text) {
+        if ((!empty($AccessInfos['longAccessInfos'])) && ($AccessInfos['longAccessInfos']!= false)) {
+            foreach ($AccessInfos['longAccessInfos'] as $key =>$text) {
                 $colortext[$key] = $text;
             }
         }
 
-        //get text from web
-        $form = $this->ezb->detailSearchFormFields();
-        $AccessInfos = [];
-
-        //own texts or from web
-        if ((!isset($form['selected_colors'])) or (empty($form['selected_colors'])) or ($LongAccessInfos['force'] == 'true')) {
-            $AccessInfos = $colortext['longAccessInfos'];
-        } else {
-            $AccessInfos = $form['selected_colors'];
-
-            if ($short) {
-                //if shorter form is will
-                $ShortAccessInfos = $this->ezb->getShortAccessInfos();
-
-                if ((!empty($ShortAccessInfos)) && ($ShortAccessInfos!= false)) {
-                    foreach ($ShortAccessInfos['shortAccessInfos'] as $key => $text) {
-                        if (empty($AccessInfos[$key])) {
-                            $AccessInfos[$key] = $ShortAccessInfos['shortAccessInfos'][$key];
-                        }
-                    }
-                }
-            } else {
-                //if licence information is missing
-                foreach ($colortext['longAccessInfos'] as $key => $text) {
-                    if (empty($AccessInfos[$key])) {
-                        $AccessInfos[$key] = $colortext['longAccessInfos'][$key];
-                    }
-                }
-            }
-        }
-
         //reorginize array
-        foreach ($AccessInfos as $colorkey => $value) {
+        $return = array();
+        foreach ($colortext as $colorkey => $value) {
             if ($colorkey != 6) {
                 $key = $colorkey;
             } else {
