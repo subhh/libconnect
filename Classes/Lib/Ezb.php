@@ -58,7 +58,7 @@ class Ezb
     private $participants_url = 'https://ezb.ur.de/ezeit/where.phtml';
     private $participants_xml_url = 'https://ezb.ur.de/ezeit/where.phtml';
     private $contact_url = 'https://ezb.ur.de/ezeit/kontakt.phtml';
-    private $ezb_domain = 'ezb.uni-ur.de';
+    private $ezb_domain = 'ezb.ur.de';
 
     private $lang = 'de';
     private $colors = 7;
