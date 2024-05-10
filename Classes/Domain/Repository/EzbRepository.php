@@ -462,7 +462,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $form =  $this->ezb->detailSearchFormFields();
 
         //Zugriffsinformationen holen
-        $form['colors'] = $this->getAccessInfos(true);
+        $form['colors'] = $this->getAccessInfos();
 
         return $form;
     }
@@ -524,11 +524,11 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     }
 
     /**
-     * @param bool $short
+     * get licence information
      *
      * @return array
      */
-    public function getAccessInfos($short = false)
+    public function getAccessInfos()
     {
         //get default texts
         $AccessInfos = $this->ezb->getLongAccessInfos();
