@@ -6,7 +6,9 @@
 * - CR: Christian Richter chri@portachtzig.com (Wirtschaftskolleg zu Berlin)
 **/
 9.0.3
-    - EZB: Reduces amount of requests to API.
+    - EZB: 
+        - Reduces amount of requests to API.
+        - Fixed wrong doamin of ezb
 9.0.2
     - EZB:
        - Fixed error: no search results, if someone uses in extended search only jq_term2 or higher. Http_built_query removed elements with null values and the API do not accept the other parameters.
