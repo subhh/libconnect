@@ -8,13 +8,8 @@ Here is the German [Manual](doc/manual.pdf "Ausführliches Manual").
 
 Visit our git repository: https://github.com/subhh/libconnect
 
-## 7.0.10
-    - EZB:
-       - Fixed error: no search results, if someone uses in extended search only jq_term2 or higher. Http_built_query removed elements with null values and the API do not accept the other parameters.
-       - Changed domain in URL from ezb.uni-regensburg.de to ezb.ur.de
-       - Changed URLs for XML from http to https
-    - DBIS:
-       - Fixed error: no search results, if someone uses in extended search only jq_term2 or higher. Http_built_query removed elements with null values and the API do not accept the other parameters.
+## 7.0.11
+    - EZB: Reduces amount of requests to API.
 
 Tested with 
     - TYPO3 8.7.25
