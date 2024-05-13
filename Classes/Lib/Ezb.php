@@ -396,23 +396,18 @@ class Ezb
 
         foreach ($searchVars as $var => $values) {
             if (!is_array($values)) {
-                //convert to UTF-8, only if own website is utf-8
-                if ((mb_strtolower($GLOBALS['TSFE']->metaCharset)) == 'utf-8') {
-                    $values = utf8_decode($values);
-                }
+                $values = utf8_decode($values);
+
                 $searchParams[$var] = urlencode($values);
             } else {
-                //convert to UTF-8, only if own website is utf-8
-                if ((mb_strtolower($GLOBALS['TSFE']->metaCharset)) == 'utf-8') {
-                    $utf8Values = [];
+                $utf8Values = [];
 
-                    foreach ($values as $value) {
-                        if (is_string($value)) {
-                            $utf8Values[] = @utf8_decode($value);
-                        }
+                foreach ($values as $value) {
+                    if (is_string($value)) {
+                        $utf8Values[] = @utf8_decode($value);
                     }
-                    $values = $utf8Values;
                 }
+                $values = $utf8Values;
 
                 foreach ($values as $value) {
                     if (is_string($value)) {
