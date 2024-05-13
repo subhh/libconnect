@@ -534,16 +534,13 @@ class Dbis
 
         foreach ($searchVars as $var => $values) {
             if (!is_array($values)) {
-                //if someone doesn´t use utf-8
-                if ((mb_strtolower($GLOBALS['TSFE']->metaCharset)) == 'utf-8') {
-                    $values = utf8_decode($values);
-                }
+                $values = utf8_decode($values);
+
                 $params[$var] = urlencode($values);
             } else {
                 foreach ($values as $value) {
-                    if ((mb_strtolower($GLOBALS['TSFE']->metaCharset)) == 'utf-8') {
-                        $value = utf8_decode($value);
-                    }
+                    $value = utf8_decode($value);
+
                     //$searchUrl .= '&' . $var . '[]=' . urlencode($value);
                     $params[$var][] = urlencode($value);
                 }
