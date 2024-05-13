@@ -568,11 +568,7 @@ class Dbis
                 ];
 
         if (!$searchVars || isset($searchVars['sword'])) {
-            if ((mb_strtolower($GLOBALS['TSFE']->metaCharset)) == 'utf-8') {
-                $term = utf8_decode($searchVars['sword']);
-            } else {
-                $term = $searchVars['sword'];
-            }
+            $term = utf8_decode($searchVars['sword']);
 
             // encode term
             $term = urlencode($term);
