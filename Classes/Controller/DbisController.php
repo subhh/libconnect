@@ -336,7 +336,8 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $this->addFlashMessage(
                 'Bitte konfigurieren Sie ein Ziel für die Detailseite.',
                 $messageTitle = 'Fehler',
-                $severity = \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR,
+                $severity = \TYPO3\CMS\Core\Type\ContextualFeedbackSeverity::ERROR,
+
                 $storeInSession = true
             );
             $list = false;
