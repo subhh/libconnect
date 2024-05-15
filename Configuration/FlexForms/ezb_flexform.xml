@@ -6,149 +6,133 @@
     <sheets>
         <sDEF>
             <ROOT>
-                <TCEforms>
-                    <sheetTitle>LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.general</sheetTitle>
-                </TCEforms>
+                <sheetTitle>LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.general</sheetTitle>            
                 <type>array</type>
                 <el>
                     <switchableControllerActions>
-                        <TCEforms>
-                            <label>LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.output</label>
-                            <onChange>reload</onChange>
-                            <config>
-                                <type>select</type>
-                                <renderType>selectSingle</renderType>
-                                <items type="array">
-                                    <numIndex index="0" type="array">
-                                        <numIndex index="0">LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.list</numIndex>
-                                        <numIndex index="1">Ezb->displayList</numIndex>
-                                    </numIndex>
-                                    <numIndex index="1" type="array">
-                                        <numIndex index="0">LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.detailview</numIndex>
-                                        <numIndex index="1">Ezb->displayDetail</numIndex>
-                                    </numIndex>
-                                    <numIndex index="3" type="array">
-                                        <numIndex index="0">LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.sidebar</numIndex>
-                                        <numIndex index="1">Ezb->displayMiniForm</numIndex>
+                        <label>LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.output</label>
+                        <onChange>reload</onChange>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectSingle</renderType>
+                            <items type="array">
+                                <numIndex index="0" type="array">
+                                    <numIndex index="0">LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.list</numIndex>
+                                    <numIndex index="1">Ezb->displayList</numIndex>
+                                </numIndex>
+                                <numIndex index="1" type="array">
+                                    <numIndex index="0">LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.detailview</numIndex>
+                                    <numIndex index="1">Ezb->displayDetail</numIndex>
+                                </numIndex>
+                                <numIndex index="3" type="array">
+                                    <numIndex index="0">LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.sidebar</numIndex>
+                                    <numIndex index="1">Ezb->displayMiniForm</numIndex>
                                     </numIndex>								
-                                    <numIndex index="4" type="array">
-                                        <numIndex index="0">LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.search</numIndex>
-                                        <numIndex index="1">Ezb->displayForm</numIndex>
-                                    </numIndex>
-                                    <numIndex index="5" type="array">
-                                        <numIndex index="0">LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.ezb.new</numIndex>
-                                        <numIndex index="1">Ezb->displayNew</numIndex>
-                                    </numIndex>
-                                    <numIndex index="6" type="array">
-                                        <numIndex index="0">LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.ezb.participantsformchoice</numIndex>
-                                        <numIndex index="1">Ezb->displayParticipantsForm</numIndex>
-                                    </numIndex>
-                                    <numIndex index="7" type="array">
-                                        <numIndex index="0">LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.ezb.contact</numIndex>
-                                        <numIndex index="1">Ezb->displayContact</numIndex>
-                                    </numIndex>
-                                </items>
-                            </config>
-                        </TCEforms>
+                                <numIndex index="4" type="array">
+                                    <numIndex index="0">LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.search</numIndex>
+                                    <numIndex index="1">Ezb->displayForm</numIndex>
+                                </numIndex>
+                                <numIndex index="5" type="array">
+                                    <numIndex index="0">LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.ezb.new</numIndex>
+                                    <numIndex index="1">Ezb->displayNew</numIndex>
+                                </numIndex>
+                                <numIndex index="6" type="array">
+                                    <numIndex index="0">LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.ezb.participantsformchoice</numIndex>
+                                    <numIndex index="1">Ezb->displayParticipantsForm</numIndex>
+                                </numIndex>
+                                <numIndex index="7" type="array">
+                                    <numIndex index="0">LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.ezb.contact</numIndex>
+                                    <numIndex index="1">Ezb->displayContact</numIndex>
+                                </numIndex>
+                            </items>
+                        </config>
                     </switchableControllerActions>
 
                     <settings.flexform.detailPid>
-                        <TCEforms>
-                            <exclude>1</exclude>
-                            <label>LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.detailpage</label>
-                            <displayCond><![CDATA[FIELD:switchableControllerActions:!IN:Ezb->displayDetail,Ezb->displayMiniForm,Ezb->displayForm,Ezb->displayParticipantsForm,Ezb->displayContact]]></displayCond>
-                            <config>
-                                <type>group</type>
-                                <internal_type>db</internal_type>
-                                <allowed>pages</allowed>
-                                <size>1</size>
-                                <maxitems>1</maxitems>
-                                <minitems>1</minitems>
-                                <show_thumbs>1</show_thumbs>
-                            </config>
-                        </TCEforms>
+                        <exclude>1</exclude>
+                        <label>LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.detailpage</label>
+                        <displayCond><![CDATA[FIELD:switchableControllerActions:!IN:Ezb->displayDetail,Ezb->displayMiniForm,Ezb->displayForm,Ezb->displayParticipantsForm,Ezb->displayContact]]></displayCond>
+                        <config>
+                            <type>group</type>
+                            <internal_type>db</internal_type>
+                            <allowed>pages</allowed>
+                            <size>1</size>
+                            <maxitems>1</maxitems>
+                            <minitems>1</minitems>
+                            <show_thumbs>1</show_thumbs>
+                        </config>
                     </settings.flexform.detailPid>
 
                     <settings.flexform.listPid>
-                        <TCEforms>
-                            <exclude>1</exclude>
-                            <label>LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.listview</label>
-                            <displayCond><![CDATA[FIELD:switchableControllerActions:IN:Ezb->displayForm,Ezb->displayMiniForm,Ezb->displayDetail]]></displayCond>
-                            <config>
-                                <type>group</type>
-                                <internal_type>db</internal_type>
-                                <allowed>pages</allowed>
-                                <size>1</size>
-                                <maxitems>1</maxitems>
-                                <minitems>0</minitems>
-                                <show_thumbs>1</show_thumbs>
-                            </config>
-                        </TCEforms>
+                        <exclude>1</exclude>
+                        <label>LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.listview</label>
+                        <displayCond><![CDATA[FIELD:switchableControllerActions:IN:Ezb->displayForm,Ezb->displayMiniForm,Ezb->displayDetail]]></displayCond>
+                        <config>
+                            <type>group</type>
+                            <internal_type>db</internal_type>
+                            <allowed>pages</allowed>
+                            <size>1</size>
+                            <maxitems>1</maxitems>
+                            <minitems>0</minitems>
+                            <show_thumbs>1</show_thumbs>
+                        </config>                        
                     </settings.flexform.listPid>
 
                     <settings.flexform.searchPid>
-                        <TCEforms>
-                            <exclude>1</exclude>
-                            <label>LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.detailedsearch</label>
-                            <displayCond><![CDATA[FIELD:switchableControllerActions:=:Ezb->displayMiniForm]]></displayCond>
-                            <config>
-                                <type>group</type>
-                                <internal_type>db</internal_type>
-                                <allowed>pages</allowed>
-                                <size>1</size>
-                                <maxitems>1</maxitems>
-                                <minitems>0</minitems>
-                                <show_thumbs>1</show_thumbs>
-                            </config>
-                        </TCEforms>
+                        <exclude>1</exclude>
+                        <label>LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.detailedsearch</label>
+                        <displayCond><![CDATA[FIELD:switchableControllerActions:=:Ezb->displayMiniForm]]></displayCond>
+                        <config>
+                            <type>group</type>
+                            <internal_type>db</internal_type>
+                            <allowed>pages</allowed>
+                            <size>1</size>
+                            <maxitems>1</maxitems>
+                            <minitems>0</minitems>
+                            <show_thumbs>1</show_thumbs>
+                        </config>                        
                     </settings.flexform.searchPid>
 
                     <settings.flexform.countDays>
-                        <TCEforms>
-                            <exclude>1</exclude>
-                            <label>LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.howlongnew</label>
-                            <displayCond><![CDATA[FIELD:switchableControllerActions:IN:Ezb->displayNew,Ezb->displayMiniForm]]></displayCond>
-                            <config>
-                                <type>input</type>
-                                <size>30</size>
-                                <max>500</max>
-                                <eval>trim</eval>
-                            </config>
-                        </TCEforms>
+                        <exclude>1</exclude>
+                        <label>LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.howlongnew</label>
+                        <displayCond><![CDATA[FIELD:switchableControllerActions:IN:Ezb->displayNew,Ezb->displayMiniForm]]></displayCond>
+                        <config>
+                            <type>input</type>
+                            <size>30</size>
+                            <max>500</max>
+                            <eval>trim</eval>
+                        </config>                        
                     </settings.flexform.countDays>
 
                     <settings.flexform.newPid>
-                        <TCEforms>
-                            <exclude>1</exclude>
-                            <label>LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.ezb.new</label>
-                            <displayCond><![CDATA[FIELD:switchableControllerActions:=:Ezb->displayMiniForm]]></displayCond>
-                            <config>
-                                <type>group</type>
-                                <internal_type>db</internal_type>
-                                <allowed>pages</allowed>
-                                <size>1</size>
-                                <maxitems>1</maxitems>
-                                <minitems>0</minitems>
-                                <show_thumbs>1</show_thumbs>
-                            </config>
-                        </TCEforms>
+                        <exclude>1</exclude>
+                        <label>LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.ezb.new</label>
+                        <displayCond><![CDATA[FIELD:switchableControllerActions:=:Ezb->displayMiniForm]]></displayCond>
+                        <config>
+                            <type>group</type>
+                            <internal_type>db</internal_type>
+                            <allowed>pages</allowed>
+                            <size>1</size>
+                            <maxitems>1</maxitems>
+                            <minitems>0</minitems>
+                            <show_thumbs>1</show_thumbs>
+                        </config>                        
                     </settings.flexform.newPid>
                     
                     <settings.flexform.participantsPid>
-                        <TCEforms>
-                            <exclude>1</exclude>
-                            <label>LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.ezb.participantsform</label>
-                            <displayCond><![CDATA[FIELD:switchableControllerActions:=:Ezb->displayDetail]]></displayCond>
-                            <config>
-                                <type>group</type>
-                                <internal_type>db</internal_type>
-                                <allowed>pages</allowed>
-                                <size>1</size>
-                                <maxitems>1</maxitems>
-                                <minitems>0</minitems>
-                                <show_thumbs>1</show_thumbs>
-                            </config>
-                        </TCEforms>
+                        <exclude>1</exclude>
+                        <label>LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.ezb.participantsform</label>
+                        <displayCond><![CDATA[FIELD:switchableControllerActions:=:Ezb->displayDetail]]></displayCond>
+                        <config>
+                            <type>group</type>
+                            <internal_type>db</internal_type>
+                            <allowed>pages</allowed>
+                            <size>1</size>
+                            <maxitems>1</maxitems>
+                            <minitems>0</minitems>
+                            <show_thumbs>1</show_thumbs>
+                        </config>                        
                     </settings.flexform.participantsPid>
                 </el>
             </ROOT>
