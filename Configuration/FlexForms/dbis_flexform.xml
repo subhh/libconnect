@@ -15,7 +15,7 @@
                         <config>
                             <type>select</type>
                             <renderType>selectSingle</renderType>
-                            <items type="array">
+                            <items>
                                 <numIndex index="0">
                                     <numIndex index="0">LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.dbis.topdatabases</numIndex>
                                     <numIndex index="1">Dbis->displayTop</numIndex>

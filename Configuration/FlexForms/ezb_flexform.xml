@@ -15,32 +15,32 @@
                         <config>
                             <type>select</type>
                             <renderType>selectSingle</renderType>
-                            <items type="array">
-                                <numIndex index="0" type="array">
+                            <items>
+                                <numIndex index="0">
                                     <numIndex index="0">LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.list</numIndex>
                                     <numIndex index="1">Ezb->displayList</numIndex>
                                 </numIndex>
-                                <numIndex index="1" type="array">
+                                <numIndex index="1">
                                     <numIndex index="0">LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.detailview</numIndex>
                                     <numIndex index="1">Ezb->displayDetail</numIndex>
                                 </numIndex>
-                                <numIndex index="3" type="array">
+                                <numIndex index="3">
                                     <numIndex index="0">LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.sidebar</numIndex>
                                     <numIndex index="1">Ezb->displayMiniForm</numIndex>
                                     </numIndex>								
-                                <numIndex index="4" type="array">
+                                <numIndex index="4">
                                     <numIndex index="0">LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.search</numIndex>
                                     <numIndex index="1">Ezb->displayForm</numIndex>
                                 </numIndex>
-                                <numIndex index="5" type="array">
+                                <numIndex index="5">
                                     <numIndex index="0">LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.ezb.new</numIndex>
                                     <numIndex index="1">Ezb->displayNew</numIndex>
                                 </numIndex>
-                                <numIndex index="6" type="array">
+                                <numIndex index="6">
                                     <numIndex index="0">LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.ezb.participantsformchoice</numIndex>
                                     <numIndex index="1">Ezb->displayParticipantsForm</numIndex>
                                 </numIndex>
-                                <numIndex index="7" type="array">
+                                <numIndex index="7">
                                     <numIndex index="0">LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.ezb.contact</numIndex>
                                     <numIndex index="1">Ezb->displayContact</numIndex>
                                 </numIndex>
