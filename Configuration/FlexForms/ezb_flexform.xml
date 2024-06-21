@@ -54,7 +54,6 @@
                         <displayCond><![CDATA[FIELD:switchableControllerActions:!IN:Ezb->displayDetail,Ezb->displayMiniForm,Ezb->displayForm,Ezb->displayParticipantsForm,Ezb->displayContact]]></displayCond>
                         <config>
                             <type>group</type>
-                            <internal_type>db</internal_type>
                             <allowed>pages</allowed>
                             <size>1</size>
                             <maxitems>1</maxitems>
@@ -69,7 +68,6 @@
                         <displayCond><![CDATA[FIELD:switchableControllerActions:IN:Ezb->displayForm,Ezb->displayMiniForm,Ezb->displayDetail]]></displayCond>
                         <config>
                             <type>group</type>
-                            <internal_type>db</internal_type>
                             <allowed>pages</allowed>
                             <size>1</size>
                             <maxitems>1</maxitems>
@@ -84,7 +82,6 @@
                         <displayCond><![CDATA[FIELD:switchableControllerActions:=:Ezb->displayMiniForm]]></displayCond>
                         <config>
                             <type>group</type>
-                            <internal_type>db</internal_type>
                             <allowed>pages</allowed>
                             <size>1</size>
                             <maxitems>1</maxitems>
@@ -111,7 +108,6 @@
                         <displayCond><![CDATA[FIELD:switchableControllerActions:=:Ezb->displayMiniForm]]></displayCond>
                         <config>
                             <type>group</type>
-                            <internal_type>db</internal_type>
                             <allowed>pages</allowed>
                             <size>1</size>
                             <maxitems>1</maxitems>
@@ -126,7 +122,6 @@
                         <displayCond><![CDATA[FIELD:switchableControllerActions:=:Ezb->displayDetail]]></displayCond>
                         <config>
                             <type>group</type>
-                            <internal_type>db</internal_type>
                             <allowed>pages</allowed>
                             <size>1</size>
                             <maxitems>1</maxitems>

@@ -65,7 +65,6 @@
                         <displayCond><![CDATA[FIELD:switchableControllerActions:IN:Dbis->displayList,Dbis->displayTop,Dbis->displayNew]]></displayCond>
                         <config>
                             <type>group</type>
-                            <internal_type>db</internal_type>
                             <allowed>pages</allowed>
                             <size>1</size>
                             <maxitems>1</maxitems>
@@ -80,7 +79,6 @@
                         <displayCond><![CDATA[FIELD:switchableControllerActions:IN:Dbis->displayForm,Dbis->displayMiniForm]]></displayCond>
                         <config>
                             <type>group</type>
-                            <internal_type>db</internal_type>
                             <allowed>pages</allowed>
                             <size>1</size>
                             <maxitems>1</maxitems>
@@ -95,7 +93,6 @@
                         <displayCond><![CDATA[FIELD:switchableControllerActions:=:Dbis->displayMiniForm]]></displayCond>
                         <config>
                             <type>group</type>
-                            <internal_type>db</internal_type>
                             <allowed>pages</allowed>
                             <size>1</size>
                             <maxitems>1</maxitems>
@@ -146,7 +143,6 @@
                         <displayCond><![CDATA[FIELD:switchableControllerActions:IN:Dbis->displayMiniForm]]></displayCond>
                         <config>
                             <type>group</type>
-                            <internal_type>db</internal_type>
                             <allowed>pages</allowed>
                             <size>1</size>
                             <maxitems>1</maxitems>
