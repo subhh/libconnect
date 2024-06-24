@@ -44,7 +44,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     /**
      * shows top databases
      */
-    public function displayTopAction()
+    public function displayTopAction(): ResponseInterface
     {
         $config['subject'] = $this->settings['flexform']['subject'];
         $config['detailPid'] = $this->settings['flexform']['detailPid'];
@@ -53,12 +53,14 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
         //variables for template
         $this->view->assign('top', $top);
+
+	return $this->htmlResponse();
     }
 
     /**
      * shows a list of databases (for general, search, chosen subject)
      */
-    public function displayListAction()
+    public function displayListAction(): ResponseInterface
     {
         $params = [];
         if (!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_dbis'))) {
@@ -157,12 +159,14 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             //variables for template
             $this->view->assign('list', $list);
         }
+
+	return $this->htmlResponse();
     }
 
     /**
      * shows deatail view
      */
-    public function displayDetailAction()
+    public function displayDetailAction(): ResponseInterface
     {
         if (!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_dbis'))) {
             $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_dbis');
@@ -193,12 +197,14 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             //variables for template
             $this->view->assign('db', $list);
         }
+
+	return $this->htmlResponse();
     }
 
     /**
      * shows sidebar
      */
-    public function displayMiniFormAction()
+    public function displayMiniFormAction(): ResponseInterface
     {
         $params = [];
         if (!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_dbis'))) {
@@ -284,12 +290,14 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                 $this->view->assign('newCount', $count);
             }
         }
+
+	return $this->htmlResponse();
     }
 
     /**
      * shows the search
      */
-    public function displayFormAction()
+    public function displayFormAction(): ResponseInterface
     {
         if (!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_dbis'))) {
             $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_dbis');
@@ -305,12 +313,14 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->view->assign('siteUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL($GLOBALS['TSFE']->page['uid']));//aktuelle URL
         $this->view->assign('listUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL($this->settings['flexform']['listPid']));//Link zur Suchseite
         $this->view->assign('listPid', $this->settings['flexform']['listPid']);//Link zur Listendarstellung
+
+	return $this->htmlResponse();
     }
 
     /**
      * shows the new entries
      */
-    public function displayNewAction()
+    public function displayNewAction(): ResponseInterface
     {
         if (!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_dbis'))) {
             $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_dbis');
@@ -353,6 +363,8 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->view->assign('list', $list);
         $this->view->assign('new_date', $params['jq_term1']);
         $this->view->assign('subject', $subject['title']);
+
+	return $this->htmlResponse();
     }
 
     /**

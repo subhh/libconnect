@@ -53,7 +53,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     /**
     * shows a list of journals (for general, search, chosen subject)
     */
-    public function displayListAction()
+    public function displayListAction(): ResponseInterface
     {
         $params = [];
         if (!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_ezb'))) {
@@ -193,12 +193,14 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             //variables for template
             $this->view->assign('list', $journals);
         }
+
+	return $this->htmlResponse();
     }
 
     /**
      * shows details
      */
-    public function displayDetailAction()
+    public function displayDetailAction(): ResponseInterface
     {
         if (!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_ezb'))) {
             $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_ezb');
@@ -237,12 +239,14 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         //variables for template
         $this->view->assign('journal', $journal);
         $this->view->assign('bibid', $this->ezbRepository->getBibid());
+
+	return $this->htmlResponse();
     }
 
     /**
      * shows sidebar
      */
-    public function displayMiniFormAction()
+    public function displayMiniFormAction(): ResponseInterface
     {
         $params = [];
         if (!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_ezb'))) {
@@ -293,12 +297,14 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                 $this->view->assign('newCount', $count);
             }
         }
+
+	return $this->htmlResponse();
     }
 
     /**
      * show the search form
      */
-    public function displayFormAction()
+    public function displayFormAction(): ResponseInterface
     {
         if (!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_ezb'))) {
             $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_ezb');
@@ -314,12 +320,14 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->view->assign('siteUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL($GLOBALS['TSFE']->page['uid']));//current URL
         $this->view->assign('listUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL($this->settings['flexform']['listPid']));//url to search
         $this->view->assign('listPid', $this->settings['flexform']['listPid']);//ID of list view
+
+	return $this->htmlResponse();
     }
 
     /**
      * shows list of new entries
      */
-    public function displayNewAction()
+    public function displayNewAction(): ResponseInterface
     {
         $params = [];
         if (!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_ezb'))) {
@@ -389,6 +397,8 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->view->assign('colors', $params['search']['colors']);
         $this->view->assign('subject', $subject['title']);
         $this->view->assign('formParameter', $newParams);
+
+	return $this->htmlResponse();
     }
 
     /**
@@ -437,7 +447,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     /**
      * generates form for the participants
      */
-    public function displayParticipantsFormAction()
+    public function displayParticipantsFormAction(): ResponseInterface
     {
         if (!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_ezb'))) {
             $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_ezb');
@@ -468,15 +478,19 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->view->assign('ParticipantsList', $ParticipantsList);
         $this->view->assign('jourid', $params['jourid']);
         $this->view->assign('titel', $title);
+
+	return $this->htmlResponse();
     }
 
     /**
      * get contact information
      */
-    public function displayContactAction()
+    public function displayContactAction(): ResponseInterface
     {
         $contact =  $this->ezbRepository->getContact();
         $this->view->assign('contact', $contact);
+
+	return $this->htmlResponse();
     }
 
     /**
