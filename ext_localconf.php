@@ -8,11 +8,11 @@ call_user_func(function() {
         'Libconnect',
         'Dbis',
         [
-            \Sub\Libconnect\Controller\DbisController::class => 'displayForm'
+            \Subhh\Libconnect\Controller\DbisController::class => 'displayForm'
         ],
         // non-cacheable actions
         [
-            \Sub\Libconnect\Controller\DbisController::class => 'displayDetail, displayList, displayMiniForm, displayNew'
+            \Subhh\Libconnect\Controller\DbisController::class => 'displayDetail, displayList, displayMiniForm, displayNew'
         ]
     );
 
@@ -20,18 +20,18 @@ call_user_func(function() {
         'Libconnect',
         'Ezb',
         [
-            \Sub\Libconnect\Controller\EzbController::class => 'displayForm, displayContact'
+            \Subhh\Libconnect\Controller\EzbController::class => 'displayForm, displayContact'
         ],
         // non-cacheable actions
         [
-            \Sub\Libconnect\Controller\EzbController::class => 'displayDetail, displayList, displayMiniForm, displayNew, displayParticipantsForm'
+            \Subhh\Libconnect\Controller\EzbController::class => 'displayDetail, displayList, displayMiniForm, displayNew, displayParticipantsForm'
         ]
     );
 
     try {
         $enableDebugLog = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Configuration\ExtensionConfiguration::class)->get('libconnect', 'debug');
         if ($enableDebugLog) {
-            $GLOBALS['TYPO3_CONF_VARS']['Sub']['Libconnect']['writerConfiguration'] = [
+            $GLOBALS['TYPO3_CONF_VARS']['Subhh']['Libconnect']['writerConfiguration'] = [
                 \TYPO3\CMS\Core\Log\LogLevel::DEBUG => [
                     \TYPO3\CMS\Core\Log\Writer\FileWriter::class => [
                         'logFileInfix' => 'libconnect',
