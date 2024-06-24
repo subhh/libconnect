@@ -178,7 +178,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             //variables for template
             $this->view->assign('error', 'Error');
 
-            return;
+            return FALSE;
         }
         $list =  $this->dbisRepository->loadDetail($params['titleid']);
 
