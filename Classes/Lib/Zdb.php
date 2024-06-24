@@ -1,6 +1,6 @@
 <?php
 
-namespace Sub\Libconnect\Lib;
+namespace Subhh\Libconnect\Lib;
 
 /***************************************************************
  *  Copyright notice
@@ -43,7 +43,7 @@ namespace Sub\Libconnect\Lib;
  *      zdbisil = ISIL
  *      zdbbik = BIK
  */
-use Sub\Libconnect\Service\Request;
+use Subhh\Libconnect\Service\Request;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Log\LogManager;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -504,7 +504,7 @@ class Zdb
      */
     private function setRequest($url, $params = [])
     {
-        $request = new \Sub\Libconnect\Service\Request();
+        $request = new \Subhh\Libconnect\Service\Request();
 
         $request->setUrl($url);
 

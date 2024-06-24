@@ -1,6 +1,6 @@
 <?php
 
-namespace Sub\Libconnect\Controller;
+namespace Subhh\Libconnect\Controller;
 
 /***************************************************************
 * Copyright notice
@@ -29,7 +29,7 @@ namespace Sub\Libconnect\Controller;
 *  Avonis - New Media Agency - http://www.avonis.com/
 ***************************************************************/
 
-use Sub\Libconnect\Domain\Repository\DbisRepository;
+use Subhh\Libconnect\Domain\Repository\DbisRepository;
 
 /**
  * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
@@ -179,7 +179,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $list =  $this->dbisRepository->loadDetail($params['titleid']);
 
         //repair broken HTML
-        $UserFunc = new \Sub\Libconnect\UserFunctions\RepairHTMLUserFunction();
+        $UserFunc = new \Subhh\Libconnect\UserFunctions\RepairHTMLUserFunction();
         $list = $UserFunc->RepairHTMLUserFunction($list);
 
         if (!$list) {
@@ -433,7 +433,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     }
 
     /**
-     * @param \Sub\Libconnect\Domain\Repository\DbisRepository $dbisRepository
+     * @param \Subhh\Libconnect\Domain\Repository\DbisRepository $dbisRepository
      */
     public function injectDbisRepository(DbisRepository $dbisRepository) {
         $this->dbisRepository = $dbisRepository;

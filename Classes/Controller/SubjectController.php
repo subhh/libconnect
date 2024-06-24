@@ -1,6 +1,6 @@
 <?php
 
-namespace Sub\Libconnect\Controller;
+namespace Subhh\Libconnect\Controller;
 
 /***************************************************************
  *  Copyright notice

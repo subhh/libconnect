@@ -1,6 +1,6 @@
 <?php
 
-namespace Sub\Libconnect\ViewHelpers;
+namespace Subhh\Libconnect\ViewHelpers;
 
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;

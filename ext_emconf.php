@@ -25,7 +25,7 @@ $EM_CONF['libconnect'] = [
     ],
     'autoload' => [
         'psr-4' => [
-            'Sub\\Libconnect\\' => 'Classes',
+            'Subhh\\Libconnect\\' => 'Classes',
         ],
     ],
 ];

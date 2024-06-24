@@ -1,6 +1,6 @@
 <?php
 
-namespace Sub\Libconnect\UserFunctions;
+namespace Subhh\Libconnect\UserFunctions;
 
 /**
  * Class 'RepairHTMLUserFunction' for the 'libconnect' extension.

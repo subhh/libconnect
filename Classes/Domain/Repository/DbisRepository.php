@@ -1,8 +1,8 @@
 <?php
 
-namespace Sub\Libconnect\Domain\Repository;
+namespace Subhh\Libconnect\Domain\Repository;
 
-use Sub\Libconnect\Lib\Dbis;
+use Subhh\Libconnect\Lib\Dbis;
 
 /***************************************************************
 * Copyright notice
@@ -292,7 +292,7 @@ class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     }
 
     /**
-     * @param \Sub\Libconnect\Domain\Repository\SubjectRepository $subjectRepository
+     * @param \Subhh\Libconnect\Domain\Repository\SubjectRepository $subjectRepository
      */
     public function injectSubjectRepository(SubjectRepository $subjectRepository)
     {
@@ -300,7 +300,7 @@ class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     }
 
     /**
-     * @param \Sub\Libconnect\Lib\Dbis $dbis
+     * @param \Subhh\Libconnect\Lib\Dbis $dbis
      */
     public function injectDbis(Dbis $dbis) {
         $this->dbis = $dbis;

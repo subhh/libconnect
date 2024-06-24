@@ -1,6 +1,6 @@
 <?php
 
-namespace Sub\Libconnect\Lib;
+namespace Subhh\Libconnect\Lib;
 
 /***************************************************************
 * Copyright notice
@@ -38,7 +38,7 @@ namespace Sub\Libconnect\Lib;
  * @author Torsten Witt
  */
 
-use Sub\Libconnect\Service\Request;
+use Subhh\Libconnect\Service\Request;
 
 class Ezb
 {
@@ -811,7 +811,7 @@ class Ezb
      */
     private function setRequest($url, $params = [])
     {
-        $request = new \Sub\Libconnect\Service\Request();
+        $request = new \Subhh\Libconnect\Service\Request();
 
         $request->setUrl($url);
         $request->setQuery(['bibid' => $this->bibID, 'xmloutput' => 1 ]);

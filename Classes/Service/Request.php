@@ -1,6 +1,6 @@
 <?php
 
-namespace Sub\Libconnect\Service;
+namespace Subhh\Libconnect\Service;
 
 use TYPO3\CMS\Core\Http\RequestFactory;
 use TYPO3\CMS\Core\Log\LogManager;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Sub\Libconnect\Domain\Repository;
+namespace Subhh\Libconnect\Domain\Repository;
 
 /***************************************************************
 * Copyright notice
@@ -29,8 +29,8 @@ namespace Sub\Libconnect\Domain\Repository;
 *  Avonis - New Media Agency - http://www.avonis.com/
 ***************************************************************/
 
-use Sub\Libconnect\Lib\Ezb;
-use Sub\Libconnect\Lib\Zdb;
+use Subhh\Libconnect\Lib\Ezb;
+use Subhh\Libconnect\Lib\Zdb;
 
 /**
  * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
@@ -688,7 +688,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     }
 
     /**
-     * @param \Sub\Libconnect\Domain\Repository\SubjectRepository $subjectRepository
+     * @param \Subhh\Libconnect\Domain\Repository\SubjectRepository $subjectRepository
      */
     public function injectSubjectRepository(SubjectRepository $subjectRepository)
     {
@@ -696,14 +696,14 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     }
 
     /**
-     * @param \Sub\Libconnect\Lib\Ezb $ezb
+     * @param \Subhh\Libconnect\Lib\Ezb $ezb
      */
     public function injectEzb(Ezb $ezb) {
         $this->ezb = $ezb;
     }
 
     /**
-     * @param \Sub\Libconnect\Lib\Zdb $zdb
+     * @param \Subhh\Libconnect\Lib\Zdb $zdb
      */
     public function injectZdb(Zdb $zdb) {
         $this->zdb = $zdb;

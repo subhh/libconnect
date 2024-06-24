@@ -1,6 +1,6 @@
 <?php
 
-namespace Sub\Libconnect\Controller;
+namespace Subhh\Libconnect\Controller;
 
 /***************************************************************
 * Copyright notice
@@ -29,8 +29,8 @@ namespace Sub\Libconnect\Controller;
 *  Avonis - New Media Agency - http://www.avonis.com/
 ***************************************************************/
 
-use Sub\Libconnect\Domain\Repository\EzbRepository;
-use Sub\Libconnect\Domain\Repository\SubjectRepository;
+use Subhh\Libconnect\Domain\Repository\EzbRepository;
+use Subhh\Libconnect\Domain\Repository\SubjectRepository;
 
 /**
  * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
@@ -503,14 +503,14 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     }
 
     /**
-     * @param \Sub\Libconnect\Domain\Repository\EzbRepository $ezbRepository
+     * @param \Subhh\Libconnect\Domain\Repository\EzbRepository $ezbRepository
      */
     public function injectEzbRepository(EzbRepository $ezbRepository) {
         $this->ezbRepository = $ezbRepository;
     }
 
     /**
-     * @param \Sub\Libconnect\Domain\Repository\SubjectRepository $subjectRepository
+     * @param \Subhh\Libconnect\Domain\Repository\SubjectRepository $subjectRepository
      */
     public function injectSubjectRepository(SubjectRepository $subjectRepository) {
         $this->subjectRepository = $subjectRepository;

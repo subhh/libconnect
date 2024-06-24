@@ -1,6 +1,6 @@
 <?php
 
-namespace Sub\Libconnect\Domain\Model;
+namespace Subhh\Libconnect\Domain\Model;
 
 /***************************************************************
  *  Copyright notice
