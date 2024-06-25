@@ -29,6 +29,7 @@ namespace Subhh\Libconnect\Controller;
 *  Avonis - New Media Agency - http://www.avonis.com/
 ***************************************************************/
 
+use Psr\Http\Message\ResponseInterface;
 use Subhh\Libconnect\Domain\Repository\DbisRepository;
 
 /**
