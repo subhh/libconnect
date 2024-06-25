@@ -219,7 +219,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                 '/Resources/Private/Templates/Ezb/DisplayError.html'
             );
 
-            return;
+            return $this->htmlResponse();
         }
 
         //$this->ezbRepository->setLongAccessInfos($this->ezblongaccessinfos->de);
@@ -464,7 +464,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                 '/Resources/Private/Templates/Ezb/DisplayError.html'
             );
 
-            return;
+            return $this->htmlResponse();
         }
 
         $ParticipantsList =  $this->ezbRepository->getParticipantsList($params['jourid']);
