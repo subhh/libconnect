@@ -110,12 +110,6 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                 'libconnect[notation]' => $params['notation']
             ];
 
-            // no readable URL?
-            // its different to search results, because of different templates
-            /*if(!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GET('id'))){
-                $formParameter['id'] = $Pid;
-            }*/
-
             if (empty($params['colors'][1]) &
                 empty($params['colors'][2]) &
                 empty($params['colors'][4])) {
