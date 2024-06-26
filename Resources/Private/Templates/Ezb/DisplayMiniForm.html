@@ -58,12 +58,12 @@
     </div>
 </f:if>
 
-<f:if condition="{newUrl}">    
+<f:if condition="{newPid}">    
     <div class="ezb-listings-wrapper">
         <p id="ezb-newmini">
-            <a href="{newUrl}">
+            <f:link.page pageUid="{newPid}">
                 <f:translate key="tx_libconnect.ezb.miniform.new.all" /><span class="newcount"> ({newCount})</span>
-            </a>
+            </f:link.page>
         </p>
     </div>
 </f:if>

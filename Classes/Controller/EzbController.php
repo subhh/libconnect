@@ -260,7 +260,6 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->view->assign('vars', $newparams['search']);
 
         $this->view->assign('searchPid', $this->settings['flexform']['searchPid']);//link to search
-        $this->view->assign('listUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL($this->settings['flexform']['listPid']));//link to search results
         $this->view->assign('listPid', $this->settings['flexform']['listPid']);//ID of list
 
         //if new activated should here the new for subject be active
@@ -286,7 +285,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
             //show "new in EZB" only if there is something new
             if ($count >0) {
-                $this->view->assign('newUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL((int)($this->settings['flexform']['newPid'])));
+                $this->view->assign('newPid', (int)($this->settings['flexform']['newPid']));
                 $this->view->assign('newCount', $count);
             }
         }
