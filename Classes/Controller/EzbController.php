@@ -100,7 +100,6 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                 $options,
                 $config
             );
-            $listURL = $GLOBALS['TSFE']->cObj->getTypolink_URL($Pid);
 
             $formParameter = [
                 'libconnect[subject]' => $params['subject'],
@@ -123,7 +122,6 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
             //variables for template
             $this->view->assign('journals', $journals);
-            $this->view->assign('listUrl', $listURL);
             $this->view->assign('colors', $params['colors']);
             $this->view->assign('formParameter', $formParameter);
         } elseif ($isSearch !== false) {//search results
