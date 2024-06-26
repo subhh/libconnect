@@ -30,6 +30,8 @@ namespace Subhh\Libconnect\Controller;
 ***************************************************************/
 
 use Psr\Http\Message\ResponseInterface;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Utility\ArrayUtility;
 use Subhh\Libconnect\Domain\Repository\EzbRepository;
 use Subhh\Libconnect\Domain\Repository\SubjectRepository;
 
