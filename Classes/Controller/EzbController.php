@@ -166,13 +166,8 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                 '/Resources/Private/Templates/Ezb/DisplaySearch.html'
             );
 
-
-            //sets the link to the page with list plugin
-            $listURL = $GLOBALS['TSFE']->cObj->getTypolink_URL($Pid);
-
             //variables for template
             $this->view->assign('journals', $journals);
-            $this->view->assign('listUrl', $listURL);
             $this->view->assign('colors', $colors);
             $this->view->assign('formParameter', $params['search']);
         } else {//start point
