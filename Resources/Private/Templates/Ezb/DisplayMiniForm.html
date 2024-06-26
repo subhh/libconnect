@@ -12,11 +12,11 @@
         <f:form.textfield type="text" id="libconnect_ezb_minisuche" name="libconnect[search][sword]" value="{vars.sword}" size="20"/>
 
         <f:form.submit name="submit" value='<f:translate key="tx_libconnect.submit.search" />'/>
-        <f:if condition="{searchUrl}">
+        <f:if condition="{searchPid}">
         <p>
-            <a href="{searchUrl}">
+            <f:link.page pageUid="{searchPid}">page link</f:link.page>
                 <f:translate key="tx_libconnect.ezb.miniform.link.extended_search" />
-            </a>
+            </f:link.page>
         </p>
         </f:if>
     </f:form>    

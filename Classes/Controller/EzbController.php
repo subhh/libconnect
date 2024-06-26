@@ -78,8 +78,8 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         }
 
         //get PageID
-        $Pid = (int)($GLOBALS['TSFE']->page['uid']);
-        $this->view->assign('pageUid', $Pid);
+        $Uid = (int)($GLOBALS['TSFE']->page['uid']);
+        $this->view->assign('listUid', $Uid);
 
         if ((!empty($params['subject'])) || (!empty($params['notation']))) {//chosen subject after start point --> template DisplayList
 
@@ -161,6 +161,9 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                 '/Resources/Private/Templates/Ezb/DisplaySearch.html'
             );
 
+            //sets the link to the page with list plugin
+            $listPid = $GLOBALS['TSFE']->cObj->getTypolink_URL($Pid);
+
             //variables for template
             $this->view->assign('journals', $journals);
             $this->view->assign('colors', $colors);
@@ -180,7 +183,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $this->view->assign('list', $journals);
         }
 
-	return $this->htmlResponse();
+	    return $this->htmlResponse();
     }
 
     /**
@@ -256,8 +259,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         }
         $this->view->assign('vars', $newparams['search']);
 
-        $this->view->assign('siteUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL($GLOBALS['TSFE']->page['uid']));//current URL
-        $this->view->assign('searchUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL($this->settings['flexform']['searchPid']));//link to search
+        $this->view->assign('searchPid', $this->settings['flexform']['searchPid']);//link to search
         $this->view->assign('listUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL($this->settings['flexform']['listPid']));//link to search results
         $this->view->assign('listPid', $this->settings['flexform']['listPid']);//ID of list
 

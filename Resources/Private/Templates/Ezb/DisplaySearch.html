@@ -17,7 +17,7 @@
     <f:then>
         <div class="ezb-list-legend">
 
-        <f:form enctype="multipart/form-data" controller="Ezb" method="post" pageUid="{listUrl}" name="ezbaccessinfoform" id="ezbaccessinfoform" additionalAttributes="{onChange : 'document.ezbaccessinfoform.submit();'}">
+        <f:form enctype="multipart/form-data" controller="Ezb" method="post" pageUid="{listUid}" name="ezbaccessinfoform" id="ezbaccessinfoform" additionalAttributes="{onChange : 'document.ezbaccessinfoform.submit();'}">
 
             <f:for each="{journals.AccessInfos}" as="section" key="key">
                 <f:if condition="{section.colorkey} != 6">
