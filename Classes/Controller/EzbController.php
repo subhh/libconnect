@@ -63,7 +63,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $params = $this->request->getQueryParams()['tx_libconnect_ezb'];
             ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['tx_libconnect_ezb']);
         }
-	if (!empty( $this->request->getQueryParams()['libconnect'])) {
+	    if (!empty( $this->request->getQueryParams()['libconnect'])) {
             $params_temp = $this->request->getQueryParams()['libconnect'];
             ArrayUtility::mergeRecursiveWithOverrule($params_temp, $this->request->getParsedBody()['libconnect']);
             $params = array_merge($params_temp, $params);
@@ -81,7 +81,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $Pid = (int)($GLOBALS['TSFE']->page['uid']);
         $this->view->assign('pageUid', $Pid);
 
-        if ((!empty($params['subject'])) || (!empty($params['notation']))) {//chosen subject after start point
+        if ((!empty($params['subject'])) || (!empty($params['notation']))) {//chosen subject after start point --> template DisplayList
 
             $config['detailPid'] = $this->settings['flexform']['detailPid'];
 
