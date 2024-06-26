@@ -151,11 +151,6 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $colors = $params['colors'];
             unset($params['colors']);
 
-            //no readable URL?
-            /*if(!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GET('id'))){
-                $this->view->assign('formParameterId', $Pid);
-            }*/
-
             //search
             $journals =  $this->ezbRepository->loadSearch($params, $colors, $config);
 
