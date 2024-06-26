@@ -57,12 +57,13 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     public function displayListAction(): ResponseInterface
     {
         $params = [];
-        if (!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_ezb'))) {
-            $params_temp = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_ezb');
-            $params = $params_temp['libconnect'];
+        if (!empty( $this->request->getQueryParams()['tx_libconnect_ezb'])) {
+            $params = $this->request->getQueryParams()['tx_libconnect_ezb'];
+            ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['tx_libconnect_ezb']);
         }
-        if (!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect'))) {
-            $params_temp = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect');
+	if (!empty( $this->request->getQueryParams()['libconnect'])) {
+            $params_temp = $this->request->getQueryParams()['libconnect'];
+            ArrayUtility::mergeRecursiveWithOverrule($params_temp, $this->request->getParsedBody()['libconnect']);
             $params = array_merge($params_temp, $params);
         }
 
@@ -203,11 +204,14 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      */
     public function displayDetailAction(): ResponseInterface
     {
-        if (!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_ezb'))) {
-            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_ezb');
-        } else {
-            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect');
+	if (!empty( $this->request->getQueryParams()['tx_libconnect_ezb'])) {
+            $params = $this->request->getQueryParams()['tx_libconnect_ezb'];
+            ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['tx_libconnect_ezb']);
+        }else
+            $params = $this->request->getQueryParams()['libconnect'];
+            ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['libconnect']);
         }
+
         $config['participantsPid'] = $this->settings['flexform']['participantsPid'];
         $config['listPid'] = $this->settings['flexform']['listPid'];
 
@@ -250,14 +254,16 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     public function displayMiniFormAction(): ResponseInterface
     {
         $params = [];
-        if (!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_ezb'))) {
-            $params_temp = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_ezb');
-            $params = $params_temp['libconnect'];
+	if (!empty( $this->request->getQueryParams()['tx_libconnect_ezb'])) {
+            $params = $this->request->getQueryParams()['tx_libconnect_ezb'];
+            ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['tx_libconnect_ezb']);
         }
-        if (!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect'))) {
-            $params_temp = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect');
+        if (!empty( $this->request->getQueryParams()['libconnect'])) {
+            $params_temp = $this->request->getQueryParams()['libconnect'];
+            ArrayUtility::mergeRecursiveWithOverrule($params_temp, $this->request->getParsedBody()['libconnect']);
             $params = array_merge($params_temp, $params);
         }
+
 
         //variables for template
         $newparams = [];
@@ -307,10 +313,14 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      */
     public function displayFormAction(): ResponseInterface
     {
-        if (!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_ezb'))) {
-            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_ezb');
-        } else {
-            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect');
+	$params = array();
+
+	if (!empty( $this->request->getQueryParams()['tx_libconnect_ezb'])) {
+            $params = $this->request->getQueryParams()['tx_libconnect_ezb'];
+            ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['tx_libconnect_ezb']);
+        }elseif (!empty( $this->request->getQueryParams()['libconnect'])) {
+            $params = $this->request->getQueryParams()['libconnect'];
+            ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['libconnect']);
         }
 
         $form = $this->ezbRepository->loadForm();
@@ -331,12 +341,14 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     public function displayNewAction(): ResponseInterface
     {
         $params = [];
-        if (!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_ezb'))) {
-            $params_temp = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_ezb');
-            $params = $params_temp['libconnect'];
+
+	if (!empty( $this->request->getQueryParams()['tx_libconnect_ezb'])) {
+            $params = $this->request->getQueryParams()['tx_libconnect_ezb'];
+            ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['tx_libconnect_ezb']);
         }
-        if (!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect'))) {
-            $params_temp = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect');
+        if (!empty( $this->request->getQueryParams()['libconnect'])) {
+            $params_temp = $this->request->getQueryParams()['libconnect'];
+            ArrayUtility::mergeRecursiveWithOverrule($params_temp, $this->request->getParsedBody()['libconnect']);
             $params = array_merge($params_temp, $params);
         }
 
@@ -410,12 +422,14 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     public function getNewCount($subjectId = false)
     {
         $params = [];
-        if (!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_ezb'))) {
-            $params_temp = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_ezb');
-            $params = $params_temp['libconnect'];
+
+	if (!empty( $this->request->getQueryParams()['tx_libconnect_ezb'])) {
+            $params = $this->request->getQueryParams()['tx_libconnect_ezb'];
+            ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['tx_libconnect_ezb']);
         }
-        if (!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect'))) {
-            $params_temp = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect');
+        if (!empty( $this->request->getQueryParams()['libconnect'])) {
+            $params_temp = $this->request->getQueryParams()['libconnect'];
+            ArrayUtility::mergeRecursiveWithOverrule($params_temp, $this->request->getParsedBody()['libconnect']);
             $params = array_merge($params_temp, $params);
         }
 
@@ -450,10 +464,12 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      */
     public function displayParticipantsFormAction(): ResponseInterface
     {
-        if (!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_ezb'))) {
-            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_ezb');
+	if (!empty( $this->request->getQueryParams()['tx_libconnect_ezb'])) {
+            $params = $this->request->getQueryParams()['tx_libconnect_ezb'];
+            ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['tx_libconnect_ezb']);
         } else {
-            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect');
+            $params = $this->request->getQueryParams()['libconnect'];
+            ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['libconnect']);
         }
 
         //error - wrong jourid
