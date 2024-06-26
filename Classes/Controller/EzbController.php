@@ -188,7 +188,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      */
     public function displayDetailAction(): ResponseInterface
     {
-	if (!empty( $this->request->getQueryParams()['tx_libconnect_ezb'])) {
+	    if (!empty( $this->request->getQueryParams()['tx_libconnect_ezb'])) {
             $params = $this->request->getQueryParams()['tx_libconnect_ezb'];
             ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['tx_libconnect_ezb']);
         }else
@@ -238,7 +238,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     public function displayMiniFormAction(): ResponseInterface
     {
         $params = [];
-	if (!empty( $this->request->getQueryParams()['tx_libconnect_ezb'])) {
+	    if (!empty( $this->request->getQueryParams()['tx_libconnect_ezb'])) {
             $params = $this->request->getQueryParams()['tx_libconnect_ezb'];
             ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['tx_libconnect_ezb']);
         }
@@ -299,7 +299,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     {
 	$params = array();
 
-	if (!empty( $this->request->getQueryParams()['tx_libconnect_ezb'])) {
+	    if (!empty( $this->request->getQueryParams()['tx_libconnect_ezb'])) {
             $params = $this->request->getQueryParams()['tx_libconnect_ezb'];
             ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['tx_libconnect_ezb']);
         } elseif (!empty( $this->request->getQueryParams()['libconnect'])) {
@@ -324,7 +324,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     {
         $params = [];
 
-	if (!empty( $this->request->getQueryParams()['tx_libconnect_ezb'])) {
+	    if (!empty( $this->request->getQueryParams()['tx_libconnect_ezb'])) {
             $params = $this->request->getQueryParams()['tx_libconnect_ezb'];
             ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['tx_libconnect_ezb']);
         }
@@ -405,7 +405,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     {
         $params = [];
 
-	if (!empty( $this->request->getQueryParams()['tx_libconnect_ezb'])) {
+	    if (!empty( $this->request->getQueryParams()['tx_libconnect_ezb'])) {
             $params = $this->request->getQueryParams()['tx_libconnect_ezb'];
             ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['tx_libconnect_ezb']);
         }
@@ -446,7 +446,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      */
     public function displayParticipantsFormAction(): ResponseInterface
     {
-	if (!empty( $this->request->getQueryParams()['tx_libconnect_ezb'])) {
+	    if (!empty( $this->request->getQueryParams()['tx_libconnect_ezb'])) {
             $params = $this->request->getQueryParams()['tx_libconnect_ezb'];
             ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['tx_libconnect_ezb']);
         } else {
