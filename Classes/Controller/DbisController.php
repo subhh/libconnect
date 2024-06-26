@@ -30,6 +30,8 @@ namespace Subhh\Libconnect\Controller;
 ***************************************************************/
 
 use Psr\Http\Message\ResponseInterface;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Utility\ArrayUtility;
 use Subhh\Libconnect\Domain\Repository\DbisRepository;
 
 /**
@@ -311,8 +313,6 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         //variables for template
         $this->view->assign('vars', $params['search']);
         $this->view->assign('form', $form);
-        $this->view->assign('siteUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL($GLOBALS['TSFE']->page['uid']));//aktuelle URL
-        $this->view->assign('listUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL($this->settings['flexform']['listPid']));//Link zur Suchseite
         $this->view->assign('listPid', $this->settings['flexform']['listPid']);//Link zur Listendarstellung
 
 	return $this->htmlResponse();
