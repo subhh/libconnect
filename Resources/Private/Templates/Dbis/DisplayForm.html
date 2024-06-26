@@ -3,7 +3,7 @@
 <f:section name="main">
 <div id="extSearchForm-wrapper" class="clearfix">
 
-    <form name="extSearchForm" action="{listUrl}" method="get" class="e-search">
+    <form name="extSearchForm" action="<f:uri.page pageUid="{listPid}"/>" method="get" class="e-search">
         <input type="hidden" name="id" value="{listPid}" />
         <fieldset id="extSearchForm-fieldset-1">
             <legend><f:translate key="tx_libconnect.dbis.form.extended_search" /></legend>
