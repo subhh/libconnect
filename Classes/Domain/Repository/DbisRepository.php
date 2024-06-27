@@ -66,7 +66,7 @@ class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $result = $this->dbis->getDbliste($dbis_id);
 
         //get top dbs
-        $result = $this->getListTop($result['list']['top'], $config['detailPid']);
+        $result = $this->getListTop($result['list']['top']);
 
         return $result;
     }
@@ -108,7 +108,7 @@ class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         }
 
         //get top dbs
-        $result['list']['top'] = $this->getListTop($result['list']['top'], $config['detailPid']);
+        $result['list']['top'] = $this->getListTop($result['list']['top']);
 
         foreach (array_keys($result['list']['groups']) as $group) {
             foreach (array_keys($result['list']['groups'][$group]['dbs']) as $db) {
@@ -214,7 +214,7 @@ class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         }
 
         //get top dbs
-        $result['list']['top'] = $this->getListTop($result['list']['top'], $config['detailPid']);
+        $result['list']['top'] = $this->getListTop($result['list']['top']);
 
         foreach (array_keys($result['list']['values']) as $value) {
             $result['list']['values'][$value]['detail_link'] = $GLOBALS['TSFE']->cObj->getTypolink_URL(
@@ -266,10 +266,9 @@ class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 
     /**
      * @param array $list
-     * @param int $detailPid id of the detail page
      * @return array Description
      */
-    private function getListTop($list, $detailPid)
+    private function getListTop($list)
     {
         foreach (array_keys($list) as $db) {
             $list[$db]['titleid'] = $list[$db]['id'];
