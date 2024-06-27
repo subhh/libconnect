@@ -83,8 +83,6 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
         if ((!empty($params['subject'])) || (!empty($params['notation']))) {//chosen subject after start point --> template DisplayList
 
-            $config['detailPid'] = $this->settings['flexform']['detailPid'];
-
             $options['index'] = $params['index'];
             $options['sc'] = $params['sc'];
             $options['lc'] = $params['lc'];
@@ -98,7 +96,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $journals =  $this->ezbRepository->loadList(
                 $params['subject'],
                 $options,
-                $config
+                array()
             );
 
             $formParameter = [
@@ -124,9 +122,11 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $this->view->assign('journals', $journals);
             $this->view->assign('colors', $params['colors']);
             $this->view->assign('formParameter', $formParameter);
+            $this->view->assign('detailPid', $this->settings['flexform']['detailPid']);
+
         } elseif ($isSearch !== false) {//search results
 
-            $config['detailPid'] = $this->settings['flexform']['detailPid'];
+            
 
             $journals = [];
 
@@ -152,7 +152,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             unset($params['colors']);
 
             //search
-            $journals =  $this->ezbRepository->loadSearch($params, $colors, $config);
+            $journals =  $this->ezbRepository->loadSearch($params, $colors, array());
 
             //change view
             $this->view->setTemplatePathAndFilename(
@@ -165,6 +165,8 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $this->view->assign('journals', $journals);
             $this->view->assign('colors', $colors);
             $this->view->assign('formParameter', $params['search']);
+            $this->view->assign('detailPid', $this->settings['flexform']['detailPid']);
+
         } else {//start point
 
             $journals =  $this->ezbRepository->loadOverview();
@@ -351,9 +353,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         //date how long entry is new
         $newParams['search']['jq_term1'] = $this->getCalculatedDate();
 
-        $config['detailPid'] = $this->settings['flexform']['detailPid'];
-
-        if (empty($config['detailPid'])) {
+        if (empty($this->settings['flexform']['detailPid'])) {
             $this->addFlashMessage(
                 'Bitte konfigurieren Sie ein Ziel für die Detailseite.',
                 $messageTitle = 'Fehler',
@@ -374,7 +374,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                 ];
             }
 
-            $journals =  $this->ezbRepository->loadSearch($newParams, $params['search']['colors'], $config);
+            $journals =  $this->ezbRepository->loadSearch($newParams, $params['search']['colors'], array());
         }
 
         //get PageID
@@ -387,6 +387,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->view->assign('colors', $params['search']['colors']);
         $this->view->assign('subject', $subject['title']);
         $this->view->assign('formParameter', $newParams);
+        $this->view->assign('detailPid', = $this->settings['flexform']['detailPid']);
 
 	    return $this->htmlResponse();
     }

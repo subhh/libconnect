@@ -143,51 +143,45 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         //navigation - letters
         foreach (array_keys($journals['navlist']['pages']) as $page) {
             if (is_array($journals['navlist']['pages'][$page])) {
-                $journals['navlist']['pages'][$page]['link'] = $GLOBALS['TSFE']->cObj->getTypolink_URL($GLOBALS['TSFE']->page['uid'], [
-                    'libconnect[subject]' => $subject['notation'],
-                    'libconnect[index]' => 0,
-                    'libconnect[sc]' => $journals['navlist']['pages'][$page]['sc']? $journals['navlist']['pages'][$page]['sc'] : 'A',
-                    'libconnect[lc]' => $journals['navlist']['pages'][$page]['lc'],
-                    'libconnect[notation]' => $subject['notation'],
-                    'libconnect[colors]' => $journals['colors']
-                ]);
+                $journals['navlist']['pages'][$page]['link'] = array(
+                    'subject' => $subject['notation'],
+                    'index' => 0,
+                    'sc' => $journals['navlist']['pages'][$page]['sc']? $journals['navlist']['pages'][$page]['sc'] : 'A',
+                    'lc' => $journals['navlist']['pages'][$page]['lc'],
+                    'notation' => $subject['notation'],
+                    'colors' => $journals['colors']
+                );
             }
         }
 
         //navigation - sections in letters
         if (isset($journals['alphabetical_order']['first_fifty'])) {
             foreach (array_keys($journals['alphabetical_order']['first_fifty']) as $section) {
-                $journals['alphabetical_order']['first_fifty'][$section]['link'] = $GLOBALS['TSFE']->cObj->getTypolink_URL($GLOBALS['TSFE']->page['uid'], [
-                        'libconnect[subject]' => $subject['notation'],
-                        'libconnect[index]' => $journals['alphabetical_order']['first_fifty'][$section]['sindex'],
-                        'libconnect[sc]' => $journals['alphabetical_order']['first_fifty'][$section]['sc']? $journals['alphabetical_order']['first_fifty'][$section]['sc'] : 'A',
-                        'libconnect[lc]' => $journals['alphabetical_order']['first_fifty'][$section]['lc'],
-                        'libconnect[notation]' => $subject['notation'],
-                        'libconnect[colors]' => $journals['colors']
-                ]);
+                $journals['alphabetical_order']['first_fifty'][$section]['link'] = array(
+                    'subject' => $subject['notation'],
+                    'index' => $journals['alphabetical_order']['first_fifty'][$section]['sindex'],
+                    'sc' => $journals['alphabetical_order']['first_fifty'][$section]['sc']? $journals['alphabetical_order']['first_fifty'][$section]['sc'] : 'A',
+                    'lc' => $journals['alphabetical_order']['first_fifty'][$section]['lc'],
+                    'notation' => $subject['notation'],
+                    'colors' => $journals['colors']
+                );
             }
         }
         if (isset($journals['alphabetical_order']['journals'])) {
             foreach (array_keys($journals['alphabetical_order']['journals']) as $journal) {
-                $journals['alphabetical_order']['journals'][$journal]['detail_link'] = $GLOBALS['TSFE']->cObj->getTypolink_URL(
-                    (int)($config['detailPid']),
-                    [
-                            'libconnect[jourid]' => $journals['alphabetical_order']['journals'][$journal]['jourid']
-                        ]
-                );
+                $journals['alphabetical_order']['journals'][$journal]['jourid'] = $journals['alphabetical_order']['journals'][$journal]['jourid'];
             }
         }
         //navigation - sections in letters
         if (isset($journals['alphabetical_order']['next_fifty'])) {
             foreach (array_keys($journals['alphabetical_order']['next_fifty']) as $section) {
-                $journals['alphabetical_order']['next_fifty'][$section]['link'] = $GLOBALS['TSFE']->cObj->getTypolink_URL($GLOBALS['TSFE']->page['uid'], [
-                        'libconnect[subject]' => $subject['notation'],
-                        'libconnect[index]' => $journals['alphabetical_order']['next_fifty'][$section]['sindex'],
-                        'libconnect[sc]' => $journals['alphabetical_order']['next_fifty'][$section]['sc']? $journals['alphabetical_order']['next_fifty'][$section]['sc'] : 'A',
-                        'libconnect[lc]' => $journals['alphabetical_order']['next_fifty'][$section]['lc'],
-                        'libconnect[notation]' => $subject['notation'],
-                        'libconnect[colors]' => $journals['colors']
-                ]);
+                $journals['alphabetical_order']['next_fifty'][$section]['link'] = array(
+                    'subject' => $subject['notation'],
+                    'index' => $journals['alphabetical_order']['next_fifty'][$section]['sindex'],
+                    'sc' => $journals['alphabetical_order']['next_fifty'][$section]['sc']? $journals['alphabetical_order']['next_fifty'][$section]['sc'] : 'A',
+                    'notation' => $subject['notation'],
+                    'colors' => $journals['colors']
+                );
             }
         }
 
