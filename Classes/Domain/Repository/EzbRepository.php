@@ -312,11 +312,10 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      *
      * @param array $searchVars
      * @param array $colors
-     * @param mixed $config
      *
      * @return array $journals
      */
-    public function loadSearch($searchVars, $colors, $config)
+    public function loadSearch($searchVars, $colors)
     {
         unset($searchVars['colors']);
 

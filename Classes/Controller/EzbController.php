@@ -152,7 +152,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             unset($params['colors']);
 
             //search
-            $journals =  $this->ezbRepository->loadSearch($params, $colors, array());
+            $journals =  $this->ezbRepository->loadSearch($params, $colors);
 
             //change view
             $this->view->setTemplatePathAndFilename(
@@ -374,7 +374,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                 ];
             }
 
-            $journals =  $this->ezbRepository->loadSearch($newParams, $params['search']['colors'], array());
+            $journals =  $this->ezbRepository->loadSearch($newParams, $params['search']['colors']);
         }
 
         //get PageID
@@ -432,7 +432,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         ];
 
         //request
-        $journals =  $this->ezbRepository->loadSearch($params, $colors, false);
+        $journals =  $this->ezbRepository->loadSearch($params, $colors);
 
         return $journals['page_vars']['search_count'];
     }
