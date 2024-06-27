@@ -110,14 +110,10 @@ class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         //get top dbs
         $result['list']['top'] = $this->getListTop($result['list']['top']);
 
+        //get groups
         foreach (array_keys($result['list']['groups']) as $group) {
             foreach (array_keys($result['list']['groups'][$group]['dbs']) as $db) {
-                $result['list']['groups'][$group]['dbs'][$db]['detail_link'] = $GLOBALS['TSFE']->cObj->getTypolink_URL(
-                    (int)($config['detailPid']),
-                    [
-                        'libconnect[titleid]' => $result['list']['groups'][$group]['dbs'][$db]['id'],
-                    ]
-                );
+                $result['list']['groups'][$group]['dbs'][$db]['titleid'] = $result['list']['groups'][$group]['dbs'][$db]['id'];
             }
         }
 
@@ -217,12 +213,7 @@ class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $result['list']['top'] = $this->getListTop($result['list']['top']);
 
         foreach (array_keys($result['list']['values']) as $value) {
-            $result['list']['values'][$value]['detail_link'] = $GLOBALS['TSFE']->cObj->getTypolink_URL(
-                (int)($config['detailPid']),
-                [
-                    'libconnect[titleid]' => $result['list']['values'][$value]['id'],
-                ]
-            );
+            $result['list']['values'][$value]['titleid'] = $result['list']['values'][$value]['id'];
         }
 
         return $result['list'];

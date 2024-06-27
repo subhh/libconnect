@@ -92,7 +92,6 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
         if (!empty($params['subject'])) {//chosen subject after start point
             $config['sort'] = $this->settings['flexform']['sortParameter'];
-            $config['detailPid'] = $this->settings['flexform']['detailPid'];
 
             //user sorted list
             if (isset($params['sort']) && !empty($params['sort'])) {
@@ -135,10 +134,11 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $this->view->assign('subject', $params['subject']);
             $this->view->assign('zugaenge', $params['search']['zugaenge']);
             $this->view->assign('list', $list['list']);
+            $this->view->assign('detailPid', = $this->settings['flexform']['detailPid']);
+            
         } elseif ($isSearch !== false) {//search results
-            $config['detailPid'] = $this->settings['flexform']['detailPid'];
 
-            $list =  $this->dbisRepository->loadSearch($params['search'], $config);
+            $list =  $this->dbisRepository->loadSearch($params['search'], array());
 
             //change view
             $this->view->setTemplatePathAndFilename(
@@ -152,6 +152,8 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
             //variables for template
             $this->view->assign('list', $list);
+            $this->view->assign('detailPid', = $this->settings['flexform']['detailPid']);
+
         } else {//start point
             $list =  $this->dbisRepository->loadOverview();
 
