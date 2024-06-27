@@ -272,12 +272,7 @@ class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     private function getListTop($list, $detailPid)
     {
         foreach (array_keys($list) as $db) {
-            $list[$db]['detail_link'] = $GLOBALS['TSFE']->cObj->getTypolink_URL(
-                (int)$detailPid,
-                [
-                    'libconnect[titleid]' => $list[$db]['id'],
-                ]
-            );
+            $list[$db]['titleid'] = $list[$db]['id'];
         }
 
         return $list;
