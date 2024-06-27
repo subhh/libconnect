@@ -57,7 +57,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         //variables for template
         $this->view->assign('top', $top);
 
-	return $this->htmlResponse();
+	    return $this->htmlResponse();
     }
 
     /**
@@ -76,7 +76,6 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             ArrayUtility::mergeRecursiveWithOverrule($params_temp, $this->request->getParsedBody()['libconnect']);
             $params = array_merge($params_temp, $params);
         }
-        
 
         //show overview on empty search
         $isSearch = false;
@@ -275,7 +274,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
                 $count = (int)$this->getNewCount($subject['dbisid']);
 
-                if ($count >0) {
+                if ($count > 0) {
                     $this->view->assign('subject', $params['subject']);
 
                     $this->view->assign('newInSubjectCount', $count);
@@ -286,7 +285,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $count = (int)$this->getNewCount(false);
 
             //show "new in EZB" only if there is something new
-            if ($count >0) {
+            if ($count > 0) {
                 $this->view->assign('newPid', (int)($this->settings['flexform']['newPid']));
                 $this->view->assign('newCount', $count);
             }

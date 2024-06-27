@@ -113,11 +113,11 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                 empty($params['colors'][2]) &
                 empty($params['colors'][4])) {
                 $params['colors'] = [
-                        1 => 1,
-                        2 => 2,
-                        4 => 4,
-                        6 => 6
-                    ];
+                    1 => 1,
+                    2 => 2,
+                    4 => 4,
+                    6 => 6
+                ];
             }
 
             //variables for template
@@ -142,10 +142,10 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                 empty($params['colors'][2]) &
                 empty($params['colors'][4])) {
                 $params['colors'] = [
-                        1 => 1,
-                        2 => 2,
-                        4 => 4
-                    ];
+                    1 => 1,
+                    2 => 2,
+                    4 => 4
+                ];
             }
 
             $colors = $params['colors'];
@@ -232,7 +232,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->view->assign('journal', $journal);
         $this->view->assign('bibid', $this->ezbRepository->getBibid());
 
-	return $this->htmlResponse();
+	    return $this->htmlResponse();
     }
 
     /**
@@ -250,7 +250,6 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             ArrayUtility::mergeRecursiveWithOverrule($params_temp, $this->request->getParsedBody()['libconnect']);
             $params = array_merge($params_temp, $params);
         }
-
 
         //variables for template
         $newparams = [];
@@ -288,7 +287,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             }
         }
 
-	return $this->htmlResponse();
+	    return $this->htmlResponse();
     }
 
     /**
@@ -313,7 +312,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->view->assign('form', $form);
         $this->view->assign('listPid', $this->settings['flexform']['listPid']);//ID of list view
 
-	return $this->htmlResponse();
+	    return $this->htmlResponse();
     }
 
     /**
@@ -372,10 +371,10 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                 empty($params['search']['colors'][2]) &
                 empty($params['search']['colors'][4])) {
                 $params['search']['colors'] = [
-                        1 => 1,
-                        2 => 2,
-                        4 => 4
-                    ];
+                    1 => 1,
+                    2 => 2,
+                    4 => 4
+                ];
             }
 
             $journals =  $this->ezbRepository->loadSearch($newParams, $params['search']['colors'], $config);
@@ -429,10 +428,10 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $config['detailPid'] = $this->settings['flexform']['detailPid'];
 
         $colors = [
-                        1 => 1,
-                        2 => 2,
-                        4 => 4
-                ];
+            1 => 1,
+            2 => 2,
+            4 => 4
+        ];
 
         //request
         $journals =  $this->ezbRepository->loadSearch($params, $colors, false);
