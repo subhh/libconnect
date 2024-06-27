@@ -23,11 +23,7 @@
         <f:if condition="<f:count subject='{list.top}' /> > 0">
             <div class="top-database-wrapper">
                 <h2><f:translate key="tx_libconnect.dbis.search.top_databases" /></h2>
-                    <ul class="dbis-top-list">
-                        <f:for each="{list.top}" as="db">
-                            <li><a href="{db.detail_link}"><f:format.htmlentitiesDecode>{db.title}</f:format.htmlentitiesDecode></a> (<f:format.htmlentitiesDecode>{db.access}</f:format.htmlentitiesDecode>)</li>
-                        </f:for>
-                    </ul>
+                <f:render partial="Dbis/TopList" arguments="{top:top, detailPid:detailPid}" />
             </div>
         </f:if>
 
