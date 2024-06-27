@@ -173,7 +173,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         if (!empty( $this->request->getQueryParams()['tx_libconnect_dbis'])) {
             $params = $this->request->getQueryParams()['tx_libconnect_dbis'];
             ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['tx_libconnect_dbis']);
-        } else(
+        } else{
             $params_temp = $this->request->getQueryParams()['libconnect'];
             ArrayUtility::mergeRecursiveWithOverrule($params_temp, $this->request->getParsedBody()['libconnect']);
             $params = array_merge($params_temp, $params);
