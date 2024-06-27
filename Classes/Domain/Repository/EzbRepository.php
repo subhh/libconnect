@@ -548,9 +548,9 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                 $key = 3;
             }
             $return[$key] = [
-                            'colorkey' => $colorkey,
-                            'value' => $value
-                        ];
+                'colorkey' => $colorkey,
+                'value' => $value
+            ];
         }
 
         ksort($return);
