@@ -48,12 +48,10 @@
     </f:if>
 </div>
 
-<f:if condition="{newUrlSub}">
+<f:if condition="{newInSubjectCount}">
     <div class="ezb-listings-wrapper">
         <p id="ezb-newminiSub">
-            <a href="{newUrlSub}">
-                <f:translate key="tx_libconnect.ezb.miniform.new.subject" /><span class="newcount"> ({newInSubjectCount})</span>
-            </a>
+            <f:link.page pageUid="{newPid}" additionalParams="{libconnect: {subject: '{subject}'}}"><span class="newcount"> ({newInSubjectCount})</span></f:link.page>
         </p>
     </div>
 </f:if>

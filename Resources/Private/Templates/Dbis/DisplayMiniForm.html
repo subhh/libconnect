@@ -114,16 +114,11 @@
     </div>
 </f:if>
 
-<f:if condition="{newUrlSub}">
+<f:if condition="{newInSubjectCount}">
     <div class="dbis-listings-wrapper">
         <div class="dbis-new">
             <p id="dbis-newmini">
                 <f:link.page pageUid="{newPid}" additionalParams="{libconnect: {subject: '{subject}'}}"><span class="newcount"> ({newInSubjectCount})</span></f:link.page>
-
-            
-                <a href="{newPidSub}">
-                    <f:translate key="tx_libconnect.dbis.miniform.new.subject" /><span class="newcount"> ({newInSubjectCount})</span>
-                </a>
             </p>
         </div>
     </div>
