@@ -11,8 +11,12 @@
         <f:form.textfield id="libconnect_dbis_minisuche" name="libconnect[search][sword]" value="{vars.sword}" size="20"/><br/>
 
         <f:form.submit name="submit" value='<f:translate key="tx_libconnect.dbis.miniform.search_term" />'/>
-        <f:if condition="{searchUrl}">
-            <p><a href="{searchUrl}"><f:translate key="tx_libconnect.dbis.miniform.search_link" /></a></p>
+        <f:if condition="{searchPid}">
+        <p>
+            <f:link.page pageUid="{searchPid}">
+                <f:translate key="tx_libconnect.dbis.miniform.search_link" />
+            </f:link.page>
+        </p>
         </f:if>
     </f:form>
 
@@ -98,13 +102,13 @@
     </f:if>
 </div>
 
-<f:if condition="{newUrl}">
+<f:if condition="{newPid}">
     <div class="dbis-listings-wrapper">
         <div class="dbis-new">
             <p id="dbis-newmini">
-                <a href="{newUrl}">
+                <f:link.page pageUid="{newPid}">
                     <f:translate key="tx_libconnect.dbis.miniform.new.all" /><span class="newcount"> ({newCount})</span>
-                </a>
+                </f:link.page>
             </p>
         </div>
     </div>
@@ -114,7 +118,10 @@
     <div class="dbis-listings-wrapper">
         <div class="dbis-new">
             <p id="dbis-newmini">
-                <a href="{newUrlSub}">
+                <f:link.page pageUid="{newPid}" additionalParams="{libconnect: {subject: '{subject}'}}"><span class="newcount"> ({newInSubjectCount})</span></f:link.page>
+
+            
+                <a href="{newPidSub}">
                     <f:translate key="tx_libconnect.dbis.miniform.new.subject" /><span class="newcount"> ({newInSubjectCount})</span>
                 </a>
             </p>

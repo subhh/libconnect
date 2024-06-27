@@ -262,29 +262,27 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->view->assign('searchPid', $this->settings['flexform']['searchPid']);//link to search
         $this->view->assign('listPid', $this->settings['flexform']['listPid']);//ID of list
 
-        //if new activated should here the new for subject be active
+        //links to the plugin "new in ezb"
         if (!empty($this->settings['flexform']['newPid'])) {
-            //if subject is chosen link to subject list is displayed
+
+            //new entries for a selected subject
             if (!empty($params['subject'])) {
                 $this->view->assign('showSubjectLink', true);
 
                 $count = (int)$this->getNewCount($params['subject']);
 
-                if ($count >0) {
-                    $this->view->assign('newInSubjectCount', $count);
+                if ($count > 0) {
+                    $this->view->assign('subject', $params['subject']);
 
-                    $this->view->assign('newUrlSub', $GLOBALS['TSFE']->cObj->getTypolink_URL(
-                        (int)($this->settings['flexform']['newPid']),
-                        ['libconnect' => ['subject' => $params['subject'] ]]
-                    ));//URL of new list
+                    $this->view->assign('newInSubjectCount', $count);
                 }
             }
 
-            /*all new*/
+            //new entries for all subjects
             $count = (int)$this->getNewCount(false);
 
             //show "new in EZB" only if there is something new
-            if ($count >0) {
+            if ($count > 0) {
                 $this->view->assign('newPid', (int)($this->settings['flexform']['newPid']));
                 $this->view->assign('newCount', $count);
             }

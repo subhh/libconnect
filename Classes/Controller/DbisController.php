@@ -228,10 +228,8 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
         //variables for template
         $this->view->assign('form', $form);
-        $this->view->assign('siteUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL($GLOBALS['TSFE']->page['uid']));//active URL
-        $this->view->assign('searchUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL($this->settings['flexform']['searchPid']));//link to search page
-        $this->view->assign('listUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL($this->settings['flexform']['listPid']));//link to list page
-        $this->view->assign('listPid', $this->settings['flexform']['listPid']);//id of page with list
+        $this->view->assign('searchPid', (int)$this->settings['flexform']['searchPid']);//link to search page
+        $this->view->assign('listPid', (int)$this->settings['flexform']['listPid']);//id of page with list
         $this->view->assign('vars', $params['search']);
         //hide selectbox for licence/access if search and sort alph
         if (isset($params['sort']) && isset($params['subject'])) {
@@ -265,6 +263,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
         //links to the plugin "new in dbis"
         if (!empty($this->settings['flexform']['newPid'])) {
+
             //new entries for a selected subject
             if (!empty($params['subject']) && ($params['subject'] != 'all')) {
                 $subject = $this->dbisRepository->getSubject($params['subject']);
@@ -277,10 +276,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                 $count = (int)$this->getNewCount($subject['dbisid']);
 
                 if ($count >0) {
-                    $this->view->assign('newUrlSub', $GLOBALS['TSFE']->cObj->getTypolink_URL(
-                        (int)($this->settings['flexform']['newPid']),
-                        ['libconnect' => ['subject' => $params['subject'] ]]
-                    ));//URL der New-Darstellung
+                    $this->view->assign('subject', $params['subject']);
 
                     $this->view->assign('newInSubjectCount', $count);
                 }
@@ -289,8 +285,9 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             //new entries for all subjects
             $count = (int)$this->getNewCount(false);
 
+            //show "new in EZB" only if there is something new
             if ($count >0) {
-                $this->view->assign('newUrl', $GLOBALS['TSFE']->cObj->getTypolink_URL((int)($this->settings['flexform']['newPid'])));
+                $this->view->assign('newPid', (int)($this->settings['flexform']['newPid']));
                 $this->view->assign('newCount', $count);
             }
         }
