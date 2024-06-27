@@ -147,17 +147,9 @@ class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                 //get id of subject from database
                 $subject = $this->dbis_to_t3_subjects[$el['id']];
 
-                $el['link'] = $GLOBALS['TSFE']->cObj->getTypolink_URL(
-                    $GLOBALS['TSFE']->page['uid'],
-                    [
-                    'libconnect[subject]' => $subject['uid']]
-                );
+                $el['link'] = $subject['uid'];
             } else {
-                $el['link'] = $GLOBALS['TSFE']->cObj->getTypolink_URL(
-                    $GLOBALS['TSFE']->page['uid'],
-                    [
-                    'libconnect[subject]' => $el['id']]
-                );
+                $el['link'] = $el['id']];
             }
 
             $list[$el['id']] = $el;

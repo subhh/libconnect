@@ -77,6 +77,8 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $params = array_merge($params_temp, $params);
         }
 
+        $uid = $GLOBALS['TSFE']->page['uid'];
+
         //show overview on empty search
         $isSearch = false;
         if (!empty($params['search'])) {
@@ -159,6 +161,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
             //variables for template
             $this->view->assign('list', $list);
+            $this->view->assign('uid', $uid);
         }
 
 	    return $this->htmlResponse();
