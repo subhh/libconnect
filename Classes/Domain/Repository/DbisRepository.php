@@ -147,9 +147,9 @@ class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                 //get id of subject from database
                 $subject = $this->dbis_to_t3_subjects[$el['id']];
 
-                $el['link'] = $subject['uid'];
+                $el['subject'] = $subject['uid'];
             } else {
-                $el['link'] = $el['id']];
+                $el['subject'] = $el['id']];
             }
 
             $list[$el['id']] = $el;
