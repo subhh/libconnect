@@ -356,8 +356,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         //date how long entry is new
         $params['jq_term1'] = $this->getCalculatedDate();
 
-        $config['detailPid'] = $this->settings['flexform']['detailPid'];
-        if (empty($config['detailPid'])) {
+        if (empty($this->settings['flexform']['detailPid'])) {
             $this->addFlashMessage(
                 'Bitte konfigurieren Sie ein Ziel für die Detailseite.',
                 $messageTitle = 'Fehler',
@@ -368,7 +367,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $list = false;
         } else {
             //request
-            $list =  $this->dbisRepository->loadSearch($params, $config);
+            $list =  $this->dbisRepository->loadSearch($params, array());
         }
 
         //decide full or short text
@@ -378,7 +377,8 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->view->assign('list', $list);
         $this->view->assign('new_date', $params['jq_term1']);
         $this->view->assign('subject', $subject['title']);
-
+        $this->view->assign('detailPid', = $this->settings['flexform']['detailPid']);
+        
 	    return $this->htmlResponse();
     }
 
