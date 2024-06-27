@@ -49,13 +49,14 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      */
     public function displayTopAction(): ResponseInterface
     {
+        //get top list
         $config['subject'] = $this->settings['flexform']['subject'];
-        $config['detailPid'] = $this->settings['flexform']['detailPid'];
 
         $top =  $this->dbisRepository->loadTop($config);
 
         //variables for template
         $this->view->assign('top', $top);
+        $this->view->assign('detailPid', $this->settings['flexform']['detailPid'];);
 
 	    return $this->htmlResponse();
     }

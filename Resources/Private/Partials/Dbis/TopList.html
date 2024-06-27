@@ -2,13 +2,11 @@
 <ul class="dbis-top-list">
     <f:for each="{top}" as="db">
         <li class="dbis-list-accessinfo-{db.access_ref}">
-            <a href="{db.detail_link}">
+            <f:link.page pageUid="{detailPid}" additionalParams="{libconnect: {titleid: '{db.titleid}'}}">
                 <f:format.htmlentitiesDecode>
-                    <libconnect:StrreplaceNp search="&" replace="&amp;">
-                        {db.title}
-                    </libconnect:StrreplaceNp>
+                    <libconnect:StrreplaceNp search="&" replace="&amp;">{db.title}</libconnect:StrreplaceNp>
                 </f:format.htmlentitiesDecode>
-            </a>
+            </f:link.page>
         </li>
     </f:for>
 </ul>
