@@ -66,18 +66,17 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     public function displayListAction(): ResponseInterface
     {
         $params = [];
-        if (!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_dbis'))) {
-            $params_temp = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_dbis');
-            $params = $params_temp['libconnect'];
+
+        if (!empty( $this->request->getQueryParams()['tx_libconnect_dbis'])) {
+            $params = $this->request->getQueryParams()['tx_libconnect_dbis'];
+            ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['tx_libconnect_dbis']);
         }
-        if (!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect'))) {
-            $params_temp = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect');
-            if (!empty($params)) {
-                $params = array_merge($params_temp, $params);
-            } else {
-                $params = $params_temp;
-            }
+        if (!empty( $this->request->getQueryParams()['libconnect'])) {
+            $params_temp = $this->request->getQueryParams()['libconnect'];
+            ArrayUtility::mergeRecursiveWithOverrule($params_temp, $this->request->getParsedBody()['libconnect']);
+            $params = array_merge($params_temp, $params);
         }
+        
 
         //show overview on empty search
         $isSearch = false;
@@ -163,7 +162,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $this->view->assign('list', $list);
         }
 
-	return $this->htmlResponse();
+	    return $this->htmlResponse();
     }
 
     /**
@@ -171,10 +170,14 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      */
     public function displayDetailAction(): ResponseInterface
     {
-        if (!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_dbis'))) {
-            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_dbis');
-        } else {
-            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect');
+        $params = [];
+        if (!empty( $this->request->getQueryParams()['tx_libconnect_dbis'])) {
+            $params = $this->request->getQueryParams()['tx_libconnect_dbis'];
+            ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['tx_libconnect_dbis']);
+        } else(
+            $params_temp = $this->request->getQueryParams()['libconnect'];
+            ArrayUtility::mergeRecursiveWithOverrule($params_temp, $this->request->getParsedBody()['libconnect']);
+            $params = array_merge($params_temp, $params);
         }
 
         if (!($params['titleid'])) {
@@ -201,7 +204,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $this->view->assign('db', $list);
         }
 
-	return $this->htmlResponse();
+	    return $this->htmlResponse();
     }
 
     /**
@@ -210,17 +213,15 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     public function displayMiniFormAction(): ResponseInterface
     {
         $params = [];
-        if (!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_dbis'))) {
-            $params_temp = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_dbis');
-            $params = $params_temp['libconnect'];
+
+        if (!empty( $this->request->getQueryParams()['tx_libconnect_dbis'])) {
+            $params = $this->request->getQueryParams()['tx_libconnect_dbis'];
+            ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['tx_libconnect_dbis']);
         }
-        if (!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect'))) {
-            $params_temp = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect');
-            if (!empty($params)) {
-                $params = array_merge($params_temp, $params);
-            } else {
-                $params = $params_temp;
-            }
+        if (!empty( $this->request->getQueryParams()['libconnect'])) {
+            $params_temp = $this->request->getQueryParams()['libconnect'];
+            ArrayUtility::mergeRecursiveWithOverrule($params_temp, $this->request->getParsedBody()['libconnect']);
+            $params = array_merge($params_temp, $params);
         }
 
         $form = $this->dbisRepository->loadMiniForm();
@@ -294,7 +295,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             }
         }
 
-	return $this->htmlResponse();
+	    return $this->htmlResponse();
     }
 
     /**
@@ -302,10 +303,15 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      */
     public function displayFormAction(): ResponseInterface
     {
-        if (!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_dbis'))) {
-            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_dbis');
-        } else {
-            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect');
+        $params = [];
+        if (!empty( $this->request->getQueryParams()['tx_libconnect_dbis'])) {
+            $params = $this->request->getQueryParams()['tx_libconnect_dbis'];
+            ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['tx_libconnect_dbis']);
+        }
+        if (!empty( $this->request->getQueryParams()['libconnect'])) {
+            $params_temp = $this->request->getQueryParams()['libconnect'];
+            ArrayUtility::mergeRecursiveWithOverrule($params_temp, $this->request->getParsedBody()['libconnect']);
+            $params = array_merge($params_temp, $params);
         }
 
         $form = $this->dbisRepository->loadForm($params['search']);
@@ -315,7 +321,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->view->assign('form', $form);
         $this->view->assign('listPid', $this->settings['flexform']['listPid']);//Link zur Listendarstellung
 
-	return $this->htmlResponse();
+	    return $this->htmlResponse();
     }
 
     /**
@@ -323,10 +329,15 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      */
     public function displayNewAction(): ResponseInterface
     {
-        if (!empty(\TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_dbis'))) {
-            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('tx_libconnect_dbis');
-        } else {
-            $params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GPmerged('libconnect');
+        $params = [];
+        if (!empty( $this->request->getQueryParams()['tx_libconnect_dbis'])) {
+            $params = $this->request->getQueryParams()['tx_libconnect_dbis'];
+            ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['tx_libconnect_dbis']);
+        }
+        if (!empty( $this->request->getQueryParams()['libconnect'])) {
+            $params_temp = $this->request->getQueryParams()['libconnect'];
+            ArrayUtility::mergeRecursiveWithOverrule($params_temp, $this->request->getParsedBody()['libconnect']);
+            $params = array_merge($params_temp, $params);
         }
 
         $params['jq_type1'] = 'LD';
@@ -365,7 +376,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->view->assign('new_date', $params['jq_term1']);
         $this->view->assign('subject', $subject['title']);
 
-	return $this->htmlResponse();
+	    return $this->htmlResponse();
     }
 
     /**

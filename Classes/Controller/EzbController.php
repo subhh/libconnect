@@ -298,7 +298,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      */
     public function displayFormAction(): ResponseInterface
     {
-	$params = array();
+	    $params = array();
 
 	    if (!empty( $this->request->getQueryParams()['tx_libconnect_ezb'])) {
             $params = $this->request->getQueryParams()['tx_libconnect_ezb'];
@@ -394,7 +394,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->view->assign('subject', $subject['title']);
         $this->view->assign('formParameter', $newParams);
 
-	return $this->htmlResponse();
+	    return $this->htmlResponse();
     }
 
     /**
@@ -479,7 +479,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->view->assign('jourid', $params['jourid']);
         $this->view->assign('titel', $title);
 
-	return $this->htmlResponse();
+	    return $this->htmlResponse();
     }
 
     /**
@@ -490,7 +490,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $contact =  $this->ezbRepository->getContact();
         $this->view->assign('contact', $contact);
 
-	return $this->htmlResponse();
+	    return $this->htmlResponse();
     }
 
     /**
