@@ -6,7 +6,7 @@
 <ul class="dbis-list">
 <f:for each="{list}" as="item">
     <li>
-        <f:link.page pageUid="{uid}" additionalParams="{libconnect: {subject: '{item.link}'}}">
+        <f:link.page pageUid="{listUid}" additionalParams="{libconnect: {subject: '{item.link}'}}">
             <f:format.htmlentitiesDecode>{item.title}</f:format.htmlentitiesDecode></a> ({item.count})
         </f:link.page>
     </li>
