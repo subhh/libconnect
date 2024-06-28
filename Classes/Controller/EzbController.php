@@ -126,8 +126,6 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
         } elseif ($isSearch !== false) {//search results
 
-            
-
             $journals = [];
 
             //params form link
