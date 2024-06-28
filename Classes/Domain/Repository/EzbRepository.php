@@ -216,7 +216,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $form =  $this->ezb->detailSearchFormFields();
         $journal['selected_colors'] = $form['selected_colors'];
 
-        $color = $journal['color_code'];//Farbangabe
+        $color = $journal['color_code'];
         unset($journal['color_code']);
         $journal['color_code'] = [];
 
@@ -240,7 +240,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             }
         }
 
-        //setSubjectLinks but only it is configured
+        //get subjects
         if (!empty($config['listPid'])) {
             $subjects = $this->loadOverview();
             
@@ -255,12 +255,12 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             }
         }
 
-        //get links with keywords
+        //get keywords
         if (!empty($config['listPid'])) {
             $journal['keywords_join'] = $this->getKeywords4Links($journal['keywords']);
         }
 
-        //getTitleHistory
+        //get title history
         if (!empty($journal['ZDB_number'])) {
             $journal['title_history'] = $this->getTitleHistory($journal['ZDB_number']);
         }
