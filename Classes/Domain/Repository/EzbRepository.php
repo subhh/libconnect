@@ -235,14 +235,14 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             }
         }
 
-        //get subjects
+        //get links for subjects
         if (!empty($config['listPid'])) {
-            $subjects = $this->loadOverview();
+            $allSubjects = $this->loadOverview();
             
-            foreach ($subjects as $subject) {
-                //@todo is$journal['subjects_join'] always a string and not an array?
-                if ($subject['title'] == $journal['subjects_join']) {
-                    $journal['subjects_join_link'][] = [
+            foreach ($allSubjects as $OneOfAllSubjects) {
+                
+                if (in_array($OneOfAllSubjects['title'], $journal['subjects']) {
+                    $journal['subjects_link'][] = [
                         'subject' => $subject['notation'],
                         'title' => $subject['title']
                     ];
@@ -252,7 +252,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 
         //get keywords
         if (!empty($config['listPid'])) {
-            $journal['keywords_join'] = $this->getKeywords4Links($journal['keywords']);
+            $journal['keywords_for_links'] = $this->getKeywords4Links($journal['keywords']);
         }
 
         //get title history

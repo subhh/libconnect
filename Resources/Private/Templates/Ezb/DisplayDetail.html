@@ -255,33 +255,37 @@
                     </tr>
                 </f:if>
             
-                <f:if condition="{journal.subjects_join}">
+                <f:if condition="{journal.subjects}">
                     <tr>
                         <th>
                             <strong><f:translate key="tx_libconnect.ezb.detail.subjects_join" />:</strong>
                         </th>
                         <td>
-                            <f:if condition="{journal.subjects_join_link}">
+                            <ul>
+                            <f:if condition="{journal.subjects_link}">
                                 <f:then>
-                                    <ul>
-                                    <f:for each="{journal.subjects_join_link}" as="entry">
+                                    <f:for each="{journal.subjects_link}" as="entry">
                                         <li>
                                         <f:link.page pageUid="{listPid}" additionalParams="{libconnect: {subject: '{entry.subject}'}}">
                                             <f:format.htmlentitiesDecode>{entry.title}</f:format.htmlentitiesDecode>
                                         </f:link.page>
                                         </li>
                                     </f:for>
-                                    </ul>
                                 </f:then>
                                 <f:else>
-                                    <f:format.htmlentitiesDecode>{journal.subjects_join}</f:format.htmlentitiesDecode>
+                                    <f:for each="{journal.subjects}" as="entry">
+                                        <li>
+                                            <f:format.htmlentitiesDecode>{entry}</f:format.htmlentitiesDecode>
+                                        </li>
+                                    </f:for>
                                 </f:else>
-                            </f:if>                            
+                            </f:if>
+                            </ul>
                         </td>
                     </tr>
                 </f:if>
-            
-                <f:if condition="{journal.keywords_join}">
+
+                <f:if condition="{journal.keywords}">
                     <tr>
                         <th>
                             <strong><f:translate key="tx_libconnect.ezb.detail.keywords_join" />:</strong>
@@ -290,7 +294,7 @@
                             <ul>
                             <f:if condition="{listPid}">
                                 </f:then>
-                                    <f:for each="{journal.keywords_join}" as="entry">
+                                    <f:for each="{journal.keywords_for_links}" as="entry">
                                         <li>
                                             <f:link.page pageUid="{listPid}" additionalParams="{libconnect: {search: {colors: '{entry.colors}'}, {jq_term1: '{entry.jq_term1}'}, {jq_type1: '{entry.jq_term1}'}}}}">
                                                 <f:format.htmlentitiesDecode>{entry.keyword}</f:format.htmlentitiesDecode>
@@ -299,9 +303,11 @@
                                     </f:for>
                                 <f:then>
                                 <f:else>
+                                    <f:for each="{journal.keywords}" as="entry">
                                     <li>
-                                        <f:format.htmlentitiesDecode>{journal.keywords_join}</f:format.htmlentitiesDecode>
+                                        <f:format.htmlentitiesDecode>{entry}</f:format.htmlentitiesDecode>
                                     </li>
+                                    </f:for>
                                 </f:else>
                             </f:if>
                             </ul>
