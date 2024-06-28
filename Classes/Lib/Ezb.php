@@ -127,7 +127,7 @@ class Ezb
 
         if (isset($xml_response->ezb_subject_list->subject)) {
             foreach ($xml_response->ezb_subject_list->subject as $key => $value) {
-                $fachbereiche[(string)$value['notation'][0]] = ['title' => (string)$value[0], 'journalcount' => (int)$value['journalcount'], 'id' => (string)$value['notation'][0], 'notation' => (string)$value['notation'][0]];
+                $fachbereiche[(string)$value['notation'][0]] = ['title' => (string)$value[0], 'journalcount' => (int)$value['journalcount'], 'notation' => (string)$value['notation'][0]];
             }
         }
 

@@ -261,7 +261,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 
         //get links with keywords
         if (!empty($config['listPid'])) {
-            $journal['keywords_join'] = $this->getKeywords4Links($journal['keywords'], $config['listPid']);
+            $journal['keywords_join'] = $this->getKeywords4Links($journal['keywords']);
         }
 
         //getTitleHistory
@@ -276,11 +276,10 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * creates parameter for links
      *
      * @param array $keywods list of keywods
-     * @param integer $pid
      *
      * @return string
      */
-    public function getKeywords4Links($keywords, $pid)
+    public function getKeywords4Links($keywords)
     {
         //example http://rzblx1.uni-regensburg.de/ezeit/searchres.phtml?bibid=SUBHH&colors=7&lang=de&jq_type1=KW&jq_term1=Radiologie
 
