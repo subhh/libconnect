@@ -66,11 +66,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     {
         $subjectsOnline = $this->ezb->getFachbereiche();
 
-        foreach ($subjectsOnline as $el) {
-            $list[$el['id']] = $el;
-        }
-
-        return $list;
+        return $subjectsOnline;
     }
 
     /**
