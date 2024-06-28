@@ -231,12 +231,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         //generate link to institutions having access to this journal
         if ($journal['participants'] == true) {
             if ($config['participantsPid'] and $config['participantsPid'] != 0) {
-                $journal['participants'] = $GLOBALS['TSFE']->cObj->getTypolink_URL(
-                    (int)($config['participantsPid']),
-                    [
-                        'libconnect[jourid]' => $journalId
-                    ]
-                );
+                $journal['participants'] = $journalId;
             }
         }
 

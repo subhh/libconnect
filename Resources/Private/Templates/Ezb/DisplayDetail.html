@@ -292,7 +292,7 @@
                                 </f:then>
                                     <f:for each="{journal.keywords_join}" as="entry">
                                         <li>
-                                            <f:link.page pageUid="{listPid}" additionalParams="{libconnect: {search: colors: '{entry.colors}', jq_term1: '{entry.jq_term1}', jq_type1: '{entry.jq_term1}'}}">
+                                            <f:link.page pageUid="{listPid}" additionalParams="{libconnect: {search: {colors: '{entry.colors}'}, {jq_term1: '{entry.jq_term1}'}, {jq_type1: '{entry.jq_term1}'}}}}">
                                                 <f:format.htmlentitiesDecode>{entry.keyword}</f:format.htmlentitiesDecode>
                                             </f:link.page>
                                         </li>
@@ -456,7 +456,9 @@
                             <strong>&nbsp;</strong>
                         </th>
                         <td>
-                            <a href="<f:format.htmlentitiesDecode>{journal.participants}</f:format.htmlentitiesDecode>" target="zdbopac"><f:translate key="tx_libconnect.ezb.detail.participants" /></a>
+                            <f:link.page pageUid="{participantsPid}" additionalParams="{libconnect: {jourid: '{journal.participants}'}}">
+                                <f:translate key="tx_libconnect.ezb.detail.participants" />
+                            </f:link.page>
                         </td>
                     </tr>
                 </f:if>
