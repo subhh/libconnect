@@ -285,7 +285,24 @@
                             <strong><f:translate key="tx_libconnect.ezb.detail.keywords_join" />:</strong>
                         </th>
                         <td>
-                            <f:format.htmlentitiesDecode>{journal.keywords_join}</f:format.htmlentitiesDecode>
+                            <ul>
+                            <f:if condition="{listPid}">
+                                </f:then>
+                                    <f:for each="{journal.keywords_join}" as="entry">
+                                        <li>
+                                            <f:link.page pageUid="{listPid}" additionalParams="{libconnect: {search: colors: '{entry.colors}', jq_term1: '{entry.jq_term1}', jq_type1: '{entry.jq_term1}'}}">
+                                                <f:format.htmlentitiesDecode>{entry.keyword}</f:format.htmlentitiesDecode>
+                                            </f:link.page>
+                                        </li>
+                                    </f:for>
+                                <f:then>
+                                <f:else>
+                                    <li>
+                                        <f:format.htmlentitiesDecode>{journal.keywords_join}</f:format.htmlentitiesDecode>
+                                    </li>
+                                </f:else>
+                            </f:if>
+                            </ul>
                         </td>
                     <tr>
                 </f:if>

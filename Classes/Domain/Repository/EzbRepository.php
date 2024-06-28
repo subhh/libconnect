@@ -265,9 +265,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 
         //get links with keywords
         if (!empty($config['listPid'])) {
-            $journal['keywords_join'] = $this->getKeywordLinks($journal['keywords'], $config['listPid']);
-        }else{
-            $journal['keywords_join'] = implode(', ', $journal['keywords']);
+            $journal['keywords_join'] = $this->getKeywords4Links($journal['keywords'], $config['listPid']);
         }
 
         //getTitleHistory
@@ -279,30 +277,25 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     }
 
     /**
-     * creates links of keywords
+     * creates parameter for links
      *
      * @param array $keywods list of keywods
      * @param integer $pid
      *
      * @return string
      */
-    public function getKeywordLinks($keywords, $pid)
+    public function getKeywords4Links($keywords, $pid)
     {
         //example http://rzblx1.uni-regensburg.de/ezeit/searchres.phtml?bibid=SUBHH&colors=7&lang=de&jq_type1=KW&jq_term1=Radiologie
 
         $tempKeywords = [];
         foreach ($keywords as $keyword) {
-            $tempKeywords[] = $GLOBALS['TSFE']->cObj->getTypoLink(
-                $keyword,
-                (int)$pid,
-                [
-                    'libconnect[search][colors]' => '7',
-                    'libconnect[search][jq_term1]' =>  $keyword,
-                    'libconnect[search][jq_type1]' => 'KW'
-                ]
-            );
+            $tempKeywords[] = array( 'search' => array(
+                    'colors' => '7',
+                    'jq_term1' =>  $keyword,
+                    'jq_type1' => 'KW'
+            ), 'keyword' => $keyword;
         }
-        $tempKeywords = implode(', ', $tempKeywords);
 
         return $tempKeywords;
     }
