@@ -238,13 +238,14 @@ class Ezb
         $journal['publisher'] = (string)$xml_response->ezb_detail_about_journal->journal->detail->publisher;
         $journal['ZDB_number'] = (string)@$xml_response->ezb_detail_about_journal->journal->detail->ZDB_number;
         $journal['ZDB_number_link'] = (string)@$xml_response->ezb_detail_about_journal->journal->detail->ZDB_number->attributes()->url;
+
         $journal['subjects'] = [];
         if (isset($xml_response->ezb_detail_about_journal->journal->detail->subjects->subject)) {
             foreach ($xml_response->ezb_detail_about_journal->journal->detail->subjects->subject as $subject) {
                 $journal['subjects'][] = (string)$subject;
             }
         }
-        $journal['subjects_join'] = implode(', ', $journal['subjects']);
+
         $journal['pissns'] = [];
         if (isset($xml_response->ezb_detail_about_journal->journal->detail->P_ISSNs->P_ISSN)) {
             foreach ($xml_response->ezb_detail_about_journal->journal->detail->P_ISSNs->P_ISSN as $pissn) {
@@ -259,6 +260,7 @@ class Ezb
             }
         }
         $journal['eissns_join'] = implode(', ', $journal['eissns']);
+
         $journal['keywords'] = [];
         if (isset($xml_response->ezb_detail_about_journal->journal->detail->keywords->keyword)) {
             foreach ($xml_response->ezb_detail_about_journal->journal->detail->keywords->keyword as $keyword) {
@@ -316,6 +318,7 @@ class Ezb
             'red' => 4,
             'yellow_red' => 6
         ];
+
         $journal['periods'] = [];
         if (isset($xml_response->ezb_detail_about_journal->journal->periods->period)) {
             foreach ($xml_response->ezb_detail_about_journal->journal->periods->period as $period) {
