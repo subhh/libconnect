@@ -265,9 +265,11 @@
                                 <f:then>
                                     <ul>
                                     <f:for each="{journal.subjects_join_link}" as="entry">
-                                        <li><a href="<f:format.htmlentitiesDecode>{entry.link}</f:format.htmlentitiesDecode>">
+                                        <li>
+                                        <f:link.page pageUid="{listPid}" additionalParams="{libconnect: {subject: '{entry.subject}'}}">
                                             <f:format.htmlentitiesDecode>{entry.title}</f:format.htmlentitiesDecode>
-                                        </a></li>
+                                        </f:link.page>
+                                        </li>
                                     </f:for>
                                     </ul>
                                 </f:then>

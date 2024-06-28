@@ -249,14 +249,10 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             $subjects = $this->loadOverview();
             
             foreach ($subjects as $subject) {
+                //@todo is$journal['subjects_join'] always a string and not an array?
                 if ($subject['title'] == $journal['subjects_join']) {
                     $journal['subjects_join_link'][] = [
-                        'link' => $GLOBALS['TSFE']->cObj->getTypolink_URL(
-                            (int)($config['listPid']),
-                            [
-                                'libconnect[subject]' => $subject['notation']
-                            ]
-                        ),
+                        'subject' => $subject['notation'],
                         'title' => $subject['title']
                     ];
                 }
