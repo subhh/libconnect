@@ -198,9 +198,6 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['libconnect']);
         }
 
-        $config['participantsPid'] = $this->settings['flexform']['participantsPid'];
-        $config['listPid'] = $this->settings['flexform']['listPid'];
-
         //error - wrong jourid
         if(!is_numeric($params['jourid']) || empty($params['jourid'])){
             //change view
@@ -230,6 +227,8 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         //variables for template
         $this->view->assign('journal', $journal);
         $this->view->assign('bibid', $this->ezbRepository->getBibid());
+        $this->view->assign('participantsPid', $this->settings['flexform']['participantsPid']);
+        $this->view->assign('listPid', $this->settings['flexform']['listPid']);
 
 	    return $this->htmlResponse();
     }
