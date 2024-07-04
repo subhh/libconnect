@@ -56,7 +56,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
         //variables for template
         $this->view->assign('top', $top);
-        $this->view->assign('detailPid', $this->settings['flexform']['detailPid'];);
+        $this->view->assign('detailPid', $this->settings['flexform']['detailPid']);
 
 	    return $this->htmlResponse();
     }
