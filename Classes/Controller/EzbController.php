@@ -191,7 +191,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 	    if (!empty( $this->request->getQueryParams()['tx_libconnect_ezb'])) {
             $params = $this->request->getQueryParams()['tx_libconnect_ezb'];
             ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['tx_libconnect_ezb']);
-        }else
+        } else {
             $params = $this->request->getQueryParams()['libconnect'];
             ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['libconnect']);
         }
