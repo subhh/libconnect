@@ -303,16 +303,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             $searchVars['search']['jq_type1'] = 'QS';
             $searchVars['search']['jq_term1'] = $searchVars['search']['sword'];
         }
-        unset($searchVars['search']['sword']);//in weiterer Verarbeitung nicht sinnvoll
-
-        $linkParams = [];
-        foreach ($searchVars['search'] as $key => $value) {
-            $linkParams['libconnect[search][' . $key . ']'] = $value;
-        }
-
-        if ($searchVars['subject']) {
-            $linkParams['libconnect[subject]'] = $searchVars['subject'];
-        }
+        unset($searchVars['search']['sword']);//no need
 
         $ezbColors = $this->getColors($colors);
         $this->ezb->setColors($ezbColors);
@@ -336,6 +327,15 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $journals['colors'] = $colors;
 
         //create links
+        $linkParams = [];
+        foreach ($searchVars['search'] as $key => $value) {
+            $linkParams['search'][$key]] = $value;
+        }
+
+        if ($searchVars['subject']) {
+            $linkParams['subject'] = $searchVars['subject'];
+        }
+        
         $journals = $this->getLinks($journals, $config, $linkParams);
 
         return $journals;
@@ -352,18 +352,20 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      */
     public function getLinks($journals, $config, $linkParams)
     {
+        //merging of parameter: keep search at paging alive
+
+        //@todo: parameter lang
 
         //navigation - letters
         if (is_array($journals['navlist']['pages'])) {
             foreach (array_keys($journals['navlist']['pages']) as $page) {
                 if (is_array($journals['navlist']['pages'][$page])) {
-                    $journals['navlist']['pages'][$page]['link'] = $GLOBALS['TSFE']->cObj->getTypolink_URL(
-                        $GLOBALS['TSFE']->page['uid'],
-                        array_merge($linkParams, [
-                            'libconnect[search][sc]' => $journals['navlist']['pages'][$page]['id'],
-                            'libconnect[search][colors]' => $journals['colors']
-                        ])
-                    );
+                    $journals['navlist']['pages'][$page]['link'] = array_merge($linkParams, array(
+                        ['search'] = array(
+                            'sc' => $journals['navlist']['pages'][$page]['id'],
+                            'colors' => $journals['colors']
+                        )
+                    ));
                 }
             }
         }
@@ -372,12 +374,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         if (is_array($journals['precise_hits'])) {
             foreach (array_keys($journals['precise_hits']) as $precise_hit) {
                 if (is_array($journals['precise_hits'][$precise_hit])) {
-                    $journals['precise_hits'][$precise_hit]['detail_link'] = $GLOBALS['TSFE']->cObj->getTypolink_URL(
-                        (int)($config['detailPid']),
-                        [
-                            'libconnect[jourid]' => $journals['precise_hits'][$precise_hit]['jourid'],
-                        ]
-                    );
+                    $journals['precise_hits'][$precise_hit]['jourid'] = $journals['precise_hits'][$precise_hit]['jourid'];
                 }
             }
         }
@@ -385,38 +382,31 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         //navigation - sections in letters
         if (is_array($journals['alphabetical_order']['first_fifty'])) {
             foreach (array_keys($journals['alphabetical_order']['first_fifty']) as $section) {
-                $journals['alphabetical_order']['first_fifty'][$section]['link'] = $GLOBALS['TSFE']->cObj->getTypolink_URL(
-                    $GLOBALS['TSFE']->page['uid'],
-                    array_merge($linkParams, [
-                        'libconnect[search][sindex]' => $journals['alphabetical_order']['first_fifty'][$section]['sindex'],
-                        'libconnect[search][sc]' => $journals['alphabetical_order']['first_fifty'][$section]['sc'],
-                        'libconnect[search][colors]' => $journals['colors']
-                    ])
-                );
+                $journals['alphabetical_order']['first_fifty'][$section]['link'] = = array_merge($linkParams, array(
+                    ['search'] = array(
+                        'sindex' => $journals['alphabetical_order']['first_fifty'][$section]['sindex'],
+                        'sc' => $journals['alphabetical_order']['first_fifty'][$section]['sc'],
+                        'colors' => $journals['colors']
+                    )
+                ));
             }
         }
 
         if (is_array($journals['alphabetical_order']['journals'])) {
             foreach (array_keys($journals['alphabetical_order']['journals']) as $journal) {
-                $journals['alphabetical_order']['journals'][$journal]['detail_link'] = $GLOBALS['TSFE']->cObj->getTypolink_URL(
-                    (int)($config['detailPid']),
-                    [
-                        'libconnect[jourid]' => $journals['alphabetical_order']['journals'][$journal]['jourid'],
-                    ]
-                );
+                $journals['alphabetical_order']['journals'][$journal]['jourid'] = $journals['alphabetical_order']['journals'][$journal]['jourid'];
             }
         }
 
         if (is_array($journals['alphabetical_order']['next_fifty'])) {
             foreach (array_keys($journals['alphabetical_order']['next_fifty']) as $section) {
-                $journals['alphabetical_order']['next_fifty'][$section]['link'] = $GLOBALS['TSFE']->cObj->getTypolink_URL(
-                    $GLOBALS['TSFE']->page['uid'],
-                    array_merge($linkParams, [
-                        'libconnect[search][sindex]' => $journals['alphabetical_order']['next_fifty'][$section]['sindex'],
-                        'libconnect[search][sc]' => $journals['alphabetical_order']['next_fifty'][$section]['sc'],
-                        'libconnect[search][colors]' => $journals['colors']
+                $journals['alphabetical_order']['next_fifty'][$section]['link'] = array_merge($linkParams, array(
+                    ['search'] = array(
+                        'sindex' => $journals['alphabetical_order']['next_fifty'][$section]['sindex'],
+                        'sc' => $journals['alphabetical_order']['next_fifty'][$section]['sc'],
+                        'colors' => $journals['colors']
                     ])
-                );
+                ));
             }
         }
 

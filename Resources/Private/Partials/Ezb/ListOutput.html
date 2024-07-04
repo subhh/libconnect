@@ -2,13 +2,13 @@
 
     <f:for each="{journals.alphabetical_order.first_fifty}" as="section">
         <h3>
-            <a href="{section.link}">
+            <f:link.page pageUid="{listPid}" additionalParams="{libconnect: {subject:'{section.link.subject}', search: {index:'{section.link.search.index}', sc:'{section.link.sc}', notation:'{section.link.notation}', colors:'{section.link.colors}'} }" addQueryString="0">
                 <f:format.htmlentitiesDecode>
                     <libconnect:strreplaceNp search="&" replace="&amp;">
-                        {section.first_fifty_titles}
+                        {section.next_fifty_titles}
                     </libconnect:strreplaceNp>
                 </f:format.htmlentitiesDecode>...
-            </a>
+            </f:link.page>
         </h3>
     </f:for>
     
@@ -19,26 +19,26 @@
     <ul class="ezb-list">
         <f:for each="{journals.alphabetical_order.journals}" as="journal">
             <li class="ezb-list-accessinfo-access_{journal.color_code}">
-                <a href="<f:format.htmlentitiesDecode>{journal.detail_link}</f:format.htmlentitiesDecode>">
+                <f:link.page pageUid="{detailPid}" additionalParams="{libconnect: {jourid:'{journal.jourid}'}}" addQueryString="0">
                     <f:format.htmlentitiesDecode>
                         <libconnect:strreplaceNp search="&" replace="&amp;">
                             {journal.title}
                         </libconnect:strreplaceNp>
                     </f:format.htmlentitiesDecode>
-                </a>
+                </f:link.page>
             </li>
         </f:for>
     </ul>
 
     <f:for each="{journals.alphabetical_order.next_fifty}" as="section">
         <h3>
-            <a href="<f:format.htmlentitiesDecode>{section.link}</f:format.htmlentitiesDecode>">
+            <f:link.page pageUid="{listPid}" additionalParams="{libconnect: {subject:'{section.link.subject}', search: {index:'{section.link.search.index}', sc:'{section.link.sc}', notation:'{section.link.notation}', colors:'{section.link.colors}'} }" addQueryString="0">
                 <f:format.htmlentitiesDecode>
                     <libconnect:strreplaceNp search="&" replace="&amp;">
                         {section.next_fifty_titles}
                     </libconnect:strreplaceNp>
                 </f:format.htmlentitiesDecode>...
-            </a>
+            </f:link.page>
         </h3>
     </f:for>
 

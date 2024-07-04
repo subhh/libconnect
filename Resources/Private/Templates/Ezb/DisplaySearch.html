@@ -17,24 +17,24 @@
     <f:then>
         <div class="ezb-list-legend">
 
-        <f:form enctype="multipart/form-data" controller="Ezb" method="post" pageUid="{listUid}" name="ezbaccessinfoform" id="ezbaccessinfoform" additionalAttributes="{onChange : 'document.ezbaccessinfoform.submit();'}">
+            <f:form enctype="multipart/form-data" controller="Ezb" method="post" pageUid="{listUid}" name="ezbaccessinfoform" id="ezbaccessinfoform" additionalAttributes="{onChange : 'document.ezbaccessinfoform.submit();'}">
 
-            <f:for each="{journals.AccessInfos}" as="section" key="key">
-                <f:if condition="{section.colorkey} != 6">
+                <f:for each="{journals.AccessInfos}" as="section" key="key">
+                    <f:if condition="{section.colorkey} != 6">
 
-                    <f:if condition="{libconnect:ArrayNp(inputArray: colors, key: section.colorkey)}">
-                        <f:then>
-                            <f:form.checkbox  id="ezb-accessinfo-access_{section.colorkey}" name="libconnect[colors][{section.colorkey}]" class="accessinfo-element"  value="{section.colorkey}"  checked="1"/>
-                        </f:then>
-                        <f:else>
-                            <f:form.checkbox  id="ezb-accessinfo-access_{section.colorkey}" name="libconnect[colors][{section.colorkey}]" class="accessinfo-element"  value="{section.colorkey}"/>
-                        </f:else>
+                        <f:if condition="{libconnect:ArrayNp(inputArray: colors, key: section.colorkey)}">
+                            <f:then>
+                                <f:form.checkbox  id="ezb-accessinfo-access_{section.colorkey}" name="libconnect[colors][{section.colorkey}]" class="accessinfo-element"  value="{section.colorkey}"  checked="1"/>
+                            </f:then>
+                            <f:else>
+                                <f:form.checkbox  id="ezb-accessinfo-access_{section.colorkey}" name="libconnect[colors][{section.colorkey}]" class="accessinfo-element"  value="{section.colorkey}"/>
+                            </f:else>
+                        </f:if>
+
                     </f:if>
+                    <label class="ezb-accessinfo-access_{section.colorkey} accessinfo-element" for="ezb-accessinfo-access_{section.colorkey}">{section.value}</label>
 
-                </f:if>
-                <label class="ezb-accessinfo-access_{section.colorkey} accessinfo-element" for="ezb-accessinfo-access_{section.colorkey}">{section.value}</label>
-
-            </f:for>
+                </f:for>
 
                 <f:for each="{formParameter}" as="parameter" key="key">
                     <f:if condition="{libconnect:IsArrayNp(value: parameter)}">
@@ -64,27 +64,34 @@
 
         <br/><br/>
 
+        <!-- precise_hits -->
         <f:if condition="{libconnect:IsArrayNp(value: journals.precise_hits)}">
             <h2><f:translate key="tx_libconnect.ezb.search.proper.hits" /></h2>
             <ul class="ezb-list">
                 <f:for each="{journals.precise_hits}" as="journal">
                     <li class="ezb-list-accessinfo-access_{journal.color_code}">
-                        <a href="{journal.detail_link}"><f:format.htmlentitiesDecode>{journal.title}</f:format.htmlentitiesDecode></a>
+                        <f:link.page pageUid="{detailPid}" additionalParams="{libconnect: {jourid:'{journal.jourid}'}}" addQueryString="0">
+                            <f:format.htmlentitiesDecode>{journal.title}</f:format.htmlentitiesDecode>
+                        </f:link.page>
                     </li>
                 </f:for>
             </ul>
         </f:if>
 
+        <!-- headline -->
         <f:if condition="{journals.page_vars.search_count} > 0">
             <h2><f:translate key="tx_libconnect.ezb.search.all.hits" /></h2>
         </f:if>
 
+        <!-- navigation - at top -->
         <f:if condition="{libconnect:IsArrayNp(value: journals.navlist.pages)}">
             <div class="ezb-navigation">
                 <f:for each="{journals.navlist.pages}" as="item">
                     <f:if condition="{libconnect:IsArrayNp(value: item)}">
                         <f:then>
-                            <a href="{item.link}">{item.title}</a>
+                            <f:link.page pageUid="{listPid}" additionalParams="{libconnect: {subject:'{item.link.subject}', search: {index:'{item.link.search.index}', sc:'{item.link.sc}', notation:'{item.link.notation}', colors:'{item.link.colors}'} }" addQueryString="0">
+                                <f:format.htmlentitiesDecode>{item.title}</f:format.htmlentitiesDecode>
+                            </f:link.page>
                         </f:then>
                         <f:else>
                             <em>{item}</em>
@@ -96,8 +103,10 @@
             <br/><br/>
         </f:if>
 
+        <!-- results -->
         <f:render partial="Ezb/ListOutput" arguments="{journals:journals}" />
 
+        <!-- navigation - at bottom -->
         <f:if condition="{libconnect:IsArrayNp(value: journals.navlist.pages)}">
             <f:then>
                 <br/><br/>
@@ -106,7 +115,9 @@
                     <f:for each="{journals.navlist.pages}" as="item">
                         <f:if condition="{libconnect:IsArrayNp(value: item)}">
                             <f:then>
-                                <a href="{item.link}">{item.title}</a>
+                                <f:link.page pageUid="{listPid}" additionalParams="{libconnect: {subject:'{item.link.subject}', search: {index:'{item.link.search.index}', sc:'{item.link.sc}', notation:'{item.link.notation}', colors:'{item.link.colors}'} }" addQueryString="0">
+                                    <f:format.htmlentitiesDecode>{item.title}</f:format.htmlentitiesDecode>
+                                </f:link.page>
                             </f:then>
                             <f:else>
                                 <em>{item}</em>
