@@ -134,7 +134,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $this->view->assign('subject', $params['subject']);
             $this->view->assign('zugaenge', $params['search']['zugaenge']);
             $this->view->assign('list', $list['list']);
-            $this->view->assign('detailPid' = $this->settings['flexform']['detailPid']);
+            $this->view->assign('detailPid', $this->settings['flexform']['detailPid']);
             
         } elseif ($isSearch !== false) {//search results
 
@@ -152,7 +152,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
             //variables for template
             $this->view->assign('list', $list);
-            $this->view->assign('detailPid' = $this->settings['flexform']['detailPid']);
+            $this->view->assign('detailPid', $this->settings['flexform']['detailPid']);
 
         } else {//start point
             $list =  $this->dbisRepository->loadOverview();
@@ -377,7 +377,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->view->assign('list', $list);
         $this->view->assign('new_date', $params['jq_term1']);
         $this->view->assign('subject', $subject['title']);
-        $this->view->assign('detailPid' = $this->settings['flexform']['detailPid']);
+        $this->view->assign('detailPid', $this->settings['flexform']['detailPid']);
         
 	    return $this->htmlResponse();
     }
