@@ -145,7 +145,7 @@ class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 
                 $el['subject'] = $subject['uid'];
             } else {
-                $el['subject'] = $el['id']];
+                $el['subject'] = $el['id'];
             }
 
             $list[$el['id']] = $el;
