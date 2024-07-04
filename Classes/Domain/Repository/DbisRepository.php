@@ -79,7 +79,7 @@ class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      *
      * @return array
      */
-    public function loadList($subject_id, $config)
+    public function loadList($subject_id, $config, $parameter)
     {
         $this->loadSubjects();
         $accessFilter = false;
@@ -94,7 +94,7 @@ class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 
             $dbis_id = $subject['dbisid'];
 
-            $result = $this->dbis->getDbliste($dbis_id, $config['sort'], $accessFilter);
+            $result = $this->dbis->getDbliste($dbis_id, $config['sort'], $accessFilter, $parameter);
         } else {//for own collection or all subjects
 
             //access sort for all entries in all subjects is not possible
@@ -102,7 +102,7 @@ class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                 $config['sort'] = 'alph';
             }
 
-            $result = $this->dbis->getDbliste($subject_id, $config['sort'], $accessFilter);
+            $result = $this->dbis->getDbliste($subject_id, $config['sort'], $accessFilter, $parameter);
 
             $subject['title'] = $result['headline'];
         }

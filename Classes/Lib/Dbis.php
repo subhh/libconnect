@@ -151,7 +151,7 @@ class Dbis
      *
      * @return array
      */
-    public function getDbliste($fachgebiet, $sort = 'type', $accessFilter = false)
+    public function getDbliste($fachgebiet, $sort = 'type', $accessFilter = false, $tmpParams = array())
     {
         $sortlist = [];
 
@@ -166,7 +166,6 @@ class Dbis
         //BOF workaround for alphabetical listing
         if ($fachgebiet == 'all') {
             $params['lett'] = 'a';
-            $tmpParams = \TYPO3\CMS\Core\Http\RequestHandlerInterface::getQueryParams()['libconnect'] ?? null;
 
             if (!empty($tmpParams['lc'])) {
                 if (!empty($tmpParams['lc'][0])) {

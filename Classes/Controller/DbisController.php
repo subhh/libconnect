@@ -111,7 +111,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                 }
             }
 
-            $list =  $this->dbisRepository->loadList($params['subject'], $config);
+            $list =  $this->dbisRepository->loadList($params['subject'], $config, $params);
 
             //check, if there are no results and inform user to change licence
             $empty = true;
