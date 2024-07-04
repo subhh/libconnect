@@ -329,7 +329,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         //create links
         $linkParams = [];
         foreach ($searchVars['search'] as $key => $value) {
-            $linkParams['search'][$key]] = $value;
+            $linkParams['search'][$key] = $value;
         }
 
         if ($searchVars['subject']) {
