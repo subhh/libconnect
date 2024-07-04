@@ -68,14 +68,9 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     {
         $params = [];
 
-        if (!empty( $this->request->getQueryParams()['tx_libconnect_dbis'])) {
-            $params = $this->request->getQueryParams()['tx_libconnect_dbis'];
-            ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['tx_libconnect_dbis']);
-        }
         if (!empty( $this->request->getQueryParams()['libconnect'])) {
-            $params_temp = $this->request->getQueryParams()['libconnect'];
-            ArrayUtility::mergeRecursiveWithOverrule($params_temp, $this->request->getParsedBody()['libconnect']);
-            $params = array_merge($params_temp, $params);
+            $params = $this->request->getQueryParams()['libconnect'];
+            ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['libconnect']);
         }
 
         //get PageID
@@ -177,13 +172,9 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     public function displayDetailAction(): ResponseInterface
     {
         $params = [];
-        if (!empty( $this->request->getQueryParams()['tx_libconnect_dbis'])) {
-            $params = $this->request->getQueryParams()['tx_libconnect_dbis'];
-            ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['tx_libconnect_dbis']);
-        } else{
-            $params_temp = $this->request->getQueryParams()['libconnect'];
-            ArrayUtility::mergeRecursiveWithOverrule($params_temp, $this->request->getParsedBody()['libconnect']);
-            $params = array_merge($params_temp, $params);
+        if (!empty( $this->request->getQueryParams()['libconnect'])) {
+            $params = $this->request->getQueryParams()['libconnect'];
+            ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['libconnect']);
         }
 
         if (!($params['titleid'])) {
@@ -220,14 +211,9 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     {
         $params = [];
 
-        if (!empty( $this->request->getQueryParams()['tx_libconnect_dbis'])) {
-            $params = $this->request->getQueryParams()['tx_libconnect_dbis'];
-            ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['tx_libconnect_dbis']);
-        }
         if (!empty( $this->request->getQueryParams()['libconnect'])) {
-            $params_temp = $this->request->getQueryParams()['libconnect'];
-            ArrayUtility::mergeRecursiveWithOverrule($params_temp, $this->request->getParsedBody()['libconnect']);
-            $params = array_merge($params_temp, $params);
+            $params = $this->request->getQueryParams()['libconnect'];
+            ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['libconnect']);
         }
 
         $form = $this->dbisRepository->loadMiniForm();
@@ -307,14 +293,9 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     public function displayFormAction(): ResponseInterface
     {
         $params = [];
-        if (!empty( $this->request->getQueryParams()['tx_libconnect_dbis'])) {
-            $params = $this->request->getQueryParams()['tx_libconnect_dbis'];
-            ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['tx_libconnect_dbis']);
-        }
         if (!empty( $this->request->getQueryParams()['libconnect'])) {
-            $params_temp = $this->request->getQueryParams()['libconnect'];
-            ArrayUtility::mergeRecursiveWithOverrule($params_temp, $this->request->getParsedBody()['libconnect']);
-            $params = array_merge($params_temp, $params);
+            $params = $this->request->getQueryParams()['libconnect'];
+            ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['libconnect']);
         }
 
         $form = $this->dbisRepository->loadForm($params['search']);
@@ -333,14 +314,9 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     public function displayNewAction(): ResponseInterface
     {
         $params = [];
-        if (!empty( $this->request->getQueryParams()['tx_libconnect_dbis'])) {
-            $params = $this->request->getQueryParams()['tx_libconnect_dbis'];
-            ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['tx_libconnect_dbis']);
-        }
         if (!empty( $this->request->getQueryParams()['libconnect'])) {
-            $params_temp = $this->request->getQueryParams()['libconnect'];
-            ArrayUtility::mergeRecursiveWithOverrule($params_temp, $this->request->getParsedBody()['libconnect']);
-            $params = array_merge($params_temp, $params);
+            $params = $this->request->getQueryParams()['libconnect'];
+            ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['libconnect']);
         }
 
         $params['jq_type1'] = 'LD';
