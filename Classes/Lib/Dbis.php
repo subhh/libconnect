@@ -166,7 +166,7 @@ class Dbis
         //BOF workaround for alphabetical listing
         if ($fachgebiet == 'all') {
             $params['lett'] = 'a';
-            $tmpParams = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('libconnect');
+            $tmpParams = \TYPO3\CMS\Core\Http\RequestHandlerInterface::getQueryParams()['libconnect']) ?? null;
 
             if (!empty($tmpParams['lc'])) {
                 if (!empty($tmpParams['lc'][0])) {
