@@ -280,7 +280,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                     'colors' => '7',
                     'jq_term1' =>  $keyword,
                     'jq_type1' => 'KW'
-            ), 'keyword' => $keyword;
+            ), 'keyword' => $keyword);
         }
 
         return $tempKeywords;
