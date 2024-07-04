@@ -405,7 +405,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                         'sindex' => $journals['alphabetical_order']['next_fifty'][$section]['sindex'],
                         'sc' => $journals['alphabetical_order']['next_fifty'][$section]['sc'],
                         'colors' => $journals['colors']
-                    ])
+                    )
                 ));
             }
         }
