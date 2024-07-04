@@ -382,7 +382,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         //navigation - sections in letters
         if (is_array($journals['alphabetical_order']['first_fifty'])) {
             foreach (array_keys($journals['alphabetical_order']['first_fifty']) as $section) {
-                $journals['alphabetical_order']['first_fifty'][$section]['link'] = = array_merge($linkParams, array(
+                $journals['alphabetical_order']['first_fifty'][$section]['link'] = array_merge($linkParams, array(
                     ['search'] = array(
                         'sindex' => $journals['alphabetical_order']['first_fifty'][$section]['sindex'],
                         'sc' => $journals['alphabetical_order']['first_fifty'][$section]['sc'],
