@@ -61,7 +61,6 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $params = [];
         if (!empty( $this->request->getQueryParams()['libconnect'])) {
             $params = $this->request->getQueryParams()['libconnect'];
-            ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['libconnect']);
         }
 
         //show overview on empty search
@@ -185,7 +184,6 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     {
 	    if (!empty( $this->request->getQueryParams()['libconnect'])) {
             $params = $this->request->getQueryParams()['libconnect'];
-            ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['libconnect']);
         }
 
         //error - wrong jourid
@@ -231,7 +229,6 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $params = [];
 	    if (!empty( $this->request->getQueryParams()['libconnect'])) {
             $params = $this->request->getQueryParams()['libconnect'];
-            ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['libconnect']);
         }
 
         //variables for template
@@ -278,11 +275,10 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      */
     public function displayFormAction(): ResponseInterface
     {
-	    $params = array();
+	    $params = array('search' => NULL);
 
 	    if (!empty( $this->request->getQueryParams()['libconnect'])) {
             $params = $this->request->getQueryParams()['libconnect'];
-            ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['libconnect']);
         }
 
         $form = $this->ezbRepository->loadForm();
@@ -304,7 +300,6 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
 	    if (!empty( $this->request->getQueryParams()['libconnect'])) {
             $params = $this->request->getQueryParams()['libconnect'];
-            ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['libconnect']);
         }
 
         $newParams = [];
@@ -379,7 +374,6 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
 	    if (!empty( $this->request->getQueryParams()['libconnect'])) {
             $params = $this->request->getQueryParams()['libconnect'];
-            ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['libconnect']);
         }
 
         $params['search']['jq_type1'] = 'ID';
@@ -415,7 +409,6 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     {
 	    if (!empty( $this->request->getQueryParams()['libconnect'])) {
             $params = $this->request->getQueryParams()['libconnect'];
-            ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['tx_libconnect_ezb']);
         }
 
         //error - wrong jourid
