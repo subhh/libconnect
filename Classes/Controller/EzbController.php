@@ -32,6 +32,7 @@ namespace Subhh\Libconnect\Controller;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
+use TYPO3\CMS\Core\Site\Entity\SiteLanguage;
 use Subhh\Libconnect\Domain\Repository\EzbRepository;
 use Subhh\Libconnect\Domain\Repository\SubjectRepository;
 
@@ -63,6 +64,8 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $params = $this->request->getQueryParams()['libconnect'];
             ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['libconnect']);
         }
+
+        $this->setLanguage();
 
         //show overview on empty search
         $isSearch = false;
@@ -188,6 +191,8 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['libconnect']);
         }
 
+        $this->setLanguage();
+
         //error - wrong jourid
         if(!is_numeric($params['jourid']) || empty($params['jourid'])){
             //change view
@@ -234,6 +239,8 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['libconnect']);
         }
 
+        $this->setLanguage();
+
         //variables for template
         $newparams = [];
         if (!empty($params['search']['sword'])) {
@@ -278,12 +285,14 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      */
     public function displayFormAction(): ResponseInterface
     {
-	    $params = array('search' => NULL);
+        $params = array('search' => NULL);
 
         if (!empty( $this->request->getQueryParams()['libconnect'])) {
             $params = $this->request->getQueryParams()['libconnect'];
             ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['libconnect']);
         }
+
+        $this->setLanguage();
 
         $form = $this->ezbRepository->loadForm();
 
@@ -311,6 +320,8 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
         $newParams['search']['jq_type1'] = 'ID';
         $newParams['search']['sc'] = $params['search']['sc'];//paging
+
+        $this->setLanguage();
 
         //subject
         if (!empty($params['subject'])) {
@@ -384,6 +395,8 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
         $params['search']['jq_type1'] = 'ID';
 
+        $this->setLanguage();
+
         if ($subjectId != false) {
             $subject = $this->ezbRepository->getSubject($subjectId);
             $params['search']['Notations']=[$subject['notation']];
@@ -418,6 +431,8 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['libconnect']);
         }
 
+        $this->setLanguage();
+
         //error - wrong jourid
         if(!is_numeric($params['jourid']) || empty($params['jourid'])){
             //change view
@@ -450,10 +465,12 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      */
     public function displayContactAction(): ResponseInterface
     {
+        $this->setLanguage();
+
         $contact =  $this->ezbRepository->getContact();
         $this->view->assign('contact', $contact);
 
-	    return $this->htmlResponse();
+        return $this->htmlResponse();
     }
 
     /**
@@ -477,6 +494,16 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $date = date('d.m.Y', $today-($numDays * $oneDay));
 
         return $date;
+    }
+
+    private function setLanguage()
+    {
+        $language = $this->request->getAttribute('language');
+        $locale = $language->getLocale();
+        $langCode = $locale->getlanguageCode();
+
+        $this->ezbRepository->setLanguageCode($langCode);
+
     }
 
     /**

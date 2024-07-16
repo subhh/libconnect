@@ -29,6 +29,9 @@ namespace Subhh\Libconnect\Domain\Repository;
 *  Avonis - New Media Agency - http://www.avonis.com/
 ***************************************************************/
 
+use TYPO3\CMS\Core\Site\Entity\SiteLanguage;
+use TYPO3\CMS\Core\Utility\ArrayUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Subhh\Libconnect\Lib\Ezb;
 use Subhh\Libconnect\Lib\Zdb;
 
@@ -668,5 +671,13 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      */
     public function injectZdb(Zdb $zdb) {
         $this->zdb = $zdb;
+    }
+
+    /**
+    * @param string $languageCode
+    **/
+    public function setLanguageCode($languageCode)
+    {
+        $this->ezb->setLanguage($languageCode);
     }
 }

@@ -93,7 +93,6 @@ class Ezb
     {
         //set configurations
         $this->setBibID();
-        $this->setLanguage();
     }
 
     /**
@@ -743,12 +742,10 @@ class Ezb
 
     /**
      * sets language
+     * @param string lang
      */
-    private function setLanguage()
+    public function setLanguage($lang)
     {
-        //get current language
-        $lang = $GLOBALS['TSFE']->config['config']['language'];
-
         //only de and en is allowed
         if (($lang != 'de') && ($lang != 'en')) {
             $lang = 'de';
