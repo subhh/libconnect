@@ -70,6 +70,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
         if (!empty( $this->request->getQueryParams()['libconnect'])) {
             $params = $this->request->getQueryParams()['libconnect'];
+            ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['libconnect']);
         }
 
         //get PageID
@@ -173,6 +174,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $params = [];
         if (!empty( $this->request->getQueryParams()['libconnect'])) {
             $params = $this->request->getQueryParams()['libconnect'];
+            ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['libconnect']);
         }
 
         if (!($params['titleid'])) {
@@ -211,6 +213,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
         if (!empty( $this->request->getQueryParams()['libconnect'])) {
             $params = $this->request->getQueryParams()['libconnect'];
+            ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['libconnect']);
         }
 
         $form = $this->dbisRepository->loadMiniForm();
@@ -292,6 +295,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $params = [];
         if (!empty( $this->request->getQueryParams()['libconnect'])) {
             $params = $this->request->getQueryParams()['libconnect'];
+            ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['libconnect']);
         }
 
         $form = $this->dbisRepository->loadForm($params['search']);
@@ -312,6 +316,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $params = [];
         if (!empty( $this->request->getQueryParams()['libconnect'])) {
             $params = $this->request->getQueryParams()['libconnect'];
+            ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['libconnect']);
         }
 
         $params['jq_type1'] = 'LD';
