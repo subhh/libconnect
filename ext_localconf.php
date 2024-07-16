@@ -6,11 +6,11 @@ defined('TYPO3') or die('Access denied.');
     'Libconnect',
     'Dbis',
     [
-        \Subhh\Libconnect\Controller\DbisController::class => 'displayForm'
+        \Subhh\Libconnect\Controller\DbisController::class => 'displayForm, displayDetail, displayList, displayMiniForm, displayNew'
     ],
     // non-cacheable actions
     [
-        \Subhh\Libconnect\Controller\DbisController::class => 'displayDetail, displayList, displayMiniForm, displayNew'
+        \Subhh\Libconnect\Controller\DbisController::class => 'displayForm, displayDetail, displayList, displayMiniForm, displayNew'
     ]
 );
 
@@ -18,11 +18,11 @@ defined('TYPO3') or die('Access denied.');
     'Libconnect',
     'Ezb',
     [
-        \Subhh\Libconnect\Controller\EzbController::class => 'displayForm, displayContact'
+        \Subhh\Libconnect\Controller\EzbController::class => 'displayList, displayDetail, displayForm, displayMiniForm, displayContact, displayNew, displayParticipantsForm'
     ],
     // non-cacheable actions
     [
-        \Subhh\Libconnect\Controller\EzbController::class => 'displayDetail, displayList, displayMiniForm, displayNew, displayParticipantsForm'
+        \Subhh\Libconnect\Controller\EzbController::class => 'displayList, displayDetail, displayForm, displayMiniForm, displayContact, displayNew, displayParticipantsForm'
     ]
 );
 
