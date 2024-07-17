@@ -49,7 +49,7 @@
     <f:for each="{journals.navlist.pages}" as="item">
         <f:if condition="{libconnect:IsArrayNp(value: item)}">
             <f:then>
-                <f:link.page pageUid="{listPid}" additionalParams="{libconnect: {subject:'{item.link.subject}', index:'{item.link.index}', sc:'{item.link.sc}', notation:'{item.link.notation}', colors:'{item.link.colors}' }" addQueryString="0">
+                <f:link.page pageUid="{listPid}" additionalParams="{libconnect: {subject:'{item.link.subject}', sindex:'{item.link.sindex}', sc:'{item.link.sc}', notation:'{item.link.notation}', colors:'{item.link.colors}' }" addQueryString="0">
                     <f:format.htmlentitiesDecode>{item.title}</f:format.htmlentitiesDecode>
                 </f:link.page>
             </f:then>
