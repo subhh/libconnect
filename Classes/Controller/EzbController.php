@@ -173,7 +173,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $this->view->assign('list', $journals);
         }
 
-	    return $this->htmlResponse();
+	return $this->htmlResponse();
     }
 
     /**
@@ -271,7 +271,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             }
         }
 
-	    return $this->htmlResponse();
+        return $this->htmlResponse();
     }
 
     /**
@@ -295,7 +295,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->view->assign('form', $form);
         $this->view->assign('listPid', $this->settings['flexform']['listPid']);//ID of list view
 
-	    return $this->htmlResponse();
+        return $this->htmlResponse();
     }
 
     /**
@@ -370,7 +370,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->view->assign('formParameter', $newParams);
         $this->view->assign('detailPid', $this->settings['flexform']['detailPid']);
 
-	    return $this->htmlResponse();
+        return $this->htmlResponse();
     }
 
     /**
@@ -449,7 +449,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->view->assign('jourid', $params['jourid']);
         $this->view->assign('titel', $title);
 
-	    return $this->htmlResponse();
+        return $this->htmlResponse();
     }
 
     /**

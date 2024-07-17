@@ -58,7 +58,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->view->assign('top', $top);
         $this->view->assign('detailPid', $this->settings['flexform']['detailPid']);
 
-	    return $this->htmlResponse();
+        return $this->htmlResponse();
     }
 
     /**
@@ -157,7 +157,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $this->view->assign('list', $list);
         }
 
-	    return $this->htmlResponse();
+        return $this->htmlResponse();
     }
 
     /**
@@ -195,7 +195,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $this->view->assign('db', $list);
         }
 
-	    return $this->htmlResponse();
+        return $this->htmlResponse();
     }
 
     /**
@@ -278,7 +278,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             }
         }
 
-	    return $this->htmlResponse();
+        return $this->htmlResponse();
     }
 
     /**
@@ -299,7 +299,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->view->assign('form', $form);
         $this->view->assign('listPid', $this->settings['flexform']['listPid']);//Link zur Listendarstellung
 
-	    return $this->htmlResponse();
+        return $this->htmlResponse();
     }
 
     /**
@@ -349,7 +349,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->view->assign('subject', $subject['title']);
         $this->view->assign('detailPid', $this->settings['flexform']['detailPid']);
         
-	    return $this->htmlResponse();
+        return $this->htmlResponse();
     }
 
     /**
@@ -414,6 +414,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
         //full is default and variables are set right
         if ($showAccess == 'full') {
+
             return $accessInforomation;
         }
 
@@ -436,3 +437,4 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->dbisRepository = $dbisRepository;
     }
 }
+
