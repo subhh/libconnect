@@ -65,8 +65,6 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['libconnect']);
         }
 
-        $this->setLanguage();
-
         //show overview on empty search
         $isSearch = false;
         if (!empty($params['search'])) {
@@ -74,6 +72,9 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                 $isSearch = true;
             }
         }
+
+        //set language
+        $this->setLanguage();
 
         //get PageID
         $Uid = (int)($GLOBALS['TSFE']->page['uid']);
