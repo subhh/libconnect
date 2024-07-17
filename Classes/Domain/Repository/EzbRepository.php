@@ -178,6 +178,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                     'subject' => $subject['notation'],
                     'sindex' => $journals['alphabetical_order']['next_fifty'][$section]['sindex'],
                     'sc' => $journals['alphabetical_order']['next_fifty'][$section]['sc']? $journals['alphabetical_order']['next_fifty'][$section]['sc'] : 'A',
+                    'lc' => $journals['alphabetical_order']['next_fifty'][$section]['lc'],
                     'notation' => $subject['notation'],
                     'colors' => $journals['colors']
                 );

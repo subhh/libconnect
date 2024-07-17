@@ -9,6 +9,7 @@
     - Compatibility to TYPO3 12.4
     - EZB:
         - Details: Fixed problems with subjects
+	- List: Fixed forgotten lc tag.
 9.0.3
     - EZB: 
         - Reduces amount of requests to API.

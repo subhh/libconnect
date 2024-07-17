@@ -32,7 +32,7 @@
 
     <f:for each="{journals.alphabetical_order.next_fifty}" as="section">
         <h3>
-            <f:link.page pageUid="{listPid}" additionalParams="{libconnect: {subject:'{section.link.subject}', search: {sindex:'{section.link.search.sindex}', sc:'{section.link.sc}', notation:'{section.link.notation}', colors:'{section.link.colors}'} }" addQueryString="0">
+            <f:link.page pageUid="{listPid}" additionalParams="{libconnect: {subject:'{section.link.subject}', search: {sindex:'{section.link.search.sindex}', sc:'{section.link.sc}', lc:'{section.link.lc}', notation:'{section.link.notation}', colors:'{section.link.colors}'} }" addQueryString="0">
                 <f:format.htmlentitiesDecode>
                     <libconnect:strreplaceNp search="&" replace="&amp;">
                         {section.next_fifty_titles}
