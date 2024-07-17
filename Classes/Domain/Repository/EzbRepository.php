@@ -314,11 +314,13 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $journals =  $this->ezb->search($searchVars['search']);
 
         if (! $journals) {
+
             return false;
         }
 
         //only search for getNewCount of the controller
         if (!$config) {
+
             return $journals;
         }
 
@@ -461,6 +463,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         }
 
         if (! $locationData) {
+
             return false;
         }
 
@@ -681,3 +684,4 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $this->ezb->setLanguage($languageCode);
     }
 }
+
