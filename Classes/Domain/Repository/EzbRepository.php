@@ -99,9 +99,9 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      *
      * @return array
      */
-    public function loadList($subject_id, $options = ['index' =>0, 'sc' => 'A', 'lc' => ''], $config)
+    public function loadList($subject_id, $options = ['sindex' =>0, 'sc' => 'A', 'lc' => ''], $config)
     {
-        $index = $options['index'];
+        $sindex = $options['sindex'];
         $sc = $options['sc'];
         $lc = $options['lc'];
 
@@ -130,7 +130,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             ];
         }
 
-        $journals = $this->ezb->getFachbereichJournals($subject['notation'], $index, $sc, $lc);
+        $journals = $this->ezb->getFachbereichJournals($subject['notation'], $sindex, $sc, $lc);
 
         //get access information
         $journals['selected_colors'] = $this->getAccessInfos();
@@ -144,7 +144,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             if (is_array($journals['navlist']['pages'][$page])) {
                 $journals['navlist']['pages'][$page]['link'] = array(
                     'subject' => $subject['notation'],
-                    'index' => 0,
+                    'sindex' => 0,
                     'sc' => $journals['navlist']['pages'][$page]['sc']? $journals['navlist']['pages'][$page]['sc'] : 'A',
                     'lc' => $journals['navlist']['pages'][$page]['lc'],
                     'notation' => $subject['notation'],
@@ -158,7 +158,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             foreach (array_keys($journals['alphabetical_order']['first_fifty']) as $section) {
                 $journals['alphabetical_order']['first_fifty'][$section]['link'] = array(
                     'subject' => $subject['notation'],
-                    'index' => $journals['alphabetical_order']['first_fifty'][$section]['sindex'],
+                    'sindex' => $journals['alphabetical_order']['first_fifty'][$section]['sindex'],
                     'sc' => $journals['alphabetical_order']['first_fifty'][$section]['sc']? $journals['alphabetical_order']['first_fifty'][$section]['sc'] : 'A',
                     'lc' => $journals['alphabetical_order']['first_fifty'][$section]['lc'],
                     'notation' => $subject['notation'],
@@ -176,7 +176,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             foreach (array_keys($journals['alphabetical_order']['next_fifty']) as $section) {
                 $journals['alphabetical_order']['next_fifty'][$section]['link'] = array(
                     'subject' => $subject['notation'],
-                    'index' => $journals['alphabetical_order']['next_fifty'][$section]['sindex'],
+                    'sindex' => $journals['alphabetical_order']['next_fifty'][$section]['sindex'],
                     'sc' => $journals['alphabetical_order']['next_fifty'][$section]['sc']? $journals['alphabetical_order']['next_fifty'][$section]['sc'] : 'A',
                     'notation' => $subject['notation'],
                     'colors' => $journals['colors']

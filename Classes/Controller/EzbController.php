@@ -84,7 +84,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
         if ((!empty($params['subject'])) || (!empty($params['notation']))) {//chosen subject after start point --> template DisplayList
 
-            $options['index'] = $params['index'] ?? '';
+            $options['sindex'] = $params['sindex'] ?? '';
             $options['sc'] = $params['sc'] ?? '';
             $options['lc'] = $params['lc'] ?? '';
             $options['notation'] = $params['notation'] ?? '';
@@ -102,7 +102,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
             $formParameter = [
                 'libconnect[subject]' => $options['subject'],
-                'libconnect[index]' => $options['index'],
+                'libconnect[sindex]' => $options['sindex'],
                 'libconnect[sc]' => $options['sc'],
                 'libconnect[lc]' => $options['lc'],
                 'libconnect[notation]' => $options['notation']
