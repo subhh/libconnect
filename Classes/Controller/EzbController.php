@@ -84,11 +84,11 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
         if ((!empty($params['subject'])) || (!empty($params['notation']))) {//chosen subject after start point --> template DisplayList
 
-            $options['index'] = $params['index'];
-            $options['sc'] = $params['sc'];
-            $options['lc'] = $params['lc'];
-            $options['notation'] = $params['notation'];
-            $options['colors'] = $params['colors'];
+            $options['index'] = $params['index'] ?? '';
+            $options['sc'] = $params['sc'] ?? '';
+            $options['lc'] = $params['lc'] ?? '';
+            $options['notation'] = $params['notation'] ?? '';
+            $options['colors'] = $params['colors'] ?? '';
 
             //it´s for there is not NULL in the request or there will be a problem
             if (!isset($params['subject'])) {
@@ -101,11 +101,11 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             );
 
             $formParameter = [
-                'libconnect[subject]' => $params['subject'],
-                'libconnect[index]' => $params['index'],
-                'libconnect[sc]' => $params['sc'],
-                'libconnect[lc]' => $params['lc'],
-                'libconnect[notation]' => $params['notation']
+                'libconnect[subject]' => $options['subject'],
+                'libconnect[index]' => $options['index'],
+                'libconnect[sc]' => $options['sc'],
+                'libconnect[lc]' => $options['lc'],
+                'libconnect[notation]' => $options['notation']
             ];
 
             if (empty($params['colors'][1]) &
