@@ -62,7 +62,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $params = [];
         if (!empty( $this->request->getQueryParams()['libconnect'])) {
             $params = $this->request->getQueryParams()['libconnect'];
-            ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['libconnect']);
+//            ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['libconnect']);
         }
 
         //show overview on empty search
@@ -183,7 +183,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     {
         if (!empty( $this->request->getQueryParams()['libconnect'])) {
             $params = $this->request->getQueryParams()['libconnect'];
-            ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['libconnect']);
+            //ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['libconnect']);
         }
 
         $this->setLanguage();
@@ -230,7 +230,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $params = [];
         if (!empty( $this->request->getQueryParams()['libconnect'])) {
             $params = $this->request->getQueryParams()['libconnect'];
-            ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['libconnect']);
+            //ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['libconnect']);
         }
 
         $this->setLanguage();
@@ -283,7 +283,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
         if (!empty( $this->request->getQueryParams()['libconnect'])) {
             $params = $this->request->getQueryParams()['libconnect'];
-            ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['libconnect']);
+            //ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['libconnect']);
         }
 
         $this->setLanguage();
@@ -307,7 +307,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
 	if (!empty( $this->request->getQueryParams()['libconnect'])) {
             $params = $this->request->getQueryParams()['libconnect'];
-            ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['libconnect']);
+            //ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['libconnect']);
         }
 
         $newParams = [];
@@ -384,7 +384,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
 	if (!empty( $this->request->getQueryParams()['libconnect'])) {
             $params = $this->request->getQueryParams()['libconnect'];
-            ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['libconnect']);
+            //ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['libconnect']);
         }
 
         $params['search']['jq_type1'] = 'ID';
@@ -422,7 +422,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     {
         if (!empty( $this->request->getQueryParams()['libconnect'])) {
             $params = $this->request->getQueryParams()['libconnect'];
-            ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['libconnect']);
+            //ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['libconnect']);
         }
 
         $this->setLanguage();
