@@ -85,6 +85,8 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             }
         }
 
+        $templateRootPaths = $this->view->getTemplateRootPaths();
+
         if (!empty($params['subject'])) {//chosen subject after start point
             $config['sort'] = $this->settings['flexform']['sortParameter'];
 
@@ -136,11 +138,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $list =  $this->dbisRepository->loadSearch($params['search'], array());
 
             //change view
-            $this->view->setTemplatePathAndFilename(
-                'typo3conf/ext/' .
-                $this->request->getControllerExtensionKey() .
-                '/Resources/Private/Templates/Dbis/DisplaySearch.html'
-            );
+            $this->view->setTemplatePathAndFilename($templateRootPaths[0].'/Ezb/DisplaySearch.html');
 
             //decide full or short text
             $list['access_infos'] = $this->setAccessInformation($list['access_infos']);
@@ -153,11 +151,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $list =  $this->dbisRepository->loadOverview();
 
             //use other view
-            $this->view->setTemplatePathAndFilename(
-                'typo3conf/ext/' .
-                $this->request->getControllerExtensionKey() .
-                '/Resources/Private/Templates/Dbis/DisplayOverview.html'
-            );
+            $this->view->setTemplatePathAndFilename($templateRootPaths[0].'/Ezb/Overview.html');
 
             //variables for template
             $this->view->assign('list', $list);

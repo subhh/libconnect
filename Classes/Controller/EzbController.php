@@ -80,6 +80,8 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $Uid = (int)($GLOBALS['TSFE']->page['uid']);
         $this->view->assign('listUid', $Uid);
 
+        $templateRootPaths = $this->view->getTemplateRootPaths();
+
         if ((!empty($params['subject'])) || (!empty($params['notation']))) {//chosen subject after start point --> template DisplayList
 
             $options['index'] = $params['index'];
@@ -152,11 +154,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $journals =  $this->ezbRepository->loadSearch($params, $colors);
 
             //change view
-            $this->view->setTemplatePathAndFilename(
-                'typo3conf/ext/' .
-                $this->request->getControllerExtensionKey() .
-                '/Resources/Private/Templates/Ezb/DisplaySearch.html'
-            );
+            $this->view->setTemplatePathAndFilename($templateRootPaths[0].'/Ezb/DisplaySearch.html');
 
             //variables for template
             $this->view->assign('journals', $journals);
@@ -169,11 +167,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $journals =  $this->ezbRepository->loadOverview();
 
             //change view
-            $this->view->setTemplatePathAndFilename(
-                'typo3conf/ext/' .
-                $this->request->getControllerExtensionKey() .
-                '/Resources/Private/Templates/Ezb/DisplayOverview.html'
-            );
+            $this->view->setTemplatePathAndFilename($templateRootPaths[0].'/Ezb/DisplayOverview.html');
 
             //variables for template
             $this->view->assign('list', $journals);
@@ -195,13 +189,12 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->setLanguage();
 
         //error - wrong jourid
+        //@todo move in new function
         if(!is_numeric($params['jourid']) || empty($params['jourid'])){
+            $templateRootPaths = $this->view->getTemplateRootPaths();
+
             //change view
-            $this->view->setTemplatePathAndFilename(
-                'typo3conf/ext/' .
-                $this->request->getControllerExtensionKey() .
-                '/Resources/Private/Templates/Ezb/DisplayError.html'
-            );
+            $this->view->setTemplatePathAndFilename($templateRootPaths[0].'/Ezb/DisplayError.html');
 
             return $this->htmlResponse();
         }
@@ -226,7 +219,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->view->assign('participantsPid', $this->settings['flexform']['participantsPid']);
         $this->view->assign('listPid', $this->settings['flexform']['listPid']);
 
-	    return $this->htmlResponse();
+        return $this->htmlResponse();
     }
 
     /**
@@ -436,12 +429,10 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
         //error - wrong jourid
         if(!is_numeric($params['jourid']) || empty($params['jourid'])){
+            $templateRootPaths = $this->view->getTemplateRootPaths();
+
             //change view
-            $this->view->setTemplatePathAndFilename(
-                'typo3conf/ext/' .
-                $this->request->getControllerExtensionKey() .
-                '/Resources/Private/Templates/Ezb/DisplayError.html'
-            );
+            $this->view->setTemplatePathAndFilename($templateRootPaths[0].'/Ezb/DisplayError.html');
 
             return $this->htmlResponse();
         }
