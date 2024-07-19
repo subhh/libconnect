@@ -143,7 +143,6 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         foreach (array_keys($journals['navlist']['pages']) as $page) {
             if (is_array($journals['navlist']['pages'][$page])) {
                 $journals['navlist']['pages'][$page]['link'] = array(
-                    'subject' => $subject['notation'],
                     'sindex' => 0,
                     'sc' => $journals['navlist']['pages'][$page]['sc']? $journals['navlist']['pages'][$page]['sc'] : 'A',
                     'lc' => $journals['navlist']['pages'][$page]['lc'],
@@ -157,7 +156,6 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         if (isset($journals['alphabetical_order']['first_fifty'])) {
             foreach (array_keys($journals['alphabetical_order']['first_fifty']) as $section) {
                 $journals['alphabetical_order']['first_fifty'][$section]['link'] = array(
-                    'subject' => $subject['notation'],
                     'sindex' => $journals['alphabetical_order']['first_fifty'][$section]['sindex'],
                     'sc' => $journals['alphabetical_order']['first_fifty'][$section]['sc']? $journals['alphabetical_order']['first_fifty'][$section]['sc'] : 'A',
                     'lc' => $journals['alphabetical_order']['first_fifty'][$section]['lc'],
@@ -175,7 +173,6 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         if (isset($journals['alphabetical_order']['next_fifty'])) {
             foreach (array_keys($journals['alphabetical_order']['next_fifty']) as $section) {
                 $journals['alphabetical_order']['next_fifty'][$section]['link'] = array(
-                    'subject' => $subject['notation'],
                     'sindex' => $journals['alphabetical_order']['next_fifty'][$section]['sindex'],
                     'sc' => $journals['alphabetical_order']['next_fifty'][$section]['sc']? $journals['alphabetical_order']['next_fifty'][$section]['sc'] : 'A',
                     'lc' => $journals['alphabetical_order']['next_fifty'][$section]['lc'],
@@ -247,7 +244,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                 
                 if (in_array($OneOfAllSubjects['title'], $journal['subjects'])) {
                     $journal['subjects_link'][] = array(
-                        'subject' => $subject['notation'],
+                        'notation' => $subject['notation'],
                         'title' => $subject['title']
                     );
                 }
@@ -338,8 +335,8 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             $linkParams['search'][$key] = $value;
         }
 
-        if ($searchVars['subject']) {
-            $linkParams['subject'] = $searchVars['subject'];
+        if ($searchVars['notation']) {
+            $linkParams['notation'] = $searchVars['notation'];
         }
         
         $journals = $this->getLinks($journals, $config, $linkParams);
