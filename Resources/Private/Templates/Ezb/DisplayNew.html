@@ -10,7 +10,7 @@
     <h2 class="ezb">{subject}</h2>
 </f:if>
 
-<f:if condition="{journals.subject}">
+<f:if condition="{journals.notation}">
     <h2>
         <f:format.htmlentitiesDecode>{journals.subject}</f:format.htmlentitiesDecode>
     </h2>
@@ -36,8 +36,8 @@
 
         </f:for>
 
-        <f:if condition="{formParameter.subject}">
-            <f:form.hidden name="libconnect[subject]" value="{formParameter.subject}" />
+        <f:if condition="{formParameter.notation}">
+            <f:form.hidden name="libconnect[notation]" value="{formParameter.notation}" />
         </f:if>
         <f:if condition="{formParameter.search.Notations}">
             <f:for each="{formParameter.search.Notations}" as="value" key="key">
@@ -66,7 +66,7 @@
     <f:for each="{journals.navlist.pages}" as="item">
         <f:if condition="{libconnect:IsArrayNp(value: item)}">
             <f:then>
-                <f:link.page pageUid="{detailPid}" additionalParams="{libconnect: {subject:'{item.link.subject}', sindex:'{item.link.sindex}', sc:'{item.link.sc}', notation:'{item.link.notation}', colors:'{item.link.colors}' }" addQueryString="0">
+                <f:link.page pageUid="{detailPid}" additionalParams="{libconnect: sindex:'{item.link.sindex}', sc:'{item.link.sc}', notation:'{item.link.notation}', colors: {1:'{item.link.colors.1}', 2:'{item.link.colors.2}', 4:'{item.link.colors.4}', 6:'{item.link.colors.6}'} }" addQueryString="0">
                     <f:format.htmlentitiesDecode>{item.title}</f:format.htmlentitiesDecode>
                 </f:link.page>
             </f:then>
