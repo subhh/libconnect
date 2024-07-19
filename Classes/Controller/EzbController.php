@@ -82,7 +82,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
         $templateRootPaths = $this->view->getTemplateRootPaths();
 
-        if ((!empty($params['subject'])) || (!empty($params['notation']))) {//chosen subject after start point --> template DisplayList
+        if (!empty($params['notation'])) {//chosen subject after start point --> template DisplayList
 
             $options['sindex'] = $params['sindex'] ?? '';
             $options['sc'] = $params['sc'] ?? '';
@@ -91,17 +91,16 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $options['colors'] = $params['colors'] ?? '';
 
             //it´s for there is not NULL in the request or there will be a problem
-            if (!isset($params['subject'])) {
-                $params['subject'] = '';
+            if (!isset($params['notation'])) {
+                $params['notation'] = '';
             }
             $journals =  $this->ezbRepository->loadList(
-                $params['subject'],
+                $params['notation'],
                 $options,
                 array()
             );
 
             $formParameter = [
-                'libconnect[subject]' => $options['subject'],
                 'libconnect[sindex]' => $options['sindex'],
                 'libconnect[sc]' => $options['sc'],
                 'libconnect[lc]' => $options['lc'],
@@ -249,13 +248,13 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         if (!empty($this->settings['flexform']['newPid'])) {
 
             //new entries for a selected subject
-            if (!empty($params['subject'])) {
+            if (!empty($params['notation'])) {
                 $this->view->assign('showSubjectLink', true);
 
-                $count = (int)$this->getNewCount($params['subject']);
+                $count = (int)$this->getNewCount($params['notation']);
 
                 if ($count > 0) {
-                    $this->view->assign('subject', $params['subject']);
+                    $this->view->assign('notation', $params['notation']);
 
                     $this->view->assign('newInSubjectCount', $count);
                 }
@@ -318,17 +317,17 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->setLanguage();
 
         //subject
-        if (!empty($params['subject'])) {
-            $subject = $this->ezbRepository->getSubject($params['subject']);
+        if (!empty($params['notation'])) {
+            $subject = $this->ezbRepository->getSubject($params['notation']);
             $newParams['search']['Notations']=[$subject['notation']];
-            $newParams['subject'] = $params['subject'];
+            $newParams['notation'] = $params['notation'];
         }
 
         if (!empty($params['search']['sindex'])) {
             $newParams['search']['sindex'] = $params['search']['sindex'];
         }
 
-        unset($params['search']['subject']);
+        unset($params['search']['notation']);
         unset($params['search']['search']);
 
         //date how long entry is new
@@ -395,7 +394,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $subject = $this->ezbRepository->getSubject($subjectId);
             $params['search']['Notations']=[$subject['notation']];
         }
-        unset($params['subject']);
+        unset($params['notation']);
         //unset($params['search']);
 
         //date how long entry is new
