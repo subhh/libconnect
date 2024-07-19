@@ -460,7 +460,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             $locationData = $this->zdb->getJournalLocationDetails( array('eissn' => reset($journal['eissns']) ), $journal['ZDB_number'] );
         }
 
-        if (! $locationData) {
+        if (!isset($locationData)) {
 
             return false;
         }
