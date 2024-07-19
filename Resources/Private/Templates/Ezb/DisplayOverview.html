@@ -8,7 +8,7 @@
 <ul class="ezb-list-overview">
     <f:for each="{list}" as="item">
         <li>
-            <f:link.page pageUid="{listUid}" additionalParams="{libconnect: {subject: '{item.notation}'}}">
+            <f:link.page pageUid="{listUid}" additionalParams="{libconnect: {notation: '{item.notation}'}}">
                 <f:format.htmlentitiesDecode>{item.title}</f:format.htmlentitiesDecode></a> ({item.journalcount})
             </f:link.page>
         </li>
