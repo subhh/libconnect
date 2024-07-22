@@ -293,15 +293,15 @@
                         <td>
                             <ul>
                             <f:if condition="{listPid}">
-                                </f:then>
+                                <f:then>
                                     <f:for each="{journal.keywords_for_links}" as="entry">
                                         <li>
-                                            <f:link.page pageUid="{listPid}" additionalParams="{libconnect: {search: {colors: '{entry.colors}'}, {jq_term1: '{entry.jq_term1}'}, {jq_type1: '{entry.jq_term1}'}}}}">
-                                                <f:format.htmlentitiesDecode>{entry.keyword}</f:format.htmlentitiesDecode>
+                                            <f:link.page pageUid="{listPid}" additionalParams="{libconnect:{colors:'{entry.seach.colors}', jq_term1:'{entry.search.jq_term1}', jq_type1:'{entry.search.jq_type1}'}}">
+                                                {entry.keyword}
                                             </f:link.page>
                                         </li>
                                     </f:for>
-                                <f:then>
+                                </f:then>
                                 <f:else>
                                     <f:for each="{journal.keywords}" as="entry">
                                     <li>

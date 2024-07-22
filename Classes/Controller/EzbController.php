@@ -200,7 +200,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
         //$this->ezbRepository->setLongAccessInfos($this->ezblongaccessinfos->de);
 
-        $journal =  $this->ezbRepository->loadDetail($params['jourid'], $config);
+        $journal =  $this->ezbRepository->loadDetail($params['jourid'], array('listPid' => $this->settings['flexform']['listPid']));
 
         //BOF ZDB LocationData
         //check if locationData is enabled
