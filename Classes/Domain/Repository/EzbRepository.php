@@ -339,7 +339,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             $linkParams['notation'] = $searchVars['notation'];
         }
         
-        $journals = $this->getLinks($journals, $config, $linkParams);
+        $journals = $this->getLinks($journals, $linkParams);
 
         return $journals;
     }
@@ -353,7 +353,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      *
      * @return array with navigation, precise hits, and paging,
      */
-    public function getLinks($journals, $config, $linkParams)
+    public function getLinks($journals, $linkParams)
     {
         //merging of parameter: keep search at paging alive
 
