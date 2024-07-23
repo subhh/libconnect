@@ -243,6 +243,9 @@
                 <trans-unit id="tx_libconnect.ezb.detail.appearence" xml:space="preserve">
                         <source>Appearance</source>
                 </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.category" xml:space="preserve">
+                    <source>Category</source>
+                </trans-unit>
                 <trans-unit id="tx_libconnect.ezb.detail.costs" xml:space="preserve">
                         <source>Costs</source>
                 </trans-unit>
@@ -260,6 +263,9 @@
                 </trans-unit>
                 <trans-unit id="tx_libconnect.ezb.detail.fulltext.th" xml:space="preserve">
                         <source>Fulltext</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.id" xml:space="preserve">
+                        <source>EZB-Journal-ID</source>
                 </trans-unit>
                 <trans-unit id="tx_libconnect.ezb.detail.in_period" xml:space="preserve">
                         <source>in the period</source>
