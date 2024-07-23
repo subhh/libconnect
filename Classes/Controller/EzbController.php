@@ -354,7 +354,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                 ];
             }
 
-            $journals =  $this->ezbRepository->loadSearch($newParams, $params['search']['colors']);
+            $journals =  $this->ezbRepository->Search($newParams, $params['search']['colors']);
         }
 
         //get PageID

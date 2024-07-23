@@ -299,28 +299,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     {
         unset($searchVars['colors']);
 
-        //search of sidebar
-        if (strlen($searchVars['search']['sword'])) {
-            $searchVars['search']['jq_type1'] = 'QS';
-            $searchVars['search']['jq_term1'] = $searchVars['search']['sword'];
-        }
-        unset($searchVars['search']['sword']);//no need
-
-        $ezbColors = $this->getColors($colors);
-        $this->ezb->setColors($ezbColors);
-
-        $journals =  $this->ezb->search($searchVars['search']);
-
-        if (! $journals) {
-
-            return false;
-        }
-
-        //only search for getNewCount of the controller
-        if (!$config) {
-
-            return $journals;
-        }
+        $journals = $this->search($searchVars, $colors);
 
         $journals['searchDescription'] = $this->getSearchDescription($searchVars['search']);
 
@@ -343,6 +322,34 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 
         return $journals;
     }
+
+     /**
+     * search
+     *
+     * @param array $searchVars
+     * @param array $colors
+     *
+     * @return array $journals
+     */
+    public function Search($searchVars, $colors)
+    {
+        unset($searchVars['colors']);
+
+        //search of sidebar
+        if (strlen($searchVars['search']['sword'])) {
+            $searchVars['search']['jq_type1'] = 'QS';
+            $searchVars['search']['jq_term1'] = $searchVars['search']['sword'];
+        }
+        unset($searchVars['search']['sword']);//no need
+
+        $ezbColors = $this->getColors($colors);
+        $this->ezb->setColors($ezbColors);
+
+        $journals =  $this->ezb->search($searchVars['search']);
+
+        return $journals;
+    }
+
 
     /**
      * get links for navigation, precise hits and paging
