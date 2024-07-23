@@ -181,7 +181,7 @@ class Ezb
                 $journals['alphabetical_order']['journals'][(int)$value->attributes()->jourid]['color_code'] = (int)$value->journal_color->attributes()->color_code;
                 $journals['alphabetical_order']['journals'][(int)$value->attributes()->jourid]['color'] = (string)$value->journal_color->attributes()->color;
                 $journals['alphabetical_order']['journals'][(int)$value->attributes()->jourid]['detail_link'] = '';
-                $journals['alphabetical_order']['journals'][(int)$value->attributes()->jourid]['warpto_link'] = $this->journal_link_url . $value->attributes()->jourid;
+                //$journals['alphabetical_order']['journals'][(int)$value->attributes()->jourid]['warpto_link'] = $this->journal_link_url . $value->attributes()->jourid;
             }
         }
 
@@ -495,7 +495,7 @@ class Ezb
                     $result['alphabetical_order']['journals'][(int)$value->attributes()->jourid]['color_code'] = (int)$value->journal_color->attributes()->color_code;
                     $result['alphabetical_order']['journals'][(int)$value->attributes()->jourid]['color'] = (string)$value->journal_color->attributes()->color;
                     $result['alphabetical_order']['journals'][(int)$value->attributes()->jourid]['detail_link'] = '';
-                    $result['alphabetical_order']['journals'][(int)$value->attributes()->jourid]['warpto_link'] = $this->journal_link_url . $value->attributes()->jourid;
+                    //$result['alphabetical_order']['journals'][(int)$value->attributes()->jourid]['warpto_link'] = $this->journal_link_url . $value->attributes()->jourid;
                 }
 
                 //count of search results
@@ -550,7 +550,7 @@ class Ezb
                 $result['alphabetical_order']['journals'][(int)$value->attributes()->jourid]['color_code'] = (int)$value->journal_color->attributes()->color_code;
                 $result['alphabetical_order']['journals'][(int)$value->attributes()->jourid]['color'] = (string)$value->journal_color->attributes()->color;
                 $result['alphabetical_order']['journals'][(int)$value->attributes()->jourid]['detail_link'] = '';
-                $result['alphabetical_order']['journals'][(int)$value->attributes()->jourid]['warpto_link'] = $this->journal_link_url . $value->attributes()->jourid;
+                //$result['alphabetical_order']['journals'][(int)$value->attributes()->jourid]['warpto_link'] = $this->journal_link_url . $value->attributes()->jourid;
             }
         }
 
