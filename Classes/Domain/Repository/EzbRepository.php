@@ -244,8 +244,8 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                 
                 if (in_array($OneOfAllSubjects['title'], $journal['subjects'])) {
                     $journal['subjects_link'][] = array(
-                        'notation' => $subject['notation'],
-                        'title' => $subject['title']
+                        'notation' => $OneOfAllSubjects['notation'],
+                        'title' => $OneOfAllSubjects['title']
                     );
                 }
             }
