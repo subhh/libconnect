@@ -267,6 +267,16 @@ class Ezb
             }
         }
 
+        $journal['categories'] = [];
+        if (isset($xml_response->ezb_detail_about_journal->journal->detail->categories->category)) {
+            foreach ($xml_response->ezb_detail_about_journal->journal->detail->categories->category as $category) {
+                $journal['categories'][] = [
+                    'value' => (string)$category,
+                    'cat_id' => $xml_response->ezb_detail_about_journal->journal->detail->categories->category->attributes()->cat_id
+                ];
+            }
+        }
+
         $journal['fulltext'] = (string)$xml_response->ezb_detail_about_journal->journal->detail->fulltext;
 
         if (isset($xml_response->ezb_detail_about_journal->journal->detail->fulltext)) {

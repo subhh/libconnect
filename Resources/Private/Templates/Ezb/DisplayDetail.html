@@ -315,6 +315,36 @@
                     <tr>
                 </f:if>
 
+                <f:if condition="{journal.categories}">
+                    <tr>
+                        <th>
+                            <strong><f:translate key="tx_libconnect.ezb.detail.categories" />:</strong>
+                        </th>
+                        <td>
+                            <ul>
+                            <f:if condition="{listPid}">
+                                <f:then>
+                                    <f:for each="{journal.categories}" as="category">
+                                        <li>
+                                            <f:link.page pageUid="{listPid}" additionalParams="{libconnect:{colors:'7', jq_term1:'{category.value}', jq_type1:'FKW'}}">
+                                                {category.value}
+                                            </f:link.page>
+                                        </li>
+                                    </f:for>
+                                </f:then>
+                                <f:else>
+                                    <f:for each="{journal.categories}" as="category">
+                                    <li>
+                                        {category.value}
+                                    </li>
+                                    </f:for>
+                                </f:else>
+                            </f:if>
+                            </ul>
+                        </td>
+                    <tr>
+                </f:if>
+
                 <tr>
                     <th>
                         <strong><f:translate key="tx_libconnect.ezb.detail.id" />:</strong>

@@ -8,7 +8,9 @@
 10.0.0
     - Compatibility to TYPO3 12.4
     - EZB:
-        - Details: Fixed problems with subjects
+        - Details: 
+            - Fixed problems with subjects
+            - Categorys added.
 	- List: Fixed forgotten lc tag.
 9.0.3
     - EZB: 
