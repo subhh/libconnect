@@ -403,7 +403,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         ];
 
         //request
-        $journals =  $this->ezbRepository->loadSearch($params, $colors);
+        $journals =  $this->ezbRepository->Search($params, $colors);
 
         return $journals['page_vars']['search_count'];
     }
