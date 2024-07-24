@@ -182,7 +182,6 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     {
         if (!empty( $this->request->getQueryParams()['libconnect'])) {
             $params = $this->request->getQueryParams()['libconnect'];
-            //ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['libconnect']);
         }
 
         $this->setLanguage();
@@ -229,7 +228,6 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $params = [];
         if (!empty( $this->request->getQueryParams()['libconnect'])) {
             $params = $this->request->getQueryParams()['libconnect'];
-            //ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['libconnect']);
         }
 
         $this->setLanguage();
@@ -282,7 +280,6 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
         if (!empty( $this->request->getQueryParams()['libconnect'])) {
             $params = $this->request->getQueryParams()['libconnect'];
-            //ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['libconnect']);
         }
 
         $this->setLanguage();
@@ -306,7 +303,6 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
 	if (!empty( $this->request->getQueryParams()['libconnect'])) {
             $params = $this->request->getQueryParams()['libconnect'];
-            //ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['libconnect']);
         }
 
         $newParams = [];
@@ -383,7 +379,6 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
 	if (!empty( $this->request->getQueryParams()['libconnect'])) {
             $params = $this->request->getQueryParams()['libconnect'];
-            //ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['libconnect']);
         }
 
         $params['search']['jq_type1'] = 'ID';
@@ -395,7 +390,6 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $params['search']['Notations']=[$subject['notation']];
         }
         unset($params['notation']);
-        //unset($params['search']);
 
         //date how long entry is new
         $params['search']['jq_term1'] = $this->getCalculatedDate();
@@ -421,7 +415,6 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     {
         if (!empty( $this->request->getQueryParams()['libconnect'])) {
             $params = $this->request->getQueryParams()['libconnect'];
-            //ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['libconnect']);
         }
 
         $this->setLanguage();
