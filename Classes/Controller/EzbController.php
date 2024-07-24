@@ -317,6 +317,8 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $subject = $this->ezbRepository->getSubject($params['notation']);
             $newParams['search']['Notations']=[$subject['notation']];
             $newParams['notation'] = $params['notation'];
+
+            $this->view->assign('subject', $subject['title']);
         }
 
         if (!empty($params['search']['sindex'])) {
@@ -361,7 +363,6 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->view->assign('journals', $journals);
         $this->view->assign('new_date', $newParams['search']['jq_term1']);
         $this->view->assign('colors', $params['search']['colors']);
-        $this->view->assign('subject', $subject['title']);
         $this->view->assign('formParameter', $newParams);
         $this->view->assign('detailPid', $this->settings['flexform']['detailPid']);
 
