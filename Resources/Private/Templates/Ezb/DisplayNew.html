@@ -7,13 +7,7 @@
 </h1>
 
 <f:if condition="{subject}">
-    <h2 class="ezb">{subject}</h2>
-</f:if>
-
-<f:if condition="{journals.notation}">
-    <h2>
-        <f:format.htmlentitiesDecode>{journals.subject}</f:format.htmlentitiesDecode>
-    </h2>
+    <h2 class="ezb">{subject.title}</h2>
 </f:if>
 
 <div class="ezb-list-legend">
@@ -24,10 +18,10 @@
 
                 <f:if condition="{libconnect:arrayNp(inputArray: colors, key: section.colorkey)}">
                     <f:then>
-                        <f:form.checkbox  id="ezb-accessinfo-access_{section.colorkey}" name="libconnect[search][colors][{section.colorkey}]" class="accessinfo-element"  value="{section.colorkey}"  checked="1"/>
+                        <f:form.checkbox  id="ezb-accessinfo-access_{section.colorkey}" name="libconnect[colors][{section.colorkey}]" class="accessinfo-element"  value="{section.colorkey}"  checked="1"/>
                     </f:then>
                     <f:else>
-                        <f:form.checkbox  id="ezb-accessinfo-access_{section.colorkey}" name="libconnect[search][colors][{section.colorkey}]" class="accessinfo-element"  value="{section.colorkey}"/>
+                        <f:form.checkbox  id="ezb-accessinfo-access_{section.colorkey}" name="libconnect[colors][{section.colorkey}]" class="accessinfo-element"  value="{section.colorkey}"/>
                     </f:else>
                 </f:if>
 
@@ -36,18 +30,14 @@
 
         </f:for>
 
-        <f:if condition="{formParameter.notation}">
-            <f:form.hidden name="libconnect[notation]" value="{formParameter.notation}" />
+        <f:if condition="{subject}">
+            <f:form.hidden name="libconnect[notation]" value="{subject.notation}" />
         </f:if>
-        <f:if condition="{formParameter.search.Notations}">
-            <f:for each="{formParameter.search.Notations}" as="value" key="key">
-                <f:form.hidden name="libconnect[search][Notations][{key}]" value="{value}" />
-            </f:for>
-        </f:if>
+
         <f:if condition="{formParameter.search}">
-            <f:form.hidden name="libconnect[search][jq_type1]" value="{formParameter.search.jq_type1}" />
-            <f:form.hidden name="libconnect[search][jq_term1]" value="{formParameter.search.jq_term1}" />
-            <f:form.hidden name="libconnect[search][sc]" value="{formParameter.search.sc}" />
+            <f:form.hidden name="libconnect[jq_type1]" value="{formParameter.jq_type1}" />
+            <f:form.hidden name="libconnect[jq_term1]" value="{formParameter.jq_term1}" />
+            <f:form.hidden name="libconnect[sc]" value="{formParameter.sc}" />
         </f:if>
     </f:form>
 </div>
@@ -66,7 +56,7 @@
     <f:for each="{journals.navlist.pages}" as="item">
         <f:if condition="{libconnect:IsArrayNp(value: item)}">
             <f:then>
-                <f:link.page pageUid="{detailPid}" additionalParams="{libconnect: sindex:'{item.link.sindex}', sc:'{item.link.sc}', notation:'{item.link.notation}', colors: {1:'{item.link.colors.1}', 2:'{item.link.colors.2}', 4:'{item.link.colors.4}', 6:'{item.link.colors.6}'} }" addQueryString="0">
+                <f:link.page pageUid="{pageUid}" additionalParams="{libconnect: {notation:'{subject.notation}', sc:'{item.id}', jq_type1:'ID', jq_term1: '{formParameter.jq_term1}', colors: {1:'{colors.1}', 2:'{colors.2}', 4:'{colors.4}', 6:'{colors.6}'} } }" addQueryString="0">
                     <f:format.htmlentitiesDecode>{item.title}</f:format.htmlentitiesDecode>
                 </f:link.page>
             </f:then>
@@ -83,7 +73,7 @@
 
 <f:flashMessages />
 
-<f:render partial="Ezb/ListOutput" arguments="{journals:journals}" />
+<f:render partial="Ezb/ListOutput" arguments="{journals:journalsi, detailPid:detailPid, listPid:pageUid}}" />
 
 <f:asset.css identifier="ezb" href="EXT:libconnect/Resources/Public/Css/ezb.css" />
 </f:section>

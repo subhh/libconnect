@@ -336,16 +336,17 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         unset($searchVars['colors']);
 
         //search of sidebar
-        if (strlen($searchVars['search']['sword'])) {
-            $searchVars['search']['jq_type1'] = 'QS';
-            $searchVars['search']['jq_term1'] = $searchVars['search']['sword'];
+        if (!empty($searchVars['search']['sword'])) {
+            $searchVars['jq_type1'] = 'QS';
+            $searchVars['jq_term1'] = $searchVars['sword'];
+
+            unset($searchVars['search']['sword']);//no need
         }
-        unset($searchVars['search']['sword']);//no need
 
         $ezbColors = $this->getColors($colors);
         $this->ezb->setColors($ezbColors);
 
-        $journals =  $this->ezb->search($searchVars['search']);
+        $journals =  $this->ezb->search($searchVars);
 
         return $journals;
     }
@@ -371,10 +372,8 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             foreach (array_keys($journals['navlist']['pages']) as $page) {
                 if (is_array($journals['navlist']['pages'][$page])) {
                     $journals['navlist']['pages'][$page]['link'] = array_merge($linkParams, array(
-                        'search' => array(
-                            'sc' => $journals['navlist']['pages'][$page]['id'],
-                            'colors' => $journals['colors']
-                        )
+                        'sc' => $journals['navlist']['pages'][$page]['id'],
+                        'colors' => $journals['colors']
                     ));
                 }
             }
@@ -393,11 +392,9 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         if (is_array($journals['alphabetical_order']['first_fifty'])) {
             foreach (array_keys($journals['alphabetical_order']['first_fifty']) as $section) {
                 $journals['alphabetical_order']['first_fifty'][$section]['link'] = array_merge($linkParams, array(
-                    'search' => array(
-                        'sindex' => $journals['alphabetical_order']['first_fifty'][$section]['sindex'],
-                        'sc' => $journals['alphabetical_order']['first_fifty'][$section]['sc'],
-                        'colors' => $journals['colors']
-                    )
+                    'sindex' => $journals['alphabetical_order']['first_fifty'][$section]['sindex'],
+                    'sc' => $journals['alphabetical_order']['first_fifty'][$section]['sc'],
+                    'colors' => $journals['colors']
                 ));
             }
         }
@@ -411,11 +408,9 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         if (is_array($journals['alphabetical_order']['next_fifty'])) {
             foreach (array_keys($journals['alphabetical_order']['next_fifty']) as $section) {
                 $journals['alphabetical_order']['next_fifty'][$section]['link'] = array_merge($linkParams, array(
-                    'search' => array(
-                        'sindex' => $journals['alphabetical_order']['next_fifty'][$section]['sindex'],
-                        'sc' => $journals['alphabetical_order']['next_fifty'][$section]['sc'],
-                        'colors' => $journals['colors']
-                    )
+                    'sindex' => $journals['alphabetical_order']['next_fifty'][$section]['sindex'],
+                    'sc' => $journals['alphabetical_order']['next_fifty'][$section]['sc'],
+                    'colors' => $journals['colors']
                 ));
             }
         }
