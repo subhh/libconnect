@@ -40,11 +40,11 @@
                     <f:if condition="{libconnect:IsArrayNp(value: parameter)}">
                         <f:then>
                             <f:for each="{parameter}" as="array" key="arraykey">
-                                <f:form.hidden value="{array}" name="libconnect[search][{key}][{arraykey}]"/>
+                                <f:form.hidden value="{array}" name="libconnect[{key}][{arraykey}]"/>
                             </f:for>
                         </f:then>
                         <f:else>
-                            <f:form.hidden value="{parameter}" name="libconnect[search][{key}]"/>
+                            <f:form.hidden value="{parameter}" name="libconnect[{key}]"/>
                         </f:else>
                     </f:if>
                 </f:for>
@@ -89,7 +89,7 @@
                 <f:for each="{journals.navlist.pages}" as="item">
                     <f:if condition="{libconnect:IsArrayNp(value: item)}">
                         <f:then>
-                            <f:link.page pageUid="{listPid}" additionalParams="{libconnect: search: {sindex:'{item.link.search.sindex}', sc:'{item.link.sc}', notation:'{item.link.notation}', colors: {1:'{item.link.colors.1}', 2:'{item.link.colors.2}', 4:'{item.link.colors.4}', 6:'{item.link.colors.6}'} } }" addQueryString="0">
+                            <f:link.page pageUid="{listPid}" additionalParams="{libconnect: {sindex:'{item.link.search.sindex}', sc:'{item.link.sc}', notation:'{item.link.notation}', colors: {1:'{item.link.colors.1}', 2:'{item.link.colors.2}', 4:'{item.link.colors.4}', 6:'{item.link.colors.6}'} } }" addQueryString="0">
                                 <f:format.htmlentitiesDecode>{item.title}</f:format.htmlentitiesDecode>
                             </f:link.page>
                         </f:then>
@@ -115,7 +115,7 @@
                     <f:for each="{journals.navlist.pages}" as="item">
                         <f:if condition="{libconnect:IsArrayNp(value: item)}">
                             <f:then>
-                                <f:link.page pageUid="{listPid}" additionalParams="{libconnect: search: {sindex:'{item.link.search.sindex}', sc:'{item.link.sc}', notation:'{item.link.notation}', colors: {1:'{item.link.colors.1}', 2:'{item.link.colors.2}', 4:'{item.link.colors.4}', 6:'{item.link.colors.6}'} } }" addQueryString="0">
+                                <f:link.page pageUid="{listPid}" additionalParams="{libconnect: {sindex:'{item.link.search.sindex}', sc:'{item.link.sc}', notation:'{item.link.notation}', colors: {1:'{item.link.colors.1}', 2:'{item.link.colors.2}', 4:'{item.link.colors.4}', 6:'{item.link.colors.6}'} } }" addQueryString="0">
                                     <f:format.htmlentitiesDecode>{item.title}</f:format.htmlentitiesDecode>
                                 </f:link.page>
                             </f:then>

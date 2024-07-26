@@ -13,7 +13,7 @@
                     <tr>
                         <td>
                             <label for="jq_type{jq_type}" class="hiddenezb"><f:translate key="tx_libconnect.ezb.form.label.type" /></label>
-                            <select name="libconnect[search][jq_type{jq_type}]" id="jq_type{jq_type}">
+                            <select name="libconnect[jq_type{jq_type}]" id="jq_type{jq_type}">
 
                                 <f:for each="{form.jq_type}" as="value" key="key" iteration="foriteration">
                                     <option value="{key}" <f:if condition="{jq_type} == {foriteration.cycle}">selected="selected"</f:if>><f:format.htmlentitiesDecode>{value}</f:format.htmlentitiesDecode></option>
@@ -23,11 +23,11 @@
                         </td>
                         <td>
                             <label for="jq_term{jq_type}" class="hiddenezb"><f:translate key="tx_libconnect.ezb.form.label.searchterm" /></label> 
-                            <input type="text" size="30" class="ezb-input" name="libconnect[search][jq_term{jq_type}]" id="jq_term{jq_type}" value="" />
+                            <input type="text" size="30" class="ezb-input" name="libconnect[jq_term{jq_type}]" id="jq_term{jq_type}" value="" />
                         </td>
                         <td>
                             <label for="jq_bool{jq_type}" class="hiddenezb"><f:translate key="tx_libconnect.ezb.form.label.link" /></label> 
-                            <select name="libconnect[search][jq_bool{jq_type}]" id="jq_bool{jq_type}">
+                            <select name="libconnect[jq_bool{jq_type}]" id="jq_bool{jq_type}">
                                 
                                 <f:for each="{form.jq_bool}" as="value" key="key">
                                     <option value="{key}">{value}</option>
@@ -40,7 +40,7 @@
                 <tr>
                     <td colspan="3">
                         <label id="label_hits_per_page" for="hits_per_page"><f:translate key="tx_libconnect.ezb.form.label.hits" />:</label>
-                        <select size="1" name="libconnect[search][hits_per_page]" id="hits_per_page">
+                        <select size="1" name="libconnect[hits_per_page]" id="hits_per_page">
                             <option value="10">10</option>
                             <option value="25">25</option>
                             <option selected="" value="50">50</option>
@@ -61,7 +61,7 @@
                 <tr>
                     <td><label id="label_fachgebiete" for="fachgebiete"><f:translate key="tx_libconnect.ezb.form.label.subject" />:</label></td>
                     <td>
-                        <select multiple="multiple" size="5" name="libconnect[search][Notations][]" id="fachgebiete">
+                        <select multiple="multiple" size="5" name="libconnect[Notations][]" id="fachgebiete">
 
                             <f:for each="{form.Notations}" as="value" key="key">
                                 <option value="{key}">{value}</option>
@@ -76,7 +76,7 @@
 
                             <f:for each="{form.colors}" as="value" key="key">
                                 <f:if condition="{value.colorkey} != 6">
-                                    <input id="selected_colors_{value.colorkey}" type="checkbox" name="libconnect[search][colors][{value.colorkey}]" class="zugaenge" value="{value.colorkey}" checked="checked"/>
+                                    <input id="selected_colors_{value.colorkey}" type="checkbox" name="libconnect[colors][{value.colorkey}]" class="zugaenge" value="{value.colorkey}" checked="checked"/>
                                 </f:if>
                                 <label class="ezb-list-accessinfo-access_{value.colorkey}" for="selected_colors_{value.colorkey}">{value.value}</label><br/>
                             </f:for>
