@@ -316,9 +316,8 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         if (!empty($params['notation'])) {
             $subject = $this->ezbRepository->getSubject($params['notation']);
             $newParams['search']['Notations']=[$subject['notation']];
-            $newParams['notation'] = $params['notation'];
 
-            $this->view->assign('subject', $subject['title']);
+            $this->view->assign('subject', $subject);
         }
 
         if (!empty($params['search']['sindex'])) {
@@ -378,6 +377,9 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     {
         $params = [];
 
+        if (!empty( $this->request->getQueryParams()['tx_libconnect_ezb']['libconnect'])) {
+            $params = $this->request->getQueryParams()['tx_libconnect_ezb']['libconnect'];
+        }
 	if (!empty( $this->request->getQueryParams()['libconnect'])) {
             $params = $this->request->getQueryParams()['libconnect'];
         }
