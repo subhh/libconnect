@@ -132,7 +132,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $this->view->assign('zugaenge', $params['search']['zugaenge']);
             $this->view->assign('list', $list['list']);
             $this->view->assign('detailPid', $this->settings['flexform']['detailPid']);
-            
+
         } elseif ($isSearch !== false) {//search results
 
             $list =  $this->dbisRepository->loadSearch($params['search'], array());
