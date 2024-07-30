@@ -27,7 +27,7 @@
                                 <numIndex index="3">
                                     <numIndex index="0">LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.sidebar</numIndex>
                                     <numIndex index="1">Ezb->displayMiniForm</numIndex>
-                                    </numIndex>								
+                                </numIndex>								
                                 <numIndex index="4">
                                     <numIndex index="0">LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.search</numIndex>
                                     <numIndex index="1">Ezb->displayForm</numIndex>
