@@ -2,7 +2,7 @@
 
     <f:for each="{journals.alphabetical_order.first_fifty}" as="section">
         <h3>
-            <f:link.page pageUid="{listPid}" additionalParams="{libconnect: {sindex:'{section.link.sindex}', sc:'{section.link.sc}', notation:'{section.link.notation}', colors: {1:'{section.link.colors.1}', 2:'{section.link.colors.2}', 4:'{section.link.colors.4}', 6:'{section.link.colors.6}'} } }" addQueryString="0">
+            <f:link.page pageUid="{listPid}" additionalParams="{libconnect: {sindex:'{section.link.sindex}', sc:'{section.link.sc}', notation:'{section.link.notation}', colors: {1:'{section.link.colors.1}', 2:'{section.link.colors.2}', 4:'{section.link.colors.4}', 6:'{section.link.colors.6}'}} }" addQueryString="0">
                 <f:format.htmlentitiesDecode>
                     <libconnect:strreplaceNp search="&" replace="&amp;">
                         {section.first_fifty_titles}
