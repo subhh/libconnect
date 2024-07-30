@@ -11,7 +11,7 @@
 </f:if>
 
 <div class="ezb-list-legend">
-    <f:form enctype="multipart/form-data" controller="Ezb" method="post" pageUid="{pageUid}" name="ezbaccessinfoform" id="ezbaccessinfoform" additionalAttributes="{onChange : 'document.ezbaccessinfoform.submit();'}">
+    <f:form enctype="multipart/form-data" controller="Ezb" method="get" pageUid="{pageUid}" name="ezbaccessinfoform" id="ezbaccessinfoform" additionalAttributes="{onChange : 'document.ezbaccessinfoform.submit();'}">
 
         <f:for each="{journals.selected_colors}" as="section" key="key">
             <f:if condition="{section.colorkey} != 6">
@@ -34,11 +34,9 @@
             <f:form.hidden name="libconnect[notation]" value="{subject.notation}" />
         </f:if>
 
-        <f:if condition="{formParameter.search}">
-            <f:form.hidden name="libconnect[jq_type1]" value="{formParameter.jq_type1}" />
-            <f:form.hidden name="libconnect[jq_term1]" value="{formParameter.jq_term1}" />
-            <f:form.hidden name="libconnect[sc]" value="{formParameter.sc}" />
-        </f:if>
+        <f:for each="{formParameter}" as="parameter" key="key">
+            <f:form.hidden name="{key}" value="{parameter}" />
+        </f:for>
     </f:form>
 </div>
 
@@ -73,7 +71,7 @@
 
 <f:flashMessages />
 
-<f:render partial="Ezb/ListOutput" arguments="{journals:journalsi, detailPid:detailPid, listPid:pageUid}}" />
+<f:render partial="Ezb/ListOutput" arguments="{journals:journals, detailPid:detailPid, listPid:pageUid}" />
 
 <f:asset.css identifier="ezb" href="EXT:libconnect/Resources/Public/Css/ezb.css" />
 </f:section>
