@@ -402,7 +402,7 @@ class Ezb
         $searchParams['xmlv'] = 3;
         //}
 
-        if (!$searchVars['sc']) {
+        if (!empty($searchVars['sc'])) {
             $searchParams['sc'] = 'A';
         }
 
