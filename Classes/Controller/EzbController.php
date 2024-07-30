@@ -435,7 +435,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->setLanguage();
 
         //error - wrong jourid
-        if(!is_numeric($params['jourid']) || empty($params['jourid'])){
+        if(!empty(!is_numeric($params['jourid'])) || empty($params['jourid'])){
             $templateRootPaths = $this->view->getTemplateRootPaths();
 
             //change view
