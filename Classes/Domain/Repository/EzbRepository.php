@@ -301,7 +301,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 
         $journals = $this->search($searchVars, $colors);
 
-        $journals['searchDescription'] = $this->getSearchDescription($searchVars['search']);
+        $journals['searchDescription'] = $this->getSearchDescription($searchVars);
 
         //get access information
         $journals['selected_colors'] = $this->getAccessInfos();
@@ -310,11 +310,11 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 
         //create links
         $linkParams = [];
-        foreach ($searchVars['search'] as $key => $value) {
+        foreach ($searchVars as $key => $value) {
             $linkParams['search'][$key] = $value;
         }
 
-        if ($searchVars['notation']) {
+        if (!empty($searchVars['notation'])) {
             $linkParams['notation'] = $searchVars['notation'];
         }
         
@@ -368,7 +368,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         //@todo: parameter lang
 
         //navigation - letters
-        if (is_array($journals['navlist']['pages'])) {
+        if (!empty($journals['navlist']['pages'])) {
             foreach (array_keys($journals['navlist']['pages']) as $page) {
                 if (is_array($journals['navlist']['pages'][$page])) {
                     $journals['navlist']['pages'][$page]['link'] = array_merge($linkParams, array(
@@ -380,7 +380,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         }
 
         //precise hits
-        if (is_array($journals['precise_hits'])) {
+        if (!empty($journals['precise_hits'])) {
             foreach (array_keys($journals['precise_hits']) as $precise_hit) {
                 if (is_array($journals['precise_hits'][$precise_hit])) {
                     $journals['precise_hits'][$precise_hit]['jourid'] = $journals['precise_hits'][$precise_hit]['jourid'];
@@ -389,7 +389,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         }
 
         //navigation - sections in letters
-        if (is_array($journals['alphabetical_order']['first_fifty'])) {
+        if (!empty($journals['alphabetical_order']['first_fifty'])) {
             foreach (array_keys($journals['alphabetical_order']['first_fifty']) as $section) {
                 $journals['alphabetical_order']['first_fifty'][$section]['link'] = array_merge($linkParams, array(
                     'sindex' => $journals['alphabetical_order']['first_fifty'][$section]['sindex'],
@@ -399,13 +399,13 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             }
         }
 
-        if (is_array($journals['alphabetical_order']['journals'])) {
+        if (!empty($journals['alphabetical_order']['journals'])) {
             foreach (array_keys($journals['alphabetical_order']['journals']) as $journal) {
                 $journals['alphabetical_order']['journals'][$journal]['jourid'] = $journals['alphabetical_order']['journals'][$journal]['jourid'];
             }
         }
 
-        if (is_array($journals['alphabetical_order']['next_fifty'])) {
+        if (!empty($journals['alphabetical_order']['next_fifty'])) {
             foreach (array_keys($journals['alphabetical_order']['next_fifty']) as $section) {
                 $journals['alphabetical_order']['next_fifty'][$section]['link'] = array_merge($linkParams, array(
                     'sindex' => $journals['alphabetical_order']['next_fifty'][$section]['sindex'],
