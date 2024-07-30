@@ -64,6 +64,9 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $params = $this->request->getQueryParams()['libconnect'];
 //            ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['libconnect']);
         }
+      	if (!empty( $this->request->getQueryParams()['tx_libconnect_ezb'])) {
+            $params = $this->request->getQueryParams()['tx_libconnect_ezb'];
+        }
 
         //show overview on empty search
         $isSearch = false;
@@ -99,10 +102,10 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             );
 
             $formParameter = [
-                'libconnect[sindex]' => $options['sindex'],
-                'libconnect[sc]' => $options['sc'],
-                'libconnect[lc]' => $options['lc'],
-                'libconnect[notation]' => $options['notation']
+                'sindex' => $options['sindex'],
+                'sc' => $options['sc'],
+                'lc' => $options['lc'],
+                'notation' => $options['notation']
             ];
 
             if (empty($params['colors'][1]) &
@@ -136,6 +139,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                     4 => 4
                 ];
             }
+
 
             //search
             $journals =  $this->ezbRepository->loadSearch($params, $params['colors']);
@@ -296,14 +300,21 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     {
         $params = [];
 
-	if (!empty( $this->request->getQueryParams()['libconnect'])) {
-            $params = $this->request->getQueryParams()['libconnect'];
+        if (!empty( $this->request->getQueryParams()['tx_libconnect_ezb']['libconnect'])) {
+            $params = $this->request->getQueryParams()['tx_libconnect_ezb']['libconnect'];
         }
+        if (!empty( $this->request->getQueryParams()['libconnect'])) {
+            $params = $this->request->getQueryParams()['libconnect'];
+            
+        }
+        ;
 
         $newParams = [];
 
         $newParams['jq_type1'] = 'ID';
-        $newParams['sc'] = $params['sc'];//paging
+        if (!empty($params['sc'])) {
+            $newParams['sc'] = $params['sc'];//paging
+        }
 
         $this->setLanguage();
 
@@ -316,10 +327,10 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         }
 
         if (!empty($params['sindex'])) {
-            $newParams['sindex'] = $params['search']['sindex'];
+            $newParams['sindex'] = $params['sindex'];
         }
 
-        unset($params['search']['notation']);
+        unset($params['notation']);
 
         //date how long entry is new
         $newParams['jq_term1'] = $this->getCalculatedDate();
@@ -345,7 +356,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                 ];
             }
 
-            $journals =  $this->ezbRepository->Search($newParams, $params['colors']);
+            $journals =  $this->ezbRepository->loadSearch($newParams, $params['colors']);
         }
 
         //disable first link in navigation initial view
