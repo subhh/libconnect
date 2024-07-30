@@ -60,12 +60,11 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     public function displayListAction(): ResponseInterface
     {
         $params = [];
+        if (!empty( $this->request->getQueryParams()['tx_libconnect_ezb'])) {
+            $params = $this->request->getQueryParams()['tx_libconnect_ezb'];
+        }
         if (!empty( $this->request->getQueryParams()['libconnect'])) {
             $params = $this->request->getQueryParams()['libconnect'];
-//            ArrayUtility::mergeRecursiveWithOverrule($params, $this->request->getParsedBody()['libconnect']);
-        }
-      	if (!empty( $this->request->getQueryParams()['tx_libconnect_ezb'])) {
-            $params = $this->request->getQueryParams()['tx_libconnect_ezb'];
         }
 
         //show overview on empty search
@@ -300,8 +299,8 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     {
         $params = [];
 
-        if (!empty( $this->request->getQueryParams()['tx_libconnect_ezb']['libconnect'])) {
-            $params = $this->request->getQueryParams()['tx_libconnect_ezb']['libconnect'];
+        if (!empty( $this->request->getQueryParams()['tx_libconnect_ezb'])) {
+            $params = $this->request->getQueryParams()['tx_libconnect_ezb'];
         }
         if (!empty( $this->request->getQueryParams()['libconnect'])) {
             $params = $this->request->getQueryParams()['libconnect'];
