@@ -6,7 +6,7 @@ defined('TYPO3') or die('Access denied.');
     'Libconnect',
     'Dbis',
     [
-        \Subhh\Libconnect\Controller\DbisController::class => 'displayForm, displayDetail, displayList, displayMiniForm, displayNew'
+        \Subhh\Libconnect\Controller\DbisController::class => 'displayList, displayDetail, displayList, displayMiniForm, displayNew'
     ],
     // non-cacheable actions
     [
@@ -14,15 +14,29 @@ defined('TYPO3') or die('Access denied.');
     ]
 );
 
+//\Subhh\Libconnect\Controller\EzbController::class => 'displayList, displayDetail, displayForm, displayMiniForm, displayContact, displayNew, displayParticipantsForm'
+
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'Libconnect',
-    'Ezb',
+    'EzbList',
     [
-        \Subhh\Libconnect\Controller\EzbController::class => 'displayList, displayDetail, displayForm, displayMiniForm, displayContact, displayNew, displayParticipantsForm'
+        \Subhh\Libconnect\Controller\EzbController::class => 'displayList'
     ],
     // non-cacheable actions
     [
-        \Subhh\Libconnect\Controller\EzbController::class => 'displayList, displayDetail, displayForm, displayMiniForm, displayContact, displayNew, displayParticipantsForm'
+        \Subhh\Libconnect\Controller\EzbController::class => 'displayList'
+    ]
+);
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+    'Libconnect',
+    'EzbDetail',
+    [
+        \Subhh\Libconnect\Controller\EzbController::class => 'displayDetail'
+    ],
+    // non-cacheable actions
+    [
+        \Subhh\Libconnect\Controller\EzbController::class => 'displayDetail'
     ]
 );
 
