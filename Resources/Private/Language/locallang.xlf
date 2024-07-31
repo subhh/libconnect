@@ -479,7 +479,7 @@
                         <source>List by Title</source>
                 </trans-unit>
                 <trans-unit id="tx_libconnect.ezb.miniform.link.extended_search" xml:space="preserve">
-                        <source>Extended search</source>
+                        <source>Advanced Search</source>
                 </trans-unit>
                 <trans-unit id="tx_libconnect.ezb.miniform.link.sort" xml:space="preserve">
                         <source>Sort</source>

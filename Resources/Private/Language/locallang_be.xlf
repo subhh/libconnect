@@ -32,7 +32,7 @@
                     <source>List view</source>
                 </trans-unit>
                 <trans-unit id="tx_libconnect.flexform.detailedsearch" xml:space="preserve">
-                    <source>Page with detailed search</source>
+                    <source>Page with advanced search</source>
                 </trans-unit>
                 <trans-unit id="tx_libconnect.flexform.howlongnew" xml:space="preserve">
                     <source>How How many days are entries marked as new? (default: 7)</source>

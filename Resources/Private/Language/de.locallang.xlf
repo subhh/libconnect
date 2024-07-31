@@ -629,7 +629,7 @@
                     <target>alphabetisch</target>
                 </trans-unit>
                 <trans-unit id="tx_libconnect.ezb.miniform.link.extended_search" xml:space="preserve">
-                    <source>Extended search</source>
+                    <source>Advanced Search</source>
                     <target>Erweiterte Suche</target>
                 </trans-unit>
                 <trans-unit id="tx_libconnect.ezb.miniform.link.sort" xml:space="preserve">
