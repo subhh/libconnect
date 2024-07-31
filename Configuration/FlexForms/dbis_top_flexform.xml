@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<T3DataStructure>
+    <meta>
+        <langDisable>1</langDisable>
+    </meta>
+    <sheets>
+        <sDEF>
+            <ROOT>
+                <sheetTitle>LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.general</sheetTitle>
+                <type>array</type>
+                <el>
+                    <settings.flexform.subject>
+                        <exclude>1</exclude>
+                        <label>LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.dbis.subject</label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectSingle</renderType>
+                            <foreign_table>tx_libconnect_domain_model_subject</foreign_table>
+                            <foreign_table_where>AND tx_libconnect_domain_model_subject.deleted=0 AND tx_libconnect_domain_model_subject.hidden=0 ORDER BY tx_libconnect_domain_model_subject.title</foreign_table_where>
+                            <size>1</size>
+                            <minitems>1</minitems>
+                            <maxitems>1</maxitems>
+                        </config>                        
+                    </settings.flexform.subject>
+
+                    <settings.flexform.detailPid>
+                        <exclude>1</exclude>
+                        <label>LLL:EXT:libconnect/Resources/Private/Language/locallang_be.xlf:tx_libconnect.flexform.detailpage</label>
+                        <config>
+                            <type>group</type>
+                            <allowed>pages</allowed>
+                            <size>1</size>
+                            <maxitems>1</maxitems>
+                            <minitems>1</minitems>
+                            <show_thumbs>1</show_thumbs>
+                        </config>                        
+                    </settings.flexform.detailPid>
+                </el>
+            </ROOT>
+        </sDEF>
+    </sheets>
+</T3DataStructure>
