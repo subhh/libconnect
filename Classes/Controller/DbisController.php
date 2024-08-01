@@ -214,7 +214,6 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
         //variables for template
         $this->view->assign('form', $form);
-        $this->view->assign('searchPid', (int)$this->settings['flexform']['searchPid']);//link to search page
         $this->view->assign('listPid', (int)$this->settings['flexform']['listPid']);//id of page with list
         $this->view->assign('vars', $params['search']);
         //hide selectbox for licence/access if search and sort alph
