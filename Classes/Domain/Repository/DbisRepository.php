@@ -135,21 +135,8 @@ class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      */
     public function loadOverview()
     {
-        $this->loadSubjects();
+        //$this->loadSubjects();
         $list = $this->dbis->getFachliste();
-
-        foreach ($list as $el) {
-            if ($el['lett'] != 'c') {
-                //get id of subject from database
-                $subject = $this->dbis_to_t3_subjects[$el['id']];
-
-                $el['subject'] = $subject['uid'];
-            } else {
-                $el['subject'] = $el['id'];
-            }
-
-            $list[$el['id']] = $el;
-        }
 
         return $list;
     }

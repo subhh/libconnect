@@ -126,8 +126,8 @@ class Dbis
      */
     public function getFachliste()
     {
-        $response = $this->setRequest($this->fachliste_url, []);
-        
+        $response = $this->setRequest($this->fachliste_url, array('colors' => 511, 'ocolors' => 40, 'lett' => 1));
+
         $return = array();
         
         foreach($response->page_vars as $key => $value){
@@ -140,8 +140,8 @@ class Dbis
             foreach ($response->list_subjects_collections->list_subjects_collections_item as $key => $value) {
                 $return['list_subjects_collections'][] = array(
                     'title' => (string)$value,
-                    'id' => (string)$value['notation'],
-                    'count' => (int)(string)$value['number'],
+                    'notation' => (string)$value['notation'],
+                    'numebr' => (int)(string)$value['number'],
                     'lett' => (string)$value['lett']
                 );
             }

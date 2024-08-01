@@ -87,7 +87,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
         $templateRootPaths = $this->view->getTemplateRootPaths();
 
-        if (!empty($params['subject'])) {//chosen subject after start point
+        if ( !empty($params['gebiete']) && !empty($params['lett']) ) {//chosen subject after start point
             $config['sort'] = $this->settings['flexform']['sortParameter'];
 
             //user sorted list
@@ -108,7 +108,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                 }
             }
 
-            $list =  $this->dbisRepository->loadList($params['subject'], $config, $params);
+            $list =  $this->dbisRepository->loadList($params['gebiete'], $config, $params);
 
             //check, if there are no results and inform user to change licence
             $empty = true;
