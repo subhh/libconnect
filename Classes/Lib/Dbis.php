@@ -126,21 +126,28 @@ class Dbis
      */
     public function getFachliste()
     {
-        $xml_categories = $this->setRequest($this->fachliste_url, []);
-
-        $categories = [];
-
-        if (isset($xml_categories->list_subjects_collections->list_subjects_collections_item)) {
-            foreach ($xml_categories->list_subjects_collections->list_subjects_collections_item as $key => $value) {
-                $categories[(string)$value['notation']] = [
+        $response = $this->setRequest($this->fachliste_url, []);
+        
+        $return = array();
+        
+        foreach($response->page_vars as $key => $value){
+            $regurn['pagaVars'][$key] = $value;
+        }
+        
+        $return['headline'] = (string)$response->headline;
+        
+        if (!empty($response->list_subjects_collections->list_subjects_collections_item)) {
+            foreach ($response->list_subjects_collections->list_subjects_collections_item as $key => $value) {
+                $return['list_subjects_collections'][] = array(
                     'title' => (string)$value,
                     'id' => (string)$value['notation'],
                     'count' => (int)(string)$value['number'],
-                    'lett' => (string)$value['lett']];
+                    'lett' => (string)$value['lett']
+                );
             }
         }
 
-        return $categories;
+        return $return;
     }
 
     /**
@@ -282,7 +289,7 @@ class Dbis
                             'id' => (int)$value['title_id'],
                             'title' => (string)$value,
                             'access_ref' => (string)$value['access_ref'],
-                            'access' => $list['access_infos'][(string)$value['access_ref']]['title'],
+                            //'access' => $list['access_infos'][(string)$value['access_ref']]['title'],
                             'db_type_refs' => (string)$value['db_type_refs'],
                             'top_db' => (int)$value['top_db'],
                             'link' => $this->db_detail_url . $this->bibID . '&lett=' . $this->lett . '&titel_id=' . $value['title_id'],
@@ -305,7 +312,7 @@ class Dbis
                             } else {
                                 foreach (explode(' ', $db['db_type_refs']) as $ref) {
                                     $list['groups'][$ref]['dbs'][] = $db;
-                                    $sortlist[$db['access']] = $db['access_ref'];
+                                    //$sortlist[$db['access']] = $db['access_ref'];
                                 }
                             }
                         }
@@ -506,7 +513,7 @@ class Dbis
         }
 
         //delete inadvertent accesses
-        $this->setLicenceForbid();
+        //$this->setLicenceForbid();
         if ((!empty($this->licenceForbid)) && ($this->licenceForbid!= false)) {
             foreach ($this->licenceForbid as $key =>$licence) {
                 unset($form['zugaenge'][$key]);

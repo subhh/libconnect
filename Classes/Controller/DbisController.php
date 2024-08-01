@@ -154,7 +154,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $this->view->setTemplatePathAndFilename($templateRootPaths[0].'/DbisList/DisplayOverview.html');
 
             //variables for template
-            $this->view->assign('list', $list);
+            $this->view->assign('list', $list['list_subjects_collections']);
         }
 
         return $this->htmlResponse();
