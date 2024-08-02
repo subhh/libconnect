@@ -51,7 +51,7 @@ $pluginSignature_dbis_sidebar = \TYPO3\CMS\Extbase\Utility\ExtensionUtility::reg
 // Add flexform for DBIS
 $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature_dbis_sidebar] = 'pi_flexform';
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue($pluginSignature_dbis_sidebar, 'FILE:EXT:libconnect/Configuration/FlexForms/dbis_search_flexform.xml');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue($pluginSignature_dbis_sidebar, 'FILE:EXT:libconnect/Configuration/FlexForms/dbis_sidebar_flexform.xml');
 
 /* DBIS New */
 $pluginSignature_dbis_new = \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
