@@ -259,7 +259,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                     $subject = $params['gebiete'];
                 }
 
-                $count = (int)$this->getNewCount($subject['dbisid']);
+                $count = (int)$this->getNewCount($subject['dbisid'], $this->settings['flexform']['countDays']);
 
                 if ($count > 0) {
                     $this->view->assign('gebiete', $params['gebiete']);
@@ -269,7 +269,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             }
 
             //new entries for all subjects
-            $count = (int)$this->getNewCount(false);
+            $count = (int)$this->getNewCount(false, $this->settings['flexform']['countDays']);
 
             //show "new in EZB" only if there is something new
             if ($count > 0) {
@@ -324,7 +324,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         unset($params['search']);
 
         //date how long entry is new
-        $params['jq_term1'] = $this->getCalculatedDate();
+        $params['jq_term1'] = $this->getCalculatedDate($this->settings['flexform']['countDays']);
 
         if (empty($this->settings['flexform']['detailPid'])) {
             $this->addFlashMessage(
@@ -357,10 +357,10 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      *
      * @return array
      */
-    private function getNewCount($subjectId = false)
+    private function getNewCount($subjectId = false, $countDays)
     {
         $params['jq_type1'] = 'LD';
-        $params['sc'] = $params['search']['sc'];
+        //$params['sc'] = $params['search']['sc'];
 
         if ($subjectId != false) {
             $params['gebiete'][]=$subjectId;
@@ -370,7 +370,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         unset($params['search']);
 
         //date how long entry is new
-        $params['jq_term1'] = $this->getCalculatedDate();
+        $params['jq_term1'] = $this->getCalculatedDate($countDays);
 
         $config['onlyNew'] = true;
         //request
@@ -384,16 +384,19 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      *
      * @return string $date
      */
-    private function getCalculatedDate()
+    private function getCalculatedDate($countDays)
     {
-        date_default_timezone_set('GMT+1');//@todo get the information from system
+    
+        if(!date_default_timezone_get()){
+            date_default_timezone_set('Europe/Berlin');//@todo get the information from system
+        }
 
         $oneDay = 86400;//seconds
         $numDays = 7; //default are 7 days
         $today = strtotime('now');
 
-        if (!empty($this->settings['flexform']['countDays'])) {
-            $numDays = $this->settings['flexform']['countDays'];
+        if ( !empty($countDays) && ($countDays > 0) ) {
+            $numDays = $countDays;
         }
 
         //calcaulate date
