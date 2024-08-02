@@ -151,7 +151,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             }
 
             //change view
-            $this->view->setTemplatePathAndFilename($templateRootPaths[0].'/EzbList/DisplaySearch.html');
+            $this->view->setTemplatePathAndFilename($templateRootPaths[0].'/Ezb/DisplaySearch.html');
 
             //variables for template
             $this->view->assign('journals', $journals);
@@ -164,7 +164,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $journals =  $this->ezbRepository->loadOverview();
 
             //change view
-            $this->view->setTemplatePathAndFilename($templateRootPaths[0].'/EzbList/DisplayOverview.html');
+            $this->view->setTemplatePathAndFilename($templateRootPaths[0].'/Ezb/DisplayOverview.html');
 
             //variables for template
             $this->view->assign('list', $journals);
