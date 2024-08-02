@@ -195,6 +195,10 @@ ul.ezb-list li a {
     font-weight: normal;
 }
 
+.ezb-search-buttons {
+    display: flex;
+}
+
 /**
  * end - extended search styles
  */
