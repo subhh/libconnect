@@ -141,7 +141,7 @@ class Dbis
                 $return['list_subjects_collections'][] = array(
                     'title' => (string)$value,
                     'notation' => (string)$value['notation'],
-                    'numebr' => (int)(string)$value['number'],
+                    'number' => (int)(string)$value['number'],
                     'lett' => (string)$value['lett']
                 );
             }
