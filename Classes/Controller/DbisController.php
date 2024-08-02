@@ -372,7 +372,6 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         //date how long entry is new
         $params['jq_term1'] = $this->getCalculatedDate();
 
-        $config['detailPid'] = $this->settings['flexform']['detailPid'];
         $config['onlyNew'] = true;
         //request
         $list = $this->dbisRepository->loadSearch($params, $config);
