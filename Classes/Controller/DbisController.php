@@ -87,7 +87,8 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
         $templateRootPaths = $this->view->getTemplateRootPaths();
 
-        if ( !empty($params['gebiete']) && !empty($params['lett']) ) {//chosen subject after start point
+        //if ( !empty($params['gebiete']) && !empty($params['lett']) ) {//chosen subject after start point
+        if ( !empty($params['lett']) ) {//chosen subject after start point
             $config['sort'] = $this->settings['flexform']['sortParameter'];
 
             //user sorted list
@@ -128,7 +129,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
             //variables for template
             $this->view->assign('listhead', $list['subject']);
-            $this->view->assign('subject', $params['subject']);
+            $this->view->assign('gebiete', $params['gebiete']);
             $this->view->assign('zugaenge', $params['search']['zugaenge']);
             $this->view->assign('list', $list['list']);
             $this->view->assign('detailPid', $this->settings['flexform']['detailPid']);
@@ -217,13 +218,13 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->view->assign('listPid', (int)$this->settings['flexform']['listPid']);//id of page with list
         $this->view->assign('vars', $params['search']);
         //hide selectbox for licence/access if search and sort alph
-        if (isset($params['sort']) && isset($params['subject'])) {
-            if (($params['sort'] == 'alph') && ($params['subject'] == 'all')) {
+        if (isset($params['sort']) && isset($params['gebiete'])) {
+            if (($params['sort'] == 'alph') && ($params['gebiete'] == 'all')) {
                 $this->view->assign('hideAccess', true);
             }
         }
-        if (isset($params['subject'])) {
-            if (($params['subject'] == 'all')) {
+        if (isset($params['gebiete'])) {
+            if (($params['gebiete'] == 'all')) {
                 $this->view->assign('hideAccess', true);
             }
         }
@@ -232,16 +233,16 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $this->view->assign('hideAccess', true);
         }
         //Set stubject
-        if (!empty($params['subject'])) {
-            $this->view->assign('subject', $params['subject']);
+        if (!empty($params['gebiete'])) {
+            $this->view->assign('gebiete', $params['gebiete']);
         }
         //sort, if default was changed
         if (!empty($params['sort'])) {
             $this->view->assign('sort', $params['sort']);
         }
         //dbis-listings-wrapper
-        if (!empty($params['subject'])) {
-            if ($params['subject'] != 'all') {
+        if (!empty($params['gebiete'])) {
+            if ($params['gebiete'] != 'all') {
                 $this->view->assign('listingsWrapper', true);
             }
         }
@@ -250,18 +251,18 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         if (!empty($this->settings['flexform']['newPid'])) {
 
             //new entries for a selected subject
-            if (!empty($params['subject']) && ($params['subject'] != 'all')) {
-                $subject = $this->dbisRepository->getSubject($params['subject']);
+            if (!empty($params['gebiete']) && ($params['gebiete'] != 'all')) {
+                $subject = $this->dbisRepository->getSubject($params['gebiete']);
 
                 //maybe a collection or new subject
                 if (!$subject) {
-                    $subject = $params['subject'];
+                    $subject = $params['gebiete'];
                 }
 
                 $count = (int)$this->getNewCount($subject['dbisid']);
 
                 if ($count > 0) {
-                    $this->view->assign('subject', $params['subject']);
+                    $this->view->assign('gebiete', $params['gebiete']);
 
                     $this->view->assign('newInSubjectCount', $count);
                 }

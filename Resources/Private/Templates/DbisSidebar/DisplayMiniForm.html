@@ -74,13 +74,13 @@
     <f:if condition="{listingsWrapper}">
         <f:then>
             <p>
-                <f:link.page pageUid="{listPid}" additionalParams="{libconnect: '{sort:\'type\', subject: subject}'}" addQueryString="1">
+                <f:link.page pageUid="{listPid}" additionalParams="{libconnect: '{sort:\'type\', gebiete: subject}'}" addQueryString="1">
                     <f:translate key="tx_libconnect.dbis.miniform.listing_type" />
                 </f:link.page>
             </p>
 
             <p>
-                <f:link.page pageUid="{listPid}" additionalParams="{libconnect: '{sort:\'alph\', subject: subject}'}" addQueryString="1">
+                <f:link.page pageUid="{listPid}" additionalParams="{libconnect: '{sort:\'alph\', gebiete: subject}'}" addQueryString="1">
                     <f:translate key="tx_libconnect.dbis.miniform.listing_alph" />
                 </f:link.page>
             </p>
@@ -94,7 +94,7 @@
             </p>
 
             <p>
-                <f:link.page pageUid="{listPid}" additionalParams="{libconnect: {subject: 'all'}}" addQueryString="1">
+                <f:link.page pageUid="{listPid}" additionalParams="{libconnect: {gebiete: 'all'}}" addQueryString="1">
                     <f:translate key="tx_libconnect.dbis.miniform.listing_alph" />
                 </f:link.page>
             </p>
@@ -118,7 +118,7 @@
     <div class="dbis-listings-wrapper">
         <div class="dbis-new">
             <p id="dbis-newmini">
-                <f:link.page pageUid="{newPid}" additionalParams="{libconnect: {subject: '{subject}'}}"><span class="newcount"> ({newInSubjectCount})</span></f:link.page>
+                <f:link.page pageUid="{newPid}" additionalParams="{libconnect: {gebiete: '{subject}'}}"><span class="newcount"> ({newInSubjectCount})</span></f:link.page>
             </p>
         </div>
     </div>
