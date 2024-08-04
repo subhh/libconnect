@@ -320,7 +320,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         //subject
         if (!empty($params['notation'])) {
             $subject = $this->ezbRepository->getSubject($params['notation']);
-            $newParams['Notations']=[$subject['notation']];
+            $newParams['Notations']=$subject['notation'];
 
             $this->view->assign('subject', $subject);
         }
