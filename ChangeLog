@@ -11,6 +11,8 @@
         - Details: 
             - Fixed problems with subjects
             - Categorys added.
+        - Search:
+            - removed last "AND" or "OR" in the text, if it is the last or only element
 	- List: Fixed forgotten lc tag.
 9.0.3
     - EZB: 
