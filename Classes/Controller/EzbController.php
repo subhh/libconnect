@@ -59,9 +59,9 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     */
     public function displayListAction(): ResponseInterface
     {
+        if (!empty( $this->request->getQueryParams()['tx_libconnect_ezblist'])) {
         $params = [];
-        if (!empty( $this->request->getQueryParams()['tx_libconnect_ezb'])) {
-            $params = $this->request->getQueryParams()['tx_libconnect_ezb'];
+            $params = $this->request->getQueryParams()['tx_libconnect_ezblist'];
         }
         if (!empty( $this->request->getQueryParams()['libconnect'])) {
             $params = $this->request->getQueryParams()['libconnect'];
@@ -299,8 +299,8 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     {
         $params = [];
 
-        if (!empty( $this->request->getQueryParams()['tx_libconnect_ezb'])) {
-            $params = $this->request->getQueryParams()['tx_libconnect_ezb'];
+        if (!empty( $this->request->getQueryParams()['tx_libconnect_ezblist'])) {
+            $params = $this->request->getQueryParams()['tx_libconnect_ezblist'];
         }
         if (!empty( $this->request->getQueryParams()['libconnect'])) {
             $params = $this->request->getQueryParams()['libconnect'];
@@ -389,8 +389,8 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     {
         $params = [];
 
-        if (!empty( $this->request->getQueryParams()['tx_libconnect_ezb']['libconnect'])) {
-            $params = $this->request->getQueryParams()['tx_libconnect_ezb']['libconnect'];
+        if (!empty( $this->request->getQueryParams()['tx_libconnect_ezblist']['libconnect'])) {
+            $params = $this->request->getQueryParams()['tx_libconnect_ezblist']['libconnect'];
         }
 	    if (!empty( $this->request->getQueryParams()['libconnect'])) {
             $params = $this->request->getQueryParams()['libconnect'];
