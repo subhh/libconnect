@@ -409,8 +409,6 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         //date how long entry is new
         $params['jq_term1'] = $this->getCalculatedDate();
 
-        $config['detailPid'] = $this->settings['flexform']['detailPid'];
-
         $colors = [
             1 => 1,
             2 => 2,
