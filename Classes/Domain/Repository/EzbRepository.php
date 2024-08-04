@@ -306,6 +306,11 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         if(empty(end($journals['searchDescription']))){
             array_pop($journals['searchDescription']);
         }
+        //remove last "AND" or "OR" in the text, if it is the last or only element
+        $text = $journals['searchDescription'][count( $journals['searchDescription']) ];
+        $text = trim($text, " AND");
+        $text = trim($text, " OR");
+        $journals['searchDescription'][count( $journals['searchDescription']) ] = $text;
 
         //get access information
         $journals['selected_colors'] = $this->getAccessInfos();
