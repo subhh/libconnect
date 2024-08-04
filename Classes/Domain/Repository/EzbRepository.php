@@ -302,6 +302,10 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $journals = $this->search($searchVars, $colors);
 
         $journals['searchDescription'] = $this->getSearchDescription($searchVars);
+        //sometimes there is an empty element
+        if(empty(end($journals['searchDescription']))){
+            array_pop($journals['searchDescription']);
+        }
 
         //get access information
         $journals['selected_colors'] = $this->getAccessInfos();
