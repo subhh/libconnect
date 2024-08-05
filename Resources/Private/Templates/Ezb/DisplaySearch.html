@@ -7,6 +7,7 @@
 </h1>
 
 <p id="ezb-conditions"><f:translate key="tx_libconnect.ezb.search.criterion" /></p>
+
 <ul>
     <f:for each="{journals.searchDescription}" as="description">
         <li><f:format.htmlspecialchars>{description}</f:format.htmlspecialchars></li>
@@ -89,9 +90,7 @@
                 <f:for each="{journals.navlist.pages}" as="item">
                     <f:if condition="{libconnect:IsArrayNp(value: item)}">
                         <f:then>
-                            <f:link.page pageUid="{listPid}" additionalParams="{libconnect: {sindex:'{item.link.search.sindex}', sc:'{item.link.sc}', notation:'{item.link.notation}', colors: {1:'{item.link.colors.1}', 2:'{item.link.colors.2}', 4:'{item.link.colors.4}', 6:'{item.link.colors.6}'} } }" addQueryString="0">
-                                <f:format.htmlentitiesDecode>{item.title}</f:format.htmlentitiesDecode>
-                            </f:link.page>
+                            <f:link.page pageUid="{listPid}" additionalParams="{item.link}"><f:format.htmlentitiesDecode>{item.title}</f:format.htmlentitiesDecode></f:link.page>
                         </f:then>
                         <f:else>
                             <em>{item}</em>
@@ -115,9 +114,7 @@
                     <f:for each="{journals.navlist.pages}" as="item">
                         <f:if condition="{libconnect:IsArrayNp(value: item)}">
                             <f:then>
-                                <f:link.page pageUid="{listPid}" additionalParams="{libconnect: {sindex:'{item.link.search.sindex}', sc:'{item.link.sc}', notation:'{item.link.notation}', colors: {1:'{item.link.colors.1}', 2:'{item.link.colors.2}', 4:'{item.link.colors.4}', 6:'{item.link.colors.6}'} } }" addQueryString="0">
-                                    <f:format.htmlentitiesDecode>{item.title}</f:format.htmlentitiesDecode>
-                                </f:link.page>
+                                <f:link.page pageUid="{listPid}" additionalParams="{item.link}"><f:format.htmlentitiesDecode>{item.title}</f:format.htmlentitiesDecode></f:link.page>
                             </f:then>
                             <f:else>
                                 <em>{item}</em>

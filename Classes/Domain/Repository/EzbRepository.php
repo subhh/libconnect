@@ -142,7 +142,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         //navigation - letters
         foreach (array_keys($journals['navlist']['pages']) as $page) {
             if (is_array($journals['navlist']['pages'][$page])) {
-                $journals['navlist']['pages'][$page]['link'] = array(
+                $journals['navlist']['pages'][$page]['link']['libconnect'] = array(
                     'sindex' => 0,
                     'sc' => $journals['navlist']['pages'][$page]['sc']? $journals['navlist']['pages'][$page]['sc'] : 'A',
                     'lc' => $journals['navlist']['pages'][$page]['lc'],
@@ -155,7 +155,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         //navigation - sections in letters
         if (isset($journals['alphabetical_order']['first_fifty'])) {
             foreach (array_keys($journals['alphabetical_order']['first_fifty']) as $section) {
-                $journals['alphabetical_order']['first_fifty'][$section]['link'] = array(
+                $journals['alphabetical_order']['first_fifty'][$section]['link']['libconnect'] = array(
                     'sindex' => $journals['alphabetical_order']['first_fifty'][$section]['sindex'],
                     'sc' => $journals['alphabetical_order']['first_fifty'][$section]['sc']? $journals['alphabetical_order']['first_fifty'][$section]['sc'] : 'A',
                     'lc' => $journals['alphabetical_order']['first_fifty'][$section]['lc'],
@@ -172,7 +172,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         //navigation - sections in letters
         if (isset($journals['alphabetical_order']['next_fifty'])) {
             foreach (array_keys($journals['alphabetical_order']['next_fifty']) as $section) {
-                $journals['alphabetical_order']['next_fifty'][$section]['link'] = array(
+                $journals['alphabetical_order']['next_fifty'][$section]['link']['libconnect'] = array(
                     'sindex' => $journals['alphabetical_order']['next_fifty'][$section]['sindex'],
                     'sc' => $journals['alphabetical_order']['next_fifty'][$section]['sc']? $journals['alphabetical_order']['next_fifty'][$section]['sc'] : 'A',
                     'lc' => $journals['alphabetical_order']['next_fifty'][$section]['lc'],
@@ -317,16 +317,16 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $journals['AccessInfos'] = $journals['selected_colors'];
         $journals['colors'] = $colors;
 
-        //create links
+        //create addtionals parameter for links
         $linkParams = [];
         foreach ($searchVars as $key => $value) {
-            $linkParams['search'][$key] = $value;
+            $linkParams['link']['libconnect'][$key] = $value;
         }
 
         if (!empty($searchVars['notation'])) {
             $linkParams['notation'] = $searchVars['notation'];
         }
-        
+
         $journals = $this->getLinks($journals, $linkParams);
 
         return $journals;
@@ -380,9 +380,10 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         if (!empty($journals['navlist']['pages'])) {
             foreach (array_keys($journals['navlist']['pages']) as $page) {
                 if (is_array($journals['navlist']['pages'][$page])) {
-                    $journals['navlist']['pages'][$page]['link'] = array_merge($linkParams, array(
+                    $journals['navlist']['pages'][$page]['link']['libconnect'] = array_merge($linkParams['link']['libconnect'], array(
                         'sc' => $journals['navlist']['pages'][$page]['id'],
-                        'colors' => $journals['colors']
+                        'colors' => $journals['colors'],
+                        'sindex' => 0
                     ));
                 }
             }
@@ -400,7 +401,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         //navigation - sections in letters
         if (!empty($journals['alphabetical_order']['first_fifty'])) {
             foreach (array_keys($journals['alphabetical_order']['first_fifty']) as $section) {
-                $journals['alphabetical_order']['first_fifty'][$section]['link'] = array_merge($linkParams, array(
+                $journals['alphabetical_order']['first_fifty'][$section]['link']['libconnect'] = array_merge($linkParams['link']['libconnect'], array(
                     'sindex' => $journals['alphabetical_order']['first_fifty'][$section]['sindex'],
                     'sc' => $journals['alphabetical_order']['first_fifty'][$section]['sc'],
                     'colors' => $journals['colors']
@@ -416,7 +417,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 
         if (!empty($journals['alphabetical_order']['next_fifty'])) {
             foreach (array_keys($journals['alphabetical_order']['next_fifty']) as $section) {
-                $journals['alphabetical_order']['next_fifty'][$section]['link'] = array_merge($linkParams, array(
+                $journals['alphabetical_order']['next_fifty'][$section]['link']['libconnect'] = array_merge($linkParams['link']['libconnect'], array(
                     'sindex' => $journals['alphabetical_order']['next_fifty'][$section]['sindex'],
                     'sc' => $journals['alphabetical_order']['next_fifty'][$section]['sc'],
                     'colors' => $journals['colors']
