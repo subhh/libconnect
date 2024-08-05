@@ -5,7 +5,7 @@
 <div class="datenbank-suche-wrapper">
     <h2 class="libconnect-h2"><f:translate key="tx_libconnect.dbis.miniform.search_header" /></h2>
 
-    <f:form name="dbis-mini-form-search" id="dbis-mini-form-search" controller="Dbis" method="post" pageUid="{listPid}">
+    <f:form name="dbis-mini-form-search" id="dbis-mini-form-search" controller="Dbis" method="get" pageUid="{listPid}">
 
         <label for="libconnect_dbis_minisuche" class="hiddendebis"><f:translate key="tx_libconnect.dbis.miniform.search_term" /></label>
         <f:form.textfield id="libconnect_dbis_minisuche" name="libconnect[search][sword]" value="{vars.sword}" size="20"/><br/>
@@ -28,7 +28,7 @@
         <div class="datenbank-suche-wrapper">
             <h2 class="libconnect-h2"><f:translate key="tx_libconnect.dbis.miniform.show_databases" /></h2>
 
-	    <f:form name="dbis-mini-form-choose-licence" id="dbis-mini-form-choose-licence" controller="Dbis" method="post" pageUid="{listPid}">
+	    <f:form name="dbis-mini-form-choose-licence" id="dbis-mini-form-choose-licence" controller="Dbis" method="get" pageUid="{listPid}">
                 <p>
                     <label for="libconnect_dbis_suche" class="hiddendebis"><f:translate key="tx_libconnect.dbis.miniform.select_access" /></label>
 
@@ -36,8 +36,9 @@
 
                 </p>
 
-                <f:if condition="{subject}">
-                    <f:form.hidden name="libconnect[subject]" value="{subject}" />
+                <f:if condition="{gebiete}">
+                    <f:form.hidden name="libconnect[gebiete]" value="{gebiete}" />
+                    <f:form.hidden name="libconnect[lett]" value="{lett}" />
                 </f:if>
                 <f:if condition="{sort}">
                     <f:form.hidden name="libconnect[sort]" value="{sort}" />
@@ -74,13 +75,13 @@
     <f:if condition="{listingsWrapper}">
         <f:then>
             <p>
-                <f:link.page pageUid="{listPid}" additionalParams="{libconnect: '{sort:\'type\', gebiete: subject}'}" addQueryString="1">
+                <f:link.page pageUid="{listPid}" additionalParams="{libconnect: {sort:'{type}', gebiete: '{gebiete}', lett: '{lett}' } }" addQueryString="1">
                     <f:translate key="tx_libconnect.dbis.miniform.listing_type" />
                 </f:link.page>
             </p>
 
             <p>
-                <f:link.page pageUid="{listPid}" additionalParams="{libconnect: '{sort:\'alph\', gebiete: subject}'}" addQueryString="1">
+                <f:link.page pageUid="{listPid}" additionalParams="{libconnect: {sort:'alph', gebiete: '{gebiete}', lett: '{lett}' }}" addQueryString="1">
                     <f:translate key="tx_libconnect.dbis.miniform.listing_alph" />
                 </f:link.page>
             </p>
