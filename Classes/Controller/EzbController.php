@@ -299,8 +299,8 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     {
         $params = [];
 
-        if (!empty( $this->request->getQueryParams()['tx_libconnect_ezblist'])) {
-            $params = $this->request->getQueryParams()['tx_libconnect_ezblist'];
+        if (!empty( $this->request->getQueryParams()['tx_libconnect_ezbnew'])) {
+            $params = $this->request->getQueryParams()['tx_libconnect_ezbnew'];
         }
         if (!empty( $this->request->getQueryParams()['libconnect'])) {
             $params = $this->request->getQueryParams()['libconnect'];
