@@ -68,8 +68,11 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     {
         $params = [];
 
+        if (!empty( $this->request->getQueryParams()['tx_libconnect_dbissidebar']['libconnect'])) {
+            $params = $this->request->getQueryParams()['tx_libconnect_dbissidebar']['libconnect'];
+        }
         if (!empty( $this->request->getQueryParams()['libconnect'])) {
-            $params = $this->request->getQueryParams()['libconnect'];
+            $params = array_merge($this->request->getQueryParams()['libconnect'], $params);
         }
 
         //get PageID
@@ -78,15 +81,12 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
         //show overview on empty search
         $isSearch = false;
-        if (!empty($params['search'])) {
-            if ((count($params['search']) > 1) || (!empty($params['search']['sword']))) {
-                $isSearch = true;
-            }
+        if (key_exists('jq_term1', $params) || (!empty($params['sword']))) {
+            $isSearch = true;
         }
 
         $templateRootPaths = $this->view->getTemplateRootPaths();
 
-        //if ( !empty($params['gebiete']) && !empty($params['lett']) ) {//chosen subject after start point
         if ( !empty($params['lett']) ) {//chosen subject after start point
             $config['sort'] = $this->settings['flexform']['sortParameter'];
 
@@ -99,8 +99,8 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                 $config['sort'] = 'type';
             }
 
-            if (isset($params['search']['zugaenge']) && ($params['search']['zugaenge'] != '1000')) {
-                $config['search']['zugaenge']=$params['search']['zugaenge'];
+            if (isset($params['zugaenge']) && ($params['zugaenge'] != '1000')) {
+                $config['zugaenge']=$params['zugaenge'];
 
                 //it is not possible to filter "zugaenge" if sort is set to access
                 if ($config['sort'] == 'access') {
@@ -129,13 +129,14 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             //variables for template
             $this->view->assign('listhead', $list['subject']);
             $this->view->assign('gebiete', $params['gebiete']);
-            $this->view->assign('zugaenge', $params['search']['zugaenge']);
+            $this->view->assign('params', $params);
+            $this->view->assign('zugaenge', $params['zugaenge']);
             $this->view->assign('list', $list['list']);
             $this->view->assign('detailPid', $this->settings['flexform']['detailPid']);
 
         } elseif ($isSearch !== false) {//search results
 
-            $list =  $this->dbisRepository->loadSearch($params['search'], array());
+            $list =  $this->dbisRepository->loadSearch($params, array());
 
             //change view
             $this->view->setTemplatePathAndFilename($templateRootPaths[0].'/Dbis/DisplaySearch.html');
@@ -166,6 +167,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     public function displayDetailAction(): ResponseInterface
     {
         $params = [];
+
         if (!empty( $this->request->getQueryParams()['libconnect'])) {
             $params = $this->request->getQueryParams()['libconnect'];
         }
@@ -203,7 +205,9 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     public function displayMiniFormAction(): ResponseInterface
     {
         $params = [];
-
+        if (!empty( $this->request->getQueryParams()['tx_libconnect_dbissidebar']['libconnect'])) {
+            $params = $this->request->getQueryParams()['tx_libconnect_dbissidebar']['libconnect'];
+        }
         if (!empty( $this->request->getQueryParams()['libconnect'])) {
             $params = $this->request->getQueryParams()['libconnect'];
 
@@ -214,7 +218,8 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         //variables for template
         $this->view->assign('form', $form);
         $this->view->assign('listPid', (int)$this->settings['flexform']['listPid']);//id of page with list
-        $this->view->assign('vars', $params['search']);
+        $this->view->assign('searchPid', (int)$this->settings['flexform']['searchPid']);//id of page with advanced search
+        $this->view->assign('vars', $params);
         //hide selectbox for licence/access if search and sort alph
         if (isset($params['sort']) && isset($params['gebiete'])) {
             if (($params['sort'] == 'alph') && ($params['gebiete'] == 'all')) {
@@ -234,6 +239,9 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         if (!empty($params['gebiete'])) {
             $this->view->assign('gebiete', $params['gebiete']);
         }
+        if (!empty($params['lett'])) {
+            $this->view->assign('lett', $params['lett']);
+        }
         //sort, if default was changed
         if (!empty($params['sort'])) {
             $this->view->assign('sort', $params['sort']);
@@ -249,7 +257,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         if (!empty($this->settings['flexform']['newPid'])) {
 
             //new entries for a selected subject
-            if (!empty($params['gebiete']) && ($params['gebiete'] != 'all')) {
+            if (!empty($params['gebiete']) && ($params['gebiete'] != 'all') && (!is_array($params['gebiete']) ) ) {
                 $subject = $this->dbisRepository->getSubject($params['gebiete']);
 
                 //maybe a collection or new subject
@@ -260,7 +268,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                 $count = (int)$this->getNewCount($subject['dbisid'], $this->settings['flexform']['countDays']);
 
                 if ($count > 0) {
-                    $this->view->assign('gebiete', $params['gebiete']);
+                    //$this->view->assign('gebiete', $params['gebiete']);
 
                     $this->view->assign('newInSubjectCount', $count);
                 }
@@ -289,10 +297,10 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $params = $this->request->getQueryParams()['libconnect'];
         }
 
-        $form = $this->dbisRepository->loadForm($params['search']);
+        $form = $this->dbisRepository->loadForm($params);
 
         //variables for template
-        $this->view->assign('vars', $params['search']);
+        $this->view->assign('vars', $params);
         $this->view->assign('form', $form);
         $this->view->assign('listPid', $this->settings['flexform']['listPid']);//Link zur Listendarstellung
 
@@ -310,14 +318,14 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         }
 
         $params['jq_type1'] = 'LD';
-        $params['sc'] = $params['search']['sc'];
+        $params['sc'] = $params['sc'];
 
         if (!empty($params['subject'])) {
             $subject = $this->dbisRepository->getSubject($params['subject']);
             $params['gebiete'][]=$subject['dbisid'];
         }
         unset($params['subject']);
-        unset($params['search']);
+        unset($params);
 
         //date how long entry is new
         $params['jq_term1'] = $this->getCalculatedDate($this->settings['flexform']['countDays']);
@@ -356,14 +364,14 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     private function getNewCount($subjectId = false, $countDays)
     {
         $params['jq_type1'] = 'LD';
-        //$params['sc'] = $params['search']['sc'];
+        //$params['sc'] = $params['sc'];
 
         if ($subjectId != false) {
             $params['gebiete'][]=$subjectId;
         }
 
         unset($params['subject']);
-        unset($params['search']);
+        unset($params);
 
         //date how long entry is new
         $params['jq_term1'] = $this->getCalculatedDate($countDays);
