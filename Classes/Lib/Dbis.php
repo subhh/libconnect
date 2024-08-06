@@ -540,12 +540,14 @@ class Dbis
 
         foreach ($searchVars as $var => $values) {
             if (!is_array($values)) {
-                $values = utf8_decode($values);
+                //DBIS needs ISO-8859-1
+                $values = mb_convert_encoding($values, "ISO-8859-1");
 
                 $params[$var] = urlencode($values);
             } else {
                 foreach ($values as $value) {
-                    $value = utf8_decode($value);
+                    //DBIS needs ISO-8859-1
+                    $value = mb_convert_encoding($value, "ISO-8859-1");
 
                     //$searchUrl .= '&' . $var . '[]=' . urlencode($value);
                     $params[$var][] = urlencode($value);
@@ -574,7 +576,8 @@ class Dbis
                 ];
 
         if (!$searchVars || isset($searchVars['sword'])) {
-            $term = utf8_decode($searchVars['sword']);
+            //DBIS needs ISO-8859-1
+            $term = mb_convert_encoding($searchVars['sword'], "ISO-8859-1");
 
             // encode term
             $term = urlencode($term);
@@ -736,7 +739,8 @@ class Dbis
             $stop = mb_stripos($htmlResponse, '</td>', $start);
             $detail_content_more_internet_accesses = trim(mb_substr($htmlResponse, $start, $stop-$start-5));
             $detail_content_more_internet_accesses = str_replace('</td>', '', $detail_content_more_internet_accesses);
-            $detail_content_more_internet_accesses = utf8_encode(str_replace('_more_internet_accesses">', '', $detail_content_more_internet_accesses));
+
+            $detail_content_more_internet_accesses =  mb_convert_encoding(str_replace('_more_internet_accesses">', '', $detail_content_more_internet_accesses), "ISO-8859-1");
         }
         $moreDetails['more_internet_accesses'] = $detail_content_more_internet_accesses;
 
