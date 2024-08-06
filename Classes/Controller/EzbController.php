@@ -59,8 +59,8 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     */
     public function displayListAction(): ResponseInterface
     {
-        if (!empty( $this->request->getQueryParams()['tx_libconnect_ezblist'])) {
         $params = [];
+        if (!empty( $this->request->getQueryParams()['tx_libconnect_ezblist'])) {
             $params = $this->request->getQueryParams()['tx_libconnect_ezblist'];
         }
         if (!empty( $this->request->getQueryParams()['libconnect'])) {
@@ -69,10 +69,10 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
         //show overview on empty search
         $isSearch = false;
-        if (!empty($params['sword']) || (!empty($params['jq_term1'])) || (!empty($params['jq_term2'])) || (!empty($params['jq_term3'])) ) {
+        if (!empty($params['sword']) || (!empty($params['jq_term1'])) || (!empty($params['jq_term2'])) || (!empty($params['jq_term3']) || (!empty($params['Notations'])) ) {
             $isSearch = true;
         }
-
+        
         //set language
         $this->setLanguage();
 
