@@ -8,7 +8,7 @@
     <f:form name="dbis-mini-form-search" id="dbis-mini-form-search" controller="Dbis" method="get" pageUid="{listPid}">
 
         <label for="libconnect_dbis_minisuche" class="hiddendebis"><f:translate key="tx_libconnect.dbis.miniform.search_term" /></label>
-        <f:form.textfield id="libconnect_dbis_minisuche" name="libconnect[search][sword]" value="{vars.sword}" size="20"/><br/>
+        <f:form.textfield id="libconnect_dbis_minisuche" name="libconnect[sword]" value="{vars.sword}" size="20"/><br/>
 
         <f:form.submit name="submit" value='<f:translate key="tx_libconnect.dbis.miniform.search_term" />'/>
         <f:if condition="{searchPid}">
@@ -32,14 +32,25 @@
                 <p>
                     <label for="libconnect_dbis_suche" class="hiddendebis"><f:translate key="tx_libconnect.dbis.miniform.select_access" /></label>
 
-                    <f:form.select id="libconnect_dbis_suche" name="libconnect[search][zugaenge]" options="{form.zugaenge}" value="{vars.zugaenge}"/>
+                    <f:form.select id="libconnect_dbis_suche" name="libconnect[zugaenge]" options="{form.zugaenge}"/>
 
                 </p>
 
                 <f:if condition="{gebiete}">
-                    <f:form.hidden name="libconnect[gebiete]" value="{gebiete}" />
+                    <f:if condition="{libconnect:IsArrayNp(value: gebiete)}">
+                        <f:then>
+                            <f:for each="{gebiete}" as="gebieteVar" key="gebieteKey">
+                                <f:form.hidden name="libconnect[gebiete][{gebieteKey}]" value="{gebieteVar}" />
+                            </f:for>
+                        </f:then>
+                        <f:else>
+                            <f:form.hidden name="libconnect[gebiete]" value="{gebiete}" />
+                        </f:else>
+                    </f:if>
+
                     <f:form.hidden name="libconnect[lett]" value="{lett}" />
                 </f:if>
+
                 <f:if condition="{sort}">
                     <f:form.hidden name="libconnect[sort]" value="{sort}" />
                 </f:if>
@@ -51,11 +62,11 @@
                                 <f:if condition="{libconnect:IsArrayNp(value: searchVar)}">
                                     <f:then>
                                         <f:for each="{searchVar}" as="subSearchVar" key="subSearchKey">
-                                            <f:form.hidden name="libconnect[search][{searchKey}][{subSearchKey}]" value="{subSearchVar}" />
+                                            <f:form.hidden name="libconnect[{searchKey}][{subSearchKey}]" value="{subSearchVar}" />
                                         </f:for>
                                     </f:then>
                                     <f:else>
-                                        <f:form.hidden name="libconnect[search][{searchKey}]" value="{searchVar}" />
+                                        <f:form.hidden name="libconnect[{searchKey}]" value="{searchVar}" />
                                     </f:else>
                                 </f:if>
                             </f:else>
@@ -102,6 +113,18 @@
         </f:else>
     </f:if>
 </div>
+
+<f:if condition="{searchPid}">
+    <div class="dbis-listings-wrapper">
+        <div class="dbis-advanced-search">
+            <p id="dbis-advanced-search">
+                <f:link.page pageUid="{searchPid}">
+                    <f:translate key="tx_libconnect.dbis.miniform.extended_search" />
+                </f:link.page>
+            </p>
+        </div>
+    </div>
+</f:if>
 
 <f:if condition="{newPid}">
     <div class="dbis-listings-wrapper">
