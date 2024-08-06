@@ -14,7 +14,7 @@
                         <td>
                             <label for="jq_type{jq_type}" class="hiddendebis"><f:translate key="tx_libconnect.dbis.form.field" /></label>
 
-                            <select name="libconnect[search][jq_type{jq_type}]" id="jq_type{jq_type}">
+                            <select name="libconnect[jq_type{jq_type}]" id="jq_type{jq_type}">
 
                                 <f:for each="{form.jq_type}" as="value" key="key" iteration="foriteration">
                                     <option value="{key}" <f:if condition="{jq_type} == {foriteration.cycle}">selected="selected"</f:if>><f:format.htmlentitiesDecode>{value}</f:format.htmlentitiesDecode></option>
@@ -24,11 +24,11 @@
                         </td>
                         <td>
                             <label for="jq_term{jq_type}" class="hiddendebis"><f:translate key="tx_libconnect.dbis.form.search_term" /></label>
-                            <input type="text" size="35" class="dbis-input" name="libconnect[search][jq_term{jq_type}]" id="jq_term{jq_type}" value="" />
+                            <input type="text" size="35" class="dbis-input" name="libconnect[jq_term{jq_type}]" id="jq_term{jq_type}" value="" />
                         </td>
                         <td>
                             <label for="jq_bool{jq_type}" class="hiddendebis"><f:translate key="tx_libconnect.dbis.form.link" /></label>
-                            <select name="libconnect[search][jq_bool{jq_type}]" id="jq_bool{jq_type}">
+                            <select name="libconnect[jq_bool{jq_type}]" id="jq_bool{jq_type}">
 
                                 <f:for each="{form.jq_bool}" as="value" key="key">
                                     <option value="{key}">{value}</option>
@@ -38,7 +38,7 @@
                         </td>
                         <td>
                             <label for="jq_not{jq_type}" class="hiddendebis"><f:translate key="tx_libconnect.dbis.form.negator" /></label>
-                            <select name="libconnect[search][jq_not{jq_type}]" id="jq_not{jq_type}">
+                            <select name="libconnect[jq_not{jq_type}]" id="jq_not{jq_type}">
 
                                 <f:for each="{form.jq_not}" as="value" key="key">
                                     <option value="{key}">{value}</option>
@@ -59,7 +59,7 @@
                     <tr>
                         <td><label for="fachgebiete"><f:translate key="tx_libconnect.dbis.form.subject" /></label></td>
                         <td>
-                            <select multiple="multiple" size="5" name="libconnect[search][gebiete][]" id="fachgebiete">
+                            <select multiple="multiple" size="5" name="libconnect[gebiete][]" id="fachgebiete">
 
                                 <f:for each="{form.gebiete}" as="value" key="key">
                                     <option value="{key}">{value}</option>
@@ -71,7 +71,7 @@
                     <tr>
                         <td><label for="typen"><f:translate key="tx_libconnect.dbis.form.datbase_types" /></label></td>
                         <td>
-                            <select multiple="multiple" size="5" name="libconnect[search][db_type][]" id="typen">
+                            <select multiple="multiple" size="5" name="libconnect[db_type][]" id="typen">
 
                                 <f:for each="{form.db_types}" as="value" key="key">
                                     <option value="{key}">{value}</option>
@@ -83,7 +83,7 @@
                     <tr>
                         <td><label for="zugaenge"><f:translate key="tx_libconnect.dbis.form.access_type" /></label></td>
                         <td>
-                            <select name="libconnect[search][zugaenge]" id="zugaenge">
+                            <select name="libconnect[zugaenge]" id="zugaenge">
 
                                 <f:for each="{form.zugaenge}" as="value" key="key">
                                     <option value="{key}">{value}</option>
@@ -95,7 +95,7 @@
                     <tr>
                         <td><label for="laender"><f:translate key="tx_libconnect.dbis.form.regions" /></label></td>
                         <td>
-                            <select multiple="multiple" size="5" name="libconnect[search][lcode][]" id="laender">
+                            <select multiple="multiple" size="5" name="libconnect[lcode][]" id="laender">
 
                                 <f:for each="{form.lcode}" as="value" key="key">
                                     <option value="{key}"><f:format.htmlentitiesDecode>{value}</f:format.htmlentitiesDecode></option>
@@ -107,7 +107,7 @@
                     <tr>
                         <td><label for="formal_type"><f:translate key="tx_libconnect.dbis.form.formal_type" /></label></td>
                         <td>
-                            <select name="libconnect[search][formal_type]" id="formal_type" >
+                            <select name="libconnect[formal_type]" id="formal_type" >
 
                                 <f:for each="{form.formal_type}" as="value" key="key">
                                     <option value="{key}">{value}</option>
