@@ -84,17 +84,17 @@ class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $this->loadSubjects();
         $accessFilter = false;
 
-        if (isset($config['search']['zugaenge']) && (strlen($config['search']['zugaenge']) > 0)) {
-            $accessFilter = $config['search']['zugaenge'];
+        if (isset($config['zugaenge']) && (strlen($config['zugaenge']) > 0)) {
+            $accessFilter = $config['zugaenge'];
         }
 
         //list a subject
-        if (is_numeric($subject_id)) {
+        if ( $parameter['lett'] == 'f' ) {
             $subject = $this->t3_to_dbis_subjects[$subject_id];
 
             $dbis_id = $subject['dbisid'];
 
-            $result = $this->dbis->getDbliste($dbis_id, $config['sort'], $accessFilter, $parameter);
+            $result = $this->dbis->getDbliste($subject_id, $config['sort'], $accessFilter, $parameter);
         } else {//for own collection or all subjects
 
             //access sort for all entries in all subjects is not possible
