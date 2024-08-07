@@ -370,9 +370,6 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $params['gebiete'][]=$subjectId;
         }
 
-        unset($params['subject']);
-        unset($params);
-
         //date how long entry is new
         $params['jq_term1'] = $this->getCalculatedDate($countDays);
 

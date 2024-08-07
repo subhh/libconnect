@@ -90,7 +90,7 @@ class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 
         //list a subject
         if ( $parameter['lett'] == 'f' ) {
-            $subject = $this->t3_to_dbis_subjects[$subject_id];
+            $subject = $this->dbis_to_t3_subjects[$subject_id];
 
             $dbis_id = $subject['dbisid'];
 
@@ -239,7 +239,7 @@ class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     {
         $this->loadSubjects();
 
-        return $this->t3_to_dbis_subjects[$subjectId];
+        return $this->dbis_to_t3_subjects[$subjectId];
     }
 
     /**
@@ -270,4 +270,3 @@ class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $this->dbis = $dbis;
     }
 }
-
