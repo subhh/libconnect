@@ -345,11 +345,11 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         unset($searchVars['colors']);
 
         //search of sidebar
-        if (!empty($searchVars['search']['sword'])) {
+        if (!empty($searchVars['sword'])) {
             $searchVars['jq_type1'] = 'QS';
             $searchVars['jq_term1'] = $searchVars['sword'];
 
-            unset($searchVars['search']['sword']);//no need
+            unset($searchVars['sword']);//no need
         }
 
         $ezbColors = $this->getColors($colors);
