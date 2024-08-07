@@ -535,7 +535,7 @@ class Ezb
         if ($current_page) {
             $result['navlist']['pages'][$current_page] = $current_page;
         }
-        if (is_array($result['navlist']['pages'])) {
+        if (!empty($result['navlist']['pages'])) {
             ksort($result['navlist']['pages']);
         }
 
