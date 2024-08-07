@@ -408,7 +408,7 @@ class Ezb
 
         foreach ($searchVars as $var => $values) {
             if (!is_array($values)) {
-                $values = utf8_decode($values);
+                $values = mb_convert_encoding($values, "ISO-8859-1");
 
                 $searchParams[$var] = urlencode($values);
             } else {
@@ -416,7 +416,7 @@ class Ezb
 
                 foreach ($values as $value) {
                     if (is_string($value)) {
-                        $utf8Values[] = @utf8_decode($value);
+                        $utf8Values[] = @mb_convert_encoding($value, "ISO-8859-1");
                     }
                 }
                 $values = $utf8Values;
@@ -807,7 +807,8 @@ class Ezb
             $price_type_annotation = str_replace('<br />', '', $matches[1]);
             $price_type_annotation = str_replace(':', '', $price_type_annotation);
 
-            $price_type_annotation = utf8_encode(trim($price_type_annotation));
+            //convert to utf-8
+            $price_type_annotation = mb_convert_encoding(trim($price_type_annotation), "UTF-8", "ISO-8859-1");
         }
         $moreDetails['price_type_annotation'] = $price_type_annotation;
 
