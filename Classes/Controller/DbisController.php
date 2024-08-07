@@ -319,14 +319,13 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         }
 
         $params['jq_type1'] = 'LD';
-        $params['sc'] = $params['sc'];
+        //$params['sc'] = $params['sc'];
 
-        if (!empty($params['subject'])) {
-            $subject = $this->dbisRepository->getSubject($params['subject']);
-            $params['gebiete'][]=$subject['dbisid'];
+        if (!empty($params['gebiete'])) {
+            $subject = $this->dbisRepository->getSubject($params['gebiete']);
+            //$params['gebiete']=$subject['dbisid'];
+            $this->view->assign('subject', $subject['title']);
         }
-        unset($params['subject']);
-        unset($params);
 
         //date how long entry is new
         $params['jq_term1'] = $this->getCalculatedDate($this->settings['flexform']['countDays']);
@@ -351,7 +350,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         //variables for template
         $this->view->assign('list', $list);
         $this->view->assign('new_date', $params['jq_term1']);
-        $this->view->assign('subject', $subject['title']);
+        
         $this->view->assign('detailPid', $this->settings['flexform']['detailPid']);
         
         return $this->htmlResponse();
