@@ -271,6 +271,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                     //$this->view->assign('gebiete', $params['gebiete']);
 
                     $this->view->assign('newInSubjectCount', $count);
+                    $this->view->assign('subject', $subject['title']);
                 }
             }
 
