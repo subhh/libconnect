@@ -310,7 +310,6 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $params = $this->request->getQueryParams()['libconnect'];
             
         }
-        ;
 
         $newParams = [];
 
@@ -324,7 +323,8 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         //subject
         if (!empty($params['notation'])) {
             $subject = $this->ezbRepository->getSubject($params['notation']);
-            $newParams['Notations']=$subject['notation'];
+            //var_dump($subject);exit;
+            $newParams['Notations'][]=$params['notation'];
 
             $this->view->assign('subject', $subject);
         }
@@ -338,6 +338,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         //date how long entry is new
         $newParams['jq_term1'] = $this->getCalculatedDate();
 
+        
         if (empty($this->settings['flexform']['detailPid'])) {
             $this->addFlashMessage(
                 'Bitte konfigurieren Sie ein Ziel für die Detailseite.',
@@ -364,9 +365,9 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
         //disable first link in navigation initial view
         if( !empty($journals['navlist']['pages']) && empty($params['sc']) ){
-                $firstElement = array_key_first($journals['navlist']['pages']);
+            $firstElement = array_key_first($journals['navlist']['pages']);
 
-                $journals['navlist']['pages'][$firstElement] = $journals['navlist']['pages'][$firstElement]['title'];
+            $journals['navlist']['pages'][$firstElement] = $journals['navlist']['pages'][$firstElement]['title'];
         }
 
 
@@ -481,7 +482,9 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      */
     private function getCalculatedDate()
     {
-        date_default_timezone_set('GMT+1');//@todo get the information from system
+        if(!date_default_timezone_get()){
+            date_default_timezone_set('Europe/Berlin');//@todo get the information from system
+        }
 
         $oneDay = 86400;//seconds
         $numDays = 7; //default are 7 days
