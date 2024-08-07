@@ -90,6 +90,7 @@ class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 
         //list a subject
         if ( $parameter['lett'] == 'f' ) {
+            //get subject name
             $subject = $this->dbis_to_t3_subjects[$subject_id];
 
             $dbis_id = $subject['dbisid'];
