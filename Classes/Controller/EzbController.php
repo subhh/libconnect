@@ -60,8 +60,8 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     public function displayListAction(): ResponseInterface
     {
         $params = [];
-        if (!empty( $this->request->getQueryParams()['tx_libconnect_ezblist']['libconnect'])) {
-            $params = $this->request->getQueryParams()['tx_libconnect_ezblist']['libconnect'];
+        if (!empty( $this->request->getQueryParams()['tx_libconnect_ezblist'])) {
+            $params = $this->request->getQueryParams()['tx_libconnect_ezblist'];
         }
         if (!empty( $this->request->getQueryParams()['tx_libconnect_ezbsidebar']['libconnect'])) {
             $params_temp = $this->request->getQueryParams()['tx_libconnect_ezbsidebar']['libconnect'];
@@ -325,15 +325,13 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $subject = $this->ezbRepository->getSubject($params['notation']);
 
             $newParams['Notations'][]=$params['notation'];
-
+            
             $this->view->assign('subject', $subject);
         }
 
         if (!empty($params['sindex'])) {
             $newParams['sindex'] = $params['sindex'];
         }
-
-        unset($params['notation']);
 
         //date how long entry is new
         $newParams['jq_term1'] = $this->getCalculatedDate();
@@ -361,6 +359,9 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             }
 
             $journals =  $this->ezbRepository->loadSearch($newParams, $params['colors']);
+
+            //remove array for template
+            $newParams['Notations']=$params['notation'];
         }
 
         //disable first link in navigation initial view
@@ -372,13 +373,16 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
 
         //get PageID
-        $Pid = (int)($GLOBALS['TSFE']->page['uid']);
-        $this->view->assign('pageUid', $Pid);
+        $pageUid = (int)($GLOBALS['TSFE']->page['uid']);
+        
+        $this->view->assign('pageUid', $pageUid);
 
         //variables for template
         $this->view->assign('journals', $journals);
         $this->view->assign('new_date', $newParams['jq_term1']);
+
         $this->view->assign('colors', $params['colors']);
+        
         $this->view->assign('formParameter', $newParams);
         $this->view->assign('detailPid', $this->settings['flexform']['detailPid']);
 
