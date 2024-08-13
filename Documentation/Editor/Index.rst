@@ -21,18 +21,17 @@ Libconnect is easy to use.
 DBIS
 ====
 
-Add the plug-in DBIS. Now you can choose with "Output" the output with the following options:
+There is a list of DBIS plug-ins:
 
-* Top databases
+* Top Databases
 * List
-* Detail view
-* Sidebar - search form
-* Search form
-* New in DBIS
+* Detail
+* Sidebar
+* Advanced Search
+* New Databases
 
-Every entry change the other available options.
 
-Top databases
+Top Databases
 -------------
 
 It generates a list with the top databases of a subject.
@@ -66,8 +65,8 @@ Access information : Choose which access information texts are displayed, long o
 
    Configuring the output as list.
 
-Detail view
------------
+Detail
+------
 
 Shows the details of a database. Here is nothig to set.
 
@@ -78,8 +77,8 @@ Shows the details of a database. Here is nothig to set.
    Set output for detail view.
 
 
-Sidebar - search form
----------------------
+Sidebar
+-------
 
 This is a search bar to use on top or as sidebar.
 
@@ -97,8 +96,8 @@ New in DBIS: set page with the "New in DBIS" output. Generates a link to "New in
 
    Configuring the sidebar plug-in.
 
-Search form
------------
+Advanced Search
+---------------
 
 This is an extended search form.
 
@@ -111,8 +110,8 @@ List view: set page with dbis plug-in with output as list.
    Configuring the seach form.
 
 
-New in DBIS
------------
+New Databases
+-------------
 
 It generats a list with all new databases. You decide how long is a database new.
 
@@ -133,15 +132,15 @@ Sort: Choose the sort by database type, name, access type.
 EZB
 ===
 
-Add the plug-in EZB. Now you can choose with "Ausgabe" the output with the following options:
+There is a list of EZB plug-ins:
 
 * List
-* Detail view
-* Sidebar - search form
-* Search form
-* New in EZB
-* Selection of participate institutions, which offer full access.
-* Contakt
+* Detail
+* Sidebar
+* Advanced Search
+* New Journals
+* Participations
+* Contact
 
 
 
@@ -161,8 +160,8 @@ Detail page: Choose a detail page.
 
    Configuring the output as list.
 
-Detail view
------------
+Detail
+------
 Shows the details of a journal.
 
  List view : set page with ezb plug-in with output as list.
@@ -175,8 +174,8 @@ Shows the details of a journal.
 
    Set output for detail view.
 
-Sidebar - search form
----------------------
+Sidebar
+-------
 
 This is a search bar to use on top or as sidebar.
 
@@ -194,8 +193,8 @@ New in EZB: set page with the "Neu in EZB". Generates a link to "Neu in EZB" wit
 
    Configuring the sidebar plug-in.
 
-Search form
------------
+Advanced Search
+---------------
 
 This is an extended search form.
 
@@ -207,8 +206,8 @@ List view: set page with dbis plug-in with output as list.
 
    Configuring the seach form.
 
-New in EZB
-----------
+New Journals
+------------
 
 It generats a list with all new journals. You decide how long is a journal new.
 
@@ -223,8 +222,8 @@ How How many days are entries marked as new? (default: 7): set the number of day
 
    Configuring the list for new entries.
 
-Selection of participate institutions, which offer full access.
----------------------------------------------------------------
+Participations
+--------------
 
 Creates a for of libraries with full access to this yournal. The visitor choose the library and will be redirected to their page on https://ezb.ur.de.
 
@@ -234,7 +233,7 @@ Creates a for of libraries with full access to this yournal. The visitor choose 
 
    Configuring the list for new entries.
 
-Contakt
+Contact
 -------
 
 Shows the contact information which are set on `https://ezb.ur.de <https://ezb.ur.de>`__. Here is nothig to set.
