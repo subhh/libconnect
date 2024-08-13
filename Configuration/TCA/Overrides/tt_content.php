@@ -112,7 +112,7 @@ $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'][$pluginSignat
 $pluginSignature_ezb_search = \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
     'Libconnect',
     'EzbSearch',
-    'libconnect: EZB Extended search',
+    'libconnect: EZB Advanced Search',
     'EXT:libconnect/Resources/Public/Icons/Wizard.gif'
 );
 
