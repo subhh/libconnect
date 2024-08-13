@@ -103,7 +103,7 @@
         </f:if>
 
         <!-- results -->
-        <f:render partial="Ezb/ListOutput" arguments="{journals:journals}" />
+        <f:render partial="Ezb/ListOutput" arguments="{journals:journals, listUid:listUid, detailPid:detailPid}" />
 
         <!-- navigation - at bottom -->
         <f:if condition="{libconnect:IsArrayNp(value: journals.navlist.pages)}">
