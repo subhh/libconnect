@@ -60,8 +60,8 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     public function displayListAction(): ResponseInterface
     {
         $params = [];
-        if (!empty( $this->request->getQueryParams()['tx_libconnect_ezblist'])) {
-            $params = $this->request->getQueryParams()['tx_libconnect_ezblist'];
+        if (!empty( $this->request->getQueryParams()['tx_libconnect_ezblist']['libconnect'])) {
+            $params = $this->request->getQueryParams()['tx_libconnect_ezblist']['libconnect'];
         }
         if (!empty( $this->request->getQueryParams()['tx_libconnect_ezbsidebar']['libconnect'])) {
             $params_temp = $this->request->getQueryParams()['tx_libconnect_ezbsidebar']['libconnect'];
@@ -164,6 +164,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
             unset($params['colors']);
             $this->view->assign('formParameter', $params);
+
             $this->view->assign('detailPid', $this->settings['flexform']['detailPid']);
 
         } else {//start point
