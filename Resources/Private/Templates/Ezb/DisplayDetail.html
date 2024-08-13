@@ -266,7 +266,7 @@
                                 <f:then>
                                     <f:for each="{journal.subjects_link}" as="entry">
                                         <li>
-                                            <f:link.page pageUid="{listPid}" additionalParams="{libconnect:{notation:'{entry.subject}'}}">
+                                            <f:link.page pageUid="{listPid}" additionalParams="{libconnect:{notation:'{entry.notation}'}}">
                                                 {entry.title}
                                             </f:link.page>
                                         </li>
@@ -275,7 +275,7 @@
                                 <f:else>
                                         <f:for each="{journal.subjects}" as="entry">
                                         <li>
-                                                {entry.title}
+                                            {entry.title}
                                         </li>
                                     </f:for>
                                 </f:else>
