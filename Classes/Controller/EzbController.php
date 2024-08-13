@@ -159,7 +159,10 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
             //variables for template
             $this->view->assign('journals', $journals);
+            
             $this->view->assign('colors', $params['colors']);
+
+            unset($params['colors']);
             $this->view->assign('formParameter', $params);
             $this->view->assign('detailPid', $this->settings['flexform']['detailPid']);
 
