@@ -609,7 +609,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $bibID = $this->ezb->getBibID();
         $list['BibID'] = $bibID;
 
-        $list['detailURL'] = $this->ezb->getDetailviewRequestUrl() . '&jour_id=' . $journalId;
+        $list['participants_url'] = $this->ezb->getParticipants_url();
 
         return $list;
     }

@@ -842,5 +842,12 @@ class Ezb
 
         return $xml_response;
     }
+
+    /**
+     * @return string
+     */
+    public function getParticipants_url() {
+        return $this->participants_url;
+    }
 }
 

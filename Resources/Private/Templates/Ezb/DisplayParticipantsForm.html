@@ -7,7 +7,7 @@
 
 <p><f:translate key="tx_libconnect.ezb.articipants.infotext" /></p>
 
-<form id="participants-form" name="participants-form" action="{ParticipantsList.detailURL}&bibid=" method="get" class="participants-form" onsubmit="changeBib();">
+<form id="participants-form" name="participants-form" action="{ParticipantsList.participants_url}" method="get" class="participants-form" onsubmit="changeBib();">
     <input id="bibinput" type="hidden" value="<f:format.htmlentitiesDecode>{ParticipantsList.BibID}</f:format.htmlentitiesDecode>" name="bibid"/>
     <input type="hidden" value="7" name="colors"/>
     <input type="hidden" value="de" name="lang"/>
