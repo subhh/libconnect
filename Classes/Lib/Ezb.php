@@ -765,6 +765,16 @@ class Ezb
     }
 
     /**
+     * returns language
+     *
+     * @return string
+     */
+    public function getLanguage()
+    {
+        return $this->lang;
+    }
+
+    /**
     * returns detailview_request_url
     *
     * @return string

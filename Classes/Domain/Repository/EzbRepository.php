@@ -700,5 +700,13 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     {
         $this->ezb->setLanguage($languageCode);
     }
+    
+    /**
+    * @return string $languageCode
+    **/
+    public function getLanguageCode()
+    {
+        return $this->ezb->getLanguage();
+    }
 }
 
