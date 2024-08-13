@@ -159,3 +159,11 @@ $pluginSignature_ezb_new = \TYPO3\CMS\Extbase\Utility\ExtensionUtility::register
 $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature_ezb_new] = 'pi_flexform';
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue($pluginSignature_ezb_new, 'FILE:EXT:libconnect/Configuration/FlexForms/ezb_new_flexform.xml');
+
+/* EZB Participations Form */
+$pluginSignature_ezb_contact = \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+    'Libconnect',
+    'EzbParticipantsForm',
+    'libconnect: EZB Participations',
+    'EXT:libconnect/Resources/Public/Icons/Wizard.gif'
+);
