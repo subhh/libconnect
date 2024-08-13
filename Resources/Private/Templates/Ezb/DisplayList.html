@@ -25,10 +25,10 @@
 
                 <f:if condition="{libconnect:arrayNp(inputArray: colors, key: section.colorkey)}">
                     <f:then>
-                        <f:form.checkbox  id="ezb-accessinfo-access_{section.colorkey}" name="colors[{section.colorkey}]" class="accessinfo-element"  value="{section.colorkey}"  checked="1"/>
+                        <f:form.checkbox  id="ezb-accessinfo-access_{section.colorkey}" name="libconnect[colors][{section.colorkey}]" class="accessinfo-element"  value="{section.colorkey}"  checked="1"/>
                     </f:then>
                     <f:else>
-                        <f:form.checkbox  id="ezb-accessinfo-access_{section.colorkey}" name="colors[{section.colorkey}]" class="accessinfo-element"  value="{section.colorkey}"/>
+                        <f:form.checkbox  id="ezb-accessinfo-access_{section.colorkey}" name="libconnect[colors][{section.colorkey}]" class="accessinfo-element"  value="{section.colorkey}"/>
                     </f:else>
                 </f:if>
 
@@ -38,7 +38,7 @@
         </f:for>
 
         <f:for each="{formParameter}" as="parameter" key="key">
-            <f:form.hidden name="{key}" value="{parameter}" />
+            <f:form.hidden name="libconnect[{key}]" value="{parameter}" />
         </f:for>
     </f:form>
 </div>
