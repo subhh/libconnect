@@ -8,10 +8,15 @@ Here is the German [Manual](doc/manual.pdf "Ausführliches Manual").
 
 Visit our git repository: https://github.com/subhh/libconnect
 
-## 9.0.3
-    - EZB: 
-        - Reduces amount of requests to API.
-        - Fixed wrong doamin of ezb
+## 10.0.0
+    - Compatibility to TYPO3 12.4
+    - EZB:
+        - Details: 
+            - Fixed problems with subjects
+            - Categorys added.
+        - Search:
+            - removed last "AND" or "OR" in the text, if it is the last or only element
+        - List: Fixed lc tag.
 
 Tested with 
     - TYPO3 11.15.12

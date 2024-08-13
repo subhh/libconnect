@@ -13,7 +13,7 @@
             - Categorys added.
         - Search:
             - removed last "AND" or "OR" in the text, if it is the last or only element
-	- List: Fixed forgotten lc tag.
+        - List: Fixed lc tag.
 9.0.3
     - EZB: 
         - Reduces amount of requests to API.
