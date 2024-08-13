@@ -550,6 +550,13 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         //search terms and theire categories
         $jq = '';
 
+        if (!empty($searchVars['sword'])) {
+            $searchVars['jq_type1'] = 'QS';
+            $searchVars['jq_term1'] = $searchVars['sword'];
+
+            unset($searchVars['sword']);//no need
+        }
+
         for ($i=1;$i<=4;$i++) {
             if ((!empty($searchVars['jq_type' . $i])) && (!empty($searchVars['jq_term' . $i]))) {
                 $jq .= $this->ezb->jq_type[$searchVars['jq_type' . $i]] . ' "' . $searchVars['jq_term' . $i] . '" ';

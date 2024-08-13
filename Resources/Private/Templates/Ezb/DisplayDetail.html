@@ -494,16 +494,23 @@
                     </f:if>
                 </f:if>
                 <!-- ende code for location data -->
-            
+
                 <f:if condition="{journal.participants}">
                     <tr>
                         <th>
                             <strong>&nbsp;</strong>
                         </th>
                         <td>
-                            <f:link.page pageUid="{participantsPid}" additionalParams="{libconnect: {jourid: '{journal.participants}'}}">
-                                <f:translate key="tx_libconnect.ezb.detail.participants" />
-                            </f:link.page>
+                             <f:if condition="{participantsPid}">
+                                <f:then>
+                                    <f:link.page pageUid="{participantsPid}" additionalParams="{libconnect: {jourid: '{journal.id}'}}">
+                                        <f:translate key="tx_libconnect.ezb.detail.participants" />
+                                    </f:link.page>
+                                </f:then>
+                                <f:else>
+                                    <f:link.external uri="{journal.participants}" target="_blank">{journal.participants}</f:link.external>
+                                </f:else>
+                            </f:if>
                         </td>
                     </tr>
                 </f:if>

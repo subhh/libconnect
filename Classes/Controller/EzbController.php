@@ -216,8 +216,16 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         //variables for template
         $this->view->assign('journal', $journal);
         $this->view->assign('bibid', $this->ezbRepository->getBibid());
-        $this->view->assign('participantsPid', $this->settings['flexform']['participantsPid']);
-        $this->view->assign('listPid', $this->settings['flexform']['listPid']);
+        
+        //list for subjects
+        if( !empty($this->settings['flexform']['listPid']) ){
+            $this->view->assign('listPid', $this->settings['flexform']['listPid']);
+        }
+        
+        //partipations
+        if( !empty($this->settings['flexform']['participantsPid']) ){
+            $this->view->assign('participantsPid', $this->settings['flexform']['participantsPid']);
+        }
 
         return $this->htmlResponse();
     }
