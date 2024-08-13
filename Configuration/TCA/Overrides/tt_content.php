@@ -94,11 +94,11 @@ $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'][$pluginSignat
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue($pluginSignature_ezb_list, 'FILE:EXT:libconnect/Configuration/FlexForms/ezb_list_flexform.xml');
 
-/* EZB Details */
+/* EZB Detail */
 $pluginSignature_ezb_detail = \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
     'Libconnect',
     'EzbDetail',
-    'libconnect: EZB Details',
+    'libconnect: EZB Detail',
     'EXT:libconnect/Resources/Public/Icons/Wizard.gif'
 );
 
