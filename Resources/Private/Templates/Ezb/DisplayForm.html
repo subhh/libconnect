@@ -2,8 +2,7 @@
 
 <f:section name="main">
 <div id="extSearchForm-wrapper" class="clearfix">
-
-    <form id="e-search" name="extSearchForm" controller="Ezb" method="get" pageUid="{listPid} class="e-search">
+    <form id="e-search" name="extSearchForm" enctype="multipart/form-data" method="get" target="<f:uri.page pageUid="{listPid}"/>" additionalParams="{foo: 'bar'}" />  class="e-search">
         <input type="hidden" name="id" value="{listPid}" />
         <fieldset id="extSearchForm-fieldset-1">
             <legend><f:translate key="tx_libconnect.ezb.form.label.extsearchform" /></legend> 
