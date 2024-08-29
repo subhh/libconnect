@@ -8,7 +8,7 @@
     <f:form name="dbis-mini-form-search" id="dbis-mini-form-search" controller="Dbis" method="get" pageUid="{listPid}">
 
         <label for="libconnect_dbis_minisuche" class="hiddendebis"><f:translate key="tx_libconnect.dbis.miniform.search_term" /></label>
-        <f:form.textfield id="libconnect_dbis_minisuche" name="libconnect[sword]" value="{vars.sword}" size="20"/><br/>
+        <f:form.textfield id="libconnect_dbis_minisuche" name="libconnect[sword]" value="{vars.sword}" size="20"/><br>
 
         <f:form.submit name="submit" value='<f:translate key="tx_libconnect.dbis.miniform.search_term" />'/>
         <f:if condition="{searchPid}">

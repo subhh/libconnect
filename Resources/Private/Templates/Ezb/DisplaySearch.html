@@ -55,7 +55,7 @@
             </f:form>
         </div>
 
-        <br/><br/>
+        <br><br>
 
         <p id="ezb-hits">
             <libconnect:StrreplaceNp search="%s" replace="{journals.page_vars.search_count}">
@@ -63,7 +63,7 @@
             </libconnect:StrreplaceNp>
         </p>
 
-        <br/><br/>
+        <br><br>
 
         <!-- precise_hits -->
         <f:if condition="{libconnect:IsArrayNp(value: journals.precise_hits)}">
@@ -99,7 +99,7 @@
                 </f:for>
             </div>
 
-            <br/><br/>
+            <br><br>
         </f:if>
 
         <!-- results -->
@@ -108,7 +108,7 @@
         <!-- navigation - at bottom -->
         <f:if condition="{libconnect:IsArrayNp(value: journals.navlist.pages)}">
             <f:then>
-                <br/><br/>
+                <br><br>
 
                 <div class="ezb-navigation">
                     <f:for each="{journals.navlist.pages}" as="item">

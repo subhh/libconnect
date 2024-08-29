@@ -77,7 +77,7 @@
                                 <f:if condition="{value.colorkey} != 6">
                                     <input id="selected_colors_{value.colorkey}" type="checkbox" name="libconnect[colors][{value.colorkey}]" class="zugaenge" value="{value.colorkey}" checked="checked"/>
                                 </f:if>
-                                <label class="ezb-list-accessinfo-access_{value.colorkey}" for="selected_colors_{value.colorkey}">{value.value}</label><br/>
+                                <label class="ezb-list-accessinfo-access_{value.colorkey}" for="selected_colors_{value.colorkey}">{value.value}</label><br>
                             </f:for>
 
                         </span>
@@ -85,7 +85,7 @@
                 </tr>
             </table>
 
-            <br/>
+            <br>
             <div class="ezb-search-buttons">
                 <input type="reset" class="button reset" value="<f:translate key="tx_libconnect.reset.search" />"/>
                 <input type="submit" class="button submit" value="<f:translate key="tx_libconnect.ezb.form.input.search" />" />
