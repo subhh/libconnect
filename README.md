@@ -8,9 +8,9 @@ Here is the German [Manual](doc/manual.pdf "Ausführliches Manual").
 
 Visit our git repository: https://github.com/subhh/libconnect
 
-## 10.0.1
-    - EZB:
-        - Search: fixed form
+## 10.0.2
+    - DBIS:
+        - Sidebar: set the selected values as default in select field
 
 Tested with 
     - TYPO3 12.4.14
