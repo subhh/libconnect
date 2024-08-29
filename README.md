@@ -11,6 +11,7 @@ Visit our git repository: https://github.com/subhh/libconnect
 ## 10.0.2
     - DBIS:
         - Sidebar: set the selected values as default in select field
+    - HTML5 compatible
 
 Tested with 
     - TYPO3 12.4.14

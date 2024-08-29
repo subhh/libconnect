@@ -8,6 +8,7 @@
 10.0.2
     - DBIS:
         - Sidebar: set the selected values as default in select field
+    - HTML5 compatible
 10.0.1
     - EZB:
         - Search: fixed form
