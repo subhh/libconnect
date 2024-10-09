@@ -120,7 +120,7 @@ Default: empty
 ZDB: filter location information
 ================================
 
-Comma seperated list of integer. The values are location states which are dispayed.
+Comma separated list of integer. The values are location states which are displayed.
 
 2 = available, 3 = limited availability (moving wall, etc.), 4 = journal not available
 
