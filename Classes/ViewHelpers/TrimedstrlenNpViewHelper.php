@@ -7,7 +7,7 @@ use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
 
 /**
- * This class is a view helper that count a trimed string.
+ * This class is a view helper that count a trimmed string.
  *
  * @version
  */

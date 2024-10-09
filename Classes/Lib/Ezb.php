@@ -9,7 +9,7 @@ namespace Subhh\Libconnect\Lib;
 *
 * All rights reserved
 *
-* This script is part of the EZB/DBIS-Extention project. The EZB/DBIS-Extention project
+* This script is part of the EZB/DBIS-Extension project. The EZB/DBIS-Extension project
 * is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
 * the Free Software Foundation; either version 2 of the License, or
@@ -339,7 +339,7 @@ class Ezb
                     $warpto = urlencode((string)$period->warpto_link->attributes()->url);
                 }
 
-                //check for uncomplete link
+                //check for incomplete link
                 $readme_link = (string)@$period->readme_link->attributes()->url;
 
                 if (!empty($readme_link)) {
@@ -382,7 +382,7 @@ class Ezb
     }
 
     /**
-     * creates search url, contains of the doamin and an array of parameter
+     * creates search url, contains of the domain and an array of parameter
      *
      * @param term string
      * @param searchVars array
@@ -437,10 +437,10 @@ class Ezb
     }
 
     /**
-     * Caclulate the sum of all colors
+     * Calculate the sum of all colors
      *
      * @param mixed $colors
-     * @return intger sum
+     * @return integer sum
      */
     private function getColorSum($colors)
     {
@@ -582,7 +582,7 @@ class Ezb
     }
 
     /**
-     * retruns access information
+     * returns access information
      *
      * @return array $return
      */

@@ -25,7 +25,7 @@
                     <source>More Free Access:</source>
                 </trans-unit>
                 <trans-unit id="tx_libconnect.dbis.detail.access.other" xml:space="preserve">
-                    <source>Addtion internet offer:</source>
+                    <source>Additional internet offer:</source>
                 </trans-unit>
                 <trans-unit id="tx_libconnect.dbis.detail.access.ppu" xml:space="preserve">
                     <source>More Pay-per-Use Access:</source>
@@ -237,7 +237,7 @@
                     <source>3. Choose your institution:</source>
                 </trans-unit>
                 <trans-unit id="tx_libconnect.ezb.articipants.submit" xml:space="preserve">
-                    <source>Go to the choosed institution</source>
+                    <source>Go to the chosen institution</source>
                 </trans-unit>
 
                 <trans-unit id="tx_libconnect.ezb.detail.appearence" xml:space="preserve">
