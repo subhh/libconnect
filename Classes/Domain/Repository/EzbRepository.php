@@ -9,7 +9,7 @@ namespace Subhh\Libconnect\Domain\Repository;
 *
 * All rights reserved
 *
-* This script is part of the EZB/DBIS-Extention project. The EZB/DBIS-Extention project
+* This script is part of the EZB/DBIS-Extension project. The EZB/DBIS-Extension project
 * is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
 * the Free Software Foundation; either version 2 of the License, or
@@ -317,7 +317,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $journals['AccessInfos'] = $journals['selected_colors'];
         $journals['colors'] = $colors;
 
-        //create addtionals parameter for links
+        //create additional parameters for links
         $linkParams = [];
         foreach ($searchVars as $key => $value) {
             $linkParams['link']['libconnect'][$key] = $value;
@@ -547,7 +547,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     {
         $list = [];
 
-        //search terms and theire categories
+        //search terms and their categories
         $jq = '';
 
         if (!empty($searchVars['sword'])) {
@@ -627,7 +627,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     }
 
     /**
-     * returns a singel value for parameter colors.
+     * returns a single value for parameter colors.
      *
      * @param array $colors
      *
