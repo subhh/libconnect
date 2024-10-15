@@ -77,7 +77,6 @@ class Request
                     'code' => $response->getStatusCode(),
                     'url' => $url
                 ]);
-
                 return false;
             }
         } catch (\Throwable $e) {
@@ -87,8 +86,9 @@ class Request
         }
 
         $contentType = str_replace(' ', '', strtolower($response->getHeaderLine('Content-Type')));
-
-        if (strpos($contentType, 'text/xml;charset=utf-8') === 0) {//DBIS, services.dnb.de
+        if (strpos($contentType, 'application/xml') === 0) {//DBIS, services.dnb.de
+            $content = $this->getXml($response);
+        } elseif (strpos($contentType, 'text/xml;charset=utf-8') === 0) {//DBIS, services.dnb.de
             $content = $this->getXml($response);
         } elseif (strpos($contentType, 'text/xml;charset=iso-8859-1') === 0) {//EZB
             $content = $this->getXml($response);
@@ -99,6 +99,7 @@ class Request
         } elseif (preg_match('/text\/html;charset=(iso-8859-1)?(utf-8)?/', $contentType, $matches)) {
             $content = $this->getText($response);
         } else {
+
             return false;
         }
 
