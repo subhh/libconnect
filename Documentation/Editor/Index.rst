@@ -50,7 +50,7 @@ Detail page: Choose a detail page.
 List
 ----
 
-Generates a list of datbases and links to the detail page. It is also used for search results.
+Generates a list of databases and links to the detail page. It is also used for search results.
 
 Detail page: Choose a detail page.
 
@@ -88,7 +88,7 @@ Page with detailed search : set page with search.
 
  How How many days are entries marked as new? (default: 7): set the number of days for "New in dbis" how long entries marked as new.
 
-New in DBIS: set page with the "New in DBIS" output. Generates a link to "New in DBIS" with number of new entries. If you choose a subject in list, you get new entries for this subject too. If you donn´t want to use this feature, let it empty.
+New in DBIS: set page with the "New in DBIS" output. Generates a link to "New in DBIS" with number of new entries. If you choose a subject in list, you get new entries for this subject too. If you don´t want to use this feature, let it empty.
 
 .. figure:: ../Images/Editor/DbisBackendSidebar.png
    :width: 800px
@@ -107,13 +107,13 @@ List view: set page with dbis plug-in with output as list.
    :width: 800px
    :alt: output as sidebar
 
-   Configuring the seach form.
+   Configuring the search form.
 
 
 New Databases
 -------------
 
-It generats a list with all new databases. You decide how long is a database new.
+It generates a list with all new databases. You decide how long is a database new.
 
 Detail page: Choose a detail page.
 
@@ -185,7 +185,7 @@ This is a search bar to use on top or as sidebar.
 
  How How many days are entries marked as new? (default: 7): set the number of days for "New in ezb" how long entries marked as new.
 
-New in EZB: set page with the "Neu in EZB". Generates a link to "Neu in EZB" with number of new entries. If you choose a subject in list, you get new entries for this subject too. If you donn´t want to use this feature, let it empty.
+New in EZB: set page with the "Neu in EZB". Generates a link to "Neu in EZB" with number of new entries. If you choose a subject in list, you get new entries for this subject too. If you don´t want to use this feature, let it empty.
 
 .. figure:: ../Images/Editor/EzbBackendSidebar.png
    :width: 800px
@@ -204,12 +204,12 @@ List view: set page with dbis plug-in with output as list.
    :width: 800px
    :alt: output as sidebar
 
-   Configuring the seach form.
+   Configuring the search form.
 
 New Journals
 ------------
 
-It generats a list with all new journals. You decide how long is a journal new.
+It generates a list with all new journals. You decide how long is a journal new.
 
 Detail page: Choose a detail page.
 
