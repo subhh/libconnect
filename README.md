@@ -4,8 +4,6 @@ Libconnect is an TYPO3 extension which was initially developed by Avonis for the
 The SUB maintains it now.
 With libconnect it is possible to display the information of EZB and DBIS of the University Regensburg on an TYPO3 based website.
 
-Here is the German [Manual](doc/manual.pdf "Ausführliches Manual").
-
 Visit our git repository: https://github.com/subhh/libconnect
 
 ## 10.0.2
