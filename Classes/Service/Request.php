@@ -88,7 +88,9 @@ class Request
 
         $contentType = str_replace(' ', '', strtolower($response->getHeaderLine('Content-Type')));
 
-        if (strpos($contentType, 'text/xml;charset=utf-8') === 0) {//DBIS, services.dnb.de
+        if (strpos($contentType, 'application/xml') === 0) {//DBIS, services.dnb.de
+            $content = $this->getXml($response);
+        } elseif (strpos($contentType, 'text/xml;charset=utf-8') === 0) {//DBIS, services.dnb.de
             $content = $this->getXml($response);
         } elseif (strpos($contentType, 'text/xml;charset=iso-8859-1') === 0) {//EZB
             $content = $this->getXml($response);
