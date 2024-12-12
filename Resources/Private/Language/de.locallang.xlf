@@ -106,6 +106,10 @@
                     <source>Report Periods:</source>
                     <target>Berichtszeitraum:</target>
                 </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.detail.resource-id" xml:space="preserve">
+                    <source>Resource-Id:</source>
+                    <target>Ressourcen-ID:</target>
+                </trans-unit>
                 <trans-unit id="tx_libconnect.dbis.detail.subjects" xml:space="preserve">
                     <source>Subjects:</source>
                     <target>Fachgebiete:</target>

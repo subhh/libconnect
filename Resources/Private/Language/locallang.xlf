@@ -81,6 +81,9 @@
                 <trans-unit id="tx_libconnect.dbis.detail.report_periods" xml:space="preserve">
                     <source>Report Periods:</source>
                 </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.detail.resource-id" xml:space="preserve">
+                    <source>Resource-Id:</source>
+                </trans-unit>
                 <trans-unit id="tx_libconnect.dbis.detail.subjects" xml:space="preserve">
                     <source>Subjects:</source>
                 </trans-unit>

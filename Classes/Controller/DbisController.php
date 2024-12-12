@@ -32,6 +32,7 @@ namespace Subhh\Libconnect\Controller;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
+use TYPO3\CMS\Core\Site\Entity\SiteLanguage;
 use Subhh\Libconnect\Domain\Repository\DbisRepository;
 
 /**
@@ -111,8 +112,8 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $list =  $this->dbisRepository->loadList($params['gebiete'], $config, $params);
 
             //check, if there are no results and inform user to change licence
-            $empty = true;
-            if (!empty($list['list']['alphNavList'])) {
+            $empty = false;
+            if (!empty($list['list'])) {
                 $empty = false;
             }
             foreach ($list['list']['groups'] as $group) {
@@ -122,16 +123,16 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                 }
             }
             $this->view->assign('empty', $empty);
-
+            
             //decide full or short text
-            $list['list']['access_infos'] = $this->setAccessInformation($list['list']['access_infos']);
+            $list['access_infos'] = $this->setAccessInformation($list['access_infos']);
 
             //variables for template
-            $this->view->assign('listhead', $list['subject']);
+            $this->view->assign('listhead', $list['headline']);
             $this->view->assign('gebiete', $params['gebiete']);
             $this->view->assign('params', $params);
             $this->view->assign('zugaenge', $params['zugaenge']);
-            $this->view->assign('list', $list['list']);
+            $this->view->assign('result', $list);
             $this->view->assign('detailPid', $this->settings['flexform']['detailPid']);
 
         } elseif ($isSearch !== false) {//search results
@@ -146,6 +147,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
             //variables for template
             $this->view->assign('list', $list);
+            $this->view->assign('result', $list);
             $this->view->assign('detailPid', $this->settings['flexform']['detailPid']);
 
         } else {//start point
@@ -195,6 +197,9 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             //variables for template
             $this->view->assign('db', $list);
         }
+        
+        $lang = $this->getLanguage();
+        $this->view->assign('lang', $lang);
 
         return $this->htmlResponse();
     }
@@ -329,6 +334,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
         //date how long entry is new
         $params['jq_term1'] = $this->getCalculatedDate($this->settings['flexform']['countDays']);
+	$params['jq_bool1'] = 'AND';
 
         if (empty($this->settings['flexform']['detailPid'])) {
             $this->addFlashMessage(
@@ -367,7 +373,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         //$params['sc'] = $params['sc'];
 
         if ($subjectId != false) {
-            $params['gebiete'][]=$subjectId;
+            $params['gebiete']=$subjectId;
         }
 
         //date how long entry is new
@@ -377,7 +383,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         //request
         $list = $this->dbisRepository->loadSearch($params, $config);
 
-        return $list['db_count'];
+        return $list['dbs']['db_count'];
     }
 
     /**
@@ -415,22 +421,26 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     {
         $showAccess = $this->settings['flexform']['showAccess'];
 
-        //full is default and variables are set right
-        if ($showAccess == 'full') {
-
-            return $accessInforomation;
-        }
-
-        $accessInformationShort = [];
+        $newAccessInformation = [];
 
         foreach ($accessInforomation as $information) {
-            $accessInformationShort[$information['id']] = [
-                'id' => $information['id'],
-                'description' => $information['description_short']
+        
+            $newAccessInformation[$information['access_id']] = [
+                'id' => $information['access_id'],
+                'description' => ($showAccess == 'full' ? $information['db_access'] : $information['db_access_short_text'])
             ];
         }
 
-        return $accessInformationShort;
+        return $newAccessInformation;
+    }
+    
+    private function getLanguage()
+    {
+        $language = $this->request->getAttribute('language');
+        $locale = $language->getLocale();
+        $langCode = $locale->getlanguageCode();
+
+        return $langCode;
     }
 
     /**
