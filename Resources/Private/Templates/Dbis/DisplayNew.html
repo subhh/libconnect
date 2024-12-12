@@ -19,7 +19,7 @@
 <br><br>
 
 <p>
-    <f:translate key="tx_libconnect.dbis.new.hits" /> <f:count subject='{list.values}' /> 
+    <f:translate key="tx_libconnect.dbis.new.hits" /> {list.dbs.db_count} 
     <f:translate key="tx_libconnect.dbis.new.since" /> <span class="dbis-newdate">{new_date}</span>
 </p>
 
@@ -69,5 +69,6 @@
     </f:else>
 </f:if>
 
+<f:render partial="Dbis/DbList" arguments="{list:list.dbs.list, detailPid:detailPid}" />
 <f:asset.css identifier="dbis" href="EXT:libconnect/Resources/Public/Css/dbis.css" />
 </f:section>

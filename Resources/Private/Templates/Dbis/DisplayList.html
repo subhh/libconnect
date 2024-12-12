@@ -7,13 +7,13 @@
 <h2 class="libconnect-h2">{listhead}</h2>
 
 <h3 class="libconnect-h3"><f:translate key="tx_libconnect.dbis.list.legend.headline" /></h3>
+<f:debug>{result}</f:debug>
+<f:render partial="Dbis/ListLegend" arguments="{access_infos:result.access_infos}" />
 
-<f:render partial="Dbis/ListLegend" arguments="{access_infos:list.access_infos}" />
-
-<f:if condition="{list.top}">
+<f:if condition="{result.top}">
     <div class="top-database-wrapper">
         <h3 class="libconnect-h1"><f:translate key="tx_libconnect.dbis.list.topdatabases" /></h3>
-        <f:render partial="Dbis/TopList" arguments="{top:list.top}" />
+        <f:render partial="Dbis/TopList" arguments="{top:result.top.list, detailPid:detailPid}" />
     </div>
 </f:if>
 
@@ -38,44 +38,7 @@
 </f:if>
 <!-- EOF workaround for alphabetical listing -->
 
-<div class="dbis-list">
-<f:if condition="<f:count subject='{list.groups}' /> > 0">
-    <f:for each="{list.groups}" as="group">
-
-        <f:if condition="<f:count subject='{group.dbs}' /> > 0">
-            <div class="accordion-fce-wrapper">
-                <div class="accordion-fce">
-                    <h2 class="libconnect-h1">
-
-                        <f:if condition="{group.title}">
-                            <f:then>
-                                <f:format.htmlentitiesDecode>{group.title}</f:format.htmlentitiesDecode>
-                            </f:then>
-                            <f:else>
-                                <f:translate key="tx_libconnect.dbis.list.full_list" />
-                            </f:else>
-                        </f:if>
-                    (<f:count subject="{group.dbs}" />)</h2>
-
-                    <div class="accordion-content clearfix">
-                        <ul class="dbis-dblist">
-                            <f:for each="{group.dbs}" as="db">
-                                <li class="dbis-list-accessinfo-{db.access_ref}">
-                                   <f:link.page pageUid="{detailPid}" additionalParams="{libconnect: {titleid: '{db.titleid}'}}">
-                                        <f:format.htmlentitiesDecode>
-                                            <libconnect:StrreplaceNp search="&" replace="&amp;">{db.title}</libconnect:StrreplaceNp>
-                                        </f:format.htmlentitiesDecode>
-                                    </f:link.page>
-                                </li>
-                            </f:for>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </f:if>
-    </f:for>
-</f:if>
-</div>
+<f:render partial="Dbis/DbList" arguments="{list:result.dbs.list, detailPid:detailPid}" />
 
 <f:asset.css identifier="dbis" href="EXT:libconnect/Resources/Public/Css/dbis.css" />
 </f:section>
