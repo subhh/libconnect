@@ -524,7 +524,6 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $langCode = $locale->getlanguageCode();
 
         $this->ezbRepository->setLanguageCode($langCode);
-
     }
 
     /**
