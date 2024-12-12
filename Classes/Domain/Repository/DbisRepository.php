@@ -2,8 +2,6 @@
 
 namespace Subhh\Libconnect\Domain\Repository;
 
-use Subhh\Libconnect\Lib\Dbis;
-
 /***************************************************************
 * Copyright notice
 *
@@ -30,6 +28,8 @@ use Subhh\Libconnect\Lib\Dbis;
 * Project sponsored by:
 *  Avonis - New Media Agency - http://www.avonis.com/
 ***************************************************************/
+
+use Subhh\Libconnect\Lib\Dbis;
 
 /**
  * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
@@ -95,7 +95,7 @@ class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 
             $dbis_id = $subject['dbisid'];
 
-            $result = $this->dbis->getDbliste($subject_id, $config['sort'], $accessFilter, $parameter);
+            $result = $this->dbis->getDblist($subject_id, $config['sort'], $accessFilter, $parameter);
         } else {//for own collection or all subjects
 
             //access sort for all entries in all subjects is not possible
@@ -108,11 +108,12 @@ class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             $subject['title'] = $result['headline'];
         }
 
+        /*
         //get top dbs
-        $result['list']['top'] = $this->getListTop($result['list']['top']);
+        $result['list']['top'] = $this->getListTop($result['list']['top']);*/
 
         //get groups
-        foreach (array_keys($result['list']['groups']) as $group) {
+        /*foreach (array_keys($result['list']['groups']) as $group) {
             foreach (array_keys($result['list']['groups'][$group]['dbs']) as $db) {
                 $result['list']['groups'][$group]['dbs'][$db]['titleid'] = $result['list']['groups'][$group]['dbs'][$db]['id'];
             }
@@ -125,8 +126,9 @@ class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         }
         ksort($alph_sort_groups, SORT_STRING); //added sort-flag SORT_STRING for correct sorting of alphabetical listings
         $result['list']['groups'] = $alph_sort_groups;
+*/
+        return $result;
 
-        return ['subject' => $subject['title'], 'list' => $result['list']];
     }
 
     /**
@@ -192,7 +194,7 @@ class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         //execute search
         $result = $this->dbis->search($searchVars);
 
-        //stop if function called from "New" - controller
+        /*//stop if function called from "New" - controller
         if (isset($config['onlyNew'])) {
             return $result['list'];
         }
@@ -204,7 +206,9 @@ class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             $result['list']['values'][$value]['titleid'] = $result['list']['values'][$value]['id'];
         }
 
-        return $result['list'];
+        return $result['list'];*/
+        
+        return $result;
     }
 
     /**
