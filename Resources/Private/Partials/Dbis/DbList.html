@@ -1,0 +1,15 @@
+<div class="dbis-list">
+    <div class="accordion-fce-wrapper">
+        <ul class="dbis-dblist">
+            <f:for each="{list}" as="db">
+                <li class="dbis-list-accessinfo-{db.access_ref}">
+                   <f:link.page pageUid="{detailPid}" additionalParams="{libconnect: {titleid: '{db.titleid}'}}">
+                        <f:format.htmlentitiesDecode>
+                            <libconnect:StrreplaceNp search="&" replace="&amp;">{db.title}</libconnect:StrreplaceNp>
+                        </f:format.htmlentitiesDecode>
+                    </f:link.page>
+                </li>
+            </f:for>
+        </ul>
+    </div>
+</div>
