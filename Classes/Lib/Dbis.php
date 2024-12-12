@@ -43,12 +43,17 @@ class Dbis
     private $colors = '';
     private $ocolors = '';
     private $lett = 'f';
-    private $fachliste_url = 'https://dbis.ur.de/dbinfo/fachliste.php';
-    private $dbliste_url = 'https://dbis.ur.de/dbinfo/dbliste.php';
-    private $db_detail_url = 'https://dbis.ur.de/dbinfo/detail.php';
-    private $db_detail_suche_url = 'https://dbis.ur.de/dbinfo/suche.php';
+    //private $fachliste_url = 'https://dbis.ur.de/dbinfo/fachliste.php';
+    private $fachliste_url = 'https://dbis.ur.de/fachliste.php';
+    //private $dbliste_url = 'https://dbis.ur.de/dbinfo/dbliste.php';
+    private $dbliste_url = 'https://dbis.ur.de/dbliste2.php';
+    //private $db_detail_url = 'https://dbis.ur.de/dbinfo/detail.php';
+    private $db_detail_url = 'https://dbis.ur.de/detail.php';
+    //private $db_detail_suche_url = 'https://dbis.ur.de/dbinfo/suche.php';
+    private $db_detail_suche_url = 'https://dbis.ur.de/suche.php';
     private $dbis_domain = 'dbis.ur.de';
 
+    private $lang = 'de';
     public $all;
     public $top_five_dbs;
     //variable of typoscript configuration
@@ -148,6 +153,212 @@ class Dbis
         }
 
         return $return;
+    }
+
+    public function getDbList($fachgebiet){
+         $sortlist = [];
+
+        $params = [
+                    'colors' => $this->colors,
+                    'ocolors' => $this->ocolors,
+                    'sort' => $sort
+                ];
+
+        $headline = '';
+
+        //BOF workaround for alphabetical listing
+        if ($fachgebiet == 'all') {
+            $params['lett'] = 'a';
+
+            if (!empty($tmpParams['lc'])) {
+                if (!empty($tmpParams['lc'][0])) {
+                    $tmpParams['lc'] = $tmpParams['lc'][0];
+                }
+
+                $params['lc'] = $tmpParams['lc'];
+            }
+            if (!empty($tmpParams['fc'])) {
+                if (!empty($tmpParams['fc'][0])) {
+                    $tmpParams['fc'] = $tmpParams['fc'][0];
+                }
+
+                $params['fc'] = $tmpParams['fc'];
+            }
+        } else {
+            if (is_numeric($fachgebiet)) {
+                //notation is an id => dbis collection
+                $params['lett'] = 'f';
+                $params['gebiete'] = $fachgebiet;
+            } else {
+                //notation is a character => own colelction
+                $params['lett'] = 'c';
+                $params['collid'] = $fachgebiet;
+            }
+        }
+        //EOF workaround for alphabetical listing
+        
+        $xml = $this->setRequest($this->dbliste_url, $params);
+
+        $list = [
+            'top' => [],
+            'groups' => [],
+            'access_infos' => [],
+        ];
+
+        //headline - content of the list
+        if (isset($xml->headline)) {
+            $list['headline'] = $xml->headline;
+        }
+        
+        //acces_infos
+        if (isset($xml->list_dbs->db_access_infos)) {
+            $list['access_infos'] = $this->getAccessInfos($xml->list_dbs->db_access_infos);
+        }
+        
+        //dbTypeInfos
+        if (isset($xml->list_dbs->db_type_infos)) {
+            $list['db_type_infos'] = $this->getdbTypeInfos($xml->list_dbs->db_type_infos);
+        }
+
+        //databases
+        foreach($xml->list_dbs->dbs as $db){
+            //top_dbs
+            if( isset($db->attributes()->top_db) ) {
+                $list['top']['list'] = $this->getTopDatabases($db);
+                $list['top']['db_count'] = (integer)$db->attributes()->db_count;
+            }else {//found dbs
+                $list['dbs']['list'] = $this->getTopDatabases($db);
+                $list['dbs']['db_count'] = (integer)$db->attributes()->db_count;
+            }
+        }
+        
+        return $list;
+    }
+    
+    private function getResult($xml){
+        $list = [
+            'top' => [],
+            'groups' => [],
+            'access_infos' => [],
+        ];
+
+        //headline - content of the list
+        if (isset($xml->headline)) {
+            $list['headline'] = $xml->headline;
+        }
+        
+        //acces_infos
+        if (isset($xml->list_dbs->db_access_infos)) {
+            $list['access_infos'] = $this->getAccessInfos($xml->list_dbs->db_access_infos);
+        }
+        
+        //dbTypeInfos
+        if (isset($xml->list_dbs->db_type_infos)) {
+            $list['db_type_infos'] = $this->getdbTypeInfos($xml->list_dbs->db_type_infos);
+        }
+
+        //databases
+        foreach($xml->list_dbs->dbs as $db){
+            //top_dbs
+            if( isset($db->attributes()->top_db) ) {
+                $list['top']['list'] = $this->getTopDatabases($db);
+                $list['top']['db_count'] = (integer)$db->attributes()->db_count;
+            }else {//found dbs
+                $list['dbs']['list'] = $this->getDatabases($db);
+                $list['dbs']['db_count'] = (integer)$db->attributes()->db_count;
+            }
+        }
+        
+        return $list;
+    }
+
+    private function getdbTypeInfos($dbTypeInfos){
+        $return = array();
+
+        foreach ($dbTypeInfos->children() as $db) {      
+            $return[] = array(
+                'db_type_id' => (string)$db->attributes()->db_type_id,
+                'db_type'  => (string)$db->db_type,
+                'db_type_long_text'  => (string)$db->db_type_long_text
+            );
+            
+        }
+
+        return $return;
+    }
+    
+    private function getDBTypeRefsArray($db_type_refs){
+        return ;
+    }
+    
+    /*
+        returns a list with dbs in their type
+    */
+    private function getDbtypeDbs($dbs){
+        $list = array();
+        
+        foreach($dbs as $db) {
+            $list['db_type_refs '][$db['titleid ']] = $db;
+        }
+        
+        return $list;
+    }
+    
+    private function getTopDatabases($topDatabases){
+        $return = array();
+
+        foreach($topDatabases->children() as $db){
+            $return[] = array(
+                'titleid' => (string)$db->attributes()->title_id,
+                'title' => (string)$db,
+                'access_ref' => (string)$db->attributes()->access_ref,
+                'db_type_refs' => explode(" ", (string)$db->attributes()->db_type_refs),
+                'href' => (string)$db->attributes()->href,
+                'top_db' => (string)$db->attributes()->top_db,
+            );
+        }
+
+        return $return;
+    }
+
+    private function getDatabases($databases){
+        $return = array();
+        
+        foreach($databases as $key => $value){
+            $return[] = array(
+                'titleid' => (string)$value->attributes()->title_id,
+                'title' => (string)$value,
+                'access_ref' => (string)$value->attributes()->access_ref,
+                'db_type_refs' => explode(" ", (string)$value->attributes()->db_type_refs),
+                'href' => (string)$value->attributes()->href,
+            );
+        }            
+        
+        return $return;
+    }
+    
+    private function getAccessInfos($accessInfos){
+        $return = array();
+        
+        foreach($accessInfos->db_access_info  as $key => $value){
+                $access_id = (string)$value->attributes()->access_id;
+
+                $return[$access_id] = [
+                    'access_id' => (string)$value->attributes()->access_id,
+                    'db_access' => (string)$value->db_access,
+                    'db_access_short_text' => (string)$value->db_access_short_text,
+                ];
+        }
+
+        return $return;
+    }
+
+    private function getAlphabeticalListing($list){
+        $result = array();
+        
+        foreach ($list as $key => $value){
+            $result[ $value['title'] ] = $value;
+        }
     }
 
     /**
@@ -457,7 +668,10 @@ class Dbis
                     foreach ($value->children() as $key2 => $value2) {
                         $details['keywords'][] = (string)$value2;
                     }
-                    $details['keywords_join'] = implode(', ', $details['keywords']);
+
+                    if(!empty($details['keywords'])){
+                        $details['keywords_join'] = implode(', ', $details['keywords']);
+                    }
                 } elseif ($key == 'db_type_infos') {
                     $i=0;
                     foreach ($value->children() as $value2) {
@@ -468,7 +682,7 @@ class Dbis
                     //$details['db_type_infos_join'] = join(', ', $details['db_type_infos']);
                 } else if ($key == 'hints') {
                     //warpto link must be completed, because it is relative
-                    $hint = preg_replace('/warpto/', 'https://'.$this->dbis_domain.'/dbinfo/warpto', (string) $value);
+                    $hint = preg_replace('/warpto/', 'https://'.$this->dbis_domain.'/warpto', (string) $value);
 
                     $details['hints'] =  $hint;
                 } elseif ($key == 'instruction') {
@@ -593,7 +807,10 @@ class Dbis
         }
 
         $response = $this->setRequest($this->dbliste_url, $params);
-
+        
+        $list = $this->getResult($response);
+        /*
+        
         if (!$response) {
             return false;
         }
@@ -615,7 +832,7 @@ class Dbis
         //get access infos for the legend
         $list['access_infos'] = $this->getAccessInfos($response);
 
-        if (isset($response->list_dbs->db_type_infos->db_type_info)) {
+        if (isset($response->list_dbs->db_access_infos->db_type_info)) {
             foreach ($response->list_dbs->db_type_infos->db_type_info as $value) {
                 $id = (string)$value->attributes()->db_type_id;
                 $list['groups'][$id] = [
@@ -681,7 +898,9 @@ class Dbis
             $list['error'] = (string)$response->error;
         }
 
-        return ['page_vars' => $page_vars, 'list' => $list];
+        return ['page_vars' => $page_vars, 'list' => $list];*/
+        
+        return $list;
     }
 
     /**
@@ -729,7 +948,7 @@ class Dbis
     {
         $params = ['bib_id' => $this->bibID, 'colors' =>'', 'ocolors' => '', 'lett' => 'fs', 'tid' => 0, 'titel_id' => $db_id, 'xmloutput' => 0];
 
-        $htmlResponse = $this->setRequest('https://'.$this->dbis_domain.'/dbinfo/detail.php', $params);
+        $htmlResponse = $this->setRequest('https://'.$this->dbis_domain.'/detail.php', $params);
 
         $moreDetails = [];
 
@@ -751,7 +970,7 @@ class Dbis
      * get information for the access
      * @param SimpleXMLElement $request
      */
-    private function getAccessInfos($request)
+    private function getAccessInfos_old($request)
     {
         $accessInfos = [];
 
