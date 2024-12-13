@@ -313,6 +313,8 @@ class Ezb
         $journal['appearence'] = (string)$xml_response->ezb_detail_about_journal->journal->detail->appearence;
         $journal['costs'] = (string)$xml_response->ezb_detail_about_journal->journal->detail->costs;
         $journal['remarks'] = trim((string)$xml_response->ezb_detail_about_journal->journal->detail->remarks);
+        $journal['access_conditions'] = (string)$xml_response->ezb_detail_about_journal->journal->detail->access_conditions;
+        
 
         if (empty($journal['remarks'])) {
             unset($journal['remarks']);

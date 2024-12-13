@@ -321,6 +321,10 @@
                     <source>Appearance</source>
                     <target>Form</target>
                 </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.access_conditions" xml:space="preserve">
+                    <source>Access conditions</source>
+                    <target>Zugangsbedingungen</target>
+                </trans-unit>
                 <trans-unit id="tx_libconnect.ezb.detail.category" xml:space="preserve">
                     <source>Category</source>
                     <target>Zeitschriftenkategorie(n)</target>
@@ -399,7 +403,7 @@
                 <trans-unit id="tx_libconnect.ezb.detail.movingwall.end.m.more" xml:space="preserve">
                     <source>months</source>
                     <target>Monate</target>
-                </trans-unit>
+                    </trans-unit>
                 <trans-unit id="tx_libconnect.ezb.detail.movingwall.end.m.one" xml:space="preserve">
                     <source>month</source>
                     <target>Monat</target>

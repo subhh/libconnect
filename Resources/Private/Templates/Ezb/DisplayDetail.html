@@ -313,7 +313,7 @@
                             </ul>
                         </td>
                     <tr>
-                </f:if>
+                        </f:if>
 
                 <f:if condition="{journal.categories}">
                     <tr>
@@ -395,6 +395,17 @@
                         </th>
                         <td>
                             <f:format.htmlentitiesDecode>{journal.costs}</f:format.htmlentitiesDecode>
+                        </td>
+                    </tr>
+                </f:if>
+
+                <f:if condition="{journal.access_conditions}">
+                    <tr>
+                        <th>
+                            <strong><f:translate key="tx_libconnect.ezb.detail.access_conditions" />:</strong>
+                        </th>
+                        <td>
+                            <f:format.htmlentitiesDecode>{journal.access_conditions}</f:format.htmlentitiesDecode>
                         </td>
                     </tr>
                 </f:if>

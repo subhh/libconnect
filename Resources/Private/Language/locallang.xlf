@@ -244,7 +244,10 @@
                 </trans-unit>
 
                 <trans-unit id="tx_libconnect.ezb.detail.appearence" xml:space="preserve">
-                        <source>Appearance</source>
+                    <source>Appearance</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.access_conditions" xml:space="preserve">
+                    <source>Access conditions</source>
                 </trans-unit>
                 <trans-unit id="tx_libconnect.ezb.detail.category" xml:space="preserve">
                     <source>Category</source>
