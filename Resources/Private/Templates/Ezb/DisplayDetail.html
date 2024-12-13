@@ -354,25 +354,35 @@
                     </td>
                 <tr>
 
-                <f:if condition="{journal.eissns_join}">
+                <f:if condition="{journal.eissns}">
                     <tr>
                         <th>
                             <strong><f:translate key="tx_libconnect.ezb.detail.eissns_join" />:</strong>
                         </th>
                         <td>
-                            <f:format.htmlentitiesDecode>{journal.eissns_join}</f:format.htmlentitiesDecode>
+                            <f:for each="{journal.eissns}" as="eissn">
+                                <li>
+                                    <f:link.external uri="https://portal.issn.org/resource/ISSN/{eissn}" target="_blank">{eissn}</f:link.external>
+                                        
+                                </li>
+                            </f:for>
                         </td>
                     </tr>
                 </f:if>
             
-                <f:if condition="{journal.pissns_join}">
+                <f:if condition="{journal.pissns}">
                     <tr>
                         <th>
                             <strong><f:translate key="tx_libconnect.ezb.detail.pissns_join" />:</strong>
                         </th>
 
                         <td>
-                            <f:format.htmlentitiesDecode>{journal.pissns_join}</f:format.htmlentitiesDecode>
+                            <f:for each="{journal.pissns}" as="pissn">
+                                <li>
+                                    <f:link.external uri="https://portal.issn.org/resource/ISSN/{pissn}" target="_blank">{pissn}</f:link.external>
+                                        
+                                </li>
+                            </f:for>
                         </td>
                     </tr>
                 </f:if>
