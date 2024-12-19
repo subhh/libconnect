@@ -1,0 +1,41 @@
+<f:if condition="{journal.publishing}">
+    <tr>
+        <th>
+            <strong><f:translate key="tx_libconnect.ezb.detail.publishing" />:</strong>
+        </th>
+        <td>
+        
+            <f:if condition="{journal.publishing.oa_funding}">
+            <strong><f:translate key="tx_libconnect.ezb.detail.publishing.oafunding" /></strong>
+            <p>
+                <f:translate key="tx_libconnect.ezb.detail.publishing.oafunding.contact" />: {journal.publishing.oa_funding.oa_contact.contact_name}<br>
+                <f:translate key="tx_libconnect.ezb.detail.publishing.oafunding.email" />: {journal.publishing.oa_funding.oa_contact.contact_email}<br>
+                <f:translate key="tx_libconnect.ezb.detail.publishing.oafunding.website" />: <f:link.external uri="{journal.publishing.oa_funding.oa_funding_url}" target="_blank">{journal.publishing.oa_funding.oa_funding_url}</f:link.external><br>
+                <br>{journal.publishing.oa_funding.oa_funding_text}
+            </p>
+            </f:if>
+            
+            <f:if condition="{journal.publishing.doaj}">
+            <strong><f:translate key="tx_libconnect.ezb.detail.publishing.doaj" /></strong>
+            <p>
+                <f:translate key="tx_libconnect.ezb.detail.publishing.doaj.apc" />: {journal.publishing.doaj.apc}<br>
+                <f:translate key="tx_libconnect.ezb.detail.publishing.doaj.apc_amount" />: {journal.publishing.doaj.apc_amount}<br>
+                <f:translate key="tx_libconnect.ezb.detail.publishing.doaj.apc_information_url" />: <f:link.external uri="{journal.publishing.doaj.apc_information_url}" target="_blank">{journal.publishing.doaj.apc_information_url}</f:link.external><br>
+                <f:translate key="tx_libconnect.ezb.detail.publishing.doaj.has_other_fees" />: {journal.publishing.doaj.has_other_fees}<br>
+                <f:translate key="tx_libconnect.ezb.detail.publishing.doaj.doaj_seal" />: {journal.publishing.doaj.doaj_seal}<br>
+                <f:translate key="tx_libconnect.ezb.detail.publishing.doaj.languages_in_which_the_journal_accepts_manuscripts" />: {journal.publishing.doaj.languages_in_which_the_journal_accepts_manuscripts}<br>
+                <f:translate key="tx_libconnect.ezb.detail.publishing.doaj.other_organisation" />: {journal.publishing.doaj.other_organisation}<br>
+                <f:translate key="tx_libconnect.ezb.detail.publishing.doaj.journal_license" />: {journal.publishing.doaj.journal_license}<br>
+                <f:translate key="tx_libconnect.ezb.detail.publishing.doaj.review_process" />: {journal.publishing.doaj.review_process}<br>
+                <f:translate key="tx_libconnect.ezb.detail.publishing.doaj.review_process_information_url" />: <f:link.external uri="{journal.publishing.doaj.review_process_information_url}" target="_blank">{journal.publishing.doaj.review_process_information_url}</f:link.external><br>
+                <f:translate key="tx_libconnect.ezb.detail.publishing.doaj.journal_plagiarism_screening_policy" />: {journal.publishing.doaj.journal_plagiarism_screening_policy}<br>
+            <f:translate key="tx_libconnect.ezb.detail.publishing.doaj.plagiarism_information_url" />: {journal.publishing.doaj.plagiarism_information_url}<br>
+                <f:translate key="tx_libconnect.ezb.detail.publishing.doaj.url_for_journal_instructions_for_authors" />: <f:link.external uri="{journal.publishing.doaj.url_for_journal_instructions_for_authors}" target="_blank">{journal.publishing.doaj.url_for_journal_instructions_for_authors}</f:link.external><br>
+                <f:translate key="tx_libconnect.ezb.detail.publishing.doaj.last_updated_date" />: {journal.publishing.doaj.last_updated_date}<br>
+                <f:translate key="tx_libconnect.ezb.detail.publishing.doaj.average_number_of_weeks_between_article_submission_and_publication" />: {journal.publishing.doaj.average_number_of_weeks_between_article_submission_and_publication}<br>
+            </p>
+            </f:if>
+
+        </td>
+    <tr>
+</f:if>

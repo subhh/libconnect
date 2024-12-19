@@ -387,6 +387,66 @@
                 <trans-unit id="tx_libconnect.ezb.detail.publisher.th" xml:space="preserve">
                         <source>Publisher</source>
                 </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.publishing" xml:space="preserve">
+                        <source>Publishing</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.publishing.oafunding" xml:space="preserve">
+                        <source>OA funding</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.publishing.oafunding.contact" xml:space="preserve">
+                        <source>Contact</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.publishing.oafunding.email" xml:space="preserve">
+                        <source>Email</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.publishing.oafunding.website" xml:space="preserve">
+                        <source>Website</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.publishing.doaj" xml:space="preserve">
+                        <source>DOAJ</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.publishing.doaj.apc" xml:space="preserve">
+                        <source>Article Processing Charge (APC)</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.publishing.doaj.apc_amount" xml:space="preserve">
+                        <source>Amount</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.publishing.doaj.apc_information_url" xml:space="preserve">
+                        <source>APC information</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.publishing.doaj.has_other_fees" xml:space="preserve">
+                        <source>Has other fees</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.publishing.doaj.doaj_seal" xml:space="preserve">
+                        <source>Doaj seal</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.publishing.doaj.languages_in_which_the_journal_accepts_manuscripts" xml:space="preserve">
+                        <source>Languages in which the journal accepts manuscripts</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.publishing.doaj.other_organisation" xml:space="preserve">
+                        <source>Other organisation</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.publishing.doaj.journal_license" xml:space="preserve">
+                        <source>License</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.publishing.doaj.review_process" xml:space="preserve">
+                        <source>Review process</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.publishing.doaj.review_process_information_url" xml:space="preserve">
+                        <source>Information of review process</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.publishing.doaj.journal_plagiarism_screening_policy" xml:space="preserve">
+                        <source>Plagiarism screening policy</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.publishing.doaj.plagiarism_information_url" xml:space="preserve">
+                        <source>Further informaton about plagiarism</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.publishing.doaj.last_updated_date" xml:space="preserve">
+                        <source>last updated</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.publishing.doaj.average_number_of_weeks_between_article_submission_and_publication" xml:space="preserve">
+                        <source>Average number of weeks between article submission and publication</source>
+                </trans-unit>
                 <trans-unit id="tx_libconnect.ezb.detail.remarks" xml:space="preserve">
                         <source>Comment</source>
                 </trans-unit>

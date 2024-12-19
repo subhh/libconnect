@@ -313,7 +313,7 @@
                             </ul>
                         </td>
                     <tr>
-                        </f:if>
+                </f:if>
 
                 <f:if condition="{journal.categories}">
                     <tr>
@@ -515,6 +515,8 @@
                     </f:if>
                 </f:if>
                 <!-- ende code for location data -->
+
+                <f:render partial="Ezb/Publishing" arguments="{journal:journal, listUid:listUid, detailPid:detailPid}" />
 
                 <f:if condition="{journal.participants}">
                     <tr>

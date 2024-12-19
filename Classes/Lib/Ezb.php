@@ -314,7 +314,16 @@ class Ezb
         $journal['costs'] = (string)$xml_response->ezb_detail_about_journal->journal->detail->costs;
         $journal['remarks'] = trim((string)$xml_response->ezb_detail_about_journal->journal->detail->remarks);
         $journal['access_conditions'] = (string)$xml_response->ezb_detail_about_journal->journal->detail->access_conditions;
-        
+
+        //publishing
+        if ($xml_response->ezb_detail_about_journal->journal->publishing) {
+            $journal['publishing']['oa_funding']['oa_contact']['contact_name'] = (string)$xml_response->ezb_detail_about_journal->journal->publishing->oa_funding->oa_contact->contact_name;
+            $journal['publishing']['oa_funding']['oa_contact']['contact_email'] = (string)$xml_response->ezb_detail_about_journal->journal->publishing->oa_funding->oa_contact->contact_email;
+            $journal['publishing']['oa_funding']['oa_funding_url'] = (string)$xml_response->ezb_detail_about_journal->journal->publishing->oa_funding->oa_funding_url;
+            $journal['publishing']['oa_funding']['oa_funding_text'] = (string)$xml_response->ezb_detail_about_journal->journal->publishing->oa_funding->oa_funding_text;
+
+            $journal['publishing']['doaj'] = $this->getDoaj($xml_response);
+        }
 
         if (empty($journal['remarks'])) {
             unset($journal['remarks']);
@@ -364,6 +373,26 @@ class Ezb
 
         return $journal;
     }
+
+    private function getDoaj($response){
+        $journal['publishing']['doaj'] = $response->ezb_detail_about_journal->journal->publishing->doaj;
+
+        $doaj = array();
+
+        $response->registerXPathNamespace('doaj', '...');
+        $data = $journal['publishing']['doaj']->xpath('doaj:*');
+
+        $doajValues = array("apc", "apc_amount", "apc_information_url", "has_other_fees", "doaj_seal", "languages_in_which_the_journal_accepts_manuscripts", "other_organisation", "journal_license", "review_process", "review_process_information_url", "journal_plagiarism_screening_policy", "plagiarism_information_url", "url_for_journal_instructions_for_authors", "last_updated_date", "average_number_of_weeks_between_article_submission_and_publication");
+
+        foreach($doajValues as $key => $value){
+            if ($data = $journal['publishing']['doaj']->xpath('doaj:'.$value)) {
+                $doaj[$value] = (string)$data[0];
+            }
+        }
+
+        return $doaj;
+    }
+
 
     /**
      * returns form for detailed search
