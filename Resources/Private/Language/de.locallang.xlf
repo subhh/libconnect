@@ -578,7 +578,7 @@
                 </trans-unit>
                 <trans-unit id="tx_libconnect.ezb.detail.publishing.doaj.url_for_journal_instructions_for_authors" xml:space="preserve">
                     <source>Instructions for authors</source>
-                    <target>Anweisungen für Autoren</target>
+                    <target>Anweisungen für Autor:Innen</target>
                 </trans-unit>
                 <trans-unit id="tx_libconnect.ezb.detail.publishing.doaj.average_number_of_weeks_between_article_submission_and_publication" xml:space="preserve">
                     <source>Average number of weeks between article submission and publication</source>
