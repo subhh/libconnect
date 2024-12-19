@@ -8,10 +8,20 @@ Here is the German [Manual](doc/manual.pdf "Ausführliches Manual").
 
 Visit our git repository: https://github.com/subhh/libconnect
 
-## 10.0.2
-    - DBIS:
-        - Sidebar: set the selected values as default in select field
-    - HTML5 compatible
+## 10.0.3
+    - DBIS: 
+        - Change verification of content-type for new version of dbis.
+        - Details:
+            - Added Ressource-ID
+            - automatic change of english and german for the fields content and instruction
+            - dbinfo is removed from links because of changes of the interface.
+        - List:
+            - Fixed links to top databases
+    - EZB:
+        - Detail:
+            - Access conditions added
+            - Added links for P-ISSN and E-ISSN
+            - Added publishing information: oa and doaj
 
 Tested with 
     - TYPO3 12.4.14
