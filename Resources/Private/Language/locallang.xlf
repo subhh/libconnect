@@ -444,6 +444,9 @@
                 <trans-unit id="tx_libconnect.ezb.detail.publishing.doaj.last_updated_date" xml:space="preserve">
                         <source>last updated</source>
                 </trans-unit>
+                <trans-unit id="tx_libconnect.ezb.detail.publishing.doaj.url_for_journal_instructions_for_authors" xml:space="preserve">
+                        <source>Instructions for authors</source>
+                </trans-unit>
                 <trans-unit id="tx_libconnect.ezb.detail.publishing.doaj.average_number_of_weeks_between_article_submission_and_publication" xml:space="preserve">
                         <source>Average number of weeks between article submission and publication</source>
                 </trans-unit>
