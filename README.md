@@ -17,6 +17,8 @@ Visit our git repository: https://github.com/subhh/libconnect
             - dbinfo is removed from links because of changes of the interface.
         - List:
             - Fixed links to top databases
+        - Miniform:
+            -  Fixed Error in new in subject.
     - EZB:
         - Detail:
             - Access conditions added
