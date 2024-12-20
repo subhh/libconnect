@@ -18,7 +18,8 @@ Visit our git repository: https://github.com/subhh/libconnect
         - List:
             - Fixed links to top databases
         - Miniform:
-            -  Fixed Error in new in subject.
+            - Fixed Error in new in subject.
+            - Sorting and filter by access is temporarily deactivated
     - EZB:
         - Detail:
             - Access conditions added
