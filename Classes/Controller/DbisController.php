@@ -215,7 +215,6 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         }
         if (!empty( $this->request->getQueryParams()['libconnect'])) {
             $params = $this->request->getQueryParams()['libconnect'];
-
         }
 
         $form = $this->dbisRepository->loadMiniForm();
@@ -263,20 +262,11 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
             //new entries for a selected subject
             if (!empty($params['gebiete']) && ($params['gebiete'] != 'all') && (!is_array($params['gebiete']) ) ) {
-                $subject = $this->dbisRepository->getSubject($params['gebiete']);
 
-                //maybe a collection or new subject
-                if (!$subject) {
-                    $subject = $params['gebiete'];
-                }
-
-                $count = (int)$this->getNewCount($subject['dbisid'], $this->settings['flexform']['countDays']);
+                $count = (int)$this->getNewCount($params['gebiete'], $this->settings['flexform']['countDays']);
 
                 if ($count > 0) {
-                    //$this->view->assign('gebiete', $params['gebiete']);
-
                     $this->view->assign('newInSubjectCount', $count);
-                    $this->view->assign('subject', $subject['title']);
                 }
             }
 
@@ -326,15 +316,9 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $params['jq_type1'] = 'LD';
         //$params['sc'] = $params['sc'];
 
-        if (!empty($params['gebiete'])) {
-            $subject = $this->dbisRepository->getSubject($params['gebiete']);
-            //$params['gebiete']=$subject['dbisid'];
-            $this->view->assign('subject', $subject['title']);
-        }
-
         //date how long entry is new
         $params['jq_term1'] = $this->getCalculatedDate($this->settings['flexform']['countDays']);
-	$params['jq_bool1'] = 'AND';
+        $params['jq_bool1'] = 'AND';
 
         if (empty($this->settings['flexform']['detailPid'])) {
             $this->addFlashMessage(
@@ -348,6 +332,10 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         } else {
             //request
             $list =  $this->dbisRepository->loadSearch($params, array());
+        }
+
+        if (!empty($params['gebiete'])) {
+            $this->view->assign('subject', $list['headline']);
         }
 
         //decide full or short text
@@ -450,4 +438,3 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->dbisRepository = $dbisRepository;
     }
 }
-

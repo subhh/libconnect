@@ -360,12 +360,13 @@
                             <strong><f:translate key="tx_libconnect.ezb.detail.eissns_join" />:</strong>
                         </th>
                         <td>
+                            <ul>
                             <f:for each="{journal.eissns}" as="eissn">
                                 <li>
                                     <f:link.external uri="https://portal.issn.org/resource/ISSN/{eissn}" target="_blank">{eissn}</f:link.external>
-                                        
                                 </li>
                             </f:for>
+                            </ul>
                         </td>
                     </tr>
                 </f:if>
@@ -377,12 +378,13 @@
                         </th>
 
                         <td>
+                            <ul>
                             <f:for each="{journal.pissns}" as="pissn">
                                 <li>
                                     <f:link.external uri="https://portal.issn.org/resource/ISSN/{pissn}" target="_blank">{pissn}</f:link.external>
-                                        
                                 </li>
                             </f:for>
+                            </ul>
                         </td>
                     </tr>
                 </f:if>
