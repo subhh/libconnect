@@ -151,8 +151,11 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $this->view->assign('detailPid', $this->settings['flexform']['detailPid']);
 
         } else {//start point
+            //$this->setLanguage();
+            
             $list =  $this->dbisRepository->loadOverview();
 
+            
             //use other view
             $this->view->setTemplatePathAndFilename($templateRootPaths[0].'/Dbis/DisplayOverview.html');
 
@@ -429,6 +432,15 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $langCode = $locale->getlanguageCode();
 
         return $langCode;
+    }
+    
+    private function setLanguage()
+    {
+        $language = $this->request->getAttribute('language');
+        $locale = $language->getLocale();
+        $langCode = $locale->getlanguageCode();
+
+        $this->dbisRepository->setLanguageCode($langCode);
     }
 
     /**
