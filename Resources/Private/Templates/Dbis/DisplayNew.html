@@ -46,29 +46,11 @@
     <f:then></f:then>
     <f:else>
         <div class="dbis-list">
-
-            <f:if condition="<f:count subject='{list.values}' /> > 0">
-                <div class="accordion-content clearfix">
-                    <ul class="dbis-dblist">
-
-                        <f:for each="{list.values}" as="db" key="titleid">
-                            <li class="dbis-list-accessinfo-{db.access_ref}">
-                                <f:link.page pageUid="{detailPid}" additionalParams="{libconnect: {titleid: '{db.titleid}'}}">
-                                    <f:format.htmlentitiesDecode>
-                                    {db.title}
-                                    </f:format.htmlentitiesDecode>
-                                </f:link.page>
-                            </li>
-                        </f:for>
-                        
-                    </ul>
-                </div>
-            </f:if>
-
+            <f:render partial="Dbis/DbList" arguments="{list:list.dbs.list, detailPid:detailPid}" />
         </div>
     </f:else>
 </f:if>
 
-<f:render partial="Dbis/DbList" arguments="{list:list.dbs.list, detailPid:detailPid}" />
+
 <f:asset.css identifier="dbis" href="EXT:libconnect/Resources/Public/Css/dbis.css" />
 </f:section>
