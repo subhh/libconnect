@@ -44,13 +44,15 @@ class Dbis
     private $ocolors = '';
     private $lett = 'f';
     //private $fachliste_url = 'https://dbis.ur.de/dbinfo/fachliste.php';
-    private $fachliste_url = 'https://dbis.ur.de/fachliste.php';
+    private $fachliste_url = 'https://dbis-test.ur.de/fachliste.php';
+    //private $fachliste_url = 'https://dbis-test.ur.de/api/v1/subjects';//json
     //private $dbliste_url = 'https://dbis.ur.de/dbinfo/dbliste.php';
-    private $dbliste_url = 'https://dbis.ur.de/dbliste2.php';
+    //private $dbliste_url = 'https://dbis-test.ur.de/dbliste2.php';
+    private $dbliste_url = 'https://dbis-test.ur.de/dbliste.php';
     //private $db_detail_url = 'https://dbis.ur.de/dbinfo/detail.php';
-    private $db_detail_url = 'https://dbis.ur.de/detail.php';
+    private $db_detail_url = 'https://dbis-test.ur.de/detail.php';
     //private $db_detail_suche_url = 'https://dbis.ur.de/dbinfo/suche.php';
-    private $db_detail_suche_url = 'https://dbis.ur.de/suche.php';
+    private $db_detail_suche_url = 'https://dbis-test.ur.de/suche.php';
     private $dbis_domain = 'dbis.ur.de';
 
     private $lang = 'de';
@@ -131,37 +133,55 @@ class Dbis
      */
     public function getFachliste()
     {
-        $response = $this->setRequest($this->fachliste_url, array('colors' => 511, 'ocolors' => 40, 'lett' => 1));
+        //json
+        /*$response = $this->setRequest($this->fachliste_url, array('lang' => $this->lang));
 
         $return = array();
         
-        foreach($response->page_vars as $key => $value){
-            $regurn['pagaVars'][$key] = $value;
-        }
-        
-        $return['headline'] = (string)$response->headline;
-        
-        if (!empty($response->list_subjects_collections->list_subjects_collections_item)) {
-            foreach ($response->list_subjects_collections->list_subjects_collections_item as $key => $value) {
+        if (!empty($response)) {
+            foreach ($response as $key => $value) {
                 $return['list_subjects_collections'][] = array(
-                    'title' => (string)$value,
-                    'notation' => (string)$value['notation'],
-                    'number' => (int)(string)$value['number'],
-                    'lett' => (string)$value['lett']
+                    'id' => $value['id'],
+                    'title' => $value['title'],
+                    'subject_system' => $value['subject_system'],
+                    'parent' => $value['parent'],
+                    'is_collection' => $value['is_collection'],
+                    'lett' => ($value['is_collection'] == TRUE) ? 'c' : 'f'
                 );
             }
         }
 
+        return $return;*/
+        
+        $response = $this->setRequest($this->fachliste_url, array('colors' => 511, 'ocolors' => 40, 'lett' => 1));
+
+        $return = array();
+
+        foreach($response->page_vars as $key => $value){
+            $regurn['pagaVars'][$key] = $value;
+        }
+
+        $return['headline'] = (string)$response->headline;
+
+        if (!empty($response->list_subjects_collections->list_subjects_collections_item)) {
+            foreach ($response->list_subjects_collections->list_subjects_collections_item as $key => $value) {
+                 $return['list_subjects_collections'][] = array(
+                    'title' => (string)$value,
+                    'notation' => (string)$value['notation'],
+                    'number' => (int)(string)$value['number'],
+                    'lett' => (string)$value['lett']
+                 );
+             }
+        }
+        
         return $return;
     }
 
     public function getDbList($fachgebiet){
-         $sortlist = [];
-
         $params = [
                     'colors' => $this->colors,
                     'ocolors' => $this->ocolors,
-                    'sort' => $sort
+                    //'sort' => $sort
                 ];
 
         $headline = '';
@@ -987,6 +1007,30 @@ class Dbis
         }
 
         return $accessInfos;
+    }
+
+    /**
+     * sets language
+     * @param string lang
+     */
+    public function setLanguage($lang)
+    {
+        //only de and en is allowed
+        if (($lang != 'de') && ($lang != 'en')) {
+            $lang = 'de';
+        }
+
+        $this->lang = $lang;
+    }
+
+    /**
+     * returns language
+     *
+     * @return string
+     */
+    public function getLanguage()
+    {
+        return $this->lang;
     }
 
     /**
