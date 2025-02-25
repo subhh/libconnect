@@ -86,6 +86,7 @@ class Request
         }
 
         $contentType = str_replace(' ', '', strtolower($response->getHeaderLine('Content-Type')));
+
         if (strpos($contentType, 'application/xml') === 0) {//DBIS, services.dnb.de
             $content = $this->getXml($response);
         } elseif (strpos($contentType, 'text/xml;charset=utf-8') === 0) {//DBIS, services.dnb.de
@@ -98,6 +99,10 @@ class Request
             //moreDetails
         } elseif (preg_match('/text\/html;charset=(iso-8859-1)?(utf-8)?/', $contentType, $matches)) {
             $content = $this->getText($response);
+        } elseif (strpos($contentType, 'application/json') === 0) {//DBIS, services.dnb.de
+            $content = $this->getJson($response);
+            //echo "<pre>";
+            //var_dump($content);exit;
         } else {
 
             return false;
@@ -134,6 +139,12 @@ class Request
         libxml_use_internal_errors(false);
 
         return $content;
+    }
+
+    private function getJson($response)
+    {
+        $json = $response->getBody()->getContents();
+        return json_decode($json, true);
     }
 
     /**
