@@ -107,6 +107,10 @@ class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 
             $subject['title'] = $result['headline'];
         }
+        
+        $result['groups'] = $this->getGroups($result);
+        
+        
 
         /*
         //get top dbs
@@ -118,17 +122,47 @@ class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                 $result['list']['groups'][$group]['dbs'][$db]['titleid'] = $result['list']['groups'][$group]['dbs'][$db]['id'];
             }
         }
-
-        // sort groups by name
-        $alph_sort_groups = [];
-        foreach ($result['list']['groups'] as $group) {
-            $alph_sort_groups[$group['title']] = $group;
-        }
-        ksort($alph_sort_groups, SORT_STRING); //added sort-flag SORT_STRING for correct sorting of alphabetical listings
-        $result['list']['groups'] = $alph_sort_groups;
 */
         return $result;
 
+    }
+    
+    public function getGroups($result){
+        $groups = array();
+        
+        foreach($result['db_type_infos'] as $db_type_info){
+            $groups[$db_type_info['db_type']]['id'] = str_replace('db_type_', '', $db_type_info['db_type_id']);
+        }
+        
+        //alphabetical sorting
+        ksort($groups, SORT_STRING);
+        
+        foreach($groups as $key => $group){
+            $groups[$key]['dbs'] = $this->setDBs2Groups($result, $group['id']);
+                
+        }
+        
+        
+        
+        return $groups;
+    }
+    
+    
+    public function setDBs2Groups($result, $id){
+        $groupWithEntries = array();
+    
+    
+        foreach($result['dbs']['list'] as $db){
+        
+            foreach($db['db_type_refs'] as $type_ref){
+                if($type_ref == $id){
+                    $groupWithEntries[$db['title']] = $db;
+                }
+            }
+        }
+        ksort($groupWithEntries, SORT_STRING);
+        
+        return $groupWithEntries;
     }
 
     /**
@@ -273,5 +307,21 @@ class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      */
     public function injectDbis(Dbis $dbis) {
         $this->dbis = $dbis;
+    }
+    
+     /**
+    * @param string $languageCode
+    **/
+    public function setLanguageCode($languageCode)
+    {
+        $this->dbis->setLanguage($languageCode);
+    }
+    
+    /**
+    * @return string $languageCode
+    **/
+    public function getLanguageCode()
+    {
+        return $this->dbis->getLanguage();
     }
 }
