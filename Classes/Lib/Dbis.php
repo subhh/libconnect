@@ -37,8 +37,6 @@ namespace Subhh\Libconnect\Lib;
  */
 class Dbis
 {
-
-    //such meta
     private $fachgebiet;
     private $colors = '';
     private $ocolors = '';
@@ -177,11 +175,11 @@ class Dbis
         return $return;
     }
 
-    public function getDbList($fachgebiet){
+    public function getDbList($fachgebiet, $sort){
         $params = [
                     'colors' => $this->colors,
                     'ocolors' => $this->ocolors,
-                    //'sort' => $sort
+                    'sort' => $sort
                 ];
 
         $headline = '';
@@ -240,17 +238,23 @@ class Dbis
             $list['db_type_infos'] = $this->getdbTypeInfos($xml->list_dbs->db_type_infos);
         }
 
+        $list['dbs']['list'] = array();
+
         //databases
         foreach($xml->list_dbs->dbs as $db){
             //top_dbs
             if( isset($db->attributes()->top_db) ) {
                 $list['top']['list'] = $this->getTopDatabases($db);
-                $list['top']['db_count'] = (integer)$db->attributes()->db_count;
             }else {//found dbs
-                $list['dbs']['list'] = $this->getTopDatabases($db);
-                $list['dbs']['db_count'] = (integer)$db->attributes()->db_count;
+                //sort = alph
+                if($db->attributes()->sort == "alph") {
+                    $list['dbs']['list'] = $this->getDatabases($db);
+                } else { //sort = type
+                    $list['dbs']['list'][(string)$db->attributes()->db_type_ref] = $this->getDatabases($db);
+                }
             }
         }
+        
         
         return $list;
     }
@@ -345,14 +349,17 @@ class Dbis
         $return = array();
         
         foreach($databases as $key => $value){
-            $return[] = array(
+            $return[ (string)$value ] = array(
                 'titleid' => (string)$value->attributes()->title_id,
                 'title' => (string)$value,
-                'access_ref' => (string)$value->attributes()->access_ref,
+                'access_ref' => (string)$value->attributes()->access_ref == ('no mapping to old access_id found' or 'not_found') ? (string)$value->attributes()->traffic_light : (string)$value->attributes()->access_ref,
                 'db_type_refs' => explode(" ", (string)$value->attributes()->db_type_refs),
                 'href' => (string)$value->attributes()->href,
+                'traffic_light' => (string)$value->attributes()->traffic_light,
             );
         }            
+        
+        ksort($return, SORT_STRING);
         
         return $return;
     }

@@ -93,7 +93,7 @@ class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             //get subject name
             $subject = $this->dbis_to_t3_subjects[$subject_id];
 
-            $dbis_id = $subject['dbisid'];
+            //$dbis_id = $subject['dbisid'];
 
             $result = $this->dbis->getDblist($subject_id, $config['sort'], $accessFilter, $parameter);
         } else {//for own collection or all subjects
@@ -103,26 +103,29 @@ class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                 $config['sort'] = 'alph';
             }
 
-            $result = $this->dbis->getDbliste($subject_id, $config['sort'], $accessFilter, $parameter);
+            $result = $this->dbis->getDblist($subject_id, $config['sort'], $accessFilter, $parameter);
 
             $subject['title'] = $result['headline'];
         }
-        
-        $result['groups'] = $this->getGroups($result);
-        
-        
 
-        /*
-        //get top dbs
-        $result['list']['top'] = $this->getListTop($result['list']['top']);*/
+        if($config['sort'] != 'alph'){
 
-        //get groups
-        /*foreach (array_keys($result['list']['groups']) as $group) {
-            foreach (array_keys($result['list']['groups'][$group]['dbs']) as $db) {
-                $result['list']['groups'][$group]['dbs'][$db]['titleid'] = $result['list']['groups'][$group]['dbs'][$db]['id'];
+            $groups = array();
+            foreach($result['db_type_infos'] as $db_type_info){
+                $groups[ str_replace('db_type_', '', $db_type_info['db_type_id']) ] = $db_type_info['db_type'];
             }
+            
+            $newList = array();
+            foreach($result['dbs']['list'] as $key => $row){
+            
+                $newList[ $groups[$key] ] = $row;
+            }
+            ksort($newList, SORT_STRING);
+            
+            $result['dbs']['list'] = $newList;
         }
-*/
+        /*echo "<pre>";
+        var_dump($result);exit;*/
         return $result;
 
     }
@@ -131,7 +134,18 @@ class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $groups = array();
         
         foreach($result['db_type_infos'] as $db_type_info){
-            $groups[$db_type_info['db_type']]['id'] = str_replace('db_type_', '', $db_type_info['db_type_id']);
+            $groups[ $db_type_info['db_type'] ]['id'] = str_replace('db_type_', '', $db_type_info['db_type_id']);
+        }
+        
+        
+        
+        foreach($result['dbs']['list'] as $db_group){
+        
+            foreach($db['db_type_refs'] as $type_ref){
+                if($type_ref == $id){
+                    $groupWithEntries[$db['title']] = $db;
+                }
+            }
         }
         
         //alphabetical sorting
