@@ -113,15 +113,10 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
             //check, if there are no results and inform user to change licence
             $empty = false;
-            if (!empty($list['list'])) {
-                $empty = false;
+            if (empty($list['dbs']['list'])) {
+                $empty = true;
             }
-            foreach ($list['list']['groups'] as $group) {
-                if (!empty($group['dbs'])) {
-                    $empty = false;
-                    break;
-                }
-            }
+            
             $this->view->assign('empty', $empty);
             
             //decide full or short text
