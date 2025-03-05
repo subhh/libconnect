@@ -1,9 +1,11 @@
 @charset "UTF-8";
 .dbis-list-legend ul li.dbis-list-legend-one,
+.dbis-list-accessinfo-green,
 .dbis-list-accessinfo-access_0 {
     background-image: url("../Img/dbis-list_0.png");
 }
 .dbis-list-legend ul li.dbis-list-legend-two,
+.dbis-list-accessinfo-yellow,
 .dbis-list-accessinfo-access_1 {
     background-image: url("../Img/dbis-list_1.png");
 }
@@ -16,6 +18,7 @@
     background-image:url("../Img/cdrom_dbis_list_3.png");
 }
 .dbis-list-legend ul li.dbis-list-legend-eight,
+.dbis-list-accessinfo-red,
 .dbis-list-accessinfo-access_4{
     background-image: url("../Img/dbis-list_4.png");
 }
@@ -48,6 +51,9 @@
 .dbis-list-legend ul li.dbis-list-legend-two,
 .dbis-list-legend ul li.dbis-list-legend-six,
 .dbis-list-legend ul li.dbis-list-legend-four,
+.dbis-list-accessinfo-green,
+.dbis-list-accessinfo-yellow,
+.dbis-list-accessinfo-red,
 .dbis-list-accessinfo-access_0,
 .dbis-list-accessinfo-access_1,
 .dbis-list-accessinfo-access_2,
