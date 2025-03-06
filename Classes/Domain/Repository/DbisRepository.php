@@ -59,14 +59,18 @@ class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     public function loadTop($config)
     {
         $this->loadSubjects();
-
-        $subject = $this->t3_to_dbis_subjects[$config['subject']];
+        $subject = $this->dbis_to_t3_subjects[$config['subject']];
         $dbis_id = $subject['dbisid'];
+        
+        $config['sort'] = 'alph';
+        $accessFilter = false;
+        $parameter = 'f';
 
-        $result = $this->dbis->getDbliste($dbis_id);
+        //$result = $this->dbis->getDbliste($dbis_id);
+        $result = $this->dbis->getDblist($dbis_id, $config['sort'], $accessFilter, $parameter);
 
         //get top dbs
-        $result = $this->getListTop($result['list']['top']);
+        //$result = $this->getListTop($result['list']['top']);
 
         return $result;
     }
@@ -90,10 +94,6 @@ class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 
         //list a subject
         if ( $parameter['lett'] == 'f' ) {
-            //get subject name
-            $subject = $this->dbis_to_t3_subjects[$subject_id];
-
-            //$dbis_id = $subject['dbisid'];
 
             $result = $this->dbis->getDblist($subject_id, $config['sort'], $accessFilter, $parameter);
         } else {//for own collection or all subjects
@@ -124,8 +124,7 @@ class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             
             $result['dbs']['list'] = $newList;
         }
-        /*echo "<pre>";
-        var_dump($result);exit;*/
+
         return $result;
 
     }
