@@ -197,7 +197,7 @@ class Zdb
             return false;
         }
 
-        //as the script is stil running the XML-Object contains all the data necessary for the location information, so continue
+        //as the script is still running the XML-Object contains all the data necessary for the location information, so continue
         /**
          * two branches: <ElectronicData> : electronic availability
          *               <PrintData> : print

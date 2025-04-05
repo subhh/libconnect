@@ -16,7 +16,7 @@ Introduction
 What does it do?
 ================
 
-With libconnect it is possible to display the information of Electronic Journals Library (EZB) and the Database informations system (DBIS) of the University Regensburg on an TYPO3 based website.
+With libconnect it is possible to display the information of Electronic Journals Library (EZB) and the Database information system (DBIS) of the University Regensburg on an TYPO3 based website.
 
 The visitors stay on your website and you can use your own styles.
 

@@ -41,7 +41,7 @@
 9.0.3
     - EZB: 
         - Reduces amount of requests to API.
-        - Fixed wrong doamin of ezb
+        - Fixed wrong domain of ezb
 9.0.2
     - EZB:
        - Fixed error: no search results, if someone uses in extended search only jq_term2 or higher. Http_built_query removed elements with null values and the API do not accept the other parameters.
@@ -60,7 +60,7 @@
     - Fixed broken code
 8.1.0
     - EZB: plug-in use now only the xml interface and not the database
-    - Fixed unsecure url schemes
+    - Fixed insecure url schemes
     - using of standard view helper
         - Removed StrlenNp helper function
         - removed compare view helper
@@ -71,7 +71,7 @@
     - EZB- Details:
         - Title history.
             - ZDBID and period now in same underlined line like original EZB view.
-            - Fixed sorting of precursor vom oldes to newest.
+            - Fixed sorting of precursor from oldest to newest.
             - Fixed incomplete list
         - added open access policy search link to SHERPA/RoMEO
         - fixed keywords
@@ -125,9 +125,9 @@
     - DBIS: 
         - list, new in DBIS: decide to show short or full licence information
         - fixed double access information in lists
-    - better comatibility to TYPO3 8 LTS
+    - better compatibility to TYPO3 8 LTS
 6.0.3
-    - Class decideIncludeCSS removed --> used deprecated funktions.
+    - Class decideIncludeCSS removed --> used deprecated functions.
     - Typoscript: ezbNoCSS and dbisNoCSS settings removed
     - DBIS: 
         - new in DBIS: Changed Text and date for better reading
