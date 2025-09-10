@@ -1,5 +1,8 @@
 <ul class="dbis-search-description">
-    <f:for each="{searchDescription}" as="description">
-        <li><f:format.htmlentitiesDecode><f:format.htmlspecialchars>{description}</f:format.htmlspecialchars></f:format.htmlentitiesDecode></li>
+    <f:for each="{searchDescription}" as="description" key="desc_key">
+        <f:if condition="desc_key.db_type">
+            <f:translate key="tx_libconnect.dbis.dbtype.{desc_key.db_type}" />
+        </f:if>
+    <li><f:format.htmlspecialchars>{description}</f:format.htmlspecialchars></li>
     </f:for>
 </ul>
