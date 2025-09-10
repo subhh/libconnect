@@ -293,6 +293,74 @@
                     <source>Top Databases</source>
                     <target>Top Datenbanken</target>
                 </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.dbtype.1" xml:space="preserve">
+                    <source>Address- und Firmenverzeichnis</source>
+                    <target>Address- und Firmenverzeichnis</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.dbtype.2" xml:space="preserve">
+                    <source>Allgemeines Auskunftmittel</source>
+                    <target>Allgemeines Auskunftmittel</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.dbtype.3" xml:space="preserve">
+                    <source>Aufsatzdatenbank</source>
+                    <target>Aufsatzdatenbank</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.dbtype.4" xml:space="preserve">
+                    <source>Bestandsverzeichnis</source>
+                    <target>Bestandsverzeichnis</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.dbtype.5" xml:space="preserve">
+                    <source>Sammlung Nicht-Textueller-Materialien</source>
+                    <target>Sammlung Nicht-Textueller-Materialien</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.dbtype.6" xml:space="preserve">
+                    <source>Biographische Datenbank</source>
+                    <target>Biographische Datenbank</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.dbtype.7" xml:space="preserve">
+                    <source>Buchhandelsverzeichnis</source>
+                    <target>Buchhandelsverzeichnis</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.dbtype.8" xml:space="preserve">
+                    <source>Disziplinäre Repositorien</source>
+                    <target>Disziplinäre Repositorien</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.dbtype.9" xml:space="preserve">
+                    <source>Fachbibliographie</source>
+                    <target>Fachbibliographie</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.dbtype.10" xml:space="preserve">
+                    <source>Faktendatenbank</source>
+                    <target>Faktendatenbank</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.dbtype.11" xml:space="preserve">
+                    <source>National-, Regionalbibliographie</source>
+                    <target>National-, Regionalbibliographie</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.dbtype.12" xml:space="preserve">
+                    <source>Portal</source>
+                    <target>Portal</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.dbtype.13" xml:space="preserve">
+                    <source>Volltextdatenbank</source>
+                    <target>Volltextdatenbank</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.dbtype.14" xml:space="preserve">
+                    <source>Wörterbuch, Enzyklopädie, Nachschlagwerk</source>
+                    <target>Wörterbuch, Enzyklopädie, Nachschlagwerk</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.dbtype.15" xml:space="preserve">
+                    <source>Zeitung</source>
+                    <target>Zeitung</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.dbtype.16" xml:space="preserve">
+                    <source>Zeitungs-, Zeitschriftenbibliographie</source>
+                    <target>Zeitungs-, Zeitschriftenbibliographie</target>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.dbtype.17" xml:space="preserve">
+                    <source>Disziplinäre Forschungsdatenrepositorien</source>
+                    <target>Disziplinäre Forschungsdatenrepositorien</target>
+                </trans-unit>
             
                 <!-- EZB -->            
             

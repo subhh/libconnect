@@ -204,6 +204,57 @@
                 <trans-unit id="tx_libconnect.dbis.new.since" xml:space="preserve">
                     <source>new entries since</source>
                 </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.dbtype.1" xml:space="preserve">
+                    <source>Address- und Firmenverzeichnis</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.dbtype.2" xml:space="preserve">
+                    <source>Allgemeines Auskunftmittel</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.dbtype.3" xml:space="preserve">
+                    <source>Aufsatzdatenbank</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.dbtype.4" xml:space="preserve">
+                    <source>Bestandsverzeichnis</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.dbtype.5" xml:space="preserve">
+                    <source>Sammlung Nicht-Textueller-Materialien</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.dbtype.6" xml:space="preserve">
+                    <source>Biographische Datenbank</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.dbtype.7" xml:space="preserve">
+                    <source>Buchhandelsverzeichnis</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.dbtype.8" xml:space="preserve">
+                    <source>Disziplinäre Repositorien</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.dbtype.9" xml:space="preserve">
+                    <source>Fachbibliographie</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.dbtype.10" xml:space="preserve">
+                    <source>Faktendatenbank</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.dbtype.11" xml:space="preserve">
+                    <source>National-, Regionalbibliographie</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.dbtype.12" xml:space="preserve">
+                    <source>Portal</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.dbtype.13" xml:space="preserve">
+                    <source>Volltextdatenbank</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.dbtype.14" xml:space="preserve">
+                    <source>Wörterbuch, Enzyklopädie, Nachschlagwerk</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.dbtype.15" xml:space="preserve">
+                    <source>Zeitung</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.dbtype.16" xml:space="preserve">
+                    <source>Zeitungs-, Zeitschriftenbibliographie</source>
+                </trans-unit>
+                <trans-unit id="tx_libconnect.dbis.dbtype.17" xml:space="preserve">
+                    <source>Disziplinäre Forschungsdatenrepositorien</source>
+                </trans-unit>
 
                 <trans-unit id="tx_libconnect.dbis.overview.headline" xml:space="preserve">
                     <source>Database information system</source>
