@@ -41,16 +41,10 @@ class Dbis
     private $colors = '';
     private $ocolors = '';
     private $lett = 'f';
-    //private $fachliste_url = 'https://dbis.ur.de/dbinfo/fachliste.php';
-    private $fachliste_url = 'https://dbis-test.ur.de/fachliste.php';
-    //private $fachliste_url = 'https://dbis-test.ur.de/api/v1/subjects';//json
-    //private $dbliste_url = 'https://dbis.ur.de/dbinfo/dbliste.php';
-    //private $dbliste_url = 'https://dbis-test.ur.de/dbliste2.php';
-    private $dbliste_url = 'https://dbis-test.ur.de/dbliste.php';
-    //private $db_detail_url = 'https://dbis.ur.de/dbinfo/detail.php';
-    private $db_detail_url = 'https://dbis-test.ur.de/detail.php';
-    //private $db_detail_suche_url = 'https://dbis.ur.de/dbinfo/suche.php';
-    private $db_detail_suche_url = 'https://dbis-test.ur.de/suche.php';
+    private $fachliste_url = 'https://dbis.ur.de/dbinfo/fachliste.php';
+    private $dbliste_url = 'https://dbis.ur.de/dbinfo/dbliste.php';
+    private $db_detail_url = 'https://dbis.ur.de/dbinfo/detail.php';
+    private $db_detail_suche_url = 'https://dbis.ur.de/dbinfo/suche.php';
     private $dbis_domain = 'dbis.ur.de';
 
     private $lang = 'de';
@@ -837,7 +831,6 @@ class Dbis
         
         $list = $this->getResult($response);
         /*
-        
         if (!$response) {
             return false;
         }
@@ -924,8 +917,11 @@ class Dbis
         if (isset($response->error)) {
             $list['error'] = (string)$response->error;
         }
-
+        
         return ['page_vars' => $page_vars, 'list' => $list];*/
+        
+        //get search description
+        $list['searchDescription'] = $this->getSearchDescription($response);
         
         return $list;
     }
@@ -940,13 +936,90 @@ class Dbis
     private function getSearchDescription($request)
     {
         $list = [];
-
+        
+        //mini search
         if (isset($request->search_desc->search_desc_item)) {
             foreach ($request->search_desc->search_desc_item as $searchDesc) {
                 $list[] = (string)$searchDesc;
             }
         }
-
+        
+        ///extended search
+        if(!empty($request->page_vars->jq_term1)){
+            $description = "";
+            $description = htmlspecialchars( (string)$request->page_vars->jq_term1 );
+            $description = $description." ".htmlspecialchars( (string)$request->page_vars->jq_bool1 );
+            
+            if($request->page_vars->jq_not1 == "NOT"){
+                $description = $description." ". (string)$request->page_vars->jq_not1;
+            }
+            
+            $list[]  = $description;
+        }
+        if(!empty($request->page_vars->jq_term2)){
+            $description = "";
+            $description = htmlspecialchars( (string)$request->page_vars->jq_term2 );
+            $description = $description." ".htmlspecialchars( (string)$request->page_vars->jq_bool1 );
+            
+            if($request->page_vars->jq_not2 == "NOT"){
+                $description = $description." ". (string)$request->page_vars->jq_not2;
+            }
+            $list[]  = $description;
+        }
+        if(!empty($request->page_vars->jq_term3)){
+            $description = "";
+            $description = " ". htmlspecialchars( (string)$request->page_vars->jq_term3 );
+            $description = $description." ". htmlspecialchars( (string)$request->page_vars->jq_bool3 );
+            
+            if($request->page_vars->jq_not3 == "NOT"){
+                $description = $description." ". (string)$request->page_vars->jq_not3;
+            }
+            
+            $list[]  = $description;
+        }
+        if(!empty($request->page_vars->jq_term4)){
+            $description = "";
+            $description = " ". htmlspecialchars( (string)$request->page_vars->jq_term4 );
+            $description = $description." ". htmlspecialchars( (string)$request->page_vars->jq_bool4 );
+            
+            if($request->page_vars->jq_not4 == "NOT"){
+                $description = $description." ". (string)$request->page_vars->jq_not4;
+            }
+            
+            $list[]  = $description;
+        }
+        
+        if(!empty($request->page_vars->gebiete)){
+            $list[]  = $request->headline;
+        }
+        
+        
+        $db_types = array(
+            1 => "Address- und Firmenverzeichnis",
+            2 => "Allgemeines Auskunftmittel",
+            3 => "Aufsatzdatenbank",
+            4 => "Bestandsverzeichnis",
+            5 => "Sammlung Nicht-Textueller-Materialien",
+            6 => "Biographische Datenbank",
+            7 => "Buchhandelsverzeichnis",
+            8 => "Disziplinäre Repositorien",
+            9 => "Fachbibliographie",
+            10 => "Faktendatenbank",
+            11 => "National-, Regionalbibliographie",
+            12 => "Portal",
+            13 => "Volltextdatenbank",
+            14 => "Wörterbuch, Enzyklopädie, Nachschlagwerk",
+            15 => "Zeitung",
+            16 => "Zeitungs-, Zeitschriftenbibliographie",
+            17 => "Disziplinäre Forschungsdatenrepositorien"
+        );
+        
+        if(!empty($request->page_vars->db_type)){
+            $value = (integer)$request->page_vars->db_type;
+            if( ($value <= 17) && ($value > 0) ){
+                $list['db_types']  = $db_types[ $value ];
+            }
+        }
         return $list;
     }
 
