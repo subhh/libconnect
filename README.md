@@ -27,7 +27,7 @@ Visit our git repository: https://github.com/subhh/libconnect
             - Added publishing information: oa and doaj
 
 Tested with 
-    - TYPO3 12.4.14
+    - TYPO3 12.4.22
 
 ## Configuration
 
