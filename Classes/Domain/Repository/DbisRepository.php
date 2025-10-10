@@ -59,18 +59,14 @@ class DbisRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     public function loadTop($config)
     {
         $this->loadSubjects();
-        $subject = $this->dbis_to_t3_subjects[$config['subject']];
-        $dbis_id = $subject['dbisid'];
+	$dbis_id = $this->t3_to_dbis_subjects[$config['subject']]['dbisid'];
         
         $config['sort'] = 'alph';
         $accessFilter = false;
         $parameter = 'f';
 
-        //$result = $this->dbis->getDbliste($dbis_id);
+	//get top dbs
         $result = $this->dbis->getDblist($dbis_id, $config['sort'], $accessFilter, $parameter);
-
-        //get top dbs
-        //$result = $this->getListTop($result['list']['top']);
 
         return $result;
     }
