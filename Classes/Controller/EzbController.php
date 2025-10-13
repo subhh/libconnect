@@ -164,7 +164,9 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             
             $this->view->assign('colors', $params['colors']);
 
+            //impede additionaly hidden color parameter
             unset($params['colors']);
+
             $this->view->assign('formParameter', $params);
 
             $this->view->assign('detailPid', $this->settings['flexform']['detailPid']);
