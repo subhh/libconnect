@@ -34,6 +34,8 @@ use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Subhh\Libconnect\Lib\Ezb;
 use Subhh\Libconnect\Lib\Zdb;
+use Psr\Http\Message\ServerRequestInterface;
+use Subhh\Libconnect\Utility\TypoScriptUtility;
 
 /**
  * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
@@ -450,7 +452,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      */
     public function getBibid()
     {
-        return $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.']['ezbbibid'];
+        return TypoScriptUtility::getSetup($GLOBALS['TYPO3_REQUEST'])['plugin.']['tx_libconnect.']['ezbbibid'];
     }
 
     /**
