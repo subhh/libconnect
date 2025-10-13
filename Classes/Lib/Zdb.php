@@ -165,6 +165,10 @@ class Zdb
 
         $xml_response = $this->setRequest($this->fullformat_request_url, $params);
 
+        if(!$xml_response){
+            return false;
+        }
+
         $locationDetail = [];
 
         // root-element = OpenURLResponseXML->Full/Brief
