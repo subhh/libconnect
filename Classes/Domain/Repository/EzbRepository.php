@@ -223,7 +223,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         unset($journal['color_code']);
         $journal['color_code'] = [];
 
-        if ((!isset($journal['selected_colors'][$color])) or (empty($journal['selected_colors'][$color])) or ($LongAccessInfos['force'] == 'true')) {
+        if ((!isset($journal['selected_colors'][$color])) or (empty($journal['selected_colors'][$color]))) {
             $journal['color_code']['text'] = $colortext['longAccessInfos'][$color];
         } else {
             $journal['color_code']['text'] = $journal['selected_colors'][$color];
