@@ -1,6 +1,8 @@
 <?php
 
 namespace Subhh\Libconnect\Lib;
+use Psr\Http\Message\ServerRequestInterface;
+use Subhh\Libconnect\Utility\TypoScriptUtility;
 
 /***************************************************************
 * Copyright notice
@@ -59,15 +61,15 @@ class Dbis
      */
     public function __construct()
     {
-        $this->setBibID();
+        $this->setBibID($GLOBALS['TYPO3_REQUEST']);
     }
 
     /**
      * sets ID of the library
      */
-    public function setBibID()
+    public function setBibID(ServerRequestInterface $request)
     {
-        $this->bibID = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.']['dbisbibid'];
+        $this->bibID = TypoScriptUtility::getSetup($request)['plugin.']['tx_libconnect.']['dbisbibid'] ?? [];
     }
 
     /**

@@ -1,6 +1,8 @@
 <?php
 
 namespace Subhh\Libconnect\Lib;
+use Psr\Http\Message\ServerRequestInterface;
+use Subhh\Libconnect\Utility\TypoScriptUtility;
 
 /***************************************************************
  *  Copyright notice
@@ -86,7 +88,7 @@ class Zdb
     {
         $this->logger = GeneralUtility::makeInstance(LogManager::class)->getLogger(__CLASS__);
 
-        if (!$this->getSid()) {
+        if (!$this->getSid($GLOBALS['TYPO3_REQUEST'])) {
             //todo: error message
             //error_log('typo3 extension libconnect - missing ZDB source-identifier: refer to documentation - chapter configuration.');
             $this->logger->debug('invalid SID given: ' . $this->sid);
@@ -326,9 +328,9 @@ class Zdb
      *
      * @return string
      */
-    private function getSid()
+    private function getSid(ServerRequestInterface $request)
     {
-        $this->sid = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.']['zdbsid'];
+        $this->sid = TypoScriptUtility::getSetup($request)['plugin.']['tx_libconnect.']['zdbsid'] ?? [];;
 
         if (is_null($this->sid) or !$this->sid or empty($this->sid)) {
             return false;

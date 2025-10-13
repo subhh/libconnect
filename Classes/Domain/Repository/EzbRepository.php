@@ -204,7 +204,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         /*BEGIN get access information*/
 
         //get default texts
-        $LongAccessInfos =  $this->ezb->getLongAccessInfos();
+        $LongAccessInfos =  $this->ezb->getLongAccessInfos($GLOBALS['TYPO3_REQUEST']);
 
         $colortext = [];
         if ((!empty($LongAccessInfos['longAccessInfos'])) && ($LongAccessInfos['longAccessInfos']!= false)) {
@@ -508,7 +508,7 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     public function getAccessInfos()
     {
         //get default texts
-        $AccessInfos = $this->ezb->getLongAccessInfos();
+        $AccessInfos = $this->ezb->getLongAccessInfos($GLOBALS['TYPO3_REQUEST']);
 
         $colortext = [];
         if ((!empty($AccessInfos['longAccessInfos'])) && ($AccessInfos['longAccessInfos']!= false)) {

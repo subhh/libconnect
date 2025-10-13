@@ -39,6 +39,9 @@ namespace Subhh\Libconnect\Lib;
  */
 
 use Subhh\Libconnect\Service\Request;
+use Psr\Http\Message\ServerRequestInterface;
+use Subhh\Libconnect\Utility\TypoScriptUtility;
+
 
 class Ezb
 {
@@ -92,15 +95,15 @@ class Ezb
     public function __construct()
     {
         //set configurations
-        $this->setBibID();
+        $this->setBibID($GLOBALS['TYPO3_REQUEST']);
     }
 
     /**
      * sets ID of the library
      */
-    private function setBibID()
+    private function setBibID(ServerRequestInterface $request)
     {
-        $this->bibID = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.']['ezbbibid'];
+        $this->bibID = TypoScriptUtility::getSetup($request)['plugin.']['tx_libconnect.']['ezbbibid'] ?? [];
     }
 
     /**
@@ -607,9 +610,9 @@ class Ezb
     /**
      * sets access information
      */
-    public function setShortAccessInfos()
+    public function setShortAccessInfos(ServerRequestInterface $request)
     {
-        $this->shortAccessInfos = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.']['settings.']['ezbshortaccessinfos.'][$this->lang . '.'];
+        $this->shortAccessInfos = TypoScriptUtility::getSetup($request)['plugin.']['tx_libconnect.']['settings.']['ezblongaccessinfos.'][$this->lang . '.'];
     }
 
     /**
@@ -619,7 +622,7 @@ class Ezb
      */
     public function getShortAccessInfos()
     {
-        $this->setShortAccessInfos();
+        $this->setShortAccessInfos($GLOBALS['TYPO3_REQUEST']);
 
         $return = ['shortAccessInfos' => $this->shortAccessInfos];
 
@@ -629,9 +632,9 @@ class Ezb
     /**
      * sets more access information
      */
-    public function setLongAccessInfos()
+    public function setLongAccessInfos(ServerRequestInterface $request)
     {
-        $this->longAccessInfos = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.']['settings.']['ezblongaccessinfos.'][$this->lang . '.'];
+        $this->longAccessInfos = TypoScriptUtility::getSetup($request)['plugin.']['tx_libconnect.']['settings.']['ezblongaccessinfos.'][$this->lang. '.'];
     }
 
     /**
@@ -639,11 +642,11 @@ class Ezb
      *
      * @return array $return
      */
-    public function getLongAccessInfos()
+    public function getLongAccessInfos(ServerRequestInterface $request)
     {
-        $this->setLongAccessInfos();
+        $this->setLongAccessInfos($GLOBALS['TYPO3_REQUEST']);
 
-        $return = ['longAccessInfos' => $this->longAccessInfos, 'force' => $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_libconnect.']['settings.']['ezblongaccessinfos.']['force']];
+        $return = [ 'longAccessInfos' => $this->longAccessInfos, TypoScriptUtility::getSetup($request)['plugin.']['tx_libconnect.']['settings.']['ezblongaccessinfos.']['force'] ];
 
         return $return;
     }
