@@ -35,6 +35,8 @@ use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Site\Entity\SiteLanguage;
 use Subhh\Libconnect\Domain\Repository\EzbRepository;
 use Subhh\Libconnect\Domain\Repository\SubjectRepository;
+use Psr\Http\Message\ServerRequestInterface;
+use Subhh\Libconnect\Utility\TypoScriptUtility;
 
 /**
  * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
