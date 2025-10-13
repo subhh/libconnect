@@ -59,6 +59,10 @@ class Request
         } else {
             $query = $this->getQuery();
         }
+    
+        if(is_array($query)){
+            $query = "";
+        }
 
         $url = sprintf('%s?%s', $this->getUrl(), $query);
         $additionalOptions = [
@@ -71,7 +75,7 @@ class Request
 
         try {
             $response = $requestFactory->request($url, 'GET', $additionalOptions);
-echo "<!--  ".$url." -->";
+
             if ($response->getStatusCode() !== 200) {
                 $this->logger->debug('Request failed', [
                     'code' => $response->getStatusCode(),
