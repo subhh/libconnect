@@ -319,7 +319,7 @@ class Ezb
         $journal['access_conditions'] = (string)$xml_response->ezb_detail_about_journal->journal->detail->access_conditions;
 
         //publishing
-        if ($xml_response->ezb_detail_about_journal->journal->publishing) {
+        if (isset($xml_response->ezb_detail_about_journal->journal->publishing->oa_funding)) {
             $journal['publishing']['oa_funding']['oa_contact']['contact_name'] = (string)$xml_response->ezb_detail_about_journal->journal->publishing->oa_funding->oa_contact->contact_name;
             $journal['publishing']['oa_funding']['oa_contact']['contact_email'] = (string)$xml_response->ezb_detail_about_journal->journal->publishing->oa_funding->oa_contact->contact_email;
             $journal['publishing']['oa_funding']['oa_funding_url'] = (string)$xml_response->ezb_detail_about_journal->journal->publishing->oa_funding->oa_funding_url;
@@ -721,7 +721,7 @@ class Ezb
         $participants = false;
         $xml_response = $this->setRequest($this->participants_xml_url, ['colors' => $this->colors, 'lang' => $this->lang, 'jour_id' => $jour_id]);
 
-        if ($xml_response->ezb_where_journal_at_partners->partner_selection->institutions->institution) {
+        if (isset($xml_response->ezb_where_journal_at_partners->partner_selection->institutions->institution)) {
             foreach ($xml_response->ezb_where_journal_at_partners->partner_selection->institutions->institution->children() as $childs) {
                 $participants = "{$this->participants_url}?bibid={$this->bibID}&colors={$this->colors}&lang={$this->lang}&jour_id={$jour_id}";
                 break;
