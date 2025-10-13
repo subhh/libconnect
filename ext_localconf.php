@@ -159,6 +159,9 @@ defined('TYPO3') or die('Access denied.');
     ]
 );
 
+//Fix problem form returns 404 &cHash empty
+$GLOBALS['TYPO3_CONF_VARS']['FE']['cacheHash']['excludedParameters'][] = '^tx_libconnect';
+
 try {
     $enableDebugLog = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Configuration\ExtensionConfiguration::class)->get('libconnect', 'debug');
     if ($enableDebugLog) {
