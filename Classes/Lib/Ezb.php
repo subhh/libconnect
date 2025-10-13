@@ -264,7 +264,7 @@ class Ezb
         $journal['eissns_join'] = implode(', ', $journal['eissns']);
 
         $journal['keywords'] = [];
-        if (isset($xml_response->ezb_detail_about_journal->journal->detail->keywords->keyword)) {
+        if (!empty($xml_response->ezb_detail_about_journal->journal->detail->keywords->keyword)) {
             foreach ($xml_response->ezb_detail_about_journal->journal->detail->keywords->keyword as $keyword) {
                 $journal['keywords'][] = (string)$keyword;
             }

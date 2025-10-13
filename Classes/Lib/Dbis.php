@@ -1,8 +1,6 @@
 <?php
 
 namespace Subhh\Libconnect\Lib;
-use Psr\Http\Message\ServerRequestInterface;
-use Subhh\Libconnect\Utility\TypoScriptUtility;
 
 /***************************************************************
 * Copyright notice
@@ -37,6 +35,10 @@ use Subhh\Libconnect\Utility\TypoScriptUtility;
  * @author niklas guenther
  * @author Torsten Witt
  */
+ 
+use Psr\Http\Message\ServerRequestInterface;
+use Subhh\Libconnect\Utility\TypoScriptUtility;
+ 
 class Dbis
 {
     private $fachgebiet;
