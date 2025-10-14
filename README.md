@@ -7,6 +7,8 @@ With libconnect it is possible to display the information of EZB and DBIS of the
 Here is the German [Manual](doc/manual.pdf "Ausführliches Manual").
 
 Visit our git repository: https://github.com/subhh/libconnect
+## 10.0.4
+    - Bugfixes
 
 ## 10.0.3
     - DBIS: 

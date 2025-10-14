@@ -9,6 +9,8 @@ DBI:
 - Fixed TopDatbases
 - Updated subjectes
 
+10.0.4
+    - Bugfixes
 10.0.3
     - DBIS: 
         - Change verification of content-type for new version of dbis.
