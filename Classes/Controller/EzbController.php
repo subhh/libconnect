@@ -427,7 +427,7 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
         $this->setLanguage();
 
-        if ($subjectId != false) {
+        if ($subjectId != false AND ( strtoupper($subjectId != 'ALL') ) ) {
             $subject = $this->ezbRepository->getSubject($subjectId);
             $params['Notations']=[$subject['notation']];
         }
