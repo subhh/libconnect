@@ -343,8 +343,10 @@ class EzbController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $newParams['Notations'][]=$params['notation'];
             
             $this->view->assign('subject', $subject);
+        }else{
+            $params['notation'] = "";
         }
-
+        
         if (!empty($params['sindex'])) {
             $newParams['sindex'] = $params['sindex'];
         }
