@@ -105,8 +105,6 @@ class Request
             $content = $this->getText($response);
         } elseif (strpos($contentType, 'application/json') === 0) {//DBIS, services.dnb.de
             $content = $this->getJson($response);
-            //echo "<pre>";
-            //var_dump($content);exit;
         } else {
 
             return false;
