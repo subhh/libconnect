@@ -111,8 +111,8 @@ class EzbRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $subject = $this->loadOverview();
 
         //list of subject or all
-        if($options['notation'] == 'All'){
-            $subject['notation'] = 'All';
+        if(strtoupper($options['notation']) == 'ALL'){
+            $subject['notation'] = 'ALL';
         }else{
             $subject = $subject[$subject_id];
         }
