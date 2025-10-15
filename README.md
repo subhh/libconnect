@@ -8,26 +8,16 @@ Here is the German [Manual](doc/manual.pdf "Ausführliches Manual").
 
 Visit our git repository: https://github.com/subhh/libconnect
 
-## 10.0.3
-    - DBIS: 
-        - Change verification of content-type for new version of dbis.
-        - Details:
-            - Added Ressource-ID
-            - automatic change of english and german for the fields content and instruction
-            - dbinfo is removed from links because of changes of the interface.
-        - List:
-            - Fixed links to top databases
-        - Miniform:
-            - Fixed Error in new in subject.
-            - Sorting and filter by access is temporarily deactivated
+## 11.0.0
+11.0.0
+    - Compatibility to TYPO3 13.4
+    - fix problem form returns 404 &cHash empty
     - EZB:
-        - Detail:
-            - Access conditions added
-            - Added links for P-ISSN and E-ISSN
-            - Added publishing information: oa and doaj
+        - Fix Error on not existing values in xml
+        - Fixed some errors
 
 Tested with 
-    - TYPO3 12.4.22
+    - TYPO3 13.4.18
 
 ## Configuration
 

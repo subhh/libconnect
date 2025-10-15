@@ -8,7 +8,12 @@
 DBI:
 - Fixed TopDatbases
 - Updated subjectes
-
+11.0.0
+- Compatibility to TYPO3 13.4
+- fix problem form returns 404 &cHash empty
+- EZB:
+	- Fix Error on not existing values in xml
+	- Fixed some errors
 10.0.3
     - DBIS: 
         - Change verification of content-type for new version of dbis.
