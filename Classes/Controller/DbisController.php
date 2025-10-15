@@ -126,7 +126,7 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $this->view->assign('listhead', $list['headline']);
             $this->view->assign('gebiete', $params['gebiete']);
             $this->view->assign('params', $params);
-            $this->view->assign('zugaenge', $params['zugaenge']);
+            //$this->view->assign('zugaenge', $params['zugaenge']);
             $this->view->assign('result', $list);
             $this->view->assign('detailPid', $this->settings['flexform']['detailPid']);
 
@@ -150,7 +150,6 @@ class DbisController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             
             $list =  $this->dbisRepository->loadOverview();
 
-            
             //use other view
             $this->view->setTemplatePathAndFilename($templateRootPaths[0].'/Dbis/DisplayOverview.html');
 
