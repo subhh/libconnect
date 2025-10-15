@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 namespace Subhh\Libconnect\Domain\Model;
 
 /***************************************************************
@@ -59,9 +59,9 @@ class Subject extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * uid
      *
-     * @var string
+     * @var int
      */
-    protected $uid;
+    protected ?int $uid;
 
     /**
      * __construct
