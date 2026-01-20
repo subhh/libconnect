@@ -31,7 +31,7 @@
                     <target>Weitere freie Zugänge:</target>
                 </trans-unit>
                 <trans-unit id="tx_libconnect.dbis.detail.access.other" xml:space="preserve">
-                    <source>Addtion internet offer:</source>
+                    <source>Additional internet offer:</source>
                     <target>Zusätzliches Internet-Angebot:</target>
                 </trans-unit>
                 <trans-unit id="tx_libconnect.dbis.detail.access.ppu" xml:space="preserve">
@@ -381,7 +381,7 @@
                     <target>3. Wählen Sie die Einrichtung aus:</target>
                 </trans-unit>
                 <trans-unit id="tx_libconnect.ezb.articipants.submit" xml:space="preserve">
-                    <source>Go to the choosed institution</source>
+                    <source>Go to the chosen institution</source>
                     <target>Zur gewählten Einrichtung wechseln</target>
                 </trans-unit>
 

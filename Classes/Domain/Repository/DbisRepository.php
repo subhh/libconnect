@@ -9,7 +9,7 @@ namespace Subhh\Libconnect\Domain\Repository;
 *
 * All rights reserved
 *
-* This script is part of the EZB/DBIS-Extention project. The EZB/DBIS-Extention project
+* This script is part of the EZB/DBIS-Extension project. The EZB/DBIS-Extension project
 * is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
 * the Free Software Foundation; either version 2 of the License, or
